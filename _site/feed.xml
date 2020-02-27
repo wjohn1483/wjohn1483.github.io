@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-27T22:35:48+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your Site Title</title><subtitle>Your Site Description
+</subtitle><author><name>Your Name</name></author><entry><title type="html">Create website</title><link href="http://localhost:4000/2020/02/27/create-website.html" rel="alternate" type="text/html" title="Create website" /><published>2020-02-27T00:00:00+08:00</published><updated>2020-02-27T00:00:00+08:00</updated><id>http://localhost:4000/2020/02/27/create-website</id><content type="html" xml:base="http://localhost:4000/2020/02/27/create-website.html">&lt;p&gt;install jekyll bundler
+_conf.yaml
+gemfile
+bundle install
+copy from gem
+create examples&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">install jekyll bundler _conf.yaml gemfile bundle install copy from gem create examples</summary></entry></feed>
