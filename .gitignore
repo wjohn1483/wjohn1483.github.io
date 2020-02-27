@@ -3,3 +3,4 @@
 .jekyll-cache/
 Gemfile.lock
 vendor/
+.sass-cache/
