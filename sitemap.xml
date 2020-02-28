@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/2020/02/27/create-website/</loc>
-<lastmod>2020-02-27T00:00:00+08:00</lastmod>
+<loc>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/02/27/create-website/</loc>
+<lastmod>2020-02-27T00:00:00+00:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/404/</loc>
+<loc>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/404/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/archive/</loc>
+<loc>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/archive/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/</loc>
+<loc>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/audio_to_scene/</loc>
-<lastmod>2020-02-26T23:02:41+08:00</lastmod>
+<loc>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/audio_to_scene/</loc>
+<lastmod>2020-02-28T12:24:00+00:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/legacy/</loc>
-<lastmod>2020-02-26T23:02:41+08:00</lastmod>
+<loc>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/legacy/</loc>
+<lastmod>2020-02-28T12:24:00+00:00</lastmod>
 </url>
 </urlset>
