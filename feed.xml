@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-28T19:04:56+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Create website</title><link href="http://localhost:4000/2020/02/27/create-website/" rel="alternate" type="text/html" title="Create website" /><published>2020-02-27T00:00:00+08:00</published><updated>2020-02-27T00:00:00+08:00</updated><id>http://localhost:4000/2020/02/27/create-website</id><content type="html" xml:base="http://localhost:4000/2020/02/27/create-website/">&lt;p&gt;install jekyll bundler
+_conf.yaml
+gemfile
+bundle install
+copy from gem
+create examples&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;module-6.jpg&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;SP19_R4499_S201931283729.02.pdf&quot;&gt;link to pdf&lt;/a&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">install jekyll bundler _conf.yaml gemfile bundle install copy from gem create examples link to pdf</summary></entry></feed>
