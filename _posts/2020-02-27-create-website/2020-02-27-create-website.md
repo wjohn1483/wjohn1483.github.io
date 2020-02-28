@@ -9,6 +9,7 @@ gemfile
 bundle install
 copy from gem
 create examples
+travis ci
 
 ![image](module-6.jpg)
 
