@@ -4,4 +4,4 @@ rvm:
 script:
   - bundle exec jekyll build
 after_success:
-  - .travis/push.sh
+  - bash -x .travis/push.sh
