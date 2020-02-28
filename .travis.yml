@@ -4,4 +4,4 @@ rvm:
 script:
   - bundle exec jekyll build
 after_success:
-  - bash -x .travis/push.sh
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash -x .travis/push.sh; fi'
