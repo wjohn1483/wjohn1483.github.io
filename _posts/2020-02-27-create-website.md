@@ -10,4 +10,6 @@ bundle install
 copy from gem
 create examples
 
-![image](module-6.jpg)
+![image]({% asset_path module-6.jpg %})
+
+[link to pdf]({% asset_path SP19_R4499_S201931283729.02.pdf %})
