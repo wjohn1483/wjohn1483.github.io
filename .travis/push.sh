@@ -16,15 +16,15 @@ commit_website_files() {
     git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
 }
 
-upload_files() {
-    #git status
-    #git push origin master
-}
+#upload_files() {
+#    #git status
+#    #git push origin master
+#}
 
 mkdir folder_to_push
 cd folder_to_push
 
 setup_git_folder
 commit_website_files
-upload_files
+#upload_files
 
