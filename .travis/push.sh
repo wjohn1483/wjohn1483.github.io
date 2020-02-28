@@ -10,7 +10,7 @@ setup_git_folder() {
 
 commit_website_files() {
     git checkout master
-    rsync -a -v --delete-after ../_site/* ./
+    rsync -a -v -q --delete-after ../_site/* ./
     git status
     git add .
     git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
