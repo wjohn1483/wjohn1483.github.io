@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>如何使用Jekyll建立網站在Gihub Page上 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>如何使用Jekyll建立網站在Github Page上 - wjohn1483.github.io</title>
 
-<meta name="description" content="Jekyll是什麼？準備環境、建立第一個樣板網站install jekyll bundler_conf.yamlgemfilebundle installcopy from gemcreate examplestravis ci  webhook  github token  push scriptReferen...">
+<meta name="description" content="這篇文章將會簡單介紹一下Jekyll，以及我如何使用Jekyll將網站建置在GitHub Page上的經歷。">
 <link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/02/28/create-website-by-Jekyll/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
@@ -278,11 +278,11 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>如何使用Jekyll建立網站在Gihub Page上</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>如何使用Jekyll建立網站在Github Page上</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
             href="https://github.com/wjohn1483/wjohn1483.github.io/tree/master/_posts/2020-02-28-create-website-by-Jekyll/2020-02-28-create-website-by-Jekyll.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="如何使用Jekyll建立網站在Gihub Page上"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="如何使用Jekyll建立網站在Github Page上"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=Tool">Tool</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 28, 2020</span>
@@ -290,27 +290,216 @@
     <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><h1 id="jekyll是什麼">Jekyll是什麼？</h1>
+<div class="article__content" itemprop="articleBody"><p>這篇文章將會簡單介紹一下Jekyll，以及我如何使用Jekyll將網站建置在GitHub Page上的經歷。
+<!--more--></p>
 
-<h1 id="準備環境建立第一個樣板網站">準備環境、建立第一個樣板網站</h1>
-<p>install jekyll bundler
-_conf.yaml
-gemfile
-bundle install
-copy from gem
-create examples</p>
+<h2 id="jekyll是什麼">Jekyll是什麼？</h2>
+<p><a href="https://jekyllrb.com/">Jekyll</a>是一個基於Ruby的靜態網頁產生器，常用在個人、project或是公司、組織的網頁上，由GitHub的co-founder <a href="https://en.wikipedia.org/wiki/Tom_Preston-Werner">Tom Preston-Wemer</a>製作的。</p>
 
-<p>travis ci</p>
-<ul>
-  <li>webhook</li>
-  <li>github token</li>
-  <li>push script</li>
-</ul>
+<p>只要給Jekyll一些Liquid模板以及用Markdown寫的文章內容，它就可以幫你生成出一整個靜態網站。
+<a href="https://github.com/Shopify/liquid">Liquid</a>是一個模板引擎，可以在html裡面安插一些程式語言，讓html可以根據你的需求被產生出來，可以參考<a href="https://github.com/Shopify/liquid#what-does-it-look-like">Liquid GitHub當中的例子</a>，會比較理解它想要實現的事情。</p>
 
-<h1 id="references">References</h1>
-<ul>
-  <li><a href="https://jekyllrb.com/">Jekyll</a></li>
-</ul>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"products"</span><span class="nt">&gt;</span>
+    
+    {% for product in products %}
+        <span class="nt">&lt;li&gt;</span>
+            <span class="nt">&lt;h2&gt;</span>{{ product.name  }}<span class="nt">&lt;/h2&gt;</span>
+            Only {{ product.price | price  }}
+
+            {{ product.description | prettyprint | paragraph  }}
+        <span class="nt">&lt;/li&gt;</span>
+    {% endfor %}
+    
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre></div></div>
+
+<p>至於<a href="https://zh.wikipedia.org/zh-tw/Markdown">Markdown</a>，是一個輕量級標記式語言，相信有使用過GitHub的人應該對它並不陌生。</p>
+
+<p>或許是因為Jekyll是由GitHub co-founder所製作的，所以目前GitHub Page支援Jekyll，使你可以在你的repo當中放入Jekyll的原始碼，GitHub就會自動幫你編譯並部署成網站。
+底下將會從零開始，紀錄我如何建立一個部落格網站。</p>
+
+<h2 id="準備環境">準備環境</h2>
+<h3 id="直接套用現成repo">直接套用現成Repo</h3>
+<p>如果說不想要這麼麻煩的準備環境，想要直接開始寫作的話，可以去網路上找別人已經弄好的GitHub Repo，像是<a href="https://github.com/github/personal-website">personal-website</a>，Fork到自己的帳號底下，改一下repo的名字，變成<strong>[username].github.io</strong>，就可以開始在<strong>_post</strong>這個資料夾底下創立Markdown檔案，開始自由的創作，GitHub理應會將你新創立的文章自動變成網頁部署上去。</p>
+
+<p>倘若你想要客製化網站的話，可能就必須自己準備一個環境，得要繼續往下閱讀了。</p>
+
+<h3 id="建立github-page-repo">建立GitHub Page Repo</h3>
+<p>網路上有很多教學來教大家如何建立自己的GitHub Page，可以參考<a href="https://pages.github.com/">GitHub官方教學</a>。
+其實主要需要做的事情就是建立一個新的repository，命名為<strong>[username].github.io</strong>，並將之設為public repo。
+之後只要將html檔案上傳上去，GitHub就會自動將檔案部署到<strong>https://[username].github.io</strong>這個網站上，相當的方便而且還免費！</p>
+
+<h3 id="安裝rubyjekyll">安裝Ruby、Jekyll</h3>
+<p>前面有提到Jekyll是基於Ruby所建立的，所以必須要在自己的電腦上先安裝Ruby，安裝Ruby的方法可以參考<a href="https://jekyllrb.com/docs/installation/">Jekyll官方教學</a>，根據不同的作業系統會需要不一樣的步驟，但倘若你所使用的是macOS Catalina以上的作業系統，其內建就有Ruby了，可以直接安裝Jekyll。</p>
+
+<p>在安裝好Ruby以後，直接下底下的指令應該就能安裝好Jekyll。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>bundler jekyll <span class="nt">--user-install</span>
+</code></pre></div></div>
+
+<h2 id="使用樣板建立第一個網站">使用樣板建立第一個網站</h2>
+<p>在準備好環境以後，應該就迫不及待的想要產生一個好棒棒的網站，最快的方式應當是去複製別人的樣板，這邊我所使用的樣板是<a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a>，你也可以去找尋自己心中所屬的那個樣板，像是蠻像Medium的樣板<a href="https://github.com/poole/poole">Poole</a>等等。</p>
+
+<p>想好樣板選哪一個以後，接著便是在你的GitHub Page Repo上套用它，套用的流程可以參考底下。</p>
+
+<h3 id="clone你的github-page-repo到電腦上">Clone你的GitHub Page Repo到電腦上</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/[username]/[username].github.io.git
+</code></pre></div></div>
+
+<h3 id="在repo根目錄創建gemfile和_confyaml">在repo根目錄創建Gemfile和_conf.yaml</h3>
+
+<p>通常樣板都是用gem的形式來讓大家使用，為此我們需要建立<strong>Gemfile</strong>和<strong>_conf.yaml</strong>這兩個檔案，來讓Ruby知道我們這個repo需要哪些相關的gem。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Put the followings into your Gemfile</span>
+
+<span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+
+<span class="n">gem</span> <span class="s2">"jekyll"</span>
+<span class="n">gem</span> <span class="s2">"jekyll-text-theme"</span>
+</code></pre></div></div>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Put the following into your _conf.yaml</span>
+
+<span class="na">theme</span><span class="pi">:</span> <span class="s">jekyll-text-theme</span>
+</code></pre></div></div>
+
+<h3 id="安裝套件">安裝套件</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span> <span class="nt">--path</span> vendor/bundle
+</code></pre></div></div>
+<p>上面的指令會把需要的套件都安裝在<strong>vendor/bundle</strong>這個資料夾內。</p>
+
+<h3 id="把樣板所定義的css設定檔放到repo根目錄">把樣板所定義的CSS、設定檔放到repo根目錄</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> <span class="nt">-r</span> vendor/bundle/ruby/2.6.0/gems/jekyll-text-theme-2.2.6/_<span class="k">*</span> ./
+<span class="nb">cp</span> <span class="nt">-r</span> vendor/bundle/ruby/2.6.0/gems/jekyll-text-theme-2.2.6/assets ./
+</code></pre></div></div>
+
+<h3 id="把網頁模版複製進repo根目錄">把網頁模版複製進repo根目錄</h3>
+<p><a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a>所需要的網頁模版可以參考其<a href="https://github.com/kitian616/jekyll-TeXt-theme/tree/master/test">repo底下的test資料夾</a>，我印象中那時是複製了底下這些檔案。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>404.html
+_config.yml
+archive.html
+index.html
+</code></pre></div></div>
+
+<h3 id="確認樣板是否順利套用">確認樣板是否順利套用</h3>
+<p>利用底下的指令讓Jekyll產生靜態網站。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--trace</span>
+</code></pre></div></div>
+<p>產生出來的html檔案們會在<strong>_site/</strong>這個資料夾內，你也可以到<a href="http://localhost:4000">http://localhost:4000</a>上觀看自己的網頁。</p>
+
+<p>如果成功看到網頁跑出來，就代表套用算是成功了，接下來就可以開始進行客製化，像是去<strong>_conf.yaml</strong>做一些設定、調整<strong>_include</strong>裡面的html模板等等，把網頁刻成你的樣子。</p>
+
+<h2 id="部署到github-page上">部署到GitHub Page上</h2>
+<p>在把網頁變成了你的樣子以後，接著就會想讓世人看看，想把網頁丟到GitHub Page上。
+因為Github會自動幫你編譯Jekyll，所以並不需要將整個<strong>_site/</strong>資料夾上傳，記得把不需要的東西放入<strong>.gitignore</strong>當中。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.bundle/
+.jekyll-cache/
+Gemfile.lock
+vendor/
+.sass-cache/
+.site/
+</code></pre></div></div>
+<p>值得一提的是，因為GitHub在編譯的時候會在safe mode底下執行，所支援的套件有限，可以參考<a href="https://pages.github.com/versions/">GitHub Dependency Versions</a>，如果有用到超出支援的套件的話會編譯不過。</p>
+
+<p>在push到GitHub以後，可以去repo settings中GitHub Page相關的段落看有沒有錯誤訊息，如果成功部署上去可以看到相關的訊息，如果過程中發生了錯誤，在<a href="https://help.github.com/en/enterprise/2.14/user/articles/troubleshooting-github-pages-builds">troubleshooting github page builds</a>能夠看到更多有關錯誤訊息的資訊。</p>
+
+<h3 id="如果我想用超出支援的套件怎麼辦">如果我想用超出支援的套件怎麼辦？</h3>
+<p>其實Github Page也支援一般的靜態網頁存放方式，所以可以先在本機把網頁編譯好以後，將<strong>_site/</strong>裡面所有的東西都push到master branch，並放一個<strong>.nojekyll</strong>的文件在裡面，如此一來就能使用超出支援的套件了，只是是在本機端。</p>
+
+<p>可以參考<a href="https://www.drewsilcock.co.uk/custom-jekyll-plugins">Custom Jekyll plugins with GitHub Pages</a>，把Jekyll相關的原始碼放進source branch，把產生出來的靜態網頁放進master branch，讓整個東西都還是位在同一個repo底下。</p>
+
+<p>具體來說那篇文章想做的事情類似底下的指令，但上面文章會把master branch的根目錄設在source branch中的<strong>_site/</strong>裡面，讓使用者可以編譯完，就進去<strong>_site/</strong>資料夾內將新產生的html推上master branch。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Push source to origin and copy site to temp folder</span>
+git checkout <span class="nt">-b</span> <span class="nb">source
+</span>git push origin <span class="nb">source
+cp</span> <span class="nt">-r</span> _site/ /tmp/
+
+<span class="c"># Remove all files in master</span>
+git checkout master
+<span class="nb">rm</span> <span class="nt">-rf</span> ./<span class="k">*</span>
+
+<span class="c"># Copy site to master</span>
+<span class="nb">cp</span> <span class="nt">-r</span> /tmp/_site/<span class="k">*</span> ./
+<span class="nb">touch</span> .nojekyll
+
+<span class="c"># Push master to origin</span>
+git add <span class="nb">.</span>
+git commit <span class="nt">-m</span> <span class="s2">"Upload site"</span>
+git push origin master
+</code></pre></div></div>
+
+<h3 id="如果我想要線上編輯怎麼辦">如果我想要線上編輯怎麼辦？</h3>
+<p>上面所介紹的方式雖然可以使用沒有支援的套件，但是仍需要在本機編譯，所以每次發佈一篇新的文章時，會需要將新文章的原始碼push到source branch，編譯完成後再進入其中的<strong>_site/</strong>資料夾把東西push到master branch，這樣才算成功把網頁更新。</p>
+
+<p>倘若我今天心血來潮在GitHub網頁版上面直接寫起了文章，想要發佈出去的話，還得要打開終端機pull source branch的資料、編譯一下、把東西推到master branch，相當的不方便，所以在此提供一個解法讓你可以在網頁版GitHub的source branch寫完文章以後，commit完可以直接發佈至master branch，於此同時還可以保有使用GitHub Page沒有支援的套件的好處。</p>
+
+<p>簡述一下解法便是利用Travis CI的虛擬機，幫我們把網頁編譯好，再請它幫我們把編譯好的網站push回master branch。</p>
+
+<h4 id="travis-ci-簡介">Travis CI 簡介</h4>
+<p><a href="https://travis-ci.org/">Travis CI</a>是一個用來作持續整合(CI)的平台，只要在Travis CI連結GitHub，並在repo根目錄當中製作一個<strong>.travis.yml</strong>檔案，告訴它想要在CI的時候執行什麼樣的指令，它就會建立一個虛擬機並執行你設定的指令。</p>
+
+<h4 id="連結travis-ci和github">連結Travis CI和GitHub</h4>
+<p>到<a href="https://travis-ci.org/">Travis CI</a>的網站中，點選<em>Sign in with GitHub</em>，並給予它觀看repo的權限，它就可以知道你有哪些repo，接著選擇<strong>[username].github.io</strong>的repo並勾選右邊的啟動按鈕，如此一來Travis CI就會開始監測你的repo有沒有新的commit。</p>
+
+<p><img src="activate_ci.png" alt="Activate Travis CI" /></p>
+
+<h4 id="給予travis-ci-push的權限">給予Travis CI push的權限</h4>
+<p>為了要讓Travis CI可以幫忙把網頁push到master branch當中，我們需要給予它GitHub token，讓它能夠有權利push，可以到<a href="https://github.com/settings/tokens">GitHub settings</a>創建一個token給Travis CI使用，並勾選給予的權限。</p>
+
+<p><img src="github_permission.png" alt="GitHub token permission" /></p>
+
+<p>拿到token以後，可以把token儲存在Travis CI的環境變數當中，若把token放repo裡面怕會被別人看到，儲存成變數的方法可以參照<a href="https://docs.travis-ci.com/user/environment-variables#defining-variables-in-repository-settings">Travis官方文件</a>，點選repo的設定以後，就可以找到相關的區塊了，我自己是設定成底下的樣子。</p>
+
+<p><img src="travis_ci_variable.png" alt="Travis CI Environment Variables" /></p>
+
+<h4 id="設定travis-ci">設定Travis CI</h4>
+<p>至此我們讓Travis CI實時監控我們的commit，也讓它有權力可以push到master branch，接著就是告訴它該怎麼樣編譯我們的網站以及要把哪些東西push到master branch。</p>
+
+<p>我是參照<a href="https://gist.github.com/willprice/e07efd73fb7f13f917ea#file-travis-yml">別人的gist</a>稍作修改以後來設定的，可以參考我的<a href="https://github.com/wjohn1483/wjohn1483.github.io/blob/source/.travis.yml">.travis.yml</a>和<a href="https://github.com/wjohn1483/wjohn1483.github.io/blob/source/.travis/push.sh">.travis/push.sh</a>。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .travis.yml</span>
+
+<span class="na">language</span><span class="pi">:</span> <span class="s">ruby</span>
+<span class="na">rvm</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="m">2.1</span>
+<span class="na">script</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">bundle exec jekyll build</span>
+<span class="na">after_success</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s1">'</span><span class="s">if</span><span class="nv"> </span><span class="s">[</span><span class="nv"> </span><span class="s">"$TRAVIS_PULL_REQUEST"</span><span class="nv"> </span><span class="s">=</span><span class="nv"> </span><span class="s">"false"</span><span class="nv"> </span><span class="s">];</span><span class="nv"> </span><span class="s">then</span><span class="nv"> </span><span class="s">bash</span><span class="nv"> </span><span class="s">-x</span><span class="nv"> </span><span class="s">.travis/push.sh;</span><span class="nv"> </span><span class="s">fi'</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># .travis/push.sh</span>
+
+<span class="c">#!/bin/bash</span>
+
+setup_git_folder<span class="o">()</span> <span class="o">{</span>
+    git init
+    git config <span class="nt">--global</span> user.email <span class="s2">"wjohn1483@yahoo.com.tw"</span>
+    git config <span class="nt">--global</span> user.name <span class="s2">"wjohn1483"</span>
+    git remote add origin https://<span class="k">${</span><span class="nv">GITHUB_TOKEN</span><span class="k">}</span>@github.com/wjohn1483/wjohn1483.github.io.git
+    git pull origin master
+<span class="o">}</span>
+
+commit_website_files<span class="o">()</span> <span class="o">{</span>
+    git checkout master
+    rsync <span class="nt">-a</span> <span class="nt">-v</span> <span class="nt">-q</span> <span class="nt">--delete-after</span> ../_site/<span class="k">*</span> ./
+    git status
+    git add <span class="nb">.</span>
+    git commit <span class="nt">-m</span> <span class="s2">"Travis build: </span><span class="nv">$TRAVIS_BUILD_NUMBER</span><span class="s2">"</span>
+<span class="o">}</span>
+
+upload_files<span class="o">()</span> <span class="o">{</span>
+    git push origin master
+<span class="o">}</span>
+
+<span class="nb">mkdir </span>folder_to_push
+<span class="nb">cd </span>folder_to_push
+
+setup_git_folder
+commit_website_files
+upload_files
+</code></pre></div></div>
+
+<p>至此就完成了線上編輯的所有步驟了，以後就能夠在GitHub網頁版上撰寫文章，commit完就直接部署到GitHub Page上。</p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-02-28T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
