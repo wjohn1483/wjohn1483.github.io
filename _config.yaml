@@ -55,7 +55,7 @@ author:
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
 repository: wjohn1483/wjohn1483.github.io
-repository_tree: master
+repository_tree: source
 
 
 ## => Paths
@@ -184,21 +184,9 @@ highlighter : rouge
 permalink   : /:year/:month/:day/:title/
 
 exclude:
-  - CHANGELOG.md
-  - HOW_TO_RELEASE.md
   - Gemfile
   - Gemfile.lock
-  - LICENSE
-  - README-*.md
   - README.md
-  - gulpfile.js
-  - jekyll-text-theme.gemspec
-  - package-lock.json
-  - package.json
-  - /docs
-  - /node_modules
-  - /screenshots
-  - /test
   - /vendor
 
 defaults:
