@@ -6,6 +6,7 @@ footer: false
 aside:
   toc: true
 mathjax: true
+mathjax_autoNumber: true
 ---
 
 通常在訓練的時候，如果能有一些輔助的任務(task)，通常會對主要的任務在效能上有所提升，然而這些輔助任務的答案通常會需要人類來標注，並不能隨意的想加輔助任務就加輔助任務，而這篇文章要介紹的NeurIPS 2019的[Self-Supervised Generalisation with Meta Auxiliary Learning](https://papers.nips.cc/paper/8445-self-supervised-generalisation-with-meta-auxiliary-learning.pdf)，將輔助任務的答案都用機器來產生，免去了準備輔助任務答案的麻煩。
@@ -29,27 +30,55 @@ mathjax: true
 
 ### Multi-task Network
 
-Multi-task Network就是我們主要的neural network，其參數為$\theta_1$，輸入$x$，輸出primary task和auxiliary task的答案$f_{\theta_1}^{pri}(x)$和$f_{\theta_1}^{aux}(x)$，其中auxiliary task的答案$y^{aux}$是由底下的Label-Generation Network所預測出來的。
+Multi-task Network就是我們主要的neural network，其參數為$$\theta_1$$，輸入$$x$$，輸出primary task和auxiliary task的答案$$f_{\theta_1}^{pri}(x)$$和$$f_{\theta_1}^{aux}(x)$$，其中auxiliary task的答案$$y^{aux}$$是由底下的Label-Generation Network所預測出來的。
 
 而這個network的目標是希望能夠分對primary task以及auxiliary task，所以它的objective function為
 
-$\arg\limits_{\theta_1}\min\left( \mathcal{L}\left( f_{\theta_1}^{pri}(x_{(i)}), y_{(i)}^{pri} \right) + \mathcal{L} \left( f_{\theta_1}^{aux}(x_{(i)}), y_{(i)}^{aux} \right) \right)$
+$$\arg\limits_{\theta_1}\min\left( \mathcal{L}\left( f_{\theta_1}^{pri}(x_{(i)}), y_{(i)}^{pri} \right) + \mathcal{L} \left( f_{\theta_1}^{aux}(x_{(i)}), y_{(i)}^{aux} \right) \right)$$
 
-$Focal\ loss : \mathcal{L}(\hat y, y)=-y(1-\hat y)^\gamma\log(\hat y)$
+$$Focal\ loss : \mathcal{L}(\hat y, y)=-y(1-\hat y)^\gamma\log(\hat y)$$
 
- 其中所使用的loss function為focal loss，在paper裡說可以幫助model更專注在錯誤的predict上。
+其中所使用的loss function為focal loss，在paper裡說可以幫助model更專注在錯誤的predict上。
 
 ### Label-Generation Network
 
 Label-Generation Network的目的是希望能夠產生出讓Multi-task Network可以學得更好的label，所以它的objective function被設定為
 
-$\arg\limits_{\theta_2}\min\mathcal{L}\left( f_{\theta_1^+}^{pri}(x_{(i)}),y_{(i)}^{pri} \right)$
+$$\arg\limits_{\theta_2}\min\mathcal{L}\left( f_{\theta_1^+}^{pri}(x_{(i)}),y_{(i)}^{pri} \right)$$
 
-其中的$\theta_1^+$為
+$$\theta_1^+=\theta_1-\alpha\bigtriangledown_{\theta_1}\left( \mathcal{L} \left( f_{\theta_1}^{pri}(x_{(i)}), y_{(i)}^{pri} \right) + \mathcal{L} \left( f_{\theta_1}^{aux}(x_{(i)}), y_{(i)}^{aux} \right) \right)$$
 
-$\theta_1^+=\theta_1-\alpha\bigtriangledown_{\theta_1}\left( \mathcal{L} \left( f_{\theta_1}^{pri}(x_{(i)}), y_{(i)}^{pri} \right) + \mathcal{L} \left( f_{\theta_1}^{aux}(x_{(i)}), y_{(i)}^{aux} \right) \right)$
+此objective function的含義是，在Multi-task Network經過一次更新以後，希望它在primary task上的loss可以最小，這個概念有點類似[MAML](https://arxiv.org/pdf/1703.03400.pdf)中，希望找到一個初始參數，讓model在更新過後可以在各個task上的綜合表現最佳。
 
-此objective function的含義是，在Multi-task Network經過一次更新以後，希望它在primary task上的loss可以最小，這個概念有點類似[Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks (MAML)](https://arxiv.org/pdf/1703.03400.pdf)中，希望找到一個初始參數，讓model在更新過後可以在各個task上的綜合表現最佳。
+然而經過他們的實驗發現，用上方的objective function來訓練的話，Label-Generation Network常常會輸出同樣的label，所以在實際上更新的時候會再多加一個regularization loss如下
+
+$$\theta_2=\theta_2-\beta\bigtriangledown_{\theta_2}\left( \mathcal{L}\left( f_{\theta_1^+}^{pri}(x_{(i)}), y_{(i)}^{pri} \right) + \lambda \mathcal{H}(y_{(i)}^{aux})\right)$$
+
+$$\mathcal{H}(\hat y_{(i)})=\sum\limits_{k=1}\limits^{K}\hat y_{(i)}^k\log \hat y_{(i)}^k,\ \ \hat y_{(i)}^k=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\hat y_{(i)}^k[n]$$
+
+此regularization loss的意思是，希望在每個batch所產生出來的每個label，它的entropy可以越大越好。
+
+在一開始讀到這邊的時候，我有一個沒有想通的地方是，從$$\theta_2$$更新的式子(5)裡面來看，只有後面regularization的那項跟$$\theta_2$$有關，微分中的第一項好像看不出來跟$$\theta_2$$有關係，後來探究了一下，發現應該要把第一項展開才能看得出來它跟$$\theta_2$$的關係，在式(4)中微分裡面的第二項裡的$$y_{(i)}^{aux}$$是由Label-Generation Network產生的，所以式(4)更精確的寫法是
+
+$$\theta_1^+=\theta_1-\alpha\bigtriangledown_{\theta_1}\left( \mathcal{L} \left( f_{\theta_1}^{pri}(x_{(i)}), y_{(i)}^{pri} \right) + \mathcal{L} \left( f_{\theta_1}^{aux}(x_{(i)}), f_{\theta_2}(x_{(i)}) \right) \right)$$
+
+式(5)就可以改寫成
+
+$$\theta_2=\theta_2-\beta\bigtriangledown_{\theta_2}\left( \mathcal{L}\left( f_{\theta_1-\alpha\bigtriangledown_{\theta_1}\left( \mathcal{L} \left( f_{\theta_1}^{pri}(x_{(i)}), y_{(i)}^{pri} \right) + \mathcal{L} \left( f_{\theta_1}^{aux}(x_{(i)}), f_{\theta_2}(x_{(i)}) \right) \right)}^{pri}(x_{(i)}), y_{(i)}^{pri} \right) + \lambda \mathcal{H}(y_{(i)}^{aux})\right)$$
+
+這時就可以看出來第一項其實也是跟$$\theta_2$$有關，只是是二次微分，一個Hessian matrix，好在大多機器學習的工具像是tensorflow和pytorch都有支援Hessian matrix的計算，所以在程式碼裡面只需要寫成式(5)那樣就可以算微分了，可以看[paper的原始碼](https://github.com/lorenmt/maxl/blob/master/model_vgg_maxl.py#L402)。
+
+#### Mask Softmax
+
+在paper裡面有另外提到說，他們覺得在訓練每個不同primary task的類別時，應該給予不一樣的auxiliary label，像是在訓練$$y^{pri}=0$$這個類別的時候，所給予的auxiliary label應該就只專門拿來用在$$y^{pri}=0$$的情況上，不應該在不同的$$y^{pri}$$都給同樣的auxiliary label，所以在Label-Generation Network有一個$$\psi$$，代表的是對於每個不同的$$y^{pri}$$，要給予多少個auxiliary class，如果$$\psi=[2, 2]$$的話，就代表給$$y^{pri}=0$$兩個auxiliary class，也給$$y^{pri}=1$$兩個auxiliary class。
+
+![mask softmax](mask_softmax.png)
+
+### MAXL Algorithm
+
+下圖為這篇paper附上的algorithm。
+
+![MAXL Algorithm](maxl_algorithm.png)
 
 ## 實驗
 
