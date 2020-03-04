@@ -367,9 +367,41 @@
 
 <p><img src="maxl_algorithm.png" alt="MAXL Algorithm" /></p>
 
+<p>簡單來說就是先訓練一下Multi-task Network，接著固定Multi-task Network的參數，抽樣一些訓練資料，算出經過一次更新以後的<script type="math/tex">\theta_1^+</script>，再更新Label-Generation Network。</p>
+
 <h2 id="實驗">實驗</h2>
 
+<h3 id="與只有primary-task做比較">與只有Primary Task做比較</h3>
+
+<p><img src="compare_to_single_task.png" alt="Comparison to Single Task" /></p>
+
+<p>這邊是用圖形辨識來驗應，Backbone是Multi-task Network的model架構，可以看到MAXL在各個dataset上面都比只用primary task訓練還要來得好，但也只有好一點點。</p>
+
+<h3 id="與其他label-generation方法比較">與其他Label Generation方法比較</h3>
+
+<p><img src="compare_to_other_methods.png" alt="Comparison to Other Label Generation Methods" /></p>
+
+<p>上面比較對象中的K-Means指的是對輸入<script type="math/tex">x</script>做一個Autoencoder，對中間的latent representation做K-Means，以輸入<script type="math/tex">x</script>屬於哪一個群組來當作label。可以看到MAXL在各個參數的表現上都有不錯的成績，與human在伯仲之間。</p>
+
+<h3 id="對model的幫助">對model的幫助</h3>
+
+<p><img src="label_usefulness.png" alt="Gradient Usefulness" style="zoom: 67%;" /></p>
+
+<p>這邊作者想要知道說，Label-Generation Network所產出的label究竟對model而言有沒有用處，而判斷有沒有用處的依據是去看model對training data上的gradient與對產生出的label的gradient的相似程度。假設training data會帶領model往好的方向邁進，如果產生出的label與training data的gradient相近的話，我們就相信產生出的label是有幫助的。</p>
+
+<script type="math/tex; mode=display">Similarity = -1 \rightarrow\ 沒有幫助，甚至在扯後腿\\Similarity=0 \rightarrow\ 對model沒什麼影響\\Similarity=1 \rightarrow\ 對model的學習有正向的幫助</script>
+
+<p>可以看到MAXL的產生出的label與training data的gradient的相似度都介在0~1之間，而且並不像其他方法，隨著訓練過程的推進而相似度下降，代表MAXL有一直在幫助model學習。</p>
+
+<h3 id="究竟label-generation-network學到了什麼">究竟Label-Generation Network學到了什麼</h3>
+
+<p><img src="visualization.png" alt="Visualization" /></p>
+
+<p>這邊作者想看MAXL產生出來的label究竟是有什麼樣的含義，結論就是其實看不太出來，因為產生出來的label是要給機器看的，人類看不出來也是蠻合理的。</p>
+
 <h2 id="結論">結論</h2>
+
+<p>這篇paper提出了MAXL，在不需要專業知識以及額外訓練資料的情況下，可以稍微提升model在分類上的準確率，作者表示希望未來可以套用到regression相關的任務上。</p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-03-01T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
