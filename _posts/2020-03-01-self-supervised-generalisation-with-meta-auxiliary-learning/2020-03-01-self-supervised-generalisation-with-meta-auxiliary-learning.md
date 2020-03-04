@@ -80,6 +80,38 @@ $$\theta_2=\theta_2-\beta\bigtriangledown_{\theta_2}\left( \mathcal{L}\left( f_{
 
 ![MAXL Algorithm](maxl_algorithm.png)
 
+簡單來說就是先訓練一下Multi-task Network，接著固定Multi-task Network的參數，抽樣一些訓練資料，算出經過一次更新以後的$$\theta_1^+$$，再更新Label-Generation Network。
+
 ## 實驗
 
+### 與只有Primary Task做比較
+
+![Comparison to Single Task](compare_to_single_task.png)
+
+這邊是用圖形辨識來驗應，Backbone是Multi-task Network的model架構，可以看到MAXL在各個dataset上面都比只用primary task訓練還要來得好，但也只有好一點點。
+
+### 與其他Label Generation方法比較
+
+![Comparison to Other Label Generation Methods](compare_to_other_methods.png)
+
+上面比較對象中的K-Means指的是對輸入$$x$$做一個Autoencoder，對中間的latent representation做K-Means，以輸入$$x$$屬於哪一個群組來當作label。可以看到MAXL在各個參數的表現上都有不錯的成績，與human在伯仲之間。
+
+### 對model的幫助
+
+<img src="label_usefulness.png" alt="Gradient Usefulness" style="zoom: 67%;" />
+
+這邊作者想要知道說，Label-Generation Network所產出的label究竟對model而言有沒有用處，而判斷有沒有用處的依據是去看model對training data上的gradient與對產生出的label的gradient的相似程度。假設training data會帶領model往好的方向邁進，如果產生出的label與training data的gradient相近的話，我們就相信產生出的label是有幫助的。
+
+$$ Similarity = -1 \rightarrow\ 沒有幫助，甚至在扯後腿\\Similarity=0 \rightarrow\ 對model沒什麼影響\\Similarity=1 \rightarrow\ 對model的學習有正向的幫助$$
+
+可以看到MAXL的產生出的label與training data的gradient的相似度都介在0~1之間，而且並不像其他方法，隨著訓練過程的推進而相似度下降，代表MAXL有一直在幫助model學習。
+
+### 究竟Label-Generation Network學到了什麼
+
+![Visualization](visualization.png)
+
+這邊作者想看MAXL產生出來的label究竟是有什麼樣的含義，結論就是其實看不太出來，因為產生出來的label是要給機器看的，人類看不出來也是蠻合理的。
+
 ## 結論
+
+這篇paper提出了MAXL，在不需要專業知識以及額外訓練資料的情況下，可以稍微提升model在分類上的準確率，作者表示希望未來可以套用到regression相關的任務上。
