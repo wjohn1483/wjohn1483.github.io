@@ -481,7 +481,7 @@ setup_git_folder<span class="o">()</span> <span class="o">{</span>
 
 commit_website_files<span class="o">()</span> <span class="o">{</span>
     git checkout master
-    rsync <span class="nt">-a</span> <span class="nt">-v</span> <span class="nt">-q</span> <span class="nt">--delete-after</span> ../_site/<span class="k">*</span> ./
+    rsync <span class="nt">-a</span> <span class="nt">--delete-after</span> ../_site/<span class="k">*</span> ./
     git status
     git add <span class="nb">.</span>
     git commit <span class="nt">-m</span> <span class="s2">"Travis build: </span><span class="nv">$TRAVIS_BUILD_NUMBER</span><span class="s2">"</span>
