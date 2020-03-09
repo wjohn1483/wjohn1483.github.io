@@ -289,19 +289,151 @@
 <div class="article__content" itemprop="articleBody"><p>這邊記錄一下我目前所使用的Vim plugin以及它們的功能。
 <!--more--></p>
 
-<p>Intellij pycharm</p>
+<p>市面上有很多Integrated Development Environment (IDE)來幫助你開發，像是<a href="https://developer.apple.com/xcode/">Xcode</a>、<a href="https://visualstudio.microsoft.com/zh-hant/">Visual Studio</a>、<a href="https://www.jetbrains.com/idea/">Intellij</a>、<a href="https://www.jetbrains.com/pycharm/">Pycharm</a>、<a href="https://www.sublimetext.com/">Sublime</a>等等，然而在終端機上的文字編輯器，應該大多都是用vim來開發，而vim本身也有很多神人開發的套件，讓你可以在vim裡面做到像上面IDE一樣的操作，底下介紹一下我目前所使用的一些套件。</p>
+
+<p>目前我所使用的設定檔，原先是來自於<a href="https://github.com/timss/vimconf">timss/vimconf</a>，看star數也蠻多人推薦<a href="https://github.com/amix/vimrc">amix/vimrc</a>，你也可以去網路上找你心目中所屬的設定檔。</p>
 
 <h2 id="vundle">Vundle</h2>
 
+<p><a href="https://github.com/VundleVim/Vundle.vim">Vundle</a>是一個vim套件的管理工具，使你可以直接打上vim plugin repo的名字就能安裝至你的vim上，像是</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Plug <span class="s1">'gmarik/Vundle.vim'</span>
+</code></pre></div></div>
+
+<p>在宣告好想要安裝的套件以後，打開vim，再打上<code class="highlighter-rouge">:PlugInstall</code>就會將宣告的套件安裝在<strong>[user name]/.vim/bundle</strong>裡面。如果想要移除某個套件，只需要在設定檔將套件的宣告移除，並在vim裡面打上<code class="highlighter-rouge">:PlugClean</code>，相當的方便。</p>
+
 <h2 id="plugins">Plugins</h2>
 
-<p>https://github.com/amix/vimrc</p>
+<p>接下來介紹一下我覺得好像不錯用的套件們，大多的套件只需要像底下這樣宣告，並且<code class="highlighter-rouge">:PlugInstall</code>就能安裝完成了。</p>
 
-<p>https://github.com/terryma/vim-multiple-cursors</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Plug <span class="s1">'[plugin name]'</span>
+</code></pre></div></div>
 
-<p>http://vimcasts.org/episodes/aligning-text-with-tabular-vim/</p>
+<h3 id="ervandewsupertab"><a href="https://github.com/ervandew/supertab">ervandew/supertab</a></h3>
 
-<p>https://github.com/timss/vimconf</p>
+<p>一個可以讓你用tab自動完成各種東西的套件，可以用tab完成function、variable等等。</p>
+
+<h3 id="ycm-coreyoucompleteme"><a href="https://github.com/ycm-core/YouCompleteMe">ycm-core/YouCompleteMe</a></h3>
+
+<p>也是一個自動完成各種東西的套件，只是安裝起來沒有像supertab那樣簡單，不僅需要宣告在設定檔裡，還需要安裝其他程式語言，像是go、nodejs等，詳細的安裝流程可以參考官方的GitHub。</p>
+
+<h3 id="itchynylightlinevim"><a href="https://github.com/itchyny/lightline.vim">itchyny/lightline.vim</a></h3>
+
+<p>讓vim可以有status bar，讓你知道現在是處理什麼樣的檔案、在Normal mode、Visual mode還是Insert mode等。</p>
+
+<h3 id="blingvim-bufferline"><a href="https://github.com/bling/vim-bufferline">bling/vim-bufferline</a></h3>
+
+<p>在status bar裡面顯示目前開啟的所有檔案。</p>
+
+<h3 id="mbbillundotree"><a href="https://github.com/mbbill/undotree">mbbill/undotree</a></h3>
+
+<p>undotree會紀錄你對這個檔案的操作，使你可以隨時退回先前的版本，有點像簡易版的git。</p>
+
+<h3 id="nanotechjellybeansvim"><a href="https://github.com/nanotech/jellybeans.vim">nanotech/jellybeans.vim</a></h3>
+
+<p>vim的color schema。</p>
+
+<h3 id="tomtomtcomment_vim"><a href="https://github.com/tomtom/tcomment_vim">tomtom/tcomment_vim</a></h3>
+
+<p>幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上<code class="highlighter-rouge">:gc</code>便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。</p>
+
+<h3 id="sominivim-autoclose"><a href="https://github.com/Townk/vim-autoclose">somini/vim-autoclose</a></h3>
+
+<p>自動幫你將括號或是其他該成雙成對的東西補齊的套件。</p>
+
+<h3 id="tpopevim-eunuch"><a href="https://github.com/tpope/vim-eunuch">tpope/vim-eunuch</a></h3>
+
+<p>讓你能在vim裡面直接使用Unix指令的套件，像是<code class="highlighter-rouge">:SudoEdit</code>、<code class="highlighter-rouge">:Rename</code>等等，詳細的指令可以參考上方連結。</p>
+
+<h3 id="tpopevim-fugitive"><a href="https://github.com/tpope/vim-fugitive">tpope/vim-fugitive</a></h3>
+
+<p>讓你能在vim裡面直接操作git指令的套件。</p>
+
+<h3 id="tpopevim-surround"><a href="https://github.com/tpope/vim-surround">tpope/vim-surround</a></h3>
+
+<p>使你可以快速改變括號的套件，像是將</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Hello world!"
+</code></pre></div></div>
+
+<p>迅速改成</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Hello world!'
+</code></pre></div></div>
+
+<p>更多的指令請參考上面連結。</p>
+
+<h3 id="junegunnvim-easy-align"><a href="https://github.com/junegunn/vim-easy-align">junegunn/vim-easy-align</a></h3>
+
+<p>能迅速將<code class="highlighter-rouge">=</code>對齊的套件。</p>
+
+<h3 id="honzavim-snippets--sirverultisnips"><a href="https://github.com/honza/vim-snippets">honza/vim-snippets</a> / <a href="https://github.com/SirVer/ultisnips">sirver/ultisnips</a></h3>
+
+<p>能快速補齊程式碼的套件，像是打上<code class="highlighter-rouge">def test[tab]</code>就會自動幫你將function的架構打出來。</p>
+
+<h3 id="mhinzvim-startify"><a href="https://github.com/mhinz/vim-startify">mhinz/vim-startify</a></h3>
+
+<p>一個好看的vim開始畫面。</p>
+
+<h3 id="mhinzvim-signify"><a href="https://github.com/mhinz/vim-signify">mhinz/vim-signify</a></h3>
+
+<p>顯示檔案裡面有哪些部分與git上的有所差異。</p>
+
+<h3 id="vim-syntasticsyntastic"><a href="https://github.com/vim-syntastic/syntastic">vim-syntastic/syntastic</a></h3>
+
+<p>幫你做語法檢查的套件，我自己會加上底下這行，令<code class="highlighter-rouge">&lt;Leader&gt;c</code>當作快捷鍵。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>noremap &lt;silent&gt;&lt;Leader&gt;c  :SyntasticCheck&lt;CR&gt;
+</code></pre></div></div>
+
+<h3 id="majutsushitagbar"><a href="https://github.com/majutsushi/tagbar">majutsushi/tagbar</a></h3>
+
+<p>當你有使用ctags或cscope先對目錄底下的程式碼先做索引的話，可以使用tagbar在vim裡面顯示所有的tag。</p>
+
+<h3 id="mileszsackvim"><a href="https://github.com/mileszs/ack.vim">mileszs/ack.vim</a></h3>
+
+<p>在vim裡面使用grep或是ag(<a href="https://github.com/ggreer/the_silver_searcher">The Silver Searcher</a>)來搜尋特定字詞的套件，我自己會放以下的設定來建立快捷鍵，打上<code class="highlighter-rouge">ack[space]</code>會自動替換成<code class="highlighter-rouge">Ack!</code>，在Normal mode中打上<code class="highlighter-rouge">&lt;Leader&gt;a</code>會去搜尋游標當下所在的字詞。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>executable<span class="o">(</span><span class="s1">'ag'</span><span class="o">)</span>
+    <span class="nb">let </span>g:ackprg <span class="o">=</span> <span class="s1">'ag --vimgrep'</span>
+endif
+cnoreabbrev ack Ack!
+nnoremap &lt;Leader&gt;a :Ack!&lt;CR&gt;
+</code></pre></div></div>
+
+<h3 id="scrooloosenerdtree"><a href="https://github.com/preservim/nerdtree">scrooloose/nerdtree</a></h3>
+
+<p>樹狀的檔案瀏覽器。</p>
+
+<h3 id="ctrlpvimctrlpvim"><a href="https://github.com/kien/ctrlp.vim">ctrlpvim/ctrlp.vim</a></h3>
+
+<p>使你可以在vim裡面打上<code class="highlighter-rouge">Ctrl + p</code>便能搜尋目錄底下的檔案名稱。</p>
+
+<h3 id="junegunnfzf--junegunnfzfvim"><a href="https://github.com/junegunn/fzf">junegunn/fzf</a> / <a href="https://github.com/junegunn/fzf.vim">junegunn/fzf.vim</a></h3>
+
+<p>功能與上面的<strong>ctrlpvim/ctrlp.vim</strong>幾乎雷同，只是底層是用fzf來做搜尋，我個人比較偏好這個套件，需要使用底下的設定來複寫<code class="highlighter-rouge">Ctrl + p</code>的預設快捷鍵。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>exists<span class="o">(</span><span class="s1">'g:plugs["fzf.vim"]'</span><span class="o">)</span>
+    nmap &lt;c-p&gt; :FZF&lt;CR&gt;
+endif
+</code></pre></div></div>
+
+<h3 id="terrymavim-expand-region"><a href="https://github.com/terryma/vim-expand-region">terryma/vim-expand-region</a></h3>
+
+<p>讓你可以透過<code class="highlighter-rouge">+</code>和<code class="highlighter-rouge">_</code>來簡單的擴大或縮小選取的範圍，可以看連結內的demo。</p>
+
+<h3 id="godlygeektabular"><a href="https://github.com/godlygeek/tabular">godlygeek/tabular</a></h3>
+
+<p>讓你可以方便的對齊你的程式碼，可以看這邊的<a href="http://vimcasts.org/episodes/aligning-text-with-tabular-vim/">demo</a>，我自己會加上底下的設定來建立快捷鍵。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>exists<span class="o">(</span><span class="s1">'g:plugs["tabular"]'</span><span class="o">)</span>
+    cnoreabbrev tab Tab
+endif
+</code></pre></div></div>
+
+<h3 id="terrymavim-multiple-cursors"><a href="https://github.com/terryma/vim-multiple-cursors">terryma/vim-multiple-cursors</a></h3>
+
+<p>讓vim擁有像Sublime那樣的多個游標的功能。</p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-03-09T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->

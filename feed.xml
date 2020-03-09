@@ -1,19 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-09T11:26:33+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Vim Plugins</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins/" rel="alternate" type="text/html" title="Vim Plugins" /><published>2020-03-09T00:00:00+00:00</published><updated>2020-03-09T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins/">&lt;p&gt;這邊記錄一下我目前所使用的Vim plugin以及它們的功能。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-09T14:38:29+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Vim Plugins</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins/" rel="alternate" type="text/html" title="Vim Plugins" /><published>2020-03-09T00:00:00+00:00</published><updated>2020-03-09T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins/">&lt;p&gt;這邊記錄一下我目前所使用的Vim plugin以及它們的功能。
 &lt;!--more--&gt;&lt;/p&gt;
 
-&lt;p&gt;Intellij pycharm&lt;/p&gt;
+&lt;p&gt;市面上有很多Integrated Development Environment (IDE)來幫助你開發，像是&lt;a href=&quot;https://developer.apple.com/xcode/&quot;&gt;Xcode&lt;/a&gt;、&lt;a href=&quot;https://visualstudio.microsoft.com/zh-hant/&quot;&gt;Visual Studio&lt;/a&gt;、&lt;a href=&quot;https://www.jetbrains.com/idea/&quot;&gt;Intellij&lt;/a&gt;、&lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot;&gt;Pycharm&lt;/a&gt;、&lt;a href=&quot;https://www.sublimetext.com/&quot;&gt;Sublime&lt;/a&gt;等等，然而在終端機上的文字編輯器，應該大多都是用vim來開發，而vim本身也有很多神人開發的套件，讓你可以在vim裡面做到像上面IDE一樣的操作，底下介紹一下我目前所使用的一些套件。&lt;/p&gt;
+
+&lt;p&gt;目前我所使用的設定檔，原先是來自於&lt;a href=&quot;https://github.com/timss/vimconf&quot;&gt;timss/vimconf&lt;/a&gt;，看star數也蠻多人推薦&lt;a href=&quot;https://github.com/amix/vimrc&quot;&gt;amix/vimrc&lt;/a&gt;，你也可以去網路上找你心目中所屬的設定檔。&lt;/p&gt;
 
 &lt;h2 id=&quot;vundle&quot;&gt;Vundle&lt;/h2&gt;
 
+&lt;p&gt;&lt;a href=&quot;https://github.com/VundleVim/Vundle.vim&quot;&gt;Vundle&lt;/a&gt;是一個vim套件的管理工具，使你可以直接打上vim plugin repo的名字就能安裝至你的vim上，像是&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Plug &lt;span class=&quot;s1&quot;&gt;'gmarik/Vundle.vim'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在宣告好想要安裝的套件以後，打開vim，再打上&lt;code class=&quot;highlighter-rouge&quot;&gt;:PlugInstall&lt;/code&gt;就會將宣告的套件安裝在&lt;strong&gt;[user name]/.vim/bundle&lt;/strong&gt;裡面。如果想要移除某個套件，只需要在設定檔將套件的宣告移除，並在vim裡面打上&lt;code class=&quot;highlighter-rouge&quot;&gt;:PlugClean&lt;/code&gt;，相當的方便。&lt;/p&gt;
+
 &lt;h2 id=&quot;plugins&quot;&gt;Plugins&lt;/h2&gt;
 
-&lt;p&gt;https://github.com/amix/vimrc&lt;/p&gt;
+&lt;p&gt;接下來介紹一下我覺得好像不錯用的套件們，大多的套件只需要像底下這樣宣告，並且&lt;code class=&quot;highlighter-rouge&quot;&gt;:PlugInstall&lt;/code&gt;就能安裝完成了。&lt;/p&gt;
 
-&lt;p&gt;https://github.com/terryma/vim-multiple-cursors&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Plug &lt;span class=&quot;s1&quot;&gt;'[plugin name]'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;http://vimcasts.org/episodes/aligning-text-with-tabular-vim/&lt;/p&gt;
+&lt;h3 id=&quot;ervandewsupertab&quot;&gt;&lt;a href=&quot;https://github.com/ervandew/supertab&quot;&gt;ervandew/supertab&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;https://github.com/timss/vimconf&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">這邊記錄一下我目前所使用的Vim plugin以及它們的功能。</summary></entry><entry><title type="html">Gradient Descent和Learning Rate</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate/" rel="alternate" type="text/html" title="Gradient Descent和Learning Rate" /><published>2020-03-07T00:00:00+00:00</published><updated>2020-03-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate/">&lt;p&gt;稍微講一下Machine Learning當中經常被使用的gradient descent的概念以及調整learning rate的方法。&lt;/p&gt;
+&lt;p&gt;一個可以讓你用tab自動完成各種東西的套件，可以用tab完成function、variable等等。&lt;/p&gt;
+
+&lt;h3 id=&quot;ycm-coreyoucompleteme&quot;&gt;&lt;a href=&quot;https://github.com/ycm-core/YouCompleteMe&quot;&gt;ycm-core/YouCompleteMe&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;也是一個自動完成各種東西的套件，只是安裝起來沒有像supertab那樣簡單，不僅需要宣告在設定檔裡，還需要安裝其他程式語言，像是go、nodejs等，詳細的安裝流程可以參考官方的GitHub。&lt;/p&gt;
+
+&lt;h3 id=&quot;itchynylightlinevim&quot;&gt;&lt;a href=&quot;https://github.com/itchyny/lightline.vim&quot;&gt;itchyny/lightline.vim&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;讓vim可以有status bar，讓你知道現在是處理什麼樣的檔案、在Normal mode、Visual mode還是Insert mode等。&lt;/p&gt;
+
+&lt;h3 id=&quot;blingvim-bufferline&quot;&gt;&lt;a href=&quot;https://github.com/bling/vim-bufferline&quot;&gt;bling/vim-bufferline&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;在status bar裡面顯示目前開啟的所有檔案。&lt;/p&gt;
+
+&lt;h3 id=&quot;mbbillundotree&quot;&gt;&lt;a href=&quot;https://github.com/mbbill/undotree&quot;&gt;mbbill/undotree&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;undotree會紀錄你對這個檔案的操作，使你可以隨時退回先前的版本，有點像簡易版的git。&lt;/p&gt;
+
+&lt;h3 id=&quot;nanotechjellybeansvim&quot;&gt;&lt;a href=&quot;https://github.com/nanotech/jellybeans.vim&quot;&gt;nanotech/jellybeans.vim&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;vim的color schema。&lt;/p&gt;
+
+&lt;h3 id=&quot;tomtomtcomment_vim&quot;&gt;&lt;a href=&quot;https://github.com/tomtom/tcomment_vim&quot;&gt;tomtom/tcomment_vim&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上&lt;code class=&quot;highlighter-rouge&quot;&gt;:gc&lt;/code&gt;便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。&lt;/p&gt;
+
+&lt;h3 id=&quot;sominivim-autoclose&quot;&gt;&lt;a href=&quot;https://github.com/Townk/vim-autoclose&quot;&gt;somini/vim-autoclose&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;自動幫你將括號或是其他該成雙成對的東西補齊的套件。&lt;/p&gt;
+
+&lt;h3 id=&quot;tpopevim-eunuch&quot;&gt;&lt;a href=&quot;https://github.com/tpope/vim-eunuch&quot;&gt;tpope/vim-eunuch&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;讓你能在vim裡面直接使用Unix指令的套件，像是&lt;code class=&quot;highlighter-rouge&quot;&gt;:SudoEdit&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;:Rename&lt;/code&gt;等等，詳細的指令可以參考上方連結。&lt;/p&gt;
+
+&lt;h3 id=&quot;tpopevim-fugitive&quot;&gt;&lt;a href=&quot;https://github.com/tpope/vim-fugitive&quot;&gt;tpope/vim-fugitive&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;讓你能在vim裡面直接操作git指令的套件。&lt;/p&gt;
+
+&lt;h3 id=&quot;tpopevim-surround&quot;&gt;&lt;a href=&quot;https://github.com/tpope/vim-surround&quot;&gt;tpope/vim-surround&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;使你可以快速改變括號的套件，像是將&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;Hello world!&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;迅速改成&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;'Hello world!'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;更多的指令請參考上面連結。&lt;/p&gt;
+
+&lt;h3 id=&quot;junegunnvim-easy-align&quot;&gt;&lt;a href=&quot;https://github.com/junegunn/vim-easy-align&quot;&gt;junegunn/vim-easy-align&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;能迅速將&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;對齊的套件。&lt;/p&gt;
+
+&lt;h3 id=&quot;honzavim-snippets--sirverultisnips&quot;&gt;&lt;a href=&quot;https://github.com/honza/vim-snippets&quot;&gt;honza/vim-snippets&lt;/a&gt; / &lt;a href=&quot;https://github.com/SirVer/ultisnips&quot;&gt;sirver/ultisnips&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;能快速補齊程式碼的套件，像是打上&lt;code class=&quot;highlighter-rouge&quot;&gt;def test[tab]&lt;/code&gt;就會自動幫你將function的架構打出來。&lt;/p&gt;
+
+&lt;h3 id=&quot;mhinzvim-startify&quot;&gt;&lt;a href=&quot;https://github.com/mhinz/vim-startify&quot;&gt;mhinz/vim-startify&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;一個好看的vim開始畫面。&lt;/p&gt;
+
+&lt;h3 id=&quot;mhinzvim-signify&quot;&gt;&lt;a href=&quot;https://github.com/mhinz/vim-signify&quot;&gt;mhinz/vim-signify&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;顯示檔案裡面有哪些部分與git上的有所差異。&lt;/p&gt;
+
+&lt;h3 id=&quot;vim-syntasticsyntastic&quot;&gt;&lt;a href=&quot;https://github.com/vim-syntastic/syntastic&quot;&gt;vim-syntastic/syntastic&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;幫你做語法檢查的套件，我自己會加上底下這行，令&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;c&lt;/code&gt;當作快捷鍵。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;noremap &amp;lt;silent&amp;gt;&amp;lt;Leader&amp;gt;c  :SyntasticCheck&amp;lt;CR&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;majutsushitagbar&quot;&gt;&lt;a href=&quot;https://github.com/majutsushi/tagbar&quot;&gt;majutsushi/tagbar&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;當你有使用ctags或cscope先對目錄底下的程式碼先做索引的話，可以使用tagbar在vim裡面顯示所有的tag。&lt;/p&gt;
+
+&lt;h3 id=&quot;mileszsackvim&quot;&gt;&lt;a href=&quot;https://github.com/mileszs/ack.vim&quot;&gt;mileszs/ack.vim&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;在vim裡面使用grep或是ag(&lt;a href=&quot;https://github.com/ggreer/the_silver_searcher&quot;&gt;The Silver Searcher&lt;/a&gt;)來搜尋特定字詞的套件，我自己會放以下的設定來建立快捷鍵，打上&lt;code class=&quot;highlighter-rouge&quot;&gt;ack[space]&lt;/code&gt;會自動替換成&lt;code class=&quot;highlighter-rouge&quot;&gt;Ack!&lt;/code&gt;，在Normal mode中打上&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;a&lt;/code&gt;會去搜尋游標當下所在的字詞。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;executable&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ag'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:ackprg &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ag --vimgrep'&lt;/span&gt;
+endif
+cnoreabbrev ack Ack!
+nnoremap &amp;lt;Leader&amp;gt;a :Ack!&amp;lt;CR&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;scrooloosenerdtree&quot;&gt;&lt;a href=&quot;https://github.com/preservim/nerdtree&quot;&gt;scrooloose/nerdtree&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;樹狀的檔案瀏覽器。&lt;/p&gt;
+
+&lt;h3 id=&quot;ctrlpvimctrlpvim&quot;&gt;&lt;a href=&quot;https://github.com/kien/ctrlp.vim&quot;&gt;ctrlpvim/ctrlp.vim&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;使你可以在vim裡面打上&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + p&lt;/code&gt;便能搜尋目錄底下的檔案名稱。&lt;/p&gt;
+
+&lt;h3 id=&quot;junegunnfzf--junegunnfzfvim&quot;&gt;&lt;a href=&quot;https://github.com/junegunn/fzf&quot;&gt;junegunn/fzf&lt;/a&gt; / &lt;a href=&quot;https://github.com/junegunn/fzf.vim&quot;&gt;junegunn/fzf.vim&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;功能與上面的&lt;strong&gt;ctrlpvim/ctrlp.vim&lt;/strong&gt;幾乎雷同，只是底層是用fzf來做搜尋，我個人比較偏好這個套件，需要使用底下的設定來複寫&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + p&lt;/code&gt;的預設快捷鍵。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'g:plugs[&quot;fzf.vim&quot;]'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    nmap &amp;lt;c-p&amp;gt; :FZF&amp;lt;CR&amp;gt;
+endif
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;terrymavim-expand-region&quot;&gt;&lt;a href=&quot;https://github.com/terryma/vim-expand-region&quot;&gt;terryma/vim-expand-region&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;讓你可以透過&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;來簡單的擴大或縮小選取的範圍，可以看連結內的demo。&lt;/p&gt;
+
+&lt;h3 id=&quot;godlygeektabular&quot;&gt;&lt;a href=&quot;https://github.com/godlygeek/tabular&quot;&gt;godlygeek/tabular&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;讓你可以方便的對齊你的程式碼，可以看這邊的&lt;a href=&quot;http://vimcasts.org/episodes/aligning-text-with-tabular-vim/&quot;&gt;demo&lt;/a&gt;，我自己會加上底下的設定來建立快捷鍵。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'g:plugs[&quot;tabular&quot;]'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    cnoreabbrev tab Tab
+endif
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;terrymavim-multiple-cursors&quot;&gt;&lt;a href=&quot;https://github.com/terryma/vim-multiple-cursors&quot;&gt;terryma/vim-multiple-cursors&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;讓vim擁有像Sublime那樣的多個游標的功能。&lt;/p&gt;</content><author><name>Your Name</name></author><summary type="html">這邊記錄一下我目前所使用的Vim plugin以及它們的功能。</summary></entry><entry><title type="html">Gradient Descent和Learning Rate</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate/" rel="alternate" type="text/html" title="Gradient Descent和Learning Rate" /><published>2020-03-07T00:00:00+00:00</published><updated>2020-03-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate/">&lt;p&gt;稍微講一下Machine Learning當中經常被使用的gradient descent的概念以及調整learning rate的方法。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
