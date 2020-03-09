@@ -9,7 +9,7 @@ mathjax: true
 mathjax_autoNumber: true
 ---
 
-這篇paper想要去尋找一個最佳的初始化參數，讓model可以在各個task上都可以得到不錯的表現。
+[這篇paper](https://arxiv.org/pdf/1703.03400.pdf)想要去尋找一個最佳的初始化參數，讓model可以在各個task上都可以得到不錯的表現。
 
 <!--more-->
 
