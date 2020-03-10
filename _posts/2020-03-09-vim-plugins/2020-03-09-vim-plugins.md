@@ -43,6 +43,15 @@ Plug '[plugin name]'
 
 也是一個自動完成各種東西的套件，只是安裝起來沒有像supertab那樣簡單，不僅需要宣告在設定檔裡，還需要安裝其他程式語言，像是go、nodejs等，詳細的安裝流程可以參考官方的GitHub。
 
+我會在設定檔裡面多加底下的設定，使你可以按下enter就可以選擇自動完成的東西(預設好像是按`Ctrl + y`)，另一個設定是讓你能用`<Leader>g`跳到function定義的部分。
+```bash
+if exists('g:plugs["YouCompleteMe"]')
+    let g:ycm_autoclose_preview_window_after_completion=1
+    let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
+    nnoremap <Leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+endif
+```
+
 ### [itchyny/lightline.vim](https://github.com/itchyny/lightline.vim)
 
 讓vim可以有status bar，讓你知道現在是處理什麼樣的檔案、在Normal mode、Visual mode還是Insert mode等。
