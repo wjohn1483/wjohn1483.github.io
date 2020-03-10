@@ -1,6 +1,6 @@
 ---
-title:
-tags:
+title: Vim Plugins
+tags: Tool
 layout: article
 footer: false
 aside:
