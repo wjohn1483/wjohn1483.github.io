@@ -19,6 +19,7 @@ aside:
   toc: true
 mathjax: true
 mathjax_autoNumber: true
+published: false
 ---
 EOF
 
