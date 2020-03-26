@@ -175,3 +175,9 @@ endif
 ### [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
 
 讓vim擁有像Sublime那樣的多個游標的功能。
+
+### [roxma/vim-paste-easy](https://github.com/roxma/vim-paste-easy)
+
+在電腦上複製程式碼，想直接貼到vim裡面的時候有可能會有格式跑掉的問題，這個套件可以幫你自動在貼上前`set paste`。
+
+更多資訊可以參考上面附的GitHub連結或是[這裡](https://vimawesome.com/plugin/vim-paste-easy)。
