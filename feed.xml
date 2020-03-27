@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-27T08:00:59+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Attention Is All You Need</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need/" rel="alternate" type="text/html" title="Attention Is All You Need" /><published>2020-03-21T00:00:00+00:00</published><updated>2020-03-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need/">&lt;p&gt;這篇文章想要簡介一下被廣泛使用的Transformer是什麼。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-27T11:16:48+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Deep contextualized word representation</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation/" rel="alternate" type="text/html" title="Deep contextualized word representation" /><published>2020-03-23T00:00:00+00:00</published><updated>2020-03-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation/">&lt;p&gt;這篇簡單介紹一下赫赫有名的ELMo，其源自於&lt;a href=&quot;https://www.aclweb.org/anthology/N18-1202.pdf&quot;&gt;Deep contextualized word representation&lt;/a&gt;這篇paper。
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
+
+&lt;p&gt;在做許許多多NLP任務的時候，我們通常都會將輸入進來的字轉換成word embedding，而一個好的embedding可以使整個任務的成效更好，而這篇paper的目的就是想要去尋找好的embedding。&lt;/p&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+
+&lt;h3 id=&quot;bidirectional-language-model&quot;&gt;Bidirectional Language Model&lt;/h3&gt;
+
+&lt;p&gt;其主要的模型架構還蠻簡單的，就是多層的bidirectional language model。&lt;/p&gt;
+
+&lt;p&gt;假定我們輸入一個序列&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;N=(t_1, t_2, ..., t_N)&lt;/script&gt;
+
+&lt;p&gt;一個forward laguage model做的事情就是在給定序列的前半部&lt;script type=&quot;math/tex&quot;&gt;(t_1, t_2, ..., t_{k-1})&lt;/script&gt;，去讓&lt;script type=&quot;math/tex&quot;&gt;t_k&lt;/script&gt;被產生出來的機率可以最大，其主要的objective function如下&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(t_1, t_2, ..., t_N)=\prod \limits_{k=1}\limits^{N}p(t_k\vert t_1, t_2, ..., t_{k-1})&lt;/script&gt;
+
+&lt;p&gt;而backward language model做的事情跟forward language model差不多，就只是將序列反著輸入進去&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(t_1, t_2, ..., t_N)=\prod \limits_{k=1}\limits^{N}p(t+k\vert t_{k+1}, t_{k+2}, ..., t_N)&lt;/script&gt;
+
+&lt;p&gt;Birirectional language model就是將forward language model和backward language model合在一起做訓練&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum\limits_{k=1}\limits^{N}\left( \log p(t_k\vert t_1, ..., t_{k-1};\overrightarrow{\theta_{LSTM}}) + \log p(t_k\vert t_{k+1}, ..., t_N;\overleftarrow{\theta_{LSTM}}) \right)&lt;/script&gt;
+
+&lt;h3 id=&quot;elmo&quot;&gt;ELMo&lt;/h3&gt;
+
+&lt;p&gt;前面我們訓練多層的bidirectional language model，在每個輸入進來的token &lt;script type=&quot;math/tex&quot;&gt;t_k&lt;/script&gt;得到了很多embedding，那我們應該要用怎麼樣的方式來使用呢？這篇paper建議將這些embedding做weighted sum，而其中的weight是根據後面要解決的NLP任務來決定的。&lt;/p&gt;
+
+&lt;p&gt;假如果們訓練了&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;層bidirectional language model，我們對於每一個token &lt;script type=&quot;math/tex&quot;&gt;t_k&lt;/script&gt;可以得到&lt;script type=&quot;math/tex&quot;&gt;2L+1&lt;/script&gt;個embedding&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_k=\left\{ x_k^{LM}, \overrightarrow{h_{k,j}^{LM}}, \overleftarrow{h_{k,j}^{LM}}\vert j=1, ..., L \right\}\\=\left\{ h_{k,j}^{LM}\vert j=0, ..., L \right\}&lt;/script&gt;
+
+&lt;p&gt;這&lt;script type=&quot;math/tex&quot;&gt;2L+1&lt;/script&gt;個embedding包含了token一開始進來經過linear transform的embedding &lt;script type=&quot;math/tex&quot;&gt;x^{LM}_k&lt;/script&gt;，以及&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;層forward/backward language model的hidden state&lt;script type=&quot;math/tex&quot;&gt;\{ \overrightarrow{h_{k,j}^{LM}}, \overleftarrow{h_{k,j}^{LM}} \}&lt;/script&gt;，而ELMo會將這&lt;script type=&quot;math/tex&quot;&gt;2L+1&lt;/script&gt;個embedding融合成一個&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{ELMo}^{task}_k=E(R_k;\theta^{task})=\gamma^{task}\sum\limits_{j=0}\limits^{L}s_j^{task}h_{k,j}^{LM}&lt;/script&gt;
+
+&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;s^{task}_j&lt;/script&gt;是經過&lt;script type=&quot;math/tex&quot;&gt;\mathrm{softmax}&lt;/script&gt;標準化的weight，而&lt;script type=&quot;math/tex&quot;&gt;\gamma^{task}&lt;/script&gt;的目的是讓後面NLP的任務可以自行決定要如何去scale這整個向量。&lt;/p&gt;
+
+&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;experiments.png&quot; alt=&quot;Experiments&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以從上表中看到，使用了ELMo的embedding以後，成效就起飛了。&lt;/p&gt;
+
+&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
+
+&lt;p&gt;ELMo是個我覺得架構還蠻算簡單的，製作word embedding的方式，也可以根據你後面想要解決的NLP task做fine-tuned。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><summary type="html">這篇簡單介紹一下赫赫有名的ELMo，其源自於Deep contextualized word representation這篇paper。</summary></entry><entry><title type="html">Attention Is All You Need</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need/" rel="alternate" type="text/html" title="Attention Is All You Need" /><published>2020-03-21T00:00:00+00:00</published><updated>2020-03-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need/">&lt;p&gt;這篇文章想要簡介一下被廣泛使用的Transformer是什麼。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
