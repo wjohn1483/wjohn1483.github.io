@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Deep contextualized word representation - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Terminal小工具 - wjohn1483.github.io</title>
 
-<meta name="description" content="這篇簡單介紹一下赫赫有名的ELMo，其源自於Deep contextualized word representation這篇paper。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/03/23/deep-contextualized-word-representation/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇記錄一下我在terminal裡面常使用的一些小工具們。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/03/28/terminal-tools/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -278,75 +278,213 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Deep contextualized word representation</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Terminal小工具</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-03-23-deep-contextualized-word-representation/2020-03-23-deep-contextualized-word-representation.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Deep contextualized word representation"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-03-28-terminal-tools/2020-03-28-terminal-tools.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Terminal小工具"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 23, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Tool">Tool</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 28, 2020</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-28T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>這篇簡單介紹一下赫赫有名的ELMo，其源自於<a href="https://www.aclweb.org/anthology/N18-1202.pdf">Deep contextualized word representation</a>這篇paper。
-<!--more--></p>
+<div class="article__content" itemprop="articleBody"><p>這篇記錄一下我在terminal裡面常使用的一些小工具們。</p>
 
-<h2 id="簡介">簡介</h2>
+<!--more-->
 
-<p>在做許許多多NLP任務的時候，我們通常都會將輸入進來的字轉換成word embedding，而一個好的embedding可以使整個任務的成效更好，而這篇paper的目的就是想要去尋找好的embedding。</p>
+<h2 id="terminal">Terminal</h2>
 
-<h2 id="方法">方法</h2>
+<p>Terminal又稱為終端機，是一個可以用指令跟電腦做溝通、操縱的介面，是個絕大多數工程師都曾使用過的東西，如果你的電腦使用的是Linux系統的話，原生就有terminal了，底下稍微介紹一下在各個系統安裝terminal的方法。</p>
 
-<h3 id="bidirectional-language-model">Bidirectional Language Model</h3>
+<h3 id="cygwin">Cygwin</h3>
 
-<p>其主要的模型架構還蠻簡單的，就是多層的bidirectional language model。</p>
+<p>在Windows系統上原生也有一個<code class="highlighter-rouge">命令提示字元</code>，雖然它外表跟terminal長得蠻像的，但裡面的指令跟大多數的terminal有蠻大的差異，如果你想要在windows系統上也能夠使用terminal的話，我推薦安裝<a href="https://www.cygwin.com/">Cygwin</a>，只需要去其網站上下載<a href="https://www.cygwin.com/setup-x86_64.exe">setup-x86_64</a>，照著步驟做應該就能安裝好了。</p>
 
-<p>假定我們輸入一個序列</p>
+<p>如果想要安裝其他套件，像是vim、git等等，可以再次執行<a href="https://www.cygwin.com/setup-x86_64.exe">setup-x86_64</a>，並在裡面勾選，或是安裝<code class="highlighter-rouge">apt-cyg</code>，在裡面用指令來安裝。</p>
 
-<script type="math/tex; mode=display">N=(t_1, t_2, ..., t_N)</script>
+<h4 id="安裝apt-cyg">安裝apt-cyg</h4>
 
-<p>一個forward laguage model做的事情就是在給定序列的前半部<script type="math/tex">(t_1, t_2, ..., t_{k-1})</script>，去讓<script type="math/tex">t_k</script>被產生出來的機率可以最大，其主要的objective function如下</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
+<span class="nb">chmod</span> +x apt-cyg
+<span class="nb">mv </span>apt-cyg /usr/local/bin
+</code></pre></div></div>
 
-<script type="math/tex; mode=display">p(t_1, t_2, ..., t_N)=\prod \limits_{k=1}\limits^{N}p(t_k\vert t_1, t_2, ..., t_{k-1})</script>
+<p>安裝完成以後就能夠使用底下的指令來安裝其他的套件了。</p>
 
-<p>而backward language model做的事情跟forward language model差不多，就只是將序列反著輸入進去</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-cyg <span class="nb">install </span>nano
+apt-cyg <span class="nb">install </span>git
+</code></pre></div></div>
 
-<script type="math/tex; mode=display">p(t_1, t_2, ..., t_N)=\prod \limits_{k=1}\limits^{N}p(t+k\vert t_{k+1}, t_{k+2}, ..., t_N)</script>
+<h3 id="iterm">iTerm</h3>
 
-<p>Birirectional language model就是將forward language model和backward language model合在一起做訓練</p>
+<p>在Mac裡面也有原生的<code class="highlighter-rouge">終端機</code>，但蠻多人都推薦在Mac上使用<a href="https://www.iterm2.com/">iTerm2</a>，你可以使用<a href="https://brew.sh/index_zh-tw.html">Homebrew</a>來安裝。</p>
 
-<script type="math/tex; mode=display">\sum\limits_{k=1}\limits^{N}\left( \log p(t_k\vert t_1, ..., t_{k-1};\overrightarrow{\theta_{LSTM}}) + \log p(t_k\vert t_{k+1}, ..., t_N;\overleftarrow{\theta_{LSTM}}) \right)</script>
+<ol>
+  <li>
+    <p>安裝Homebrew</p>
 
-<h3 id="elmo">ELMo</h3>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> /bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>安裝iTerm2</p>
 
-<p>前面我們訓練多層的bidirectional language model，在每個輸入進來的token <script type="math/tex">t_k</script>得到了很多embedding，那我們應該要用怎麼樣的方式來使用呢？這篇paper建議將這些embedding做weighted sum，而其中的weight是根據後面要解決的NLP任務來決定的。</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew cask <span class="nb">install </span>iterm2
+</code></pre></div>    </div>
+  </li>
+</ol>
 
-<p>假如果們訓練了<script type="math/tex">L</script>層bidirectional language model，我們對於每一個token <script type="math/tex">t_k</script>可以得到<script type="math/tex">2L+1</script>個embedding</p>
+<h2 id="bash">Bash</h2>
 
-<script type="math/tex; mode=display">R_k=\left\{ x_k^{LM}, \overrightarrow{h_{k,j}^{LM}}, \overleftarrow{h_{k,j}^{LM}}\vert j=1, ..., L \right\}\\=\left\{ h_{k,j}^{LM}\vert j=0, ..., L \right\}</script>
+<p>如果你的系統上面只能允許你使用bash的話，我自己個人會建議將底下的東西放入你的<strong>~/.bashrc</strong>檔裡。</p>
 
-<p>這<script type="math/tex">2L+1</script>個embedding包含了token一開始進來經過linear transform的embedding <script type="math/tex">x^{LM}_k</script>，以及<script type="math/tex">L</script>層forward/backward language model的hidden state<script type="math/tex">\{ \overrightarrow{h_{k,j}^{LM}}, \overleftarrow{h_{k,j}^{LM}} \}</script>，而ELMo會將這<script type="math/tex">2L+1</script>個embedding融合成一個</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">TERM</span><span class="o">=</span>xterm-256color
+<span class="nb">export </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">"[</span><span class="se">\u</span><span class="s2">@</span><span class="se">\h</span><span class="s2"> </span><span class="se">\W</span><span class="s2">]</span><span class="se">\\</span><span class="nv">$ </span><span class="se">\[</span><span class="si">$(</span>tput sgr0<span class="si">)</span><span class="se">\]</span><span class="s2">"</span>
+</code></pre></div></div>
 
-<script type="math/tex; mode=display">\mathrm{ELMo}^{task}_k=E(R_k;\theta^{task})=\gamma^{task}\sum\limits_{j=0}\limits^{L}s_j^{task}h_{k,j}^{LM}</script>
+<p>上面的動作可以使你的terminal能顯示256色，可以透過<a href="http://www.robmeerman.co.uk/_media/unix/256colors2.pl">這個script</a>，搭配底下的指令</p>
 
-<p>其中<script type="math/tex">s^{task}_j</script>是經過<script type="math/tex">\mathrm{softmax}</script>標準化的weight，而<script type="math/tex">\gamma^{task}</script>的目的是讓後面NLP的任務可以自行決定要如何去scale這整個向量。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>perl 256colors2.pl
+</code></pre></div></div>
 
-<h2 id="實驗">實驗</h2>
+<p>來檢驗你的terminal是否有支援256色，於此同時將命令列調整成</p>
 
-<p><img src="experiments.png" alt="Experiments" /></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>使用者名稱@電腦名稱 當前目錄]<span class="nv">$ </span>
+</code></pre></div></div>
 
-<p>可以從上表中看到，使用了ELMo的embedding以後，成效就起飛了。</p>
+<p>比較易於使用。</p>
 
-<h2 id="結論">結論</h2>
+<h2 id="zsh">ZSH</h2>
 
-<p>ELMo是個我覺得架構還蠻算簡單的，製作word embedding的方式，也可以根據你後面想要解決的NLP task做fine-tuned。</p>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-03-23T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>若你的環境允許你安裝其他東西的話，會建議將原生的bash替換成zsh，安裝方法如下</p>
+
+<h4 id="cygwin-1">Cygwin</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-cyg <span class="nb">install </span>zsh curl git
+</code></pre></div></div>
+
+<h4 id="iterm-1">iTerm</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>zsh zsh-completions
+</code></pre></div></div>
+
+<h4 id="切換預設的shell">切換預設的shell</h4>
+
+<p>若想要將預設的bash換成zsh的話，可以利用底下的指令</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chsh <span class="nt">-s</span> <span class="si">$(</span>which zsh<span class="si">)</span>
+</code></pre></div></div>
+
+<p>並利用</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nv">$SHELL</span>
+</code></pre></div></div>
+
+<p>來確認是否有切換成功。</p>
+
+<h3 id="oh-my-zsh">oh-my-zsh</h3>
+
+<p><a href="https://github.com/ohmyzsh/ohmyzsh">oh-my-zsh</a>是一個管理zsh的框架，提供了蠻多套件和主題可以使用，只需要打上底下的指令就能安裝好了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sh <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>wget <span class="nt">-O-</span> https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h3 id="zsh-autosuggestions">zsh-autosuggestions</h3>
+
+<p><a href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a>是一個zsh的套件，可以根據你以前打過的指令去猜測你現在要打的指令，安裝方法如下</p>
+
+<ol>
+  <li>
+    <p>下載zsh-autosuggestions</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/zsh-users/zsh-autosuggestions <span class="nv">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>修改<strong>~/.zshrc</strong>，找到設定檔中<code class="highlighter-rouge">plugins=(git)</code>的部分，將之修改成以下</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">plugins</span><span class="o">=(</span>
+     git
+     zsh-autosuggestions
+<span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>重新載入zsh</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> ~/.zshrc
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="zsh-syntax-highlighting">zsh-syntax-highlighting</h3>
+
+<p><a href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a>是個在zsh裡面幫你highlight一些指令、路徑等參數的套件，安裝方法如下</p>
+
+<ol>
+  <li>
+    <p>下載zsh-syntax-highlighting</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="k">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="k">}</span>/plugins/zsh-syntax-highlighting
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>修改<strong>~/.zshrc</strong>，找到設定檔中<code class="highlighter-rouge">plugins=(git)</code>的部分，將之修改成以下</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># If you had installed zsh-autosuggestions</span>
+ <span class="nv">plugins</span><span class="o">=(</span>
+     git
+     zsh-autosuggestions
+     zsh-syntax-highlighting
+ <span class="o">)</span>
+ <span class="c"># If you only want to install zsh-syntax-highlighting</span>
+ <span class="nv">plugins</span><span class="o">=(</span>
+     git
+     zsh-syntax-highlighting
+ <span class="o">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>重新載入zsh</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">source</span> ~/.zshrc
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="tools">Tools</h2>
+
+<h3 id="fzf">fzf</h3>
+
+<p><a href="https://github.com/junegunn/fzf">fzf</a>是一個命令列的工具，使你可以fuzzy search你之前下過的指令或者是當前目錄底下的檔案，詳細的使用情形可以參考<a href="https://www.youtube.com/watch?v=qgG5Jhi_Els">這個影片</a>，其安裝方式如下</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone <span class="nt">--depth</span> 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+</code></pre></div></div>
+
+<p>在安裝完成了以後，可以隨時在命令列按下<code class="highlighter-rouge">&lt;Ctrl+R&gt;</code>來搜尋之前下過的指令、按下<code class="highlighter-rouge">&lt;Ctrl+T&gt;</code>來搜尋當前目錄底下的檔案，這個工具好用的地方是，在搜尋的時候並不需要打上完全一樣的字串，只需要打上相似的字串就可以直接幫你動態地尋找指令和命令了。</p>
+
+<h3 id="hadoop-bash-completion">hadoop-bash-completion</h3>
+
+<p>當你需要在命令列上面操作一些在hadoop filesystem上面的檔案的時候，你可能會希望hadoop也可以支援像一般bash的路徑自動完成的功能，這時你可以參考<a href="https://github.com/lensesio/hadoop-bash-completion">hadoop-bash-completion</a>，使用的方法很簡單，只需要將repo裡面的<a href="https://github.com/lensesio/hadoop-bash-completion/blob/master/hadoop-completion.sh">hadoop-completion.sh</a>下載下來，並source它就行了</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source </span>hadoop-completion.sh
+</code></pre></div></div>
+
+<p>之後每當你打上hadoop相關指令或是路徑的時候，按下<code class="highlighter-rouge">&lt;tab&gt;</code>就會自動完成了。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li><a href="https://dustinhsiao21.com/2019/04/09/%E9%80%8F%E9%81%8E%E5%9C%A8-mac-%E4%B8%8A%E5%AE%89%E8%A3%9Diterm2-%E6%B4%BB%E6%BD%91%E4%BD%A0%E7%9A%84%E7%B5%82%E7%AB%AF%E6%A9%9F/">透過在 Mac 上安裝iTerm2 活潑你的終端機</a></li>
+</ol>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-03-28T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/03/21/attention-is-all-you-need/">Attention Is All You Need</a></div><div class="next"><span>NEXT</span><a href="/2020/03/28/terminal-tools/">Terminal小工具</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/03/23/deep-contextualized-word-representation/">Deep contextualized word representation</a></div></div></div>
 
 </div>
 

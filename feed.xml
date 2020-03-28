@@ -1,4 +1,193 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-27T11:16:48+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Deep contextualized word representation</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation/" rel="alternate" type="text/html" title="Deep contextualized word representation" /><published>2020-03-23T00:00:00+00:00</published><updated>2020-03-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation/">&lt;p&gt;這篇簡單介紹一下赫赫有名的ELMo，其源自於&lt;a href=&quot;https://www.aclweb.org/anthology/N18-1202.pdf&quot;&gt;Deep contextualized word representation&lt;/a&gt;這篇paper。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-28T14:58:47+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Terminal小工具</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools/" rel="alternate" type="text/html" title="Terminal小工具" /><published>2020-03-28T00:00:00+00:00</published><updated>2020-03-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools/">&lt;p&gt;這篇記錄一下我在terminal裡面常使用的一些小工具們。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;terminal&quot;&gt;Terminal&lt;/h2&gt;
+
+&lt;p&gt;Terminal又稱為終端機，是一個可以用指令跟電腦做溝通、操縱的介面，是個絕大多數工程師都曾使用過的東西，如果你的電腦使用的是Linux系統的話，原生就有terminal了，底下稍微介紹一下在各個系統安裝terminal的方法。&lt;/p&gt;
+
+&lt;h3 id=&quot;cygwin&quot;&gt;Cygwin&lt;/h3&gt;
+
+&lt;p&gt;在Windows系統上原生也有一個&lt;code class=&quot;highlighter-rouge&quot;&gt;命令提示字元&lt;/code&gt;，雖然它外表跟terminal長得蠻像的，但裡面的指令跟大多數的terminal有蠻大的差異，如果你想要在windows系統上也能夠使用terminal的話，我推薦安裝&lt;a href=&quot;https://www.cygwin.com/&quot;&gt;Cygwin&lt;/a&gt;，只需要去其網站上下載&lt;a href=&quot;https://www.cygwin.com/setup-x86_64.exe&quot;&gt;setup-x86_64&lt;/a&gt;，照著步驟做應該就能安裝好了。&lt;/p&gt;
+
+&lt;p&gt;如果想要安裝其他套件，像是vim、git等等，可以再次執行&lt;a href=&quot;https://www.cygwin.com/setup-x86_64.exe&quot;&gt;setup-x86_64&lt;/a&gt;，並在裡面勾選，或是安裝&lt;code class=&quot;highlighter-rouge&quot;&gt;apt-cyg&lt;/code&gt;，在裡面用指令來安裝。&lt;/p&gt;
+
+&lt;h4 id=&quot;安裝apt-cyg&quot;&gt;安裝apt-cyg&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
+&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x apt-cyg
+&lt;span class=&quot;nb&quot;&gt;mv &lt;/span&gt;apt-cyg /usr/local/bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;安裝完成以後就能夠使用底下的指令來安裝其他的套件了。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-cyg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nano
+apt-cyg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;iterm&quot;&gt;iTerm&lt;/h3&gt;
+
+&lt;p&gt;在Mac裡面也有原生的&lt;code class=&quot;highlighter-rouge&quot;&gt;終端機&lt;/code&gt;，但蠻多人都推薦在Mac上使用&lt;a href=&quot;https://www.iterm2.com/&quot;&gt;iTerm2&lt;/a&gt;，你可以使用&lt;a href=&quot;https://brew.sh/index_zh-tw.html&quot;&gt;Homebrew&lt;/a&gt;來安裝。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安裝Homebrew&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; /bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://raw.githubusercontent.com/Homebrew/install/master/install.sh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安裝iTerm2&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew cask &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;iterm2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;bash&quot;&gt;Bash&lt;/h2&gt;
+
+&lt;p&gt;如果你的系統上面只能允許你使用bash的話，我自己個人會建議將底下的東西放入你的&lt;strong&gt;~/.bashrc&lt;/strong&gt;檔裡。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TERM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xterm-256color
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\h&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\W&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;tput sgr0&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;上面的動作可以使你的terminal能顯示256色，可以透過&lt;a href=&quot;http://www.robmeerman.co.uk/_media/unix/256colors2.pl&quot;&gt;這個script&lt;/a&gt;，搭配底下的指令&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;perl 256colors2.pl
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;來檢驗你的terminal是否有支援256色，於此同時將命令列調整成&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;使用者名稱@電腦名稱 當前目錄]&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;比較易於使用。&lt;/p&gt;
+
+&lt;h2 id=&quot;zsh&quot;&gt;ZSH&lt;/h2&gt;
+
+&lt;p&gt;若你的環境允許你安裝其他東西的話，會建議將原生的bash替換成zsh，安裝方法如下&lt;/p&gt;
+
+&lt;h4 id=&quot;cygwin-1&quot;&gt;Cygwin&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-cyg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;zsh curl git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;iterm-1&quot;&gt;iTerm&lt;/h4&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;zsh zsh-completions
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;切換預設的shell&quot;&gt;切換預設的shell&lt;/h4&gt;
+
+&lt;p&gt;若想要將預設的bash換成zsh的話，可以利用底下的指令&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chsh &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;which zsh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;並利用&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SHELL&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;來確認是否有切換成功。&lt;/p&gt;
+
+&lt;h3 id=&quot;oh-my-zsh&quot;&gt;oh-my-zsh&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ohmyzsh/ohmyzsh&quot;&gt;oh-my-zsh&lt;/a&gt;是一個管理zsh的框架，提供了蠻多套件和主題可以使用，只需要打上底下的指令就能安裝好了。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sh &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;wget &lt;span class=&quot;nt&quot;&gt;-O-&lt;/span&gt; https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;zsh-autosuggestions&quot;&gt;zsh-autosuggestions&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/zsh-users/zsh-autosuggestions&quot;&gt;zsh-autosuggestions&lt;/a&gt;是一個zsh的套件，可以根據你以前打過的指令去猜測你現在要打的指令，安裝方法如下&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;下載zsh-autosuggestions&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/zsh-users/zsh-autosuggestions &lt;span class=&quot;nv&quot;&gt;$ZSH_CUSTOM&lt;/span&gt;/plugins/zsh-autosuggestions
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;修改&lt;strong&gt;~/.zshrc&lt;/strong&gt;，找到設定檔中&lt;code class=&quot;highlighter-rouge&quot;&gt;plugins=(git)&lt;/code&gt;的部分，將之修改成以下&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;
+     git
+     zsh-autosuggestions
+&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;重新載入zsh&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.zshrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;zsh-syntax-highlighting&quot;&gt;zsh-syntax-highlighting&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/zsh-users/zsh-syntax-highlighting&quot;&gt;zsh-syntax-highlighting&lt;/a&gt;是個在zsh裡面幫你highlight一些指令、路徑等參數的套件，安裝方法如下&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;下載zsh-syntax-highlighting&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ZSH_CUSTOM&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;~/.oh-my-zsh/custom&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/plugins/zsh-syntax-highlighting
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;修改&lt;strong&gt;~/.zshrc&lt;/strong&gt;，找到設定檔中&lt;code class=&quot;highlighter-rouge&quot;&gt;plugins=(git)&lt;/code&gt;的部分，將之修改成以下&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# If you had installed zsh-autosuggestions&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;
+     git
+     zsh-autosuggestions
+     zsh-syntax-highlighting
+ &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;c&quot;&gt;# If you only want to install zsh-syntax-highlighting&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;
+     git
+     zsh-syntax-highlighting
+ &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;重新載入zsh&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.zshrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;tools&quot;&gt;Tools&lt;/h2&gt;
+
+&lt;h3 id=&quot;fzf&quot;&gt;fzf&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/junegunn/fzf&quot;&gt;fzf&lt;/a&gt;是一個命令列的工具，使你可以fuzzy search你之前下過的指令或者是當前目錄底下的檔案，詳細的使用情形可以參考&lt;a href=&quot;https://www.youtube.com/watch?v=qgG5Jhi_Els&quot;&gt;這個影片&lt;/a&gt;，其安裝方式如下&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone &lt;span class=&quot;nt&quot;&gt;--depth&lt;/span&gt; 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在安裝完成了以後，可以隨時在命令列按下&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Ctrl+R&amp;gt;&lt;/code&gt;來搜尋之前下過的指令、按下&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Ctrl+T&amp;gt;&lt;/code&gt;來搜尋當前目錄底下的檔案，這個工具好用的地方是，在搜尋的時候並不需要打上完全一樣的字串，只需要打上相似的字串就可以直接幫你動態地尋找指令和命令了。&lt;/p&gt;
+
+&lt;h3 id=&quot;hadoop-bash-completion&quot;&gt;hadoop-bash-completion&lt;/h3&gt;
+
+&lt;p&gt;當你需要在命令列上面操作一些在hadoop filesystem上面的檔案的時候，你可能會希望hadoop也可以支援像一般bash的路徑自動完成的功能，這時你可以參考&lt;a href=&quot;https://github.com/lensesio/hadoop-bash-completion&quot;&gt;hadoop-bash-completion&lt;/a&gt;，使用的方法很簡單，只需要將repo裡面的&lt;a href=&quot;https://github.com/lensesio/hadoop-bash-completion/blob/master/hadoop-completion.sh&quot;&gt;hadoop-completion.sh&lt;/a&gt;下載下來，並source它就行了&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;hadoop-completion.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;之後每當你打上hadoop相關指令或是路徑的時候，按下&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;tab&amp;gt;&lt;/code&gt;就會自動完成了。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://dustinhsiao21.com/2019/04/09/%E9%80%8F%E9%81%8E%E5%9C%A8-mac-%E4%B8%8A%E5%AE%89%E8%A3%9Diterm2-%E6%B4%BB%E6%BD%91%E4%BD%A0%E7%9A%84%E7%B5%82%E7%AB%AF%E6%A9%9F/&quot;&gt;透過在 Mac 上安裝iTerm2 活潑你的終端機&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">這篇記錄一下我在terminal裡面常使用的一些小工具們。</summary></entry><entry><title type="html">Deep contextualized word representation</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation/" rel="alternate" type="text/html" title="Deep contextualized word representation" /><published>2020-03-23T00:00:00+00:00</published><updated>2020-03-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/23/deep-contextualized-word-representation/">&lt;p&gt;這篇簡單介紹一下赫赫有名的ELMo，其源自於&lt;a href=&quot;https://www.aclweb.org/anthology/N18-1202.pdf&quot;&gt;Deep contextualized word representation&lt;/a&gt;這篇paper。
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
