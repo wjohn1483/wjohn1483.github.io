@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-28T14:58:47+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Terminal小工具</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools/" rel="alternate" type="text/html" title="Terminal小工具" /><published>2020-03-28T00:00:00+00:00</published><updated>2020-03-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools/">&lt;p&gt;這篇記錄一下我在terminal裡面常使用的一些小工具們。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-29T13:44:09+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/" rel="alternate" type="text/html" title="BERT&amp;#58; Pre-training of Deep Bidirectional Transformers for Language Understanding" /><published>2020-03-29T00:00:00+00:00</published><updated>2020-03-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">&lt;p&gt;這篇介紹一下常常聽到的&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;BERT&lt;/a&gt;是怎麼樣運作的。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
+
+&lt;p&gt;在很多NLP的任務上常常可以聽到某個團隊用了BERT以後達到了state-of-the-art，而聽說現在在做NLP的時候都會使用BERT產生出來的embedding，再拿去給後面想要解決的NLP任務使用，得到的效果通常都還不錯，BERT成為了做各種NLP任務的起手式。&lt;/p&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+
+&lt;p&gt;BERT的架構是前一篇&lt;a href=&quot;https://wjohn1483.github.io/2020/03/21/attention-is-all-you-need/&quot;&gt;Attention Is All You Need&lt;/a&gt;當中所提到的Transformer的encoder，只是訓練的方式和參數的設定比較不一樣，在BERT這篇paper裡面使用了兩種參數&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{BERT}_{BASE}:L=12,H=768,A=12, total\ parameters=110\mathrm{M}\\\mathrm{BERT}_{LARGE}:L=24,H=1024,A=16, total\ parameters=340\mathrm{M}&lt;/script&gt;
+
+&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;L&lt;/script&gt;代表層數、&lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt;代表hidden size、&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;代表self-attention的head數。&lt;/p&gt;
+
+&lt;h3 id=&quot;訓練方式&quot;&gt;訓練方式&lt;/h3&gt;
+
+&lt;h4 id=&quot;input-representation&quot;&gt;Input Representation&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;input-representation.png&quot; alt=&quot;Input Representation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由於BERT後面所接的NLP任務可能會需要sentence embedding，或同時考慮多個sentence，所以BERT在這個地方有設計兩個特別的token，分別是&lt;code class=&quot;highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;[SEP]&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;[SEP]&lt;/code&gt;是用來分開兩個句子的，而&lt;code class=&quot;highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;是用來做classification的embedding，因為BERT是用self-attention layer為基礎，所以即便放在第一個，其輸出的embedding仍然包含整個句子的資訊。&lt;/p&gt;
+
+&lt;p&gt;而上圖中的Segment Embeddings是為了能夠更分開兩個句子之間的差異，可以想像成&lt;script type=&quot;math/tex&quot;&gt;\mathrm{E_A}&lt;/script&gt;是一個純量等於&lt;script type=&quot;math/tex&quot;&gt;0&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;\mathrm{E_B}&lt;/script&gt;也是一個純量等於&lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt;，更詳細的解說可以參考&lt;a href=&quot;https://www.cnblogs.com/d0main/p/10447853.html&quot;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;masked-lm&quot;&gt;Masked LM&lt;/h4&gt;
+
+&lt;p&gt;BERT在做pre-training的時候，會同時訓練兩種任務，分別是masked LM以及next sentence prediction，而masked LM做的事情有點像是克漏字，在輸入一段文字進來的時候，在每個token會有15%的機率會被替換成&lt;code class=&quot;highlighter-rouge&quot;&gt;[MASK]&lt;/code&gt;這個token，而最終希望透過一個classifier，輸入&lt;code class=&quot;highlighter-rouge&quot;&gt;[MASK]&lt;/code&gt;經過BERT得到的embedding，輸出原本被替換掉的token。&lt;/p&gt;
+
+&lt;h4 id=&quot;next-sentence-prediction-nsp&quot;&gt;Next Sentence Prediction (NSP)&lt;/h4&gt;
+
+&lt;p&gt;Next sentence prediction做的事情就是去判斷輸入進來的這兩個句子，是不是在順序上是連續的，像是&lt;code class=&quot;highlighter-rouge&quot;&gt;人之初&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;性本善&lt;/code&gt;就是連續的句子，但&lt;code class=&quot;highlighter-rouge&quot;&gt;人之初&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;你好嗎&lt;/code&gt;就不是連續的句子，而訓練的方式是會拿&lt;code class=&quot;highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;經過BERT得出來的embedding，來當作classifier的輸入，希望這個classifier輸出&lt;script type=&quot;math/tex&quot;&gt;\mathrm{IsNext}&lt;/script&gt;或是&lt;script type=&quot;math/tex&quot;&gt;\mathrm{NotNext}&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;底下是整體的架構圖，其實在fine-tuning的時候，會根據不一樣的任務而拿不同位置輸出的結果，細節可以參考&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;原本的paper&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;overall-procedure.png&quot; alt=&quot;Overall procedure&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;test-results.png&quot; alt=&quot;Test Results&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上圖為BERT部分的實驗結果，可以看到它技壓群雄。&lt;/p&gt;
+
+&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
+
+&lt;p&gt;BERT是一個基於Transformer架構的模型，需要大量的資料來做訓練，好在作者們有提供已經訓練好的模型參數，可以直接下載下來做使用，期望使用BERT以後，能夠讓想要解決的NLP任務結果一飛沖天。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/d0main/p/10447853.html&quot;&gt;【译】为什么BERT有3个嵌入层，它们都是如何实现的&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Paper" /><summary type="html">這篇介紹一下常常聽到的BERT是怎麼樣運作的。</summary></entry><entry><title type="html">Terminal小工具</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools/" rel="alternate" type="text/html" title="Terminal小工具" /><published>2020-03-28T00:00:00+00:00</published><updated>2020-03-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools/">&lt;p&gt;這篇記錄一下我在terminal裡面常使用的一些小工具們。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
