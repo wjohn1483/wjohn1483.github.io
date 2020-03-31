@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-29T13:44:09+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/" rel="alternate" type="text/html" title="BERT&amp;#58; Pre-training of Deep Bidirectional Transformers for Language Understanding" /><published>2020-03-29T00:00:00+00:00</published><updated>2020-03-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">&lt;p&gt;這篇介紹一下常常聽到的&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;BERT&lt;/a&gt;是怎麼樣運作的。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-31T06:33:08+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/" rel="alternate" type="text/html" title="BERT&amp;#58; Pre-training of Deep Bidirectional Transformers for Language Understanding" /><published>2020-03-29T00:00:00+00:00</published><updated>2020-03-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">&lt;p&gt;這篇介紹一下常常聽到的&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;BERT&lt;/a&gt;是怎麼樣運作的。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -443,7 +443,7 @@ endif
 
 &lt;h3 id=&quot;tomtomtcomment_vim&quot;&gt;&lt;a href=&quot;https://github.com/tomtom/tcomment_vim&quot;&gt;tomtom/tcomment_vim&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上&lt;code class=&quot;highlighter-rouge&quot;&gt;:gc&lt;/code&gt;便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。&lt;/p&gt;
+&lt;p&gt;幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上&lt;code class=&quot;highlighter-rouge&quot;&gt;gc&lt;/code&gt;便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。&lt;/p&gt;
 
 &lt;h3 id=&quot;sominivim-autoclose&quot;&gt;&lt;a href=&quot;https://github.com/Townk/vim-autoclose&quot;&gt;somini/vim-autoclose&lt;/a&gt;&lt;/h3&gt;
 
@@ -473,7 +473,7 @@ endif
 
 &lt;h3 id=&quot;junegunnvim-easy-align&quot;&gt;&lt;a href=&quot;https://github.com/junegunn/vim-easy-align&quot;&gt;junegunn/vim-easy-align&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;能迅速將&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;對齊的套件。&lt;/p&gt;
+&lt;p&gt;能迅速將程式碼對齊的套件，使用方式為，在Visual mode選好想對齊的區塊，打上&lt;code class=&quot;highlighter-rouge&quot;&gt;ga[分隔符號]&lt;/code&gt;啟動，還可以設定選擇要靠左、靠右對齊，詳細的使用方式可以參考上面的網址。&lt;/p&gt;
 
 &lt;h3 id=&quot;honzavim-snippets--sirverultisnips&quot;&gt;&lt;a href=&quot;https://github.com/honza/vim-snippets&quot;&gt;honza/vim-snippets&lt;/a&gt; / &lt;a href=&quot;https://github.com/SirVer/ultisnips&quot;&gt;sirver/ultisnips&lt;/a&gt;&lt;/h3&gt;
 
@@ -538,6 +538,8 @@ endif
     cnoreabbrev tab Tab
 endif
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;其功能跟上面的&lt;strong&gt;junegunn/vim-easy-align&lt;/strong&gt;蠻相近的。&lt;/p&gt;
 
 &lt;h3 id=&quot;terrymavim-multiple-cursors&quot;&gt;&lt;a href=&quot;https://github.com/terryma/vim-multiple-cursors&quot;&gt;terryma/vim-multiple-cursors&lt;/a&gt;&lt;/h3&gt;
 
