@@ -70,7 +70,7 @@ vim的color schema。
 
 ### [tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim)
 
-幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上`:gc`便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。
+幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上`gc`便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。
 
 ### [somini/vim-autoclose](https://github.com/Townk/vim-autoclose)
 
@@ -102,7 +102,7 @@ vim的color schema。
 
 ### [junegunn/vim-easy-align](https://github.com/junegunn/vim-easy-align)
 
-能迅速將`=`對齊的套件。
+能迅速將程式碼對齊的套件，使用方式為，在Visual mode選好想對齊的區塊，打上`ga[分隔符號]`啟動，還可以設定選擇要靠左、靠右對齊，詳細的使用方式可以參考上面的網址。
 
 ### [honza/vim-snippets](https://github.com/honza/vim-snippets) / [sirver/ultisnips](https://github.com/SirVer/ultisnips)
 
@@ -171,6 +171,8 @@ if exists('g:plugs["tabular"]')
     cnoreabbrev tab Tab
 endif
 ```
+
+其功能跟上面的**junegunn/vim-easy-align**蠻相近的。
 
 ### [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
 
