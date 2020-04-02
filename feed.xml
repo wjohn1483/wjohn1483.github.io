@@ -1,4 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-03-31T06:33:08+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/" rel="alternate" type="text/html" title="BERT&amp;#58; Pre-training of Deep Bidirectional Transformers for Language Understanding" /><published>2020-03-29T00:00:00+00:00</published><updated>2020-03-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">&lt;p&gt;這篇介紹一下常常聽到的&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;BERT&lt;/a&gt;是怎麼樣運作的。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-02T09:20:20+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">TF-IDF簡介</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/" rel="alternate" type="text/html" title="TF-IDF簡介" /><published>2020-04-02T00:00:00+00:00</published><updated>2020-04-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/">&lt;p&gt;這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
+
+&lt;p&gt;TF-IDF的全稱是&lt;strong&gt;Term Frequency - Inverse Document Frequency&lt;/strong&gt;，可以看&lt;a href=&quot;https://zh.wikipedia.org/wiki/Tf-idf&quot;&gt;它的wiki&lt;/a&gt;有詳細的介紹，簡單來說就是一種統計的方法，可以應用在搜尋引擎上。&lt;/p&gt;
+
+&lt;p&gt;假設今天在搜尋欄上打上了一些字詞，我們想要去尋找網路上有哪些文章跟搜尋欄中的字詞的相關程度最高，而TF-IDF的主要概念就是去看每一篇文章當中該字詞出現的頻率，如果出現的頻率很高的話，就可以說該文章跟搜尋欄的字詞是有高度相關的。&lt;/p&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+
+&lt;h3 id=&quot;term-frequency-tf&quot;&gt;Term Frequency (TF)&lt;/h3&gt;
+
+&lt;p&gt;假設網路上的文章&lt;script type=&quot;math/tex&quot;&gt;d_j&lt;/script&gt;使用到的字詞種類總共有&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;個，分別為&lt;script type=&quot;math/tex&quot;&gt;t_{1,d_j}, t_{2,d_j}, ..., t_{k,d_j}&lt;/script&gt;，其中&lt;script type=&quot;math/tex&quot;&gt;t_{1,d_j}&lt;/script&gt;出現了3次，&lt;script type=&quot;math/tex&quot;&gt;t_{2,d_j}&lt;/script&gt;出現了5次等等，我們就可以定義說每個字詞種類&lt;script type=&quot;math/tex&quot;&gt;t_{i,d_j}&lt;/script&gt;對於這篇文章的重要程度為&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;tf_{t_{i,d_j}}=\frac{n_{t_{i,d_j}}}{\sum_k n_{t_{k,d_j}}}&lt;/script&gt;
+
+&lt;p&gt;上面的&lt;script type=&quot;math/tex&quot;&gt;n_{t_{i,d_j}}&lt;/script&gt;指的是字詞種類&lt;script type=&quot;math/tex&quot;&gt;t_{i,d_j}&lt;/script&gt;在文章&lt;script type=&quot;math/tex&quot;&gt;d_j&lt;/script&gt;出現的次數，像&lt;script type=&quot;math/tex&quot;&gt;t_{1,d_j}&lt;/script&gt;在文章中出現了3次，那&lt;script type=&quot;math/tex&quot;&gt;n_{t_{i,d_j}}&lt;/script&gt;就等於3，這個式子的概念其實就是計算這個字詞種類佔了這篇文章多少比重，假設文章&lt;script type=&quot;math/tex&quot;&gt;d_j&lt;/script&gt;總共有100個字(亦即&lt;script type=&quot;math/tex&quot;&gt;\sum_k n_{t_{k,d_j}}=100&lt;/script&gt;)，其中&lt;script type=&quot;math/tex&quot;&gt;t_{1,d_j}&lt;/script&gt;出現了3次，那&lt;script type=&quot;math/tex&quot;&gt;t_{1,d_j}&lt;/script&gt;在這篇文章的重要程度就是&lt;script type=&quot;math/tex&quot;&gt;3/100&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;由上面的式子算出了每個字詞種類&lt;script type=&quot;math/tex&quot;&gt;t_{i,d_j}&lt;/script&gt;對文章&lt;script type=&quot;math/tex&quot;&gt;d_j&lt;/script&gt;的重要程度以後，我們可以接著算出各個文章&lt;script type=&quot;math/tex&quot;&gt;d_1, d_2, ..., d_l&lt;/script&gt;中各個字詞種類對該文章的重要程度，得到一堆的term frequency。&lt;/p&gt;
+
+&lt;h3 id=&quot;inverse-document-frequency-idf&quot;&gt;Inverse Document Frequency (IDF)&lt;/h3&gt;
+
+&lt;p&gt;如果只考慮字詞出現的次數的話，有可能會被比較一般常用的字詞，像是助詞”的”、”了”所影響，可以想像我在搜尋欄打上”國王的新衣”，因為”的”在每個文章出現的次數都很多，所以只單看term frequency的話，找出來的文章應該都不會是我所想要的。&lt;/p&gt;
+
+&lt;p&gt;為此需要再多考慮一個inverse document frequency，也就是某個字詞在文章間的出現頻率，假如”國王”在全部1000個文章裡面只出現在10篇文章裡，那這10篇文章想必是比其他文章還要來得接近我想要找的東西，inverse document frequency定義如下&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;idf_{t_i}=\frac{\vert D\vert}{\vert \{ j:t_i\in d_j \}\vert}&lt;/script&gt;
+
+&lt;p&gt;上面式子的意思是，某個字詞&lt;script type=&quot;math/tex&quot;&gt;t_i&lt;/script&gt;在文章間的獨特程度被定義成文章總數(&lt;script type=&quot;math/tex&quot;&gt;\vert D\vert&lt;/script&gt;)，除上字詞&lt;script type=&quot;math/tex&quot;&gt;t_i&lt;/script&gt;出現的文章數(&lt;script type=&quot;math/tex&quot;&gt;\vert {j:t_i\in d_j}\vert&lt;/script&gt;)，以上面”國王”的例子來看，1000個文章裡面只出現在10個文章裡，其&lt;script type=&quot;math/tex&quot;&gt;idf=\frac{1000}{10}&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;使用的方式&quot;&gt;使用的方式&lt;/h3&gt;
+
+&lt;p&gt;只要給定了一堆的文章，使用在上面定義的公式，就可以算出每個字詞對每篇文章的term frequency和每個字詞的inverse document frequency。&lt;/p&gt;
+
+&lt;p&gt;當我今天輸入一些關鍵字在搜尋欄裡面時，找出相關文件的方式就是用關鍵字的inverse document frequency去乘上文章中該字詞的term frequency並加總起來，得到關鍵字和文件的相似程度。&lt;/p&gt;
+
+&lt;p&gt;假設我今天在搜尋欄當中輸入了”&lt;script type=&quot;math/tex&quot;&gt;t_1&lt;/script&gt; &lt;script type=&quot;math/tex&quot;&gt;t_2&lt;/script&gt;“，與文章&lt;script type=&quot;math/tex&quot;&gt;d_j&lt;/script&gt;相似程度的算法為&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;tf\text{-}idf_{d_j}=tf_{t_1,d_j}\times idf_{t_1} + tf_{t_2,d_j}\times idf_{t_2}&lt;/script&gt;
+
+&lt;p&gt;有了相似程度的分數就能做排序，得到與搜尋關鍵字相關的文章了。&lt;/p&gt;
+
+&lt;h3 id=&quot;其他tf-idf的算法&quot;&gt;其他TF-IDF的算法&lt;/h3&gt;
+
+&lt;p&gt;上面所介紹的tf-idf可以說是最基礎的算法，而有很多人嘗試用不一樣的方式來計算tf和idf，有興趣的話可以參考&lt;a href=&quot;https://en.wikipedia.org/wiki/Okapi_BM25&quot;&gt;Okapi BM25&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;應用在分類上&quot;&gt;應用在分類上&lt;/h2&gt;
+
+&lt;p&gt;前面提到了如何使用tf-idf來做一個簡易的搜尋，這邊提一下另外一個應用的方式，就是拿來做一個簡單的文字分類器。假如我們今天想要對使用者輸入進來的文字做sentiment analysis，我們手上所收集到的訓練資料如下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;啊不就好棒棒 負面
+我就爛 負面
+您真厲害 正面
+醒醒吧你沒有妹妹 負面
+感謝乾爹 正面
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;我們想要知道使用者輸入的資料究竟是正面還是負面，做法上可以將正面和負面的label的文字全部串起來當作是一個文章&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;您真厲害感謝乾爹 （文章_正面）
+啊不就好棒棒我就爛醒醒吧你沒有妹妹 （文章_負面）
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然後各自去算文章字詞的tf和idf，接著把使用者輸入的文字當作是搜尋關鍵字，得到它對各個文章的相似度排序，便能知道輸入的文字是比較偏向正面還是比較偏向負面了，上述的做法也適用label的種類超過兩個的情況。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html">這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</summary></entry><entry><title type="html">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/" rel="alternate" type="text/html" title="BERT&amp;#58; Pre-training of Deep Bidirectional Transformers for Language Understanding" /><published>2020-03-29T00:00:00+00:00</published><updated>2020-03-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">&lt;p&gt;這篇介紹一下常常聽到的&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;BERT&lt;/a&gt;是怎麼樣運作的。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
