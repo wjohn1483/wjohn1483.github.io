@@ -1,4 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-05T13:50:43+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">TF-IDF簡介</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/" rel="alternate" type="text/html" title="TF-IDF簡介" /><published>2020-04-02T00:00:00+00:00</published><updated>2020-04-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/">&lt;p&gt;這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-17T14:31:32+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">有錢人想的和你不一樣</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/" rel="alternate" type="text/html" title="有錢人想的和你不一樣" /><published>2020-04-04T00:00:00+00:00</published><updated>2020-04-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/">&lt;p&gt;節錄部分&lt;a href=&quot;https://tw.buy.yahoo.com/gdsale/gdsale.asp?gdid=8104317&quot;&gt;《有錢人想的和你不一樣》&lt;/a&gt;這本書的內容以及自己的一些心得。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
+
+&lt;p&gt;一開始是自己想要學著投資，進而在網路上看到了&lt;a href=&quot;https://www.youtube.com/channel/UC45i13dEfEVac2IEJT_Nr5Q&quot;&gt;柴鼠兄弟&lt;/a&gt;和&lt;a href=&quot;https://rich01.com/blog-page_30/&quot;&gt;市場先生的投資書單&lt;/a&gt;的推薦而決定看這本書，覺得這本書講的概念挺好的，是故在此記錄一下，以提醒我自己。&lt;/p&gt;
+
+&lt;h2 id=&quot;第一篇金錢藍圖&quot;&gt;第一篇：金錢藍圖&lt;/h2&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;設定\rightarrow想法\rightarrow感覺\rightarrow行動=結果&lt;/script&gt;
+
+&lt;p&gt;第一篇主要是在講述金錢觀的重要性，每個人年幼或是生長環境的不同（設定），造就了想法不一樣，而想法造成感覺，最終變成行動，也就是現在所處在的結果。聽起來有點抽象但又有點道理，如果我們對現在這個處境不甚滿意，覺得金錢太少、生活不自在或是有各種各樣不舒適的地方，其成因主要是自己過去的行動所造成的，而行動又源自於感覺、想法，書中把想法定義為過去經驗的累積形塑而成。&lt;/p&gt;
+
+&lt;p&gt;也因此在第一篇的內容當中，作者主要在講述要如何去察覺、修改自己過去經驗所帶給你的意義，過去發生的所有事情都只是一個客觀事實，而真的會影響你的是你自己賦予那些客觀事實的&lt;strong&gt;意義&lt;/strong&gt;，這些意義會造就你對事情的看法，進而使你做出不一樣的行動，所以賦予過去經驗正面的意義是相當重要的。&lt;/p&gt;
+
+&lt;h2 id=&quot;第二篇財富檔案&quot;&gt;第二篇：財富檔案&lt;/h2&gt;
+
+&lt;p&gt;第二篇在講述一些好的、正面的想法有哪些，希望讀者們在日常的生活中也能夠實踐這些想法，讓自己有負面想法時可以調整。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案1我創造我的人生&quot;&gt;檔案1：我創造我的人生&lt;/h3&gt;
+
+&lt;p&gt;這個檔案在講述你現在的境遇是自己所創造的，所以不要去責怪、抱怨，應該要試著去釐清是什麼樣的原因導致事情的發生，不要把自己當成是受害者，會把自己當成是受害者的其中一個原因可能是想要博取他人的注意，但一直想要博得人們的關注和注意是不能獲得快樂的，只是活在別人的恩惠底下。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案2玩金錢遊戲就是為了贏&quot;&gt;檔案2：玩金錢遊戲就是為了贏&lt;/h3&gt;
+
+&lt;p&gt;這個檔案主要是希望能設定一個遠大的目標，如果只是想要過得舒服，那最終的結果可能也就僅止於舒服，但若目標是想要賺大錢，那最終的結果可能就是超級舒服。&lt;/p&gt;
+
+&lt;p&gt;平常去餐廳吃飯的時候，我總是會以價格來當作參考指標，如果價格超出我的預算或是覺得不想花太多錢，我總是會選擇價格最低的餐點，從來沒有嘗試過被標示為”市價”的餐點，但或許可以以此作為目標，想吃吃看就吃，做到不以價格為考量的境地。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案3努力讓自己有錢&quot;&gt;檔案3：努力讓自己有錢&lt;/h3&gt;
+
+&lt;p&gt;這邊是在問讀者願意花多少心力來讓自己有錢，讓我想起&lt;a href=&quot;https://www.youtube.com/watch?v=mETU97jbrDE&quot;&gt;很久之前看過的影片&lt;/a&gt;，如果只是半調子的決心，只是想要變得成功、變得有錢，這樣的覺悟是不夠的，你需要做好犧牲時間、睡眠的心理準備，才能讓自己達成目標。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案4想得很大&quot;&gt;檔案4：想得很大&lt;/h3&gt;
+
+&lt;p&gt;你的收入與市場所認為你產生的價值成正比，假如果你的產出可以影響到數十萬人、數百萬人，那麼你的收入應該相當的驚人，反之，如果只能影響到數十人、數百人，那就應該要試著去提高你所能影響到的人數。這邊的”影響”，不一定是你工作、專業上能夠影響的範圍，也可以是你去投資所造成的影響。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案5專注於機會&quot;&gt;檔案5：專注於機會&lt;/h3&gt;
+
+&lt;p&gt;很多在面對挑戰的時候，常常會覺得自己還沒有準備好，等自己準備好了再來挑戰，但你永遠不會知道你到底準備好了沒、什麼樣子叫做準備好了呢？&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「預備、射擊、瞄準！」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;書中的意思並不是說在毫無準備、研究的情況下就貿然去挑戰，而是給自己一個期限，在期限內盡可能的去準備，而期限一到就試著去挑戰吧！一邊挑戰的同時一邊修正自己的錯誤、方向。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「行動永遠比不行動來得好。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;上面這句是作者的座右銘，並希望能夠在行動的同時練習樂觀並感激你所擁有的事物，若不懂得感激你所擁有的，你將不會得到更多。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案6欣賞其他有錢人&quot;&gt;檔案6：欣賞其他有錢人&lt;/h3&gt;
+
+&lt;p&gt;我們時常會羨慕、嫉妒別人擁有但自己所沒有的事物，既然別人努力得到了你所沒有的事物，我們應該要祝福而不該酸言酸語，或是討厭他們。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「祝福你所想要的事物。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;檔案7與積極的成功人士交往&quot;&gt;檔案7：與積極的成功人士交往&lt;/h3&gt;
+
+&lt;p&gt;我個人覺得人是很容易被環境所影響的，所以如果有機會的話，應該試著多去跟那些成功人士打交道，並相信自己跟他們是沒有什麼太大區別的，他們做得到的事情，你也做得到。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案8樂意宣傳自己和自己的價值觀&quot;&gt;檔案8：樂意宣傳自己和自己的價值觀&lt;/h3&gt;
+
+&lt;p&gt;很多人常覺得說，如果我今天做出了一個超級厲害的東西，大家就會搶著來用，但前提是他們得要先知道你做出來了，所以如果有機會的話可以試著多學習宣傳自己，相信自己是個具有高價值，值得被宣傳。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案9大於問題&quot;&gt;檔案9：大於問題&lt;/h3&gt;
+
+&lt;p&gt;小時候可能覺得騎自行車是一件很困難的事情，但長大了以後就覺得其實這並沒有那麼困難，這是因為你已經成長到了大過於你的問題的程度，所以當你今天遇到了一件你覺得相當困難的事情時，就要提醒自己「我很小！」，該是成長的時候了。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「成功的秘訣，就是不要逃避問題，不要在問題面前退縮；成功的秘訣就在於你要成長，讓自己大於一切的問題。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;檔案10很棒的接受者&quot;&gt;檔案10：很棒的接受者&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「如果你說你有價值，你就有價值。如果你說你沒有價值，那麼你就沒有。然後你就會依照你的故事版本而活。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我常常會因為自己所做錯的一些事情而認為自己沒有什麼價值，甚至是當別人誇讚的時候也總是著眼於自己沒有做好的部分，然而這樣會使得你越來越悲觀，應該要試著去編一個可以激勵你自己的故事，不要以「下次要小心」作為目標，而是「我想要做到」為目標。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案11根據結果拿酬勞&quot;&gt;檔案11：根據結果拿酬勞&lt;/h3&gt;
+
+&lt;p&gt;這邊作者希望讀者可以用結果來換取報酬，舉凡常見的工作都是用錢來買你的時間，然而人的時間是有限的，所以能賺取的酬勞也是有限的，是故要用結果來換取酬勞才能得到較多的報酬。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案12如何兩個都要&quot;&gt;檔案12：如何兩個都要&lt;/h3&gt;
+
+&lt;p&gt;在生活中時常會面臨抉擇，有時選了一個就不能選另一個，但是這有可能是你自我設限，應保持著想辦法兩者兼拿的想法，試著去把所有的好處都拿到。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案13專注於自己的淨值&quot;&gt;檔案13：專注於自己的淨值&lt;/h3&gt;
+
+&lt;p&gt;我們在談論有錢人排行榜的時候，並不會去看他的收入，而是看他的淨值，所以我們應該著重的是去提升我們的淨值，不單單只看工作收入而已。我們的淨值主要來自於&lt;strong&gt;收入、儲蓄、投資獲利、節流&lt;/strong&gt;，若能在每個部分都有提昇一些，相信淨值會提升不少。&lt;/p&gt;
+
+&lt;h3 id=&quot;檔案14管理自己的錢財&quot;&gt;檔案14：管理自己的錢財&lt;/h3&gt;
+
+&lt;p&gt;有些人會覺得說等我有了一筆錢再來學習怎麼管理，然而管理的習慣應該從現在就開始，從小錢開始培養，否則即使有了一筆錢也會因為不會管理而失去。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「除非你能管理你現有的一切，否則你不會得到更多！」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「管理金錢的習慣比數目更重要。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;檔案15讓錢辛苦工作&quot;&gt;檔案15：讓錢辛苦工作&lt;/h3&gt;
+
+&lt;p&gt;在前面有提到，人的時間是有限的，也需要睡覺、休息和玩樂的時間，是故創造被動收入是很重要的，而被動收入有兩個面向&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;讓錢為你工作&lt;/p&gt;
+
+    &lt;p&gt;舉凡像是投資股票、債券、基金等，用錢滾錢的方法&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;讓事業為你工作&lt;/p&gt;
+
+    &lt;p&gt;讓事業自動、系統化，像是書籍的出版稅、音樂版權等，利用你已經創建好的價值，不斷從中收取利益&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;檔案16恐懼也會採取行動&quot;&gt;檔案16：恐懼也會採取行動&lt;/h3&gt;
+
+&lt;p&gt;這裡我覺得是在呼應&lt;a href=&quot;#檔案9大於問題&quot;&gt;檔案9&lt;/a&gt;，人總是會對自己不熟悉的東西產生恐懼，我們要做的事情不是去抹煞掉恐懼，而是接受恐懼並採取行動。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「如果你只願意做輕鬆的事，人生就會困難重重。但如果你願意做困難的事，人生就會變得很輕鬆。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;每當有負面、恐懼的想法出現時，想想前面的學習，意義是自己去賦予的，不如編一個可以幫助自己前進的故事吧。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「你只在一個狀況下是真正在成長的，那就是你覺得不舒服的時候。」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;檔案17持續學習成長&quot;&gt;檔案17：持續學習成長&lt;/h3&gt;
+
+&lt;p&gt;「我知道」，是最危險的三個字，我們應該努力學習成長，不應該對自己現有的知識感到自滿，也很有很大的機會我們所以為的跟真實是很不一樣的，如果可以，每天讀一點書，學習一點新知。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「每一位大師都曾經是個大失敗。」&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Your Name</name></author><category term="Book" /><summary type="html">節錄部分《有錢人想的和你不一樣》這本書的內容以及自己的一些心得。</summary></entry><entry><title type="html">TF-IDF簡介</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/" rel="alternate" type="text/html" title="TF-IDF簡介" /><published>2020-04-02T00:00:00+00:00</published><updated>2020-04-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/">&lt;p&gt;這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -888,213 +1035,4 @@ endif
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;這篇paper提出了MAXL，在不需要專業知識以及額外訓練資料的情況下，可以稍微提升model在分類上的準確率，作者表示希望未來可以套用到regression相關的任務上。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Meta-Learning" /><category term="Auxiliary-Learning" /><summary type="html">通常在訓練的時候，如果能有一些輔助的任務(task)，通常會對主要的任務在效能上有所提升，然而這些輔助任務的答案通常會需要人類來標注，並不能隨意的想加輔助任務就加輔助任務，而這篇文章要介紹的NeurIPS 2019的Self-Supervised Generalisation with Meta Auxiliary Learning，將輔助任務的答案都用機器來產生，免去了準備輔助任務答案的麻煩。</summary></entry><entry><title type="html">如何使用Jekyll建立網站在Github Page上</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/02/28/create-website-by-Jekyll/" rel="alternate" type="text/html" title="如何使用Jekyll建立網站在Github Page上" /><published>2020-02-28T00:00:00+00:00</published><updated>2020-02-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/02/28/create-website-by-Jekyll</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/02/28/create-website-by-Jekyll/">&lt;p&gt;這篇文章將會簡單介紹一下Jekyll，以及我如何使用Jekyll將網站建置在GitHub Page上的經歷。
-&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;jekyll是什麼&quot;&gt;Jekyll是什麼？&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;是一個基於Ruby的靜態網頁產生器，常用在個人、project或是公司、組織的網頁上，由GitHub的co-founder &lt;a href=&quot;https://en.wikipedia.org/wiki/Tom_Preston-Werner&quot;&gt;Tom Preston-Wemer&lt;/a&gt;製作的。&lt;/p&gt;
-
-&lt;p&gt;只要給Jekyll一些Liquid模板以及用Markdown寫的文章內容，它就可以幫你生成出一整個靜態網站。
-&lt;a href=&quot;https://github.com/Shopify/liquid&quot;&gt;Liquid&lt;/a&gt;是一個模板引擎，可以在html裡面安插一些程式語言，讓html可以根據你的需求被產生出來，可以參考&lt;a href=&quot;https://github.com/Shopify/liquid#what-does-it-look-like&quot;&gt;Liquid GitHub當中的例子&lt;/a&gt;，會比較理解它想要實現的事情。&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;products&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    
-    {% for product in products %}
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;{{ product.name  }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
-            Only {{ product.price | price  }}
-
-            {{ product.description | prettyprint | paragraph  }}
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
-    {% endfor %}
-    
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;至於&lt;a href=&quot;https://zh.wikipedia.org/zh-tw/Markdown&quot;&gt;Markdown&lt;/a&gt;，是一個輕量級標記式語言，相信有使用過GitHub的人應該對它並不陌生。&lt;/p&gt;
-
-&lt;p&gt;或許是因為Jekyll是由GitHub co-founder所製作的，所以目前GitHub Page支援Jekyll，使你可以在你的repo當中放入Jekyll的原始碼，GitHub就會自動幫你編譯並部署成網站。
-底下將會從零開始，紀錄我如何建立一個部落格網站。&lt;/p&gt;
-
-&lt;h2 id=&quot;準備環境&quot;&gt;準備環境&lt;/h2&gt;
-&lt;h3 id=&quot;直接套用現成repo&quot;&gt;直接套用現成Repo&lt;/h3&gt;
-&lt;p&gt;如果說不想要這麼麻煩的準備環境，想要直接開始寫作的話，可以去網路上找別人已經弄好的GitHub Repo，像是&lt;a href=&quot;https://github.com/github/personal-website&quot;&gt;personal-website&lt;/a&gt;，Fork到自己的帳號底下，改一下repo的名字，變成&lt;strong&gt;[username].github.io&lt;/strong&gt;，就可以開始在&lt;strong&gt;_post&lt;/strong&gt;這個資料夾底下創立Markdown檔案，開始自由的創作，GitHub理應會將你新創立的文章自動變成網頁部署上去。&lt;/p&gt;
-
-&lt;p&gt;倘若你想要客製化網站的話，可能就必須自己準備一個環境，得要繼續往下閱讀了。&lt;/p&gt;
-
-&lt;h3 id=&quot;建立github-page-repo&quot;&gt;建立GitHub Page Repo&lt;/h3&gt;
-&lt;p&gt;網路上有很多教學來教大家如何建立自己的GitHub Page，可以參考&lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub官方教學&lt;/a&gt;。
-其實主要需要做的事情就是建立一個新的repository，命名為&lt;strong&gt;[username].github.io&lt;/strong&gt;，並將之設為public repo。
-之後只要將html檔案上傳上去，GitHub就會自動將檔案部署到&lt;strong&gt;https://[username].github.io&lt;/strong&gt;這個網站上，相當的方便而且還免費！&lt;/p&gt;
-
-&lt;h3 id=&quot;安裝rubyjekyll&quot;&gt;安裝Ruby、Jekyll&lt;/h3&gt;
-&lt;p&gt;前面有提到Jekyll是基於Ruby所建立的，所以必須要在自己的電腦上先安裝Ruby，安裝Ruby的方法可以參考&lt;a href=&quot;https://jekyllrb.com/docs/installation/&quot;&gt;Jekyll官方教學&lt;/a&gt;，根據不同的作業系統會需要不一樣的步驟，但倘若你所使用的是macOS Catalina以上的作業系統，其內建就有Ruby了，可以直接安裝Jekyll。&lt;/p&gt;
-
-&lt;p&gt;在安裝好Ruby以後，直接下底下的指令應該就能安裝好Jekyll。&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bundler jekyll &lt;span class=&quot;nt&quot;&gt;--user-install&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;使用樣板建立第一個網站&quot;&gt;使用樣板建立第一個網站&lt;/h2&gt;
-&lt;p&gt;在準備好環境以後，應該就迫不及待的想要產生一個好棒棒的網站，最快的方式應當是去複製別人的樣板，這邊我所使用的樣板是&lt;a href=&quot;https://github.com/kitian616/jekyll-TeXt-theme&quot;&gt;jekyll-TeXt-theme&lt;/a&gt;，你也可以去找尋自己心中所屬的那個樣板，像是蠻像Medium的樣板&lt;a href=&quot;https://github.com/poole/poole&quot;&gt;Poole&lt;/a&gt;等等。&lt;/p&gt;
-
-&lt;p&gt;想好樣板選哪一個以後，接著便是在你的GitHub Page Repo上套用它，套用的流程可以參考底下。&lt;/p&gt;
-
-&lt;h3 id=&quot;clone你的github-page-repo到電腦上&quot;&gt;Clone你的GitHub Page Repo到電腦上&lt;/h3&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/[username]/[username].github.io.git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;在repo根目錄創建gemfile和_confyaml&quot;&gt;在repo根目錄創建Gemfile和_conf.yaml&lt;/h3&gt;
-
-&lt;p&gt;通常樣板都是用gem的形式來讓大家使用，為此我們需要建立&lt;strong&gt;Gemfile&lt;/strong&gt;和&lt;strong&gt;_conf.yaml&lt;/strong&gt;這兩個檔案，來讓Ruby知道我們這個repo需要哪些相關的gem。&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Put the followings into your Gemfile&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://rubygems.org&quot;&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll&quot;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-text-theme&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# Put the following into your _conf.yaml&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-text-theme&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;安裝套件&quot;&gt;安裝套件&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--path&lt;/span&gt; vendor/bundle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;上面的指令會把需要的套件都安裝在&lt;strong&gt;vendor/bundle&lt;/strong&gt;這個資料夾內。&lt;/p&gt;
-
-&lt;h3 id=&quot;把樣板所定義的css設定檔放到repo根目錄&quot;&gt;把樣板所定義的CSS、設定檔放到repo根目錄&lt;/h3&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; vendor/bundle/ruby/2.6.0/gems/jekyll-text-theme-2.2.6/_&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; ./
-&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; vendor/bundle/ruby/2.6.0/gems/jekyll-text-theme-2.2.6/assets ./
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;把網頁模版複製進repo根目錄&quot;&gt;把網頁模版複製進repo根目錄&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/kitian616/jekyll-TeXt-theme&quot;&gt;jekyll-TeXt-theme&lt;/a&gt;所需要的網頁模版可以參考其&lt;a href=&quot;https://github.com/kitian616/jekyll-TeXt-theme/tree/master/test&quot;&gt;repo底下的test資料夾&lt;/a&gt;，我印象中那時是複製了底下這些檔案。&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;404.html
-_config.yml
-archive.html
-index.html
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;確認樣板是否順利套用&quot;&gt;確認樣板是否順利套用&lt;/h3&gt;
-&lt;p&gt;利用底下的指令讓Jekyll產生靜態網站。&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve &lt;span class=&quot;nt&quot;&gt;--trace&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;產生出來的html檔案們會在&lt;strong&gt;_site/&lt;/strong&gt;這個資料夾內，你也可以到&lt;a href=&quot;http://localhost:4000&quot;&gt;http://localhost:4000&lt;/a&gt;上觀看自己的網頁。&lt;/p&gt;
-
-&lt;p&gt;如果成功看到網頁跑出來，就代表套用算是成功了，接下來就可以開始進行客製化，像是去&lt;strong&gt;_conf.yaml&lt;/strong&gt;做一些設定、調整&lt;strong&gt;_include&lt;/strong&gt;裡面的html模板等等，把網頁刻成你的樣子。&lt;/p&gt;
-
-&lt;h2 id=&quot;部署到github-page上&quot;&gt;部署到GitHub Page上&lt;/h2&gt;
-&lt;p&gt;在把網頁變成了你的樣子以後，接著就會想讓世人看看，想把網頁丟到GitHub Page上。
-因為Github會自動幫你編譯Jekyll，所以並不需要將整個&lt;strong&gt;_site/&lt;/strong&gt;資料夾上傳，記得把不需要的東西放入&lt;strong&gt;.gitignore&lt;/strong&gt;當中。&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.bundle/
-.jekyll-cache/
-Gemfile.lock
-vendor/
-.sass-cache/
-.site/
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;值得一提的是，因為GitHub在編譯的時候會在safe mode底下執行，所支援的套件有限，可以參考&lt;a href=&quot;https://pages.github.com/versions/&quot;&gt;GitHub Dependency Versions&lt;/a&gt;，如果有用到超出支援的套件的話會編譯不過。&lt;/p&gt;
-
-&lt;p&gt;在push到GitHub以後，可以去repo settings中GitHub Page相關的段落看有沒有錯誤訊息，如果成功部署上去可以看到相關的訊息，如果過程中發生了錯誤，在&lt;a href=&quot;https://help.github.com/en/enterprise/2.14/user/articles/troubleshooting-github-pages-builds&quot;&gt;troubleshooting github page builds&lt;/a&gt;能夠看到更多有關錯誤訊息的資訊。&lt;/p&gt;
-
-&lt;h3 id=&quot;如果我想用超出支援的套件怎麼辦&quot;&gt;如果我想用超出支援的套件怎麼辦？&lt;/h3&gt;
-&lt;p&gt;其實Github Page也支援一般的靜態網頁存放方式，所以可以先在本機把網頁編譯好以後，將&lt;strong&gt;_site/&lt;/strong&gt;裡面所有的東西都push到master branch，並放一個&lt;strong&gt;.nojekyll&lt;/strong&gt;的文件在裡面，如此一來就能使用超出支援的套件了，只是是在本機端。&lt;/p&gt;
-
-&lt;p&gt;可以參考&lt;a href=&quot;https://www.drewsilcock.co.uk/custom-jekyll-plugins&quot;&gt;Custom Jekyll plugins with GitHub Pages&lt;/a&gt;，把Jekyll相關的原始碼放進source branch，把產生出來的靜態網頁放進master branch，讓整個東西都還是位在同一個repo底下。&lt;/p&gt;
-
-&lt;p&gt;具體來說那篇文章想做的事情類似底下的指令，但上面文章會把master branch的根目錄設在source branch中的&lt;strong&gt;_site/&lt;/strong&gt;裡面，讓使用者可以編譯完，就進去&lt;strong&gt;_site/&lt;/strong&gt;資料夾內將新產生的html推上master branch。&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Push source to origin and copy site to temp folder&lt;/span&gt;
-git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;source
-&lt;/span&gt;git push origin &lt;span class=&quot;nb&quot;&gt;source
-cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; _site/ /tmp/
-
-&lt;span class=&quot;c&quot;&gt;# Remove all files in master&lt;/span&gt;
-git checkout master
-&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; ./&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Copy site to master&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; /tmp/_site/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; ./
-&lt;span class=&quot;nb&quot;&gt;touch&lt;/span&gt; .nojekyll
-
-&lt;span class=&quot;c&quot;&gt;# Push master to origin&lt;/span&gt;
-git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Upload site&quot;&lt;/span&gt;
-git push origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;如果我想要線上編輯怎麼辦&quot;&gt;如果我想要線上編輯怎麼辦？&lt;/h3&gt;
-&lt;p&gt;上面所介紹的方式雖然可以使用沒有支援的套件，但是仍需要在本機編譯，所以每次發佈一篇新的文章時，會需要將新文章的原始碼push到source branch，編譯完成後再進入其中的&lt;strong&gt;_site/&lt;/strong&gt;資料夾把東西push到master branch，這樣才算成功把網頁更新。&lt;/p&gt;
-
-&lt;p&gt;倘若我今天心血來潮在GitHub網頁版上面直接寫起了文章，想要發佈出去的話，還得要打開終端機pull source branch的資料、編譯一下、把東西推到master branch，相當的不方便，所以在此提供一個解法讓你可以在網頁版GitHub的source branch寫完文章以後，commit完可以直接發佈至master branch，於此同時還可以保有使用GitHub Page沒有支援的套件的好處。&lt;/p&gt;
-
-&lt;p&gt;簡述一下解法便是利用Travis CI的虛擬機，幫我們把網頁編譯好，再請它幫我們把編譯好的網站push回master branch。&lt;/p&gt;
-
-&lt;h4 id=&quot;travis-ci-簡介&quot;&gt;Travis CI 簡介&lt;/h4&gt;
-&lt;p&gt;&lt;a href=&quot;https://travis-ci.org/&quot;&gt;Travis CI&lt;/a&gt;是一個用來作持續整合(CI)的平台，只要在Travis CI連結GitHub，並在repo根目錄當中製作一個&lt;strong&gt;.travis.yml&lt;/strong&gt;檔案，告訴它想要在CI的時候執行什麼樣的指令，它就會建立一個虛擬機並執行你設定的指令。&lt;/p&gt;
-
-&lt;h4 id=&quot;連結travis-ci和github&quot;&gt;連結Travis CI和GitHub&lt;/h4&gt;
-&lt;p&gt;到&lt;a href=&quot;https://travis-ci.org/&quot;&gt;Travis CI&lt;/a&gt;的網站中，點選&lt;em&gt;Sign in with GitHub&lt;/em&gt;，並給予它觀看repo的權限，它就可以知道你有哪些repo，接著選擇&lt;strong&gt;[username].github.io&lt;/strong&gt;的repo並勾選右邊的啟動按鈕，如此一來Travis CI就會開始監測你的repo有沒有新的commit。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;activate_ci.png&quot; alt=&quot;Activate Travis CI&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;給予travis-ci-push的權限&quot;&gt;給予Travis CI push的權限&lt;/h4&gt;
-&lt;p&gt;為了要讓Travis CI可以幫忙把網頁push到master branch當中，我們需要給予它GitHub token，讓它能夠有權利push，可以到&lt;a href=&quot;https://github.com/settings/tokens&quot;&gt;GitHub settings&lt;/a&gt;創建一個token給Travis CI使用，並勾選給予的權限。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;github_permission.png&quot; alt=&quot;GitHub token permission&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;拿到token以後，可以把token儲存在Travis CI的環境變數當中，若把token放repo裡面怕會被別人看到，儲存成變數的方法可以參照&lt;a href=&quot;https://docs.travis-ci.com/user/environment-variables#defining-variables-in-repository-settings&quot;&gt;Travis官方文件&lt;/a&gt;，點選repo的設定以後，就可以找到相關的區塊了，我自己是設定成底下的樣子。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;travis_ci_variable.png&quot; alt=&quot;Travis CI Environment Variables&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;設定travis-ci&quot;&gt;設定Travis CI&lt;/h4&gt;
-&lt;p&gt;至此我們讓Travis CI實時監控我們的commit，也讓它有權力可以push到master branch，接著就是告訴它該怎麼樣編譯我們的網站以及要把哪些東西push到master branch。&lt;/p&gt;
-
-&lt;p&gt;我是參照&lt;a href=&quot;https://gist.github.com/willprice/e07efd73fb7f13f917ea#file-travis-yml&quot;&gt;別人的gist&lt;/a&gt;稍作修改以後來設定的，可以參考我的&lt;a href=&quot;https://github.com/wjohn1483/wjohn1483.github.io/blob/source/.travis.yml&quot;&gt;.travis.yml&lt;/a&gt;和&lt;a href=&quot;https://github.com/wjohn1483/wjohn1483.github.io/blob/source/.travis/push.sh&quot;&gt;.travis/push.sh&lt;/a&gt;。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# .travis.yml&lt;/span&gt;
-
-&lt;span class=&quot;na&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ruby&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;rvm&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2.1&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle exec jekyll build&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;after_success&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;$TRAVIS_PULL_REQUEST&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;];&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;bash&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-x&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.travis/push.sh;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;fi'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# .travis/push.sh&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-
-setup_git_folder&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    git init
-    git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.email &lt;span class=&quot;s2&quot;&gt;&quot;wjohn1483@yahoo.com.tw&quot;&lt;/span&gt;
-    git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.name &lt;span class=&quot;s2&quot;&gt;&quot;wjohn1483&quot;&lt;/span&gt;
-    git remote add origin https://&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GITHUB_TOKEN&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;@github.com/wjohn1483/wjohn1483.github.io.git
-    git pull origin master
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-commit_website_files&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    git checkout master
-    rsync &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--delete-after&lt;/span&gt; ../_site/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; ./
-    git status
-    git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-    git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Travis build: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TRAVIS_BUILD_NUMBER&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-upload_files&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    git push origin master
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;folder_to_push
-&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;folder_to_push
-
-setup_git_folder
-commit_website_files
-upload_files
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;至此就完成了線上編輯的所有步驟了，以後就能夠在GitHub網頁版上撰寫文章，commit完就直接部署到GitHub Page上。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">這篇文章將會簡單介紹一下Jekyll，以及我如何使用Jekyll將網站建置在GitHub Page上的經歷。</summary></entry></feed>
+&lt;p&gt;這篇paper提出了MAXL，在不需要專業知識以及額外訓練資料的情況下，可以稍微提升model在分類上的準確率，作者表示希望未來可以套用到regression相關的任務上。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Meta-Learning" /><category term="Auxiliary-Learning" /><summary type="html">通常在訓練的時候，如果能有一些輔助的任務(task)，通常會對主要的任務在效能上有所提升，然而這些輔助任務的答案通常會需要人類來標注，並不能隨意的想加輔助任務就加輔助任務，而這篇文章要介紹的NeurIPS 2019的Self-Supervised Generalisation with Meta Auxiliary Learning，將輔助任務的答案都用機器來產生，免去了準備輔助任務答案的麻煩。</summary></entry></feed>
