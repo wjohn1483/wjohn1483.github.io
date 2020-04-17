@@ -124,6 +124,24 @@ vim的color schema。
 noremap <silent><Leader>c  :SyntasticCheck<CR>
 ```
 
+### [dense-analysis/ale](https://github.com/dense-analysis/ale)
+
+也是做語法檢查的套件，與[syntastic](#vim-syntasticsyntastic)不同的是，ale是asynchronous的執行，所以在開啟、寫入檔案的時候不會卡住。
+
+我自己會加上底下的設定，以在各個error當中跳轉。
+
+```bash
+nnoremap <Leader>d :ALEDetail<CR>
+nnoremap <Leader>cn :ALENext<CR>
+nnoremap <Leader>cp :ALEPrevious<CR>
+```
+
+### [milkypostman/vim-togglelist](https://github.com/milkypostman/vim-togglelist)
+
+裝這個套件主要是為了配合[ale](#dense-analysisale)而安裝的，上面的ale會在每一行標註該行的warning和error，雖說ale可以做到把所有error都統一在一個列表裡顯示出來，但它沒有做可以toggle的指令，而這個套件就是設定快捷鍵來做這件事情。
+
+預設`<Leader>l`會toggle location list，把所有error列出來，在行數按下enter就會跳轉到那邊，`<Leader>q`會打開quickfix window。
+
 ### [majutsushi/tagbar](https://github.com/majutsushi/tagbar)
 
 當你有使用ctags或cscope先對目錄底下的程式碼先做索引的話，可以使用tagbar在vim裡面顯示所有的tag。
