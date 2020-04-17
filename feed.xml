@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-17T14:31:32+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">有錢人想的和你不一樣</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/" rel="alternate" type="text/html" title="有錢人想的和你不一樣" /><published>2020-04-04T00:00:00+00:00</published><updated>2020-04-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/">&lt;p&gt;節錄部分&lt;a href=&quot;https://tw.buy.yahoo.com/gdsale/gdsale.asp?gdid=8104317&quot;&gt;《有錢人想的和你不一樣》&lt;/a&gt;這本書的內容以及自己的一些心得。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-17T14:49:48+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">有錢人想的和你不一樣</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/" rel="alternate" type="text/html" title="有錢人想的和你不一樣" /><published>2020-04-04T00:00:00+00:00</published><updated>2020-04-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/">&lt;p&gt;節錄部分&lt;a href=&quot;https://tw.buy.yahoo.com/gdsale/gdsale.asp?gdid=8104317&quot;&gt;《有錢人想的和你不一樣》&lt;/a&gt;這本書的內容以及自己的一些心得。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -705,6 +705,23 @@ endif
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;noremap &amp;lt;silent&amp;gt;&amp;lt;Leader&amp;gt;c  :SyntasticCheck&amp;lt;CR&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;dense-analysisale&quot;&gt;&lt;a href=&quot;https://github.com/dense-analysis/ale&quot;&gt;dense-analysis/ale&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;也是做語法檢查的套件，與&lt;a href=&quot;#vim-syntasticsyntastic&quot;&gt;syntastic&lt;/a&gt;不同的是，ale是asynchronous的執行，所以在開啟、寫入檔案的時候不會卡住。&lt;/p&gt;
+
+&lt;p&gt;我自己會加上底下的設定，以在各個error當中跳轉。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nnoremap &amp;lt;Leader&amp;gt;d :ALEDetail&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;Leader&amp;gt;cn :ALENext&amp;lt;CR&amp;gt;
+nnoremap &amp;lt;Leader&amp;gt;cp :ALEPrevious&amp;lt;CR&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;milkypostmanvim-togglelist&quot;&gt;&lt;a href=&quot;https://github.com/milkypostman/vim-togglelist&quot;&gt;milkypostman/vim-togglelist&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;裝這個套件主要是為了配合&lt;a href=&quot;#dense-analysisale&quot;&gt;ale&lt;/a&gt;而安裝的，上面的ale會在每一行標註該行的warning和error，雖說ale可以做到把所有error都統一在一個列表裡顯示出來，但它沒有做可以toggle的指令，而這個套件就是設定快捷鍵來做這件事情。&lt;/p&gt;
+
+&lt;p&gt;預設&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;l&lt;/code&gt;會toggle location list，把所有error列出來，在行數按下enter就會跳轉到那邊，&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;q&lt;/code&gt;會打開quickfix window。&lt;/p&gt;
 
 &lt;h3 id=&quot;majutsushitagbar&quot;&gt;&lt;a href=&quot;https://github.com/majutsushi/tagbar&quot;&gt;majutsushi/tagbar&lt;/a&gt;&lt;/h3&gt;
 
