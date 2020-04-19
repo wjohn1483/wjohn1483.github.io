@@ -1,6 +1,6 @@
 ---
 title: BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding
-tags: Paper
+tags: Paper Natural-Language-Processing
 layout: article
 footer: false
 aside:

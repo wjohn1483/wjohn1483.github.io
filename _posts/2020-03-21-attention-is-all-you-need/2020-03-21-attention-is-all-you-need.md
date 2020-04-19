@@ -1,6 +1,6 @@
 ---
 title: Attention Is All You Need
-tags: Paper
+tags: Paper Natural-Language-Processing
 layout: article
 footer: false
 aside:
