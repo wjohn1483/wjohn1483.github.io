@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>有錢人想的和你不一樣 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Generative Adversarial User Model for Reinforcement Learning Based Recommendation System - wjohn1483.github.io</title>
 
-<meta name="description" content="節錄部分《有錢人想的和你不一樣》這本書的內容以及自己的一些心得。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -278,171 +278,114 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>有錢人想的和你不一樣</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-04-04-secrets-of-the-millionaire-mind/2020-04-04-secrets-of-the-millionaire-mind.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="有錢人想的和你不一樣"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-04-19-generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/2020-04-19-generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Generative Adversarial User Model for Reinforcement Learning Based Recommendation System"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Book">Book</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 04, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="Book"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Paper">Paper</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive/?tag=Generative-Adversarial-Network">Generative-Adversarial-Network</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
+    <meta itemprop="keywords" content="Paper,Generative-Adversarial-Network,Recommendation-System"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>節錄部分<a href="https://tw.buy.yahoo.com/gdsale/gdsale.asp?gdid=8104317">《有錢人想的和你不一樣》</a>這本書的內容以及自己的一些心得。</p>
+<div class="article__content" itemprop="articleBody"><p>Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</p>
 
 <!--more-->
 
 <h2 id="簡介">簡介</h2>
 
-<p>一開始是自己想要學著投資，進而在網路上看到了<a href="https://www.youtube.com/channel/UC45i13dEfEVac2IEJT_Nr5Q">柴鼠兄弟</a>和<a href="https://rich01.com/blog-page_30/">市場先生的投資書單</a>的推薦而決定看這本書，覺得這本書講的概念挺好的，是故在此記錄一下，以提醒我自己。</p>
+<p><a href="https://arxiv.org/pdf/1812.10613.pdf">這篇paper</a>是ICML 2019的oral，主要是在講述，如何在推薦系統上套用Reinforcement Learning的框架，為此需要建立一個user model當作是環境，好讓推薦系統與之互動，作者還提出了Cascading Q-Network來做組合的推薦。</p>
 
-<h2 id="第一篇金錢藍圖">第一篇：金錢藍圖</h2>
+<p>如果想對這篇paper瞭解更多的話，可以參考<a href="https://icml.cc/media/Slides/icml/2019/201(11-14-00)-11-14-25-4831-generative_adve.pdf">作者在Oral的投影片</a>和<a href="https://slideslive.com/38917397/time-series">演講錄影</a>(從25:50開始)。</p>
 
-<script type="math/tex; mode=display">設定\rightarrow想法\rightarrow感覺\rightarrow行動=結果</script>
+<h2 id="方法">方法</h2>
 
-<p>第一篇主要是在講述金錢觀的重要性，每個人年幼或是生長環境的不同（設定），造就了想法不一樣，而想法造成感覺，最終變成行動，也就是現在所處在的結果。聽起來有點抽象但又有點道理，如果我們對現在這個處境不甚滿意，覺得金錢太少、生活不自在或是有各種各樣不舒適的地方，其成因主要是自己過去的行動所造成的，而行動又源自於感覺、想法，書中把想法定義為過去經驗的累積形塑而成。</p>
+<h3 id="推薦系統與環境的互動方式">推薦系統與環境的互動方式</h3>
 
-<p>也因此在第一篇的內容當中，作者主要在講述要如何去察覺、修改自己過去經驗所帶給你的意義，過去發生的所有事情都只是一個客觀事實，而真的會影響你的是你自己賦予那些客觀事實的<strong>意義</strong>，這些意義會造就你對事情的看法，進而使你做出不一樣的行動，所以賦予過去經驗正面的意義是相當重要的。</p>
+<p><img src="interaction.png" alt="Interaction" /></p>
 
-<h2 id="第二篇財富檔案">第二篇：財富檔案</h2>
-
-<p>第二篇在講述一些好的、正面的想法有哪些，希望讀者們在日常的生活中也能夠實踐這些想法，讓自己有負面想法時可以調整。</p>
-
-<h3 id="檔案1我創造我的人生">檔案1：我創造我的人生</h3>
-
-<p>這個檔案在講述你現在的境遇是自己所創造的，所以不要去責怪、抱怨，應該要試著去釐清是什麼樣的原因導致事情的發生，不要把自己當成是受害者，會把自己當成是受害者的其中一個原因可能是想要博取他人的注意，但一直想要博得人們的關注和注意是不能獲得快樂的，只是活在別人的恩惠底下。</p>
-
-<h3 id="檔案2玩金錢遊戲就是為了贏">檔案2：玩金錢遊戲就是為了贏</h3>
-
-<p>這個檔案主要是希望能設定一個遠大的目標，如果只是想要過得舒服，那最終的結果可能也就僅止於舒服，但若目標是想要賺大錢，那最終的結果可能就是超級舒服。</p>
-
-<p>平常去餐廳吃飯的時候，我總是會以價格來當作參考指標，如果價格超出我的預算或是覺得不想花太多錢，我總是會選擇價格最低的餐點，從來沒有嘗試過被標示為”市價”的餐點，但或許可以以此作為目標，想吃吃看就吃，做到不以價格為考量的境地。</p>
-
-<h3 id="檔案3努力讓自己有錢">檔案3：努力讓自己有錢</h3>
-
-<p>這邊是在問讀者願意花多少心力來讓自己有錢，讓我想起<a href="https://www.youtube.com/watch?v=mETU97jbrDE">很久之前看過的影片</a>，如果只是半調子的決心，只是想要變得成功、變得有錢，這樣的覺悟是不夠的，你需要做好犧牲時間、睡眠的心理準備，才能讓自己達成目標。</p>
-
-<h3 id="檔案4想得很大">檔案4：想得很大</h3>
-
-<p>你的收入與市場所認為你產生的價值成正比，假如果你的產出可以影響到數十萬人、數百萬人，那麼你的收入應該相當的驚人，反之，如果只能影響到數十人、數百人，那就應該要試著去提高你所能影響到的人數。這邊的”影響”，不一定是你工作、專業上能夠影響的範圍，也可以是你去投資所造成的影響。</p>
-
-<h3 id="檔案5專注於機會">檔案5：專注於機會</h3>
-
-<p>很多在面對挑戰的時候，常常會覺得自己還沒有準備好，等自己準備好了再來挑戰，但你永遠不會知道你到底準備好了沒、什麼樣子叫做準備好了呢？</p>
-
-<blockquote>
-  <p>「預備、射擊、瞄準！」</p>
-</blockquote>
-
-<p>書中的意思並不是說在毫無準備、研究的情況下就貿然去挑戰，而是給自己一個期限，在期限內盡可能的去準備，而期限一到就試著去挑戰吧！一邊挑戰的同時一邊修正自己的錯誤、方向。</p>
-
-<blockquote>
-  <p>「行動永遠比不行動來得好。」</p>
-</blockquote>
-
-<p>上面這句是作者的座右銘，並希望能夠在行動的同時練習樂觀並感激你所擁有的事物，若不懂得感激你所擁有的，你將不會得到更多。</p>
-
-<h3 id="檔案6欣賞其他有錢人">檔案6：欣賞其他有錢人</h3>
-
-<p>我們時常會羨慕、嫉妒別人擁有但自己所沒有的事物，既然別人努力得到了你所沒有的事物，我們應該要祝福而不該酸言酸語，或是討厭他們。</p>
-
-<blockquote>
-  <p>「祝福你所想要的事物。」</p>
-</blockquote>
-
-<h3 id="檔案7與積極的成功人士交往">檔案7：與積極的成功人士交往</h3>
-
-<p>我個人覺得人是很容易被環境所影響的，所以如果有機會的話，應該試著多去跟那些成功人士打交道，並相信自己跟他們是沒有什麼太大區別的，他們做得到的事情，你也做得到。</p>
-
-<h3 id="檔案8樂意宣傳自己和自己的價值觀">檔案8：樂意宣傳自己和自己的價值觀</h3>
-
-<p>很多人常覺得說，如果我今天做出了一個超級厲害的東西，大家就會搶著來用，但前提是他們得要先知道你做出來了，所以如果有機會的話可以試著多學習宣傳自己，相信自己是個具有高價值，值得被宣傳。</p>
-
-<h3 id="檔案9大於問題">檔案9：大於問題</h3>
-
-<p>小時候可能覺得騎自行車是一件很困難的事情，但長大了以後就覺得其實這並沒有那麼困難，這是因為你已經成長到了大過於你的問題的程度，所以當你今天遇到了一件你覺得相當困難的事情時，就要提醒自己「我很小！」，該是成長的時候了。</p>
-
-<blockquote>
-  <p>「成功的秘訣，就是不要逃避問題，不要在問題面前退縮；成功的秘訣就在於你要成長，讓自己大於一切的問題。」</p>
-</blockquote>
-
-<h3 id="檔案10很棒的接受者">檔案10：很棒的接受者</h3>
-
-<blockquote>
-  <p>「如果你說你有價值，你就有價值。如果你說你沒有價值，那麼你就沒有。然後你就會依照你的故事版本而活。」</p>
-</blockquote>
-
-<p>我常常會因為自己所做錯的一些事情而認為自己沒有什麼價值，甚至是當別人誇讚的時候也總是著眼於自己沒有做好的部分，然而這樣會使得你越來越悲觀，應該要試著去編一個可以激勵你自己的故事，不要以「下次要小心」作為目標，而是「我想要做到」為目標。</p>
-
-<h3 id="檔案11根據結果拿酬勞">檔案11：根據結果拿酬勞</h3>
-
-<p>這邊作者希望讀者可以用結果來換取報酬，舉凡常見的工作都是用錢來買你的時間，然而人的時間是有限的，所以能賺取的酬勞也是有限的，是故要用結果來換取酬勞才能得到較多的報酬。</p>
-
-<h3 id="檔案12如何兩個都要">檔案12：如何兩個都要</h3>
-
-<p>在生活中時常會面臨抉擇，有時選了一個就不能選另一個，但是這有可能是你自我設限，應保持著想辦法兩者兼拿的想法，試著去把所有的好處都拿到。</p>
-
-<h3 id="檔案13專注於自己的淨值">檔案13：專注於自己的淨值</h3>
-
-<p>我們在談論有錢人排行榜的時候，並不會去看他的收入，而是看他的淨值，所以我們應該著重的是去提升我們的淨值，不單單只看工作收入而已。我們的淨值主要來自於<strong>收入、儲蓄、投資獲利、節流</strong>，若能在每個部分都有提昇一些，相信淨值會提升不少。</p>
-
-<h3 id="檔案14管理自己的錢財">檔案14：管理自己的錢財</h3>
-
-<p>有些人會覺得說等我有了一筆錢再來學習怎麼管理，然而管理的習慣應該從現在就開始，從小錢開始培養，否則即使有了一筆錢也會因為不會管理而失去。</p>
-
-<blockquote>
-  <p>「除非你能管理你現有的一切，否則你不會得到更多！」</p>
-</blockquote>
-
-<blockquote>
-  <p>「管理金錢的習慣比數目更重要。」</p>
-</blockquote>
-
-<h3 id="檔案15讓錢辛苦工作">檔案15：讓錢辛苦工作</h3>
-
-<p>在前面有提到，人的時間是有限的，也需要睡覺、休息和玩樂的時間，是故創造被動收入是很重要的，而被動收入有兩個面向</p>
+<p>一開始作者先簡單介紹了一下推薦系統跟環境(user)互動的方式</p>
 
 <ol>
-  <li>
-    <p>讓錢為你工作</p>
-
-    <p>舉凡像是投資股票、債券、基金等，用錢滾錢的方法</p>
-  </li>
-  <li>
-    <p>讓事業為你工作</p>
-
-    <p>讓事業自動、系統化，像是書籍的出版稅、音樂版權等，利用你已經創建好的價值，不斷從中收取利益</p>
-  </li>
+  <li>我們可以先從過去的資料蒐集該使用者過去點選過的東西，也就是上圖左下角的<code class="highlighter-rouge">state at t</code></li>
+  <li>推薦系統會根據state推薦出一些使用者可能有興趣的東西</li>
+  <li>使用者從中選擇出他有興趣的物品，或是選擇以上皆沒有興趣</li>
+  <li>將使用者新的選擇放入歷史資料中</li>
+  <li>算出新的state以後回到步驟2</li>
 </ol>
 
-<h3 id="檔案16恐懼也會採取行動">檔案16：恐懼也會採取行動</h3>
+<p>兩者互動的方式便是推薦系統不斷推薦物品，而使用者不斷從中選擇他有興趣的東西，如此反覆來創造訓練資料。</p>
 
-<p>這裡我覺得是在呼應<a href="#檔案9大於問題">檔案9</a>，人總是會對自己不熟悉的東西產生恐懼，我們要做的事情不是去抹煞掉恐懼，而是接受恐懼並採取行動。</p>
+<h3 id="generative-adversarial-user-model">Generative Adversarial User Model</h3>
 
-<blockquote>
-  <p>「如果你只願意做輕鬆的事，人生就會困難重重。但如果你願意做困難的事，人生就會變得很輕鬆。」</p>
-</blockquote>
+<p>在前面有提到，訓練RL需要與環境互動很多次才能訓練得好，然而這在推薦系統上是一件難以做到的事情，因為推薦系統的環境便是真實的使用者，而真實的使用者並沒有那麼的有耐心，願意陪你訓練推薦系統。另一個用RL訓練推薦系統的難處是，我們沒辦法去量化使用者的reward，我們只能從使用者的行為判斷出他可能比較喜歡哪一個物品，卻沒有辦法知道他有多喜歡，舉例來說，我們推出了十個物品給使用者，使用者點選了其中一個，接著又推出另外十個物品給使用者，使用者又點選了其中一個，雖然使用者在兩次的推薦當中都有點選物品，但我們無法知道使用者是不是喜歡第一次推薦的物品大過第二次推薦的物品。</p>
 
-<p>每當有負面、恐懼的想法出現時，想想前面的學習，意義是自己去賦予的，不如編一個可以幫助自己前進的故事吧。</p>
+<p>為此，作者訓練了一個使用者模型來去模擬真實使用者的選擇，並產生出量化的reward，方便推薦系統做訓練。</p>
 
-<blockquote>
-  <p>「你只在一個狀況下是真正在成長的，那就是你覺得不舒服的時候。」</p>
-</blockquote>
+<h4 id="framework">Framework</h4>
 
-<h3 id="檔案17持續學習成長">檔案17：持續學習成長</h3>
+<p><img class="image image--xl" src="gan-user-model.png" /></p>
 
-<p>「我知道」，是最危險的三個字，我們應該努力學習成長，不應該對自己現有的知識感到自滿，也很有很大的機會我們所以為的跟真實是很不一樣的，如果可以，每天讀一點書，學習一點新知。</p>
+<p>身為一個使用者，他會看到推薦系統所推薦的物品清單<script type="math/tex">A^t</script>，generator會根據過去的選擇(使用者的喜好)，選擇出他有興趣的物品<script type="math/tex">a^t\sim \phi(s^t, A^t)</script>，而discriminator想要做的便是對generator給出的物品打個reward分數<script type="math/tex">r(s^t,a^t)</script>。</p>
 
-<blockquote>
-  <p>「每一位大師都曾經是個大失敗。」</p>
-</blockquote>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-04-04T00:00:00+00:00"><!-- start custom article footer snippet -->
+<script type="math/tex; mode=display">\phi(s^t, A^t)=\arg\max\limits_{\phi}\mathbb{E}_\phi[r(s^t,a^t)]-R(\phi)/\eta</script>
+
+<script type="math/tex; mode=display">r_\theta(s^t,a^t)=\mathbf{v}\sigma(\mathbf{V}(s^t,f_{a^t})+b)</script>
+
+<p>式(1)中的<script type="math/tex">R(\phi)/\eta</script>是一個regularisation term，generator希望能獲取最大的reward，而reward其實就是將使用者過去的選擇和商品的feature餵入一層NN而得到一個純量，兩者想要最佳化的式子如下</p>
+
+<script type="math/tex; mode=display">\min\limits_{\theta}\max\limits_{\phi}\left( \mathbb{E}_\phi[\sum^T_{t=1}r_\theta(s^t_{true}, a^t)]-R(\theta)/\eta\right) - \sum^T_{t=1}r_\theta(s^t_{true},a^t_{true})</script>
+
+<p>擁有下標<script type="math/tex">true</script>的代表是使用者真實的選擇，而generator想要最佳化的是第一項，discriminator想要最佳化的是第二項，也就是說generator想要讓自己產生出的選擇跟使用者真正的選擇越貼近越好，而discriminator想要讓使用者真正的選擇所得到的reward越大越好。</p>
+
+<h4 id="user-state">User State</h4>
+
+<p><img src="user-model-state.png" alt="State of user model" /></p>
+
+<p>在generator和discriminator都有用同使用到的<script type="math/tex">s^t</script>代表的是使用者過去的選擇，也就是使用者的喜好，其被實作的方式其實就是把過去所選擇的那些物品的feature(文字敘述、圖片等等做成embedding)，通過LSTM或者是直接乘上一個大矩陣並concatenate在一起，就完成了。</p>
+
+<h3 id="cascading-q-networks">Cascading Q-Networks</h3>
+
+<p><img src="set-recommendation.png" alt="Set Recommendation" /></p>
+
+<p>在前面使用類似GAN的方法得到了user model以後，接下來就是做一個推薦系統來從廣大的物品池裡面找出使用者會喜歡的商品，倘若想要使用<script type="math/tex">Q-function</script>來去對每一個可能的組合去做評估的話(式(4))，可以想像得到我們應該是算不完的，因為組合數實在是太多了，假如<script type="math/tex">K=3000</script>、<script type="math/tex">k=10</script>，我們就得要計算<script type="math/tex">3000\choose10</script>這麼多個可能，是故作者推出了Cascading Q-Networks來解決這個問題。</p>
+
+<script type="math/tex; mode=display">a^*_1, a^*_2, ..., a^*_k=\arg\max Q(s^t, a_1, a_2, ..., a_k)</script>
+
+<p><img src="cdqn.png" alt="Cascading Q-Networks" /></p>
+
+<p>其想法很簡單，如果組合數太多的話，那我就一個一個求出該被放進去的物品，直至<script type="math/tex">k</script>個物品都被選擇好。</p>
+
+<p><img src="cdqn-formula.png" alt="CDQN formula" /></p>
+
+<p>而這個Cascading Q-Networks的訓練方式可以想成是訓練<script type="math/tex">k</script>個DQN，而每個DQN的reward都是一樣的，是user model給予整個組合的分數。</p>
+
+<h2 id="實驗">實驗</h2>
+
+<p><img src="user-model-number.png" alt="User Model" /></p>
+
+<p>首先作者想要知道用GAN所訓練出來的user model的表現如何，便將這個user model去跟其他推薦系統相比較，可以看到用GAN訓練出來的user model表現蠻好的。</p>
+
+<p><img src="recommendation-performance.png" alt="Recommendation Performance" /></p>
+
+<p>再來是對Cascading Q-Networks的實驗，想要知道以DQN作為推薦系統的表現怎麼樣，也可以看到CDQN的表現也相當亮眼。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>在這篇paper裡面作者使用GAN的技術來模擬真實的使用者，讓用RL來訓練推薦系統變得沒有那麼遙不可及。</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-04-19T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/04/02/tf-idf-introduction/">TF-IDF簡介</a></div><div class="next"><span>NEXT</span><a href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/04/04/secrets-of-the-millionaire-mind/">有錢人想的和你不一樣</a></div></div></div>
 
 </div>
 
@@ -1058,7 +1001,7 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
