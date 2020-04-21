@@ -1,4 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-19T03:34:38+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/" rel="alternate" type="text/html" title="Generative Adversarial User Model for Reinforcement Learning Based Recommendation System" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">&lt;p&gt;Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-21T13:22:03+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Playing Atari with Deep Reinforcement Learning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/" rel="alternate" type="text/html" title="Playing Atari with Deep Reinforcement Learning" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/">&lt;p&gt;在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
+
+&lt;p&gt;在&lt;a href=&quot;https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf&quot;&gt;這篇paper&lt;/a&gt;當中，作者利用Deep Reinforcement Learning的方法，讓機器學會打Atari小遊戲，並成功打破人類的紀錄，立下了RL的里程碑。&lt;/p&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+
+&lt;h3 id=&quot;背景介紹&quot;&gt;背景介紹&lt;/h3&gt;
+
+&lt;p&gt;在進入到方法之前，先介紹一下基本的設定以及Value function和Q function，在底下model訓練的時候會被用到。&lt;/p&gt;
+
+&lt;h4 id=&quot;基本設定&quot;&gt;基本設定&lt;/h4&gt;
+
+&lt;p&gt;在遊戲中我們可以說遊戲本身是一個環境&lt;script type=&quot;math/tex&quot;&gt;\mathcal{E}&lt;/script&gt;，而玩家這個角色可以稱之為actor，玩家們所能觀測到的遊戲畫面稱之為state，而角色所能夠採取的動作，像是上下左右移動、射擊等等，稱之為action。&lt;/p&gt;
+
+&lt;p&gt;當我們現在觀測到遊戲畫面&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;，我們可以採取一個動作&lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;，將&lt;script type=&quot;math/tex&quot;&gt;(s_t,a_t)&lt;/script&gt;傳送給環境&lt;script type=&quot;math/tex&quot;&gt;\mathcal{E}&lt;/script&gt;後會得到新的遊戲畫面&lt;script type=&quot;math/tex&quot;&gt;s_{t+1}&lt;/script&gt;以及該動作的reward &lt;script type=&quot;math/tex&quot;&gt;r_t&lt;/script&gt;，這邊的reward可以想成是遊戲分數上升了多少。&lt;/p&gt;
+
+&lt;h4 id=&quot;value-function&quot;&gt;Value Function&lt;/h4&gt;
+
+&lt;p&gt;Value function做的事情是去判斷以現在的policy &lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，處在現在這個state &lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;最終的cumulated reward期望值會是多少，policy可以想做是這個玩家的思維或是操作，如果是某個玩家在現在的處境下，所能得到最終分數會是多少的感覺，寫作&lt;script type=&quot;math/tex&quot;&gt;V^\pi(s)&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;而value function的求法主要有兩種，分別是Monte-Carlo (MC)和Temporal-Difference (TD)。MC的方式就是讓玩家繼續玩到最後，並記錄他最終的cumulated reward，回頭再統計一下每個state的cumulated reward，假如說玩家&lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，在第一次遊玩的過程中，經過了state &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;，最終得到的遊戲分數是&lt;script type=&quot;math/tex&quot;&gt;G_a&lt;/script&gt;，第二次遊玩也同樣經過了state &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;，但得到的遊戲分數是&lt;script type=&quot;math/tex&quot;&gt;G_b&lt;/script&gt;，那麼state &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;的value function便可寫作&lt;script type=&quot;math/tex&quot;&gt;V^\pi(s)=(G_a+G_b)/2&lt;/script&gt;。而TD的作法為&lt;script type=&quot;math/tex&quot;&gt;V^\pi(s_{t+1})=V^\pi(s_t)+r_t&lt;/script&gt;，概念是我現在這個state &lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;的value function所算出來的值，跟我下一個state &lt;script type=&quot;math/tex&quot;&gt;s_{t+1}&lt;/script&gt;的值，應該只差了一個reward &lt;script type=&quot;math/tex&quot;&gt;r_t&lt;/script&gt;而已。&lt;/p&gt;
+
+&lt;p&gt;MC和TD各有各的缺點，像是MC的缺點是它的variance比較大，每次遊戲在遊玩的時候會有一些隨機性存在，使得state在統計它的cumulated reward時variance不小，而TD雖然一次只看一步的reward，但它需要擔心的是value function估不準的問題。&lt;/p&gt;
+
+&lt;h4 id=&quot;q-function&quot;&gt;Q-Function&lt;/h4&gt;
+
+&lt;p&gt;Q-function和value function做的事情很像，但這邊Q-function還多考慮了採取的動作，也就是以現在的policy &lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，處在state &lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;，採取action &lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;，所能得到的cumulated reward期望值是多少，寫作&lt;script type=&quot;math/tex&quot;&gt;Q^\pi(s, a)&lt;/script&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;deep-q-network&quot;&gt;Deep Q-Network&lt;/h3&gt;
+
+&lt;p&gt;這邊DQN想要做的事情，便是去尋找Q function，在看到一個遊戲畫面&lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;的時候，去選擇&lt;script type=&quot;math/tex&quot;&gt;Q^\pi(s, a)&lt;/script&gt;最大的action &lt;script type=&quot;math/tex&quot;&gt;a&lt;/script&gt;，來當作是policy &lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，而&lt;script type=&quot;math/tex&quot;&gt;Q^\pi(s,a)&lt;/script&gt;的算法是使用TD的算法。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q^*(s,a)=\mathbb{E}_{s'\sim\mathcal{E}}\left[r+\gamma\max\limits_{a'}Q^*(s',a')\vert s,a\right]&lt;/script&gt;
+
+&lt;p&gt;這邊的&lt;script type=&quot;math/tex&quot;&gt;s'&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;a'&lt;/script&gt;代表的是下一個時間點的state和action，底下是整個DQN的algorithm。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;dqn-algorithm.png&quot; alt=&quot;DQN Algorithm&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;epsilon-greedy&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;-greedy&lt;/h4&gt;
+
+&lt;p&gt;在演算法當中可以看到，在第二個迴圈一開始，會以&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;的機率去隨機選擇一個動作&lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;，目的是為了要去探索環境中的各種可能性，假如我們每次都選&lt;script type=&quot;math/tex&quot;&gt;a_t=\max\limits_{a} Q(s, a)&lt;/script&gt;的話，很容易會讓model做出同樣的選擇，有可能有一些可以拿高分的可能性就被忽略了。&lt;/p&gt;
+
+&lt;h4 id=&quot;experience-replay&quot;&gt;Experience Replay&lt;/h4&gt;
+
+&lt;p&gt;在演算法的一開始有一個replay memory &lt;script type=&quot;math/tex&quot;&gt;\mathcal{D}&lt;/script&gt;，其大小為&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;，這個memory的目的是去紀錄與環境互動的結果，可以看到在第二個迴圈裡，會把&lt;script type=&quot;math/tex&quot;&gt;(\phi_t, a_t, r_t, \phi_{t+1})&lt;/script&gt;，放進memory &lt;script type=&quot;math/tex&quot;&gt;\mathcal{D}&lt;/script&gt;中，而在訓練的時候會從memory裡面sample一個batch來做訓練。&lt;/p&gt;
+
+&lt;h4 id=&quot;target-network&quot;&gt;Target Network&lt;/h4&gt;
+
+&lt;p&gt;在式(1)和上面的演算法中，我們可以看到，這個DQN的目標是能夠精確的預估出&lt;script type=&quot;math/tex&quot;&gt;r+\gamma\max\limits_{a'} Q(s', a';\theta)&lt;/script&gt;，但這個目標裡面又包含了自己這個network的output，這樣在訓練起來是比較不穩定的，為此，在實作上通常會用另一個network &lt;script type=&quot;math/tex&quot;&gt;Q'&lt;/script&gt;來放進objective function，亦即model要去預估的是&lt;script type=&quot;math/tex&quot;&gt;r+\gamma\max\limits_{a'}Q'(s',a';\theta)&lt;/script&gt;，這個network &lt;script type=&quot;math/tex&quot;&gt;Q'&lt;/script&gt;其實就是前幾步的model &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;，更具體的說，當&lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;以&lt;script type=&quot;math/tex&quot;&gt;Q'&lt;/script&gt;為目標訓練一陣子以後，會複製一份&lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;的參數當作&lt;script type=&quot;math/tex&quot;&gt;Q'&lt;/script&gt;的參數，並將之固定以後，繼續訓練&lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;的參數。&lt;/p&gt;
+
+&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;dqn-experiments.png&quot; alt=&quot;DQN Experiments&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在表中可以看到，DQN在一些遊戲上超過了人類可以達到的分數。&lt;/p&gt;
+
+&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
+
+&lt;p&gt;在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><summary type="html">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</summary></entry><entry><title type="html">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/" rel="alternate" type="text/html" title="Generative Adversarial User Model for Reinforcement Learning Based Recommendation System" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">&lt;p&gt;Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -82,7 +144,7 @@
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;在這篇paper裡面作者使用GAN的技術來模擬真實的使用者，讓用RL來訓練推薦系統變得沒有那麼遙不可及。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Generative-Adversarial-Network" /><category term="Recommendation-System" /><summary type="html">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</summary></entry><entry><title type="html">有錢人想的和你不一樣</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/" rel="alternate" type="text/html" title="有錢人想的和你不一樣" /><published>2020-04-04T00:00:00+00:00</published><updated>2020-04-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/">&lt;p&gt;節錄部分&lt;a href=&quot;https://tw.buy.yahoo.com/gdsale/gdsale.asp?gdid=8104317&quot;&gt;《有錢人想的和你不一樣》&lt;/a&gt;這本書的內容以及自己的一些心得。&lt;/p&gt;
+&lt;p&gt;在這篇paper裡面作者使用GAN的技術來模擬真實的使用者，讓用RL來訓練推薦系統變得沒有那麼遙不可及。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Generative-Adversarial-Network" /><category term="Recommendation-System" /><category term="Reinforcement-Learning" /><summary type="html">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</summary></entry><entry><title type="html">有錢人想的和你不一樣</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/" rel="alternate" type="text/html" title="有錢人想的和你不一樣" /><published>2020-04-04T00:00:00+00:00</published><updated>2020-04-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/">&lt;p&gt;節錄部分&lt;a href=&quot;https://tw.buy.yahoo.com/gdsale/gdsale.asp?gdid=8104317&quot;&gt;《有錢人想的和你不一樣》&lt;/a&gt;這本書的內容以及自己的一些心得。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -983,52 +1045,4 @@ endif
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@chih.sheng.huang821/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E5%9F%BA%E7%A4%8E%E6%95%B8%E5%AD%B8-%E4%B8%89-%E6%A2%AF%E5%BA%A6%E6%9C%80%E4%BD%B3%E8%A7%A3%E7%9B%B8%E9%97%9C%E7%AE%97%E6%B3%95-gradient-descent-optimization-algorithms-b61ed1478bd7&quot;&gt;機器/深度學習-基礎數學(三):梯度最佳解相關算法(gradient descent optimization algorithms)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://ruder.io/optimizing-gradient-descent/index.html&quot;&gt;An overview of gradient descent optimization algorithms&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html">稍微講一下Machine Learning當中經常被使用的gradient descent的概念以及調整learning rate的方法。</summary></entry><entry><title type="html">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/06/model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks/" rel="alternate" type="text/html" title="Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks" /><published>2020-03-06T00:00:00+00:00</published><updated>2020-03-06T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/06/model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/06/model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks/">&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1703.03400.pdf&quot;&gt;這篇paper&lt;/a&gt;想要去尋找一個最佳的初始化參數，讓model可以在各個task上都可以得到不錯的表現。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
-
-&lt;p&gt;Meta learning可以說是一個讓model學習如何學習的方式，希望讓model知道如何學習是比較有效率的，如此一來便可以使model在比較少的資料仍可以得到不錯的效果。而這篇paper提出一個叫做MAML的方法，想要嘗試找到一個很好的初始化參數，讓model用少量資料在其他task上訓練的時候，不需要太多epoch就能獲得很好的效果。&lt;/p&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-
-&lt;h3 id=&quot;task定義&quot;&gt;Task定義&lt;/h3&gt;
-
-&lt;p&gt;先定義一下要被學習的task。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{T}= \{ \mathcal{L}(x_1, a_1, ..., x_H, a_H), q(x_1), q(x_{t+1}|x_t, a_t), H\}&lt;/script&gt;
-
-&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;\mathcal{L}&lt;/script&gt;是loss function，&lt;script type=&quot;math/tex&quot;&gt;q(x_1)&lt;/script&gt;是初始的observation，&lt;script type=&quot;math/tex&quot;&gt;q(x_{t+1}\vert x_t, a_t)&lt;/script&gt;是transition distribution，而&lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt;是episode length。&lt;/p&gt;
-
-&lt;p&gt;因為這篇paper並不只有做在classification的task上，也有做在reinforcement learning上，所以需要有episode的概念，而如果是classification task的話，就會令&lt;script type=&quot;math/tex&quot;&gt;H=1&lt;/script&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;maml&quot;&gt;MAML&lt;/h3&gt;
-
-&lt;p&gt;作者提出的概念很直觀，我想要找到一個model初始值，讓這個初始值在各個task上面經過訓練以後都能達到不錯的效果，而我猜想是由於速度上的考量，這邊的&lt;em&gt;經過訓練&lt;/em&gt;指的是經過一次的update，所以可以將objective function寫成以下的樣子&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta_i'=\theta-\alpha\bigtriangledown_\theta \mathcal{L}_{\mathcal{T}_i}(f_\theta)&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\min\limits_{\theta}\sum\limits_{\mathcal{T}_i \sim p(\mathcal{T})}\mathcal{L}_{\mathcal{T}_i}(f_{\theta_i'})=\sum\limits_{\mathcal{T}_i\sim p(\mathcal{T})}\mathcal{L}_{\mathcal{T}_i}(f_{\theta-\alpha\bigtriangledown_\theta\mathcal{L}_{\mathcal{T}_i}(f_\theta)})&lt;/script&gt;
-
-&lt;p&gt;式(2)是初始參數在task &lt;script type=&quot;math/tex&quot;&gt;\mathcal{T}_i&lt;/script&gt;上經過一次update所得到的參數，式(3)是把在各個task上更新過一次的參數在各個task上的loss加總起來，來當作objective function，而實際更新初始參數的式子如下&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta\leftarrow\theta-\beta\bigtriangledown_\theta\sum\limits_{\mathcal{T}_i\sim p(\mathcal{T})}\mathcal{L}_{\mathcal{T}_i}(f_{\theta_i'})&lt;/script&gt;
-
-&lt;p&gt;如果把其中的&lt;script type=&quot;math/tex&quot;&gt;\theta_i'&lt;/script&gt;用式(2)替換掉的話，可以發現式(4)其實有經過兩次微分，不過tensorflow也有支援兩次微分，所以在實作上可以直接照著paper的公式做出來就行。&lt;/p&gt;
-
-&lt;h3 id=&quot;演算法&quot;&gt;演算法&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;maml-algorithm.png&quot; alt=&quot;Algorithm&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
-
-&lt;p&gt;如果想對實驗了解更多的話，可以直接去&lt;a href=&quot;https://arxiv.org/pdf/1703.03400.pdf&quot;&gt;arXiv&lt;/a&gt;上面看原始的paper，這邊只貼上MAML做在classification上的結果，paper還有做在reinforcement learning上的實驗。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;classification-results.png&quot; alt=&quot;Classification results&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;可以看到MAML比起其他meta learning的方法都還要來得好一些。&lt;/p&gt;
-
-&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
-
-&lt;p&gt;作者們提出了簡單卻有效的方式找到好的初始化參數來解meta learning，而且目前deep learning的tool像是tensorflow等都有支援二次微分的計算，所以在實作上應該也不會到非常困難，在paper當中也有附上用tensorflow實作的程式碼。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Meta-Learning" /><summary type="html">這篇paper想要去尋找一個最佳的初始化參數，讓model可以在各個task上都可以得到不錯的表現。</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html">稍微講一下Machine Learning當中經常被使用的gradient descent的概念以及調整learning rate的方法。</summary></entry></feed>
