@@ -1,6 +1,6 @@
 ---
 title: Generative Adversarial User Model for Reinforcement Learning Based Recommendation System
-tags: Paper Generative-Adversarial-Network Recommendation-System
+tags: Paper Generative-Adversarial-Network Recommendation-System Reinforcement-Learning
 layout: article
 footer: false
 aside:
