@@ -1,4 +1,397 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-21T13:22:03+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Playing Atari with Deep Reinforcement Learning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/" rel="alternate" type="text/html" title="Playing Atari with Deep Reinforcement Learning" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/">&lt;p&gt;在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-25T09:05:13+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">用R來作圖</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r/" rel="alternate" type="text/html" title="用R來作圖" /><published>2020-04-25T00:00:00+00:00</published><updated>2020-04-25T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r/">&lt;p&gt;在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;安裝r和rstudio&quot;&gt;安裝R和RStudio&lt;/h2&gt;
+
+&lt;p&gt;可以在&lt;a href=&quot;http://lib.stat.cmu.edu/R/CRAN/&quot;&gt;CMU的網站上&lt;/a&gt;下載R的安裝檔，並在&lt;a href=&quot;https://rstudio.com/products/rstudio/download/&quot;&gt;RStudio&lt;/a&gt;的官網上下載RStudio，在完成這兩件事情以後，應該就能順利的在電腦上使用RStudio撰寫R的script了。&lt;/p&gt;
+
+&lt;h2 id=&quot;資料的讀寫&quot;&gt;資料的讀寫&lt;/h2&gt;
+
+&lt;p&gt;在準備好環境以後，接下來就是去將資料讀取進來，而在讀取的部分只需要打上&lt;code class=&quot;highlighter-rouge&quot;&gt;read.csv()&lt;/code&gt;就能輕鬆的把csv檔讀進來了。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read.csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[path to your csv file]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;summary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;而且R還有提供一些貼心的function，像是&lt;code class=&quot;highlighter-rouge&quot;&gt;summary()&lt;/code&gt;：可以幫你簡單的總結一下這分檔案的基本資料、&lt;code class=&quot;highlighter-rouge&quot;&gt;View()&lt;/code&gt;：可以在RStudio裡面以表格的方式打開這個csv檔，方便人們閱覽。&lt;/p&gt;
+
+&lt;h2 id=&quot;折線圖&quot;&gt;折線圖&lt;/h2&gt;
+
+&lt;p&gt;若今天的資料形式適合畫折線圖來觀察趨勢的話，可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;ggplot()&lt;/code&gt;來幫助你畫折線圖。&lt;/p&gt;
+
+&lt;h3 id=&quot;橫軸是其中一個欄位&quot;&gt;橫軸是其中一個欄位&lt;/h3&gt;
+
+&lt;p&gt;假設今天的資料&lt;code class=&quot;highlighter-rouge&quot;&gt;test.csv&lt;/code&gt;長得像底下這樣。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;date&lt;/th&gt;
+      &lt;th&gt;A&lt;/th&gt;
+      &lt;th&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200101&lt;/td&gt;
+      &lt;td&gt;0.3&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200102&lt;/td&gt;
+      &lt;td&gt;0.4&lt;/td&gt;
+      &lt;td&gt;0.8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200103&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+      &lt;td&gt;0.9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200104&lt;/td&gt;
+      &lt;td&gt;0.6&lt;/td&gt;
+      &lt;td&gt;0.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200105&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;單一變數作圖&quot;&gt;單一變數作圖&lt;/h4&gt;
+
+&lt;p&gt;如果我們希望以日期為橫軸、A的值作為縱軸畫出來的話，直接打上底下的程式碼就行。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ggplot2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read.csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test.csv&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ggplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;geom_line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;aes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;line-a.png&quot; alt=&quot;Line A&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上面的程式碼中，首先先引入&lt;code class=&quot;highlighter-rouge&quot;&gt;ggplot2&lt;/code&gt;這個畫圖的library，再來&lt;code class=&quot;highlighter-rouge&quot;&gt;ggplot(data)&lt;/code&gt;可以想成是我現在想要以&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;這個dataframe作圖，而我想要的形式是線，亦即&lt;code class=&quot;highlighter-rouge&quot;&gt;geom_line()&lt;/code&gt;，而&lt;code class=&quot;highlighter-rouge&quot;&gt;aes()&lt;/code&gt;宣告了這條線的x、y軸的資料要從哪一個column中做選取。&lt;/p&gt;
+
+&lt;h4 id=&quot;多變數作圖&quot;&gt;多變數作圖&lt;/h4&gt;
+
+&lt;p&gt;倘若想要以日期作為橫軸、A和B的值作為縱軸畫在同一張圖片上，並以不同的顏色區分開來，可以參考底下的程式碼。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ggplot2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read.csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test.csv&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;melt_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;melt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id.vars&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ggplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;melt_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;geom_line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;aes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;line-ab.png&quot; alt=&quot;Line A, B&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在這邊我們多引入了一個叫&lt;code class=&quot;highlighter-rouge&quot;&gt;reshape2&lt;/code&gt;的library幫我們把dataframe melt一下，&lt;code class=&quot;highlighter-rouge&quot;&gt;melt()&lt;/code&gt;這個function所做的事情是把dataframe的資料以我們所設定好的column打散。&lt;/p&gt;
+
+&lt;p&gt;以&lt;code class=&quot;highlighter-rouge&quot;&gt;melt(data, id.vars=&quot;date&quot;)&lt;/code&gt;這個例子來說，我們會固定&lt;strong&gt;date&lt;/strong&gt;這個column，將&lt;strong&gt;A&lt;/strong&gt;、&lt;strong&gt;B&lt;/strong&gt;這兩個column的資料打散，想法上是去看說&lt;strong&gt;date&lt;/strong&gt;這個column有個值是&lt;em&gt;20200101&lt;/em&gt;，其對應到的column &lt;strong&gt;A&lt;/strong&gt;的值是&lt;em&gt;0.3&lt;/em&gt;，對應到&lt;strong&gt;B&lt;/strong&gt;的值是&lt;em&gt;0.5&lt;/em&gt;，所以會分別產生&lt;code class=&quot;highlighter-rouge&quot;&gt;(20200101, A, 0.3)&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;(20200101, B, 0.5)&lt;/code&gt;這兩筆資料，並持續進行下去直到&lt;strong&gt;date&lt;/strong&gt;的所有值都看過，也因此經過&lt;code class=&quot;highlighter-rouge&quot;&gt;melt()&lt;/code&gt;以後，我們可以得到以下的dataframe。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;date&lt;/th&gt;
+      &lt;th&gt;variable&lt;/th&gt;
+      &lt;th&gt;value&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200101&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;0.3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200102&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;0.4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200103&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200104&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;0.6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200105&lt;/td&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200101&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200102&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;0.8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200103&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;0.9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200104&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;0.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;20200105&lt;/td&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;值得一提的是，&lt;code class=&quot;highlighter-rouge&quot;&gt;melt()&lt;/code&gt;可以指定新的欄位名稱，使你在作圖時的橫軸、縱軸能用自定義的名稱。舉例來說，我想要將&lt;strong&gt;variable&lt;/strong&gt;換成type、&lt;strong&gt;value&lt;/strong&gt;換成score的話，可以參考底下程式碼。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;melt_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;melt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id.vars&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable.name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value.name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;score&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;有了這樣子的dataframe以後，就可以填入至&lt;code class=&quot;highlighter-rouge&quot;&gt;aes()&lt;/code&gt;裡面，變成&lt;code class=&quot;highlighter-rouge&quot;&gt;aes(x=date, y=value, group=variable, color=variable)&lt;/code&gt;，告訴它我們想要以&lt;strong&gt;date&lt;/strong&gt;為橫軸&lt;strong&gt;value&lt;/strong&gt;為縱軸，其中每個值有它所屬的group，以&lt;strong&gt;variable&lt;/strong&gt;為標示，而我希望每個group以不同顏色標示，如此便能畫出我們所想要的圖了。&lt;/p&gt;
+
+&lt;h3 id=&quot;橫軸不是其中一個欄位&quot;&gt;橫軸”不”是其中一個欄位&lt;/h3&gt;
+
+&lt;p&gt;如果說今天手上的資料長成底下這樣。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;type&lt;/th&gt;
+      &lt;th&gt;date20200101&lt;/th&gt;
+      &lt;th&gt;date20200102&lt;/th&gt;
+      &lt;th&gt;date20200103&lt;/th&gt;
+      &lt;th&gt;date20200104&lt;/th&gt;
+      &lt;th&gt;date20200105&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;A&lt;/td&gt;
+      &lt;td&gt;0.3&lt;/td&gt;
+      &lt;td&gt;0.4&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+      &lt;td&gt;0.6&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;B&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+      &lt;td&gt;0.8&lt;/td&gt;
+      &lt;td&gt;0.9&lt;/td&gt;
+      &lt;td&gt;0.2&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;可以看到現在每一個日期變成了一個column，沒有辦法輕易的指定橫軸、縱軸就將圖畫出來，不過我們可以稍微調整一下資料，使之變成像”&lt;a href=&quot;#橫軸是其中一個欄位&quot;&gt;橫軸是其中一個欄位&lt;/a&gt;“那樣好指定的長相，整個程式碼長得像底下這樣。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setNames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data.frame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ncol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rownames&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;melt_t_data&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;melt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;id.vars&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ggplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;melt_t_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;geom_line&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;aes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;首先，我們得要將資料透過&lt;code class=&quot;highlighter-rouge&quot;&gt;t()&lt;/code&gt;轉置一下，把日期變成row，於此同時把column name設成A、B，也就是程式碼中的第一行，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;data[,2ncol(data)]&lt;/code&gt;的意思是選取&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;裡面的第二個column至最後一個column(R是1 base的語言)，也就是從&lt;strong&gt;date20200101&lt;/strong&gt;選到&lt;strong&gt;date20200105&lt;/strong&gt;，同理，&lt;code class=&quot;highlighter-rouge&quot;&gt;data[,1]&lt;/code&gt;就是選取&lt;strong&gt;type&lt;/strong&gt;這個column。&lt;/p&gt;
+
+&lt;p&gt;在經過第一行的轉換以後，原先的dataframe會變成底下的樣子。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;A&lt;/th&gt;
+      &lt;th&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200101&lt;/td&gt;
+      &lt;td&gt;0.3&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200102&lt;/td&gt;
+      &lt;td&gt;0.4&lt;/td&gt;
+      &lt;td&gt;0.8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200103&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+      &lt;td&gt;0.9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200104&lt;/td&gt;
+      &lt;td&gt;0.6&lt;/td&gt;
+      &lt;td&gt;0.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200105&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;雖然變得比較像可以直接指定了，但目前還沒有辦法直接把所有的日期都選取起來，也就是日期還不是一個column，不過我們可以透過&lt;code class=&quot;highlighter-rouge&quot;&gt;t_data[&quot;date&quot;] = rownames(t_data)&lt;/code&gt;來新增一個column &lt;strong&gt;date&lt;/strong&gt;，其中每個row都是日期。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;A&lt;/th&gt;
+      &lt;th&gt;B&lt;/th&gt;
+      &lt;th&gt;date&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200101&lt;/td&gt;
+      &lt;td&gt;0.3&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+      &lt;td&gt;date20200101&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200102&lt;/td&gt;
+      &lt;td&gt;0.4&lt;/td&gt;
+      &lt;td&gt;0.8&lt;/td&gt;
+      &lt;td&gt;date20200102&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200103&lt;/td&gt;
+      &lt;td&gt;0.5&lt;/td&gt;
+      &lt;td&gt;0.9&lt;/td&gt;
+      &lt;td&gt;date20200103&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;date20200104&lt;/td&gt;
+      &lt;td&gt;0.6&lt;/td&gt;
+      &lt;td&gt;0.2&lt;/td&gt;
+      &lt;td&gt;date20200104&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Date20200105&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+      &lt;td&gt;0.7&lt;/td&gt;
+      &lt;td&gt;date20200105&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;至此我們成功讓我們的資料長得像”&lt;a href=&quot;#橫軸是其中一個欄位&quot;&gt;橫軸是其中一個欄位&lt;/a&gt;“中的資料那樣，接著一樣透過&lt;code class=&quot;highlighter-rouge&quot;&gt;melt()&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;ggplot()&lt;/code&gt;便能將圖畫出來了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;line-transpose.png&quot; alt=&quot;Line Transpose&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;文氏圖&quot;&gt;文氏圖&lt;/h2&gt;
+
+&lt;p&gt;文氏圖很適合用來觀察集合的關係，而R也有套件能夠幫助你很容易地畫出簡單的文氏圖。&lt;/p&gt;
+
+&lt;h3 id=&quot;安裝套件&quot;&gt;安裝套件&lt;/h3&gt;
+
+&lt;p&gt;在R裡面可以幫忙畫文氏圖的套件叫&lt;code class=&quot;highlighter-rouge&quot;&gt;VennDiagram&lt;/code&gt;，可以使用底下的指令安裝並引入。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;install.packages&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;VennDiagram&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;library&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;VennDiagram&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;使用venndiagram畫出文氏圖&quot;&gt;使用VennDiagram畫出文氏圖&lt;/h3&gt;
+
+&lt;p&gt;假如我們今天想要觀察兩個集合&lt;strong&gt;A&lt;/strong&gt;、&lt;strong&gt;B&lt;/strong&gt;的關係，我們也已經知道兩者的大小和交集如下。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;A&lt;/th&gt;
+      &lt;th&gt;B&lt;/th&gt;
+      &lt;th&gt;Intersection&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;100&lt;/td&gt;
+      &lt;td&gt;40&lt;/td&gt;
+      &lt;td&gt;15&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;使用的方式很簡單，只要把數字填進去就能夠將圖畫出來了。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;grid.newpage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw.pairwise.venn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;area1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;area2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cross.area&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;blue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;venn-raw.png&quot; alt=&quot;Venn Raw&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;加上百分比和修改字體大小&quot;&gt;加上百分比和修改字體大小&lt;/h4&gt;
+
+&lt;p&gt;如果想要在圖裡面加上百分比的話，只需要多加&lt;code class=&quot;highlighter-rouge&quot;&gt;print.mode=c(&quot;raw&quot;, &quot;percent&quot;)&lt;/code&gt;就行。&lt;/p&gt;
+
+&lt;p&gt;至於字體的大小，可以透過&lt;code class=&quot;highlighter-rouge&quot;&gt;cex&lt;/code&gt;調整數字字體大小、&lt;code class=&quot;highlighter-rouge&quot;&gt;cat.cex&lt;/code&gt;調整類別的字體大小。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;grid.newpage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw.pairwise.venn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;area1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;area2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cross.area&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;blue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print.mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;raw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;percent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cat.cex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;venn-percent.png&quot; alt=&quot;Venn Percent&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;將數字加上逗號&quot;&gt;將數字加上逗號&lt;/h4&gt;
+
+&lt;p&gt;如果今天的數字很大的話，我們通常會希望在數字裡面加上逗號，方便我們去看這個數字是幾百萬還是幾千萬，假如我們的資料是底下這樣。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;A&lt;/th&gt;
+      &lt;th&gt;B&lt;/th&gt;
+      &lt;th&gt;Intersection&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;12345678&lt;/td&gt;
+      &lt;td&gt;87654321&lt;/td&gt;
+      &lt;td&gt;5647382&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;這邊的做法比較tricky一些，因為VennDiagram並沒有辦法直接多加一個參數就能將逗號塞進去，我們需要自己手動放入。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw.pairwise.venn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;area1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12345678&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;area2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;87654321&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cross.area&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5647382&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;blue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print.mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;raw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;percent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在上面的指令跑完以後可以透過&lt;code class=&quot;highlighter-rouge&quot;&gt;View(plot)&lt;/code&gt;看到其&lt;code class=&quot;highlighter-rouge&quot;&gt;[[5]]&lt;/code&gt;到&lt;code class=&quot;highlighter-rouge&quot;&gt;[[7]]&lt;/code&gt;的&lt;code class=&quot;highlighter-rouge&quot;&gt;label&lt;/code&gt;裡面寫的資訊是會顯示在圖裡的字串。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;plot-view.png&quot; alt=&quot;View Plot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;是故我們只需要去修改&lt;code class=&quot;highlighter-rouge&quot;&gt;label&lt;/code&gt;裡面的值，把逗號塞進去再畫出來就行了。&lt;/p&gt;
+
+&lt;div class=&quot;language-R highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw.pairwise.venn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;area1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;12345678&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;area2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;87654321&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cross.area&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5647382&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;blue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;red&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;print.mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;raw&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;percent&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strsplit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;\n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;paste&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;as.numeric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;big.mark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;,&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scientific&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]][&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sep&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;\n&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid.newpage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid.draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;在上面的程式碼中，我們寫了一個for迴圈去改&lt;code class=&quot;highlighter-rouge&quot;&gt;[[5]]&lt;/code&gt;到&lt;code class=&quot;highlighter-rouge&quot;&gt;[[7]]&lt;/code&gt;的值，我們將&lt;code class=&quot;highlighter-rouge&quot;&gt;label&lt;/code&gt;拿出來並以&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;切成數字部分和百分比的部分，接著把數字部分塞逗號進去以後再與百分比部分接起來，最後再將圖畫出來，就達成我們想要的效果了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;venn-comma.png&quot; alt=&quot;Venn Comma&quot; /&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</summary></entry><entry><title type="html">Playing Atari with Deep Reinforcement Learning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/" rel="alternate" type="text/html" title="Playing Atari with Deep Reinforcement Learning" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/">&lt;p&gt;在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -934,115 +1327,4 @@ endif
 
 &lt;p&gt;想要查看檔案的相對路徑時，可以按下&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Ctrl-G&amp;gt;&lt;/code&gt;，但過不久就會消失。&lt;/p&gt;
 
-&lt;p&gt;若是想要看絕對路徑的話，按下&lt;code class=&quot;highlighter-rouge&quot;&gt;1 &amp;lt;Ctrl-G&amp;gt;&lt;/code&gt;，vim會等你按下enter以後再把路徑隱藏。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">這邊記錄一下我目前所使用的Vim plugin以及它們的功能。</summary></entry><entry><title type="html">Gradient Descent和Learning Rate</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate/" rel="alternate" type="text/html" title="Gradient Descent和Learning Rate" /><published>2020-03-07T00:00:00+00:00</published><updated>2020-03-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/07/gradient-descent-and-learning-rate/">&lt;p&gt;稍微講一下Machine Learning當中經常被使用的gradient descent的概念以及調整learning rate的方法。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;gradient-descent的概念&quot;&gt;Gradient Descent的概念&lt;/h2&gt;
-
-&lt;p&gt;在各種Machine Learning的paper當中，常可以看到作者們都說他們是用gradient descent來找到model的參數，那gradient descent是什麼呢？&lt;/p&gt;
-
-&lt;p&gt;假如我們今天的loss function是一個二次函數&lt;script type=&quot;math/tex&quot;&gt;\mathcal{L}(x)=x^2&lt;/script&gt;，其中&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;可以想作是model的參數，而我們的目標是希望找到一個&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;可以讓loss function可以最小。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;x-square.png&quot; alt=&quot;x square&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在訓練一開始的時候，我們會隨機產生model的參數，假設我們這次產生的參數為6，也就是&lt;script type=&quot;math/tex&quot;&gt;x=6&lt;/script&gt;，這時所得到的loss為&lt;script type=&quot;math/tex&quot;&gt;\mathcal{L}(6)=36&lt;/script&gt;，我們希望能調整一下參數&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;來讓loss下降一些，而使用的方法便是對loss function做微分，來得到目前在這個位置(&lt;script type=&quot;math/tex&quot;&gt;x=6&lt;/script&gt;)，loss function的趨勢是往哪邊走。&lt;/p&gt;
-
-&lt;p&gt;對loss function微分並帶入現在的位置我們可以得到&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L}'(x)=2x,\ \mathcal{L}'(6)=12&lt;/script&gt;
-
-&lt;p&gt;意思是在&lt;script type=&quot;math/tex&quot;&gt;x=6&lt;/script&gt;的趨勢(斜率)是正的，當&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;增加的話，loss function的值也會隨之增加，反之便會減少，所以我們會將&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;去減掉其斜率來去尋找最小值，這時通常會再乘上一個人工設定的參數(learning rate) &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;，以避免一次更新參數的幅度過大，就變成了常見的gradient descent的公式&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;x\leftarrow x-\alpha\bigtriangledown_x\mathcal{L}(x)&lt;/script&gt;
-
-&lt;p&gt;假設我們這邊設定&lt;script type=&quot;math/tex&quot;&gt;\alpha=0.6&lt;/script&gt;，那經過一次更新以後，我們的參數就會變成&lt;script type=&quot;math/tex&quot;&gt;x=6-0.6*12=-1.2&lt;/script&gt;，再經過一次以後，參數會變成&lt;script type=&quot;math/tex&quot;&gt;x=-1.2-0.6*(-2.4)=0.24&lt;/script&gt;，隨著不斷的更新，參數也會越來越接近會讓loss function最小的&lt;script type=&quot;math/tex&quot;&gt;x=0&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;值得一提的是，這個人工設定的參數&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;其實是很重要的，有可能會決定這個model會不會收斂，舉例來說，假設現在&lt;script type=&quot;math/tex&quot;&gt;x=3&lt;/script&gt;且&lt;script type=&quot;math/tex&quot;&gt;\alpha=1&lt;/script&gt;，經過一次更新以後會得到&lt;script type=&quot;math/tex&quot;&gt;x=3-1*6=-3&lt;/script&gt;，再次更新會得到&lt;script type=&quot;math/tex&quot;&gt;x=-3-1*(-6)=3&lt;/script&gt;，使得參數不斷地在&lt;script type=&quot;math/tex&quot;&gt;3&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;-3&lt;/script&gt;之間震盪，不會收斂到最小值0，所以底下將會介紹一些方法來適時的調整learning rate，讓model比較有機會可以收斂到最小值。&lt;/p&gt;
-
-&lt;h2 id=&quot;learning-rate的調整&quot;&gt;Learning Rate的調整&lt;/h2&gt;
-
-&lt;p&gt;底下的&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;代表model的參數、&lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;為learning rate、&lt;script type=&quot;math/tex&quot;&gt;\bigtriangledown_\theta&lt;/script&gt;是對model參數作微分、&lt;script type=&quot;math/tex&quot;&gt;\mathcal{L}_\theta(x)&lt;/script&gt;是指在model參數為&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;的情況下，對model輸入&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;，loss function算出來的值。&lt;/p&gt;
-
-&lt;h3 id=&quot;stochastic-gradient-descent&quot;&gt;Stochastic Gradient Descent&lt;/h3&gt;
-
-&lt;p&gt;最一般的gradient descent，learning rate為人工設定的固定常數。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta\leftarrow\theta-\alpha \bigtriangledown_\theta \mathcal{L}_\theta(x)&lt;/script&gt;
-
-&lt;p&gt;而之所以加上&lt;strong&gt;Stochastic&lt;/strong&gt;的關係是因為，在每次更新的時候是使用小批次(mini-batch)的方式，所以多了一些隨機的成份在裡面。&lt;/p&gt;
-
-&lt;h3 id=&quot;momentum&quot;&gt;Momentum&lt;/h3&gt;
-
-&lt;p&gt;Momentum的概念是保留前面所算出來的gradient，像是一個小球滾下山坡，並不會到一個凹槽就停住，會有從山坡上滾下所帶來的動能，而Stochastic Gradient Descent所算出來的gradient只與目前當下的參數有關，相比之下較容易卡進local minimum。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;v_t=\gamma v_{t-1}+\alpha\bigtriangledown_\theta\mathcal{L}_\theta(x)\\ \theta\leftarrow\theta-v_t&lt;/script&gt;
-
-&lt;p&gt;這邊的&lt;script type=&quot;math/tex&quot;&gt;v_{t-1}&lt;/script&gt;可以想成是前面gradient的累積，而&lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt;是一個參數，通常會設成&lt;script type=&quot;math/tex&quot;&gt;0.9&lt;/script&gt;，讓動能(之前gradient的影響)隨著時間遞減。&lt;/p&gt;
-
-&lt;h3 id=&quot;nesterov-accelerated-gradient-nag&quot;&gt;Nesterov Accelerated Gradient (NAG)&lt;/h3&gt;
-
-&lt;p&gt;概念與Momentum相似，只是多預測了一步，來達到抄捷徑的效果。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;v_t=\gamma v_{t-1}+\alpha\bigtriangledown_\theta\mathcal{L}_{\theta-\gamma v_{t-1}}(x)\\ \theta\leftarrow\theta-v_t&lt;/script&gt;
-
-&lt;p&gt;根據先前的gradient &lt;script type=&quot;math/tex&quot;&gt;v_{t-1}&lt;/script&gt;，我們可以預期model的參數&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;應該會跑到&lt;script type=&quot;math/tex&quot;&gt;\theta-\gamma v_{t-1}&lt;/script&gt;附近的地方，而在&lt;script type=&quot;math/tex&quot;&gt;\theta-\gamma v_{t-1}&lt;/script&gt;會算出新的gradient，所以我們的目標應該直接設在&lt;strong&gt;”&lt;script type=&quot;math/tex&quot;&gt;\theta-\gamma v_{t-1}&lt;/script&gt;之後要去的位置”&lt;/strong&gt;，來加速訓練的速度。&lt;/p&gt;
-
-&lt;h3 id=&quot;adagrad&quot;&gt;Adagrad&lt;/h3&gt;
-
-&lt;p&gt;在前面的Momentum和Nesterov Accelerated Gradient都是設好固定的learning rate，然而在訓練的過程當中通常會希望剛開始訓練時的learning rate較大，到後面調降learning rate的來找到極值，而Adagrad就是想要去動態的調整learning rate，其中的Ada是指Adaptive的意思。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta\leftarrow\theta-\frac{\alpha}{\sqrt{G_t+\epsilon}}\bigtriangledown_\theta\mathcal{L}_\theta(x)&lt;/script&gt;
-
-&lt;p&gt;上面的&lt;script type=&quot;math/tex&quot;&gt;G_t&lt;/script&gt;指的是從第一次update到現在所有gradient的平方和，而&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;是避免除以0而加的一個常數，可以從式子看出來，剛開始的時候，累積的gradient很少，所以learning rate較大，而後gradient慢慢累積，learning rate就會減小了。&lt;/p&gt;
-
-&lt;h3 id=&quot;adadelta&quot;&gt;Adadelta&lt;/h3&gt;
-
-&lt;p&gt;雖說Adagrad可以動態的調整learning rate，但是其調整的方式只能不斷的減小，沒辦法在所有訓練的狀況下都有好的結果，而Adadelta就是想要來解決learning rate只能縮小的問題。&lt;/p&gt;
-
-&lt;p&gt;在Adadelta的算法裡，它並不會把所有過去到現在的gradient都拿進來算平方和，而是用sliding window的方式取&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;個，並且在算平均時，是像Momentum那樣，使用decaying average&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;E[g^2]_t=\gamma E[g^2]_{t-1}+(1-\gamma)g_t^2\\ \theta\leftarrow\theta-\frac{\alpha}{\sqrt{E[g^2]_t+\epsilon}}g_t&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;E[g^2]_t&lt;/script&gt;指的是到時間&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;為止的gradient平方和，而&lt;script type=&quot;math/tex&quot;&gt;g_t&lt;/script&gt;是目前這個時間點&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;的gradient，接著作者又稍微延伸了一下，試著不要設定learning rate &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt;。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\triangle \theta_t=-\frac{RMS[\triangle\theta]_{t-1}}{RMS[g]_t}g_t\\ \theta_{t+1}=\theta_t+\triangle\theta_t&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;RMS&lt;/script&gt;是root, mean, square，也就是平方相加開根號，這個式子的概念可以想成，我這次的update幅度跟之前幾次的update幅度的平均的比值來當作learning rate。&lt;/p&gt;
-
-&lt;h3 id=&quot;rmsprop&quot;&gt;RMSprop&lt;/h3&gt;
-
-&lt;p&gt;RMSprop好像是同時期與Adadelta發展出來的，概念與Adadelta類似，可以說是Adadelta的一個特例。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta_{t+1}=\theta_t-\frac{\alpha}{\sqrt{E[g^2]_t+\epsilon}}g_t&lt;/script&gt;
-
-&lt;h3 id=&quot;adaptive-moment-estimation-adam&quot;&gt;Adaptive Moment Estimation (Adam)&lt;/h3&gt;
-
-&lt;p&gt;前面所介紹的Momentum會在計算參數更新時，考慮前一次更新的方向，而RMSprop會根據gradient的大小對learning rate進行調整，這邊的Adam則是兩者的集大成，將兩個東西合併在一起。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;m_t=\beta_1m_{t-1}+(1-\beta_1)g_t\\ v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2&lt;/script&gt;
-
-&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;m_t&lt;/script&gt;為Momentum的部分，&lt;script type=&quot;math/tex&quot;&gt;v_t&lt;/script&gt;為RMSprop的部分，而作者發現當&lt;script type=&quot;math/tex&quot;&gt;\beta_1&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;\beta_2&lt;/script&gt;接近1的時候會有一些bias，所以有稍微修正一些&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat m_t=\frac{m_t}{1-\beta_1^t}\\ \hat v_t=\frac{v_t}{1-\beta_2^t}&lt;/script&gt;
-
-&lt;p&gt;實際上更新的式子如下&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta_{t+1}=\theta_t-\frac{\alpha}{\sqrt{\hat v_t}+\epsilon}\hat m_t&lt;/script&gt;
-
-&lt;h3 id=&quot;adamax&quot;&gt;Adamax&lt;/h3&gt;
-
-&lt;p&gt;在前面Adam裡面，調整learning rate的時候是使用&lt;script type=&quot;math/tex&quot;&gt;\mathcal{l}_2-norm&lt;/script&gt;，而Adam的作者發現&lt;script type=&quot;math/tex&quot;&gt;\mathcal{l}_{\infty}-norm&lt;/script&gt;也蠻好用的，所以嘗試放在更新的式子中&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;u_t=\beta_2^\infty v_{t-1}+(1-\beta_2^\infty)\vert g_t\vert^\infty=\max(\beta_2\cdot v_{t-1},\vert g_t\vert)\\ \theta_{t+1}=\theta_t-\frac{\alpha}{u_t}\hat m_t&lt;/script&gt;
-
-&lt;h3 id=&quot;nadam&quot;&gt;Nadam&lt;/h3&gt;
-
-&lt;p&gt;Adam原先所使用的Mometum為最原始版本的，而Nadam便是使用NAG版本的Momentum，詳細的推倒和公式可以看考資料中的第二個連結。&lt;/p&gt;
-
-&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/@chih.sheng.huang821/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E5%9F%BA%E7%A4%8E%E6%95%B8%E5%AD%B8-%E4%B8%89-%E6%A2%AF%E5%BA%A6%E6%9C%80%E4%BD%B3%E8%A7%A3%E7%9B%B8%E9%97%9C%E7%AE%97%E6%B3%95-gradient-descent-optimization-algorithms-b61ed1478bd7&quot;&gt;機器/深度學習-基礎數學(三):梯度最佳解相關算法(gradient descent optimization algorithms)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ruder.io/optimizing-gradient-descent/index.html&quot;&gt;An overview of gradient descent optimization algorithms&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html">稍微講一下Machine Learning當中經常被使用的gradient descent的概念以及調整learning rate的方法。</summary></entry></feed>
+&lt;p&gt;若是想要看絕對路徑的話，按下&lt;code class=&quot;highlighter-rouge&quot;&gt;1 &amp;lt;Ctrl-G&amp;gt;&lt;/code&gt;，vim會等你按下enter以後再把路徑隱藏。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">這邊記錄一下我目前所使用的Vim plugin以及它們的功能。</summary></entry></feed>

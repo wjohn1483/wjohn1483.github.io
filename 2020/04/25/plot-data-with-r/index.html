@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Playing Atari with Deep Reinforcement Learning - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>用R來作圖 - wjohn1483.github.io</title>
 
-<meta name="description" content="在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/04/25/plot-data-with-r/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -278,89 +278,417 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Playing Atari with Deep Reinforcement Learning</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>用R來作圖</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-04-19-playing-atari-with-deep-reinforcement-learning/2020-04-19-playing-atari-with-deep-reinforcement-learning.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Playing Atari with Deep Reinforcement Learning"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-04-25-plot-data-with-r/2020-04-25-plot-data-with-r.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="用R來作圖"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Reinforcement-Learning"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Tool">Tool</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 25, 2020</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-25T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</p>
+<div class="article__content" itemprop="articleBody"><p>在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</p>
 
 <!--more-->
 
-<h2 id="簡介">簡介</h2>
+<h2 id="安裝r和rstudio">安裝R和RStudio</h2>
 
-<p>在<a href="https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf">這篇paper</a>當中，作者利用Deep Reinforcement Learning的方法，讓機器學會打Atari小遊戲，並成功打破人類的紀錄，立下了RL的里程碑。</p>
+<p>可以在<a href="http://lib.stat.cmu.edu/R/CRAN/">CMU的網站上</a>下載R的安裝檔，並在<a href="https://rstudio.com/products/rstudio/download/">RStudio</a>的官網上下載RStudio，在完成這兩件事情以後，應該就能順利的在電腦上使用RStudio撰寫R的script了。</p>
 
-<h2 id="方法">方法</h2>
+<h2 id="資料的讀寫">資料的讀寫</h2>
 
-<h3 id="背景介紹">背景介紹</h3>
+<p>在準備好環境以後，接下來就是去將資料讀取進來，而在讀取的部分只需要打上<code class="highlighter-rouge">read.csv()</code>就能輕鬆的把csv檔讀進來了。</p>
 
-<p>在進入到方法之前，先介紹一下基本的設定以及Value function和Q function，在底下model訓練的時候會被用到。</p>
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"[path to your csv file]"</span><span class="p">)</span><span class="w">
+</span><span class="n">summary</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
+</span><span class="n">View</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
 
-<h4 id="基本設定">基本設定</h4>
+<p>而且R還有提供一些貼心的function，像是<code class="highlighter-rouge">summary()</code>：可以幫你簡單的總結一下這分檔案的基本資料、<code class="highlighter-rouge">View()</code>：可以在RStudio裡面以表格的方式打開這個csv檔，方便人們閱覽。</p>
 
-<p>在遊戲中我們可以說遊戲本身是一個環境<script type="math/tex">\mathcal{E}</script>，而玩家這個角色可以稱之為actor，玩家們所能觀測到的遊戲畫面稱之為state，而角色所能夠採取的動作，像是上下左右移動、射擊等等，稱之為action。</p>
+<h2 id="折線圖">折線圖</h2>
 
-<p>當我們現在觀測到遊戲畫面<script type="math/tex">s_t</script>，我們可以採取一個動作<script type="math/tex">a_t</script>，將<script type="math/tex">(s_t,a_t)</script>傳送給環境<script type="math/tex">\mathcal{E}</script>後會得到新的遊戲畫面<script type="math/tex">s_{t+1}</script>以及該動作的reward <script type="math/tex">r_t</script>，這邊的reward可以想成是遊戲分數上升了多少。</p>
+<p>若今天的資料形式適合畫折線圖來觀察趨勢的話，可以使用<code class="highlighter-rouge">ggplot()</code>來幫助你畫折線圖。</p>
 
-<h4 id="value-function">Value Function</h4>
+<h3 id="橫軸是其中一個欄位">橫軸是其中一個欄位</h3>
 
-<p>Value function做的事情是去判斷以現在的policy <script type="math/tex">\pi</script>，處在現在這個state <script type="math/tex">s_t</script>最終的cumulated reward期望值會是多少，policy可以想做是這個玩家的思維或是操作，如果是某個玩家在現在的處境下，所能得到最終分數會是多少的感覺，寫作<script type="math/tex">V^\pi(s)</script>。</p>
+<p>假設今天的資料<code class="highlighter-rouge">test.csv</code>長得像底下這樣。</p>
 
-<p>而value function的求法主要有兩種，分別是Monte-Carlo (MC)和Temporal-Difference (TD)。MC的方式就是讓玩家繼續玩到最後，並記錄他最終的cumulated reward，回頭再統計一下每個state的cumulated reward，假如說玩家<script type="math/tex">\pi</script>，在第一次遊玩的過程中，經過了state <script type="math/tex">s</script>，最終得到的遊戲分數是<script type="math/tex">G_a</script>，第二次遊玩也同樣經過了state <script type="math/tex">s</script>，但得到的遊戲分數是<script type="math/tex">G_b</script>，那麼state <script type="math/tex">s</script>的value function便可寫作<script type="math/tex">V^\pi(s)=(G_a+G_b)/2</script>。而TD的作法為<script type="math/tex">V^\pi(s_{t+1})=V^\pi(s_t)+r_t</script>，概念是我現在這個state <script type="math/tex">s_t</script>的value function所算出來的值，跟我下一個state <script type="math/tex">s_{t+1}</script>的值，應該只差了一個reward <script type="math/tex">r_t</script>而已。</p>
+<table>
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>20200101</td>
+      <td>0.3</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>20200102</td>
+      <td>0.4</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <td>20200103</td>
+      <td>0.5</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <td>20200104</td>
+      <td>0.6</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <td>20200105</td>
+      <td>0.7</td>
+      <td>0.7</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>MC和TD各有各的缺點，像是MC的缺點是它的variance比較大，每次遊戲在遊玩的時候會有一些隨機性存在，使得state在統計它的cumulated reward時variance不小，而TD雖然一次只看一步的reward，但它需要擔心的是value function估不準的問題。</p>
+<h4 id="單一變數作圖">單一變數作圖</h4>
 
-<h4 id="q-function">Q-Function</h4>
+<p>如果我們希望以日期為橫軸、A的值作為縱軸畫出來的話，直接打上底下的程式碼就行。</p>
 
-<p>Q-function和value function做的事情很像，但這邊Q-function還多考慮了採取的動作，也就是以現在的policy <script type="math/tex">\pi</script>，處在state <script type="math/tex">s_t</script>，採取action <script type="math/tex">a_t</script>，所能得到的cumulated reward期望值是多少，寫作<script type="math/tex">Q^\pi(s, a)</script>。</p>
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"test.csv"</span><span class="p">)</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">A</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
 
-<h3 id="deep-q-network">Deep Q-Network</h3>
+<p><img src="line-a.png" alt="Line A" /></p>
 
-<p>這邊DQN想要做的事情，便是去尋找Q function，在看到一個遊戲畫面<script type="math/tex">s</script>的時候，去選擇<script type="math/tex">Q^\pi(s, a)</script>最大的action <script type="math/tex">a</script>，來當作是policy <script type="math/tex">\pi</script>，而<script type="math/tex">Q^\pi(s,a)</script>的算法是使用TD的算法。</p>
+<p>上面的程式碼中，首先先引入<code class="highlighter-rouge">ggplot2</code>這個畫圖的library，再來<code class="highlighter-rouge">ggplot(data)</code>可以想成是我現在想要以<code class="highlighter-rouge">data</code>這個dataframe作圖，而我想要的形式是線，亦即<code class="highlighter-rouge">geom_line()</code>，而<code class="highlighter-rouge">aes()</code>宣告了這條線的x、y軸的資料要從哪一個column中做選取。</p>
 
-<script type="math/tex; mode=display">Q^*(s,a)=\mathbb{E}_{s'\sim\mathcal{E}}\left[r+\gamma\max\limits_{a'}Q^*(s',a')\vert s,a\right]</script>
+<h4 id="多變數作圖">多變數作圖</h4>
 
-<p>這邊的<script type="math/tex">s'</script>、<script type="math/tex">a'</script>代表的是下一個時間點的state和action，底下是整個DQN的algorithm。</p>
+<p>倘若想要以日期作為橫軸、A和B的值作為縱軸畫在同一張圖片上，並以不同的顏色區分開來，可以參考底下的程式碼。</p>
 
-<p><img src="dqn-algorithm.png" alt="DQN Algorithm" /></p>
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">reshape2</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"test.csv"</span><span class="p">)</span><span class="w">
+</span><span class="n">melt_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">melt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">id.vars</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">melt_data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">variable</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
 
-<h4 id="epsilon-greedy"><script type="math/tex">\epsilon</script>-greedy</h4>
+<p><img src="line-ab.png" alt="Line A, B" /></p>
 
-<p>在演算法當中可以看到，在第二個迴圈一開始，會以<script type="math/tex">\epsilon</script>的機率去隨機選擇一個動作<script type="math/tex">a_t</script>，目的是為了要去探索環境中的各種可能性，假如我們每次都選<script type="math/tex">a_t=\max\limits_{a} Q(s, a)</script>的話，很容易會讓model做出同樣的選擇，有可能有一些可以拿高分的可能性就被忽略了。</p>
+<p>在這邊我們多引入了一個叫<code class="highlighter-rouge">reshape2</code>的library幫我們把dataframe melt一下，<code class="highlighter-rouge">melt()</code>這個function所做的事情是把dataframe的資料以我們所設定好的column打散。</p>
 
-<h4 id="experience-replay">Experience Replay</h4>
+<p>以<code class="highlighter-rouge">melt(data, id.vars="date")</code>這個例子來說，我們會固定<strong>date</strong>這個column，將<strong>A</strong>、<strong>B</strong>這兩個column的資料打散，想法上是去看說<strong>date</strong>這個column有個值是<em>20200101</em>，其對應到的column <strong>A</strong>的值是<em>0.3</em>，對應到<strong>B</strong>的值是<em>0.5</em>，所以會分別產生<code class="highlighter-rouge">(20200101, A, 0.3)</code>和<code class="highlighter-rouge">(20200101, B, 0.5)</code>這兩筆資料，並持續進行下去直到<strong>date</strong>的所有值都看過，也因此經過<code class="highlighter-rouge">melt()</code>以後，我們可以得到以下的dataframe。</p>
 
-<p>在演算法的一開始有一個replay memory <script type="math/tex">\mathcal{D}</script>，其大小為<script type="math/tex">N</script>，這個memory的目的是去紀錄與環境互動的結果，可以看到在第二個迴圈裡，會把<script type="math/tex">(\phi_t, a_t, r_t, \phi_{t+1})</script>，放進memory <script type="math/tex">\mathcal{D}</script>中，而在訓練的時候會從memory裡面sample一個batch來做訓練。</p>
+<table>
+  <thead>
+    <tr>
+      <th>date</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>20200101</td>
+      <td>A</td>
+      <td>0.3</td>
+    </tr>
+    <tr>
+      <td>20200102</td>
+      <td>A</td>
+      <td>0.4</td>
+    </tr>
+    <tr>
+      <td>20200103</td>
+      <td>A</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>20200104</td>
+      <td>A</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <td>20200105</td>
+      <td>A</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <td>20200101</td>
+      <td>B</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>20200102</td>
+      <td>B</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <td>20200103</td>
+      <td>B</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <td>20200104</td>
+      <td>B</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <td>20200105</td>
+      <td>B</td>
+      <td>0.7</td>
+    </tr>
+  </tbody>
+</table>
 
-<h4 id="target-network">Target Network</h4>
+<p>值得一提的是，<code class="highlighter-rouge">melt()</code>可以指定新的欄位名稱，使你在作圖時的橫軸、縱軸能用自定義的名稱。舉例來說，我想要將<strong>variable</strong>換成type、<strong>value</strong>換成score的話，可以參考底下程式碼。</p>
 
-<p>在式(1)和上面的演算法中，我們可以看到，這個DQN的目標是能夠精確的預估出<script type="math/tex">r+\gamma\max\limits_{a'} Q(s', a';\theta)</script>，但這個目標裡面又包含了自己這個network的output，這樣在訓練起來是比較不穩定的，為此，在實作上通常會用另一個network <script type="math/tex">Q'</script>來放進objective function，亦即model要去預估的是<script type="math/tex">r+\gamma\max\limits_{a'}Q'(s',a';\theta)</script>，這個network <script type="math/tex">Q'</script>其實就是前幾步的model <script type="math/tex">Q</script>，更具體的說，當<script type="math/tex">Q</script>以<script type="math/tex">Q'</script>為目標訓練一陣子以後，會複製一份<script type="math/tex">Q</script>的參數當作<script type="math/tex">Q'</script>的參數，並將之固定以後，繼續訓練<script type="math/tex">Q</script>的參數。</p>
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">melt_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">melt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">id.vars</span><span class="o">=</span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="n">variable.name</span><span class="o">=</span><span class="s2">"type"</span><span class="p">,</span><span class="w"> </span><span class="n">value.name</span><span class="o">=</span><span class="s2">"score"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
 
-<h2 id="實驗">實驗</h2>
+<p>有了這樣子的dataframe以後，就可以填入至<code class="highlighter-rouge">aes()</code>裡面，變成<code class="highlighter-rouge">aes(x=date, y=value, group=variable, color=variable)</code>，告訴它我們想要以<strong>date</strong>為橫軸<strong>value</strong>為縱軸，其中每個值有它所屬的group，以<strong>variable</strong>為標示，而我希望每個group以不同顏色標示，如此便能畫出我們所想要的圖了。</p>
 
-<p><img src="dqn-experiments.png" alt="DQN Experiments" /></p>
+<h3 id="橫軸不是其中一個欄位">橫軸”不”是其中一個欄位</h3>
 
-<p>在表中可以看到，DQN在一些遊戲上超過了人類可以達到的分數。</p>
+<p>如果說今天手上的資料長成底下這樣。</p>
 
-<h2 id="結論">結論</h2>
+<table>
+  <thead>
+    <tr>
+      <th>type</th>
+      <th>date20200101</th>
+      <th>date20200102</th>
+      <th>date20200103</th>
+      <th>date20200104</th>
+      <th>date20200105</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>0.3</td>
+      <td>0.4</td>
+      <td>0.5</td>
+      <td>0.6</td>
+      <td>0.7</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>0.5</td>
+      <td>0.8</td>
+      <td>0.9</td>
+      <td>0.2</td>
+      <td>0.7</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。</p>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-04-19T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>可以看到現在每一個日期變成了一個column，沒有辦法輕易的指定橫軸、縱軸就將圖畫出來，不過我們可以稍微調整一下資料，使之變成像”<a href="#橫軸是其中一個欄位">橫軸是其中一個欄位</a>“那樣好指定的長相，整個程式碼長得像底下這樣。</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setNames</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">data</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="n">ncol</span><span class="p">(</span><span class="n">data</span><span class="p">)])),</span><span class="w"> </span><span class="n">data</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="w">
+</span><span class="n">t_data</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rownames</span><span class="p">(</span><span class="n">t_data</span><span class="p">)</span><span class="w">
+</span><span class="n">melt_t_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">melt</span><span class="p">(</span><span class="n">t_data</span><span class="p">,</span><span class="w"> </span><span class="n">id.vars</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="w">
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">melt_t_data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">variable</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>首先，我們得要將資料透過<code class="highlighter-rouge">t()</code>轉置一下，把日期變成row，於此同時把column name設成A、B，也就是程式碼中的第一行，其中<code class="highlighter-rouge">data[,2ncol(data)]</code>的意思是選取<code class="highlighter-rouge">data</code>裡面的第二個column至最後一個column(R是1 base的語言)，也就是從<strong>date20200101</strong>選到<strong>date20200105</strong>，同理，<code class="highlighter-rouge">data[,1]</code>就是選取<strong>type</strong>這個column。</p>
+
+<p>在經過第一行的轉換以後，原先的dataframe會變成底下的樣子。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>date20200101</td>
+      <td>0.3</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <td>date20200102</td>
+      <td>0.4</td>
+      <td>0.8</td>
+    </tr>
+    <tr>
+      <td>date20200103</td>
+      <td>0.5</td>
+      <td>0.9</td>
+    </tr>
+    <tr>
+      <td>date20200104</td>
+      <td>0.6</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <td>date20200105</td>
+      <td>0.7</td>
+      <td>0.7</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>雖然變得比較像可以直接指定了，但目前還沒有辦法直接把所有的日期都選取起來，也就是日期還不是一個column，不過我們可以透過<code class="highlighter-rouge">t_data["date"] = rownames(t_data)</code>來新增一個column <strong>date</strong>，其中每個row都是日期。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>A</th>
+      <th>B</th>
+      <th>date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>date20200101</td>
+      <td>0.3</td>
+      <td>0.5</td>
+      <td>date20200101</td>
+    </tr>
+    <tr>
+      <td>date20200102</td>
+      <td>0.4</td>
+      <td>0.8</td>
+      <td>date20200102</td>
+    </tr>
+    <tr>
+      <td>date20200103</td>
+      <td>0.5</td>
+      <td>0.9</td>
+      <td>date20200103</td>
+    </tr>
+    <tr>
+      <td>date20200104</td>
+      <td>0.6</td>
+      <td>0.2</td>
+      <td>date20200104</td>
+    </tr>
+    <tr>
+      <td>Date20200105</td>
+      <td>0.7</td>
+      <td>0.7</td>
+      <td>date20200105</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>至此我們成功讓我們的資料長得像”<a href="#橫軸是其中一個欄位">橫軸是其中一個欄位</a>“中的資料那樣，接著一樣透過<code class="highlighter-rouge">melt()</code>和<code class="highlighter-rouge">ggplot()</code>便能將圖畫出來了。</p>
+
+<p><img src="line-transpose.png" alt="Line Transpose" /></p>
+
+<h2 id="文氏圖">文氏圖</h2>
+
+<p>文氏圖很適合用來觀察集合的關係，而R也有套件能夠幫助你很容易地畫出簡單的文氏圖。</p>
+
+<h3 id="安裝套件">安裝套件</h3>
+
+<p>在R裡面可以幫忙畫文氏圖的套件叫<code class="highlighter-rouge">VennDiagram</code>，可以使用底下的指令安裝並引入。</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"VennDiagram"</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">VennDiagram</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="使用venndiagram畫出文氏圖">使用VennDiagram畫出文氏圖</h3>
+
+<p>假如我們今天想要觀察兩個集合<strong>A</strong>、<strong>B</strong>的關係，我們也已經知道兩者的大小和交集如下。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>Intersection</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>100</td>
+      <td>40</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>使用的方式很簡單，只要把數字填進去就能夠將圖畫出來了。</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid.newpage</span><span class="p">()</span><span class="w">
+</span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="venn-raw.png" alt="Venn Raw" /></p>
+
+<h4 id="加上百分比和修改字體大小">加上百分比和修改字體大小</h4>
+
+<p>如果想要在圖裡面加上百分比的話，只需要多加<code class="highlighter-rouge">print.mode=c("raw", "percent")</code>就行。</p>
+
+<p>至於字體的大小，可以透過<code class="highlighter-rouge">cex</code>調整數字字體大小、<code class="highlighter-rouge">cat.cex</code>調整類別的字體大小。</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid.newpage</span><span class="p">()</span><span class="w">
+</span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">cat.cex</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="venn-percent.png" alt="Venn Percent" /></p>
+
+<h4 id="將數字加上逗號">將數字加上逗號</h4>
+
+<p>如果今天的數字很大的話，我們通常會希望在數字裡面加上逗號，方便我們去看這個數字是幾百萬還是幾千萬，假如我們的資料是底下這樣。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>Intersection</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>12345678</td>
+      <td>87654321</td>
+      <td>5647382</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>這邊的做法比較tricky一些，因為VennDiagram並沒有辦法直接多加一個參數就能將逗號塞進去，我們需要自己手動放入。</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">12345678</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">87654321</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">5647382</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div>
+
+<p>在上面的指令跑完以後可以透過<code class="highlighter-rouge">View(plot)</code>看到其<code class="highlighter-rouge">[[5]]</code>到<code class="highlighter-rouge">[[7]]</code>的<code class="highlighter-rouge">label</code>裡面寫的資訊是會顯示在圖裡的字串。</p>
+
+<p><img src="plot-view.png" alt="View Plot" /></p>
+
+<p>是故我們只需要去修改<code class="highlighter-rouge">label</code>裡面的值，把逗號塞進去再畫出來就行了。</p>
+
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">12345678</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">87654321</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">5647382</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">))</span><span class="w">
+</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">5</span><span class="o">:</span><span class="m">7</span><span class="p">){</span><span class="w">
+  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strsplit</span><span class="p">(</span><span class="n">plot</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="o">$</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
+  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">a</span><span class="p">[[</span><span class="m">1</span><span class="p">]][</span><span class="m">1</span><span class="p">]),</span><span class="w"> </span><span class="n">big.mark</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span><span class="w"> </span><span class="n">scientific</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">),</span><span class="w"> </span><span class="n">a</span><span class="p">[[</span><span class="m">1</span><span class="p">]][</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
+  </span><span class="n">plot</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="o">$</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">grid.newpage</span><span class="p">()</span><span class="w">
+</span><span class="n">grid.draw</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>在上面的程式碼中，我們寫了一個for迴圈去改<code class="highlighter-rouge">[[5]]</code>到<code class="highlighter-rouge">[[7]]</code>的值，我們將<code class="highlighter-rouge">label</code>拿出來並以<code class="highlighter-rouge">\n</code>切成數字部分和百分比的部分，接著把數字部分塞逗號進去以後再與百分比部分接起來，最後再將圖畫出來，就達成我們想要的效果了。</p>
+
+<p><img src="venn-comma.png" alt="Venn Comma" /></p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-04-25T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</a></div><div class="next"><span>NEXT</span><a href="/2020/04/25/plot-data-with-r/">用R來作圖</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/">Playing Atari with Deep Reinforcement Learning</a></div></div></div>
 
 </div>
 
