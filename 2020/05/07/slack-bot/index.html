@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>用R來作圖 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>如何製作Slack機器人 - wjohn1483.github.io</title>
 
-<meta name="description" content="在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/04/25/plot-data-with-r/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/05/07/slack-bot/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -278,417 +278,178 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>用R來作圖</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>如何製作Slack機器人</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-04-25-plot-data-with-r/2020-04-25-plot-data-with-r.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="用R來作圖"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-05-07-slack-bot/2020-05-07-slack-bot.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="如何製作Slack機器人"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 25, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-25T00:00:00+00:00">
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 07, 2020</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-05-07T00:00:00+00:00">
     <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</p>
+<div class="article__content" itemprop="articleBody"><p>這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。</p>
 
 <!--more-->
 
-<h2 id="安裝r和rstudio">安裝R和RStudio</h2>
-
-<p>可以在<a href="http://lib.stat.cmu.edu/R/CRAN/">CMU的網站上</a>下載R的安裝檔，並在<a href="https://rstudio.com/products/rstudio/download/">RStudio</a>的官網上下載RStudio，在完成這兩件事情以後，應該就能順利的在電腦上使用RStudio撰寫R的script了。</p>
-
-<h2 id="資料的讀寫">資料的讀寫</h2>
-
-<p>在準備好環境以後，接下來就是去將資料讀取進來，而在讀取的部分只需要打上<code class="highlighter-rouge">read.csv()</code>就能輕鬆的把csv檔讀進來了。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"[path to your csv file]"</span><span class="p">)</span><span class="w">
-</span><span class="n">summary</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
-</span><span class="n">View</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<p>而且R還有提供一些貼心的function，像是<code class="highlighter-rouge">summary()</code>：可以幫你簡單的總結一下這分檔案的基本資料、<code class="highlighter-rouge">View()</code>：可以在RStudio裡面以表格的方式打開這個csv檔，方便人們閱覽。</p>
-
-<h2 id="折線圖">折線圖</h2>
-
-<p>若今天的資料形式適合畫折線圖來觀察趨勢的話，可以使用<code class="highlighter-rouge">ggplot()</code>來幫助你畫折線圖。</p>
-
-<h3 id="橫軸是其中一個欄位">橫軸是其中一個欄位</h3>
-
-<p>假設今天的資料<code class="highlighter-rouge">test.csv</code>長得像底下這樣。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>date</th>
-      <th>A</th>
-      <th>B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>20200101</td>
-      <td>0.3</td>
-      <td>0.5</td>
-    </tr>
-    <tr>
-      <td>20200102</td>
-      <td>0.4</td>
-      <td>0.8</td>
-    </tr>
-    <tr>
-      <td>20200103</td>
-      <td>0.5</td>
-      <td>0.9</td>
-    </tr>
-    <tr>
-      <td>20200104</td>
-      <td>0.6</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <td>20200105</td>
-      <td>0.7</td>
-      <td>0.7</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="單一變數作圖">單一變數作圖</h4>
-
-<p>如果我們希望以日期為橫軸、A的值作為縱軸畫出來的話，直接打上底下的程式碼就行。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
-</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"test.csv"</span><span class="p">)</span><span class="w">
-</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">A</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
-
-<p><img src="line-a.png" alt="Line A" /></p>
-
-<p>上面的程式碼中，首先先引入<code class="highlighter-rouge">ggplot2</code>這個畫圖的library，再來<code class="highlighter-rouge">ggplot(data)</code>可以想成是我現在想要以<code class="highlighter-rouge">data</code>這個dataframe作圖，而我想要的形式是線，亦即<code class="highlighter-rouge">geom_line()</code>，而<code class="highlighter-rouge">aes()</code>宣告了這條線的x、y軸的資料要從哪一個column中做選取。</p>
-
-<h4 id="多變數作圖">多變數作圖</h4>
-
-<p>倘若想要以日期作為橫軸、A和B的值作為縱軸畫在同一張圖片上，並以不同的顏色區分開來，可以參考底下的程式碼。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">reshape2</span><span class="p">)</span><span class="w">
-</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"test.csv"</span><span class="p">)</span><span class="w">
-</span><span class="n">melt_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">melt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">id.vars</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="w">
-</span><span class="n">ggplot</span><span class="p">(</span><span class="n">melt_data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">variable</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
-
-<p><img src="line-ab.png" alt="Line A, B" /></p>
-
-<p>在這邊我們多引入了一個叫<code class="highlighter-rouge">reshape2</code>的library幫我們把dataframe melt一下，<code class="highlighter-rouge">melt()</code>這個function所做的事情是把dataframe的資料以我們所設定好的column打散。</p>
-
-<p>以<code class="highlighter-rouge">melt(data, id.vars="date")</code>這個例子來說，我們會固定<strong>date</strong>這個column，將<strong>A</strong>、<strong>B</strong>這兩個column的資料打散，想法上是去看說<strong>date</strong>這個column有個值是<em>20200101</em>，其對應到的column <strong>A</strong>的值是<em>0.3</em>，對應到<strong>B</strong>的值是<em>0.5</em>，所以會分別產生<code class="highlighter-rouge">(20200101, A, 0.3)</code>和<code class="highlighter-rouge">(20200101, B, 0.5)</code>這兩筆資料，並持續進行下去直到<strong>date</strong>的所有值都看過，也因此經過<code class="highlighter-rouge">melt()</code>以後，我們可以得到以下的dataframe。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>date</th>
-      <th>variable</th>
-      <th>value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>20200101</td>
-      <td>A</td>
-      <td>0.3</td>
-    </tr>
-    <tr>
-      <td>20200102</td>
-      <td>A</td>
-      <td>0.4</td>
-    </tr>
-    <tr>
-      <td>20200103</td>
-      <td>A</td>
-      <td>0.5</td>
-    </tr>
-    <tr>
-      <td>20200104</td>
-      <td>A</td>
-      <td>0.6</td>
-    </tr>
-    <tr>
-      <td>20200105</td>
-      <td>A</td>
-      <td>0.7</td>
-    </tr>
-    <tr>
-      <td>20200101</td>
-      <td>B</td>
-      <td>0.5</td>
-    </tr>
-    <tr>
-      <td>20200102</td>
-      <td>B</td>
-      <td>0.8</td>
-    </tr>
-    <tr>
-      <td>20200103</td>
-      <td>B</td>
-      <td>0.9</td>
-    </tr>
-    <tr>
-      <td>20200104</td>
-      <td>B</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <td>20200105</td>
-      <td>B</td>
-      <td>0.7</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>值得一提的是，<code class="highlighter-rouge">melt()</code>可以指定新的欄位名稱，使你在作圖時的橫軸、縱軸能用自定義的名稱。舉例來說，我想要將<strong>variable</strong>換成type、<strong>value</strong>換成score的話，可以參考底下程式碼。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">melt_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">melt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">id.vars</span><span class="o">=</span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="n">variable.name</span><span class="o">=</span><span class="s2">"type"</span><span class="p">,</span><span class="w"> </span><span class="n">value.name</span><span class="o">=</span><span class="s2">"score"</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<p>有了這樣子的dataframe以後，就可以填入至<code class="highlighter-rouge">aes()</code>裡面，變成<code class="highlighter-rouge">aes(x=date, y=value, group=variable, color=variable)</code>，告訴它我們想要以<strong>date</strong>為橫軸<strong>value</strong>為縱軸，其中每個值有它所屬的group，以<strong>variable</strong>為標示，而我希望每個group以不同顏色標示，如此便能畫出我們所想要的圖了。</p>
-
-<h3 id="橫軸不是其中一個欄位">橫軸”不”是其中一個欄位</h3>
-
-<p>如果說今天手上的資料長成底下這樣。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>type</th>
-      <th>date20200101</th>
-      <th>date20200102</th>
-      <th>date20200103</th>
-      <th>date20200104</th>
-      <th>date20200105</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>A</td>
-      <td>0.3</td>
-      <td>0.4</td>
-      <td>0.5</td>
-      <td>0.6</td>
-      <td>0.7</td>
-    </tr>
-    <tr>
-      <td>B</td>
-      <td>0.5</td>
-      <td>0.8</td>
-      <td>0.9</td>
-      <td>0.2</td>
-      <td>0.7</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>可以看到現在每一個日期變成了一個column，沒有辦法輕易的指定橫軸、縱軸就將圖畫出來，不過我們可以稍微調整一下資料，使之變成像”<a href="#橫軸是其中一個欄位">橫軸是其中一個欄位</a>“那樣好指定的長相，整個程式碼長得像底下這樣。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">t_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setNames</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">t</span><span class="p">(</span><span class="n">data</span><span class="p">[,</span><span class="m">2</span><span class="o">:</span><span class="n">ncol</span><span class="p">(</span><span class="n">data</span><span class="p">)])),</span><span class="w"> </span><span class="n">data</span><span class="p">[,</span><span class="m">1</span><span class="p">])</span><span class="w">
-</span><span class="n">t_data</span><span class="p">[</span><span class="s2">"date"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rownames</span><span class="p">(</span><span class="n">t_data</span><span class="p">)</span><span class="w">
-</span><span class="n">melt_t_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">melt</span><span class="p">(</span><span class="n">t_data</span><span class="p">,</span><span class="w"> </span><span class="n">id.vars</span><span class="o">=</span><span class="s2">"date"</span><span class="p">)</span><span class="w">
-</span><span class="n">ggplot</span><span class="p">(</span><span class="n">melt_t_data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">variable</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
-
-<p>首先，我們得要將資料透過<code class="highlighter-rouge">t()</code>轉置一下，把日期變成row，於此同時把column name設成A、B，也就是程式碼中的第一行，其中<code class="highlighter-rouge">data[,2ncol(data)]</code>的意思是選取<code class="highlighter-rouge">data</code>裡面的第二個column至最後一個column(R是1 base的語言)，也就是從<strong>date20200101</strong>選到<strong>date20200105</strong>，同理，<code class="highlighter-rouge">data[,1]</code>就是選取<strong>type</strong>這個column。</p>
-
-<p>在經過第一行的轉換以後，原先的dataframe會變成底下的樣子。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th> </th>
-      <th>A</th>
-      <th>B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>date20200101</td>
-      <td>0.3</td>
-      <td>0.5</td>
-    </tr>
-    <tr>
-      <td>date20200102</td>
-      <td>0.4</td>
-      <td>0.8</td>
-    </tr>
-    <tr>
-      <td>date20200103</td>
-      <td>0.5</td>
-      <td>0.9</td>
-    </tr>
-    <tr>
-      <td>date20200104</td>
-      <td>0.6</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <td>date20200105</td>
-      <td>0.7</td>
-      <td>0.7</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>雖然變得比較像可以直接指定了，但目前還沒有辦法直接把所有的日期都選取起來，也就是日期還不是一個column，不過我們可以透過<code class="highlighter-rouge">t_data["date"] = rownames(t_data)</code>來新增一個column <strong>date</strong>，其中每個row都是日期。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th> </th>
-      <th>A</th>
-      <th>B</th>
-      <th>date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>date20200101</td>
-      <td>0.3</td>
-      <td>0.5</td>
-      <td>date20200101</td>
-    </tr>
-    <tr>
-      <td>date20200102</td>
-      <td>0.4</td>
-      <td>0.8</td>
-      <td>date20200102</td>
-    </tr>
-    <tr>
-      <td>date20200103</td>
-      <td>0.5</td>
-      <td>0.9</td>
-      <td>date20200103</td>
-    </tr>
-    <tr>
-      <td>date20200104</td>
-      <td>0.6</td>
-      <td>0.2</td>
-      <td>date20200104</td>
-    </tr>
-    <tr>
-      <td>Date20200105</td>
-      <td>0.7</td>
-      <td>0.7</td>
-      <td>date20200105</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>至此我們成功讓我們的資料長得像”<a href="#橫軸是其中一個欄位">橫軸是其中一個欄位</a>“中的資料那樣，接著一樣透過<code class="highlighter-rouge">melt()</code>和<code class="highlighter-rouge">ggplot()</code>便能將圖畫出來了。</p>
-
-<p><img src="line-transpose.png" alt="Line Transpose" /></p>
-
-<h2 id="文氏圖">文氏圖</h2>
-
-<p>文氏圖很適合用來觀察集合的關係，而R也有套件能夠幫助你很容易地畫出簡單的文氏圖。</p>
-
-<h3 id="安裝套件">安裝套件</h3>
-
-<p>在R裡面可以幫忙畫文氏圖的套件叫<code class="highlighter-rouge">VennDiagram</code>，可以使用底下的指令安裝並引入。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"VennDiagram"</span><span class="p">)</span><span class="w">
-</span><span class="n">library</span><span class="p">(</span><span class="n">VennDiagram</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<h3 id="使用venndiagram畫出文氏圖">使用VennDiagram畫出文氏圖</h3>
-
-<p>假如我們今天想要觀察兩個集合<strong>A</strong>、<strong>B</strong>的關係，我們也已經知道兩者的大小和交集如下。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>A</th>
-      <th>B</th>
-      <th>Intersection</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>100</td>
-      <td>40</td>
-      <td>15</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>使用的方式很簡單，只要把數字填進去就能夠將圖畫出來了。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid.newpage</span><span class="p">()</span><span class="w">
-</span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
-
-<p><img src="venn-raw.png" alt="Venn Raw" /></p>
-
-<h4 id="加上百分比和修改字體大小">加上百分比和修改字體大小</h4>
-
-<p>如果想要在圖裡面加上百分比的話，只需要多加<code class="highlighter-rouge">print.mode=c("raw", "percent")</code>就行。</p>
-
-<p>至於字體的大小，可以透過<code class="highlighter-rouge">cex</code>調整數字字體大小、<code class="highlighter-rouge">cat.cex</code>調整類別的字體大小。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid.newpage</span><span class="p">()</span><span class="w">
-</span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">cat.cex</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<p><img src="venn-percent.png" alt="Venn Percent" /></p>
-
-<h4 id="將數字加上逗號">將數字加上逗號</h4>
-
-<p>如果今天的數字很大的話，我們通常會希望在數字裡面加上逗號，方便我們去看這個數字是幾百萬還是幾千萬，假如我們的資料是底下這樣。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>A</th>
-      <th>B</th>
-      <th>Intersection</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>12345678</td>
-      <td>87654321</td>
-      <td>5647382</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>這邊的做法比較tricky一些，因為VennDiagram並沒有辦法直接多加一個參數就能將逗號塞進去，我們需要自己手動放入。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">12345678</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">87654321</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">5647382</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">))</span><span class="w">
-</span></code></pre></div></div>
-
-<p>在上面的指令跑完以後可以透過<code class="highlighter-rouge">View(plot)</code>看到其<code class="highlighter-rouge">[[5]]</code>到<code class="highlighter-rouge">[[7]]</code>的<code class="highlighter-rouge">label</code>裡面寫的資訊是會顯示在圖裡的字串。</p>
-
-<p><img src="plot-view.png" alt="View Plot" /></p>
-
-<p>是故我們只需要去修改<code class="highlighter-rouge">label</code>裡面的值，把逗號塞進去再畫出來就行了。</p>
-
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">12345678</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">87654321</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">5647382</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">))</span><span class="w">
-</span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">5</span><span class="o">:</span><span class="m">7</span><span class="p">){</span><span class="w">
-  </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strsplit</span><span class="p">(</span><span class="n">plot</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="o">$</span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
-  </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">a</span><span class="p">[[</span><span class="m">1</span><span class="p">]][</span><span class="m">1</span><span class="p">]),</span><span class="w"> </span><span class="n">big.mark</span><span class="o">=</span><span class="s2">","</span><span class="p">,</span><span class="w"> </span><span class="n">scientific</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">),</span><span class="w"> </span><span class="n">a</span><span class="p">[[</span><span class="m">1</span><span class="p">]][</span><span class="m">2</span><span class="p">],</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
-  </span><span class="n">plot</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span><span class="o">$</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span><span class="n">grid.newpage</span><span class="p">()</span><span class="w">
-</span><span class="n">grid.draw</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span><span class="w">
-</span></code></pre></div></div>
-
-<p>在上面的程式碼中，我們寫了一個for迴圈去改<code class="highlighter-rouge">[[5]]</code>到<code class="highlighter-rouge">[[7]]</code>的值，我們將<code class="highlighter-rouge">label</code>拿出來並以<code class="highlighter-rouge">\n</code>切成數字部分和百分比的部分，接著把數字部分塞逗號進去以後再與百分比部分接起來，最後再將圖畫出來，就達成我們想要的效果了。</p>
-
-<p><img src="venn-comma.png" alt="Venn Comma" /></p>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-04-25T00:00:00+00:00"><!-- start custom article footer snippet -->
+<h2 id="目標">目標</h2>
+
+<p>由於一些原因，使我想要製作一個slack機器人，來幫助我將slack上的訊息貼到某個google sheet上，底下將會介紹我如何做到這件事情。</p>
+
+<h2 id="google-cloud-platform-gcp">Google Cloud Platform (GCP)</h2>
+
+<p>在開始製作slack機器人之前，我們需要先找到一個24小時不間斷運行的機器來執行我們的機器人程式，而這個機器最好有public IP，來讓slack可以透過這個IP跟機器人互動，最終，我選擇了Google Cloud Platform (GCP)來放我的機器人，因為它現在有<a href="https://cloud.google.com/free/docs/gcp-free-tier?hl=zh-tw">「一律免費」的方案</a>可以使用，這個方案的額度允許你永久免費使用一個f1-micro的機器，還搭配有一個public IP，詳細的使用資訊可以參考連接中<strong>Compute Engine</strong>的部分。</p>
+
+<h3 id="註冊">註冊</h3>
+
+<p>註冊的部分就照著<a href="https://cloud.google.com/">官網</a>的指示一步一步填寫資料就完成了，不過這邊會需要填寫信用卡資料，當你使用超過免費的額度的時候會從信用卡扣款。</p>
+
+<h3 id="開啟虛擬機">開啟虛擬機</h3>
+
+<p>在註冊完成了以後就可以準備來開啟一個虛擬機了，可以直接到<a href="https://console.cloud.google.com/projectselector/compute/instances">Compute Engine</a>這邊選擇，如果你沒有新增過任何專案的話，這邊會提示你新增一個專案，如果已經有建立好專案了，就可以直接選擇它。</p>
+
+<p><img src="wait-vm.png" alt="Wait for VM" /></p>
+
+<p>這邊可能會需要一點時間來設定一些東西，當設定完成了以後就可以按下<strong>建立</strong>，來設定虛擬機的規格。</p>
+
+<p><img src="vm-settings.png" alt="VM settings" /></p>
+
+<p>如果要使用f1-micro的機器，也就是一律免費所提供的機型的話，在區域的部分只能選美國，接著就是在機器類型的地方選擇f1-micro，這時在畫面的右上角就應該可以看到一律免費所提供的免費時數。</p>
+
+<p><img src="vm-image.png" alt="VM image" /></p>
+
+<p>在下方開機磁碟的部分，可以選擇自己喜歡的作業系統，而一律免費的方案提供你30GB的HDD硬碟可以使用，記得要在這邊把容量改成30GB。</p>
+
+<p>最後按下建立就能成功建立一個虛擬機了。</p>
+
+<p><img src="vm-ip.png" alt="VM IP" /></p>
+
+<p>這邊可以看到虛擬機的內部IP和外部IP，而想要在虛擬機裡面下指令的話，可以點選右邊SSH的按鈕，會在瀏覽器裡面幫你開啟一個terminal，你就能任意的安裝、執行你想要的程式碼了。</p>
+
+<h3 id="防火牆">防火牆</h3>
+
+<p>在開好虛擬機以後，接著就是希望slack傳送的資料可以被虛擬機接收到，為此需要開通防火牆，可以點選虛擬機旁邊設定中的<strong>查看網路詳細資料</strong>。</p>
+
+<p><img src="go-network-settings.png" alt="Go network settings" /></p>
+
+<p>接著點選左邊的<strong>防火牆規則</strong>、右邊的<strong>建立防火牆規則</strong>。</p>
+
+<p><img src="go-firewall-settings.png" alt="Go firewall settings" /></p>
+
+<p>自行設定一下需要的網路設定，按下<strong>建立</strong>就完成了，如此一來就能讓slack透過你所設定的port進行溝通。</p>
+
+<p><img src="firewall-settings.png" alt="Firewall settings" /></p>
+
+<h2 id="slack-bot">Slack Bot</h2>
+
+<p>在有了可以跑slack bot的虛擬機以後，接著便是來創建slack bot。</p>
+
+<h3 id="創建slack-app並選擇bot">創建Slack app並選擇Bot</h3>
+
+<p>首先我們會先需要在slack API中創建一個application，並且選擇我們這個application的種類。</p>
+
+<p><img src="slack-app-feature.png" alt="Slack API features" /></p>
+
+<p>接著會需要告訴slack說這個bot需要的權限有哪些，可以點選左邊的<strong>OAuth &amp; Permissions</strong>，在底下的<strong>Scopes</strong>新增想要的權限。</p>
+
+<p><img src="slack-app-scope.png" alt="Slack Scopes" /></p>
+
+<p>這邊我選擇了兩個權限，分別是讓bot有權可以讀取它被mention的訊息，以及以bot的帳戶傳送訊息到channel中。選擇好權限以後，就能在上圖最上方點選把bot安裝到你的workspace中(由於我已經安裝過了，所以現在顯示<strong>Reinstall App</strong>)。</p>
+
+<h3 id="event-subscription">Event Subscription</h3>
+
+<p>至此，我們應該已經可以在slack中看到我們所創建的bot帳戶，接著就是希望bot可以在事件發生時(在這邊是希望被mention的時候)，可以有適當的反應，而slack這邊的做法其實就是當事件發生的時候，會傳送一個HTTP POST request到你所設定的網址，所以我們只需要在前面創立的虛擬機裡面，架設一個Web server來接受slack的POST request就行。</p>
+
+<p><img src="slack-event-subscription.png" alt="Slack Event Subscription" /></p>
+
+<p>值得一提的是，在設定slack要傳送的POST位址時，slack為確保網址是活著的，所以在設定的時候就會傳送一個POST request過去，裡面會包含一個<code class="highlighter-rouge">challenge</code>的參數，我們會需要直接return <code class="highlighter-rouge">challenge</code>這個參數的內容給slack才可以設定成功。</p>
+
+<h3 id="傳送訊息">傳送訊息</h3>
+
+<p>至於怎麼創立Web server跟slack互動以及傳送訊息至channel裡，可以參考<a href="https://github.com/SlackAPI/python-slackclient">Slack的python-slackclient</a>裡面的<a href="https://github.com/slackapi/python-slackclient/tree/master/tutorial">tutorial</a>。</p>
+
+<p>簡單來說，上面的例子就是使用Flask建立一個Web server，不過會需要<a href="https://github.com/slackapi/python-slackclient/blob/master/tutorial/PythOnBoardingBot/app.py#L12-L15">使用到這個bot的憑證</a>(可以看tutorial裡面的截圖)，接著就是設定一些<code class="highlighter-rouge">slack_events_adapter</code>來處理不同的event。</p>
+
+<p>不過我個人使用時，不知道為什麼<code class="highlighter-rouge">slack_events_adapter</code>好像沒有什麼用處，我自己的程式碼是長得像底下這樣的。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">slack</span> <span class="kn">import</span> <span class="n">WebClient</span>
+<span class="kn">from</span> <span class="nn">slackeventsapi</span> <span class="kn">import</span> <span class="n">SlackEventAdapter</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">slack_events_adapter</span> <span class="o">=</span> <span class="n">SlackEventAdapter</span><span class="p">(</span><span class="n">slack_signing_secret</span><span class="p">,</span> <span class="s">"/slack/events"</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
+<span class="n">slack_web_client</span> <span class="o">=</span> <span class="n">WebClient</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">slack_bot_token</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'POST'</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">post_handling</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">get_json</span><span class="p">()</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">f"Incoming payload</span><span class="si">\</span><span class="se">n</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="c1"># Slack need to check application is valid
+</span>    <span class="k">if</span> <span class="s">"challenge"</span> <span class="ow">in</span> <span class="n">data</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Check accessibility"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="s">"challenge"</span><span class="p">]</span>
+
+    <span class="c1"># Handle slack events
+</span>    <span class="k">else</span><span class="p">:</span>
+        <span class="n">event</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"event"</span><span class="p">)</span>
+        <span class="n">channel_id</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"channel"</span><span class="p">)</span>
+        <span class="n">user_id</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"user"</span><span class="p">)</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+        <span class="n">event_type</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"type"</span><span class="p">)</span>
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"ts"</span><span class="p">)</span> <span class="k">if</span> <span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"thread_ts"</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">event</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"thread_ts"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">event_type</span> <span class="o">==</span> <span class="s">"app_mention"</span><span class="p">:</span>
+            <span class="c1"># Do what you want to do here
+</span>            
+        <span class="n">response</span> <span class="o">=</span> <span class="n">slack_web_client</span><span class="p">.</span><span class="n">chat_postMessage</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="n">channel_id</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">return_message</span><span class="p">,</span> <span class="n">thread_ts</span><span class="o">=</span><span class="n">ts</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>其中最後一行是把訊息傳送到slack的API，其中的<code class="highlighter-rouge">channel_id</code>、<code class="highlighter-rouge">ts</code>是從slack的POST request來的，分別是channel的id和thread的ts，而<code class="highlighter-rouge">return_message</code>是一個單純的string，在呼叫<code class="highlighter-rouge">chat_postMessage()</code>以後，就會將訊息回覆在thread中，若想要直接回覆在群組中，只需要把<code class="highlighter-rouge">chat_postMessage()</code>裡的<code class="highlighter-rouge">thread_ts</code>部分拿掉就可以了。</p>
+
+<h2 id="與google-sheet互動">與Google Sheet互動</h2>
+
+<p>當初創立這個Bot的目的是希望把一些東西貼到google sheet上，在這邊介紹一下怎麼用command line來跟google sheet互動，使用的套件是<a href="https://github.com/burnash/gspread">gspread</a>，這邊的介紹主要是參考<a href="https://towardsdatascience.com/accessing-google-spreadsheet-data-using-python-90a5bc214fd2">Accessing Google Spreadsheet Data using Python</a>。</p>
+
+<h3 id="建立service-account">建立service account</h3>
+
+<p>為了要讓Bot可以修改google sheet，我們需要為他建立一個google bot帳號，來在google sheet的設定裡賦予它編輯者的權限，而設定的方法也很簡單，首先先去google clound console選擇<strong>APIs &amp; Services</strong>的<strong>Library</strong>。</p>
+
+<p><img src="google-api-library.png" alt="Google API Library" /></p>
+
+<p>並在跳出來的畫面搜尋<strong>Google Sheets API</strong>，點進去並啟用以後，應該會引導到底下的畫面，新增一個新的credential。</p>
+
+<p><img src="https://miro.medium.com/max/1300/1*XVy7hsGwyiNwSx-7hQXL8A.png" alt="Add credential" /></p>
+
+<p><strong>需要記得把上圖中的Which API are you using換成Google Sheets API</strong>，完成了以後我們可以得到一個json檔，裡面包含了一些credential來讓我們使用Google Sheets API。</p>
+
+<p>印象中在建立的途中會提示你建立一個service account，只需要填寫一個代表這個bot的名字就可以獲得一個電子信箱位址。</p>
+
+<p><img src="google-credential.png" alt="Google credential" /></p>
+
+<p>可以去<strong>APIs &amp; Services</strong>的<strong>Credentials</strong>裡面去看到是否有一個domain name為<code class="highlighter-rouge">iam.gserviceaccount.com</code>的電子信箱，最後就是將這電子信箱加入google sheet的協作者就可以了。</p>
+
+<h3 id="gspread">gspread</h3>
+
+<p>至此，bot已經有權限可以修改google sheet了，最後就是透過gspread來跟google sheet做互動，範例的程式碼如下。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">gspread</span>
+<span class="kn">from</span> <span class="nn">oauth2client.service_account</span> <span class="kn">import</span> <span class="n">ServiceAccountCredentials</span>
+
+<span class="n">scope</span> <span class="o">=</span> <span class="p">[</span><span class="s">'https://spreadsheets.google.com/feeds'</span><span class="p">]</span>
+<span class="n">credential</span> <span class="o">=</span> <span class="n">ServiceAccountCredentials</span><span class="p">.</span><span class="n">from_json_keyfile_name</span><span class="p">(</span><span class="s">'/path/to/your/credential.json'</span><span class="p">,</span> <span class="n">scope</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">gspread</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="n">credential</span><span class="p">)</span>
+<span class="n">sheet</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">open_by_url</span><span class="p">(</span><span class="n">sheet_url</span><span class="p">).</span><span class="n">sheet1</span>
+</code></pre></div></div>
+
+<p>這邊的<code class="highlighter-rouge">/path/to/you/credential.json</code>是前面所下載的json檔，而<code class="highlighter-rouge">sheet_url</code>是你google sheet的網址，其他gspread的使用方法可以參考它的<a href="https://gspread.readthedocs.io/en/latest/">documentation</a>。</p>
+
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-05-07T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/">Playing Atari with Deep Reinforcement Learning</a></div><div class="next"><span>NEXT</span><a href="/2020/05/07/slack-bot/">如何製作Slack機器人</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/04/25/plot-data-with-r/">用R來作圖</a></div></div></div>
 
 </div>
 

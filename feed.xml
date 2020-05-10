@@ -1,4 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-04-25T09:05:13+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">用R來作圖</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r/" rel="alternate" type="text/html" title="用R來作圖" /><published>2020-04-25T00:00:00+00:00</published><updated>2020-04-25T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r/">&lt;p&gt;在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-05-10T08:47:15+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何製作Slack機器人</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot/" rel="alternate" type="text/html" title="如何製作Slack機器人" /><published>2020-05-07T00:00:00+00:00</published><updated>2020-05-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot/">&lt;p&gt;這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;目標&quot;&gt;目標&lt;/h2&gt;
+
+&lt;p&gt;由於一些原因，使我想要製作一個slack機器人，來幫助我將slack上的訊息貼到某個google sheet上，底下將會介紹我如何做到這件事情。&lt;/p&gt;
+
+&lt;h2 id=&quot;google-cloud-platform-gcp&quot;&gt;Google Cloud Platform (GCP)&lt;/h2&gt;
+
+&lt;p&gt;在開始製作slack機器人之前，我們需要先找到一個24小時不間斷運行的機器來執行我們的機器人程式，而這個機器最好有public IP，來讓slack可以透過這個IP跟機器人互動，最終，我選擇了Google Cloud Platform (GCP)來放我的機器人，因為它現在有&lt;a href=&quot;https://cloud.google.com/free/docs/gcp-free-tier?hl=zh-tw&quot;&gt;「一律免費」的方案&lt;/a&gt;可以使用，這個方案的額度允許你永久免費使用一個f1-micro的機器，還搭配有一個public IP，詳細的使用資訊可以參考連接中&lt;strong&gt;Compute Engine&lt;/strong&gt;的部分。&lt;/p&gt;
+
+&lt;h3 id=&quot;註冊&quot;&gt;註冊&lt;/h3&gt;
+
+&lt;p&gt;註冊的部分就照著&lt;a href=&quot;https://cloud.google.com/&quot;&gt;官網&lt;/a&gt;的指示一步一步填寫資料就完成了，不過這邊會需要填寫信用卡資料，當你使用超過免費的額度的時候會從信用卡扣款。&lt;/p&gt;
+
+&lt;h3 id=&quot;開啟虛擬機&quot;&gt;開啟虛擬機&lt;/h3&gt;
+
+&lt;p&gt;在註冊完成了以後就可以準備來開啟一個虛擬機了，可以直接到&lt;a href=&quot;https://console.cloud.google.com/projectselector/compute/instances&quot;&gt;Compute Engine&lt;/a&gt;這邊選擇，如果你沒有新增過任何專案的話，這邊會提示你新增一個專案，如果已經有建立好專案了，就可以直接選擇它。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;wait-vm.png&quot; alt=&quot;Wait for VM&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;這邊可能會需要一點時間來設定一些東西，當設定完成了以後就可以按下&lt;strong&gt;建立&lt;/strong&gt;，來設定虛擬機的規格。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;vm-settings.png&quot; alt=&quot;VM settings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果要使用f1-micro的機器，也就是一律免費所提供的機型的話，在區域的部分只能選美國，接著就是在機器類型的地方選擇f1-micro，這時在畫面的右上角就應該可以看到一律免費所提供的免費時數。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;vm-image.png&quot; alt=&quot;VM image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在下方開機磁碟的部分，可以選擇自己喜歡的作業系統，而一律免費的方案提供你30GB的HDD硬碟可以使用，記得要在這邊把容量改成30GB。&lt;/p&gt;
+
+&lt;p&gt;最後按下建立就能成功建立一個虛擬機了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;vm-ip.png&quot; alt=&quot;VM IP&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;這邊可以看到虛擬機的內部IP和外部IP，而想要在虛擬機裡面下指令的話，可以點選右邊SSH的按鈕，會在瀏覽器裡面幫你開啟一個terminal，你就能任意的安裝、執行你想要的程式碼了。&lt;/p&gt;
+
+&lt;h3 id=&quot;防火牆&quot;&gt;防火牆&lt;/h3&gt;
+
+&lt;p&gt;在開好虛擬機以後，接著就是希望slack傳送的資料可以被虛擬機接收到，為此需要開通防火牆，可以點選虛擬機旁邊設定中的&lt;strong&gt;查看網路詳細資料&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;go-network-settings.png&quot; alt=&quot;Go network settings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接著點選左邊的&lt;strong&gt;防火牆規則&lt;/strong&gt;、右邊的&lt;strong&gt;建立防火牆規則&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;go-firewall-settings.png&quot; alt=&quot;Go firewall settings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;自行設定一下需要的網路設定，按下&lt;strong&gt;建立&lt;/strong&gt;就完成了，如此一來就能讓slack透過你所設定的port進行溝通。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;firewall-settings.png&quot; alt=&quot;Firewall settings&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;slack-bot&quot;&gt;Slack Bot&lt;/h2&gt;
+
+&lt;p&gt;在有了可以跑slack bot的虛擬機以後，接著便是來創建slack bot。&lt;/p&gt;
+
+&lt;h3 id=&quot;創建slack-app並選擇bot&quot;&gt;創建Slack app並選擇Bot&lt;/h3&gt;
+
+&lt;p&gt;首先我們會先需要在slack API中創建一個application，並且選擇我們這個application的種類。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;slack-app-feature.png&quot; alt=&quot;Slack API features&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接著會需要告訴slack說這個bot需要的權限有哪些，可以點選左邊的&lt;strong&gt;OAuth &amp;amp; Permissions&lt;/strong&gt;，在底下的&lt;strong&gt;Scopes&lt;/strong&gt;新增想要的權限。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;slack-app-scope.png&quot; alt=&quot;Slack Scopes&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;這邊我選擇了兩個權限，分別是讓bot有權可以讀取它被mention的訊息，以及以bot的帳戶傳送訊息到channel中。選擇好權限以後，就能在上圖最上方點選把bot安裝到你的workspace中(由於我已經安裝過了，所以現在顯示&lt;strong&gt;Reinstall App&lt;/strong&gt;)。&lt;/p&gt;
+
+&lt;h3 id=&quot;event-subscription&quot;&gt;Event Subscription&lt;/h3&gt;
+
+&lt;p&gt;至此，我們應該已經可以在slack中看到我們所創建的bot帳戶，接著就是希望bot可以在事件發生時(在這邊是希望被mention的時候)，可以有適當的反應，而slack這邊的做法其實就是當事件發生的時候，會傳送一個HTTP POST request到你所設定的網址，所以我們只需要在前面創立的虛擬機裡面，架設一個Web server來接受slack的POST request就行。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;slack-event-subscription.png&quot; alt=&quot;Slack Event Subscription&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;值得一提的是，在設定slack要傳送的POST位址時，slack為確保網址是活著的，所以在設定的時候就會傳送一個POST request過去，裡面會包含一個&lt;code class=&quot;highlighter-rouge&quot;&gt;challenge&lt;/code&gt;的參數，我們會需要直接return &lt;code class=&quot;highlighter-rouge&quot;&gt;challenge&lt;/code&gt;這個參數的內容給slack才可以設定成功。&lt;/p&gt;
+
+&lt;h3 id=&quot;傳送訊息&quot;&gt;傳送訊息&lt;/h3&gt;
+
+&lt;p&gt;至於怎麼創立Web server跟slack互動以及傳送訊息至channel裡，可以參考&lt;a href=&quot;https://github.com/SlackAPI/python-slackclient&quot;&gt;Slack的python-slackclient&lt;/a&gt;裡面的&lt;a href=&quot;https://github.com/slackapi/python-slackclient/tree/master/tutorial&quot;&gt;tutorial&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;簡單來說，上面的例子就是使用Flask建立一個Web server，不過會需要&lt;a href=&quot;https://github.com/slackapi/python-slackclient/blob/master/tutorial/PythOnBoardingBot/app.py#L12-L15&quot;&gt;使用到這個bot的憑證&lt;/a&gt;(可以看tutorial裡面的截圖)，接著就是設定一些&lt;code class=&quot;highlighter-rouge&quot;&gt;slack_events_adapter&lt;/code&gt;來處理不同的event。&lt;/p&gt;
+
+&lt;p&gt;不過我個人使用時，不知道為什麼&lt;code class=&quot;highlighter-rouge&quot;&gt;slack_events_adapter&lt;/code&gt;好像沒有什麼用處，我自己的程式碼是長得像底下這樣的。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;slack&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebClient&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;slackeventsapi&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SlackEventAdapter&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;slack_events_adapter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SlackEventAdapter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slack_signing_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/slack/events&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;slack_web_client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slack_bot_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'POST'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;post_handling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;Incoming payload&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Slack need to check application is valid
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;challenge&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Check accessibility&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;challenge&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Handle slack events
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;event&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;channel_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;channel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;event_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;thread_ts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;thread_ts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;app_mention&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# Do what you want to do here
+&lt;/span&gt;            
+        &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slack_web_client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chat_postMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;channel_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;return_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread_ts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;其中最後一行是把訊息傳送到slack的API，其中的&lt;code class=&quot;highlighter-rouge&quot;&gt;channel_id&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;ts&lt;/code&gt;是從slack的POST request來的，分別是channel的id和thread的ts，而&lt;code class=&quot;highlighter-rouge&quot;&gt;return_message&lt;/code&gt;是一個單純的string，在呼叫&lt;code class=&quot;highlighter-rouge&quot;&gt;chat_postMessage()&lt;/code&gt;以後，就會將訊息回覆在thread中，若想要直接回覆在群組中，只需要把&lt;code class=&quot;highlighter-rouge&quot;&gt;chat_postMessage()&lt;/code&gt;裡的&lt;code class=&quot;highlighter-rouge&quot;&gt;thread_ts&lt;/code&gt;部分拿掉就可以了。&lt;/p&gt;
+
+&lt;h2 id=&quot;與google-sheet互動&quot;&gt;與Google Sheet互動&lt;/h2&gt;
+
+&lt;p&gt;當初創立這個Bot的目的是希望把一些東西貼到google sheet上，在這邊介紹一下怎麼用command line來跟google sheet互動，使用的套件是&lt;a href=&quot;https://github.com/burnash/gspread&quot;&gt;gspread&lt;/a&gt;，這邊的介紹主要是參考&lt;a href=&quot;https://towardsdatascience.com/accessing-google-spreadsheet-data-using-python-90a5bc214fd2&quot;&gt;Accessing Google Spreadsheet Data using Python&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;建立service-account&quot;&gt;建立service account&lt;/h3&gt;
+
+&lt;p&gt;為了要讓Bot可以修改google sheet，我們需要為他建立一個google bot帳號，來在google sheet的設定裡賦予它編輯者的權限，而設定的方法也很簡單，首先先去google clound console選擇&lt;strong&gt;APIs &amp;amp; Services&lt;/strong&gt;的&lt;strong&gt;Library&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;google-api-library.png&quot; alt=&quot;Google API Library&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;並在跳出來的畫面搜尋&lt;strong&gt;Google Sheets API&lt;/strong&gt;，點進去並啟用以後，應該會引導到底下的畫面，新增一個新的credential。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/1300/1*XVy7hsGwyiNwSx-7hQXL8A.png&quot; alt=&quot;Add credential&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;需要記得把上圖中的Which API are you using換成Google Sheets API&lt;/strong&gt;，完成了以後我們可以得到一個json檔，裡面包含了一些credential來讓我們使用Google Sheets API。&lt;/p&gt;
+
+&lt;p&gt;印象中在建立的途中會提示你建立一個service account，只需要填寫一個代表這個bot的名字就可以獲得一個電子信箱位址。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;google-credential.png&quot; alt=&quot;Google credential&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以去&lt;strong&gt;APIs &amp;amp; Services&lt;/strong&gt;的&lt;strong&gt;Credentials&lt;/strong&gt;裡面去看到是否有一個domain name為&lt;code class=&quot;highlighter-rouge&quot;&gt;iam.gserviceaccount.com&lt;/code&gt;的電子信箱，最後就是將這電子信箱加入google sheet的協作者就可以了。&lt;/p&gt;
+
+&lt;h3 id=&quot;gspread&quot;&gt;gspread&lt;/h3&gt;
+
+&lt;p&gt;至此，bot已經有權限可以修改google sheet了，最後就是透過gspread來跟google sheet做互動，範例的程式碼如下。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gspread&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;oauth2client.service_account&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServiceAccountCredentials&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'https://spreadsheets.google.com/feeds'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;credential&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServiceAccountCredentials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_json_keyfile_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/path/to/your/credential.json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gspread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;authorize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;credential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;sheet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open_by_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sheet_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sheet1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;這邊的&lt;code class=&quot;highlighter-rouge&quot;&gt;/path/to/you/credential.json&lt;/code&gt;是前面所下載的json檔，而&lt;code class=&quot;highlighter-rouge&quot;&gt;sheet_url&lt;/code&gt;是你google sheet的網址，其他gspread的使用方法可以參考它的&lt;a href=&quot;https://gspread.readthedocs.io/en/latest/&quot;&gt;documentation&lt;/a&gt;。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。</summary></entry><entry><title type="html">用R來作圖</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r/" rel="alternate" type="text/html" title="用R來作圖" /><published>2020-04-25T00:00:00+00:00</published><updated>2020-04-25T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/25/plot-data-with-r/">&lt;p&gt;在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1137,194 +1290,4 @@ apt-cyg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;這篇paper提出了Transformer的架構，底層使用了Multi-Head Attention，是一個與CNN、RNN一樣，可以輸入輸出都是序列的layer，當你也有要處理序列的問題時，不妨試試看，或許可以有不錯的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇文章想要簡介一下被廣泛使用的Transformer是什麼。</summary></entry><entry><title type="html">Vim Plugins</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins/" rel="alternate" type="text/html" title="Vim Plugins" /><published>2020-03-09T00:00:00+00:00</published><updated>2020-03-09T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/09/vim-plugins/">&lt;p&gt;這邊記錄一下我目前所使用的Vim plugin以及它們的功能。
-&lt;!--more--&gt;&lt;/p&gt;
-
-&lt;p&gt;市面上有很多Integrated Development Environment (IDE)來幫助你開發，像是&lt;a href=&quot;https://developer.apple.com/xcode/&quot;&gt;Xcode&lt;/a&gt;、&lt;a href=&quot;https://visualstudio.microsoft.com/zh-hant/&quot;&gt;Visual Studio&lt;/a&gt;、&lt;a href=&quot;https://www.jetbrains.com/idea/&quot;&gt;Intellij&lt;/a&gt;、&lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot;&gt;Pycharm&lt;/a&gt;、&lt;a href=&quot;https://www.sublimetext.com/&quot;&gt;Sublime&lt;/a&gt;等等，然而在終端機上的文字編輯器，應該大多都是用vim來開發，而vim本身也有很多神人開發的套件，讓你可以在vim裡面做到像上面IDE一樣的操作，底下介紹一下我目前所使用的一些套件。&lt;/p&gt;
-
-&lt;p&gt;目前我所使用的設定檔，原先是來自於&lt;a href=&quot;https://github.com/timss/vimconf&quot;&gt;timss/vimconf&lt;/a&gt;，看star數也蠻多人推薦&lt;a href=&quot;https://github.com/amix/vimrc&quot;&gt;amix/vimrc&lt;/a&gt;，你也可以去網路上找你心目中所屬的設定檔。&lt;/p&gt;
-
-&lt;h2 id=&quot;vundle&quot;&gt;Vundle&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/VundleVim/Vundle.vim&quot;&gt;Vundle&lt;/a&gt;是一個vim套件的管理工具，使你可以直接打上vim plugin repo的名字就能安裝至你的vim上，像是&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Plug &lt;span class=&quot;s1&quot;&gt;'gmarik/Vundle.vim'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在宣告好想要安裝的套件以後，打開vim，再打上&lt;code class=&quot;highlighter-rouge&quot;&gt;:PlugInstall&lt;/code&gt;就會將宣告的套件安裝在&lt;strong&gt;[user name]/.vim/bundle&lt;/strong&gt;裡面。如果想要移除某個套件，只需要在設定檔將套件的宣告移除，並在vim裡面打上&lt;code class=&quot;highlighter-rouge&quot;&gt;:PlugClean&lt;/code&gt;，相當的方便。&lt;/p&gt;
-
-&lt;h2 id=&quot;plugins&quot;&gt;Plugins&lt;/h2&gt;
-
-&lt;p&gt;接下來介紹一下我覺得好像不錯用的套件們，大多的套件只需要像底下這樣宣告，並且&lt;code class=&quot;highlighter-rouge&quot;&gt;:PlugInstall&lt;/code&gt;就能安裝完成了。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Plug &lt;span class=&quot;s1&quot;&gt;'[plugin name]'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;ervandewsupertab&quot;&gt;&lt;a href=&quot;https://github.com/ervandew/supertab&quot;&gt;ervandew/supertab&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;一個可以讓你用tab自動完成各種東西的套件，可以用tab完成function、variable等等。&lt;/p&gt;
-
-&lt;h3 id=&quot;ycm-coreyoucompleteme&quot;&gt;&lt;a href=&quot;https://github.com/ycm-core/YouCompleteMe&quot;&gt;ycm-core/YouCompleteMe&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;也是一個自動完成各種東西的套件，只是安裝起來沒有像supertab那樣簡單，不僅需要宣告在設定檔裡，還需要安裝其他程式語言，像是go、nodejs等，詳細的安裝流程可以參考官方的GitHub。&lt;/p&gt;
-
-&lt;p&gt;我會在設定檔裡面多加底下的設定，使你可以按下enter就可以選擇自動完成的東西(預設好像是按&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + y&lt;/code&gt;)，另一個設定是讓你能用&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;g&lt;/code&gt;跳到function定義的部分。&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'g:plugs[&quot;YouCompleteMe&quot;]'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:ycm_autoclose_preview_window_after_completion&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
-    &lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:ycm_key_list_stop_completion &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'&amp;lt;C-y&amp;gt;'&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;'&amp;lt;CR&amp;gt;'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-    nnoremap &amp;lt;Leader&amp;gt;g :YcmCompleter GoToDefinitionElseDeclaration&amp;lt;CR&amp;gt;
-endif
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;itchynylightlinevim&quot;&gt;&lt;a href=&quot;https://github.com/itchyny/lightline.vim&quot;&gt;itchyny/lightline.vim&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;讓vim可以有status bar，讓你知道現在是處理什麼樣的檔案、在Normal mode、Visual mode還是Insert mode等。&lt;/p&gt;
-
-&lt;h3 id=&quot;blingvim-bufferline&quot;&gt;&lt;a href=&quot;https://github.com/bling/vim-bufferline&quot;&gt;bling/vim-bufferline&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;在status bar裡面顯示目前開啟的所有檔案。&lt;/p&gt;
-
-&lt;h3 id=&quot;mbbillundotree&quot;&gt;&lt;a href=&quot;https://github.com/mbbill/undotree&quot;&gt;mbbill/undotree&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;undotree會紀錄你對這個檔案的操作，使你可以隨時退回先前的版本，有點像簡易版的git。&lt;/p&gt;
-
-&lt;h3 id=&quot;nanotechjellybeansvim&quot;&gt;&lt;a href=&quot;https://github.com/nanotech/jellybeans.vim&quot;&gt;nanotech/jellybeans.vim&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;vim的color schema。&lt;/p&gt;
-
-&lt;h3 id=&quot;tomtomtcomment_vim&quot;&gt;&lt;a href=&quot;https://github.com/tomtom/tcomment_vim&quot;&gt;tomtom/tcomment_vim&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上&lt;code class=&quot;highlighter-rouge&quot;&gt;gc&lt;/code&gt;便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。&lt;/p&gt;
-
-&lt;h3 id=&quot;sominivim-autoclose&quot;&gt;&lt;a href=&quot;https://github.com/Townk/vim-autoclose&quot;&gt;somini/vim-autoclose&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;自動幫你將括號或是其他該成雙成對的東西補齊的套件。&lt;/p&gt;
-
-&lt;h3 id=&quot;tpopevim-eunuch&quot;&gt;&lt;a href=&quot;https://github.com/tpope/vim-eunuch&quot;&gt;tpope/vim-eunuch&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;讓你能在vim裡面直接使用Unix指令的套件，像是&lt;code class=&quot;highlighter-rouge&quot;&gt;:SudoEdit&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;:Rename&lt;/code&gt;等等，詳細的指令可以參考上方連結。&lt;/p&gt;
-
-&lt;h3 id=&quot;tpopevim-fugitive&quot;&gt;&lt;a href=&quot;https://github.com/tpope/vim-fugitive&quot;&gt;tpope/vim-fugitive&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;讓你能在vim裡面直接操作git指令的套件。&lt;/p&gt;
-
-&lt;h3 id=&quot;tpopevim-surround&quot;&gt;&lt;a href=&quot;https://github.com/tpope/vim-surround&quot;&gt;tpope/vim-surround&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;使你可以快速改變括號的套件，像是將&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;Hello world!&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;迅速改成&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;'Hello world!'
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;更多的指令請參考上面連結。&lt;/p&gt;
-
-&lt;h3 id=&quot;junegunnvim-easy-align&quot;&gt;&lt;a href=&quot;https://github.com/junegunn/vim-easy-align&quot;&gt;junegunn/vim-easy-align&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;能迅速將程式碼對齊的套件，使用方式為，在Visual mode選好想對齊的區塊，打上&lt;code class=&quot;highlighter-rouge&quot;&gt;ga[分隔符號]&lt;/code&gt;啟動，還可以設定選擇要靠左、靠右對齊，詳細的使用方式可以參考上面的網址。&lt;/p&gt;
-
-&lt;h3 id=&quot;honzavim-snippets--sirverultisnips&quot;&gt;&lt;a href=&quot;https://github.com/honza/vim-snippets&quot;&gt;honza/vim-snippets&lt;/a&gt; / &lt;a href=&quot;https://github.com/SirVer/ultisnips&quot;&gt;sirver/ultisnips&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;能快速補齊程式碼的套件，像是打上&lt;code class=&quot;highlighter-rouge&quot;&gt;def test[tab]&lt;/code&gt;就會自動幫你將function的架構打出來。&lt;/p&gt;
-
-&lt;h3 id=&quot;mhinzvim-startify&quot;&gt;&lt;a href=&quot;https://github.com/mhinz/vim-startify&quot;&gt;mhinz/vim-startify&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;一個好看的vim開始畫面。&lt;/p&gt;
-
-&lt;h3 id=&quot;mhinzvim-signify&quot;&gt;&lt;a href=&quot;https://github.com/mhinz/vim-signify&quot;&gt;mhinz/vim-signify&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;顯示檔案裡面有哪些部分與git上的有所差異。&lt;/p&gt;
-
-&lt;h3 id=&quot;vim-syntasticsyntastic&quot;&gt;&lt;a href=&quot;https://github.com/vim-syntastic/syntastic&quot;&gt;vim-syntastic/syntastic&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;幫你做語法檢查的套件，我自己會加上底下這行，令&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;c&lt;/code&gt;當作快捷鍵。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;noremap &amp;lt;silent&amp;gt;&amp;lt;Leader&amp;gt;c  :SyntasticCheck&amp;lt;CR&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;dense-analysisale&quot;&gt;&lt;a href=&quot;https://github.com/dense-analysis/ale&quot;&gt;dense-analysis/ale&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;也是做語法檢查的套件，與&lt;a href=&quot;#vim-syntasticsyntastic&quot;&gt;syntastic&lt;/a&gt;不同的是，ale是asynchronous的執行，所以在開啟、寫入檔案的時候不會卡住。&lt;/p&gt;
-
-&lt;p&gt;我自己會加上底下的設定，以在各個error當中跳轉。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nnoremap &amp;lt;Leader&amp;gt;d :ALEDetail&amp;lt;CR&amp;gt;
-nnoremap &amp;lt;Leader&amp;gt;cn :ALENext&amp;lt;CR&amp;gt;
-nnoremap &amp;lt;Leader&amp;gt;cp :ALEPrevious&amp;lt;CR&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;milkypostmanvim-togglelist&quot;&gt;&lt;a href=&quot;https://github.com/milkypostman/vim-togglelist&quot;&gt;milkypostman/vim-togglelist&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;裝這個套件主要是為了配合&lt;a href=&quot;#dense-analysisale&quot;&gt;ale&lt;/a&gt;而安裝的，上面的ale會在每一行標註該行的warning和error，雖說ale可以做到把所有error都統一在一個列表裡顯示出來，但它沒有做可以toggle的指令，而這個套件就是設定快捷鍵來做這件事情。&lt;/p&gt;
-
-&lt;p&gt;預設&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;l&lt;/code&gt;會toggle location list，把所有error列出來，在行數按下enter就會跳轉到那邊，&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;q&lt;/code&gt;會打開quickfix window。&lt;/p&gt;
-
-&lt;h3 id=&quot;majutsushitagbar&quot;&gt;&lt;a href=&quot;https://github.com/majutsushi/tagbar&quot;&gt;majutsushi/tagbar&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;當你有使用ctags或cscope先對目錄底下的程式碼先做索引的話，可以使用tagbar在vim裡面顯示所有的tag。&lt;/p&gt;
-
-&lt;h3 id=&quot;mileszsackvim&quot;&gt;&lt;a href=&quot;https://github.com/mileszs/ack.vim&quot;&gt;mileszs/ack.vim&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;在vim裡面使用grep或是ag(&lt;a href=&quot;https://github.com/ggreer/the_silver_searcher&quot;&gt;The Silver Searcher&lt;/a&gt;)來搜尋特定字詞的套件，我自己會放以下的設定來建立快捷鍵，打上&lt;code class=&quot;highlighter-rouge&quot;&gt;ack[space]&lt;/code&gt;會自動替換成&lt;code class=&quot;highlighter-rouge&quot;&gt;Ack!&lt;/code&gt;，在Normal mode中打上&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Leader&amp;gt;a&lt;/code&gt;會去搜尋游標當下所在的字詞。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;executable&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ag'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;let &lt;/span&gt;g:ackprg &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ag --vimgrep'&lt;/span&gt;
-endif
-cnoreabbrev ack Ack!
-nnoremap &amp;lt;Leader&amp;gt;a :Ack!&amp;lt;CR&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;scrooloosenerdtree&quot;&gt;&lt;a href=&quot;https://github.com/preservim/nerdtree&quot;&gt;scrooloose/nerdtree&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;樹狀的檔案瀏覽器。&lt;/p&gt;
-
-&lt;h3 id=&quot;ctrlpvimctrlpvim&quot;&gt;&lt;a href=&quot;https://github.com/kien/ctrlp.vim&quot;&gt;ctrlpvim/ctrlp.vim&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;使你可以在vim裡面打上&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + p&lt;/code&gt;便能搜尋目錄底下的檔案名稱。&lt;/p&gt;
-
-&lt;h3 id=&quot;junegunnfzf--junegunnfzfvim&quot;&gt;&lt;a href=&quot;https://github.com/junegunn/fzf&quot;&gt;junegunn/fzf&lt;/a&gt; / &lt;a href=&quot;https://github.com/junegunn/fzf.vim&quot;&gt;junegunn/fzf.vim&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;功能與上面的&lt;strong&gt;ctrlpvim/ctrlp.vim&lt;/strong&gt;幾乎雷同，只是底層是用fzf來做搜尋，我個人比較偏好這個套件，需要使用底下的設定來複寫&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl + p&lt;/code&gt;的預設快捷鍵。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'g:plugs[&quot;fzf.vim&quot;]'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    nmap &amp;lt;c-p&amp;gt; :FZF&amp;lt;CR&amp;gt;
-endif
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;terrymavim-expand-region&quot;&gt;&lt;a href=&quot;https://github.com/terryma/vim-expand-region&quot;&gt;terryma/vim-expand-region&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;讓你可以透過&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;來簡單的擴大或縮小選取的範圍，可以看連結內的demo。&lt;/p&gt;
-
-&lt;h3 id=&quot;godlygeektabular&quot;&gt;&lt;a href=&quot;https://github.com/godlygeek/tabular&quot;&gt;godlygeek/tabular&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;讓你可以方便的對齊你的程式碼，可以看這邊的&lt;a href=&quot;http://vimcasts.org/episodes/aligning-text-with-tabular-vim/&quot;&gt;demo&lt;/a&gt;，我自己會加上底下的設定來建立快捷鍵。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;exists&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'g:plugs[&quot;tabular&quot;]'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    cnoreabbrev tab Tab
-endif
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;其功能跟上面的&lt;strong&gt;junegunn/vim-easy-align&lt;/strong&gt;蠻相近的。&lt;/p&gt;
-
-&lt;h3 id=&quot;terrymavim-multiple-cursors&quot;&gt;&lt;a href=&quot;https://github.com/terryma/vim-multiple-cursors&quot;&gt;terryma/vim-multiple-cursors&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;讓vim擁有像Sublime那樣的多個游標的功能。&lt;/p&gt;
-
-&lt;h3 id=&quot;roxmavim-paste-easy&quot;&gt;&lt;a href=&quot;https://github.com/roxma/vim-paste-easy&quot;&gt;roxma/vim-paste-easy&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;在電腦上複製程式碼，想直接貼到vim裡面的時候有可能會有格式跑掉的問題，這個套件可以幫你自動在貼上前&lt;code class=&quot;highlighter-rouge&quot;&gt;set paste&lt;/code&gt;。&lt;/p&gt;
-
-&lt;p&gt;更多資訊可以參考上面附的GitHub連結或是&lt;a href=&quot;https://vimawesome.com/plugin/vim-paste-easy&quot;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;tips&quot;&gt;Tips&lt;/h2&gt;
-
-&lt;p&gt;紀錄一下常用到的快捷鍵。&lt;/p&gt;
-
-&lt;h3 id=&quot;查看現在所開啟檔案的相對絕對路徑&quot;&gt;查看現在所開啟檔案的相對/絕對路徑&lt;/h3&gt;
-
-&lt;p&gt;想要查看檔案的相對路徑時，可以按下&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Ctrl-G&amp;gt;&lt;/code&gt;，但過不久就會消失。&lt;/p&gt;
-
-&lt;p&gt;若是想要看絕對路徑的話，按下&lt;code class=&quot;highlighter-rouge&quot;&gt;1 &amp;lt;Ctrl-G&amp;gt;&lt;/code&gt;，vim會等你按下enter以後再把路徑隱藏。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">這邊記錄一下我目前所使用的Vim plugin以及它們的功能。</summary></entry></feed>
+&lt;p&gt;這篇paper提出了Transformer的架構，底層使用了Multi-Head Attention，是一個與CNN、RNN一樣，可以輸入輸出都是序列的layer，當你也有要處理序列的問題時，不妨試試看，或許可以有不錯的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇文章想要簡介一下被廣泛使用的Transformer是什麼。</summary></entry></feed>
