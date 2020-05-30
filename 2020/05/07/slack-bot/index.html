@@ -348,7 +348,7 @@
 
 <h3 id="創建slack-app並選擇bot">創建Slack app並選擇Bot</h3>
 
-<p>首先我們會先需要在slack API中創建一個application，並且選擇我們這個application的種類。</p>
+<p>首先我們會先需要在<a href="https://api.slack.com/apps">slack API中創建一個application</a>，並且選擇我們這個application的種類。</p>
 
 <p><img src="slack-app-feature.png" alt="Slack API features" /></p>
 
@@ -385,7 +385,7 @@
 <span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'POST'</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">post_handling</span><span class="p">():</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">get_json</span><span class="p">()</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">f"Incoming payload</span><span class="si">\</span><span class="se">n</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">f"Incoming payload</span><span class="se">\n</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 
     <span class="c1"># Slack need to check application is valid
 </span>    <span class="k">if</span> <span class="s">"challenge"</span> <span class="ow">in</span> <span class="n">data</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
