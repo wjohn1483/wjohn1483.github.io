@@ -1,4 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-06-29T13:16:22+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何製作Slack機器人</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot/" rel="alternate" type="text/html" title="如何製作Slack機器人" /><published>2020-05-07T00:00:00+00:00</published><updated>2020-05-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot/">&lt;p&gt;這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-07-26T02:59:46+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">REINFORCE和Proximal Policy Optimization</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/" rel="alternate" type="text/html" title="REINFORCE和Proximal Policy Optimization" /><published>2020-07-26T00:00:00+00:00</published><updated>2020-07-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/">&lt;p&gt;在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;reinforce&quot;&gt;REINFORCE&lt;/h2&gt;
+
+&lt;p&gt;首先，我們先來定義一下state、action和reward之間的關係。當機器看到眼前的state &lt;script type=&quot;math/tex&quot;&gt;s_1&lt;/script&gt;時，會根據自身的演算法決定做出動作&lt;script type=&quot;math/tex&quot;&gt;a_1&lt;/script&gt;，此時環境會根據機器做出的&lt;script type=&quot;math/tex&quot;&gt;a_1&lt;/script&gt;給予reward &lt;script type=&quot;math/tex&quot;&gt;r_1&lt;/script&gt;，而隨著這個動作，機器所看到的state會從&lt;script type=&quot;math/tex&quot;&gt;s_1&lt;/script&gt;轉移到&lt;script type=&quot;math/tex&quot;&gt;s_2&lt;/script&gt;，接著機器會根據&lt;script type=&quot;math/tex&quot;&gt;s_2&lt;/script&gt;做出動作&lt;script type=&quot;math/tex&quot;&gt;a_2&lt;/script&gt;，並獲得&lt;script type=&quot;math/tex&quot;&gt;r_2&lt;/script&gt;，以此類推。而我們的目標就是希望機器能學會一個厲害的policy，使得expected reward最大。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned} expected\ reward &amp; =\sum R(\tau)p_\theta(\tau)\\ &amp; =\mathbb{E}_{\tau\sim p_\theta(\tau)}[R(\tau)] \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;是trajectory，指的是&lt;script type=&quot;math/tex&quot;&gt;\left[ s_1, a_1, s_2, a_2, ... \right]&lt;/script&gt;的序列，而&lt;script type=&quot;math/tex&quot;&gt;R(\tau)&lt;/script&gt;是序列&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;中所獲得的所有&lt;script type=&quot;math/tex&quot;&gt;r_i&lt;/script&gt;的總和、&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;是policy的參數、&lt;script type=&quot;math/tex&quot;&gt;p_\theta(\tau)&lt;/script&gt;是序列&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;出現的機率，因為policy會影響到action &lt;script type=&quot;math/tex&quot;&gt;a_i&lt;/script&gt;的產生，所以&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;的機率跟&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;有關。&lt;/p&gt;
+
+&lt;p&gt;若我們以expected reward為objective function，對它做微分，我們可以得到&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned}\bigtriangledown R_\theta &amp;= \sum R(\tau) \bigtriangledown p_\theta(\tau) \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;因為&lt;script type=&quot;math/tex&quot;&gt;R(\tau)&lt;/script&gt;是由環境給予的，亦可以是人工定義的，跟policy的參數沒有什麼關係，所以當我們做微分的時候不會有什麼影響，接著再稍微整理一下&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned} \bigtriangledown R_\theta &amp;= \sum R(\tau)\bigtriangledown p_\theta(\tau) \\ &amp;= \sum R(\tau) p_\theta(\tau)\frac{\bigtriangledown p_\theta(\tau)}{p_\theta(\tau)} \\ &amp;= \sum R(\tau)p_\theta(\tau)\bigtriangledown\log p_\theta(\tau) \\ &amp;= \mathbb{E}_{\tau\sim p_\theta(\tau)} [R(\tau)\bigtriangledown\log p_\theta(\tau)] \\ &amp;\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}R(\tau^n)\bigtriangledown\log p_\theta(\tau^n) \\ &amp;\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}R(\tau^n)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n) \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;在式子最後所得出來的式子，其實跟常見的、label是one-hot vector的cross entropy很類似，只不過多出了&lt;script type=&quot;math/tex&quot;&gt;R(\tau^n)&lt;/script&gt;，在概念上可以想像成，每一步都在讓model自己產生的action的log probability越大越好，但是用&lt;script type=&quot;math/tex&quot;&gt;R(\tau^n)&lt;/script&gt;來控制log probability要多大。&lt;/p&gt;
+
+&lt;h3 id=&quot;advantage&quot;&gt;Advantage&lt;/h3&gt;
+
+&lt;p&gt;在前面的段落裡，我們可以看到，當環境給予的reward都是正值的時候，objective function裡&lt;script type=&quot;math/tex&quot;&gt;R(\tau^n)&lt;/script&gt;這項的值會是正的，使得在&lt;script type=&quot;math/tex&quot;&gt;s_t^n&lt;/script&gt;時，機器所採取的任何一個&lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;的log probability都是會漸漸變大的，雖說隨著時間的拉長，能獲得較大reward的&lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;的log probability應該會是最大的，然而訓練起來要花的時間就會比較多，因此通常在訓練的時候，會稍微調整一下objective function，變成底下&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}[R(\tau^n)-b]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ b=\mathbb{E}[R(\tau)]&lt;/script&gt;
+
+&lt;p&gt;這邊的&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;是trajectory的平均reward，使得&lt;script type=&quot;math/tex&quot;&gt;[R(\tau^n)-b]&lt;/script&gt;這項的意思變成，這個action &lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;相對於平均而言有多好。&lt;/p&gt;
+
+&lt;p&gt;而再更精細的去看objective function會發現&lt;script type=&quot;math/tex&quot;&gt;R(\tau^n)&lt;/script&gt;代表的是整個trajectory的reward，但卻用來衡量每個時間點&lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;的好壞，這樣有一點不太公平，可能在某個&lt;script type=&quot;math/tex&quot;&gt;s_t^n&lt;/script&gt;採取&lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;對拿到reward是很有幫助的，但因為其他action表現得不好，使得整個trajectory拿到的reward低於平均，這時這個好的action的log probability就會被降低，為了讓前面這項更能反映每個action的好壞，會再修改成&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}\left[ \sum\limits_{t^\prime=t}\limits^{T_n}\gamma^{t^\prime-t}r_{t^\prime}^n-b \right]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ \gamma&lt;1 %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;也就是用該action未來的reward再稍微打個折以後加總起來，當作是這個action有多好，而前面中括號裡的這項通常會被拉出來變成&lt;script type=&quot;math/tex&quot;&gt;A^\theta(s_t,a_t)&lt;/script&gt;稱為advantage function用以衡量在&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;採取&lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;相較其他action有多好。&lt;/p&gt;
+
+&lt;h2 id=&quot;proximal-policy-optimization-ppo&quot;&gt;Proximal Policy Optimization (PPO)&lt;/h2&gt;
+
+&lt;h3 id=&quot;on-policy-vs-off-policy&quot;&gt;On-policy v.s. Off-policy&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;On-policy：要訓練的model正是與環境互動的&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Off-policy：要訓練的model和與環境互動的model不同&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在前面REINFORCE的式子裡面我們可以看到它是一個on-policy的方法，那on-policy的方法需要很長的訓練時間，因為跟環境互動完的trajectory拿來更新一次model的參數以後就不能夠再被使用了，因為新的model所採取的action會不一樣，而PPO就是嘗試把REINFORCE從on-policy變成off-policy，好讓訓練時間縮短。&lt;/p&gt;
+
+&lt;h3 id=&quot;importance-sampling&quot;&gt;Importance Sampling&lt;/h3&gt;
+
+&lt;p&gt;PPO使用的便是將importance sampling融入進objective function裡面，這邊先提一下什麼是importance sampling。&lt;/p&gt;
+
+&lt;p&gt;在一般我們計算從某個機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;抽樣出&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;的&lt;script type=&quot;math/tex&quot;&gt;f(x)&lt;/script&gt;的期望值時，會寫成底下的式子&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbb{E}_{x\sim p}[f(x)] \approx \frac{1}{N}\sum\limits_{i=1}\limits^{N}f(x_i)&lt;/script&gt;
+
+&lt;p&gt;倘若今天因為某種特殊的原因，使得我們無法直接從機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;直接抽樣的時候，我們可以使用另外一個機率分佈&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;抽樣出&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;再經過&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;之間的轉換來達到一樣的結果&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned} \mathbb{E}_{x\sim p}[f(x)] &amp;=\int f(x)p(x)dx \\ &amp;= \int f(x)\frac{p(x)}{q(x)}q(x)dx \\ &amp;= \mathbb{E}_{x\sim q}\left[ f(x)\frac{p(x)}{q(x)} \right] \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;而importance sampling代表的就是底下的式子&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbb{E}_{x\sim p}[f(x)]=\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]&lt;/script&gt;
+
+&lt;p&gt;雖然看起來當機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;無法被取樣的時候，我們可以使用任意的機率分佈&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;來替代，但這其中還是會有一些誤差，我們知道一個機率分佈的變異數的算法如下&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Var[X]=\mathbb{E}[X^2]-(\mathbb{E}[X])^2&lt;/script&gt;
+
+&lt;p&gt;機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;的變異數為&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Var_{x\sim p}[f(x)]=\mathbb{E}_{x\sim p}[f(x)^2]-(\mathbb{E}_{x\sim p}[f(x)])^2&lt;/script&gt;
+
+&lt;p&gt;如果使用importance sampling來得到的變異數為&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned} Var_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right] &amp;=\mathbb{E}_{x\sim q}\left[f(x)^2\frac{p(x)^2}{q(x)^2}\right]-\left(\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]\right)^2 \\ &amp;= \mathbb{E}_{x\sim p}\left[f(x)^2\frac{p(x)}{q(x)}\right]-\left(\mathbb{E}_{x\sim p}[f(x)]\right)^2\end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;從上式我們可以看到，當機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;兩者的差異過大的時候，會造成兩者的變異數也相差很多，所以在使用importance sampling的時候，使用機率分佈較近的&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;是很重要的。&lt;/p&gt;
+
+&lt;h3 id=&quot;ppo&quot;&gt;PPO&lt;/h3&gt;
+
+&lt;p&gt;在這裡，我們想要將前面的REINFORCE從on-policy換成off-policy，讓原先跟環境做互動的&lt;script type=&quot;math/tex&quot;&gt;\pi_\theta&lt;/script&gt;換成&lt;script type=&quot;math/tex&quot;&gt;\pi_{\theta^\prime}&lt;/script&gt;，為此我們套用上面的importance sampling&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{aligned} \bigtriangledown R_\theta &amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_\theta} \left[ A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(s_t, a_t)}{p_{\theta^\prime}(s_t, a_t)}A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}A^{\theta^\prime}(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \end{aligned} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;從第二行到第三行中間做了一件特別的事情，這裡假設&lt;script type=&quot;math/tex&quot;&gt;\pi_\theta&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;\pi_{\theta^\prime}&lt;/script&gt;所能得到的reward是差不多的，所以將&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;跟環境做互動得到的&lt;script type=&quot;math/tex&quot;&gt;A^\theta(s_t,a_t)&lt;/script&gt;替換成了&lt;script type=&quot;math/tex&quot;&gt;A^{\theta^\prime}(s_t,a_t)&lt;/script&gt;。&lt;/p&gt;
+
+&lt;p&gt;而又假設一個state &lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;被觀測到的機率其實跟model沒有什麼關係的話，&lt;script type=&quot;math/tex&quot;&gt;\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}&lt;/script&gt;就可以忽略不看，最終我們就可以得到底下的式子做為我們的objective function&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J^{\theta^\prime}(\theta)=\mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}A^{\theta^\prime}(s_t,a_t)\right]&lt;/script&gt;
+
+&lt;p&gt;因為&lt;script type=&quot;math/tex&quot;&gt;\bigtriangledown f(x)=f(x)\bigtriangledown\log f(x)&lt;/script&gt;，我們可以得到&lt;script type=&quot;math/tex&quot;&gt;\bigtriangledown p_\theta(a_t\vert s_t)=p_\theta(a_t\vert s_t)\bigtriangledown\log p_\theta(a_t\vert s_t)&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;但由於importance sampling在兩個機率分佈差異很大的時候會讓結果壞掉，所以PPO做的事情便是在objective function裡面多加&lt;script type=&quot;math/tex&quot;&gt;\beta KL(\theta, \theta^\prime)&lt;/script&gt;這項，其中&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;是一個hyperparameter，讓兩個機率分佈差異不要太大&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_{PPO}^{\theta^\prime}=J^{\theta^\prime}(\theta)-\beta KL(\theta, \theta^\prime)&lt;/script&gt;
+
+&lt;p&gt;值得一提的是，這邊的&lt;script type=&quot;math/tex&quot;&gt;KL()&lt;/script&gt;不是只兩個model參數之間的KL divergence，而是兩者的output，也就是兩者的behavior所算出來的KL divergence。&lt;/p&gt;
+
+&lt;p&gt;而PPO的前身，TRPO的式子跟PPO幾乎一樣，只是它把KL這項當作是一個限制，在實作起來會比起PPO來要來得複雜得多。&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\prime)&lt;\delta %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OAKAZhFmYoI&quot;&gt;DRL Lecture 2:  Proximal Policy Optimization (PPO)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Your Name</name></author><category term="Reinforcement-Learning" /><summary type="html">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</summary></entry><entry><title type="html">如何製作Slack機器人</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot/" rel="alternate" type="text/html" title="如何製作Slack機器人" /><published>2020-05-07T00:00:00+00:00</published><updated>2020-05-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot/">&lt;p&gt;這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1194,100 +1310,4 @@ apt-cyg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;ELMo是個我覺得架構還蠻算簡單的，製作word embedding的方式，也可以根據你後面想要解決的NLP task做fine-tuned。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇簡單介紹一下赫赫有名的ELMo，其源自於Deep contextualized word representation這篇paper。</summary></entry><entry><title type="html">Attention Is All You Need</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need/" rel="alternate" type="text/html" title="Attention Is All You Need" /><published>2020-03-21T00:00:00+00:00</published><updated>2020-03-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/21/attention-is-all-you-need/">&lt;p&gt;這篇文章想要簡介一下被廣泛使用的Transformer是什麼。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
-
-&lt;p&gt;在以前處理有關sequence的問題，像是文字、語音和影像等，所使用的model不是CNN就是RNN，然而它們各自有一些缺點，像是CNN必須要疊的很深才可以看到比較長範圍的資訊，RNN比較不能應付較長的序列，並且必須sequential的做訓練，不能夠被平行化，而這篇paper提出了另一個一樣能套用在sequence上的model，稱之為Transformer。&lt;/p&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-
-&lt;p&gt;底下的圖是paper當中所提出的Transformer的架構，跟一般做language translation的架構蠻像的，由encoder和decoder組成，但可以看到其中有一個比較特別的layer：Multi-Head Attention。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;transformer-architecture.png&quot; alt=&quot;Transformer model architecture&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;scaled-dot-product-attention&quot;&gt;Scaled Dot-Product Attention&lt;/h3&gt;
-
-&lt;p&gt;在講Multi-Head Attention Layer之前，得先要講一下Scaled Dot-Product Attention，因為Multi-Head Attention Layer其實是由Scaled Dot-Product Attention所組成的，而下圖為Scaled Dot-Product Attention的架構。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;scaled-dot-product-attention.png&quot; alt=&quot;Scaled Dot-Product Attention&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;假設我們現在有一個sequence input &lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{x}&lt;/script&gt;，其長度為&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;，而每一個元&lt;script type=&quot;math/tex&quot;&gt;x_i&lt;/script&gt;是一個&lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt;維度的向量，可以想像成是我們已經把一個輸入進來的句子轉換成了&lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt;維的word embeddings&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\boldsymbol{x}=[x_1, x_2, ..., x_n],\ x_i\in\mathbb{R}^d&lt;/script&gt;
-
-&lt;p&gt;而圖中的&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{Q}&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{K}&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{V}&lt;/script&gt;，分別代表的是Query、Key、Value，是由不同的weight各自乘上輸入&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{x}&lt;/script&gt;所得到的&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\boldsymbol{Q}=[Q_1, Q_2, ..., Q_n],\ Q_i=W_Qx_i\in\mathbb{R}^{d_k}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\boldsymbol{K}=[K_1, K_2, ..., K_n],\ K_i=W_Kx_i\in\mathbb{R}^{d_k}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\boldsymbol{V}=[V_1, V_2, ..., V_n],\ V_i=W_Vx_i\in\mathbb{R}^{d_v}&lt;/script&gt;
-
-&lt;p&gt;Scaled Dot-Product Attention做的事情就是，對每個時間點&lt;script type=&quot;math/tex&quot;&gt;t&lt;/script&gt;，用其Query對所有時間點的Key做內積，scale以後過&lt;script type=&quot;math/tex&quot;&gt;\mathrm{softmax}&lt;/script&gt;得到attention weight，再與Value做weighted sum。假設我們想要得到&lt;script type=&quot;math/tex&quot;&gt;t=1&lt;/script&gt;的輸出，其流程大概會是底下這樣&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;取出&lt;script type=&quot;math/tex&quot;&gt;t=1&lt;/script&gt;的query &lt;script type=&quot;math/tex&quot;&gt;Q_1&lt;/script&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;對所有時間點的key做內積，得到原始的attention weight &lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{a}=[Q_1K_1, Q_1K_2, ..., Q_1K_n], Q_iK_j \in \mathbb{R}&lt;/script&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;對原始的attention weight除上維度開根號，以避免原始值太大，亦即&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{a}=\frac{\boldsymbol{a}}{\sqrt{d_k}}&lt;/script&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;將&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{a}&lt;/script&gt;通過&lt;script type=&quot;math/tex&quot;&gt;\mathrm{softmax}&lt;/script&gt;，得到最終的attention weight &lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{\hat a}=[\hat a_1, \hat a_2, ..., \hat a_n], \hat a_i\in\mathbb{R}&lt;/script&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;利用attention weight對value做weighted sum，得到時間點&lt;script type=&quot;math/tex&quot;&gt;t=1&lt;/script&gt;的輸出&lt;script type=&quot;math/tex&quot;&gt;z_1&lt;/script&gt;&lt;/p&gt;
-
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;z_1=V_1*\hat a_1+V_2*\hat a_2+...+V_n*\hat a_n\in\mathbb{R}^{d_v}&lt;/script&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;其他時間點的輸出&lt;script type=&quot;math/tex&quot;&gt;z_2, ..., z_n&lt;/script&gt;都是利用相同的方式得到的，我們也可以從中發現到，其實產生某個特定時間點的輸出&lt;script type=&quot;math/tex&quot;&gt;z_t&lt;/script&gt;並沒有與其他時間點有關聯，我們可以簡單地用矩陣相乘的方式一次算出所有的輸出&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\boldsymbol{z}=[z_1, z_2, ..., z_n]=\mathrm{Attention}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\boldsymbol{V}\left(\mathrm{softmax}(\frac{\boldsymbol{Q}^T\boldsymbol{K}}{\sqrt{d_k}})\right)^T&lt;/script&gt;
-
-&lt;p&gt;至此我們有了可以輸入一個序列&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{x}&lt;/script&gt;，得到與&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{x}&lt;/script&gt;相同長度輸出&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{z}&lt;/script&gt;的Scaled Dot-Product Attention layer。&lt;/p&gt;
-
-&lt;h3 id=&quot;multi-head-attention-layer&quot;&gt;Multi-Head Attention Layer&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;multi-head-attention.png&quot; alt=&quot;Multi-Head Attention&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;而在Transformer架構中的Multi-Head Attention其實就是把輸入的&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{Q}&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{K}&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;\boldsymbol{V}&lt;/script&gt;過linear transform、把多個Scaled Dot-Product Attention平行的疊在一起、將每個輸出都接起來後再過一個linear transform&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\mathrm{Concat}(\mathrm{head_1}, ..., \mathrm{head_h})W^O&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathrm{head_i}=\mathrm{Attention}(\boldsymbol{Q}W_i^Q, \boldsymbol{K}W_i^K, \boldsymbol{V}W_i^V)\\W_i^Q\in\mathbb{R}^{d_{model}\times d_{k}}, W_i^K\in\mathbb{R}^{d_{model}\times d_k}, W_i^V\in\mathbb{R}^{d_{model}\times d_v}&lt;/script&gt;
-
-&lt;p&gt;在paper裡面，將&lt;script type=&quot;math/tex&quot;&gt;\mathrm{head}&lt;/script&gt;的個數設為&lt;script type=&quot;math/tex&quot;&gt;h=8&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;d_k=d_v=d_{model}/h=64&lt;/script&gt;，其中的&lt;script type=&quot;math/tex&quot;&gt;d_{model}&lt;/script&gt;是Multi-Head Attention輸出的維度。&lt;/p&gt;
-
-&lt;h3 id=&quot;add--norm&quot;&gt;Add &amp;amp; Norm&lt;/h3&gt;
-
-&lt;p&gt;這一層做的事情是加一個residual connection，並做&lt;a href=&quot;https://arxiv.org/pdf/1607.06450.pdf&quot;&gt;Layer Normalization&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;positional-encoding&quot;&gt;Positional Encoding&lt;/h3&gt;
-
-&lt;p&gt;在上面的方法中，在產生特定時間點輸出的時候，並不會對比較近或比較遠的輸入而有不一樣的操作，使得在產生&lt;script type=&quot;math/tex&quot;&gt;z_3&lt;/script&gt;的時候，model並不知道&lt;script type=&quot;math/tex&quot;&gt;x_1&lt;/script&gt;是比較近而&lt;script type=&quot;math/tex&quot;&gt;x_{10}&lt;/script&gt;是比較遠的，因此在paper裡對輸入都加入了positional encoding，好讓model可以看輸入就知道這個輸入是哪一個時間點的輸入。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;PE(pos, 2i)=\sin(pos/10000^{2i/d_{model}})\\PE(pos, 2i+1)=\cos(pos/10000^{2i/d_{model}})&lt;/script&gt;
-
-&lt;h3 id=&quot;encoding--decoding-動畫&quot;&gt;Encoding / Decoding 動畫&lt;/h3&gt;
-
-&lt;p&gt;底下是從&lt;a href=&quot;https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html&quot;&gt;Google AI Blog&lt;/a&gt;中擷取下來的動畫，解釋了Transformer在encoding和decoding時的流程。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://3.bp.blogspot.com/-aZ3zvPiCoXM/WaiKQO7KRnI/AAAAAAAAB_8/7a1CYjp40nUg4lKpW7covGZJQAySxlg8QCLcBGAs/s640/transform20fps.gif&quot; alt=&quot;Transformer process&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
-
-&lt;p&gt;Paper將Transformer應用在翻譯上，可以看到Transformer的表現超群。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;translation-results.png&quot; alt=&quot;Translation Results&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
-
-&lt;p&gt;這篇paper提出了Transformer的架構，底層使用了Multi-Head Attention，是一個與CNN、RNN一樣，可以輸入輸出都是序列的layer，當你也有要處理序列的問題時，不妨試試看，或許可以有不錯的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇文章想要簡介一下被廣泛使用的Transformer是什麼。</summary></entry></feed>
+&lt;p&gt;ELMo是個我覺得架構還蠻算簡單的，製作word embedding的方式，也可以根據你後面想要解決的NLP task做fine-tuned。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇簡單介紹一下赫赫有名的ELMo，其源自於Deep contextualized word representation這篇paper。</summary></entry></feed>

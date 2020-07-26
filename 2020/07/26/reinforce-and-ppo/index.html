@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>REINFORCE和Proximal Policy Optimization - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descen...">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/07/26/reinforce-and-ppo/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -254,7 +254,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -267,116 +267,179 @@
 	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
 </svg>
 <a title="" href="/">wjohn1483.github.io</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item navigation__item--active"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/07/26/reinforce-and-ppo/"><h2 itemprop="headline" class="item__header">REINFORCE和Proximal Policy Optimization</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</div><p><a href="/2020/07/26/reinforce-and-ppo/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>REINFORCE和Proximal Policy Optimization</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-07-26-reinforce-and-ppo/2020-07-26-reinforce-and-ppo.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="REINFORCE和Proximal Policy Optimization"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 26, 2020</span>
             </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-07-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="Reinforcement-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/05/07/slack-bot/"><h2 itemprop="headline" class="item__header">如何製作Slack機器人</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。</div><p><a href="/2020/05/07/slack-bot/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 07, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-05-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/25/plot-data-with-r/"><h2 itemprop="headline" class="item__header">用R來作圖</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</div><p><a href="/2020/04/25/plot-data-with-r/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 25, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-25T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/"><h2 itemprop="headline" class="item__header">Playing Atari with Deep Reinforcement Learning</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</div><p><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Reinforcement-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/"><h2 itemprop="headline" class="item__header">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</div><p><a href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Generative-Adversarial-Network">Generative-Adversarial-Network</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Generative-Adversarial-Network,Recommendation-System,Reinforcement-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/04/secrets-of-the-millionaire-mind/"><h2 itemprop="headline" class="item__header">有錢人想的和你不一樣</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">節錄部分《有錢人想的和你不一樣》這本書的內容以及自己的一些心得。</div><p><a href="/2020/04/04/secrets-of-the-millionaire-mind/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Book">Book</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 04, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="Book"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/02/tf-idf-introduction/"><h2 itemprop="headline" class="item__header">TF-IDF簡介</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</div><p><a href="/2020/04/02/tf-idf-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 02, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Machine-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/"><h2 itemprop="headline" class="item__header">BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇介紹一下常常聽到的BERT是怎麼樣運作的。</div><p><a href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 29, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-29T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Natural-Language-Processing"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>16 post articles, 2 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
-            <i class="fas fa-angle-left"></i>
-          </div></li><li>
-              <div class="button button--primary button--circle focus"><span>1</span></div>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-              </li><li><a class="button button--secondary button--circle" href="/page2">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+    <meta itemprop="keywords" content="Reinforcement-Learning"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</p>
+
+<!--more-->
+
+<h2 id="reinforce">REINFORCE</h2>
+
+<p>首先，我們先來定義一下state、action和reward之間的關係。當機器看到眼前的state <script type="math/tex">s_1</script>時，會根據自身的演算法決定做出動作<script type="math/tex">a_1</script>，此時環境會根據機器做出的<script type="math/tex">a_1</script>給予reward <script type="math/tex">r_1</script>，而隨著這個動作，機器所看到的state會從<script type="math/tex">s_1</script>轉移到<script type="math/tex">s_2</script>，接著機器會根據<script type="math/tex">s_2</script>做出動作<script type="math/tex">a_2</script>，並獲得<script type="math/tex">r_2</script>，以此類推。而我們的目標就是希望機器能學會一個厲害的policy，使得expected reward最大。</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned} expected\ reward & =\sum R(\tau)p_\theta(\tau)\\ & =\mathbb{E}_{\tau\sim p_\theta(\tau)}[R(\tau)] \end{aligned} %]]></script>
+
+<p>其中<script type="math/tex">\tau</script>是trajectory，指的是<script type="math/tex">\left[ s_1, a_1, s_2, a_2, ... \right]</script>的序列，而<script type="math/tex">R(\tau)</script>是序列<script type="math/tex">\tau</script>中所獲得的所有<script type="math/tex">r_i</script>的總和、<script type="math/tex">\theta</script>是policy的參數、<script type="math/tex">p_\theta(\tau)</script>是序列<script type="math/tex">\tau</script>出現的機率，因為policy會影響到action <script type="math/tex">a_i</script>的產生，所以<script type="math/tex">\tau</script>的機率跟<script type="math/tex">\theta</script>有關。</p>
+
+<p>若我們以expected reward為objective function，對它做微分，我們可以得到</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned}\bigtriangledown R_\theta &= \sum R(\tau) \bigtriangledown p_\theta(\tau) \end{aligned} %]]></script>
+
+<p>因為<script type="math/tex">R(\tau)</script>是由環境給予的，亦可以是人工定義的，跟policy的參數沒有什麼關係，所以當我們做微分的時候不會有什麼影響，接著再稍微整理一下</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned} \bigtriangledown R_\theta &= \sum R(\tau)\bigtriangledown p_\theta(\tau) \\ &= \sum R(\tau) p_\theta(\tau)\frac{\bigtriangledown p_\theta(\tau)}{p_\theta(\tau)} \\ &= \sum R(\tau)p_\theta(\tau)\bigtriangledown\log p_\theta(\tau) \\ &= \mathbb{E}_{\tau\sim p_\theta(\tau)} [R(\tau)\bigtriangledown\log p_\theta(\tau)] \\ &\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}R(\tau^n)\bigtriangledown\log p_\theta(\tau^n) \\ &\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}R(\tau^n)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n) \end{aligned} %]]></script>
+
+<p>在式子最後所得出來的式子，其實跟常見的、label是one-hot vector的cross entropy很類似，只不過多出了<script type="math/tex">R(\tau^n)</script>，在概念上可以想像成，每一步都在讓model自己產生的action的log probability越大越好，但是用<script type="math/tex">R(\tau^n)</script>來控制log probability要多大。</p>
+
+<h3 id="advantage">Advantage</h3>
+
+<p>在前面的段落裡，我們可以看到，當環境給予的reward都是正值的時候，objective function裡<script type="math/tex">R(\tau^n)</script>這項的值會是正的，使得在<script type="math/tex">s_t^n</script>時，機器所採取的任何一個<script type="math/tex">a_t^n</script>的log probability都是會漸漸變大的，雖說隨著時間的拉長，能獲得較大reward的<script type="math/tex">a_t^n</script>的log probability應該會是最大的，然而訓練起來要花的時間就會比較多，因此通常在訓練的時候，會稍微調整一下objective function，變成底下</p>
+
+<script type="math/tex; mode=display">\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}[R(\tau^n)-b]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ b=\mathbb{E}[R(\tau)]</script>
+
+<p>這邊的<script type="math/tex">b</script>是trajectory的平均reward，使得<script type="math/tex">[R(\tau^n)-b]</script>這項的意思變成，這個action <script type="math/tex">a_t^n</script>相對於平均而言有多好。</p>
+
+<p>而再更精細的去看objective function會發現<script type="math/tex">R(\tau^n)</script>代表的是整個trajectory的reward，但卻用來衡量每個時間點<script type="math/tex">a_t^n</script>的好壞，這樣有一點不太公平，可能在某個<script type="math/tex">s_t^n</script>採取<script type="math/tex">a_t^n</script>對拿到reward是很有幫助的，但因為其他action表現得不好，使得整個trajectory拿到的reward低於平均，這時這個好的action的log probability就會被降低，為了讓前面這項更能反映每個action的好壞，會再修改成</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}\left[ \sum\limits_{t^\prime=t}\limits^{T_n}\gamma^{t^\prime-t}r_{t^\prime}^n-b \right]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ \gamma<1 %]]></script>
+
+<p>也就是用該action未來的reward再稍微打個折以後加總起來，當作是這個action有多好，而前面中括號裡的這項通常會被拉出來變成<script type="math/tex">A^\theta(s_t,a_t)</script>稱為advantage function用以衡量在<script type="math/tex">s_t</script>採取<script type="math/tex">a_t</script>相較其他action有多好。</p>
+
+<h2 id="proximal-policy-optimization-ppo">Proximal Policy Optimization (PPO)</h2>
+
+<h3 id="on-policy-vs-off-policy">On-policy v.s. Off-policy</h3>
+
+<blockquote>
+  <p>On-policy：要訓練的model正是與環境互動的</p>
+</blockquote>
+
+<blockquote>
+  <p>Off-policy：要訓練的model和與環境互動的model不同</p>
+</blockquote>
+
+<p>在前面REINFORCE的式子裡面我們可以看到它是一個on-policy的方法，那on-policy的方法需要很長的訓練時間，因為跟環境互動完的trajectory拿來更新一次model的參數以後就不能夠再被使用了，因為新的model所採取的action會不一樣，而PPO就是嘗試把REINFORCE從on-policy變成off-policy，好讓訓練時間縮短。</p>
+
+<h3 id="importance-sampling">Importance Sampling</h3>
+
+<p>PPO使用的便是將importance sampling融入進objective function裡面，這邊先提一下什麼是importance sampling。</p>
+
+<p>在一般我們計算從某個機率分佈<script type="math/tex">p</script>抽樣出<script type="math/tex">x</script>的<script type="math/tex">f(x)</script>的期望值時，會寫成底下的式子</p>
+
+<script type="math/tex; mode=display">\mathbb{E}_{x\sim p}[f(x)] \approx \frac{1}{N}\sum\limits_{i=1}\limits^{N}f(x_i)</script>
+
+<p>倘若今天因為某種特殊的原因，使得我們無法直接從機率分佈<script type="math/tex">p</script>直接抽樣的時候，我們可以使用另外一個機率分佈<script type="math/tex">q</script>抽樣出<script type="math/tex">x</script>再經過<script type="math/tex">p</script>、<script type="math/tex">q</script>之間的轉換來達到一樣的結果</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned} \mathbb{E}_{x\sim p}[f(x)] &=\int f(x)p(x)dx \\ &= \int f(x)\frac{p(x)}{q(x)}q(x)dx \\ &= \mathbb{E}_{x\sim q}\left[ f(x)\frac{p(x)}{q(x)} \right] \end{aligned} %]]></script>
+
+<p>而importance sampling代表的就是底下的式子</p>
+
+<script type="math/tex; mode=display">\mathbb{E}_{x\sim p}[f(x)]=\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]</script>
+
+<p>雖然看起來當機率分佈<script type="math/tex">p</script>無法被取樣的時候，我們可以使用任意的機率分佈<script type="math/tex">q</script>來替代，但這其中還是會有一些誤差，我們知道一個機率分佈的變異數的算法如下</p>
+
+<script type="math/tex; mode=display">Var[X]=\mathbb{E}[X^2]-(\mathbb{E}[X])^2</script>
+
+<p>機率分佈<script type="math/tex">p</script>的變異數為</p>
+
+<script type="math/tex; mode=display">Var_{x\sim p}[f(x)]=\mathbb{E}_{x\sim p}[f(x)^2]-(\mathbb{E}_{x\sim p}[f(x)])^2</script>
+
+<p>如果使用importance sampling來得到的變異數為</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned} Var_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right] &=\mathbb{E}_{x\sim q}\left[f(x)^2\frac{p(x)^2}{q(x)^2}\right]-\left(\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]\right)^2 \\ &= \mathbb{E}_{x\sim p}\left[f(x)^2\frac{p(x)}{q(x)}\right]-\left(\mathbb{E}_{x\sim p}[f(x)]\right)^2\end{aligned} %]]></script>
+
+<p>從上式我們可以看到，當機率分佈<script type="math/tex">p</script>和<script type="math/tex">q</script>兩者的差異過大的時候，會造成兩者的變異數也相差很多，所以在使用importance sampling的時候，使用機率分佈較近的<script type="math/tex">q</script>是很重要的。</p>
+
+<h3 id="ppo">PPO</h3>
+
+<p>在這裡，我們想要將前面的REINFORCE從on-policy換成off-policy，讓原先跟環境做互動的<script type="math/tex">\pi_\theta</script>換成<script type="math/tex">\pi_{\theta^\prime}</script>，為此我們套用上面的importance sampling</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{aligned} \bigtriangledown R_\theta &= \mathbb{E}_{(s_t,a_t)\sim\pi_\theta} \left[ A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(s_t, a_t)}{p_{\theta^\prime}(s_t, a_t)}A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}A^{\theta^\prime}(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \end{aligned} %]]></script>
+
+<p>從第二行到第三行中間做了一件特別的事情，這裡假設<script type="math/tex">\pi_\theta</script>和<script type="math/tex">\pi_{\theta^\prime}</script>所能得到的reward是差不多的，所以將<script type="math/tex">\theta</script>跟環境做互動得到的<script type="math/tex">A^\theta(s_t,a_t)</script>替換成了<script type="math/tex">A^{\theta^\prime}(s_t,a_t)</script>。</p>
+
+<p>而又假設一個state <script type="math/tex">s_t</script>被觀測到的機率其實跟model沒有什麼關係的話，<script type="math/tex">\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}</script>就可以忽略不看，最終我們就可以得到底下的式子做為我們的objective function</p>
+
+<script type="math/tex; mode=display">J^{\theta^\prime}(\theta)=\mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}A^{\theta^\prime}(s_t,a_t)\right]</script>
+
+<p>因為<script type="math/tex">\bigtriangledown f(x)=f(x)\bigtriangledown\log f(x)</script>，我們可以得到<script type="math/tex">\bigtriangledown p_\theta(a_t\vert s_t)=p_\theta(a_t\vert s_t)\bigtriangledown\log p_\theta(a_t\vert s_t)</script></p>
+
+<p>但由於importance sampling在兩個機率分佈差異很大的時候會讓結果壞掉，所以PPO做的事情便是在objective function裡面多加<script type="math/tex">\beta KL(\theta, \theta^\prime)</script>這項，其中<script type="math/tex">\beta</script>是一個hyperparameter，讓兩個機率分佈差異不要太大</p>
+
+<script type="math/tex; mode=display">J_{PPO}^{\theta^\prime}=J^{\theta^\prime}(\theta)-\beta KL(\theta, \theta^\prime)</script>
+
+<p>值得一提的是，這邊的<script type="math/tex">KL()</script>不是只兩個model參數之間的KL divergence，而是兩者的output，也就是兩者的behavior所算出來的KL divergence。</p>
+
+<p>而PPO的前身，TRPO的式子跟PPO幾乎一樣，只是它把KL這項當作是一個限制，在實作起來會比起PPO來要來得複雜得多。</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\prime)<\delta %]]></script>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=OAKAZhFmYoI">DRL Lecture 2:  Proximal Policy Optimization (PPO)</a></li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-07-26T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/05/07/slack-bot/">如何製作Slack機器人</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -899,7 +962,75 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script><script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};MathJax.Hub.Config(_config);
 </script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];
