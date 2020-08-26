@@ -304,11 +304,11 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Plug <span class="s1">'gmarik/Vundle.vim'</span>
 </code></pre></div></div>
 
-<p>在宣告好想要安裝的套件以後，打開vim，再打上<code class="highlighter-rouge">:PlugInstall</code>就會將宣告的套件安裝在<strong>[user name]/.vim/bundle</strong>裡面。如果想要移除某個套件，只需要在設定檔將套件的宣告移除，並在vim裡面打上<code class="highlighter-rouge">:PlugClean</code>，相當的方便。</p>
+<p>在宣告好想要安裝的套件以後，打開vim，再打上<code class="language-plaintext highlighter-rouge">:PlugInstall</code>就會將宣告的套件安裝在<strong>[user name]/.vim/bundle</strong>裡面。如果想要移除某個套件，只需要在設定檔將套件的宣告移除，並在vim裡面打上<code class="language-plaintext highlighter-rouge">:PlugClean</code>，相當的方便。</p>
 
 <h2 id="plugins">Plugins</h2>
 
-<p>接下來介紹一下我覺得好像不錯用的套件們，大多的套件只需要像底下這樣宣告，並且<code class="highlighter-rouge">:PlugInstall</code>就能安裝完成了。</p>
+<p>接下來介紹一下我覺得好像不錯用的套件們，大多的套件只需要像底下這樣宣告，並且<code class="language-plaintext highlighter-rouge">:PlugInstall</code>就能安裝完成了。</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Plug <span class="s1">'[plugin name]'</span>
 </code></pre></div></div>
@@ -321,7 +321,7 @@
 
 <p>也是一個自動完成各種東西的套件，只是安裝起來沒有像supertab那樣簡單，不僅需要宣告在設定檔裡，還需要安裝其他程式語言，像是go、nodejs等，詳細的安裝流程可以參考官方的GitHub。</p>
 
-<p>我會在設定檔裡面多加底下的設定，使你可以按下enter就可以選擇自動完成的東西(預設好像是按<code class="highlighter-rouge">Ctrl + y</code>)，另一個設定是讓你能用<code class="highlighter-rouge">&lt;Leader&gt;g</code>跳到function定義的部分。</p>
+<p>我會在設定檔裡面多加底下的設定，使你可以按下enter就可以選擇自動完成的東西(預設好像是按<code class="language-plaintext highlighter-rouge">Ctrl + y</code>)，另一個設定是讓你能用<code class="language-plaintext highlighter-rouge">&lt;Leader&gt;g</code>跳到function定義的部分。</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>exists<span class="o">(</span><span class="s1">'g:plugs["YouCompleteMe"]'</span><span class="o">)</span>
     <span class="nb">let </span>g:ycm_autoclose_preview_window_after_completion<span class="o">=</span>1
     <span class="nb">let </span>g:ycm_key_list_stop_completion <span class="o">=</span> <span class="o">[</span><span class="s1">'&lt;C-y&gt;'</span>, <span class="s1">'&lt;CR&gt;'</span><span class="o">]</span>
@@ -347,7 +347,7 @@ endif
 
 <h3 id="tomtomtcomment_vim"><a href="https://github.com/tomtom/tcomment_vim">tomtom/tcomment_vim</a></h3>
 
-<p>幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上<code class="highlighter-rouge">gc</code>便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。</p>
+<p>幫助你快速將程式碼comment起來的套件，在Visual mode選定好區塊以後，打上<code class="language-plaintext highlighter-rouge">gc</code>便能將選取的區塊都comment起來，更多的使用方法可以參考上方連結裡面的文件。</p>
 
 <h3 id="sominivim-autoclose"><a href="https://github.com/Townk/vim-autoclose">somini/vim-autoclose</a></h3>
 
@@ -355,7 +355,7 @@ endif
 
 <h3 id="tpopevim-eunuch"><a href="https://github.com/tpope/vim-eunuch">tpope/vim-eunuch</a></h3>
 
-<p>讓你能在vim裡面直接使用Unix指令的套件，像是<code class="highlighter-rouge">:SudoEdit</code>、<code class="highlighter-rouge">:Rename</code>等等，詳細的指令可以參考上方連結。</p>
+<p>讓你能在vim裡面直接使用Unix指令的套件，像是<code class="language-plaintext highlighter-rouge">:SudoEdit</code>、<code class="language-plaintext highlighter-rouge">:Rename</code>等等，詳細的指令可以參考上方連結。</p>
 
 <h3 id="tpopevim-fugitive"><a href="https://github.com/tpope/vim-fugitive">tpope/vim-fugitive</a></h3>
 
@@ -365,23 +365,23 @@ endif
 
 <p>使你可以快速改變括號的套件，像是將</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Hello world!"
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"Hello world!"
 </code></pre></div></div>
 
 <p>迅速改成</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Hello world!'
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Hello world!'
 </code></pre></div></div>
 
 <p>更多的指令請參考上面連結。</p>
 
 <h3 id="junegunnvim-easy-align"><a href="https://github.com/junegunn/vim-easy-align">junegunn/vim-easy-align</a></h3>
 
-<p>能迅速將程式碼對齊的套件，使用方式為，在Visual mode選好想對齊的區塊，打上<code class="highlighter-rouge">ga[分隔符號]</code>啟動，還可以設定選擇要靠左、靠右對齊，詳細的使用方式可以參考上面的網址。</p>
+<p>能迅速將程式碼對齊的套件，使用方式為，在Visual mode選好想對齊的區塊，打上<code class="language-plaintext highlighter-rouge">ga[分隔符號]</code>啟動，還可以設定選擇要靠左、靠右對齊，詳細的使用方式可以參考上面的網址。</p>
 
 <h3 id="honzavim-snippets--sirverultisnips"><a href="https://github.com/honza/vim-snippets">honza/vim-snippets</a> / <a href="https://github.com/SirVer/ultisnips">sirver/ultisnips</a></h3>
 
-<p>能快速補齊程式碼的套件，像是打上<code class="highlighter-rouge">def test[tab]</code>就會自動幫你將function的架構打出來。</p>
+<p>能快速補齊程式碼的套件，像是打上<code class="language-plaintext highlighter-rouge">def test[tab]</code>就會自動幫你將function的架構打出來。</p>
 
 <h3 id="mhinzvim-startify"><a href="https://github.com/mhinz/vim-startify">mhinz/vim-startify</a></h3>
 
@@ -393,7 +393,7 @@ endif
 
 <h3 id="vim-syntasticsyntastic"><a href="https://github.com/vim-syntastic/syntastic">vim-syntastic/syntastic</a></h3>
 
-<p>幫你做語法檢查的套件，我自己會加上底下這行，令<code class="highlighter-rouge">&lt;Leader&gt;c</code>當作快捷鍵。</p>
+<p>幫你做語法檢查的套件，我自己會加上底下這行，令<code class="language-plaintext highlighter-rouge">&lt;Leader&gt;c</code>當作快捷鍵。</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>noremap &lt;silent&gt;&lt;Leader&gt;c  :SyntasticCheck&lt;CR&gt;
 </code></pre></div></div>
@@ -413,7 +413,7 @@ nnoremap &lt;Leader&gt;cp :ALEPrevious&lt;CR&gt;
 
 <p>裝這個套件主要是為了配合<a href="#dense-analysisale">ale</a>而安裝的，上面的ale會在每一行標註該行的warning和error，雖說ale可以做到把所有error都統一在一個列表裡顯示出來，但它沒有做可以toggle的指令，而這個套件就是設定快捷鍵來做這件事情。</p>
 
-<p>預設<code class="highlighter-rouge">&lt;Leader&gt;l</code>會toggle location list，把所有error列出來，在行數按下enter就會跳轉到那邊，<code class="highlighter-rouge">&lt;Leader&gt;q</code>會打開quickfix window。</p>
+<p>預設<code class="language-plaintext highlighter-rouge">&lt;Leader&gt;l</code>會toggle location list，把所有error列出來，在行數按下enter就會跳轉到那邊，<code class="language-plaintext highlighter-rouge">&lt;Leader&gt;q</code>會打開quickfix window。</p>
 
 <h3 id="majutsushitagbar"><a href="https://github.com/majutsushi/tagbar">majutsushi/tagbar</a></h3>
 
@@ -421,7 +421,7 @@ nnoremap &lt;Leader&gt;cp :ALEPrevious&lt;CR&gt;
 
 <h3 id="mileszsackvim"><a href="https://github.com/mileszs/ack.vim">mileszs/ack.vim</a></h3>
 
-<p>在vim裡面使用grep或是ag(<a href="https://github.com/ggreer/the_silver_searcher">The Silver Searcher</a>)來搜尋特定字詞的套件，我自己會放以下的設定來建立快捷鍵，打上<code class="highlighter-rouge">ack[space]</code>會自動替換成<code class="highlighter-rouge">Ack!</code>，在Normal mode中打上<code class="highlighter-rouge">&lt;Leader&gt;a</code>會去搜尋游標當下所在的字詞。</p>
+<p>在vim裡面使用grep或是ag(<a href="https://github.com/ggreer/the_silver_searcher">The Silver Searcher</a>)來搜尋特定字詞的套件，我自己會放以下的設定來建立快捷鍵，打上<code class="language-plaintext highlighter-rouge">ack[space]</code>會自動替換成<code class="language-plaintext highlighter-rouge">Ack!</code>，在Normal mode中打上<code class="language-plaintext highlighter-rouge">&lt;Leader&gt;a</code>會去搜尋游標當下所在的字詞。</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>executable<span class="o">(</span><span class="s1">'ag'</span><span class="o">)</span>
     <span class="nb">let </span>g:ackprg <span class="o">=</span> <span class="s1">'ag --vimgrep'</span>
@@ -436,11 +436,11 @@ nnoremap &lt;Leader&gt;a :Ack!&lt;CR&gt;
 
 <h3 id="ctrlpvimctrlpvim"><a href="https://github.com/kien/ctrlp.vim">ctrlpvim/ctrlp.vim</a></h3>
 
-<p>使你可以在vim裡面打上<code class="highlighter-rouge">Ctrl + p</code>便能搜尋目錄底下的檔案名稱。</p>
+<p>使你可以在vim裡面打上<code class="language-plaintext highlighter-rouge">Ctrl + p</code>便能搜尋目錄底下的檔案名稱。</p>
 
 <h3 id="junegunnfzf--junegunnfzfvim"><a href="https://github.com/junegunn/fzf">junegunn/fzf</a> / <a href="https://github.com/junegunn/fzf.vim">junegunn/fzf.vim</a></h3>
 
-<p>功能與上面的<strong>ctrlpvim/ctrlp.vim</strong>幾乎雷同，只是底層是用fzf來做搜尋，我個人比較偏好這個套件，需要使用底下的設定來複寫<code class="highlighter-rouge">Ctrl + p</code>的預設快捷鍵。</p>
+<p>功能與上面的<strong>ctrlpvim/ctrlp.vim</strong>幾乎雷同，只是底層是用fzf來做搜尋，我個人比較偏好這個套件，需要使用底下的設定來複寫<code class="language-plaintext highlighter-rouge">Ctrl + p</code>的預設快捷鍵。</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>exists<span class="o">(</span><span class="s1">'g:plugs["fzf.vim"]'</span><span class="o">)</span>
     nmap &lt;c-p&gt; :FZF&lt;CR&gt;
@@ -449,7 +449,7 @@ endif
 
 <h3 id="terrymavim-expand-region"><a href="https://github.com/terryma/vim-expand-region">terryma/vim-expand-region</a></h3>
 
-<p>讓你可以透過<code class="highlighter-rouge">+</code>和<code class="highlighter-rouge">_</code>來簡單的擴大或縮小選取的範圍，可以看連結內的demo。</p>
+<p>讓你可以透過<code class="language-plaintext highlighter-rouge">+</code>和<code class="language-plaintext highlighter-rouge">_</code>來簡單的擴大或縮小選取的範圍，可以看連結內的demo。</p>
 
 <h3 id="godlygeektabular"><a href="https://github.com/godlygeek/tabular">godlygeek/tabular</a></h3>
 
@@ -468,7 +468,7 @@ endif
 
 <h3 id="roxmavim-paste-easy"><a href="https://github.com/roxma/vim-paste-easy">roxma/vim-paste-easy</a></h3>
 
-<p>在電腦上複製程式碼，想直接貼到vim裡面的時候有可能會有格式跑掉的問題，這個套件可以幫你自動在貼上前<code class="highlighter-rouge">set paste</code>。</p>
+<p>在電腦上複製程式碼，想直接貼到vim裡面的時候有可能會有格式跑掉的問題，這個套件可以幫你自動在貼上前<code class="language-plaintext highlighter-rouge">set paste</code>。</p>
 
 <p>更多資訊可以參考上面附的GitHub連結或是<a href="https://vimawesome.com/plugin/vim-paste-easy">這裡</a>。</p>
 
@@ -478,9 +478,9 @@ endif
 
 <h3 id="查看現在所開啟檔案的相對絕對路徑">查看現在所開啟檔案的相對/絕對路徑</h3>
 
-<p>想要查看檔案的相對路徑時，可以按下<code class="highlighter-rouge">&lt;Ctrl-G&gt;</code>，但過不久就會消失。</p>
+<p>想要查看檔案的相對路徑時，可以按下<code class="language-plaintext highlighter-rouge">&lt;Ctrl-G&gt;</code>，但過不久就會消失。</p>
 
-<p>若是想要看絕對路徑的話，按下<code class="highlighter-rouge">1 &lt;Ctrl-G&gt;</code>，vim會等你按下enter以後再把路徑隱藏。</p>
+<p>若是想要看絕對路徑的話，按下<code class="language-plaintext highlighter-rouge">1 &lt;Ctrl-G&gt;</code>，vim會等你按下enter以後再把路徑隱藏。</p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-03-09T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->

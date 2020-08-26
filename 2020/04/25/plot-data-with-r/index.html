@@ -300,22 +300,22 @@
 
 <h2 id="資料的讀寫">資料的讀寫</h2>
 
-<p>在準備好環境以後，接下來就是去將資料讀取進來，而在讀取的部分只需要打上<code class="highlighter-rouge">read.csv()</code>就能輕鬆的把csv檔讀進來了。</p>
+<p>在準備好環境以後，接下來就是去將資料讀取進來，而在讀取的部分只需要打上<code class="language-plaintext highlighter-rouge">read.csv()</code>就能輕鬆的把csv檔讀進來了。</p>
 
 <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"[path to your csv file]"</span><span class="p">)</span><span class="w">
 </span><span class="n">summary</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
 </span><span class="n">View</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
-<p>而且R還有提供一些貼心的function，像是<code class="highlighter-rouge">summary()</code>：可以幫你簡單的總結一下這分檔案的基本資料、<code class="highlighter-rouge">View()</code>：可以在RStudio裡面以表格的方式打開這個csv檔，方便人們閱覽。</p>
+<p>而且R還有提供一些貼心的function，像是<code class="language-plaintext highlighter-rouge">summary()</code>：可以幫你簡單的總結一下這分檔案的基本資料、<code class="language-plaintext highlighter-rouge">View()</code>：可以在RStudio裡面以表格的方式打開這個csv檔，方便人們閱覽。</p>
 
 <h2 id="折線圖">折線圖</h2>
 
-<p>若今天的資料形式適合畫折線圖來觀察趨勢的話，可以使用<code class="highlighter-rouge">ggplot()</code>來幫助你畫折線圖。</p>
+<p>若今天的資料形式適合畫折線圖來觀察趨勢的話，可以使用<code class="language-plaintext highlighter-rouge">ggplot()</code>來幫助你畫折線圖。</p>
 
 <h3 id="橫軸是其中一個欄位">橫軸是其中一個欄位</h3>
 
-<p>假設今天的資料<code class="highlighter-rouge">test.csv</code>長得像底下這樣。</p>
+<p>假設今天的資料<code class="language-plaintext highlighter-rouge">test.csv</code>長得像底下這樣。</p>
 
 <table>
   <thead>
@@ -365,7 +365,7 @@
 
 <p><img src="line-a.png" alt="Line A" /></p>
 
-<p>上面的程式碼中，首先先引入<code class="highlighter-rouge">ggplot2</code>這個畫圖的library，再來<code class="highlighter-rouge">ggplot(data)</code>可以想成是我現在想要以<code class="highlighter-rouge">data</code>這個dataframe作圖，而我想要的形式是線，亦即<code class="highlighter-rouge">geom_line()</code>，而<code class="highlighter-rouge">aes()</code>宣告了這條線的x、y軸的資料要從哪一個column中做選取。</p>
+<p>上面的程式碼中，首先先引入<code class="language-plaintext highlighter-rouge">ggplot2</code>這個畫圖的library，再來<code class="language-plaintext highlighter-rouge">ggplot(data)</code>可以想成是我現在想要以<code class="language-plaintext highlighter-rouge">data</code>這個dataframe作圖，而我想要的形式是線，亦即<code class="language-plaintext highlighter-rouge">geom_line()</code>，而<code class="language-plaintext highlighter-rouge">aes()</code>宣告了這條線的x、y軸的資料要從哪一個column中做選取。</p>
 
 <h4 id="多變數作圖">多變數作圖</h4>
 
@@ -380,9 +380,9 @@
 
 <p><img src="line-ab.png" alt="Line A, B" /></p>
 
-<p>在這邊我們多引入了一個叫<code class="highlighter-rouge">reshape2</code>的library幫我們把dataframe melt一下，<code class="highlighter-rouge">melt()</code>這個function所做的事情是把dataframe的資料以我們所設定好的column打散。</p>
+<p>在這邊我們多引入了一個叫<code class="language-plaintext highlighter-rouge">reshape2</code>的library幫我們把dataframe melt一下，<code class="language-plaintext highlighter-rouge">melt()</code>這個function所做的事情是把dataframe的資料以我們所設定好的column打散。</p>
 
-<p>以<code class="highlighter-rouge">melt(data, id.vars="date")</code>這個例子來說，我們會固定<strong>date</strong>這個column，將<strong>A</strong>、<strong>B</strong>這兩個column的資料打散，想法上是去看說<strong>date</strong>這個column有個值是<em>20200101</em>，其對應到的column <strong>A</strong>的值是<em>0.3</em>，對應到<strong>B</strong>的值是<em>0.5</em>，所以會分別產生<code class="highlighter-rouge">(20200101, A, 0.3)</code>和<code class="highlighter-rouge">(20200101, B, 0.5)</code>這兩筆資料，並持續進行下去直到<strong>date</strong>的所有值都看過，也因此經過<code class="highlighter-rouge">melt()</code>以後，我們可以得到以下的dataframe。</p>
+<p>以<code class="language-plaintext highlighter-rouge">melt(data, id.vars="date")</code>這個例子來說，我們會固定<strong>date</strong>這個column，將<strong>A</strong>、<strong>B</strong>這兩個column的資料打散，想法上是去看說<strong>date</strong>這個column有個值是<em>20200101</em>，其對應到的column <strong>A</strong>的值是<em>0.3</em>，對應到<strong>B</strong>的值是<em>0.5</em>，所以會分別產生<code class="language-plaintext highlighter-rouge">(20200101, A, 0.3)</code>和<code class="language-plaintext highlighter-rouge">(20200101, B, 0.5)</code>這兩筆資料，並持續進行下去直到<strong>date</strong>的所有值都看過，也因此經過<code class="language-plaintext highlighter-rouge">melt()</code>以後，我們可以得到以下的dataframe。</p>
 
 <table>
   <thead>
@@ -446,12 +446,12 @@
   </tbody>
 </table>
 
-<p>值得一提的是，<code class="highlighter-rouge">melt()</code>可以指定新的欄位名稱，使你在作圖時的橫軸、縱軸能用自定義的名稱。舉例來說，我想要將<strong>variable</strong>換成type、<strong>value</strong>換成score的話，可以參考底下程式碼。</p>
+<p>值得一提的是，<code class="language-plaintext highlighter-rouge">melt()</code>可以指定新的欄位名稱，使你在作圖時的橫軸、縱軸能用自定義的名稱。舉例來說，我想要將<strong>variable</strong>換成type、<strong>value</strong>換成score的話，可以參考底下程式碼。</p>
 
 <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">melt_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">melt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">id.vars</span><span class="o">=</span><span class="s2">"date"</span><span class="p">,</span><span class="w"> </span><span class="n">variable.name</span><span class="o">=</span><span class="s2">"type"</span><span class="p">,</span><span class="w"> </span><span class="n">value.name</span><span class="o">=</span><span class="s2">"score"</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
-<p>有了這樣子的dataframe以後，就可以填入至<code class="highlighter-rouge">aes()</code>裡面，變成<code class="highlighter-rouge">aes(x=date, y=value, group=variable, color=variable)</code>，告訴它我們想要以<strong>date</strong>為橫軸<strong>value</strong>為縱軸，其中每個值有它所屬的group，以<strong>variable</strong>為標示，而我希望每個group以不同顏色標示，如此便能畫出我們所想要的圖了。</p>
+<p>有了這樣子的dataframe以後，就可以填入至<code class="language-plaintext highlighter-rouge">aes()</code>裡面，變成<code class="language-plaintext highlighter-rouge">aes(x=date, y=value, group=variable, color=variable)</code>，告訴它我們想要以<strong>date</strong>為橫軸<strong>value</strong>為縱軸，其中每個值有它所屬的group，以<strong>variable</strong>為標示，而我希望每個group以不同顏色標示，如此便能畫出我們所想要的圖了。</p>
 
 <h3 id="橫軸不是其中一個欄位">橫軸”不”是其中一個欄位</h3>
 
@@ -496,7 +496,7 @@
 </span><span class="n">ggplot</span><span class="p">(</span><span class="n">melt_t_data</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">group</span><span class="o">=</span><span class="n">variable</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">variable</span><span class="p">))</span><span class="w">
 </span></code></pre></div></div>
 
-<p>首先，我們得要將資料透過<code class="highlighter-rouge">t()</code>轉置一下，把日期變成row，於此同時把column name設成A、B，也就是程式碼中的第一行，其中<code class="highlighter-rouge">data[,2ncol(data)]</code>的意思是選取<code class="highlighter-rouge">data</code>裡面的第二個column至最後一個column(R是1 base的語言)，也就是從<strong>date20200101</strong>選到<strong>date20200105</strong>，同理，<code class="highlighter-rouge">data[,1]</code>就是選取<strong>type</strong>這個column。</p>
+<p>首先，我們得要將資料透過<code class="language-plaintext highlighter-rouge">t()</code>轉置一下，把日期變成row，於此同時把column name設成A、B，也就是程式碼中的第一行，其中<code class="language-plaintext highlighter-rouge">data[,2ncol(data)]</code>的意思是選取<code class="language-plaintext highlighter-rouge">data</code>裡面的第二個column至最後一個column(R是1 base的語言)，也就是從<strong>date20200101</strong>選到<strong>date20200105</strong>，同理，<code class="language-plaintext highlighter-rouge">data[,1]</code>就是選取<strong>type</strong>這個column。</p>
 
 <p>在經過第一行的轉換以後，原先的dataframe會變成底下的樣子。</p>
 
@@ -537,7 +537,7 @@
   </tbody>
 </table>
 
-<p>雖然變得比較像可以直接指定了，但目前還沒有辦法直接把所有的日期都選取起來，也就是日期還不是一個column，不過我們可以透過<code class="highlighter-rouge">t_data["date"] = rownames(t_data)</code>來新增一個column <strong>date</strong>，其中每個row都是日期。</p>
+<p>雖然變得比較像可以直接指定了，但目前還沒有辦法直接把所有的日期都選取起來，也就是日期還不是一個column，不過我們可以透過<code class="language-plaintext highlighter-rouge">t_data["date"] = rownames(t_data)</code>來新增一個column <strong>date</strong>，其中每個row都是日期。</p>
 
 <table>
   <thead>
@@ -582,7 +582,7 @@
   </tbody>
 </table>
 
-<p>至此我們成功讓我們的資料長得像”<a href="#橫軸是其中一個欄位">橫軸是其中一個欄位</a>“中的資料那樣，接著一樣透過<code class="highlighter-rouge">melt()</code>和<code class="highlighter-rouge">ggplot()</code>便能將圖畫出來了。</p>
+<p>至此我們成功讓我們的資料長得像”<a href="#橫軸是其中一個欄位">橫軸是其中一個欄位</a>“中的資料那樣，接著一樣透過<code class="language-plaintext highlighter-rouge">melt()</code>和<code class="language-plaintext highlighter-rouge">ggplot()</code>便能將圖畫出來了。</p>
 
 <p><img src="line-transpose.png" alt="Line Transpose" /></p>
 
@@ -592,7 +592,7 @@
 
 <h3 id="安裝套件">安裝套件</h3>
 
-<p>在R裡面可以幫忙畫文氏圖的套件叫<code class="highlighter-rouge">VennDiagram</code>，可以使用底下的指令安裝並引入。</p>
+<p>在R裡面可以幫忙畫文氏圖的套件叫<code class="language-plaintext highlighter-rouge">VennDiagram</code>，可以使用底下的指令安裝並引入。</p>
 
 <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"VennDiagram"</span><span class="p">)</span><span class="w">
 </span><span class="n">library</span><span class="p">(</span><span class="n">VennDiagram</span><span class="p">)</span><span class="w">
@@ -629,9 +629,9 @@
 
 <h4 id="加上百分比和修改字體大小">加上百分比和修改字體大小</h4>
 
-<p>如果想要在圖裡面加上百分比的話，只需要多加<code class="highlighter-rouge">print.mode=c("raw", "percent")</code>就行。</p>
+<p>如果想要在圖裡面加上百分比的話，只需要多加<code class="language-plaintext highlighter-rouge">print.mode=c("raw", "percent")</code>就行。</p>
 
-<p>至於字體的大小，可以透過<code class="highlighter-rouge">cex</code>調整數字字體大小、<code class="highlighter-rouge">cat.cex</code>調整類別的字體大小。</p>
+<p>至於字體的大小，可以透過<code class="language-plaintext highlighter-rouge">cex</code>調整數字字體大小、<code class="language-plaintext highlighter-rouge">cat.cex</code>調整類別的字體大小。</p>
 
 <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid.newpage</span><span class="p">()</span><span class="w">
 </span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">40</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">),</span><span class="w"> </span><span class="n">cex</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span><span class="w"> </span><span class="n">cat.cex</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span><span class="w">
@@ -665,11 +665,11 @@
 <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">12345678</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">87654321</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">5647382</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">))</span><span class="w">
 </span></code></pre></div></div>
 
-<p>在上面的指令跑完以後可以透過<code class="highlighter-rouge">View(plot)</code>看到其<code class="highlighter-rouge">[[5]]</code>到<code class="highlighter-rouge">[[7]]</code>的<code class="highlighter-rouge">label</code>裡面寫的資訊是會顯示在圖裡的字串。</p>
+<p>在上面的指令跑完以後可以透過<code class="language-plaintext highlighter-rouge">View(plot)</code>看到其<code class="language-plaintext highlighter-rouge">[[5]]</code>到<code class="language-plaintext highlighter-rouge">[[7]]</code>的<code class="language-plaintext highlighter-rouge">label</code>裡面寫的資訊是會顯示在圖裡的字串。</p>
 
 <p><img src="plot-view.png" alt="View Plot" /></p>
 
-<p>是故我們只需要去修改<code class="highlighter-rouge">label</code>裡面的值，把逗號塞進去再畫出來就行了。</p>
+<p>是故我們只需要去修改<code class="language-plaintext highlighter-rouge">label</code>裡面的值，把逗號塞進去再畫出來就行了。</p>
 
 <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">draw.pairwise.venn</span><span class="p">(</span><span class="n">area1</span><span class="o">=</span><span class="m">12345678</span><span class="p">,</span><span class="w"> </span><span class="n">area2</span><span class="o">=</span><span class="m">87654321</span><span class="p">,</span><span class="w"> </span><span class="n">cross.area</span><span class="o">=</span><span class="m">5647382</span><span class="p">,</span><span class="w"> </span><span class="n">category</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="w"> </span><span class="s2">"B"</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">print.mode</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"raw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"percent"</span><span class="p">))</span><span class="w">
 </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">5</span><span class="o">:</span><span class="m">7</span><span class="p">){</span><span class="w">
@@ -681,7 +681,7 @@
 </span><span class="n">grid.draw</span><span class="p">(</span><span class="n">plot</span><span class="p">)</span><span class="w">
 </span></code></pre></div></div>
 
-<p>在上面的程式碼中，我們寫了一個for迴圈去改<code class="highlighter-rouge">[[5]]</code>到<code class="highlighter-rouge">[[7]]</code>的值，我們將<code class="highlighter-rouge">label</code>拿出來並以<code class="highlighter-rouge">\n</code>切成數字部分和百分比的部分，接著把數字部分塞逗號進去以後再與百分比部分接起來，最後再將圖畫出來，就達成我們想要的效果了。</p>
+<p>在上面的程式碼中，我們寫了一個for迴圈去改<code class="language-plaintext highlighter-rouge">[[5]]</code>到<code class="language-plaintext highlighter-rouge">[[7]]</code>的值，我們將<code class="language-plaintext highlighter-rouge">label</code>拿出來並以<code class="language-plaintext highlighter-rouge">\n</code>切成數字部分和百分比的部分，接著把數字部分塞逗號進去以後再與百分比部分接起來，最後再將圖畫出來，就達成我們想要的效果了。</p>
 
 <p><img src="venn-comma.png" alt="Venn Comma" /></p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-04-25T00:00:00+00:00"><!-- start custom article footer snippet -->

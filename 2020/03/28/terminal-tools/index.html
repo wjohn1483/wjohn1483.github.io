@@ -300,9 +300,9 @@
 
 <h3 id="cygwin">Cygwin</h3>
 
-<p>在Windows系統上原生也有一個<code class="highlighter-rouge">命令提示字元</code>，雖然它外表跟terminal長得蠻像的，但裡面的指令跟大多數的terminal有蠻大的差異，如果你想要在windows系統上也能夠使用terminal的話，我推薦安裝<a href="https://www.cygwin.com/">Cygwin</a>，只需要去其網站上下載<a href="https://www.cygwin.com/setup-x86_64.exe">setup-x86_64</a>，照著步驟做應該就能安裝好了。</p>
+<p>在Windows系統上原生也有一個<code class="language-plaintext highlighter-rouge">命令提示字元</code>，雖然它外表跟terminal長得蠻像的，但裡面的指令跟大多數的terminal有蠻大的差異，如果你想要在windows系統上也能夠使用terminal的話，我推薦安裝<a href="https://www.cygwin.com/">Cygwin</a>，只需要去其網站上下載<a href="https://www.cygwin.com/setup-x86_64.exe">setup-x86_64</a>，照著步驟做應該就能安裝好了。</p>
 
-<p>如果想要安裝其他套件，像是vim、git等等，可以再次執行<a href="https://www.cygwin.com/setup-x86_64.exe">setup-x86_64</a>，並在裡面勾選，或是安裝<code class="highlighter-rouge">apt-cyg</code>，在裡面用指令來安裝。</p>
+<p>如果想要安裝其他套件，像是vim、git等等，可以再次執行<a href="https://www.cygwin.com/setup-x86_64.exe">setup-x86_64</a>，並在裡面勾選，或是安裝<code class="language-plaintext highlighter-rouge">apt-cyg</code>，在裡面用指令來安裝。</p>
 
 <h4 id="安裝apt-cyg">安裝apt-cyg</h4>
 
@@ -319,7 +319,7 @@ apt-cyg <span class="nb">install </span>git
 
 <h3 id="iterm">iTerm</h3>
 
-<p>在Mac裡面也有原生的<code class="highlighter-rouge">終端機</code>，但蠻多人都推薦在Mac上使用<a href="https://www.iterm2.com/">iTerm2</a>，你可以使用<a href="https://brew.sh/index_zh-tw.html">Homebrew</a>來安裝。</p>
+<p>在Mac裡面也有原生的<code class="language-plaintext highlighter-rouge">終端機</code>，但蠻多人都推薦在Mac上使用<a href="https://www.iterm2.com/">iTerm2</a>，你可以使用<a href="https://brew.sh/index_zh-tw.html">Homebrew</a>來安裝。</p>
 
 <ol>
   <li>
@@ -403,7 +403,7 @@ apt-cyg <span class="nb">install </span>git
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>修改<strong>~/.zshrc</strong>，找到設定檔中<code class="highlighter-rouge">plugins=(git)</code>的部分，將之修改成以下</p>
+    <p>修改<strong>~/.zshrc</strong>，找到設定檔中<code class="language-plaintext highlighter-rouge">plugins=(git)</code>的部分，將之修改成以下</p>
 
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">plugins</span><span class="o">=(</span>
      git
@@ -431,7 +431,7 @@ apt-cyg <span class="nb">install </span>git
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>修改<strong>~/.zshrc</strong>，找到設定檔中<code class="highlighter-rouge">plugins=(git)</code>的部分，將之修改成以下</p>
+    <p>修改<strong>~/.zshrc</strong>，找到設定檔中<code class="language-plaintext highlighter-rouge">plugins=(git)</code>的部分，將之修改成以下</p>
 
     <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># If you had installed zsh-autosuggestions</span>
  <span class="nv">plugins</span><span class="o">=(</span>
@@ -464,7 +464,7 @@ apt-cyg <span class="nb">install </span>git
 ~/.fzf/install
 </code></pre></div></div>
 
-<p>在安裝完成了以後，可以隨時在命令列按下<code class="highlighter-rouge">&lt;Ctrl+R&gt;</code>來搜尋之前下過的指令、按下<code class="highlighter-rouge">&lt;Ctrl+T&gt;</code>來搜尋當前目錄底下的檔案，這個工具好用的地方是，在搜尋的時候並不需要打上完全一樣的字串，只需要打上相似的字串就可以直接幫你動態地尋找指令和命令了。</p>
+<p>在安裝完成了以後，可以隨時在命令列按下<code class="language-plaintext highlighter-rouge">&lt;Ctrl+R&gt;</code>來搜尋之前下過的指令、按下<code class="language-plaintext highlighter-rouge">&lt;Ctrl+T&gt;</code>來搜尋當前目錄底下的檔案，這個工具好用的地方是，在搜尋的時候並不需要打上完全一樣的字串，只需要打上相似的字串就可以直接幫你動態地尋找指令和命令了。</p>
 
 <h3 id="hadoop-bash-completion">hadoop-bash-completion</h3>
 
@@ -473,7 +473,7 @@ apt-cyg <span class="nb">install </span>git
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source </span>hadoop-completion.sh
 </code></pre></div></div>
 
-<p>之後每當你打上hadoop相關指令或是路徑的時候，按下<code class="highlighter-rouge">&lt;tab&gt;</code>就會自動完成了。</p>
+<p>之後每當你打上hadoop相關指令或是路徑的時候，按下<code class="language-plaintext highlighter-rouge">&lt;tab&gt;</code>就會自動完成了。</p>
 
 <h2 id="參考資料">參考資料</h2>
 

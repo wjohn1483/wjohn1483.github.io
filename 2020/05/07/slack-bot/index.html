@@ -364,15 +364,15 @@
 
 <p><img src="slack-event-subscription.png" alt="Slack Event Subscription" /></p>
 
-<p>值得一提的是，在設定slack要傳送的POST位址時，slack為確保網址是活著的，所以在設定的時候就會傳送一個POST request過去，裡面會包含一個<code class="highlighter-rouge">challenge</code>的參數，我們會需要直接return <code class="highlighter-rouge">challenge</code>這個參數的內容給slack才可以設定成功。</p>
+<p>值得一提的是，在設定slack要傳送的POST位址時，slack為確保網址是活著的，所以在設定的時候就會傳送一個POST request過去，裡面會包含一個<code class="language-plaintext highlighter-rouge">challenge</code>的參數，我們會需要直接return <code class="language-plaintext highlighter-rouge">challenge</code>這個參數的內容給slack才可以設定成功。</p>
 
 <h3 id="傳送訊息">傳送訊息</h3>
 
 <p>至於怎麼創立Web server跟slack互動以及傳送訊息至channel裡，可以參考<a href="https://github.com/SlackAPI/python-slackclient">Slack的python-slackclient</a>裡面的<a href="https://github.com/slackapi/python-slackclient/tree/master/tutorial">tutorial</a>。</p>
 
-<p>簡單來說，上面的例子就是使用Flask建立一個Web server，不過會需要<a href="https://github.com/slackapi/python-slackclient/blob/master/tutorial/PythOnBoardingBot/app.py#L12-L15">使用到這個bot的憑證</a>(可以看tutorial裡面的截圖)，接著就是設定一些<code class="highlighter-rouge">slack_events_adapter</code>來處理不同的event。</p>
+<p>簡單來說，上面的例子就是使用Flask建立一個Web server，不過會需要<a href="https://github.com/slackapi/python-slackclient/blob/master/tutorial/PythOnBoardingBot/app.py#L12-L15">使用到這個bot的憑證</a>(可以看tutorial裡面的截圖)，接著就是設定一些<code class="language-plaintext highlighter-rouge">slack_events_adapter</code>來處理不同的event。</p>
 
-<p>不過我個人使用時，不知道為什麼<code class="highlighter-rouge">slack_events_adapter</code>好像沒有什麼用處，我自己的程式碼是長得像底下這樣的。</p>
+<p>不過我個人使用時，不知道為什麼<code class="language-plaintext highlighter-rouge">slack_events_adapter</code>好像沒有什麼用處，我自己的程式碼是長得像底下這樣的。</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span>
 <span class="kn">from</span> <span class="nn">slack</span> <span class="kn">import</span> <span class="n">WebClient</span>
@@ -406,7 +406,7 @@
         <span class="n">response</span> <span class="o">=</span> <span class="n">slack_web_client</span><span class="p">.</span><span class="n">chat_postMessage</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="n">channel_id</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">return_message</span><span class="p">,</span> <span class="n">thread_ts</span><span class="o">=</span><span class="n">ts</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>其中最後一行是把訊息傳送到slack的API，其中的<code class="highlighter-rouge">channel_id</code>、<code class="highlighter-rouge">ts</code>是從slack的POST request來的，分別是channel的id和thread的ts，而<code class="highlighter-rouge">return_message</code>是一個單純的string，在呼叫<code class="highlighter-rouge">chat_postMessage()</code>以後，就會將訊息回覆在thread中，若想要直接回覆在群組中，只需要把<code class="highlighter-rouge">chat_postMessage()</code>裡的<code class="highlighter-rouge">thread_ts</code>部分拿掉就可以了。</p>
+<p>其中最後一行是把訊息傳送到slack的API，其中的<code class="language-plaintext highlighter-rouge">channel_id</code>、<code class="language-plaintext highlighter-rouge">ts</code>是從slack的POST request來的，分別是channel的id和thread的ts，而<code class="language-plaintext highlighter-rouge">return_message</code>是一個單純的string，在呼叫<code class="language-plaintext highlighter-rouge">chat_postMessage()</code>以後，就會將訊息回覆在thread中，若想要直接回覆在群組中，只需要把<code class="language-plaintext highlighter-rouge">chat_postMessage()</code>裡的<code class="language-plaintext highlighter-rouge">thread_ts</code>部分拿掉就可以了。</p>
 
 <h2 id="與google-sheet互動">與Google Sheet互動</h2>
 
@@ -428,7 +428,7 @@
 
 <p><img src="google-credential.png" alt="Google credential" /></p>
 
-<p>可以去<strong>APIs &amp; Services</strong>的<strong>Credentials</strong>裡面去看到是否有一個domain name為<code class="highlighter-rouge">iam.gserviceaccount.com</code>的電子信箱，最後就是將這電子信箱加入google sheet的協作者就可以了。</p>
+<p>可以去<strong>APIs &amp; Services</strong>的<strong>Credentials</strong>裡面去看到是否有一個domain name為<code class="language-plaintext highlighter-rouge">iam.gserviceaccount.com</code>的電子信箱，最後就是將這電子信箱加入google sheet的協作者就可以了。</p>
 
 <h3 id="gspread">gspread</h3>
 
@@ -443,7 +443,7 @@
 <span class="n">sheet</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">open_by_url</span><span class="p">(</span><span class="n">sheet_url</span><span class="p">).</span><span class="n">sheet1</span>
 </code></pre></div></div>
 
-<p>這邊的<code class="highlighter-rouge">/path/to/you/credential.json</code>是前面所下載的json檔，而<code class="highlighter-rouge">sheet_url</code>是你google sheet的網址，其他gspread的使用方法可以參考它的<a href="https://gspread.readthedocs.io/en/latest/">documentation</a>。</p>
+<p>這邊的<code class="language-plaintext highlighter-rouge">/path/to/you/credential.json</code>是前面所下載的json檔，而<code class="language-plaintext highlighter-rouge">sheet_url</code>是你google sheet的網址，其他gspread的使用方法可以參考它的<a href="https://gspread.readthedocs.io/en/latest/">documentation</a>。</p>
 
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-05-07T00:00:00+00:00"><!-- start custom article footer snippet -->
 
