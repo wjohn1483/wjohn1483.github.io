@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-08-31T08:22:04+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Clean Code In Python</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python/" rel="alternate" type="text/html" title="Clean Code In Python" /><published>2020-08-26T00:00:00+00:00</published><updated>2020-08-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python/">&lt;p&gt;Clean code in python sharing.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-11-03T14:04:07+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Clean Code In Python</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python/" rel="alternate" type="text/html" title="Clean Code In Python" /><published>2020-08-26T00:00:00+00:00</published><updated>2020-08-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python/">&lt;p&gt;Clean code in python sharing.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -582,7 +582,380 @@
 
 &lt;p&gt;Decorators are powerful tools in Python that can be applied to many things.&lt;/p&gt;
 
-&lt;p&gt;When creating a decorator for functions, try to make its signature match the original function being decorated. Instead of using the generic &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*args&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;**kwargs&lt;/code&gt;, making the signature match the original one willl make it easier to read and maintain.&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Book" /><summary type="html">Clean code in python sharing.</summary></entry><entry><title type="html">REINFORCE和Proximal Policy Optimization</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/" rel="alternate" type="text/html" title="REINFORCE和Proximal Policy Optimization" /><published>2020-07-26T00:00:00+00:00</published><updated>2020-07-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/">&lt;p&gt;在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。&lt;/p&gt;
+&lt;p&gt;When creating a decorator for functions, try to make its signature match the original function being decorated. Instead of using the generic &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*args&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;**kwargs&lt;/code&gt;, making the signature match the original one willl make it easier to read and maintain.&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Book" /><summary type="html">Clean code in python sharing.</summary></entry><entry><title type="html">擺脫邊緣人生</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/27/get-rid-of-loner-life/" rel="alternate" type="text/html" title="擺脫邊緣人生" /><published>2020-07-27T00:00:00+00:00</published><updated>2020-07-27T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/27/get-rid-of-loner-life</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/27/get-rid-of-loner-life/">&lt;p&gt;節錄部分&lt;a href=&quot;https://www.books.com.tw/products/0010837956&quot;&gt;《擺脫邊緣人生》&lt;/a&gt;這本書的內容以及自己的一些心得。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;由於覺得自己有點邊緣，看到了這本書名以及相關的書評以後，決定來閱讀這本書，看看能不能因此而改善自己的人際關係。&lt;/p&gt;
+
+&lt;h2 id=&quot;你我都可能是邊緣人&quot;&gt;你、我都可能是邊緣人&lt;/h2&gt;
+
+&lt;p&gt;在這個章節裡面，作者定義了什麼樣子的人是邊緣人：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;內心經常覺得與人疏遠，與人互動不自在&lt;/li&gt;
+  &lt;li&gt;覺得別人不理解自己，也不理解別人在想什麼&lt;/li&gt;
+  &lt;li&gt;內心孤獨，卻又害怕走進人群&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;而這本書希望讀者可以：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;了解自己的人際需求&lt;/li&gt;
+  &lt;li&gt;能夠自在地與人群互動&lt;/li&gt;
+  &lt;li&gt;獲得有效的人際互動技巧&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;作者希望透過調整讀者的心態、經由互動拉近人的距離以及提升衝突的解決力來達到上述的三件事情。&lt;/p&gt;
+
+&lt;h2 id=&quot;邊緣人是從恐懼開始的&quot;&gt;邊緣人，是從「恐懼」開始的&lt;/h2&gt;
+
+&lt;p&gt;作者認為，一個邊緣人常會覺得自己不好，「是不是我不夠好，別人才不喜歡我？」的這種想法很常出現在邊緣人的腦海中，然而越是抱持著「我沒有用」的想法，就越容易只聚焦在失敗的結果上，又或者其實結果並沒有不好，但我們仍會找一些莫須有的原因來說服自己結果是不好的。&lt;/p&gt;
+
+&lt;p&gt;邊緣人亦會覺得別人是很嚴格、不友善的，因此不求別人喜愛，只希望不要在人際互動當中受傷，所以一直「避免犯錯」，而秉持著不做就不會出錯的想法，使得自己越發邊緣。&lt;/p&gt;
+
+&lt;h2 id=&quot;喜歡自己是擺脫邊緣人的第一步&quot;&gt;「喜歡自己」是擺脫邊緣人的第一步&lt;/h2&gt;
+
+&lt;p&gt;如題所述，如果能夠喜歡自己，便能解決部分邊緣人的根本原因，那要如何練習愛自己呢？&lt;/p&gt;
+
+&lt;h3 id=&quot;調整不切實際的自我期待&quot;&gt;調整不切實際的自我期待&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;當一個人的「理想我」與「現實我」差距太大時，內心就會產生不舒服的感受。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;假如你規定自己年年都要升職、加薪（理想我），而非常努力在職場上拼搏，但不一定每年都能夠做到（現實我），有可能就會因此譴責自己或抱怨環境。&lt;/p&gt;
+
+&lt;p&gt;對自己有所期待、設定目標沒有錯，但我們總是批評沒有達到目標的自己，卻鮮少評量我們所設定的目標究竟現不現實，有沒有超出自己的能力太多？有哪些無法掌控的因素沒有考慮進來？雖說沒有達成目標的客觀的事實，但這跟自己不好是不應該劃上等號的，有時候問題不是出在自己，而是出在目標。&lt;/p&gt;
+
+&lt;h3 id=&quot;滿足別人部分的期待即可&quot;&gt;滿足別人「部分」的期待即可&lt;/h3&gt;
+
+&lt;p&gt;有些時候，訂立下來的目標不一定是自己設立的，有可能是為了滿足父母、家人或是朋友的期待，可以仔細想想，倘若目標達成了，你最想要誰先知道？誰會最開心？如果這個人並不是你自己的話，那很有可能這個目標並不是你想要的，所以作者建議讀者學習滿足他人部分期待就好，把省下來的力氣做一些自己喜歡的事情。&lt;/p&gt;
+
+&lt;h3 id=&quot;減少與他人比較&quot;&gt;減少與他人比較&lt;/h3&gt;
+
+&lt;p&gt;一個人的價值並不是透過與別人比較出來的，然而我們常常會去跟別人比較成績、業績、表現等，雖說適當的比較可以來激勵自己，但若會促使你中傷他人、批評自己時，這些數字就會將你束縛在情緒的毒藥裡。&lt;/p&gt;
+
+&lt;p&gt;可以試著問自己「我喜歡現在的生活模式嗎？在目前的生活與人際關係當中，我喜歡是哪部分？哪些部分讓我覺得幸福？」、「我可以做些什麼來讓幸福的感受延續？」。&lt;/p&gt;
+
+&lt;h3 id=&quot;允許自己不足&quot;&gt;允許自己不足&lt;/h3&gt;
+
+&lt;p&gt;一個不允許自己犯錯的人，需要耗費很多力氣來掩蓋自己不滿意的部分，而努力維持的完美底下，往往是不堪一擊的自卑。當人們願意承認自己的不足時，才有機會停下腳步，思考前進的方向，不夠好，又怎樣呢？&lt;/p&gt;
+
+&lt;h2 id=&quot;已經習慣獨處卻又害怕孤獨&quot;&gt;已經習慣獨處，卻又害怕孤獨&lt;/h2&gt;
+
+&lt;p&gt;「獨處」和「孤獨」是兩回事，很多人把這兩件事情劃上等號是因為他們沒有辨識自己的人際需求，也不知道如何與自己相處，當身邊沒有人的時候就不太會安排空閒的時間，以致於害怕獨處的時刻，如果覺得自己「已經習慣獨處，卻又害怕孤獨」，那很有可能只是習慣獨處，卻沒有學會和自己共處。&lt;/p&gt;
+
+&lt;h3 id=&quot;分辨自己的人際需求&quot;&gt;分辨自己的人際需求&lt;/h3&gt;
+
+&lt;p&gt;大多數人可能會覺得要結交到很多朋友才是好的人際關係、別人主動與我互動才感受得到存在感、需要經常被注意才是被重視的，但是每個人所需要的人際關係並不一樣，可能有人只需要擁有幾個知心好友、偶而與他們見面，其他時間獨處做自己的事情便可以過得很開心，並沒有所謂「好的人際關係」。&lt;/p&gt;
+
+&lt;p&gt;如果你常覺得自己交不到朋友、遇不到對的人，可以試著想想看你渴望什麼形式的人際關係？目前的朋友可以給你正向的感受嗎？&lt;/p&gt;
+
+&lt;h3 id=&quot;人際關係分級制&quot;&gt;人際關係分級制&lt;/h3&gt;
+
+&lt;p&gt;我們可以依據關係的親疏來粗略的將朋友分成：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;點頭之交&lt;/li&gt;
+  &lt;li&gt;同事&lt;/li&gt;
+  &lt;li&gt;朋友&lt;/li&gt;
+  &lt;li&gt;摯友&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;有些人在人際關係中感到挫敗有些時候是因為對不適當的人做出了不適當的行為和期待，像是希望一群不太常往來的朋友來幫你慶生、向同事傾訴家庭衝突、用客套語氣跟伴侶說話，而將朋友以及這些期待不適當的排列在一起會造成可怕的結果。&lt;/p&gt;
+
+&lt;h2 id=&quot;打臉不會讓溝通更順暢&quot;&gt;打臉，不會讓溝通更順暢&lt;/h2&gt;
+
+&lt;p&gt;有時候會想說「大家都覺得我很爛」、「大家都不認同我」，但這個「大家」到底是誰呢？不可能全世界的人都這麼認為吧，「大家」有可能只是一個人，或是根本不清楚這當中包含了誰，但這會容易讓我們誤以為周圍都是敵人，造成心理的不安。&lt;/p&gt;
+
+&lt;p&gt;我們都會希望自己的想法和價值觀可以被別人認同，但即使對方不認同你，並不代表你是錯的。&lt;/p&gt;
+
+&lt;h2 id=&quot;都是你的錯是你害我&quot;&gt;都是你的錯！是你害我…&lt;/h2&gt;
+
+&lt;p&gt;捫心自問一下，你有多少壞習慣是被父母、師長念了十幾年，甚至自己也都提醒自己要改變的，但是你改變了多少？如果我們連自己都很難去改變了，那麼怎麼會覺得改變別人是一件容易的事情呢？&lt;/p&gt;
+
+&lt;p&gt;即便自己改變了，「改變自己」與「對方也必須改變」這兩者其實也沒有什麼因果的關係，我們練習改變自己並不是為了改變對方，是藉著調整自己的作為來讓自己變得更舒服自在。&lt;/p&gt;
+
+&lt;p&gt;關於改變應該抱持的幾個態度：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;改變帶來的影響不是全有全無，是漸進式的，可能有一些事情變得更好，只是比較細微&lt;/li&gt;
+  &lt;li&gt;如果改變自己，事情卻沒有什麼變化，至少我們已經努力，可以嘗試其他方向&lt;/li&gt;
+  &lt;li&gt;停在原地抱怨沒有什麼用處，主動調整才有機會帶來不同&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;親愛的你知道今天是什麼日子吧&quot;&gt;親愛的，你知道今天是什麼日子吧？&lt;/h2&gt;
+
+&lt;p&gt;「誤解」其實是人類的專長之一&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;你說話，他聆聽：在聽的過程中有可能部分的訊息沒有聽清楚&lt;/li&gt;
+  &lt;li&gt;他聽，並理解：他把聽到的訊息整理歸納變成他理解的事情，其中可能會包含他本身的想法和價值觀&lt;/li&gt;
+  &lt;li&gt;他理解，接著說：表達出的內容可能無法跟想法完全吻合&lt;/li&gt;
+  &lt;li&gt;他說話，你聆聽：同樣地，有些訊息你可能沒有接收到&lt;/li&gt;
+  &lt;li&gt;你聽，並理解：同樣地，有機會參雜你本身的想法和價值觀&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;從把一句話說出來到得到對方回答，這個過程當中充滿了誤差，種種誤差結合起來，就很有可能跟原意完全不一樣，這邊作者建議可以使用「我訊息」來試著溝通。&lt;/p&gt;
+
+&lt;p&gt;「我訊息」三步驟：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;我知道你___（需求、情緒、限制）：先同理對方，讓他減少防衛並感到善意&lt;/li&gt;
+  &lt;li&gt;但如果你可以___（行動）：講述希望別人如何行動，你會比較舒服&lt;/li&gt;
+  &lt;li&gt;我比較能夠___（行動、情緒）：讓對方知道這樣互動以後，能得到什麼反應&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;善用提問技巧讓互動更舒適&quot;&gt;善用提問技巧，讓互動更舒適&lt;/h2&gt;
+
+&lt;p&gt;問句主要可以分成兩種：封閉式問句和開放式問句&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;封閉式問句：「你喜歡吃義大利麵還是烏龍麵？」=&amp;gt; 得到的答案是兩者其一&lt;/li&gt;
+  &lt;li&gt;開方式問句：「你喜歡吃什麼樣的麵食？」=&amp;gt; 得到的答案可能相較豐富&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;這兩種問句沒有孰好孰壞，兩者各自有不同的功能，使用在不同的時機，可以參考三個主要依據：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;資訊精確度&lt;/p&gt;
+
+    &lt;p&gt;需要比較精確回應時，應當使用封閉式問句&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可運用的時間&lt;/p&gt;
+
+    &lt;p&gt;如果時間有限的話，建議使用封閉式問句來蒐集必要訊息即可&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;溝通的意願&lt;/p&gt;
+
+    &lt;p&gt;如果不想與對方有太多互動，使用封閉式問句讓對方只能回應簡短答案，使對話可以較快結束&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;都可以到底是可以還是不可以&quot;&gt;「都可以」到底是可以？還是不可以？&lt;/h2&gt;
+
+&lt;p&gt;常常在生活中我們都可以聽到「都可以」、「隨便」的回答，然而雖然嘴巴上是這樣回應，但心裡可能有不一樣的想法，當你照著自己的想法下去執行以後，得到的可能是不滿意的回應，為了解決這種問題，作者建議給予清楚的選項&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;使用封閉式問句&lt;/li&gt;
+  &lt;li&gt;設定具體選項 e.g. 今天晚餐吃 a) 飯 b) 麵 c) 冬粉&lt;/li&gt;
+  &lt;li&gt;邀請對方做選擇&lt;/li&gt;
+  &lt;li&gt;引導出更具體的選擇 e.g. 大家選擇”麵”以後，再繼續詢問是哪種面，泡麵、陽春麵、牛肉麵等&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;藉由這樣子的方法，讓大家對自己的選擇負責，就不會有上述的問題了。&lt;/p&gt;
+
+&lt;h2 id=&quot;溫柔暖心的安慰該怎麼說&quot;&gt;溫柔、暖心的安慰，該怎麼說？&lt;/h2&gt;
+
+&lt;p&gt;很多時候別人在安慰時，常會說出一些不適當的安慰，像是有人很難過，旁人就會急著告訴他「不要想太多，就沒事了」、「難過也沒什麼用」，但這些話語其實對於本人似乎也沒有什麼作用，這邊作者提出了一些安慰時，忌諱的行為。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;否定事情的嚴重性&lt;/p&gt;
+
+    &lt;p&gt;當你否定事情的嚴重性時，其實是在暗示對方你的想法有問題，才會把這件事情想得那麼嚴重，當你說出「沒關係」時，也否定了對方當下真實的感受。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;強迫轉移注意力&lt;/p&gt;
+
+    &lt;p&gt;會強迫別人轉移注意力的人，通常是害怕或是不知道如何與負面情緒共處的人，為了避免這樣的不舒適，於是無所不用其極的轉移注意力。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;指責或批評對方&lt;/p&gt;
+
+    &lt;p&gt;「如果你態度不要這麼被動，說不定事情有不一樣的發展。」，這樣的話語對當事人的傷害是最大的，有點像是在告訴對方這都是你咎由自取。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;自認為全然理解&lt;/p&gt;
+
+    &lt;p&gt;感受是很主觀的，即使是同樣的一件事情，每個人的感受也都不一樣，再者，對方在難受的情緒裡，你的感受其實對他並不重要。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在知曉了這些NG的行為以後，作者也提供了可以試著嘗試的五個步驟來安慰他人&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;我看到有人最近好像___，是怎麼了？&lt;/p&gt;
+
+    &lt;p&gt;留空的部分是要填入具體的行為，像是都不說話、食量變小、表情僵硬等，讓對方知道你好像知道他遇到什麼事情&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;關於這件事，你有什麼想法？&lt;/p&gt;
+
+    &lt;p&gt;先別急著發表自己的意見，先讓對方說說看他發生的事情，透過這樣的方式讓腦袋梳理一遍發生的事情，像是小鴨debug法一般&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;關於這件事，你的心情是？&lt;/p&gt;
+
+    &lt;p&gt;在梳理的過程中，可以試著關心一下對方的情緒，讓對方的情緒可以有機會被好好的宣洩&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;接下來，你打算怎麼做？&lt;/p&gt;
+
+    &lt;p&gt;在情緒相較穩定以後，就可以進入解決問題的環節，而這個環節的重點是「不批評」，即便對方提出來的方法你可能不太苟同或是覺得沒有用，也請對方論述完自己的想法以後，再來好好討論&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果可以，你希望我如何幫忙你？&lt;/p&gt;
+
+    &lt;p&gt;常會有人說「需要什麼儘管開口，我一定幫忙」，但當對方說出你力所不及的事情時，該怎麼辦呢？有時候我們自以為是的作為，反而會造成對方的傷害。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;友善親近的回應該怎麼說&quot;&gt;友善、親近的回應，該怎麼說？&lt;/h2&gt;
+
+&lt;p&gt;是「溝通」還是「說服」？常常我們在說有衝突的時候要跟對方做溝通，然而我們更常做的事情是說服，希望我們把想法丟出來以後，對方可以全盤接受，並照著執行之，而過程當中的「說理」、「命令」、「指責」只會造成反效果，令他人更難以接受造成衝突的加劇。&lt;/p&gt;
+
+&lt;p&gt;為了避免衝突的上升，我們應該以「好奇」作為出發點來達成理解、溝通的基礎，先別急著否定他人的決定、想法，試著去用各種問題去詢問他這麼想的背後裡由是什麼，不要一開始就只丟出自己的想法而完全不顧他人的說詞。&lt;/p&gt;
+
+&lt;h2 id=&quot;充滿能量的鼓勵該怎麼說&quot;&gt;充滿能量的鼓勵，該怎麼說？&lt;/h2&gt;
+
+&lt;p&gt;在以前參加過某個溝通、領導的課程，當台上的人講到自己過去不如意的事情，心情難過的時候，又或者是沒有想好該怎麼表達自己想說的話時，台下的老師會帶著同學一起拍手或者吆喝來幫台上的同學加油，我總是會想說，這時候幫他加油的意義是什麼呢？為什麼我們要對哭泣的人鼓掌呢？是要催促他不要恐懼、快點講？講出來的東西是為了他自己還是為了我們呢？&lt;/p&gt;
+
+&lt;p&gt;「讚美」和「鼓勵」是不太一樣的東西，「讚美」通常著重的地方在於結果，像是說做得比較好、跑得比較快、跳得比較高等等，而「鼓勵」重視的是過程，包含了：努力、堅持、意圖、勇氣，而暖心的鼓勵可以一樣從「好奇」開始，「你是怎麼做到的？」就是一個很好用的句子，例子像是「你知道主管很兇，卻還跟他承認疏失，你是怎麼做到的？」，但也要適時加入其他的話語，避免一直重複。&lt;/p&gt;
+
+&lt;h2 id=&quot;面對別人的稱讚如何回應&quot;&gt;面對別人的稱讚，如何回應？&lt;/h2&gt;
+
+&lt;p&gt;在小時候的教育裡面常教我們要謙虛，致使當我們被他人稱讚的時候總會覺得這個稱讚並不是名符其實的，常以「我只是運氣好」、「還有其他更優秀的」等等話語來顯示自己還有需要進步的地方，然而這樣子的互動像是你想把一個好東西分享給對方，但對方卻微笑將之返還予你，「過度的謙虛」給對方的是一種被拒絕的感覺。&lt;/p&gt;
+
+&lt;p&gt;比較好的回應就是大方的說謝謝，將這個讚美接受下來，但真正的困難也許是因為你不習慣別人對你的讚美，其次是你根本不欣賞自己，不認為自己值得。&lt;/p&gt;
+
+&lt;h2 id=&quot;真心誠意的道歉該怎麼說&quot;&gt;真心誠意的道歉，該怎麼說？&lt;/h2&gt;
+
+&lt;p&gt;道歉的第一步，就是鼓起勇氣面對自己的錯誤，技巧只是其次，最重要的是態度，我們常會拉不下臉，或是自己為身份高人一等就免去道歉的行為，但這樣並沒有真正尊重被傷害的人，也缺乏負起責任的擔當。&lt;/p&gt;
+
+&lt;p&gt;「有效的道歉」包含了三個步驟：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;表達歉意：向對方說對不起、不好意思等等&lt;/li&gt;
+  &lt;li&gt;坦承疏失：說出自己是哪裡做不好，讓別人感到不舒服，讓對方認知道你是有在反省的，不是單純的用對不起在敷衍&lt;/li&gt;
+  &lt;li&gt;提出補救：為造成的傷害提出補救的措施，表達願意對行為負責的誠意，若不確定可以怎麼做的話也可以直接請教對方希望自己可以怎麼做&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;道歉是你應該做的事情，是否原諒是由對方決定的&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;處理衝突欲速則不達&quot;&gt;處理衝突，欲速則不達&lt;/h2&gt;
+
+&lt;p&gt;心理學裡面有一個「白熊效應」，越是提醒自己不要去想的事情就越會去想它，像是分手以後希望自己盡快忘記對方，但每提醒自己忘記對方一次，就等同又想起對方了一次，所以當你自己告訴自己不要生氣、難過、緊張的時候，常會使自己的是些情緒被放大，為此，我們需要將心裡的這些情緒丟掉一些，才有空間可以裝其他的。&lt;/p&gt;
+
+&lt;p&gt;理解可以減少你的怒氣，理解又分成「主觀式理解」和「客觀式理解」，主觀式理解就是一般自己習以為常看事情的觀點，而客觀式理解便是試著用對方角度來看事情，有點像前面章節所提到的，利用好奇的方式來引領你的思路去貼近他人的想法。&lt;/p&gt;
+
+&lt;p&gt;若發生衝突的當下因為情緒的高漲致使你無法順利地思考時，可以試著練習喊暫停，讓你自己脫離當下的環境，去上個廁所、買個飲料來抽離高漲的情緒，回到冷靜的思考。&lt;/p&gt;
+
+&lt;h2 id=&quot;你不爽幹嘛不明講&quot;&gt;你不爽，幹嘛不明講？&lt;/h2&gt;
+
+&lt;p&gt;這邊作者提到了一個「被動攻擊」的概念，雖說字面上並沒有表現出不開心的樣貌，但我們可以很輕易地感覺到他的不開心，像是「都怪我沒唸什麼書，我都聽不懂你在說什麼」這類的話語便是被動攻擊，不明講你的不是，而是迂迴的攻擊你。&lt;/p&gt;
+
+&lt;p&gt;要解決這類的攻擊，首先要避免情緒的波動，攻擊者期待的便是你主動挑起戰爭，若你生氣便中他的招了，再來是接受你跟他之間有衝突，衝突不一定都是壞事，衝突可以幫助我們去釐清彼此的期待和需求，接著是客觀描述對方的行為加上自己的感受，最後是表達你期待的溝通方式。舉個例子來說，你可以跟對方說，你這樣跟我對話的時候（客觀行為），其實我心裡很受傷（感受），如果你不喜歡___，可以直接告訴我（期待的溝通方式）。&lt;/p&gt;
+
+&lt;h2 id=&quot;當關係充滿指責該怎麼辦&quot;&gt;當關係充滿指責，該怎麼辦？&lt;/h2&gt;
+
+&lt;p&gt;一個常指責他人的人，通常有以下幾點特性：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;缺乏發現的能力&lt;/p&gt;
+
+    &lt;p&gt;碰到不舒服的事情無法去辨識這不舒適的來源是他人的冒犯還是自己偏頗的解讀&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;缺乏溝通的意願&lt;/p&gt;
+
+    &lt;p&gt;有可能他只是想要宣洩情緒，並沒有意願或勇氣與對方溝通&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;缺乏反省的行動&lt;/p&gt;
+
+    &lt;p&gt;把情緒往別人身上丟是解決負面情緒最快的方式，錯的都是別人，自己完全沒有責任&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;在想要指責他人，把不舒服的情緒丟出去之前，可以先看看上面的敘述，是不是自己還有些事情是可以解決這件事情的。&lt;/p&gt;
+
+&lt;p&gt;那要如何因應別人的指責呢？&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;儘量避開&lt;/li&gt;
+  &lt;li&gt;不要期待對方會改變&lt;/li&gt;
+  &lt;li&gt;被指責也不一定要被動接受，可以將頭腦冷靜了以後再透過「我訊息」跟對方溝通&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;面對看不順眼的人該怎麼辦&quot;&gt;面對看不順眼的人，該怎麼辦？&lt;/h2&gt;
+
+&lt;p&gt;想要降低與特定人士的不舒服感，首先要先減少對他的負面情緒，如果找不到任何方式來減少的話，可以試著去「聽」他的故事。有時候我們討厭某人是因為對方的價值觀與我們的價值觀不同，致使對行為的期待也不一樣，而我們可以試著再更深入地去了解為什麼他會形成這樣的價值觀，當你對這樣價值觀形塑的了解更多了以後，或許就不會這麼討厭與你不同的價值觀，因為你知道其背後的緣由了。&lt;/p&gt;
+
+&lt;h2 id=&quot;面對總是擺臭臉的人該怎麼辦&quot;&gt;面對總是「擺臭臉」的人，該怎麼辦？&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;不要在情緒高漲、氣氛肅殺的時候跟對方互動&lt;/li&gt;
+  &lt;li&gt;先想好要講的話，以避免因為負面的情緒而打亂了原本想要溝通的事情&lt;/li&gt;
+  &lt;li&gt;提醒自己解決事情才是重點，他的臉色並不重要&lt;/li&gt;
+  &lt;li&gt;擺臭臉可能是他的習慣，跟你的所作所為或許沒有關係&lt;/li&gt;
+  &lt;li&gt;尊重每個人表達情緒的方式，把他人的情緒帶到自己的身上就會變成你自己的課題&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;面對總是講不聽的人該怎麼辦&quot;&gt;面對總是「講不聽」的人，該怎麼辦？&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;讓對方感受到被理解&lt;/p&gt;
+
+    &lt;p&gt;要想要說服他人，首先需要讓對方感受到你是理解並支持他的，或許這件事情在情緒上不容易做到，但我們可以把自己抽得客觀一些，看看能否有所改善&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;肯定對方付出的努力&lt;/p&gt;
+
+    &lt;p&gt;雖說我們可能不認同對方為了這件事情上面所做的事情，但其實他也是以他所想到的方式在解決問題，或許這樣的方式並不是社會或是你個人可以接受的，這不代表你就可以無視他的努力&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;引導對方發現行動的成效&lt;/p&gt;
+
+    &lt;p&gt;陪伴對方探索他的想法是否對於解決問題有所助益，好的部分可以留下來繼續執行，不好的地方可以一起討論來想新方法&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;提供具體策略&lt;/p&gt;
+
+    &lt;p&gt;在秉持著肯定對方的態度下，總結一下目前為止達成的共識，試著提出自己的想法給對方，這邊可以用「參考看看」、「隨意聽聽」等話語先放低姿態&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;面對總是愛批評的人該怎麼辦&quot;&gt;面對總是「愛批評」的人，該怎麼辦？&lt;/h2&gt;
+
+&lt;p&gt;如果想要從批評當中獲取回饋的話，可以試試底下的方式&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;寫下來：把對方說的話記錄下來&lt;/li&gt;
+  &lt;li&gt;刪除：刪除那些難聽、髒字、人身攻擊的話語&lt;/li&gt;
+  &lt;li&gt;檢視重點：在剩餘的內容裡面，是不是有你真的沒有做好的部分&lt;/li&gt;
+  &lt;li&gt;調整或拋棄：如果有找到可以調整的部分，可以試著去調整看看，如果沒有，就把這個紀錄刪掉吧&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;持續做這樣的練習，可以減低這件事情對你帶來的情緒強度，能夠更理性的去面對批評，在心理學裡面被稱作「減敏感」。&lt;/p&gt;
+
+&lt;h2 id=&quot;面對很愛聊八卦的人該怎麼辦&quot;&gt;面對很愛「聊八卦」的人，該怎麼辦？&lt;/h2&gt;
+
+&lt;p&gt;避免表達價值判斷，不要對當事者加以評論，更不要在公開場合作出是非對錯的評論，因為嘴巴長在別人身上，你不到最後會被傳成什麼樣子。&lt;/p&gt;
+
+&lt;h2 id=&quot;面對總是太超過的人該怎麼辦&quot;&gt;面對總是「太超過」的人，該怎麼辦？&lt;/h2&gt;
+
+&lt;p&gt;你也是不敢拒絕別人的人嗎？如果是，那們你的「不敢」是因為擔心著什麼呢？是因為不幫助別人就沒有價值了嗎？&lt;/p&gt;
+
+&lt;p&gt;「答應」和「拒絕」像是個光譜，在中間還有許許多多可以被切分的部分，你可以有限度的幫忙對方：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;我可以幫忙哪些地方&lt;/li&gt;
+  &lt;li&gt;可以幫忙到什麼程度&lt;/li&gt;
+  &lt;li&gt;如果要幫忙，這件事的優先序如何&lt;/li&gt;
+  &lt;li&gt;讓對方知道情況，如果他能接受就幫忙，不能接受的話你也有釋出善意了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;學會拒絕才能讓自己更自在，你不需要為沒有幫助到對方而道歉，沒有必要犧牲自己成就他人，尊重自己的意願幫助他人，不論對方是否滿意，都跟你有沒有價值無關。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Book" /><summary type="html">節錄部分《擺脫邊緣人生》這本書的內容以及自己的一些心得。</summary></entry><entry><title type="html">REINFORCE和Proximal Policy Optimization</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/" rel="alternate" type="text/html" title="REINFORCE和Proximal Policy Optimization" /><published>2020-07-26T00:00:00+00:00</published><updated>2020-07-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/">&lt;p&gt;在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1654,193 +2027,4 @@ J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\
 
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/d0main/p/10447853.html&quot;&gt;【译】为什么BERT有3个嵌入层，它们都是如何实现的&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇介紹一下常常聽到的BERT是怎麼樣運作的。</summary></entry><entry><title type="html">Terminal小工具</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools/" rel="alternate" type="text/html" title="Terminal小工具" /><published>2020-03-28T00:00:00+00:00</published><updated>2020-03-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/28/terminal-tools/">&lt;p&gt;這篇記錄一下我在terminal裡面常使用的一些小工具們。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;terminal&quot;&gt;Terminal&lt;/h2&gt;
-
-&lt;p&gt;Terminal又稱為終端機，是一個可以用指令跟電腦做溝通、操縱的介面，是個絕大多數工程師都曾使用過的東西，如果你的電腦使用的是Linux系統的話，原生就有terminal了，底下稍微介紹一下在各個系統安裝terminal的方法。&lt;/p&gt;
-
-&lt;h3 id=&quot;cygwin&quot;&gt;Cygwin&lt;/h3&gt;
-
-&lt;p&gt;在Windows系統上原生也有一個&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;命令提示字元&lt;/code&gt;，雖然它外表跟terminal長得蠻像的，但裡面的指令跟大多數的terminal有蠻大的差異，如果你想要在windows系統上也能夠使用terminal的話，我推薦安裝&lt;a href=&quot;https://www.cygwin.com/&quot;&gt;Cygwin&lt;/a&gt;，只需要去其網站上下載&lt;a href=&quot;https://www.cygwin.com/setup-x86_64.exe&quot;&gt;setup-x86_64&lt;/a&gt;，照著步驟做應該就能安裝好了。&lt;/p&gt;
-
-&lt;p&gt;如果想要安裝其他套件，像是vim、git等等，可以再次執行&lt;a href=&quot;https://www.cygwin.com/setup-x86_64.exe&quot;&gt;setup-x86_64&lt;/a&gt;，並在裡面勾選，或是安裝&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt-cyg&lt;/code&gt;，在裡面用指令來安裝。&lt;/p&gt;
-
-&lt;h4 id=&quot;安裝apt-cyg&quot;&gt;安裝apt-cyg&lt;/h4&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg
-&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x apt-cyg
-&lt;span class=&quot;nb&quot;&gt;mv &lt;/span&gt;apt-cyg /usr/local/bin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;安裝完成以後就能夠使用底下的指令來安裝其他的套件了。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-cyg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nano
-apt-cyg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;iterm&quot;&gt;iTerm&lt;/h3&gt;
-
-&lt;p&gt;在Mac裡面也有原生的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;終端機&lt;/code&gt;，但蠻多人都推薦在Mac上使用&lt;a href=&quot;https://www.iterm2.com/&quot;&gt;iTerm2&lt;/a&gt;，你可以使用&lt;a href=&quot;https://brew.sh/index_zh-tw.html&quot;&gt;Homebrew&lt;/a&gt;來安裝。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;安裝Homebrew&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; /bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://raw.githubusercontent.com/Homebrew/install/master/install.sh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;安裝iTerm2&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew cask &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;iterm2
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;bash&quot;&gt;Bash&lt;/h2&gt;
-
-&lt;p&gt;如果你的系統上面只能允許你使用bash的話，我自己個人會建議將底下的東西放入你的&lt;strong&gt;~/.bashrc&lt;/strong&gt;檔裡。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TERM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xterm-256color
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PS1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\u&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\h&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\W&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\[&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;tput sgr0&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\]&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;上面的動作可以使你的terminal能顯示256色，可以透過&lt;a href=&quot;http://www.robmeerman.co.uk/_media/unix/256colors2.pl&quot;&gt;這個script&lt;/a&gt;，搭配底下的指令&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;perl 256colors2.pl
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;來檢驗你的terminal是否有支援256色，於此同時將命令列調整成&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;使用者名稱@電腦名稱 當前目錄]&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;比較易於使用。&lt;/p&gt;
-
-&lt;h2 id=&quot;zsh&quot;&gt;ZSH&lt;/h2&gt;
-
-&lt;p&gt;若你的環境允許你安裝其他東西的話，會建議將原生的bash替換成zsh，安裝方法如下&lt;/p&gt;
-
-&lt;h4 id=&quot;cygwin-1&quot;&gt;Cygwin&lt;/h4&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt-cyg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;zsh curl git
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;iterm-1&quot;&gt;iTerm&lt;/h4&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;zsh zsh-completions
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;切換預設的shell&quot;&gt;切換預設的shell&lt;/h4&gt;
-
-&lt;p&gt;若想要將預設的bash換成zsh的話，可以利用底下的指令&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chsh &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;which zsh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;並利用&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SHELL&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;來確認是否有切換成功。&lt;/p&gt;
-
-&lt;h3 id=&quot;oh-my-zsh&quot;&gt;oh-my-zsh&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/ohmyzsh/ohmyzsh&quot;&gt;oh-my-zsh&lt;/a&gt;是一個管理zsh的框架，提供了蠻多套件和主題可以使用，只需要打上底下的指令就能安裝好了。&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sh &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;wget &lt;span class=&quot;nt&quot;&gt;-O-&lt;/span&gt; https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;zsh-autosuggestions&quot;&gt;zsh-autosuggestions&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/zsh-users/zsh-autosuggestions&quot;&gt;zsh-autosuggestions&lt;/a&gt;是一個zsh的套件，可以根據你以前打過的指令去猜測你現在要打的指令，安裝方法如下&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;下載zsh-autosuggestions&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/zsh-users/zsh-autosuggestions &lt;span class=&quot;nv&quot;&gt;$ZSH_CUSTOM&lt;/span&gt;/plugins/zsh-autosuggestions
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;修改&lt;strong&gt;~/.zshrc&lt;/strong&gt;，找到設定檔中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plugins=(git)&lt;/code&gt;的部分，將之修改成以下&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;
-     git
-     zsh-autosuggestions
-&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;重新載入zsh&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.zshrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;zsh-syntax-highlighting&quot;&gt;zsh-syntax-highlighting&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/zsh-users/zsh-syntax-highlighting&quot;&gt;zsh-syntax-highlighting&lt;/a&gt;是個在zsh裡面幫你highlight一些指令、路徑等參數的套件，安裝方法如下&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;下載zsh-syntax-highlighting&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ZSH_CUSTOM&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;~/.oh-my-zsh/custom&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;/plugins/zsh-syntax-highlighting
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;修改&lt;strong&gt;~/.zshrc&lt;/strong&gt;，找到設定檔中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plugins=(git)&lt;/code&gt;的部分，將之修改成以下&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;c&quot;&gt;# If you had installed zsh-autosuggestions&lt;/span&gt;
- &lt;span class=&quot;nv&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;
-     git
-     zsh-autosuggestions
-     zsh-syntax-highlighting
- &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
- &lt;span class=&quot;c&quot;&gt;# If you only want to install zsh-syntax-highlighting&lt;/span&gt;
- &lt;span class=&quot;nv&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;
-     git
-     zsh-syntax-highlighting
- &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;重新載入zsh&lt;/p&gt;
-
-    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.zshrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;tools&quot;&gt;Tools&lt;/h2&gt;
-
-&lt;h3 id=&quot;fzf&quot;&gt;fzf&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/junegunn/fzf&quot;&gt;fzf&lt;/a&gt;是一個命令列的工具，使你可以fuzzy search你之前下過的指令或者是當前目錄底下的檔案，詳細的使用情形可以參考&lt;a href=&quot;https://www.youtube.com/watch?v=qgG5Jhi_Els&quot;&gt;這個影片&lt;/a&gt;，其安裝方式如下&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone &lt;span class=&quot;nt&quot;&gt;--depth&lt;/span&gt; 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;在安裝完成了以後，可以隨時在命令列按下&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;Ctrl+R&amp;gt;&lt;/code&gt;來搜尋之前下過的指令、按下&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;Ctrl+T&amp;gt;&lt;/code&gt;來搜尋當前目錄底下的檔案，這個工具好用的地方是，在搜尋的時候並不需要打上完全一樣的字串，只需要打上相似的字串就可以直接幫你動態地尋找指令和命令了。&lt;/p&gt;
-
-&lt;h3 id=&quot;hadoop-bash-completion&quot;&gt;hadoop-bash-completion&lt;/h3&gt;
-
-&lt;p&gt;當你需要在命令列上面操作一些在hadoop filesystem上面的檔案的時候，你可能會希望hadoop也可以支援像一般bash的路徑自動完成的功能，這時你可以參考&lt;a href=&quot;https://github.com/lensesio/hadoop-bash-completion&quot;&gt;hadoop-bash-completion&lt;/a&gt;，使用的方法很簡單，只需要將repo裡面的&lt;a href=&quot;https://github.com/lensesio/hadoop-bash-completion/blob/master/hadoop-completion.sh&quot;&gt;hadoop-completion.sh&lt;/a&gt;下載下來，並source它就行了&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;source &lt;/span&gt;hadoop-completion.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;之後每當你打上hadoop相關指令或是路徑的時候，按下&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;tab&amp;gt;&lt;/code&gt;就會自動完成了。&lt;/p&gt;
-
-&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://dustinhsiao21.com/2019/04/09/%E9%80%8F%E9%81%8E%E5%9C%A8-mac-%E4%B8%8A%E5%AE%89%E8%A3%9Diterm2-%E6%B4%BB%E6%BD%91%E4%BD%A0%E7%9A%84%E7%B5%82%E7%AB%AF%E6%A9%9F/&quot;&gt;透過在 Mac 上安裝iTerm2 活潑你的終端機&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">這篇記錄一下我在terminal裡面常使用的一些小工具們。</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇介紹一下常常聽到的BERT是怎麼樣運作的。</summary></entry></feed>

@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>REINFORCE和Proximal Policy Optimization - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>擺脫邊緣人生 - wjohn1483.github.io</title>
 
-<meta name="description" content="在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descen...">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/07/26/reinforce-and-ppo/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="節錄部分《擺脫邊緣人生》這本書的內容以及自己的一些心得。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/07/27/get-rid-of-loner-life/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -278,140 +278,398 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>REINFORCE和Proximal Policy Optimization</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>擺脫邊緣人生</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-07-26-reinforce-and-ppo/2020-07-26-reinforce-and-ppo.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="REINFORCE和Proximal Policy Optimization"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-07-27-get-rid-of-loner-life/2020-07-27-get-rid-of-loner-life.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="擺脫邊緣人生"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 26, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-07-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="Reinforcement-Learning"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Book">Book</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 27, 2020</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-07-27T00:00:00+00:00">
+    <meta itemprop="keywords" content="Book"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</p>
+<div class="article__content" itemprop="articleBody"><p>節錄部分<a href="https://www.books.com.tw/products/0010837956">《擺脫邊緣人生》</a>這本書的內容以及自己的一些心得。</p>
 
 <!--more-->
 
-<h2 id="reinforce">REINFORCE</h2>
+<p>由於覺得自己有點邊緣，看到了這本書名以及相關的書評以後，決定來閱讀這本書，看看能不能因此而改善自己的人際關係。</p>
 
-<p>首先，我們先來定義一下state、action和reward之間的關係。當機器看到眼前的state <script type="math/tex">s_1</script>時，會根據自身的演算法決定做出動作<script type="math/tex">a_1</script>，此時環境會根據機器做出的<script type="math/tex">a_1</script>給予reward <script type="math/tex">r_1</script>，而隨著這個動作，機器所看到的state會從<script type="math/tex">s_1</script>轉移到<script type="math/tex">s_2</script>，接著機器會根據<script type="math/tex">s_2</script>做出動作<script type="math/tex">a_2</script>，並獲得<script type="math/tex">r_2</script>，以此類推。而我們的目標就是希望機器能學會一個厲害的policy，使得expected reward最大。</p>
+<h2 id="你我都可能是邊緣人">你、我都可能是邊緣人</h2>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned} expected\ reward & =\sum R(\tau)p_\theta(\tau)\\ & =\mathbb{E}_{\tau\sim p_\theta(\tau)}[R(\tau)] \end{aligned} %]]></script>
+<p>在這個章節裡面，作者定義了什麼樣子的人是邊緣人：</p>
 
-<p>其中<script type="math/tex">\tau</script>是trajectory，指的是<script type="math/tex">\left[ s_1, a_1, s_2, a_2, ... \right]</script>的序列，而<script type="math/tex">R(\tau)</script>是序列<script type="math/tex">\tau</script>中所獲得的所有<script type="math/tex">r_i</script>的總和、<script type="math/tex">\theta</script>是policy的參數、<script type="math/tex">p_\theta(\tau)</script>是序列<script type="math/tex">\tau</script>出現的機率，因為policy會影響到action <script type="math/tex">a_i</script>的產生，所以<script type="math/tex">\tau</script>的機率跟<script type="math/tex">\theta</script>有關。</p>
+<ol>
+  <li>內心經常覺得與人疏遠，與人互動不自在</li>
+  <li>覺得別人不理解自己，也不理解別人在想什麼</li>
+  <li>內心孤獨，卻又害怕走進人群</li>
+</ol>
 
-<p>若我們以expected reward為objective function，對它做微分，我們可以得到</p>
+<p>而這本書希望讀者可以：</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned}\bigtriangledown R_\theta &= \sum R(\tau) \bigtriangledown p_\theta(\tau) \end{aligned} %]]></script>
+<ol>
+  <li>了解自己的人際需求</li>
+  <li>能夠自在地與人群互動</li>
+  <li>獲得有效的人際互動技巧</li>
+</ol>
 
-<p>因為<script type="math/tex">R(\tau)</script>是由環境給予的，亦可以是人工定義的，跟policy的參數沒有什麼關係，所以當我們做微分的時候不會有什麼影響，接著再稍微整理一下</p>
+<p>作者希望透過調整讀者的心態、經由互動拉近人的距離以及提升衝突的解決力來達到上述的三件事情。</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned} \bigtriangledown R_\theta &= \sum R(\tau)\bigtriangledown p_\theta(\tau) \\ &= \sum R(\tau) p_\theta(\tau)\frac{\bigtriangledown p_\theta(\tau)}{p_\theta(\tau)} \\ &= \sum R(\tau)p_\theta(\tau)\bigtriangledown\log p_\theta(\tau) \\ &= \mathbb{E}_{\tau\sim p_\theta(\tau)} [R(\tau)\bigtriangledown\log p_\theta(\tau)] \\ &\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}R(\tau^n)\bigtriangledown\log p_\theta(\tau^n) \\ &\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}R(\tau^n)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n) \end{aligned} %]]></script>
+<h2 id="邊緣人是從恐懼開始的">邊緣人，是從「恐懼」開始的</h2>
 
-<p>在式子最後所得出來的式子，其實跟常見的、label是one-hot vector的cross entropy很類似，只不過多出了<script type="math/tex">R(\tau^n)</script>，在概念上可以想像成，每一步都在讓model自己產生的action的log probability越大越好，但是用<script type="math/tex">R(\tau^n)</script>來控制log probability要多大。</p>
+<p>作者認為，一個邊緣人常會覺得自己不好，「是不是我不夠好，別人才不喜歡我？」的這種想法很常出現在邊緣人的腦海中，然而越是抱持著「我沒有用」的想法，就越容易只聚焦在失敗的結果上，又或者其實結果並沒有不好，但我們仍會找一些莫須有的原因來說服自己結果是不好的。</p>
 
-<h3 id="advantage">Advantage</h3>
+<p>邊緣人亦會覺得別人是很嚴格、不友善的，因此不求別人喜愛，只希望不要在人際互動當中受傷，所以一直「避免犯錯」，而秉持著不做就不會出錯的想法，使得自己越發邊緣。</p>
 
-<p>在前面的段落裡，我們可以看到，當環境給予的reward都是正值的時候，objective function裡<script type="math/tex">R(\tau^n)</script>這項的值會是正的，使得在<script type="math/tex">s_t^n</script>時，機器所採取的任何一個<script type="math/tex">a_t^n</script>的log probability都是會漸漸變大的，雖說隨著時間的拉長，能獲得較大reward的<script type="math/tex">a_t^n</script>的log probability應該會是最大的，然而訓練起來要花的時間就會比較多，因此通常在訓練的時候，會稍微調整一下objective function，變成底下</p>
+<h2 id="喜歡自己是擺脫邊緣人的第一步">「喜歡自己」是擺脫邊緣人的第一步</h2>
 
-<script type="math/tex; mode=display">\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}[R(\tau^n)-b]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ b=\mathbb{E}[R(\tau)]</script>
+<p>如題所述，如果能夠喜歡自己，便能解決部分邊緣人的根本原因，那要如何練習愛自己呢？</p>
 
-<p>這邊的<script type="math/tex">b</script>是trajectory的平均reward，使得<script type="math/tex">[R(\tau^n)-b]</script>這項的意思變成，這個action <script type="math/tex">a_t^n</script>相對於平均而言有多好。</p>
-
-<p>而再更精細的去看objective function會發現<script type="math/tex">R(\tau^n)</script>代表的是整個trajectory的reward，但卻用來衡量每個時間點<script type="math/tex">a_t^n</script>的好壞，這樣有一點不太公平，可能在某個<script type="math/tex">s_t^n</script>採取<script type="math/tex">a_t^n</script>對拿到reward是很有幫助的，但因為其他action表現得不好，使得整個trajectory拿到的reward低於平均，這時這個好的action的log probability就會被降低，為了讓前面這項更能反映每個action的好壞，會再修改成</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}\left[ \sum\limits_{t^\prime=t}\limits^{T_n}\gamma^{t^\prime-t}r_{t^\prime}^n-b \right]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ \gamma<1 %]]></script>
-
-<p>也就是用該action未來的reward再稍微打個折以後加總起來，當作是這個action有多好，而前面中括號裡的這項通常會被拉出來變成<script type="math/tex">A^\theta(s_t,a_t)</script>稱為advantage function用以衡量在<script type="math/tex">s_t</script>採取<script type="math/tex">a_t</script>相較其他action有多好。</p>
-
-<h2 id="proximal-policy-optimization-ppo">Proximal Policy Optimization (PPO)</h2>
-
-<h3 id="on-policy-vs-off-policy">On-policy v.s. Off-policy</h3>
+<h3 id="調整不切實際的自我期待">調整不切實際的自我期待</h3>
 
 <blockquote>
-  <p>On-policy：要訓練的model正是與環境互動的</p>
+  <p>當一個人的「理想我」與「現實我」差距太大時，內心就會產生不舒服的感受。</p>
 </blockquote>
 
-<blockquote>
-  <p>Off-policy：要訓練的model和與環境互動的model不同</p>
-</blockquote>
+<p>假如你規定自己年年都要升職、加薪（理想我），而非常努力在職場上拼搏，但不一定每年都能夠做到（現實我），有可能就會因此譴責自己或抱怨環境。</p>
 
-<p>在前面REINFORCE的式子裡面我們可以看到它是一個on-policy的方法，那on-policy的方法需要很長的訓練時間，因為跟環境互動完的trajectory拿來更新一次model的參數以後就不能夠再被使用了，因為新的model所採取的action會不一樣，而PPO就是嘗試把REINFORCE從on-policy變成off-policy，好讓訓練時間縮短。</p>
+<p>對自己有所期待、設定目標沒有錯，但我們總是批評沒有達到目標的自己，卻鮮少評量我們所設定的目標究竟現不現實，有沒有超出自己的能力太多？有哪些無法掌控的因素沒有考慮進來？雖說沒有達成目標的客觀的事實，但這跟自己不好是不應該劃上等號的，有時候問題不是出在自己，而是出在目標。</p>
 
-<h3 id="importance-sampling">Importance Sampling</h3>
+<h3 id="滿足別人部分的期待即可">滿足別人「部分」的期待即可</h3>
 
-<p>PPO使用的便是將importance sampling融入進objective function裡面，這邊先提一下什麼是importance sampling。</p>
+<p>有些時候，訂立下來的目標不一定是自己設立的，有可能是為了滿足父母、家人或是朋友的期待，可以仔細想想，倘若目標達成了，你最想要誰先知道？誰會最開心？如果這個人並不是你自己的話，那很有可能這個目標並不是你想要的，所以作者建議讀者學習滿足他人部分期待就好，把省下來的力氣做一些自己喜歡的事情。</p>
 
-<p>在一般我們計算從某個機率分佈<script type="math/tex">p</script>抽樣出<script type="math/tex">x</script>的<script type="math/tex">f(x)</script>的期望值時，會寫成底下的式子</p>
+<h3 id="減少與他人比較">減少與他人比較</h3>
 
-<script type="math/tex; mode=display">\mathbb{E}_{x\sim p}[f(x)] \approx \frac{1}{N}\sum\limits_{i=1}\limits^{N}f(x_i)</script>
+<p>一個人的價值並不是透過與別人比較出來的，然而我們常常會去跟別人比較成績、業績、表現等，雖說適當的比較可以來激勵自己，但若會促使你中傷他人、批評自己時，這些數字就會將你束縛在情緒的毒藥裡。</p>
 
-<p>倘若今天因為某種特殊的原因，使得我們無法直接從機率分佈<script type="math/tex">p</script>直接抽樣的時候，我們可以使用另外一個機率分佈<script type="math/tex">q</script>抽樣出<script type="math/tex">x</script>再經過<script type="math/tex">p</script>、<script type="math/tex">q</script>之間的轉換來達到一樣的結果</p>
+<p>可以試著問自己「我喜歡現在的生活模式嗎？在目前的生活與人際關係當中，我喜歡是哪部分？哪些部分讓我覺得幸福？」、「我可以做些什麼來讓幸福的感受延續？」。</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned} \mathbb{E}_{x\sim p}[f(x)] &=\int f(x)p(x)dx \\ &= \int f(x)\frac{p(x)}{q(x)}q(x)dx \\ &= \mathbb{E}_{x\sim q}\left[ f(x)\frac{p(x)}{q(x)} \right] \end{aligned} %]]></script>
+<h3 id="允許自己不足">允許自己不足</h3>
 
-<p>而importance sampling代表的就是底下的式子</p>
+<p>一個不允許自己犯錯的人，需要耗費很多力氣來掩蓋自己不滿意的部分，而努力維持的完美底下，往往是不堪一擊的自卑。當人們願意承認自己的不足時，才有機會停下腳步，思考前進的方向，不夠好，又怎樣呢？</p>
 
-<script type="math/tex; mode=display">\mathbb{E}_{x\sim p}[f(x)]=\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]</script>
+<h2 id="已經習慣獨處卻又害怕孤獨">已經習慣獨處，卻又害怕孤獨</h2>
 
-<p>雖然看起來當機率分佈<script type="math/tex">p</script>無法被取樣的時候，我們可以使用任意的機率分佈<script type="math/tex">q</script>來替代，但這其中還是會有一些誤差，我們知道一個機率分佈的變異數的算法如下</p>
+<p>「獨處」和「孤獨」是兩回事，很多人把這兩件事情劃上等號是因為他們沒有辨識自己的人際需求，也不知道如何與自己相處，當身邊沒有人的時候就不太會安排空閒的時間，以致於害怕獨處的時刻，如果覺得自己「已經習慣獨處，卻又害怕孤獨」，那很有可能只是習慣獨處，卻沒有學會和自己共處。</p>
 
-<script type="math/tex; mode=display">Var[X]=\mathbb{E}[X^2]-(\mathbb{E}[X])^2</script>
+<h3 id="分辨自己的人際需求">分辨自己的人際需求</h3>
 
-<p>機率分佈<script type="math/tex">p</script>的變異數為</p>
+<p>大多數人可能會覺得要結交到很多朋友才是好的人際關係、別人主動與我互動才感受得到存在感、需要經常被注意才是被重視的，但是每個人所需要的人際關係並不一樣，可能有人只需要擁有幾個知心好友、偶而與他們見面，其他時間獨處做自己的事情便可以過得很開心，並沒有所謂「好的人際關係」。</p>
 
-<script type="math/tex; mode=display">Var_{x\sim p}[f(x)]=\mathbb{E}_{x\sim p}[f(x)^2]-(\mathbb{E}_{x\sim p}[f(x)])^2</script>
+<p>如果你常覺得自己交不到朋友、遇不到對的人，可以試著想想看你渴望什麼形式的人際關係？目前的朋友可以給你正向的感受嗎？</p>
 
-<p>如果使用importance sampling來得到的變異數為</p>
+<h3 id="人際關係分級制">人際關係分級制</h3>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned} Var_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right] &=\mathbb{E}_{x\sim q}\left[f(x)^2\frac{p(x)^2}{q(x)^2}\right]-\left(\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]\right)^2 \\ &= \mathbb{E}_{x\sim p}\left[f(x)^2\frac{p(x)}{q(x)}\right]-\left(\mathbb{E}_{x\sim p}[f(x)]\right)^2\end{aligned} %]]></script>
-
-<p>從上式我們可以看到，當機率分佈<script type="math/tex">p</script>和<script type="math/tex">q</script>兩者的差異過大的時候，會造成兩者的變異數也相差很多，所以在使用importance sampling的時候，使用機率分佈較近的<script type="math/tex">q</script>是很重要的。</p>
-
-<h3 id="ppo">PPO</h3>
-
-<p>在這裡，我們想要將前面的REINFORCE從on-policy換成off-policy，讓原先跟環境做互動的<script type="math/tex">\pi_\theta</script>換成<script type="math/tex">\pi_{\theta^\prime}</script>，為此我們套用上面的importance sampling</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{aligned} \bigtriangledown R_\theta &= \mathbb{E}_{(s_t,a_t)\sim\pi_\theta} \left[ A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(s_t, a_t)}{p_{\theta^\prime}(s_t, a_t)}A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}A^{\theta^\prime}(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \end{aligned} %]]></script>
-
-<p>從第二行到第三行中間做了一件特別的事情，這裡假設<script type="math/tex">\pi_\theta</script>和<script type="math/tex">\pi_{\theta^\prime}</script>所能得到的reward是差不多的，所以將<script type="math/tex">\theta</script>跟環境做互動得到的<script type="math/tex">A^\theta(s_t,a_t)</script>替換成了<script type="math/tex">A^{\theta^\prime}(s_t,a_t)</script>。</p>
-
-<p>而又假設一個state <script type="math/tex">s_t</script>被觀測到的機率其實跟model沒有什麼關係的話，<script type="math/tex">\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}</script>就可以忽略不看，最終我們就可以得到底下的式子做為我們的objective function</p>
-
-<script type="math/tex; mode=display">J^{\theta^\prime}(\theta)=\mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}A^{\theta^\prime}(s_t,a_t)\right]</script>
-
-<p>因為<script type="math/tex">\bigtriangledown f(x)=f(x)\bigtriangledown\log f(x)</script>，我們可以得到<script type="math/tex">\bigtriangledown p_\theta(a_t\vert s_t)=p_\theta(a_t\vert s_t)\bigtriangledown\log p_\theta(a_t\vert s_t)</script></p>
-
-<p>但由於importance sampling在兩個機率分佈差異很大的時候會讓結果壞掉，所以PPO做的事情便是在objective function裡面多加<script type="math/tex">\beta KL(\theta, \theta^\prime)</script>這項，其中<script type="math/tex">\beta</script>是一個hyperparameter，讓兩個機率分佈差異不要太大</p>
-
-<script type="math/tex; mode=display">J_{PPO}^{\theta^\prime}=J^{\theta^\prime}(\theta)-\beta KL(\theta, \theta^\prime)</script>
-
-<p>值得一提的是，這邊的<script type="math/tex">KL()</script>不是只兩個model參數之間的KL divergence，而是兩者的output，也就是兩者的behavior所算出來的KL divergence。</p>
-
-<p>而PPO的前身，TRPO的式子跟PPO幾乎一樣，只是它把KL這項當作是一個限制，在實作起來會比起PPO來要來得複雜得多。</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\prime)<\delta %]]></script>
-
-<h2 id="參考資料">參考資料</h2>
+<p>我們可以依據關係的親疏來粗略的將朋友分成：</p>
 
 <ul>
-  <li><a href="https://www.youtube.com/watch?v=OAKAZhFmYoI">DRL Lecture 2:  Proximal Policy Optimization (PPO)</a></li>
+  <li>點頭之交</li>
+  <li>同事</li>
+  <li>朋友</li>
+  <li>摯友</li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-07-26T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<p>有些人在人際關係中感到挫敗有些時候是因為對不適當的人做出了不適當的行為和期待，像是希望一群不太常往來的朋友來幫你慶生、向同事傾訴家庭衝突、用客套語氣跟伴侶說話，而將朋友以及這些期待不適當的排列在一起會造成可怕的結果。</p>
+
+<h2 id="打臉不會讓溝通更順暢">打臉，不會讓溝通更順暢</h2>
+
+<p>有時候會想說「大家都覺得我很爛」、「大家都不認同我」，但這個「大家」到底是誰呢？不可能全世界的人都這麼認為吧，「大家」有可能只是一個人，或是根本不清楚這當中包含了誰，但這會容易讓我們誤以為周圍都是敵人，造成心理的不安。</p>
+
+<p>我們都會希望自己的想法和價值觀可以被別人認同，但即使對方不認同你，並不代表你是錯的。</p>
+
+<h2 id="都是你的錯是你害我">都是你的錯！是你害我…</h2>
+
+<p>捫心自問一下，你有多少壞習慣是被父母、師長念了十幾年，甚至自己也都提醒自己要改變的，但是你改變了多少？如果我們連自己都很難去改變了，那麼怎麼會覺得改變別人是一件容易的事情呢？</p>
+
+<p>即便自己改變了，「改變自己」與「對方也必須改變」這兩者其實也沒有什麼因果的關係，我們練習改變自己並不是為了改變對方，是藉著調整自己的作為來讓自己變得更舒服自在。</p>
+
+<p>關於改變應該抱持的幾個態度：</p>
+
+<ol>
+  <li>改變帶來的影響不是全有全無，是漸進式的，可能有一些事情變得更好，只是比較細微</li>
+  <li>如果改變自己，事情卻沒有什麼變化，至少我們已經努力，可以嘗試其他方向</li>
+  <li>停在原地抱怨沒有什麼用處，主動調整才有機會帶來不同</li>
+</ol>
+
+<h2 id="親愛的你知道今天是什麼日子吧">親愛的，你知道今天是什麼日子吧？</h2>
+
+<p>「誤解」其實是人類的專長之一</p>
+
+<ol>
+  <li>你說話，他聆聽：在聽的過程中有可能部分的訊息沒有聽清楚</li>
+  <li>他聽，並理解：他把聽到的訊息整理歸納變成他理解的事情，其中可能會包含他本身的想法和價值觀</li>
+  <li>他理解，接著說：表達出的內容可能無法跟想法完全吻合</li>
+  <li>他說話，你聆聽：同樣地，有些訊息你可能沒有接收到</li>
+  <li>你聽，並理解：同樣地，有機會參雜你本身的想法和價值觀</li>
+</ol>
+
+<p>從把一句話說出來到得到對方回答，這個過程當中充滿了誤差，種種誤差結合起來，就很有可能跟原意完全不一樣，這邊作者建議可以使用「我訊息」來試著溝通。</p>
+
+<p>「我訊息」三步驟：</p>
+
+<ol>
+  <li>我知道你___（需求、情緒、限制）：先同理對方，讓他減少防衛並感到善意</li>
+  <li>但如果你可以___（行動）：講述希望別人如何行動，你會比較舒服</li>
+  <li>我比較能夠___（行動、情緒）：讓對方知道這樣互動以後，能得到什麼反應</li>
+</ol>
+
+<h2 id="善用提問技巧讓互動更舒適">善用提問技巧，讓互動更舒適</h2>
+
+<p>問句主要可以分成兩種：封閉式問句和開放式問句</p>
+
+<ul>
+  <li>封閉式問句：「你喜歡吃義大利麵還是烏龍麵？」=&gt; 得到的答案是兩者其一</li>
+  <li>開方式問句：「你喜歡吃什麼樣的麵食？」=&gt; 得到的答案可能相較豐富</li>
+</ul>
+
+<p>這兩種問句沒有孰好孰壞，兩者各自有不同的功能，使用在不同的時機，可以參考三個主要依據：</p>
+
+<ol>
+  <li>
+    <p>資訊精確度</p>
+
+    <p>需要比較精確回應時，應當使用封閉式問句</p>
+  </li>
+  <li>
+    <p>可運用的時間</p>
+
+    <p>如果時間有限的話，建議使用封閉式問句來蒐集必要訊息即可</p>
+  </li>
+  <li>
+    <p>溝通的意願</p>
+
+    <p>如果不想與對方有太多互動，使用封閉式問句讓對方只能回應簡短答案，使對話可以較快結束</p>
+  </li>
+</ol>
+
+<h2 id="都可以到底是可以還是不可以">「都可以」到底是可以？還是不可以？</h2>
+
+<p>常常在生活中我們都可以聽到「都可以」、「隨便」的回答，然而雖然嘴巴上是這樣回應，但心裡可能有不一樣的想法，當你照著自己的想法下去執行以後，得到的可能是不滿意的回應，為了解決這種問題，作者建議給予清楚的選項</p>
+
+<ol>
+  <li>使用封閉式問句</li>
+  <li>設定具體選項 e.g. 今天晚餐吃 a) 飯 b) 麵 c) 冬粉</li>
+  <li>邀請對方做選擇</li>
+  <li>引導出更具體的選擇 e.g. 大家選擇”麵”以後，再繼續詢問是哪種面，泡麵、陽春麵、牛肉麵等</li>
+</ol>
+
+<p>藉由這樣子的方法，讓大家對自己的選擇負責，就不會有上述的問題了。</p>
+
+<h2 id="溫柔暖心的安慰該怎麼說">溫柔、暖心的安慰，該怎麼說？</h2>
+
+<p>很多時候別人在安慰時，常會說出一些不適當的安慰，像是有人很難過，旁人就會急著告訴他「不要想太多，就沒事了」、「難過也沒什麼用」，但這些話語其實對於本人似乎也沒有什麼作用，這邊作者提出了一些安慰時，忌諱的行為。</p>
+
+<ol>
+  <li>
+    <p>否定事情的嚴重性</p>
+
+    <p>當你否定事情的嚴重性時，其實是在暗示對方你的想法有問題，才會把這件事情想得那麼嚴重，當你說出「沒關係」時，也否定了對方當下真實的感受。</p>
+  </li>
+  <li>
+    <p>強迫轉移注意力</p>
+
+    <p>會強迫別人轉移注意力的人，通常是害怕或是不知道如何與負面情緒共處的人，為了避免這樣的不舒適，於是無所不用其極的轉移注意力。</p>
+  </li>
+  <li>
+    <p>指責或批評對方</p>
+
+    <p>「如果你態度不要這麼被動，說不定事情有不一樣的發展。」，這樣的話語對當事人的傷害是最大的，有點像是在告訴對方這都是你咎由自取。</p>
+  </li>
+  <li>
+    <p>自認為全然理解</p>
+
+    <p>感受是很主觀的，即使是同樣的一件事情，每個人的感受也都不一樣，再者，對方在難受的情緒裡，你的感受其實對他並不重要。</p>
+  </li>
+</ol>
+
+<p>在知曉了這些NG的行為以後，作者也提供了可以試著嘗試的五個步驟來安慰他人</p>
+
+<ol>
+  <li>
+    <p>我看到有人最近好像___，是怎麼了？</p>
+
+    <p>留空的部分是要填入具體的行為，像是都不說話、食量變小、表情僵硬等，讓對方知道你好像知道他遇到什麼事情</p>
+  </li>
+  <li>
+    <p>關於這件事，你有什麼想法？</p>
+
+    <p>先別急著發表自己的意見，先讓對方說說看他發生的事情，透過這樣的方式讓腦袋梳理一遍發生的事情，像是小鴨debug法一般</p>
+  </li>
+  <li>
+    <p>關於這件事，你的心情是？</p>
+
+    <p>在梳理的過程中，可以試著關心一下對方的情緒，讓對方的情緒可以有機會被好好的宣洩</p>
+  </li>
+  <li>
+    <p>接下來，你打算怎麼做？</p>
+
+    <p>在情緒相較穩定以後，就可以進入解決問題的環節，而這個環節的重點是「不批評」，即便對方提出來的方法你可能不太苟同或是覺得沒有用，也請對方論述完自己的想法以後，再來好好討論</p>
+  </li>
+  <li>
+    <p>如果可以，你希望我如何幫忙你？</p>
+
+    <p>常會有人說「需要什麼儘管開口，我一定幫忙」，但當對方說出你力所不及的事情時，該怎麼辦呢？有時候我們自以為是的作為，反而會造成對方的傷害。</p>
+  </li>
+</ol>
+
+<h2 id="友善親近的回應該怎麼說">友善、親近的回應，該怎麼說？</h2>
+
+<p>是「溝通」還是「說服」？常常我們在說有衝突的時候要跟對方做溝通，然而我們更常做的事情是說服，希望我們把想法丟出來以後，對方可以全盤接受，並照著執行之，而過程當中的「說理」、「命令」、「指責」只會造成反效果，令他人更難以接受造成衝突的加劇。</p>
+
+<p>為了避免衝突的上升，我們應該以「好奇」作為出發點來達成理解、溝通的基礎，先別急著否定他人的決定、想法，試著去用各種問題去詢問他這麼想的背後裡由是什麼，不要一開始就只丟出自己的想法而完全不顧他人的說詞。</p>
+
+<h2 id="充滿能量的鼓勵該怎麼說">充滿能量的鼓勵，該怎麼說？</h2>
+
+<p>在以前參加過某個溝通、領導的課程，當台上的人講到自己過去不如意的事情，心情難過的時候，又或者是沒有想好該怎麼表達自己想說的話時，台下的老師會帶著同學一起拍手或者吆喝來幫台上的同學加油，我總是會想說，這時候幫他加油的意義是什麼呢？為什麼我們要對哭泣的人鼓掌呢？是要催促他不要恐懼、快點講？講出來的東西是為了他自己還是為了我們呢？</p>
+
+<p>「讚美」和「鼓勵」是不太一樣的東西，「讚美」通常著重的地方在於結果，像是說做得比較好、跑得比較快、跳得比較高等等，而「鼓勵」重視的是過程，包含了：努力、堅持、意圖、勇氣，而暖心的鼓勵可以一樣從「好奇」開始，「你是怎麼做到的？」就是一個很好用的句子，例子像是「你知道主管很兇，卻還跟他承認疏失，你是怎麼做到的？」，但也要適時加入其他的話語，避免一直重複。</p>
+
+<h2 id="面對別人的稱讚如何回應">面對別人的稱讚，如何回應？</h2>
+
+<p>在小時候的教育裡面常教我們要謙虛，致使當我們被他人稱讚的時候總會覺得這個稱讚並不是名符其實的，常以「我只是運氣好」、「還有其他更優秀的」等等話語來顯示自己還有需要進步的地方，然而這樣子的互動像是你想把一個好東西分享給對方，但對方卻微笑將之返還予你，「過度的謙虛」給對方的是一種被拒絕的感覺。</p>
+
+<p>比較好的回應就是大方的說謝謝，將這個讚美接受下來，但真正的困難也許是因為你不習慣別人對你的讚美，其次是你根本不欣賞自己，不認為自己值得。</p>
+
+<h2 id="真心誠意的道歉該怎麼說">真心誠意的道歉，該怎麼說？</h2>
+
+<p>道歉的第一步，就是鼓起勇氣面對自己的錯誤，技巧只是其次，最重要的是態度，我們常會拉不下臉，或是自己為身份高人一等就免去道歉的行為，但這樣並沒有真正尊重被傷害的人，也缺乏負起責任的擔當。</p>
+
+<p>「有效的道歉」包含了三個步驟：</p>
+
+<ol>
+  <li>表達歉意：向對方說對不起、不好意思等等</li>
+  <li>坦承疏失：說出自己是哪裡做不好，讓別人感到不舒服，讓對方認知道你是有在反省的，不是單純的用對不起在敷衍</li>
+  <li>提出補救：為造成的傷害提出補救的措施，表達願意對行為負責的誠意，若不確定可以怎麼做的話也可以直接請教對方希望自己可以怎麼做</li>
+</ol>
+
+<blockquote>
+  <p>道歉是你應該做的事情，是否原諒是由對方決定的</p>
+</blockquote>
+
+<h2 id="處理衝突欲速則不達">處理衝突，欲速則不達</h2>
+
+<p>心理學裡面有一個「白熊效應」，越是提醒自己不要去想的事情就越會去想它，像是分手以後希望自己盡快忘記對方，但每提醒自己忘記對方一次，就等同又想起對方了一次，所以當你自己告訴自己不要生氣、難過、緊張的時候，常會使自己的是些情緒被放大，為此，我們需要將心裡的這些情緒丟掉一些，才有空間可以裝其他的。</p>
+
+<p>理解可以減少你的怒氣，理解又分成「主觀式理解」和「客觀式理解」，主觀式理解就是一般自己習以為常看事情的觀點，而客觀式理解便是試著用對方角度來看事情，有點像前面章節所提到的，利用好奇的方式來引領你的思路去貼近他人的想法。</p>
+
+<p>若發生衝突的當下因為情緒的高漲致使你無法順利地思考時，可以試著練習喊暫停，讓你自己脫離當下的環境，去上個廁所、買個飲料來抽離高漲的情緒，回到冷靜的思考。</p>
+
+<h2 id="你不爽幹嘛不明講">你不爽，幹嘛不明講？</h2>
+
+<p>這邊作者提到了一個「被動攻擊」的概念，雖說字面上並沒有表現出不開心的樣貌，但我們可以很輕易地感覺到他的不開心，像是「都怪我沒唸什麼書，我都聽不懂你在說什麼」這類的話語便是被動攻擊，不明講你的不是，而是迂迴的攻擊你。</p>
+
+<p>要解決這類的攻擊，首先要避免情緒的波動，攻擊者期待的便是你主動挑起戰爭，若你生氣便中他的招了，再來是接受你跟他之間有衝突，衝突不一定都是壞事，衝突可以幫助我們去釐清彼此的期待和需求，接著是客觀描述對方的行為加上自己的感受，最後是表達你期待的溝通方式。舉個例子來說，你可以跟對方說，你這樣跟我對話的時候（客觀行為），其實我心裡很受傷（感受），如果你不喜歡___，可以直接告訴我（期待的溝通方式）。</p>
+
+<h2 id="當關係充滿指責該怎麼辦">當關係充滿指責，該怎麼辦？</h2>
+
+<p>一個常指責他人的人，通常有以下幾點特性：</p>
+
+<ol>
+  <li>
+    <p>缺乏發現的能力</p>
+
+    <p>碰到不舒服的事情無法去辨識這不舒適的來源是他人的冒犯還是自己偏頗的解讀</p>
+  </li>
+  <li>
+    <p>缺乏溝通的意願</p>
+
+    <p>有可能他只是想要宣洩情緒，並沒有意願或勇氣與對方溝通</p>
+  </li>
+  <li>
+    <p>缺乏反省的行動</p>
+
+    <p>把情緒往別人身上丟是解決負面情緒最快的方式，錯的都是別人，自己完全沒有責任</p>
+  </li>
+</ol>
+
+<p>在想要指責他人，把不舒服的情緒丟出去之前，可以先看看上面的敘述，是不是自己還有些事情是可以解決這件事情的。</p>
+
+<p>那要如何因應別人的指責呢？</p>
+
+<ol>
+  <li>儘量避開</li>
+  <li>不要期待對方會改變</li>
+  <li>被指責也不一定要被動接受，可以將頭腦冷靜了以後再透過「我訊息」跟對方溝通</li>
+</ol>
+
+<h2 id="面對看不順眼的人該怎麼辦">面對看不順眼的人，該怎麼辦？</h2>
+
+<p>想要降低與特定人士的不舒服感，首先要先減少對他的負面情緒，如果找不到任何方式來減少的話，可以試著去「聽」他的故事。有時候我們討厭某人是因為對方的價值觀與我們的價值觀不同，致使對行為的期待也不一樣，而我們可以試著再更深入地去了解為什麼他會形成這樣的價值觀，當你對這樣價值觀形塑的了解更多了以後，或許就不會這麼討厭與你不同的價值觀，因為你知道其背後的緣由了。</p>
+
+<h2 id="面對總是擺臭臉的人該怎麼辦">面對總是「擺臭臉」的人，該怎麼辦？</h2>
+
+<ol>
+  <li>不要在情緒高漲、氣氛肅殺的時候跟對方互動</li>
+  <li>先想好要講的話，以避免因為負面的情緒而打亂了原本想要溝通的事情</li>
+  <li>提醒自己解決事情才是重點，他的臉色並不重要</li>
+  <li>擺臭臉可能是他的習慣，跟你的所作所為或許沒有關係</li>
+  <li>尊重每個人表達情緒的方式，把他人的情緒帶到自己的身上就會變成你自己的課題</li>
+</ol>
+
+<h2 id="面對總是講不聽的人該怎麼辦">面對總是「講不聽」的人，該怎麼辦？</h2>
+
+<ol>
+  <li>
+    <p>讓對方感受到被理解</p>
+
+    <p>要想要說服他人，首先需要讓對方感受到你是理解並支持他的，或許這件事情在情緒上不容易做到，但我們可以把自己抽得客觀一些，看看能否有所改善</p>
+  </li>
+  <li>
+    <p>肯定對方付出的努力</p>
+
+    <p>雖說我們可能不認同對方為了這件事情上面所做的事情，但其實他也是以他所想到的方式在解決問題，或許這樣的方式並不是社會或是你個人可以接受的，這不代表你就可以無視他的努力</p>
+  </li>
+  <li>
+    <p>引導對方發現行動的成效</p>
+
+    <p>陪伴對方探索他的想法是否對於解決問題有所助益，好的部分可以留下來繼續執行，不好的地方可以一起討論來想新方法</p>
+  </li>
+  <li>
+    <p>提供具體策略</p>
+
+    <p>在秉持著肯定對方的態度下，總結一下目前為止達成的共識，試著提出自己的想法給對方，這邊可以用「參考看看」、「隨意聽聽」等話語先放低姿態</p>
+  </li>
+</ol>
+
+<h2 id="面對總是愛批評的人該怎麼辦">面對總是「愛批評」的人，該怎麼辦？</h2>
+
+<p>如果想要從批評當中獲取回饋的話，可以試試底下的方式</p>
+
+<ol>
+  <li>寫下來：把對方說的話記錄下來</li>
+  <li>刪除：刪除那些難聽、髒字、人身攻擊的話語</li>
+  <li>檢視重點：在剩餘的內容裡面，是不是有你真的沒有做好的部分</li>
+  <li>調整或拋棄：如果有找到可以調整的部分，可以試著去調整看看，如果沒有，就把這個紀錄刪掉吧</li>
+</ol>
+
+<p>持續做這樣的練習，可以減低這件事情對你帶來的情緒強度，能夠更理性的去面對批評，在心理學裡面被稱作「減敏感」。</p>
+
+<h2 id="面對很愛聊八卦的人該怎麼辦">面對很愛「聊八卦」的人，該怎麼辦？</h2>
+
+<p>避免表達價值判斷，不要對當事者加以評論，更不要在公開場合作出是非對錯的評論，因為嘴巴長在別人身上，你不到最後會被傳成什麼樣子。</p>
+
+<h2 id="面對總是太超過的人該怎麼辦">面對總是「太超過」的人，該怎麼辦？</h2>
+
+<p>你也是不敢拒絕別人的人嗎？如果是，那們你的「不敢」是因為擔心著什麼呢？是因為不幫助別人就沒有價值了嗎？</p>
+
+<p>「答應」和「拒絕」像是個光譜，在中間還有許許多多可以被切分的部分，你可以有限度的幫忙對方：</p>
+
+<ul>
+  <li>我可以幫忙哪些地方</li>
+  <li>可以幫忙到什麼程度</li>
+  <li>如果要幫忙，這件事的優先序如何</li>
+  <li>讓對方知道情況，如果他能接受就幫忙，不能接受的話你也有釋出善意了</li>
+</ul>
+
+<p>學會拒絕才能讓自己更自在，你不需要為沒有幫助到對方而道歉，沒有必要犧牲自己成就他人，尊重自己的意願幫助他人，不論對方是否滿意，都跟你有沒有價值無關。</p>
+
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-07-27T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/05/07/slack-bot/">如何製作Slack機器人</a></div><div class="next"><span>NEXT</span><a href="/2020/07/27/get-rid-of-loner-life/">擺脫邊緣人生</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/07/26/reinforce-and-ppo/">REINFORCE和Proximal Policy Optimization</a></div><div class="next"><span>NEXT</span><a href="/2020/08/26/clean-code-in-python/">Clean Code In Python</a></div></div></div>
 
 </div>
 
@@ -1027,7 +1285,7 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
