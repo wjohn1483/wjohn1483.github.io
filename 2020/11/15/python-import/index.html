@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Python Import Introduction - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/11/15/python-import/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -254,7 +254,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -267,115 +267,137 @@
 	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
 </svg>
 <a title="" href="/">wjohn1483.github.io</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item navigation__item--active"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/11/15/python-import/"><h2 itemprop="headline" class="item__header">Python Import Introduction</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。</div><p><a href="/2020/11/15/python-import/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Python Import Introduction</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-11-15-python-import/2020-11-15-python-import.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Python Import Introduction"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Python">Python</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 15, 2020</span>
             </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="Python"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/"><h2 itemprop="headline" class="item__header">Deep Reinforcement Learning for Online Advertising in Recommender Systems</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。</div><p><a href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 04, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Reinforcement-Learning,Recommendation-System"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/08/26/clean-code-in-python/"><h2 itemprop="headline" class="item__header">Clean Code In Python</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Clean code in python sharing.</div><p><a href="/2020/08/26/clean-code-in-python/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Book">Book</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Python">Python</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Aug 26, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-08-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="Book,Python"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/07/27/get-rid-of-loner-life/"><h2 itemprop="headline" class="item__header">擺脫邊緣人生</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">節錄部分《擺脫邊緣人生》這本書的內容以及自己的一些心得。</div><p><a href="/2020/07/27/get-rid-of-loner-life/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Book">Book</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 27, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-07-27T00:00:00+00:00">
-    <meta itemprop="keywords" content="Book"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/07/26/reinforce-and-ppo/"><h2 itemprop="headline" class="item__header">REINFORCE和Proximal Policy Optimization</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</div><p><a href="/2020/07/26/reinforce-and-ppo/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 26, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-07-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="Reinforcement-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/05/07/slack-bot/"><h2 itemprop="headline" class="item__header">如何製作Slack機器人</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。</div><p><a href="/2020/05/07/slack-bot/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 07, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-05-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/25/plot-data-with-r/"><h2 itemprop="headline" class="item__header">用R來作圖</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</div><p><a href="/2020/04/25/plot-data-with-r/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 25, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-25T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/"><h2 itemprop="headline" class="item__header">Playing Atari with Deep Reinforcement Learning</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</div><p><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Reinforcement-Learning"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>20 post articles, 3 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
-            <i class="fas fa-angle-left"></i>
-          </div></li><li>
-              <div class="button button--primary button--circle focus"><span>1</span></div>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-              </li><li>
-                <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-              </li><li><a class="button button--secondary button--circle" href="/page2">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+    <meta itemprop="keywords" content="Python"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。</p>
+
+<!--more-->
+
+<h2 id="script-vs-module">Script v.s. Module</h2>
+
+<p>執行python檔案有兩種方式：</p>
+
+<ul>
+  <li>把該檔案視為top-level script來執行：<code class="language-plaintext highlighter-rouge">python main.py</code></li>
+  <li>把它當作module執行：在其他檔案裡面透過<code class="language-plaintext highlighter-rouge">import</code>來執行，或是<code class="language-plaintext highlighter-rouge">python -m main.py</code></li>
+</ul>
+
+<p>當一個python檔案被執行的時候，它會被給予一個名字，儲存在<code class="language-plaintext highlighter-rouge">__name__</code>這個變數裡面，如果它被當作top-level script執行，<code class="language-plaintext highlighter-rouge">__name__</code>就會被指定成<code class="language-plaintext highlighter-rouge">__main__</code>，如果被當作module執行，<code class="language-plaintext highlighter-rouge">__name__</code>會被指定成該檔案的名字加上packge的路徑。</p>
+
+<blockquote>
+  <p>值得一提的是，雖然<code class="language-plaintext highlighter-rouge">python -m main.py</code>是把main.py當作module來執行，但印出來的<code class="language-plaintext highlighter-rouge">__name__</code>仍然是<code class="language-plaintext highlighter-rouge">__main__</code>，不過在底下執行relative import是沒有問題的。</p>
+</blockquote>
+
+<p>舉例來說，如果我們當下的目錄結構長得像底下這樣</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── main.py
+└── package
+    └── moduleA.py
+</code></pre></div></div>
+
+<p>當我們下<code class="language-plaintext highlighter-rouge">python main.py</code>或是<code class="language-plaintext highlighter-rouge">python package/moduleA.py</code>時，他們的<code class="language-plaintext highlighter-rouge">__name__</code>都是<code class="language-plaintext highlighter-rouge">__main__</code>，如果我們在<code class="language-plaintext highlighter-rouge">main.py</code>裡面<code class="language-plaintext highlighter-rouge">import package.moduleA</code>，並在<code class="language-plaintext highlighter-rouge">moduleA.py</code>裡面把<code class="language-plaintext highlighter-rouge">__name__</code>印出來，會發現印出來的<code class="language-plaintext highlighter-rouge">__name__</code>會是<code class="language-plaintext highlighter-rouge">package.moduleA</code>。</p>
+
+<p>值得一提的是，如果你今天是直接打<code class="language-plaintext highlighter-rouge">python</code>進入interactive shell，那麼當下shell的<code class="language-plaintext highlighter-rouge">__name__</code>就會是<code class="language-plaintext highlighter-rouge">__main__</code>。</p>
+
+<h2 id="relative-import">Relative Import</h2>
+
+<p>relative import會透過module的名字來去決定package的位置，假設我們現在稍微修改一下目錄的架構變成底下</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
+├── main.py
+└── package
+    ├── moduleA.py
+    └── subpackage
+        └── moduleB.py
+</code></pre></div></div>
+
+<p>假如說我們用import的方式在當前目錄執行<code class="language-plaintext highlighter-rouge">moduleB.py</code>（<code class="language-plaintext highlighter-rouge">from package.subpackage import moduleB</code>），那麼當前的<code class="language-plaintext highlighter-rouge">__name__</code>就會是<code class="language-plaintext highlighter-rouge">package.subpackage.moduleB</code>，而我們在<code class="language-plaintext highlighter-rouge">moduleB.py</code>裡面有<code class="language-plaintext highlighter-rouge">from .. import moduleA</code>，這時python就會去<code class="language-plaintext highlighter-rouge">package</code>裡面尋找<code class="language-plaintext highlighter-rouge">moduleA</code>，就可以順利的import進來。</p>
+
+<p>但如果今天是用直接執行的方式<code class="language-plaintext highlighter-rouge">python package/subpackage/moduleB.py</code>，會因為<code class="language-plaintext highlighter-rouge">__name__</code>為<code class="language-plaintext highlighter-rouge">__main__</code>而找不到parent package，噴底下的error。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"package/subpackage/moduleB.py"</span>, line 1, <span class="k">in</span> &lt;module&gt;
+    from .. import moduleA
+ImportError: attempted relative import with no known parent package
+</code></pre></div></div>
+
+<p>這時可以改用<code class="language-plaintext highlighter-rouge">python -m package.subpackage.moduleB</code>來把<code class="language-plaintext highlighter-rouge">moduleB.py</code>當作module執行。</p>
+
+<h2 id="absolute-import">Absolute Import</h2>
+
+<p>根據當前執行目錄的絕對路徑來import module，值得一提的是，當前執行的目錄並不是你執行python時所在的目錄，而是top-level script所在的目錄。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── main.py
+└── package
+    ├── moduleA.py
+    └── subpackage
+        └── moduleB.py
+</code></pre></div></div>
+
+<p>以上面的結構來說，若我在當前目錄<code class="language-plaintext highlighter-rouge">./</code>執行<code class="language-plaintext highlighter-rouge">python package/moduleA.py</code>，那麼若要在<code class="language-plaintext highlighter-rouge">moduleA.py</code>裡面import moduleB，就得要用<code class="language-plaintext highlighter-rouge">from subpackage import moduleB</code>，而不是<code class="language-plaintext highlighter-rouge">from package.subpackage import moduleB</code>，因為<code class="language-plaintext highlighter-rouge">moduleA.py</code>在<code class="language-plaintext highlighter-rouge">./package</code>裡面，python會從那邊起始點。</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">Relative imports for the billionth time</a></li>
+</ul>
+
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-11-15T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">Deep Reinforcement Learning for Online Advertising in Recommender Systems</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -898,7 +920,75 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script><script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];
