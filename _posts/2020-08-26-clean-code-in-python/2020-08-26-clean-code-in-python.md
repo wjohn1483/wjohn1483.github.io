@@ -1,6 +1,6 @@
 ---
 title: Clean Code In Python
-tags: Book
+tags: Book Python
 layout: article
 footer: false
 aside:
