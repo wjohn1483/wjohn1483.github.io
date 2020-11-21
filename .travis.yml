@@ -1,7 +1,0 @@
-language: ruby
-rvm:
-    - 2.1
-script:
-  - bundle exec jekyll build
-after_success:
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash -x .travis/push.sh; fi'

@@ -2,9 +2,9 @@
 
 setup_git_folder() {
     git init
-    git config --global user.email "wjohn1483@yahoo.com.tw"
-    git config --global user.name "wjohn1483"
-    git remote add origin https://${GITHUB_TOKEN}@github.com/wjohn1483/wjohn1483.github.io.git
+    git config --global user.email "${USER_EMAIL}"
+    git config --global user.name "${USER_NAME}"
+    git remote add origin git@github.com:wjohn1483/wjohn1483.github.io.git
     git pull origin master
 }
 
@@ -13,7 +13,7 @@ commit_website_files() {
     rsync -a --delete-after ../_site/* ./
     git status
     git add .
-    git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
+    git commit -m "Circle build: ${CIRCLE_BUILD_NUM}"
 }
 
 upload_files() {
