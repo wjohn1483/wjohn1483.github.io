@@ -305,9 +305,9 @@
 
 <p>BERT的架構是前一篇<a href="https://wjohn1483.github.io/2020/03/21/attention-is-all-you-need/">Attention Is All You Need</a>當中所提到的Transformer的encoder，只是訓練的方式和參數的設定比較不一樣，在BERT這篇paper裡面使用了兩種參數</p>
 
-<script type="math/tex; mode=display">\mathrm{BERT}_{BASE}:L=12,H=768,A=12, total\ parameters=110\mathrm{M}\\\mathrm{BERT}_{LARGE}:L=24,H=1024,A=16, total\ parameters=340\mathrm{M}</script>
+\[\mathrm{BERT}_{BASE}:L=12,H=768,A=12, total\ parameters=110\mathrm{M}\\\mathrm{BERT}_{LARGE}:L=24,H=1024,A=16, total\ parameters=340\mathrm{M}\]
 
-<p>其中<script type="math/tex">L</script>代表層數、<script type="math/tex">H</script>代表hidden size、<script type="math/tex">A</script>代表self-attention的head數。</p>
+<p>其中\(L\)代表層數、\(H\)代表hidden size、\(A\)代表self-attention的head數。</p>
 
 <h3 id="訓練方式">訓練方式</h3>
 
@@ -317,7 +317,7 @@
 
 <p>由於BERT後面所接的NLP任務可能會需要sentence embedding，或同時考慮多個sentence，所以BERT在這個地方有設計兩個特別的token，分別是<code class="language-plaintext highlighter-rouge">[CLS]</code>和<code class="language-plaintext highlighter-rouge">[SEP]</code>，<code class="language-plaintext highlighter-rouge">[SEP]</code>是用來分開兩個句子的，而<code class="language-plaintext highlighter-rouge">[CLS]</code>是用來做classification的embedding，因為BERT是用self-attention layer為基礎，所以即便放在第一個，其輸出的embedding仍然包含整個句子的資訊。</p>
 
-<p>而上圖中的Segment Embeddings是為了能夠更分開兩個句子之間的差異，可以想像成<script type="math/tex">\mathrm{E_A}</script>是一個純量等於<script type="math/tex">0</script>，<script type="math/tex">\mathrm{E_B}</script>也是一個純量等於<script type="math/tex">1</script>，更詳細的解說可以參考<a href="https://www.cnblogs.com/d0main/p/10447853.html">這裡</a>。</p>
+<p>而上圖中的Segment Embeddings是為了能夠更分開兩個句子之間的差異，可以想像成\(\mathrm{E_A}\)是一個純量等於\(0\)，\(\mathrm{E_B}\)也是一個純量等於\(1\)，更詳細的解說可以參考<a href="https://www.cnblogs.com/d0main/p/10447853.html">這裡</a>。</p>
 
 <h4 id="masked-lm">Masked LM</h4>
 
@@ -325,7 +325,7 @@
 
 <h4 id="next-sentence-prediction-nsp">Next Sentence Prediction (NSP)</h4>
 
-<p>Next sentence prediction做的事情就是去判斷輸入進來的這兩個句子，是不是在順序上是連續的，像是<code class="language-plaintext highlighter-rouge">人之初</code>和<code class="language-plaintext highlighter-rouge">性本善</code>就是連續的句子，但<code class="language-plaintext highlighter-rouge">人之初</code>和<code class="language-plaintext highlighter-rouge">你好嗎</code>就不是連續的句子，而訓練的方式是會拿<code class="language-plaintext highlighter-rouge">[CLS]</code>經過BERT得出來的embedding，來當作classifier的輸入，希望這個classifier輸出<script type="math/tex">\mathrm{IsNext}</script>或是<script type="math/tex">\mathrm{NotNext}</script>。</p>
+<p>Next sentence prediction做的事情就是去判斷輸入進來的這兩個句子，是不是在順序上是連續的，像是<code class="language-plaintext highlighter-rouge">人之初</code>和<code class="language-plaintext highlighter-rouge">性本善</code>就是連續的句子，但<code class="language-plaintext highlighter-rouge">人之初</code>和<code class="language-plaintext highlighter-rouge">你好嗎</code>就不是連續的句子，而訓練的方式是會拿<code class="language-plaintext highlighter-rouge">[CLS]</code>經過BERT得出來的embedding，來當作classifier的輸入，希望這個classifier輸出\(\mathrm{IsNext}\)或是\(\mathrm{NotNext}\)。</p>
 
 <p>底下是整體的架構圖，其實在fine-tuning的時候，會根據不一樣的任務而拿不同位置輸出的結果，細節可以參考<a href="https://arxiv.org/pdf/1810.04805.pdf">原本的paper</a>。</p>
 

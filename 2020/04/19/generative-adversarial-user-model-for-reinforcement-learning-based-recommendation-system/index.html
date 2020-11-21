@@ -337,39 +337,39 @@
 
 <p><img class="image image--xl" src="gan-user-model.png" /></p>
 
-<p>身為一個使用者，他會看到推薦系統所推薦的物品清單<script type="math/tex">A^t</script>，generator會根據過去的選擇(使用者的喜好)，選擇出他有興趣的物品<script type="math/tex">a^t\sim \phi(s^t, A^t)</script>，而discriminator想要做的便是對generator給出的物品打個reward分數<script type="math/tex">r(s^t,a^t)</script>。</p>
+<p>身為一個使用者，他會看到推薦系統所推薦的物品清單\(A^t\)，generator會根據過去的選擇(使用者的喜好)，選擇出他有興趣的物品\(a^t\sim \phi(s^t, A^t)\)，而discriminator想要做的便是對generator給出的物品打個reward分數\(r(s^t,a^t)\)。</p>
 
-<script type="math/tex; mode=display">\phi(s^t, A^t)=\arg\max\limits_{\phi}\mathbb{E}_\phi[r(s^t,a^t)]-R(\phi)/\eta</script>
+\[\phi(s^t, A^t)=\arg\max\limits_{\phi}\mathbb{E}_\phi[r(s^t,a^t)]-R(\phi)/\eta\]
 
-<script type="math/tex; mode=display">r_\theta(s^t,a^t)=\mathbf{v}\sigma(\mathbf{V}(s^t,f_{a^t})+b)</script>
+\[r_\theta(s^t,a^t)=\mathbf{v}\sigma(\mathbf{V}(s^t,f_{a^t})+b)\]
 
-<p>式(1)中的<script type="math/tex">R(\phi)/\eta</script>是一個regularisation term，generator希望能獲取最大的reward，而reward其實就是將使用者過去的選擇和商品的feature餵入一層NN而得到一個純量，兩者想要最佳化的式子如下</p>
+<p>式(1)中的\(R(\phi)/\eta\)是一個regularisation term，generator希望能獲取最大的reward，而reward其實就是將使用者過去的選擇和商品的feature餵入一層NN而得到一個純量，兩者想要最佳化的式子如下</p>
 
-<script type="math/tex; mode=display">\min\limits_{\theta}\max\limits_{\phi}\left( \mathbb{E}_\phi[\sum^T_{t=1}r_\theta(s^t_{true}, a^t)]-R(\phi)/\eta\right) - \sum^T_{t=1}r_\theta(s^t_{true},a^t_{true})</script>
+\[\min\limits_{\theta}\max\limits_{\phi}\left( \mathbb{E}_\phi[\sum^T_{t=1}r_\theta(s^t_{true}, a^t)]-R(\phi)/\eta\right) - \sum^T_{t=1}r_\theta(s^t_{true},a^t_{true})\]
 
-<p>擁有下標<script type="math/tex">true</script>的代表是使用者真實的選擇，而generator想要最佳化的是第一項，discriminator想要最佳化的是第二項，也就是說generator想要讓自己產生出的選擇跟使用者真正的選擇越貼近越好，而discriminator想要讓使用者真正的選擇所得到的reward越大越好。</p>
+<p>擁有下標\(true\)的代表是使用者真實的選擇，而generator想要最佳化的是第一項，discriminator想要最佳化的是第二項，也就是說generator想要讓自己產生出的選擇跟使用者真正的選擇越貼近越好，而discriminator想要讓使用者真正的選擇所得到的reward越大越好。</p>
 
 <h4 id="user-state">User State</h4>
 
 <p><img src="user-model-state.png" alt="State of user model" /></p>
 
-<p>在generator和discriminator都有用同使用到的<script type="math/tex">s^t</script>代表的是使用者過去的選擇，也就是使用者的喜好，其被實作的方式其實就是把過去所選擇的那些物品的feature(文字敘述、圖片等等做成embedding)，通過LSTM或者是直接乘上一個大矩陣並concatenate在一起，就完成了。</p>
+<p>在generator和discriminator都有用同使用到的\(s^t\)代表的是使用者過去的選擇，也就是使用者的喜好，其被實作的方式其實就是把過去所選擇的那些物品的feature(文字敘述、圖片等等做成embedding)，通過LSTM或者是直接乘上一個大矩陣並concatenate在一起，就完成了。</p>
 
 <h3 id="cascading-q-networks">Cascading Q-Networks</h3>
 
 <p><img src="set-recommendation.png" alt="Set Recommendation" /></p>
 
-<p>在前面使用類似GAN的方法得到了user model以後，接下來就是做一個推薦系統來從廣大的物品池裡面找出使用者會喜歡的商品，倘若想要使用<script type="math/tex">Q-function</script>來去對每一個可能的組合去做評估的話(式(4))，可以想像得到我們應該是算不完的，因為組合數實在是太多了，假如<script type="math/tex">K=3000</script>、<script type="math/tex">k=10</script>，我們就得要計算<script type="math/tex">3000\choose10</script>這麼多個可能，是故作者推出了Cascading Q-Networks來解決這個問題。</p>
+<p>在前面使用類似GAN的方法得到了user model以後，接下來就是做一個推薦系統來從廣大的物品池裡面找出使用者會喜歡的商品，倘若想要使用\(Q-function\)來去對每一個可能的組合去做評估的話(式(4))，可以想像得到我們應該是算不完的，因為組合數實在是太多了，假如\(K=3000\)、\(k=10\)，我們就得要計算\(3000\choose10\)這麼多個可能，是故作者推出了Cascading Q-Networks來解決這個問題。</p>
 
-<script type="math/tex; mode=display">a^*_1, a^*_2, ..., a^*_k=\arg\max Q(s^t, a_1, a_2, ..., a_k)</script>
+\[a^*_1, a^*_2, ..., a^*_k=\arg\max Q(s^t, a_1, a_2, ..., a_k)\]
 
 <p><img src="cdqn.png" alt="Cascading Q-Networks" /></p>
 
-<p>其想法很簡單，如果組合數太多的話，那我就一個一個求出該被放進去的物品，直至<script type="math/tex">k</script>個物品都被選擇好。</p>
+<p>其想法很簡單，如果組合數太多的話，那我就一個一個求出該被放進去的物品，直至\(k\)個物品都被選擇好。</p>
 
 <p><img src="cdqn-formula.png" alt="CDQN formula" /></p>
 
-<p>而這個Cascading Q-Networks的訓練方式可以想成是訓練<script type="math/tex">k</script>個DQN，而每個DQN的reward都是一樣的，是user model給予整個組合的分數。</p>
+<p>而這個Cascading Q-Networks的訓練方式可以想成是訓練\(k\)個DQN，而每個DQN的reward都是一樣的，是user model給予整個組合的分數。</p>
 
 <h2 id="實驗">實驗</h2>
 

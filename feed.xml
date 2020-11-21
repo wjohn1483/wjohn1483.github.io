@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-11-15T09:54:18+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Python Import Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/15/python-import/" rel="alternate" type="text/html" title="Python Import Introduction" /><published>2020-11-15T00:00:00+00:00</published><updated>2020-11-15T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/15/python-import</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/15/python-import/">&lt;p&gt;在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-11-21T13:07:03+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">利用Circle CI來建立部落格</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/" rel="alternate" type="text/html" title="利用Circle CI來建立部落格" /><published>2020-11-21T00:00:00+00:00</published><updated>2020-11-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/">&lt;p&gt;有鑒於&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">有鑒於</summary></entry><entry><title type="html">Python Import Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/15/python-import/" rel="alternate" type="text/html" title="Python Import Introduction" /><published>2020-11-15T00:00:00+00:00</published><updated>2020-11-15T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/15/python-import</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/15/python-import/">&lt;p&gt;在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -98,27 +98,27 @@ ImportError: attempted relative import with no known parent package
 &lt;p&gt;模型的輸入總共有五個&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;p^{rec}_t&lt;/script&gt;：使用者過去所看過內容的feature，把過去每個時間點看過的內容的feature都丟進GRU裡面取最後一個時間點的hidden state&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;p^{ad}_t&lt;/script&gt;：使用者過去所看過廣告的feature，把過去每個時間點看過的廣告的feature都丟進GRU裡面取最後一個時間點的hidden state&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;c_t&lt;/script&gt;：使用者的資訊，像是使用的是iOS還是Android等等基本的資訊&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;rec_t&lt;/script&gt;：當前推薦內容的feature，把所有的內容的feature接在一塊過一層layer，&lt;script type=&quot;math/tex&quot;&gt;rec_t=\tanh(W_{rec}concat(rec_1, ..., rec_L)+b_{rec})&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;a^{ad}_t&lt;/script&gt;：廣告的feature&lt;/li&gt;
+  &lt;li&gt;\(p^{rec}_t\)：使用者過去所看過內容的feature，把過去每個時間點看過的內容的feature都丟進GRU裡面取最後一個時間點的hidden state&lt;/li&gt;
+  &lt;li&gt;\(p^{ad}_t\)：使用者過去所看過廣告的feature，把過去每個時間點看過的廣告的feature都丟進GRU裡面取最後一個時間點的hidden state&lt;/li&gt;
+  &lt;li&gt;\(c_t\)：使用者的資訊，像是使用的是iOS還是Android等等基本的資訊&lt;/li&gt;
+  &lt;li&gt;\(rec_t\)：當前推薦內容的feature，把所有的內容的feature接在一塊過一層layer，\(rec_t=\tanh(W_{rec}concat(rec_1, ..., rec_L)+b_{rec})\)&lt;/li&gt;
+  &lt;li&gt;\(a^{ad}_t\)：廣告的feature&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;把上面四個合併在一起就是代表使用者狀態的&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;，&lt;script type=&quot;math/tex&quot;&gt;s_t=concat(p^{rec}_t,p^{ad}_t,c_t,rec_t)&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;把上面四個合併在一起就是代表使用者狀態的\(s_t\)，\(s_t=concat(p^{rec}_t,p^{ad}_t,c_t,rec_t)\)。&lt;/p&gt;
 
-&lt;p&gt;左圖(a)為作者一開始想到的模型架構，藉由把使用者的狀態&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;和廣告的feature &lt;script type=&quot;math/tex&quot;&gt;a^{ad}_t&lt;/script&gt;餵進去，讓model去預測把廣告插在不同位置的分數，&lt;script type=&quot;math/tex&quot;&gt;Q(s_t,a^{ad}_t)^1, Q(s_t,a^{ad}_t)^2&lt;/script&gt;代表的便是插在位置1和2的分數，而紅色圈圈的&lt;script type=&quot;math/tex&quot;&gt;Q(s_t,a^{ad}_t)^0&lt;/script&gt;是不插廣告的分數，讓一次model的predict就可以一次解決上述的三個問題（要決定插哪一個廣告就把所有候選的廣告都丟進model裡面去predict，取最高分的）。&lt;/p&gt;
+&lt;p&gt;左圖(a)為作者一開始想到的模型架構，藉由把使用者的狀態\(s_t\)和廣告的feature \(a^{ad}_t\)餵進去，讓model去預測把廣告插在不同位置的分數，\(Q(s_t,a^{ad}_t)^1, Q(s_t,a^{ad}_t)^2\)代表的便是插在位置1和2的分數，而紅色圈圈的\(Q(s_t,a^{ad}_t)^0\)是不插廣告的分數，讓一次model的predict就可以一次解決上述的三個問題（要決定插哪一個廣告就把所有候選的廣告都丟進model裡面去predict，取最高分的）。&lt;/p&gt;
 
-&lt;p&gt;當今天使用者的體驗不錯的時候，可以適時地加入廣告增加平台收入，而當使用者體驗不好的時候，就不應該插入廣告，作者想要將這樣的概念加入至model當中，所以架構從(a)修改成了(b)，左邊的&lt;script type=&quot;math/tex&quot;&gt;V(s_t)&lt;/script&gt;的輸入只有使用者的&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;，代表使用者到現在的體驗如何，而右邊的&lt;script type=&quot;math/tex&quot;&gt;A(s_t,a^{ad}_t)&lt;/script&gt;多加入了廣告的feature，代表插入廣告以後的分數如何，而最終的分數便是兩者的加總。&lt;/p&gt;
+&lt;p&gt;當今天使用者的體驗不錯的時候，可以適時地加入廣告增加平台收入，而當使用者體驗不好的時候，就不應該插入廣告，作者想要將這樣的概念加入至model當中，所以架構從(a)修改成了(b)，左邊的\(V(s_t)\)的輸入只有使用者的\(s_t\)，代表使用者到現在的體驗如何，而右邊的\(A(s_t,a^{ad}_t)\)多加入了廣告的feature，代表插入廣告以後的分數如何，而最終的分數便是兩者的加總。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;classic_architecture.png&quot; alt=&quot;Classic Architecture&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;作者所提出來的架構跟原本DQN的架構類似，只是又多了一個維度，如果使用上圖的(a)、(b)，和上上圖的(a)架構來玩倉庫番的話，他們的概念是這樣子的&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;上圖(a)：給定遊戲畫面（&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;），預測往上下左右走的分數（&lt;script type=&quot;math/tex&quot;&gt;Q(s_t,a)^1,...,Q(s_t,a)^{k+1}&lt;/script&gt;）&lt;/li&gt;
-  &lt;li&gt;上圖(b)：給定遊戲畫面（&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;）和動作（往上&lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;），model會預測出這個組合的分數&lt;/li&gt;
-  &lt;li&gt;上上圖(a)：給定遊戲畫面（&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;）和動作（往上&lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;），model會預測出往上走0步、1步、n步的分數（&lt;script type=&quot;math/tex&quot;&gt;Q(s_t,a)^0,...,Q(s_t,a)^{k+1}&lt;/script&gt;）&lt;/li&gt;
+  &lt;li&gt;上圖(a)：給定遊戲畫面（\(s_t\)），預測往上下左右走的分數（\(Q(s_t,a)^1,...,Q(s_t,a)^{k+1}\)）&lt;/li&gt;
+  &lt;li&gt;上圖(b)：給定遊戲畫面（\(s_t\)）和動作（往上\(a_t\)），model會預測出這個組合的分數&lt;/li&gt;
+  &lt;li&gt;上上圖(a)：給定遊戲畫面（\(s_t\)）和動作（往上\(a_t\)），model會預測出往上走0步、1步、n步的分數（\(Q(s_t,a)^0,...,Q(s_t,a)^{k+1}\)）&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
@@ -135,7 +135,7 @@ ImportError: attempted relative import with no known parent package
   &lt;li&gt;DEAR-1：將Reinforcement Learning改成Supervised Learning&lt;/li&gt;
   &lt;li&gt;DEAR-2：把使用者過去所看過內容的feature，從GRU改成Dense&lt;/li&gt;
   &lt;li&gt;DEAR-3：在原本DQN架構圖(b)的架構，並多在輸入的地方接一個1-hot vector代表廣告要插在哪一個位置&lt;/li&gt;
-  &lt;li&gt;DEAR-4：不把&lt;script type=&quot;math/tex&quot;&gt;V(s_t)&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;A(s_t,a^{ad}_t)&lt;/script&gt;分開算，也就是作者所提出的架構圖中的(a)&lt;/li&gt;
+  &lt;li&gt;DEAR-4：不把\(V(s_t)\)和\(A(s_t,a^{ad}_t)\)分開算，也就是作者所提出的架構圖中的(a)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;可以看到最終版本的架構的表現最好。&lt;/p&gt;
@@ -1105,39 +1105,35 @@ ImportError: attempted relative import with no known parent package
 
 &lt;h2 id=&quot;reinforce&quot;&gt;REINFORCE&lt;/h2&gt;
 
-&lt;p&gt;首先，我們先來定義一下state、action和reward之間的關係。當機器看到眼前的state &lt;script type=&quot;math/tex&quot;&gt;s_1&lt;/script&gt;時，會根據自身的演算法決定做出動作&lt;script type=&quot;math/tex&quot;&gt;a_1&lt;/script&gt;，此時環境會根據機器做出的&lt;script type=&quot;math/tex&quot;&gt;a_1&lt;/script&gt;給予reward &lt;script type=&quot;math/tex&quot;&gt;r_1&lt;/script&gt;，而隨著這個動作，機器所看到的state會從&lt;script type=&quot;math/tex&quot;&gt;s_1&lt;/script&gt;轉移到&lt;script type=&quot;math/tex&quot;&gt;s_2&lt;/script&gt;，接著機器會根據&lt;script type=&quot;math/tex&quot;&gt;s_2&lt;/script&gt;做出動作&lt;script type=&quot;math/tex&quot;&gt;a_2&lt;/script&gt;，並獲得&lt;script type=&quot;math/tex&quot;&gt;r_2&lt;/script&gt;，以此類推。而我們的目標就是希望機器能學會一個厲害的policy，使得expected reward最大。&lt;/p&gt;
+&lt;p&gt;首先，我們先來定義一下state、action和reward之間的關係。當機器看到眼前的state \(s_1\)時，會根據自身的演算法決定做出動作\(a_1\)，此時環境會根據機器做出的\(a_1\)給予reward \(r_1\)，而隨著這個動作，機器所看到的state會從\(s_1\)轉移到\(s_2\)，接著機器會根據\(s_2\)做出動作\(a_2\)，並獲得\(r_2\)，以此類推。而我們的目標就是希望機器能學會一個厲害的policy，使得expected reward最大。&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned} expected\ reward &amp; =\sum R(\tau)p_\theta(\tau)\\ &amp; =\mathbb{E}_{\tau\sim p_\theta(\tau)}[R(\tau)] \end{aligned} %]]&gt;&lt;/script&gt;
+\[\begin{aligned} expected\ reward &amp;amp; =\sum R(\tau)p_\theta(\tau)\\ &amp;amp; =\mathbb{E}_{\tau\sim p_\theta(\tau)}[R(\tau)] \end{aligned}\]
 
-&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;是trajectory，指的是&lt;script type=&quot;math/tex&quot;&gt;\left[ s_1, a_1, s_2, a_2, ... \right]&lt;/script&gt;的序列，而&lt;script type=&quot;math/tex&quot;&gt;R(\tau)&lt;/script&gt;是序列&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;中所獲得的所有&lt;script type=&quot;math/tex&quot;&gt;r_i&lt;/script&gt;的總和、&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;是policy的參數、&lt;script type=&quot;math/tex&quot;&gt;p_\theta(\tau)&lt;/script&gt;是序列&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;出現的機率，因為policy會影響到action &lt;script type=&quot;math/tex&quot;&gt;a_i&lt;/script&gt;的產生，所以&lt;script type=&quot;math/tex&quot;&gt;\tau&lt;/script&gt;的機率跟&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;有關。&lt;/p&gt;
+&lt;p&gt;其中\(\tau\)是trajectory，指的是\(\left[ s_1, a_1, s_2, a_2, ... \right]\)的序列，而\(R(\tau)\)是序列\(\tau\)中所獲得的所有\(r_i\)的總和、\(\theta\)是policy的參數、\(p_\theta(\tau)\)是序列\(\tau\)出現的機率，因為policy會影響到action \(a_i\)的產生，所以\(\tau\)的機率跟\(\theta\)有關。&lt;/p&gt;
 
 &lt;p&gt;若我們以expected reward為objective function，對它做微分，我們可以得到&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned}\bigtriangledown R_\theta &amp;= \sum R(\tau) \bigtriangledown p_\theta(\tau) \end{aligned} %]]&gt;&lt;/script&gt;
+\[\begin{aligned}\bigtriangledown R_\theta &amp;amp;= \sum R(\tau) \bigtriangledown p_\theta(\tau) \end{aligned}\]
 
-&lt;p&gt;因為&lt;script type=&quot;math/tex&quot;&gt;R(\tau)&lt;/script&gt;是由環境給予的，亦可以是人工定義的，跟policy的參數沒有什麼關係，所以當我們做微分的時候不會有什麼影響，接著再稍微整理一下&lt;/p&gt;
+&lt;p&gt;因為\(R(\tau)\)是由環境給予的，亦可以是人工定義的，跟policy的參數沒有什麼關係，所以當我們做微分的時候不會有什麼影響，接著再稍微整理一下&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned} \bigtriangledown R_\theta &amp;= \sum R(\tau)\bigtriangledown p_\theta(\tau) \\ &amp;= \sum R(\tau) p_\theta(\tau)\frac{\bigtriangledown p_\theta(\tau)}{p_\theta(\tau)} \\ &amp;= \sum R(\tau)p_\theta(\tau)\bigtriangledown\log p_\theta(\tau) \\ &amp;= \mathbb{E}_{\tau\sim p_\theta(\tau)} [R(\tau)\bigtriangledown\log p_\theta(\tau)] \\ &amp;\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}R(\tau^n)\bigtriangledown\log p_\theta(\tau^n) \\ &amp;\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}R(\tau^n)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n) \end{aligned} %]]&gt;&lt;/script&gt;
+\[\begin{aligned} \bigtriangledown R_\theta &amp;amp;= \sum R(\tau)\bigtriangledown p_\theta(\tau) \\ &amp;amp;= \sum R(\tau) p_\theta(\tau)\frac{\bigtriangledown p_\theta(\tau)}{p_\theta(\tau)} \\ &amp;amp;= \sum R(\tau)p_\theta(\tau)\bigtriangledown\log p_\theta(\tau) \\ &amp;amp;= \mathbb{E}_{\tau\sim p_\theta(\tau)} [R(\tau)\bigtriangledown\log p_\theta(\tau)] \\ &amp;amp;\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}R(\tau^n)\bigtriangledown\log p_\theta(\tau^n) \\ &amp;amp;\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}R(\tau^n)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n) \end{aligned}\]
 
-&lt;p&gt;在式子最後所得出來的式子，其實跟常見的、label是one-hot vector的cross entropy很類似，只不過多出了&lt;script type=&quot;math/tex&quot;&gt;R(\tau^n)&lt;/script&gt;，在概念上可以想像成，每一步都在讓model自己產生的action的log probability越大越好，但是用&lt;script type=&quot;math/tex&quot;&gt;R(\tau^n)&lt;/script&gt;來控制log probability要多大。&lt;/p&gt;
+&lt;p&gt;在式子最後所得出來的式子，其實跟常見的、label是one-hot vector的cross entropy很類似，只不過多出了\(R(\tau^n)\)，在概念上可以想像成，每一步都在讓model自己產生的action的log probability越大越好，但是用\(R(\tau^n)\)來控制log probability要多大。&lt;/p&gt;
 
 &lt;h3 id=&quot;advantage&quot;&gt;Advantage&lt;/h3&gt;
 
-&lt;p&gt;在前面的段落裡，我們可以看到，當環境給予的reward都是正值的時候，objective function裡&lt;script type=&quot;math/tex&quot;&gt;R(\tau^n)&lt;/script&gt;這項的值會是正的，使得在&lt;script type=&quot;math/tex&quot;&gt;s_t^n&lt;/script&gt;時，機器所採取的任何一個&lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;的log probability都是會漸漸變大的，雖說隨著時間的拉長，能獲得較大reward的&lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;的log probability應該會是最大的，然而訓練起來要花的時間就會比較多，因此通常在訓練的時候，會稍微調整一下objective function，變成底下&lt;/p&gt;
+&lt;p&gt;在前面的段落裡，我們可以看到，當環境給予的reward都是正值的時候，objective function裡\(R(\tau^n)\)這項的值會是正的，使得在\(s_t^n\)時，機器所採取的任何一個\(a_t^n\)的log probability都是會漸漸變大的，雖說隨著時間的拉長，能獲得較大reward的\(a_t^n\)的log probability應該會是最大的，然而訓練起來要花的時間就會比較多，因此通常在訓練的時候，會稍微調整一下objective function，變成底下&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}[R(\tau^n)-b]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ b=\mathbb{E}[R(\tau)]&lt;/script&gt;
+\[\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}[R(\tau^n)-b]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ b=\mathbb{E}[R(\tau)]\]
 
-&lt;p&gt;這邊的&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;是trajectory的平均reward，使得&lt;script type=&quot;math/tex&quot;&gt;[R(\tau^n)-b]&lt;/script&gt;這項的意思變成，這個action &lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;相對於平均而言有多好。&lt;/p&gt;
+&lt;p&gt;這邊的\(b\)是trajectory的平均reward，使得\([R(\tau^n)-b]\)這項的意思變成，這個action \(a_t^n\)相對於平均而言有多好。&lt;/p&gt;
 
-&lt;p&gt;而再更精細的去看objective function會發現&lt;script type=&quot;math/tex&quot;&gt;R(\tau^n)&lt;/script&gt;代表的是整個trajectory的reward，但卻用來衡量每個時間點&lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;的好壞，這樣有一點不太公平，可能在某個&lt;script type=&quot;math/tex&quot;&gt;s_t^n&lt;/script&gt;採取&lt;script type=&quot;math/tex&quot;&gt;a_t^n&lt;/script&gt;對拿到reward是很有幫助的，但因為其他action表現得不好，使得整個trajectory拿到的reward低於平均，這時這個好的action的log probability就會被降低，為了讓前面這項更能反映每個action的好壞，會再修改成&lt;/p&gt;
+&lt;p&gt;而再更精細的去看objective function會發現\(R(\tau^n)\)代表的是整個trajectory的reward，但卻用來衡量每個時間點\(a_t^n\)的好壞，這樣有一點不太公平，可能在某個\(s_t^n\)採取\(a_t^n\)對拿到reward是很有幫助的，但因為其他action表現得不好，使得整個trajectory拿到的reward低於平均，這時這個好的action的log probability就會被降低，為了讓前面這項更能反映每個action的好壞，會再修改成&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}\left[ \sum\limits_{t^\prime=t}\limits^{T_n}\gamma^{t^\prime-t}r_{t^\prime}^n-b \right]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ \gamma&lt;1 %]]&gt;&lt;/script&gt;
+\[\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}\left[ \sum\limits_{t^\prime=t}\limits^{T_n}\gamma^{t^\prime-t}r_{t^\prime}^n-b \right]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ \gamma&amp;lt;1\]
 
-&lt;p&gt;也就是用該action未來的reward再稍微打個折以後加總起來，當作是這個action有多好，而前面中括號裡的這項通常會被拉出來變成&lt;script type=&quot;math/tex&quot;&gt;A^\theta(s_t,a_t)&lt;/script&gt;稱為advantage function用以衡量在&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;採取&lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;相較其他action有多好。&lt;/p&gt;
+&lt;p&gt;也就是用該action未來的reward再稍微打個折以後加總起來，當作是這個action有多好，而前面中括號裡的這項通常會被拉出來變成\(A^\theta(s_t,a_t)\)稱為advantage function用以衡量在\(s_t\)採取\(a_t\)相較其他action有多好。&lt;/p&gt;
 
 &lt;h2 id=&quot;proximal-policy-optimization-ppo&quot;&gt;Proximal Policy Optimization (PPO)&lt;/h2&gt;
 
@@ -1157,59 +1153,55 @@ ImportError: attempted relative import with no known parent package
 
 &lt;p&gt;PPO使用的便是將importance sampling融入進objective function裡面，這邊先提一下什麼是importance sampling。&lt;/p&gt;
 
-&lt;p&gt;在一般我們計算從某個機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;抽樣出&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;的&lt;script type=&quot;math/tex&quot;&gt;f(x)&lt;/script&gt;的期望值時，會寫成底下的式子&lt;/p&gt;
+&lt;p&gt;在一般我們計算從某個機率分佈\(p\)抽樣出\(x\)的\(f(x)\)的期望值時，會寫成底下的式子&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbb{E}_{x\sim p}[f(x)] \approx \frac{1}{N}\sum\limits_{i=1}\limits^{N}f(x_i)&lt;/script&gt;
+\[\mathbb{E}_{x\sim p}[f(x)] \approx \frac{1}{N}\sum\limits_{i=1}\limits^{N}f(x_i)\]
 
-&lt;p&gt;倘若今天因為某種特殊的原因，使得我們無法直接從機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;直接抽樣的時候，我們可以使用另外一個機率分佈&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;抽樣出&lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;再經過&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;之間的轉換來達到一樣的結果&lt;/p&gt;
+&lt;p&gt;倘若今天因為某種特殊的原因，使得我們無法直接從機率分佈\(p\)直接抽樣的時候，我們可以使用另外一個機率分佈\(q\)抽樣出\(x\)再經過\(p\)、\(q\)之間的轉換來達到一樣的結果&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned} \mathbb{E}_{x\sim p}[f(x)] &amp;=\int f(x)p(x)dx \\ &amp;= \int f(x)\frac{p(x)}{q(x)}q(x)dx \\ &amp;= \mathbb{E}_{x\sim q}\left[ f(x)\frac{p(x)}{q(x)} \right] \end{aligned} %]]&gt;&lt;/script&gt;
+\[\begin{aligned} \mathbb{E}_{x\sim p}[f(x)] &amp;amp;=\int f(x)p(x)dx \\ &amp;amp;= \int f(x)\frac{p(x)}{q(x)}q(x)dx \\ &amp;amp;= \mathbb{E}_{x\sim q}\left[ f(x)\frac{p(x)}{q(x)} \right] \end{aligned}\]
 
 &lt;p&gt;而importance sampling代表的就是底下的式子&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbb{E}_{x\sim p}[f(x)]=\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]&lt;/script&gt;
+\[\mathbb{E}_{x\sim p}[f(x)]=\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]\]
 
-&lt;p&gt;雖然看起來當機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;無法被取樣的時候，我們可以使用任意的機率分佈&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;來替代，但這其中還是會有一些誤差，我們知道一個機率分佈的變異數的算法如下&lt;/p&gt;
+&lt;p&gt;雖然看起來當機率分佈\(p\)無法被取樣的時候，我們可以使用任意的機率分佈\(q\)來替代，但這其中還是會有一些誤差，我們知道一個機率分佈的變異數的算法如下&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Var[X]=\mathbb{E}[X^2]-(\mathbb{E}[X])^2&lt;/script&gt;
+\[Var[X]=\mathbb{E}[X^2]-(\mathbb{E}[X])^2\]
 
-&lt;p&gt;機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;的變異數為&lt;/p&gt;
+&lt;p&gt;機率分佈\(p\)的變異數為&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Var_{x\sim p}[f(x)]=\mathbb{E}_{x\sim p}[f(x)^2]-(\mathbb{E}_{x\sim p}[f(x)])^2&lt;/script&gt;
+\[Var_{x\sim p}[f(x)]=\mathbb{E}_{x\sim p}[f(x)^2]-(\mathbb{E}_{x\sim p}[f(x)])^2\]
 
 &lt;p&gt;如果使用importance sampling來得到的變異數為&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned} Var_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right] &amp;=\mathbb{E}_{x\sim q}\left[f(x)^2\frac{p(x)^2}{q(x)^2}\right]-\left(\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]\right)^2 \\ &amp;= \mathbb{E}_{x\sim p}\left[f(x)^2\frac{p(x)}{q(x)}\right]-\left(\mathbb{E}_{x\sim p}[f(x)]\right)^2\end{aligned} %]]&gt;&lt;/script&gt;
+\[\begin{aligned} Var_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right] &amp;amp;=\mathbb{E}_{x\sim q}\left[f(x)^2\frac{p(x)^2}{q(x)^2}\right]-\left(\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]\right)^2 \\ &amp;amp;= \mathbb{E}_{x\sim p}\left[f(x)^2\frac{p(x)}{q(x)}\right]-\left(\mathbb{E}_{x\sim p}[f(x)]\right)^2\end{aligned}\]
 
-&lt;p&gt;從上式我們可以看到，當機率分佈&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;兩者的差異過大的時候，會造成兩者的變異數也相差很多，所以在使用importance sampling的時候，使用機率分佈較近的&lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;是很重要的。&lt;/p&gt;
+&lt;p&gt;從上式我們可以看到，當機率分佈\(p\)和\(q\)兩者的差異過大的時候，會造成兩者的變異數也相差很多，所以在使用importance sampling的時候，使用機率分佈較近的\(q\)是很重要的。&lt;/p&gt;
 
 &lt;h3 id=&quot;ppo&quot;&gt;PPO&lt;/h3&gt;
 
-&lt;p&gt;在這裡，我們想要將前面的REINFORCE從on-policy換成off-policy，讓原先跟環境做互動的&lt;script type=&quot;math/tex&quot;&gt;\pi_\theta&lt;/script&gt;換成&lt;script type=&quot;math/tex&quot;&gt;\pi_{\theta^\prime}&lt;/script&gt;，為此我們套用上面的importance sampling&lt;/p&gt;
+&lt;p&gt;在這裡，我們想要將前面的REINFORCE從on-policy換成off-policy，讓原先跟環境做互動的\(\pi_\theta\)換成\(\pi_{\theta^\prime}\)，為此我們套用上面的importance sampling&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{aligned} \bigtriangledown R_\theta &amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_\theta} \left[ A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(s_t, a_t)}{p_{\theta^\prime}(s_t, a_t)}A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}A^{\theta^\prime}(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \end{aligned} %]]&gt;&lt;/script&gt;
+\[\begin{aligned} \bigtriangledown R_\theta &amp;amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_\theta} \left[ A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &amp;amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(s_t, a_t)}{p_{\theta^\prime}(s_t, a_t)}A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &amp;amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}A^{\theta^\prime}(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \end{aligned}\]
 
-&lt;p&gt;從第二行到第三行中間做了一件特別的事情，這裡假設&lt;script type=&quot;math/tex&quot;&gt;\pi_\theta&lt;/script&gt;和&lt;script type=&quot;math/tex&quot;&gt;\pi_{\theta^\prime}&lt;/script&gt;所能得到的reward是差不多的，所以將&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;跟環境做互動得到的&lt;script type=&quot;math/tex&quot;&gt;A^\theta(s_t,a_t)&lt;/script&gt;替換成了&lt;script type=&quot;math/tex&quot;&gt;A^{\theta^\prime}(s_t,a_t)&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;從第二行到第三行中間做了一件特別的事情，這裡假設\(\pi_\theta\)和\(\pi_{\theta^\prime}\)所能得到的reward是差不多的，所以將\(\theta\)跟環境做互動得到的\(A^\theta(s_t,a_t)\)替換成了\(A^{\theta^\prime}(s_t,a_t)\)。&lt;/p&gt;
 
-&lt;p&gt;而又假設一個state &lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;被觀測到的機率其實跟model沒有什麼關係的話，&lt;script type=&quot;math/tex&quot;&gt;\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}&lt;/script&gt;就可以忽略不看，最終我們就可以得到底下的式子做為我們的objective function&lt;/p&gt;
+&lt;p&gt;而又假設一個state \(s_t\)被觀測到的機率其實跟model沒有什麼關係的話，\(\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}\)就可以忽略不看，最終我們就可以得到底下的式子做為我們的objective function&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J^{\theta^\prime}(\theta)=\mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}A^{\theta^\prime}(s_t,a_t)\right]&lt;/script&gt;
+\[J^{\theta^\prime}(\theta)=\mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}A^{\theta^\prime}(s_t,a_t)\right]\]
 
-&lt;p&gt;因為&lt;script type=&quot;math/tex&quot;&gt;\bigtriangledown f(x)=f(x)\bigtriangledown\log f(x)&lt;/script&gt;，我們可以得到&lt;script type=&quot;math/tex&quot;&gt;\bigtriangledown p_\theta(a_t\vert s_t)=p_\theta(a_t\vert s_t)\bigtriangledown\log p_\theta(a_t\vert s_t)&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;因為\(\bigtriangledown f(x)=f(x)\bigtriangledown\log f(x)\)，我們可以得到\(\bigtriangledown p_\theta(a_t\vert s_t)=p_\theta(a_t\vert s_t)\bigtriangledown\log p_\theta(a_t\vert s_t)\)&lt;/p&gt;
 
-&lt;p&gt;但由於importance sampling在兩個機率分佈差異很大的時候會讓結果壞掉，所以PPO做的事情便是在objective function裡面多加&lt;script type=&quot;math/tex&quot;&gt;\beta KL(\theta, \theta^\prime)&lt;/script&gt;這項，其中&lt;script type=&quot;math/tex&quot;&gt;\beta&lt;/script&gt;是一個hyperparameter，讓兩個機率分佈差異不要太大&lt;/p&gt;
+&lt;p&gt;但由於importance sampling在兩個機率分佈差異很大的時候會讓結果壞掉，所以PPO做的事情便是在objective function裡面多加\(\beta KL(\theta, \theta^\prime)\)這項，其中\(\beta\)是一個hyperparameter，讓兩個機率分佈差異不要太大&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_{PPO}^{\theta^\prime}=J^{\theta^\prime}(\theta)-\beta KL(\theta, \theta^\prime)&lt;/script&gt;
+\[J_{PPO}^{\theta^\prime}=J^{\theta^\prime}(\theta)-\beta KL(\theta, \theta^\prime)\]
 
-&lt;p&gt;值得一提的是，這邊的&lt;script type=&quot;math/tex&quot;&gt;KL()&lt;/script&gt;不是只兩個model參數之間的KL divergence，而是兩者的output，也就是兩者的behavior所算出來的KL divergence。&lt;/p&gt;
+&lt;p&gt;值得一提的是，這邊的\(KL()\)不是只兩個model參數之間的KL divergence，而是兩者的output，也就是兩者的behavior所算出來的KL divergence。&lt;/p&gt;
 
 &lt;p&gt;而PPO的前身，TRPO的式子跟PPO幾乎一樣，只是它把KL這項當作是一個限制，在實作起來會比起PPO來要來得複雜得多。&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\prime)&lt;\delta %]]&gt;&lt;/script&gt;
+\[J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\prime)&amp;lt;\delta\]
 
 &lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
 
@@ -1761,69 +1753,7 @@ J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\
 
 &lt;p&gt;在上面的程式碼中，我們寫了一個for迴圈去改&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[5]]&lt;/code&gt;到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[7]]&lt;/code&gt;的值，我們將&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;label&lt;/code&gt;拿出來並以&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\n&lt;/code&gt;切成數字部分和百分比的部分，接著把數字部分塞逗號進去以後再與百分比部分接起來，最後再將圖畫出來，就達成我們想要的效果了。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;venn-comma.png&quot; alt=&quot;Venn Comma&quot; /&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</summary></entry><entry><title type="html">Playing Atari with Deep Reinforcement Learning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/" rel="alternate" type="text/html" title="Playing Atari with Deep Reinforcement Learning" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/">&lt;p&gt;在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
-
-&lt;p&gt;在&lt;a href=&quot;https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf&quot;&gt;這篇paper&lt;/a&gt;當中，作者利用Deep Reinforcement Learning的方法，讓機器學會打Atari小遊戲，並成功打破人類的紀錄，立下了RL的里程碑。&lt;/p&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-
-&lt;h3 id=&quot;背景介紹&quot;&gt;背景介紹&lt;/h3&gt;
-
-&lt;p&gt;在進入到方法之前，先介紹一下基本的設定以及Value function和Q function，在底下model訓練的時候會被用到。&lt;/p&gt;
-
-&lt;h4 id=&quot;基本設定&quot;&gt;基本設定&lt;/h4&gt;
-
-&lt;p&gt;在遊戲中我們可以說遊戲本身是一個環境&lt;script type=&quot;math/tex&quot;&gt;\mathcal{E}&lt;/script&gt;，而玩家這個角色可以稱之為actor，玩家們所能觀測到的遊戲畫面稱之為state，而角色所能夠採取的動作，像是上下左右移動、射擊等等，稱之為action。&lt;/p&gt;
-
-&lt;p&gt;當我們現在觀測到遊戲畫面&lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;，我們可以採取一個動作&lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;，將&lt;script type=&quot;math/tex&quot;&gt;(s_t,a_t)&lt;/script&gt;傳送給環境&lt;script type=&quot;math/tex&quot;&gt;\mathcal{E}&lt;/script&gt;後會得到新的遊戲畫面&lt;script type=&quot;math/tex&quot;&gt;s_{t+1}&lt;/script&gt;以及該動作的reward &lt;script type=&quot;math/tex&quot;&gt;r_t&lt;/script&gt;，這邊的reward可以想成是遊戲分數上升了多少。&lt;/p&gt;
-
-&lt;h4 id=&quot;value-function&quot;&gt;Value Function&lt;/h4&gt;
-
-&lt;p&gt;Value function做的事情是去判斷以現在的policy &lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，處在現在這個state &lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;最終的cumulated reward期望值會是多少，policy可以想做是這個玩家的思維或是操作，如果是某個玩家在現在的處境下，所能得到最終分數會是多少的感覺，寫作&lt;script type=&quot;math/tex&quot;&gt;V^\pi(s)&lt;/script&gt;。&lt;/p&gt;
-
-&lt;p&gt;而value function的求法主要有兩種，分別是Monte-Carlo (MC)和Temporal-Difference (TD)。MC的方式就是讓玩家繼續玩到最後，並記錄他最終的cumulated reward，回頭再統計一下每個state的cumulated reward，假如說玩家&lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，在第一次遊玩的過程中，經過了state &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;，最終得到的遊戲分數是&lt;script type=&quot;math/tex&quot;&gt;G_a&lt;/script&gt;，第二次遊玩也同樣經過了state &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;，但得到的遊戲分數是&lt;script type=&quot;math/tex&quot;&gt;G_b&lt;/script&gt;，那麼state &lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;的value function便可寫作&lt;script type=&quot;math/tex&quot;&gt;V^\pi(s)=(G_a+G_b)/2&lt;/script&gt;。而TD的作法為&lt;script type=&quot;math/tex&quot;&gt;V^\pi(s_{t+1})=V^\pi(s_t)+r_t&lt;/script&gt;，概念是我現在這個state &lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;的value function所算出來的值，跟我下一個state &lt;script type=&quot;math/tex&quot;&gt;s_{t+1}&lt;/script&gt;的值，應該只差了一個reward &lt;script type=&quot;math/tex&quot;&gt;r_t&lt;/script&gt;而已。&lt;/p&gt;
-
-&lt;p&gt;MC和TD各有各的缺點，像是MC的缺點是它的variance比較大，每次遊戲在遊玩的時候會有一些隨機性存在，使得state在統計它的cumulated reward時variance不小，而TD雖然一次只看一步的reward，但它需要擔心的是value function估不準的問題。&lt;/p&gt;
-
-&lt;h4 id=&quot;q-function&quot;&gt;Q-Function&lt;/h4&gt;
-
-&lt;p&gt;Q-function和value function做的事情很像，但這邊Q-function還多考慮了採取的動作，也就是以現在的policy &lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，處在state &lt;script type=&quot;math/tex&quot;&gt;s_t&lt;/script&gt;，採取action &lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;，所能得到的cumulated reward期望值是多少，寫作&lt;script type=&quot;math/tex&quot;&gt;Q^\pi(s, a)&lt;/script&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;deep-q-network&quot;&gt;Deep Q-Network&lt;/h3&gt;
-
-&lt;p&gt;這邊DQN想要做的事情，便是去尋找Q function，在看到一個遊戲畫面&lt;script type=&quot;math/tex&quot;&gt;s&lt;/script&gt;的時候，去選擇&lt;script type=&quot;math/tex&quot;&gt;Q^\pi(s, a)&lt;/script&gt;最大的action &lt;script type=&quot;math/tex&quot;&gt;a&lt;/script&gt;，來當作是policy &lt;script type=&quot;math/tex&quot;&gt;\pi&lt;/script&gt;，而&lt;script type=&quot;math/tex&quot;&gt;Q^\pi(s,a)&lt;/script&gt;的算法是使用TD的算法。&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q^*(s,a)=\mathbb{E}_{s'\sim\mathcal{E}}\left[r+\gamma\max\limits_{a'}Q^*(s',a')\vert s,a\right]&lt;/script&gt;
-
-&lt;p&gt;這邊的&lt;script type=&quot;math/tex&quot;&gt;s'&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;a'&lt;/script&gt;代表的是下一個時間點的state和action，底下是整個DQN的algorithm。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;dqn-algorithm.png&quot; alt=&quot;DQN Algorithm&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;epsilon-greedy&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;-greedy&lt;/h4&gt;
-
-&lt;p&gt;在演算法當中可以看到，在第二個迴圈一開始，會以&lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt;的機率去隨機選擇一個動作&lt;script type=&quot;math/tex&quot;&gt;a_t&lt;/script&gt;，目的是為了要去探索環境中的各種可能性，假如我們每次都選&lt;script type=&quot;math/tex&quot;&gt;a_t=\max\limits_{a} Q(s, a)&lt;/script&gt;的話，很容易會讓model做出同樣的選擇，有可能有一些可以拿高分的可能性就被忽略了。&lt;/p&gt;
-
-&lt;h4 id=&quot;experience-replay&quot;&gt;Experience Replay&lt;/h4&gt;
-
-&lt;p&gt;在演算法的一開始有一個replay memory &lt;script type=&quot;math/tex&quot;&gt;\mathcal{D}&lt;/script&gt;，其大小為&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;，這個memory的目的是去紀錄與環境互動的結果，可以看到在第二個迴圈裡，會把&lt;script type=&quot;math/tex&quot;&gt;(\phi_t, a_t, r_t, \phi_{t+1})&lt;/script&gt;，放進memory &lt;script type=&quot;math/tex&quot;&gt;\mathcal{D}&lt;/script&gt;中，而在訓練的時候會從memory裡面sample一個batch來做訓練。&lt;/p&gt;
-
-&lt;h4 id=&quot;target-network&quot;&gt;Target Network&lt;/h4&gt;
-
-&lt;p&gt;在式(1)和上面的演算法中，我們可以看到，這個DQN的目標是能夠精確的預估出&lt;script type=&quot;math/tex&quot;&gt;r+\gamma\max\limits_{a'} Q(s', a';\theta)&lt;/script&gt;，但這個目標裡面又包含了自己這個network的output，這樣在訓練起來是比較不穩定的，為此，在實作上通常會用另一個network &lt;script type=&quot;math/tex&quot;&gt;Q'&lt;/script&gt;來放進objective function，亦即model要去預估的是&lt;script type=&quot;math/tex&quot;&gt;r+\gamma\max\limits_{a'}Q'(s',a';\theta)&lt;/script&gt;，這個network &lt;script type=&quot;math/tex&quot;&gt;Q'&lt;/script&gt;其實就是前幾步的model &lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;，更具體的說，當&lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;以&lt;script type=&quot;math/tex&quot;&gt;Q'&lt;/script&gt;為目標訓練一陣子以後，會複製一份&lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;的參數當作&lt;script type=&quot;math/tex&quot;&gt;Q'&lt;/script&gt;的參數，並將之固定以後，繼續訓練&lt;script type=&quot;math/tex&quot;&gt;Q&lt;/script&gt;的參數。&lt;/p&gt;
-
-&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;dqn-experiments.png&quot; alt=&quot;DQN Experiments&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在表中可以看到，DQN在一些遊戲上超過了人類可以達到的分數。&lt;/p&gt;
-
-&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
-
-&lt;p&gt;在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><summary type="html">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</summary></entry><entry><title type="html">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/" rel="alternate" type="text/html" title="Generative Adversarial User Model for Reinforcement Learning Based Recommendation System" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">&lt;p&gt;Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;venn-comma.png&quot; alt=&quot;Venn Comma&quot; /&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</summary></entry><entry><title type="html">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/" rel="alternate" type="text/html" title="Generative Adversarial User Model for Reinforcement Learning Based Recommendation System" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">&lt;p&gt;Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1861,39 +1791,39 @@ J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\
 
 &lt;p&gt;&lt;img class=&quot;image image--xl&quot; src=&quot;gan-user-model.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;身為一個使用者，他會看到推薦系統所推薦的物品清單&lt;script type=&quot;math/tex&quot;&gt;A^t&lt;/script&gt;，generator會根據過去的選擇(使用者的喜好)，選擇出他有興趣的物品&lt;script type=&quot;math/tex&quot;&gt;a^t\sim \phi(s^t, A^t)&lt;/script&gt;，而discriminator想要做的便是對generator給出的物品打個reward分數&lt;script type=&quot;math/tex&quot;&gt;r(s^t,a^t)&lt;/script&gt;。&lt;/p&gt;
+&lt;p&gt;身為一個使用者，他會看到推薦系統所推薦的物品清單\(A^t\)，generator會根據過去的選擇(使用者的喜好)，選擇出他有興趣的物品\(a^t\sim \phi(s^t, A^t)\)，而discriminator想要做的便是對generator給出的物品打個reward分數\(r(s^t,a^t)\)。&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi(s^t, A^t)=\arg\max\limits_{\phi}\mathbb{E}_\phi[r(s^t,a^t)]-R(\phi)/\eta&lt;/script&gt;
+\[\phi(s^t, A^t)=\arg\max\limits_{\phi}\mathbb{E}_\phi[r(s^t,a^t)]-R(\phi)/\eta\]
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;r_\theta(s^t,a^t)=\mathbf{v}\sigma(\mathbf{V}(s^t,f_{a^t})+b)&lt;/script&gt;
+\[r_\theta(s^t,a^t)=\mathbf{v}\sigma(\mathbf{V}(s^t,f_{a^t})+b)\]
 
-&lt;p&gt;式(1)中的&lt;script type=&quot;math/tex&quot;&gt;R(\phi)/\eta&lt;/script&gt;是一個regularisation term，generator希望能獲取最大的reward，而reward其實就是將使用者過去的選擇和商品的feature餵入一層NN而得到一個純量，兩者想要最佳化的式子如下&lt;/p&gt;
+&lt;p&gt;式(1)中的\(R(\phi)/\eta\)是一個regularisation term，generator希望能獲取最大的reward，而reward其實就是將使用者過去的選擇和商品的feature餵入一層NN而得到一個純量，兩者想要最佳化的式子如下&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\min\limits_{\theta}\max\limits_{\phi}\left( \mathbb{E}_\phi[\sum^T_{t=1}r_\theta(s^t_{true}, a^t)]-R(\phi)/\eta\right) - \sum^T_{t=1}r_\theta(s^t_{true},a^t_{true})&lt;/script&gt;
+\[\min\limits_{\theta}\max\limits_{\phi}\left( \mathbb{E}_\phi[\sum^T_{t=1}r_\theta(s^t_{true}, a^t)]-R(\phi)/\eta\right) - \sum^T_{t=1}r_\theta(s^t_{true},a^t_{true})\]
 
-&lt;p&gt;擁有下標&lt;script type=&quot;math/tex&quot;&gt;true&lt;/script&gt;的代表是使用者真實的選擇，而generator想要最佳化的是第一項，discriminator想要最佳化的是第二項，也就是說generator想要讓自己產生出的選擇跟使用者真正的選擇越貼近越好，而discriminator想要讓使用者真正的選擇所得到的reward越大越好。&lt;/p&gt;
+&lt;p&gt;擁有下標\(true\)的代表是使用者真實的選擇，而generator想要最佳化的是第一項，discriminator想要最佳化的是第二項，也就是說generator想要讓自己產生出的選擇跟使用者真正的選擇越貼近越好，而discriminator想要讓使用者真正的選擇所得到的reward越大越好。&lt;/p&gt;
 
 &lt;h4 id=&quot;user-state&quot;&gt;User State&lt;/h4&gt;
 
 &lt;p&gt;&lt;img src=&quot;user-model-state.png&quot; alt=&quot;State of user model&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;在generator和discriminator都有用同使用到的&lt;script type=&quot;math/tex&quot;&gt;s^t&lt;/script&gt;代表的是使用者過去的選擇，也就是使用者的喜好，其被實作的方式其實就是把過去所選擇的那些物品的feature(文字敘述、圖片等等做成embedding)，通過LSTM或者是直接乘上一個大矩陣並concatenate在一起，就完成了。&lt;/p&gt;
+&lt;p&gt;在generator和discriminator都有用同使用到的\(s^t\)代表的是使用者過去的選擇，也就是使用者的喜好，其被實作的方式其實就是把過去所選擇的那些物品的feature(文字敘述、圖片等等做成embedding)，通過LSTM或者是直接乘上一個大矩陣並concatenate在一起，就完成了。&lt;/p&gt;
 
 &lt;h3 id=&quot;cascading-q-networks&quot;&gt;Cascading Q-Networks&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;set-recommendation.png&quot; alt=&quot;Set Recommendation&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;在前面使用類似GAN的方法得到了user model以後，接下來就是做一個推薦系統來從廣大的物品池裡面找出使用者會喜歡的商品，倘若想要使用&lt;script type=&quot;math/tex&quot;&gt;Q-function&lt;/script&gt;來去對每一個可能的組合去做評估的話(式(4))，可以想像得到我們應該是算不完的，因為組合數實在是太多了，假如&lt;script type=&quot;math/tex&quot;&gt;K=3000&lt;/script&gt;、&lt;script type=&quot;math/tex&quot;&gt;k=10&lt;/script&gt;，我們就得要計算&lt;script type=&quot;math/tex&quot;&gt;3000\choose10&lt;/script&gt;這麼多個可能，是故作者推出了Cascading Q-Networks來解決這個問題。&lt;/p&gt;
+&lt;p&gt;在前面使用類似GAN的方法得到了user model以後，接下來就是做一個推薦系統來從廣大的物品池裡面找出使用者會喜歡的商品，倘若想要使用\(Q-function\)來去對每一個可能的組合去做評估的話(式(4))，可以想像得到我們應該是算不完的，因為組合數實在是太多了，假如\(K=3000\)、\(k=10\)，我們就得要計算\(3000\choose10\)這麼多個可能，是故作者推出了Cascading Q-Networks來解決這個問題。&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a^*_1, a^*_2, ..., a^*_k=\arg\max Q(s^t, a_1, a_2, ..., a_k)&lt;/script&gt;
+\[a^*_1, a^*_2, ..., a^*_k=\arg\max Q(s^t, a_1, a_2, ..., a_k)\]
 
 &lt;p&gt;&lt;img src=&quot;cdqn.png&quot; alt=&quot;Cascading Q-Networks&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;其想法很簡單，如果組合數太多的話，那我就一個一個求出該被放進去的物品，直至&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;個物品都被選擇好。&lt;/p&gt;
+&lt;p&gt;其想法很簡單，如果組合數太多的話，那我就一個一個求出該被放進去的物品，直至\(k\)個物品都被選擇好。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;cdqn-formula.png&quot; alt=&quot;CDQN formula&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;而這個Cascading Q-Networks的訓練方式可以想成是訓練&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;個DQN，而每個DQN的reward都是一樣的，是user model給予整個組合的分數。&lt;/p&gt;
+&lt;p&gt;而這個Cascading Q-Networks的訓練方式可以想成是訓練\(k\)個DQN，而每個DQN的reward都是一樣的，是user model給予整個組合的分數。&lt;/p&gt;
 
 &lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
 
@@ -1907,151 +1837,66 @@ J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;在這篇paper裡面作者使用GAN的技術來模擬真實的使用者，讓用RL來訓練推薦系統變得沒有那麼遙不可及。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Generative-Adversarial-Network" /><category term="Recommendation-System" /><category term="Reinforcement-Learning" /><summary type="html">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</summary></entry><entry><title type="html">有錢人想的和你不一樣</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/" rel="alternate" type="text/html" title="有錢人想的和你不一樣" /><published>2020-04-04T00:00:00+00:00</published><updated>2020-04-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/04/secrets-of-the-millionaire-mind/">&lt;p&gt;節錄部分&lt;a href=&quot;https://tw.buy.yahoo.com/gdsale/gdsale.asp?gdid=8104317&quot;&gt;《有錢人想的和你不一樣》&lt;/a&gt;這本書的內容以及自己的一些心得。&lt;/p&gt;
+&lt;p&gt;在這篇paper裡面作者使用GAN的技術來模擬真實的使用者，讓用RL來訓練推薦系統變得沒有那麼遙不可及。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Generative-Adversarial-Network" /><category term="Recommendation-System" /><category term="Reinforcement-Learning" /><summary type="html">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</summary></entry><entry><title type="html">Playing Atari with Deep Reinforcement Learning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/" rel="alternate" type="text/html" title="Playing Atari with Deep Reinforcement Learning" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/">&lt;p&gt;在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
 &lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
 
-&lt;p&gt;一開始是自己想要學著投資，進而在網路上看到了&lt;a href=&quot;https://www.youtube.com/channel/UC45i13dEfEVac2IEJT_Nr5Q&quot;&gt;柴鼠兄弟&lt;/a&gt;和&lt;a href=&quot;https://rich01.com/blog-page_30/&quot;&gt;市場先生的投資書單&lt;/a&gt;的推薦而決定看這本書，覺得這本書講的概念挺好的，是故在此記錄一下，以提醒我自己。&lt;/p&gt;
+&lt;p&gt;在&lt;a href=&quot;https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf&quot;&gt;這篇paper&lt;/a&gt;當中，作者利用Deep Reinforcement Learning的方法，讓機器學會打Atari小遊戲，並成功打破人類的紀錄，立下了RL的里程碑。&lt;/p&gt;
 
-&lt;h2 id=&quot;第一篇金錢藍圖&quot;&gt;第一篇：金錢藍圖&lt;/h2&gt;
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;設定\rightarrow想法\rightarrow感覺\rightarrow行動=結果&lt;/script&gt;
+&lt;h3 id=&quot;背景介紹&quot;&gt;背景介紹&lt;/h3&gt;
 
-&lt;p&gt;第一篇主要是在講述金錢觀的重要性，每個人年幼或是生長環境的不同（設定），造就了想法不一樣，而想法造成感覺，最終變成行動，也就是現在所處在的結果。聽起來有點抽象但又有點道理，如果我們對現在這個處境不甚滿意，覺得金錢太少、生活不自在或是有各種各樣不舒適的地方，其成因主要是自己過去的行動所造成的，而行動又源自於感覺、想法，書中把想法定義為過去經驗的累積形塑而成。&lt;/p&gt;
+&lt;p&gt;在進入到方法之前，先介紹一下基本的設定以及Value function和Q function，在底下model訓練的時候會被用到。&lt;/p&gt;
 
-&lt;p&gt;也因此在第一篇的內容當中，作者主要在講述要如何去察覺、修改自己過去經驗所帶給你的意義，過去發生的所有事情都只是一個客觀事實，而真的會影響你的是你自己賦予那些客觀事實的&lt;strong&gt;意義&lt;/strong&gt;，這些意義會造就你對事情的看法，進而使你做出不一樣的行動，所以賦予過去經驗正面的意義是相當重要的。&lt;/p&gt;
+&lt;h4 id=&quot;基本設定&quot;&gt;基本設定&lt;/h4&gt;
 
-&lt;h2 id=&quot;第二篇財富檔案&quot;&gt;第二篇：財富檔案&lt;/h2&gt;
+&lt;p&gt;在遊戲中我們可以說遊戲本身是一個環境\(\mathcal{E}\)，而玩家這個角色可以稱之為actor，玩家們所能觀測到的遊戲畫面稱之為state，而角色所能夠採取的動作，像是上下左右移動、射擊等等，稱之為action。&lt;/p&gt;
 
-&lt;p&gt;第二篇在講述一些好的、正面的想法有哪些，希望讀者們在日常的生活中也能夠實踐這些想法，讓自己有負面想法時可以調整。&lt;/p&gt;
+&lt;p&gt;當我們現在觀測到遊戲畫面\(s_t\)，我們可以採取一個動作\(a_t\)，將\((s_t,a_t)\)傳送給環境\(\mathcal{E}\)後會得到新的遊戲畫面\(s_{t+1}\)以及該動作的reward \(r_t\)，這邊的reward可以想成是遊戲分數上升了多少。&lt;/p&gt;
 
-&lt;h3 id=&quot;檔案1我創造我的人生&quot;&gt;檔案1：我創造我的人生&lt;/h3&gt;
+&lt;h4 id=&quot;value-function&quot;&gt;Value Function&lt;/h4&gt;
 
-&lt;p&gt;這個檔案在講述你現在的境遇是自己所創造的，所以不要去責怪、抱怨，應該要試著去釐清是什麼樣的原因導致事情的發生，不要把自己當成是受害者，會把自己當成是受害者的其中一個原因可能是想要博取他人的注意，但一直想要博得人們的關注和注意是不能獲得快樂的，只是活在別人的恩惠底下。&lt;/p&gt;
+&lt;p&gt;Value function做的事情是去判斷以現在的policy \(\pi\)，處在現在這個state \(s_t\)最終的cumulated reward期望值會是多少，policy可以想做是這個玩家的思維或是操作，如果是某個玩家在現在的處境下，所能得到最終分數會是多少的感覺，寫作\(V^\pi(s)\)。&lt;/p&gt;
 
-&lt;h3 id=&quot;檔案2玩金錢遊戲就是為了贏&quot;&gt;檔案2：玩金錢遊戲就是為了贏&lt;/h3&gt;
+&lt;p&gt;而value function的求法主要有兩種，分別是Monte-Carlo (MC)和Temporal-Difference (TD)。MC的方式就是讓玩家繼續玩到最後，並記錄他最終的cumulated reward，回頭再統計一下每個state的cumulated reward，假如說玩家\(\pi\)，在第一次遊玩的過程中，經過了state \(s\)，最終得到的遊戲分數是\(G_a\)，第二次遊玩也同樣經過了state \(s\)，但得到的遊戲分數是\(G_b\)，那麼state \(s\)的value function便可寫作\(V^\pi(s)=(G_a+G_b)/2\)。而TD的作法為\(V^\pi(s_{t+1})=V^\pi(s_t)+r_t\)，概念是我現在這個state \(s_t\)的value function所算出來的值，跟我下一個state \(s_{t+1}\)的值，應該只差了一個reward \(r_t\)而已。&lt;/p&gt;
 
-&lt;p&gt;這個檔案主要是希望能設定一個遠大的目標，如果只是想要過得舒服，那最終的結果可能也就僅止於舒服，但若目標是想要賺大錢，那最終的結果可能就是超級舒服。&lt;/p&gt;
+&lt;p&gt;MC和TD各有各的缺點，像是MC的缺點是它的variance比較大，每次遊戲在遊玩的時候會有一些隨機性存在，使得state在統計它的cumulated reward時variance不小，而TD雖然一次只看一步的reward，但它需要擔心的是value function估不準的問題。&lt;/p&gt;
 
-&lt;p&gt;平常去餐廳吃飯的時候，我總是會以價格來當作參考指標，如果價格超出我的預算或是覺得不想花太多錢，我總是會選擇價格最低的餐點，從來沒有嘗試過被標示為”市價”的餐點，但或許可以以此作為目標，想吃吃看就吃，做到不以價格為考量的境地。&lt;/p&gt;
+&lt;h4 id=&quot;q-function&quot;&gt;Q-Function&lt;/h4&gt;
 
-&lt;h3 id=&quot;檔案3努力讓自己有錢&quot;&gt;檔案3：努力讓自己有錢&lt;/h3&gt;
+&lt;p&gt;Q-function和value function做的事情很像，但這邊Q-function還多考慮了採取的動作，也就是以現在的policy \(\pi\)，處在state \(s_t\)，採取action \(a_t\)，所能得到的cumulated reward期望值是多少，寫作\(Q^\pi(s, a)\)。&lt;/p&gt;
 
-&lt;p&gt;這邊是在問讀者願意花多少心力來讓自己有錢，讓我想起&lt;a href=&quot;https://www.youtube.com/watch?v=mETU97jbrDE&quot;&gt;很久之前看過的影片&lt;/a&gt;，如果只是半調子的決心，只是想要變得成功、變得有錢，這樣的覺悟是不夠的，你需要做好犧牲時間、睡眠的心理準備，才能讓自己達成目標。&lt;/p&gt;
+&lt;h3 id=&quot;deep-q-network&quot;&gt;Deep Q-Network&lt;/h3&gt;
 
-&lt;h3 id=&quot;檔案4想得很大&quot;&gt;檔案4：想得很大&lt;/h3&gt;
+&lt;p&gt;這邊DQN想要做的事情，便是去尋找Q function，在看到一個遊戲畫面\(s\)的時候，去選擇\(Q^\pi(s, a)\)最大的action \(a\)，來當作是policy \(\pi\)，而\(Q^\pi(s,a)\)的算法是使用TD的算法。&lt;/p&gt;
 
-&lt;p&gt;你的收入與市場所認為你產生的價值成正比，假如果你的產出可以影響到數十萬人、數百萬人，那麼你的收入應該相當的驚人，反之，如果只能影響到數十人、數百人，那就應該要試著去提高你所能影響到的人數。這邊的”影響”，不一定是你工作、專業上能夠影響的範圍，也可以是你去投資所造成的影響。&lt;/p&gt;
+\[Q^*(s,a)=\mathbb{E}_{s'\sim\mathcal{E}}\left[r+\gamma\max\limits_{a'}Q^*(s',a')\vert s,a\right]\]
 
-&lt;h3 id=&quot;檔案5專注於機會&quot;&gt;檔案5：專注於機會&lt;/h3&gt;
+&lt;p&gt;這邊的\(s'\)、\(a'\)代表的是下一個時間點的state和action，底下是整個DQN的algorithm。&lt;/p&gt;
 
-&lt;p&gt;很多在面對挑戰的時候，常常會覺得自己還沒有準備好，等自己準備好了再來挑戰，但你永遠不會知道你到底準備好了沒、什麼樣子叫做準備好了呢？&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;dqn-algorithm.png&quot; alt=&quot;DQN Algorithm&quot; /&gt;&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;「預備、射擊、瞄準！」&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h4 id=&quot;epsilon-greedy&quot;&gt;\(\epsilon\)-greedy&lt;/h4&gt;
 
-&lt;p&gt;書中的意思並不是說在毫無準備、研究的情況下就貿然去挑戰，而是給自己一個期限，在期限內盡可能的去準備，而期限一到就試著去挑戰吧！一邊挑戰的同時一邊修正自己的錯誤、方向。&lt;/p&gt;
+&lt;p&gt;在演算法當中可以看到，在第二個迴圈一開始，會以\(\epsilon\)的機率去隨機選擇一個動作\(a_t\)，目的是為了要去探索環境中的各種可能性，假如我們每次都選\(a_t=\max\limits_{a} Q(s, a)\)的話，很容易會讓model做出同樣的選擇，有可能有一些可以拿高分的可能性就被忽略了。&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;「行動永遠比不行動來得好。」&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h4 id=&quot;experience-replay&quot;&gt;Experience Replay&lt;/h4&gt;
 
-&lt;p&gt;上面這句是作者的座右銘，並希望能夠在行動的同時練習樂觀並感激你所擁有的事物，若不懂得感激你所擁有的，你將不會得到更多。&lt;/p&gt;
+&lt;p&gt;在演算法的一開始有一個replay memory \(\mathcal{D}\)，其大小為\(N\)，這個memory的目的是去紀錄與環境互動的結果，可以看到在第二個迴圈裡，會把\((\phi_t, a_t, r_t, \phi_{t+1})\)，放進memory \(\mathcal{D}\)中，而在訓練的時候會從memory裡面sample一個batch來做訓練。&lt;/p&gt;
 
-&lt;h3 id=&quot;檔案6欣賞其他有錢人&quot;&gt;檔案6：欣賞其他有錢人&lt;/h3&gt;
+&lt;h4 id=&quot;target-network&quot;&gt;Target Network&lt;/h4&gt;
 
-&lt;p&gt;我們時常會羨慕、嫉妒別人擁有但自己所沒有的事物，既然別人努力得到了你所沒有的事物，我們應該要祝福而不該酸言酸語，或是討厭他們。&lt;/p&gt;
+&lt;p&gt;在式(1)和上面的演算法中，我們可以看到，這個DQN的目標是能夠精確的預估出\(r+\gamma\max\limits_{a'} Q(s', a';\theta)\)，但這個目標裡面又包含了自己這個network的output，這樣在訓練起來是比較不穩定的，為此，在實作上通常會用另一個network \(Q'\)來放進objective function，亦即model要去預估的是\(r+\gamma\max\limits_{a'}Q'(s',a';\theta)\)，這個network \(Q'\)其實就是前幾步的model \(Q\)，更具體的說，當\(Q\)以\(Q'\)為目標訓練一陣子以後，會複製一份\(Q\)的參數當作\(Q'\)的參數，並將之固定以後，繼續訓練\(Q\)的參數。&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;「祝福你所想要的事物。」&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
 
-&lt;h3 id=&quot;檔案7與積極的成功人士交往&quot;&gt;檔案7：與積極的成功人士交往&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;dqn-experiments.png&quot; alt=&quot;DQN Experiments&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;我個人覺得人是很容易被環境所影響的，所以如果有機會的話，應該試著多去跟那些成功人士打交道，並相信自己跟他們是沒有什麼太大區別的，他們做得到的事情，你也做得到。&lt;/p&gt;
+&lt;p&gt;在表中可以看到，DQN在一些遊戲上超過了人類可以達到的分數。&lt;/p&gt;
 
-&lt;h3 id=&quot;檔案8樂意宣傳自己和自己的價值觀&quot;&gt;檔案8：樂意宣傳自己和自己的價值觀&lt;/h3&gt;
+&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;很多人常覺得說，如果我今天做出了一個超級厲害的東西，大家就會搶著來用，但前提是他們得要先知道你做出來了，所以如果有機會的話可以試著多學習宣傳自己，相信自己是個具有高價值，值得被宣傳。&lt;/p&gt;
-
-&lt;h3 id=&quot;檔案9大於問題&quot;&gt;檔案9：大於問題&lt;/h3&gt;
-
-&lt;p&gt;小時候可能覺得騎自行車是一件很困難的事情，但長大了以後就覺得其實這並沒有那麼困難，這是因為你已經成長到了大過於你的問題的程度，所以當你今天遇到了一件你覺得相當困難的事情時，就要提醒自己「我很小！」，該是成長的時候了。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;「成功的秘訣，就是不要逃避問題，不要在問題面前退縮；成功的秘訣就在於你要成長，讓自己大於一切的問題。」&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;檔案10很棒的接受者&quot;&gt;檔案10：很棒的接受者&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;「如果你說你有價值，你就有價值。如果你說你沒有價值，那麼你就沒有。然後你就會依照你的故事版本而活。」&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;我常常會因為自己所做錯的一些事情而認為自己沒有什麼價值，甚至是當別人誇讚的時候也總是著眼於自己沒有做好的部分，然而這樣會使得你越來越悲觀，應該要試著去編一個可以激勵你自己的故事，不要以「下次要小心」作為目標，而是「我想要做到」為目標。&lt;/p&gt;
-
-&lt;h3 id=&quot;檔案11根據結果拿酬勞&quot;&gt;檔案11：根據結果拿酬勞&lt;/h3&gt;
-
-&lt;p&gt;這邊作者希望讀者可以用結果來換取報酬，舉凡常見的工作都是用錢來買你的時間，然而人的時間是有限的，所以能賺取的酬勞也是有限的，是故要用結果來換取酬勞才能得到較多的報酬。&lt;/p&gt;
-
-&lt;h3 id=&quot;檔案12如何兩個都要&quot;&gt;檔案12：如何兩個都要&lt;/h3&gt;
-
-&lt;p&gt;在生活中時常會面臨抉擇，有時選了一個就不能選另一個，但是這有可能是你自我設限，應保持著想辦法兩者兼拿的想法，試著去把所有的好處都拿到。&lt;/p&gt;
-
-&lt;h3 id=&quot;檔案13專注於自己的淨值&quot;&gt;檔案13：專注於自己的淨值&lt;/h3&gt;
-
-&lt;p&gt;我們在談論有錢人排行榜的時候，並不會去看他的收入，而是看他的淨值，所以我們應該著重的是去提升我們的淨值，不單單只看工作收入而已。我們的淨值主要來自於&lt;strong&gt;收入、儲蓄、投資獲利、節流&lt;/strong&gt;，若能在每個部分都有提昇一些，相信淨值會提升不少。&lt;/p&gt;
-
-&lt;h3 id=&quot;檔案14管理自己的錢財&quot;&gt;檔案14：管理自己的錢財&lt;/h3&gt;
-
-&lt;p&gt;有些人會覺得說等我有了一筆錢再來學習怎麼管理，然而管理的習慣應該從現在就開始，從小錢開始培養，否則即使有了一筆錢也會因為不會管理而失去。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;「除非你能管理你現有的一切，否則你不會得到更多！」&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;「管理金錢的習慣比數目更重要。」&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;檔案15讓錢辛苦工作&quot;&gt;檔案15：讓錢辛苦工作&lt;/h3&gt;
-
-&lt;p&gt;在前面有提到，人的時間是有限的，也需要睡覺、休息和玩樂的時間，是故創造被動收入是很重要的，而被動收入有兩個面向&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;讓錢為你工作&lt;/p&gt;
-
-    &lt;p&gt;舉凡像是投資股票、債券、基金等，用錢滾錢的方法&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;讓事業為你工作&lt;/p&gt;
-
-    &lt;p&gt;讓事業自動、系統化，像是書籍的出版稅、音樂版權等，利用你已經創建好的價值，不斷從中收取利益&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;檔案16恐懼也會採取行動&quot;&gt;檔案16：恐懼也會採取行動&lt;/h3&gt;
-
-&lt;p&gt;這裡我覺得是在呼應&lt;a href=&quot;#檔案9大於問題&quot;&gt;檔案9&lt;/a&gt;，人總是會對自己不熟悉的東西產生恐懼，我們要做的事情不是去抹煞掉恐懼，而是接受恐懼並採取行動。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;「如果你只願意做輕鬆的事，人生就會困難重重。但如果你願意做困難的事，人生就會變得很輕鬆。」&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;每當有負面、恐懼的想法出現時，想想前面的學習，意義是自己去賦予的，不如編一個可以幫助自己前進的故事吧。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;「你只在一個狀況下是真正在成長的，那就是你覺得不舒服的時候。」&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;檔案17持續學習成長&quot;&gt;檔案17：持續學習成長&lt;/h3&gt;
-
-&lt;p&gt;「我知道」，是最危險的三個字，我們應該努力學習成長，不應該對自己現有的知識感到自滿，也很有很大的機會我們所以為的跟真實是很不一樣的，如果可以，每天讀一點書，學習一點新知。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;「每一位大師都曾經是個大失敗。」&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Your Name</name></author><category term="Book" /><summary type="html">節錄部分《有錢人想的和你不一樣》這本書的內容以及自己的一些心得。</summary></entry></feed>
+&lt;p&gt;在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><summary type="html">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</summary></entry></feed>

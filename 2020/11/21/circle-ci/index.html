@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>TF-IDF簡介 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>利用Circle CI來建立部落格 - wjohn1483.github.io</title>
 
-<meta name="description" content="這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/04/02/tf-idf-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="有鑒於">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/11/21/circle-ci/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -278,89 +278,24 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>TF-IDF簡介</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>利用Circle CI來建立部落格</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-04-02-tf-idf-introduction/2020-04-02-tf-idf-introduction.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="TF-IDF簡介"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-11-21-circle-ci/2020-11-21-circle-ci.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="利用Circle CI來建立部落格"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 02, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Machine-Learning"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Tool">Tool</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 21, 2020</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-21T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</p>
-
-<!--more-->
-
-<h2 id="簡介">簡介</h2>
-
-<p>TF-IDF的全稱是<strong>Term Frequency - Inverse Document Frequency</strong>，可以看<a href="https://zh.wikipedia.org/wiki/Tf-idf">它的wiki</a>有詳細的介紹，簡單來說就是一種統計的方法，可以應用在搜尋引擎上。</p>
-
-<p>假設今天在搜尋欄上打上了一些字詞，我們想要去尋找網路上有哪些文章跟搜尋欄中的字詞的相關程度最高，而TF-IDF的主要概念就是去看每一篇文章當中該字詞出現的頻率，如果出現的頻率很高的話，就可以說該文章跟搜尋欄的字詞是有高度相關的。</p>
-
-<h2 id="方法">方法</h2>
-
-<h3 id="term-frequency-tf">Term Frequency (TF)</h3>
-
-<p>假設網路上的文章\(d_j\)使用到的字詞種類總共有\(k\)個，分別為\(t_{1,d_j}, t_{2,d_j}, ..., t_{k,d_j}\)，其中\(t_{1,d_j}\)出現了3次，\(t_{2,d_j}\)出現了5次等等，我們就可以定義說每個字詞種類\(t_{i,d_j}\)對於這篇文章的重要程度為</p>
-
-\[tf_{t_{i,d_j}}=\frac{n_{t_{i,d_j}}}{\sum_k n_{t_{k,d_j}}}\]
-
-<p>上面的\(n_{t_{i,d_j}}\)指的是字詞種類\(t_{i,d_j}\)在文章\(d_j\)出現的次數，像\(t_{1,d_j}\)在文章中出現了3次，那\(n_{t_{i,d_j}}\)就等於3，這個式子的概念其實就是計算這個字詞種類佔了這篇文章多少比重，假設文章\(d_j\)總共有100個字(亦即\(\sum_k n_{t_{k,d_j}}=100\))，其中\(t_{1,d_j}\)出現了3次，那\(t_{1,d_j}\)在這篇文章的重要程度就是\(3/100\)。</p>
-
-<p>由上面的式子算出了每個字詞種類\(t_{i,d_j}\)對文章\(d_j\)的重要程度以後，我們可以接著算出各個文章\(d_1, d_2, ..., d_l\)中各個字詞種類對該文章的重要程度，得到一堆的term frequency。</p>
-
-<h3 id="inverse-document-frequency-idf">Inverse Document Frequency (IDF)</h3>
-
-<p>如果只考慮字詞出現的次數的話，有可能會被比較一般常用的字詞，像是助詞”的”、”了”所影響，可以想像我在搜尋欄打上”國王的新衣”，因為”的”在每個文章出現的次數都很多，所以只單看term frequency的話，找出來的文章應該都不會是我所想要的。</p>
-
-<p>為此需要再多考慮一個inverse document frequency，也就是某個字詞在文章間的出現頻率，假如”國王”在全部1000個文章裡面只出現在10篇文章裡，那這10篇文章想必是比其他文章還要來得接近我想要找的東西，inverse document frequency定義如下</p>
-
-\[idf_{t_i}=\frac{\vert D\vert}{\vert \{ j:t_i\in d_j \}\vert}\]
-
-<p>上面式子的意思是，某個字詞\(t_i\)在文章間的獨特程度被定義成文章總數(\(\vert D\vert\))，除上字詞\(t_i\)出現的文章數(\(\vert {j:t_i\in d_j}\vert\))，以上面”國王”的例子來看，1000個文章裡面只出現在10個文章裡，其\(idf=\frac{1000}{10}\)。</p>
-
-<h3 id="使用的方式">使用的方式</h3>
-
-<p>只要給定了一堆的文章，使用在上面定義的公式，就可以算出每個字詞對每篇文章的term frequency和每個字詞的inverse document frequency。</p>
-
-<p>當我今天輸入一些關鍵字在搜尋欄裡面時，找出相關文件的方式就是用關鍵字的inverse document frequency去乘上文章中該字詞的term frequency並加總起來，得到關鍵字和文件的相似程度。</p>
-
-<p>假設我今天在搜尋欄當中輸入了”\(t_1\) \(t_2\)“，與文章\(d_j\)相似程度的算法為</p>
-
-\[tf\text{-}idf_{d_j}=tf_{t_1,d_j}\times idf_{t_1} + tf_{t_2,d_j}\times idf_{t_2}\]
-
-<p>有了相似程度的分數就能做排序，得到與搜尋關鍵字相關的文章了。</p>
-
-<h3 id="其他tf-idf的算法">其他TF-IDF的算法</h3>
-
-<p>上面所介紹的tf-idf可以說是最基礎的算法，而有很多人嘗試用不一樣的方式來計算tf和idf，有興趣的話可以參考<a href="https://en.wikipedia.org/wiki/Okapi_BM25">Okapi BM25</a>。</p>
-
-<h2 id="應用在分類上">應用在分類上</h2>
-
-<p>前面提到了如何使用tf-idf來做一個簡易的搜尋，這邊提一下另外一個應用的方式，就是拿來做一個簡單的文字分類器。假如我們今天想要對使用者輸入進來的文字做sentiment analysis，我們手上所收集到的訓練資料如下</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>啊不就好棒棒 負面
-我就爛 負面
-您真厲害 正面
-醒醒吧你沒有妹妹 負面
-感謝乾爹 正面
-</code></pre></div></div>
-
-<p>我們想要知道使用者輸入的資料究竟是正面還是負面，做法上可以將正面和負面的label的文字全部串起來當作是一個文章</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>您真厲害感謝乾爹 （文章_正面）
-啊不就好棒棒我就爛醒醒吧你沒有妹妹 （文章_負面）
-</code></pre></div></div>
-
-<p>然後各自去算文章字詞的tf和idf，接著把使用者輸入的文字當作是搜尋關鍵字，得到它對各個文章的相似度排序，便能知道輸入的文字是比較偏向正面還是比較偏向負面了，上述的做法也適用label的種類超過兩個的情況。</p>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-04-02T00:00:00+00:00"><!-- start custom article footer snippet -->
+<div class="article__content" itemprop="articleBody"><p>有鑒於</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-11-21T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding</a></div><div class="next"><span>NEXT</span><a href="/2020/04/04/secrets-of-the-millionaire-mind/">有錢人想的和你不一樣</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/11/15/python-import/">Python Import Introduction</a></div></div></div>
 
 </div>
 
