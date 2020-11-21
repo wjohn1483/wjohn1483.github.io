@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="en">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>利用Circle CI來建立部落格 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>利用Circle CI來更新GitHub Pages - wjohn1483.github.io</title>
 
-<meta name="description" content="有鑒於">
+<meta name="description" content="有鑒於Travis CI要開始收費了，所以我將部落格的CI轉移到Circle CI上，在這篇文章記錄一下轉移的過程。">
 <link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/11/21/circle-ci/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
@@ -278,11 +278,11 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>利用Circle CI來建立部落格</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>利用Circle CI來更新GitHub Pages</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
             href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-11-21-circle-ci/2020-11-21-circle-ci.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="利用Circle CI來建立部落格"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="利用Circle CI來更新GitHub Pages"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 21, 2020</span>
@@ -290,7 +290,95 @@
     <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>有鑒於</p>
+<div class="article__content" itemprop="articleBody"><p>有鑒於<a href="https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing">Travis CI要開始收費了</a>，所以我將部落格的CI轉移到<a href="https://circleci.com">Circle CI</a>上，在這篇文章記錄一下轉移的過程。</p>
+
+<!--more-->
+
+<h2 id="為什麼要使用circle-ci">為什麼要使用Circle CI？</h2>
+
+<p>在<a href="https://wjohn1483.github.io/2020/02/28/create-website-by-Jekyll/">之前的文章</a>裡面，使用了Travis CI來幫助我們使用原先Github不支援的Jekyll套件，透過Travis CI的虛擬機幫我們安裝套件以後編譯網站，最後push到master branch上。</p>
+
+<p>只不過因為種種的因素，現在Travis CI要開始收費了，一般沒有付費的使用者在使用完贈與的credits以後，就得要掏錢來請他們幫忙build，為了繼續當免費仔，我查詢了一下與Travis CI類似的服務，找到了Circle CI，而目前<a href="https://circleci.com/pricing/">Circle CI的收費方式</a>是每週給你2,500個credits，大約是每週給你250分鐘的時間使用2 CPUs / 4GB RAM的機器，用來更新網站應該是綽綽有餘了。</p>
+
+<h2 id="circle-ci的使用方式">Circle CI的使用方式</h2>
+
+<h3 id="建立設定檔">建立設定檔</h3>
+
+<p>Circle CI和Travis CI使用的方式差不多，我們會需要在目錄底下創建<strong>.circleci/</strong>這個資料夾，Circle CI會去讀取資料夾內的設定檔<strong>.circleci/config.yml</strong>，來決定要怎麼build你的repository，底下是一個簡單的範例。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="m">2.1</span>
+<span class="na">orbs</span><span class="pi">:</span>
+  <span class="na">ruby</span><span class="pi">:</span> <span class="s">circleci/ruby@0.1.2</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">build_and_push</span><span class="pi">:</span>
+    <span class="na">docker</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">image</span><span class="pi">:</span> <span class="s">circleci/ruby:2.6.3-stretch-node</span>
+    <span class="na">executor</span><span class="pi">:</span> <span class="s">ruby/default</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">checkout</span>
+      <span class="pi">-</span> <span class="s">ruby/bundle-install</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">Build website</span>
+          <span class="na">command</span><span class="pi">:</span> <span class="s">bundle exec jekyll build</span>
+      <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">Install rsync</span>
+          <span class="na">command</span><span class="pi">:</span> <span class="s">sudo apt install -y rsync</span>
+      <span class="pi">-</span> <span class="na">deploy</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">Push to master branch</span>
+          <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
+            <span class="s">if [ -z ${CIRCLE_PULL_REQUEST} ]; then</span>
+              <span class="s">bash ./.circleci/push.sh</span>
+            <span class="s">fi</span>
+
+<span class="na">workflows</span><span class="pi">:</span>
+  <span class="na">version</span><span class="pi">:</span> <span class="m">2</span>
+  <span class="na">update_website</span><span class="pi">:</span>
+    <span class="na">jobs</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">build_and_push</span><span class="pi">:</span>
+          <span class="na">filters</span><span class="pi">:</span>
+            <span class="na">branches</span><span class="pi">:</span>
+              <span class="na">only</span><span class="pi">:</span> <span class="s">source</span>
+</code></pre></div></div>
+
+<p>設定檔裡面我們需要自己修改的部分是<code class="language-plaintext highlighter-rouge">jobs</code>和<code class="language-plaintext highlighter-rouge">workflows</code>。</p>
+
+<p><code class="language-plaintext highlighter-rouge">jobs</code>裡面會定義各式各樣的工作，可以想成是function一樣的地位，會執行設定好的<code class="language-plaintext highlighter-rouge">steps</code>，其中<code class="language-plaintext highlighter-rouge">checkout</code>和<code class="language-plaintext highlighter-rouge">ruby/bundle-install</code>是原本範本裡面就有的兩個步驟，做的事情分別是把程式碼抓下來、安裝ruby的套件，如果想要在docker裡面安裝其他套件的話，可以透過<code class="language-plaintext highlighter-rouge">sudo apt install</code>來安裝。</p>
+
+<p>值得一提的是，在最後一步的<code class="language-plaintext highlighter-rouge">deploy</code>，如果有給Circle CI Github的token的話，這步會直接幫你設定好，不需要自己在script裡面把token用環境變數帶進來。</p>
+
+<p><code class="language-plaintext highlighter-rouge">workflows</code>可以想成是main function，會定義要執行哪些jobs，其中<code class="language-plaintext highlighter-rouge">filters</code>是決定要不要執行這個job的條件，像上面例子的設定是只有<em>source branch</em>的commit才會執行<code class="language-plaintext highlighter-rouge">build_and_push</code>這個job。</p>
+
+<h3 id="連結github與circle-ci">連結GitHub與Circle CI</h3>
+
+<p>在建立好設定檔以後，接下來就是連結GitHub和Circle CI，要做的事情大概如下：</p>
+
+<ol>
+  <li>
+    <p>創建帳號並選擇你想要連結的repository</p>
+
+    <p>直接上去<a href="https://circleci.com">Circle CI</a>的網站透過GitHub帳號登入，授權以後就可以看到自己的repository了</p>
+  </li>
+  <li>
+    <p>給予Circle CI讀取和push的權限</p>
+
+    <p>到<code class="language-plaintext highlighter-rouge">Project Settings</code>裡面的<code class="language-plaintext highlighter-rouge">SSH Keys</code>，在<code class="language-plaintext highlighter-rouge">User Key</code>的地方有個按鈕可以幫你跟GitHub說你想要讓Circle CI有權限push到這邊，授權完成以後就可以在畫面上看到Circle CI獲得的key了</p>
+  </li>
+  <li>
+    <p>(Optional) 設定環境變數</p>
+
+    <p>在<code class="language-plaintext highlighter-rouge">Project Settings</code>裡面的<code class="language-plaintext highlighter-rouge">Environment Variables</code>可以依據個人的需要設定環境變數</p>
+  </li>
+</ol>
+
+<p>在做完上述的事情以後，接下來push的commit就會被Circle CI發現並自動幫你build了。</p>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li><a href="https://jtway.co/deploying-jekyll-to-github-pages-with-circleci-2-0-3eb69324bc6e">Deploying Jekyll to GitHub Pages with CircleCI 2.0</a></li>
+</ul>
+
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-11-21T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
