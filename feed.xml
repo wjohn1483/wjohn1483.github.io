@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2020-11-21T14:27:30+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">利用Circle CI來更新GitHub Pages</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/" rel="alternate" type="text/html" title="利用Circle CI來更新GitHub Pages" /><published>2020-11-21T00:00:00+00:00</published><updated>2020-11-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/">&lt;p&gt;有鑒於&lt;a href=&quot;https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing&quot;&gt;Travis CI要開始收費了&lt;/a&gt;，所以我將部落格的CI轉移到&lt;a href=&quot;https://circleci.com&quot;&gt;Circle CI&lt;/a&gt;上，在這篇文章記錄一下轉移的過程。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-01-01T13:24:18+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">利用Circle CI來更新GitHub Pages</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/" rel="alternate" type="text/html" title="利用Circle CI來更新GitHub Pages" /><published>2020-11-21T00:00:00+00:00</published><updated>2020-11-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/">&lt;p&gt;有鑒於&lt;a href=&quot;https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing&quot;&gt;Travis CI要開始收費了&lt;/a&gt;，所以我將部落格的CI轉移到&lt;a href=&quot;https://circleci.com&quot;&gt;Circle CI&lt;/a&gt;上，在這篇文章記錄一下轉移的過程。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -229,964 +229,7 @@ ImportError: attempted relative import with no known parent package
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;在這篇paper裡面，作者結合了兩個傳統DQN的架構，多衍伸出了一個維度，來一次性解決廣告系統需要決定的三件事情，這樣的架構除了用在廣告系統上，還可以應用在其他的任務當中。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><category term="Recommendation-System" /><summary type="html">用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。</summary></entry><entry><title type="html">Clean Code In Python</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python/" rel="alternate" type="text/html" title="Clean Code In Python" /><published>2020-08-26T00:00:00+00:00</published><updated>2020-08-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/08/26/clean-code-in-python/">&lt;p&gt;Clean code in python sharing.&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;chapter-5-decorater&quot;&gt;Chapter 5: Decorater&lt;/h2&gt;
-
-&lt;h3 id=&quot;what-is-decorator&quot;&gt;What is decorator&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;modifier&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# This is decorator
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(...):&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;original&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;modifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Calling whatever is after the decorator as a first parameter, and the result would be whatever the decorator returns.&lt;/p&gt;
-
-&lt;h3 id=&quot;decorate-functions&quot;&gt;Decorate functions&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Please ignore this line for now
-&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-    	&lt;span class=&quot;n&quot;&gt;RETRIES_LIMIT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RETRIES_LIMIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    	    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ControlledException&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Retrying %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qualname__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retry&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-
-&lt;span class=&quot;n&quot;&gt;run_operation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# function definition
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# function call
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;decorate-classes&quot;&gt;Decorate classes&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LoginEventSerializer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;serialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;**redacted**&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;ip&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;timestamp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strftime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%Y-%m-%d %H:%M&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LoginEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;SERIALIZER&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LoginEventSerializer&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;serialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SERIALIZER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Some drawbacks:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Too many classes&lt;/strong&gt;: number of serialization classes will grow in the same order of magnitude because they are mapped one to one.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;The solution is not flexible enough&lt;/strong&gt;: If we need to reuse parts of components(e.g. hide &lt;em&gt;password&lt;/em&gt;), we will have to extract as a function and call it repeatedly from mutiple classes.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Boilerplate&lt;/strong&gt;: The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;serialize()&lt;/code&gt;method will have to be present in all &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;event&lt;/code&gt; classes, calling the same code.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Dynamically contruct an object by given a set of transformation functions.&lt;/p&gt;
-
-  &lt;p&gt;We then only need to define the functions to transform each type of field.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hide_field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;**redacted**&quot;&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;format_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;field_timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;field_timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strftime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;%y-%m-%d %H:%M&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show_original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event_field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_field&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EventSerializer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serialization_fields&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serialization_fields&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serialization_fields&lt;/span&gt;
-        
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;serialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transformation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;getattr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transformation&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt;
-            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serialization_fields&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itmes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    
-    
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Serialization&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transformations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serializer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventSerializer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transformations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__call__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;serialize_method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serializer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event_instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;event_class&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serialize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;serialize_method&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_class&lt;/span&gt;
-    
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Serialization&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show_original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hide_field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show_original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LoginEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# In Python 3.7+
-&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dataclasses&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dataclass&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;datetime&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Serialization&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show_original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hide_field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show_original&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dataclass&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LoginEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datetime&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Decorator makes it easier for the user to know how each field is going to be treated without having to look into the code of another class.&lt;/p&gt;
-
-&lt;p&gt;The code of the class does not need &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;serialize()&lt;/code&gt; method defined, decorator will add it.&lt;/p&gt;
-
-&lt;h3 id=&quot;passing-arguments-to-decorators&quot;&gt;Passing arguments to decorators&lt;/h3&gt;
-
-&lt;h4 id=&quot;decorators-with-nested-functions&quot;&gt;Decorators with nested functions&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;RETRIES_LIMIT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;with_retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RETRIES_LIMIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ControlledException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,)&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;retrying %s due to %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retry&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;with_retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;with_retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_with_custom_retries_limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;with_retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;AttributeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_with_custom_exceptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;with_retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ZeroDivisionError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;AttributeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_with_custom_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;with_retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ZeroDivisionError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;AttributeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_with_custom_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retry&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_with_custom_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-
-&lt;span class=&quot;n&quot;&gt;run_with_custom_parameters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_with_custom_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;run_with_custom_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;decorator-objects&quot;&gt;Decorator objects&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WithRetry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RETRIES_LIMIT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ControlledException&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,)&lt;/span&gt;
-        
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__call__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
-            
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allowed_exceptions&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;retrying %s due to %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_raised&lt;/span&gt;
-            
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WithRetry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;retries_limit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_with_custom_retries_limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Invoke order:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WithRetry(retries_limit=5)&lt;/code&gt; , an object is created&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@&lt;/code&gt; is invoked, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;run_with_custom_retries_limit = WithRetry(retries_limit=5)(run_with_custom_retries_limit)&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;call()&lt;/code&gt; is invoked&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;good-uses-for-decorators&quot;&gt;Good uses for decorators&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Transforming parameters&lt;/li&gt;
-  &lt;li&gt;Validate parameters&lt;/li&gt;
-  &lt;li&gt;Implement retry operations&lt;/li&gt;
-  &lt;li&gt;Tracing code&lt;/li&gt;
-  &lt;li&gt;Simplify classes by moving some logic into decorators&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;effective-decorators---avoiding-common-mistakes&quot;&gt;Effective decorators - avoiding common mistakes&lt;/h3&gt;
-
-&lt;h4 id=&quot;preserving-data-about-the-original-wrapped-object&quot;&gt;Preserving data about the original wrapped object&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;trace_decorator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# NO @wraps HERE!
-&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;running %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qualname__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trace_decorator&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;process_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;account_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Process an account by Id&quot;&quot;&quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;processing account %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;account_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Help&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-
-&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qualname__&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'trace_decorator.&amp;lt;locals&amp;gt;.wrapped'&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;functools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;trace_decorator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;running &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qualname__&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trace_decorator&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;process_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;account_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;     &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Process an account by Id.&quot;&quot;&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;processing account &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;account_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...:&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Help&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_account&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__main__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;process_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;account_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Process&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;account&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;
-
-
-&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_account&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qualname__&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'process_account'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Always use &lt;strong&gt;functools.wraps&lt;/strong&gt; applied over the wrapped function, when creating a decorator, as shown in the proceding formula.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;dealing-with-side-effects-in-decorators&quot;&gt;Dealing with side-effects in decorators&lt;/h3&gt;
-
-&lt;h4 id=&quot;incorrect-handling-of-side-effects-in-a-decorator&quot;&gt;Incorrect handling of side-effects in a decorator&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;traced_function_wrong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;started execution of %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    
-    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;functools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;function %s took %.2fs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;traced_function_wrong&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;process_with_delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_with_delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;INFO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_with_delay&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x107d35a60&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;took&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.66&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_with_delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;INFO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_with_delay&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x107d35a60&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;took&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.24&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_with_delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;INFO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_with_delay&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;at&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x107d35a60&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;took&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;12.97&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;process_with_delay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;traced_function_wrong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;process_with_delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;traced_function_wrong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;functools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;started execution of %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;function %s took %.2fs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;requiring-decorators-with-side-effects&quot;&gt;Requiring decorators with side-effects&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# user_event.py
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EVENTS_REGISTRY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;register_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event_cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Place the class for the event into the registry to make it accesible in the 
-    module.
-    &quot;&quot;&quot;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;EVENTS_REGISTRY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;event_cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_cls&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_cls&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;A base event object&quot;&quot;&quot;&lt;/span&gt;
-    
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;TYPE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;user&quot;&lt;/span&gt;
-    
-    
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;register_event&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserLoginEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UserEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Represents the event of a user when it has just accessed the system.&quot;&quot;&quot;&lt;/span&gt;
-   
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;register_event&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;UserLogoutEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UserEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Event triggered right after a user abandoned the system.&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;user_event&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EVENTS_REGISTRY&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EVENTS_REGISTRY&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'UserLoginEvent'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UserLoginEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
- &lt;span class=&quot;s&quot;&gt;'UserLogoutEvent'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UserLogoutEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;createing-decorators-that-will-always-work&quot;&gt;Createing decorators that will always work&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DBDriver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dbstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbstring&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dbstring&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;f&quot;query &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; at &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbstring&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
-    
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;inject_db_driver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;&quot;This decorator converts the parameter by creating a ``DBDriver`` instance from the 
-    database dsn string.
-    &quot;&quot;&quot;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DBDriver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inject_db_driver&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test_function&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test_OK&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'query test_function at test_OK'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inject_db_driver&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;driver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__class__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test_fails&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;TypeError&lt;/span&gt;                                 &lt;span class=&quot;n&quot;&gt;Traceback&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;most&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ipython&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;33911e5917&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;----&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DataHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;test_fails&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;TypeError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;takes&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;positional&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argument&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;but&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;were&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;given&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;functools&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;types&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MethodType&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;inject_db_driver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Convert a string to a DBDriver instance and pass this to the wrapeed function.&quot;&quot;&quot;&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__call__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dbstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DBDriver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbstring&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__get__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;owner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__class__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MethodType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Will be explained in Chapter 6.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-drydont-repeat-yourself-principle-with-decorators&quot;&gt;The DRY(Don’t Repeat Yourself) principle with decorators&lt;/h3&gt;
-
-&lt;p&gt;Any decorator (especially if it is not carefully designed) adds another level of indirection to the code.&lt;/p&gt;
-
-&lt;p&gt;If there is not going to be too much reuse, then do not go for a decorator and opt for a simpler option (maybe just a separate function or another small class ie enough).&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Do not create the decorator in the first place from scratch. Wait until the pattern emerges and the abstraction for the decorator becomes clear, and then refactor.&lt;/li&gt;
-  &lt;li&gt;Consider that the decorator has to be applied several times (at least three times) before implementing it.&lt;/li&gt;
-  &lt;li&gt;Keep the code in the decorators to a minimum&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;decorators-and-separation-of-concerns&quot;&gt;Decorators and separation of concerns&lt;/h3&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;traced_function_wrong&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;functools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;started execution of %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;s&quot;&gt;&quot;function %s took %.2fs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Carrying two responsibilities: logs that a particular function was just invoked and logs how much time it took to run.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;log_execution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;started execution of %s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qualname__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;measure_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wraps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;function %s took %.2f&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qualname__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wrapped&lt;/span&gt;
-
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;measure_time&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log_execution&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Do not place more than one responsibility in a decorator. The SRP applies to decorators as well.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;analyzing-good-decorators&quot;&gt;Analyzing good decorators&lt;/h3&gt;
-
-&lt;p&gt;Good decorators should have:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Encapsulation, or separation of concerns&lt;/strong&gt;: A good decorator should effectively separate different responsibilities between what it does and what it is decorating.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Orthogonality&lt;/strong&gt;: What the decorator does should be independent, and as decoupled as possible from the object it is decorating.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Reusability&lt;/strong&gt;: It is desirable that the decorator can be applied to multiple types, and not that it just appears on one instance of one function, because that means that it could just have been a function instead.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;good-examples&quot;&gt;Good examples&lt;/h4&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# From Celery project
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;task&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;mytask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-    
-
-&lt;span class=&quot;c1&quot;&gt;# From web frameworks (Pyramid, Flask, etc)
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GET&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;view_handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;User only needs to define the function body and the decorator will convert that into a task automatically.&lt;/p&gt;
-
-&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@app.task&lt;/code&gt; decorator surely wraps a lot of logic and code, but none of that is relevant to the body of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mytask()&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;A good decorator should provide a clean interface so that users of the code know what to expect from the decorator, without needing to know how it works, or any of its details for that matter.&lt;/p&gt;
-
-&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
-
-&lt;p&gt;Decorators are powerful tools in Python that can be applied to many things.&lt;/p&gt;
-
-&lt;p&gt;When creating a decorator for functions, try to make its signature match the original function being decorated. Instead of using the generic &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*args&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;**kwargs&lt;/code&gt;, making the signature match the original one willl make it easier to read and maintain.&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Book" /><category term="Python" /><summary type="html">Clean code in python sharing.</summary></entry><entry><title type="html">擺脫邊緣人生</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/27/get-rid-of-loner-life/" rel="alternate" type="text/html" title="擺脫邊緣人生" /><published>2020-07-27T00:00:00+00:00</published><updated>2020-07-27T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/27/get-rid-of-loner-life</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/27/get-rid-of-loner-life/">&lt;p&gt;節錄部分&lt;a href=&quot;https://www.books.com.tw/products/0010837956&quot;&gt;《擺脫邊緣人生》&lt;/a&gt;這本書的內容以及自己的一些心得。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;p&gt;由於覺得自己有點邊緣，看到了這本書名以及相關的書評以後，決定來閱讀這本書，看看能不能因此而改善自己的人際關係。&lt;/p&gt;
-
-&lt;h2 id=&quot;你我都可能是邊緣人&quot;&gt;你、我都可能是邊緣人&lt;/h2&gt;
-
-&lt;p&gt;在這個章節裡面，作者定義了什麼樣子的人是邊緣人：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;內心經常覺得與人疏遠，與人互動不自在&lt;/li&gt;
-  &lt;li&gt;覺得別人不理解自己，也不理解別人在想什麼&lt;/li&gt;
-  &lt;li&gt;內心孤獨，卻又害怕走進人群&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;而這本書希望讀者可以：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;了解自己的人際需求&lt;/li&gt;
-  &lt;li&gt;能夠自在地與人群互動&lt;/li&gt;
-  &lt;li&gt;獲得有效的人際互動技巧&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;作者希望透過調整讀者的心態、經由互動拉近人的距離以及提升衝突的解決力來達到上述的三件事情。&lt;/p&gt;
-
-&lt;h2 id=&quot;邊緣人是從恐懼開始的&quot;&gt;邊緣人，是從「恐懼」開始的&lt;/h2&gt;
-
-&lt;p&gt;作者認為，一個邊緣人常會覺得自己不好，「是不是我不夠好，別人才不喜歡我？」的這種想法很常出現在邊緣人的腦海中，然而越是抱持著「我沒有用」的想法，就越容易只聚焦在失敗的結果上，又或者其實結果並沒有不好，但我們仍會找一些莫須有的原因來說服自己結果是不好的。&lt;/p&gt;
-
-&lt;p&gt;邊緣人亦會覺得別人是很嚴格、不友善的，因此不求別人喜愛，只希望不要在人際互動當中受傷，所以一直「避免犯錯」，而秉持著不做就不會出錯的想法，使得自己越發邊緣。&lt;/p&gt;
-
-&lt;h2 id=&quot;喜歡自己是擺脫邊緣人的第一步&quot;&gt;「喜歡自己」是擺脫邊緣人的第一步&lt;/h2&gt;
-
-&lt;p&gt;如題所述，如果能夠喜歡自己，便能解決部分邊緣人的根本原因，那要如何練習愛自己呢？&lt;/p&gt;
-
-&lt;h3 id=&quot;調整不切實際的自我期待&quot;&gt;調整不切實際的自我期待&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;當一個人的「理想我」與「現實我」差距太大時，內心就會產生不舒服的感受。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;假如你規定自己年年都要升職、加薪（理想我），而非常努力在職場上拼搏，但不一定每年都能夠做到（現實我），有可能就會因此譴責自己或抱怨環境。&lt;/p&gt;
-
-&lt;p&gt;對自己有所期待、設定目標沒有錯，但我們總是批評沒有達到目標的自己，卻鮮少評量我們所設定的目標究竟現不現實，有沒有超出自己的能力太多？有哪些無法掌控的因素沒有考慮進來？雖說沒有達成目標的客觀的事實，但這跟自己不好是不應該劃上等號的，有時候問題不是出在自己，而是出在目標。&lt;/p&gt;
-
-&lt;h3 id=&quot;滿足別人部分的期待即可&quot;&gt;滿足別人「部分」的期待即可&lt;/h3&gt;
-
-&lt;p&gt;有些時候，訂立下來的目標不一定是自己設立的，有可能是為了滿足父母、家人或是朋友的期待，可以仔細想想，倘若目標達成了，你最想要誰先知道？誰會最開心？如果這個人並不是你自己的話，那很有可能這個目標並不是你想要的，所以作者建議讀者學習滿足他人部分期待就好，把省下來的力氣做一些自己喜歡的事情。&lt;/p&gt;
-
-&lt;h3 id=&quot;減少與他人比較&quot;&gt;減少與他人比較&lt;/h3&gt;
-
-&lt;p&gt;一個人的價值並不是透過與別人比較出來的，然而我們常常會去跟別人比較成績、業績、表現等，雖說適當的比較可以來激勵自己，但若會促使你中傷他人、批評自己時，這些數字就會將你束縛在情緒的毒藥裡。&lt;/p&gt;
-
-&lt;p&gt;可以試著問自己「我喜歡現在的生活模式嗎？在目前的生活與人際關係當中，我喜歡是哪部分？哪些部分讓我覺得幸福？」、「我可以做些什麼來讓幸福的感受延續？」。&lt;/p&gt;
-
-&lt;h3 id=&quot;允許自己不足&quot;&gt;允許自己不足&lt;/h3&gt;
-
-&lt;p&gt;一個不允許自己犯錯的人，需要耗費很多力氣來掩蓋自己不滿意的部分，而努力維持的完美底下，往往是不堪一擊的自卑。當人們願意承認自己的不足時，才有機會停下腳步，思考前進的方向，不夠好，又怎樣呢？&lt;/p&gt;
-
-&lt;h2 id=&quot;已經習慣獨處卻又害怕孤獨&quot;&gt;已經習慣獨處，卻又害怕孤獨&lt;/h2&gt;
-
-&lt;p&gt;「獨處」和「孤獨」是兩回事，很多人把這兩件事情劃上等號是因為他們沒有辨識自己的人際需求，也不知道如何與自己相處，當身邊沒有人的時候就不太會安排空閒的時間，以致於害怕獨處的時刻，如果覺得自己「已經習慣獨處，卻又害怕孤獨」，那很有可能只是習慣獨處，卻沒有學會和自己共處。&lt;/p&gt;
-
-&lt;h3 id=&quot;分辨自己的人際需求&quot;&gt;分辨自己的人際需求&lt;/h3&gt;
-
-&lt;p&gt;大多數人可能會覺得要結交到很多朋友才是好的人際關係、別人主動與我互動才感受得到存在感、需要經常被注意才是被重視的，但是每個人所需要的人際關係並不一樣，可能有人只需要擁有幾個知心好友、偶而與他們見面，其他時間獨處做自己的事情便可以過得很開心，並沒有所謂「好的人際關係」。&lt;/p&gt;
-
-&lt;p&gt;如果你常覺得自己交不到朋友、遇不到對的人，可以試著想想看你渴望什麼形式的人際關係？目前的朋友可以給你正向的感受嗎？&lt;/p&gt;
-
-&lt;h3 id=&quot;人際關係分級制&quot;&gt;人際關係分級制&lt;/h3&gt;
-
-&lt;p&gt;我們可以依據關係的親疏來粗略的將朋友分成：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;點頭之交&lt;/li&gt;
-  &lt;li&gt;同事&lt;/li&gt;
-  &lt;li&gt;朋友&lt;/li&gt;
-  &lt;li&gt;摯友&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;有些人在人際關係中感到挫敗有些時候是因為對不適當的人做出了不適當的行為和期待，像是希望一群不太常往來的朋友來幫你慶生、向同事傾訴家庭衝突、用客套語氣跟伴侶說話，而將朋友以及這些期待不適當的排列在一起會造成可怕的結果。&lt;/p&gt;
-
-&lt;h2 id=&quot;打臉不會讓溝通更順暢&quot;&gt;打臉，不會讓溝通更順暢&lt;/h2&gt;
-
-&lt;p&gt;有時候會想說「大家都覺得我很爛」、「大家都不認同我」，但這個「大家」到底是誰呢？不可能全世界的人都這麼認為吧，「大家」有可能只是一個人，或是根本不清楚這當中包含了誰，但這會容易讓我們誤以為周圍都是敵人，造成心理的不安。&lt;/p&gt;
-
-&lt;p&gt;我們都會希望自己的想法和價值觀可以被別人認同，但即使對方不認同你，並不代表你是錯的。&lt;/p&gt;
-
-&lt;h2 id=&quot;都是你的錯是你害我&quot;&gt;都是你的錯！是你害我…&lt;/h2&gt;
-
-&lt;p&gt;捫心自問一下，你有多少壞習慣是被父母、師長念了十幾年，甚至自己也都提醒自己要改變的，但是你改變了多少？如果我們連自己都很難去改變了，那麼怎麼會覺得改變別人是一件容易的事情呢？&lt;/p&gt;
-
-&lt;p&gt;即便自己改變了，「改變自己」與「對方也必須改變」這兩者其實也沒有什麼因果的關係，我們練習改變自己並不是為了改變對方，是藉著調整自己的作為來讓自己變得更舒服自在。&lt;/p&gt;
-
-&lt;p&gt;關於改變應該抱持的幾個態度：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;改變帶來的影響不是全有全無，是漸進式的，可能有一些事情變得更好，只是比較細微&lt;/li&gt;
-  &lt;li&gt;如果改變自己，事情卻沒有什麼變化，至少我們已經努力，可以嘗試其他方向&lt;/li&gt;
-  &lt;li&gt;停在原地抱怨沒有什麼用處，主動調整才有機會帶來不同&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;親愛的你知道今天是什麼日子吧&quot;&gt;親愛的，你知道今天是什麼日子吧？&lt;/h2&gt;
-
-&lt;p&gt;「誤解」其實是人類的專長之一&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;你說話，他聆聽：在聽的過程中有可能部分的訊息沒有聽清楚&lt;/li&gt;
-  &lt;li&gt;他聽，並理解：他把聽到的訊息整理歸納變成他理解的事情，其中可能會包含他本身的想法和價值觀&lt;/li&gt;
-  &lt;li&gt;他理解，接著說：表達出的內容可能無法跟想法完全吻合&lt;/li&gt;
-  &lt;li&gt;他說話，你聆聽：同樣地，有些訊息你可能沒有接收到&lt;/li&gt;
-  &lt;li&gt;你聽，並理解：同樣地，有機會參雜你本身的想法和價值觀&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;從把一句話說出來到得到對方回答，這個過程當中充滿了誤差，種種誤差結合起來，就很有可能跟原意完全不一樣，這邊作者建議可以使用「我訊息」來試著溝通。&lt;/p&gt;
-
-&lt;p&gt;「我訊息」三步驟：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;我知道你___（需求、情緒、限制）：先同理對方，讓他減少防衛並感到善意&lt;/li&gt;
-  &lt;li&gt;但如果你可以___（行動）：講述希望別人如何行動，你會比較舒服&lt;/li&gt;
-  &lt;li&gt;我比較能夠___（行動、情緒）：讓對方知道這樣互動以後，能得到什麼反應&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;善用提問技巧讓互動更舒適&quot;&gt;善用提問技巧，讓互動更舒適&lt;/h2&gt;
-
-&lt;p&gt;問句主要可以分成兩種：封閉式問句和開放式問句&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;封閉式問句：「你喜歡吃義大利麵還是烏龍麵？」=&amp;gt; 得到的答案是兩者其一&lt;/li&gt;
-  &lt;li&gt;開方式問句：「你喜歡吃什麼樣的麵食？」=&amp;gt; 得到的答案可能相較豐富&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;這兩種問句沒有孰好孰壞，兩者各自有不同的功能，使用在不同的時機，可以參考三個主要依據：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;資訊精確度&lt;/p&gt;
-
-    &lt;p&gt;需要比較精確回應時，應當使用封閉式問句&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;可運用的時間&lt;/p&gt;
-
-    &lt;p&gt;如果時間有限的話，建議使用封閉式問句來蒐集必要訊息即可&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;溝通的意願&lt;/p&gt;
-
-    &lt;p&gt;如果不想與對方有太多互動，使用封閉式問句讓對方只能回應簡短答案，使對話可以較快結束&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;都可以到底是可以還是不可以&quot;&gt;「都可以」到底是可以？還是不可以？&lt;/h2&gt;
-
-&lt;p&gt;常常在生活中我們都可以聽到「都可以」、「隨便」的回答，然而雖然嘴巴上是這樣回應，但心裡可能有不一樣的想法，當你照著自己的想法下去執行以後，得到的可能是不滿意的回應，為了解決這種問題，作者建議給予清楚的選項&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;使用封閉式問句&lt;/li&gt;
-  &lt;li&gt;設定具體選項 e.g. 今天晚餐吃 a) 飯 b) 麵 c) 冬粉&lt;/li&gt;
-  &lt;li&gt;邀請對方做選擇&lt;/li&gt;
-  &lt;li&gt;引導出更具體的選擇 e.g. 大家選擇”麵”以後，再繼續詢問是哪種面，泡麵、陽春麵、牛肉麵等&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;藉由這樣子的方法，讓大家對自己的選擇負責，就不會有上述的問題了。&lt;/p&gt;
-
-&lt;h2 id=&quot;溫柔暖心的安慰該怎麼說&quot;&gt;溫柔、暖心的安慰，該怎麼說？&lt;/h2&gt;
-
-&lt;p&gt;很多時候別人在安慰時，常會說出一些不適當的安慰，像是有人很難過，旁人就會急著告訴他「不要想太多，就沒事了」、「難過也沒什麼用」，但這些話語其實對於本人似乎也沒有什麼作用，這邊作者提出了一些安慰時，忌諱的行為。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;否定事情的嚴重性&lt;/p&gt;
-
-    &lt;p&gt;當你否定事情的嚴重性時，其實是在暗示對方你的想法有問題，才會把這件事情想得那麼嚴重，當你說出「沒關係」時，也否定了對方當下真實的感受。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;強迫轉移注意力&lt;/p&gt;
-
-    &lt;p&gt;會強迫別人轉移注意力的人，通常是害怕或是不知道如何與負面情緒共處的人，為了避免這樣的不舒適，於是無所不用其極的轉移注意力。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;指責或批評對方&lt;/p&gt;
-
-    &lt;p&gt;「如果你態度不要這麼被動，說不定事情有不一樣的發展。」，這樣的話語對當事人的傷害是最大的，有點像是在告訴對方這都是你咎由自取。&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;自認為全然理解&lt;/p&gt;
-
-    &lt;p&gt;感受是很主觀的，即使是同樣的一件事情，每個人的感受也都不一樣，再者，對方在難受的情緒裡，你的感受其實對他並不重要。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;在知曉了這些NG的行為以後，作者也提供了可以試著嘗試的五個步驟來安慰他人&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;我看到有人最近好像___，是怎麼了？&lt;/p&gt;
-
-    &lt;p&gt;留空的部分是要填入具體的行為，像是都不說話、食量變小、表情僵硬等，讓對方知道你好像知道他遇到什麼事情&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;關於這件事，你有什麼想法？&lt;/p&gt;
-
-    &lt;p&gt;先別急著發表自己的意見，先讓對方說說看他發生的事情，透過這樣的方式讓腦袋梳理一遍發生的事情，像是小鴨debug法一般&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;關於這件事，你的心情是？&lt;/p&gt;
-
-    &lt;p&gt;在梳理的過程中，可以試著關心一下對方的情緒，讓對方的情緒可以有機會被好好的宣洩&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;接下來，你打算怎麼做？&lt;/p&gt;
-
-    &lt;p&gt;在情緒相較穩定以後，就可以進入解決問題的環節，而這個環節的重點是「不批評」，即便對方提出來的方法你可能不太苟同或是覺得沒有用，也請對方論述完自己的想法以後，再來好好討論&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;如果可以，你希望我如何幫忙你？&lt;/p&gt;
-
-    &lt;p&gt;常會有人說「需要什麼儘管開口，我一定幫忙」，但當對方說出你力所不及的事情時，該怎麼辦呢？有時候我們自以為是的作為，反而會造成對方的傷害。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;友善親近的回應該怎麼說&quot;&gt;友善、親近的回應，該怎麼說？&lt;/h2&gt;
-
-&lt;p&gt;是「溝通」還是「說服」？常常我們在說有衝突的時候要跟對方做溝通，然而我們更常做的事情是說服，希望我們把想法丟出來以後，對方可以全盤接受，並照著執行之，而過程當中的「說理」、「命令」、「指責」只會造成反效果，令他人更難以接受造成衝突的加劇。&lt;/p&gt;
-
-&lt;p&gt;為了避免衝突的上升，我們應該以「好奇」作為出發點來達成理解、溝通的基礎，先別急著否定他人的決定、想法，試著去用各種問題去詢問他這麼想的背後裡由是什麼，不要一開始就只丟出自己的想法而完全不顧他人的說詞。&lt;/p&gt;
-
-&lt;h2 id=&quot;充滿能量的鼓勵該怎麼說&quot;&gt;充滿能量的鼓勵，該怎麼說？&lt;/h2&gt;
-
-&lt;p&gt;在以前參加過某個溝通、領導的課程，當台上的人講到自己過去不如意的事情，心情難過的時候，又或者是沒有想好該怎麼表達自己想說的話時，台下的老師會帶著同學一起拍手或者吆喝來幫台上的同學加油，我總是會想說，這時候幫他加油的意義是什麼呢？為什麼我們要對哭泣的人鼓掌呢？是要催促他不要恐懼、快點講？講出來的東西是為了他自己還是為了我們呢？&lt;/p&gt;
-
-&lt;p&gt;「讚美」和「鼓勵」是不太一樣的東西，「讚美」通常著重的地方在於結果，像是說做得比較好、跑得比較快、跳得比較高等等，而「鼓勵」重視的是過程，包含了：努力、堅持、意圖、勇氣，而暖心的鼓勵可以一樣從「好奇」開始，「你是怎麼做到的？」就是一個很好用的句子，例子像是「你知道主管很兇，卻還跟他承認疏失，你是怎麼做到的？」，但也要適時加入其他的話語，避免一直重複。&lt;/p&gt;
-
-&lt;h2 id=&quot;面對別人的稱讚如何回應&quot;&gt;面對別人的稱讚，如何回應？&lt;/h2&gt;
-
-&lt;p&gt;在小時候的教育裡面常教我們要謙虛，致使當我們被他人稱讚的時候總會覺得這個稱讚並不是名符其實的，常以「我只是運氣好」、「還有其他更優秀的」等等話語來顯示自己還有需要進步的地方，然而這樣子的互動像是你想把一個好東西分享給對方，但對方卻微笑將之返還予你，「過度的謙虛」給對方的是一種被拒絕的感覺。&lt;/p&gt;
-
-&lt;p&gt;比較好的回應就是大方的說謝謝，將這個讚美接受下來，但真正的困難也許是因為你不習慣別人對你的讚美，其次是你根本不欣賞自己，不認為自己值得。&lt;/p&gt;
-
-&lt;h2 id=&quot;真心誠意的道歉該怎麼說&quot;&gt;真心誠意的道歉，該怎麼說？&lt;/h2&gt;
-
-&lt;p&gt;道歉的第一步，就是鼓起勇氣面對自己的錯誤，技巧只是其次，最重要的是態度，我們常會拉不下臉，或是自己為身份高人一等就免去道歉的行為，但這樣並沒有真正尊重被傷害的人，也缺乏負起責任的擔當。&lt;/p&gt;
-
-&lt;p&gt;「有效的道歉」包含了三個步驟：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;表達歉意：向對方說對不起、不好意思等等&lt;/li&gt;
-  &lt;li&gt;坦承疏失：說出自己是哪裡做不好，讓別人感到不舒服，讓對方認知道你是有在反省的，不是單純的用對不起在敷衍&lt;/li&gt;
-  &lt;li&gt;提出補救：為造成的傷害提出補救的措施，表達願意對行為負責的誠意，若不確定可以怎麼做的話也可以直接請教對方希望自己可以怎麼做&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;道歉是你應該做的事情，是否原諒是由對方決定的&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;處理衝突欲速則不達&quot;&gt;處理衝突，欲速則不達&lt;/h2&gt;
-
-&lt;p&gt;心理學裡面有一個「白熊效應」，越是提醒自己不要去想的事情就越會去想它，像是分手以後希望自己盡快忘記對方，但每提醒自己忘記對方一次，就等同又想起對方了一次，所以當你自己告訴自己不要生氣、難過、緊張的時候，常會使自己的是些情緒被放大，為此，我們需要將心裡的這些情緒丟掉一些，才有空間可以裝其他的。&lt;/p&gt;
-
-&lt;p&gt;理解可以減少你的怒氣，理解又分成「主觀式理解」和「客觀式理解」，主觀式理解就是一般自己習以為常看事情的觀點，而客觀式理解便是試著用對方角度來看事情，有點像前面章節所提到的，利用好奇的方式來引領你的思路去貼近他人的想法。&lt;/p&gt;
-
-&lt;p&gt;若發生衝突的當下因為情緒的高漲致使你無法順利地思考時，可以試著練習喊暫停，讓你自己脫離當下的環境，去上個廁所、買個飲料來抽離高漲的情緒，回到冷靜的思考。&lt;/p&gt;
-
-&lt;h2 id=&quot;你不爽幹嘛不明講&quot;&gt;你不爽，幹嘛不明講？&lt;/h2&gt;
-
-&lt;p&gt;這邊作者提到了一個「被動攻擊」的概念，雖說字面上並沒有表現出不開心的樣貌，但我們可以很輕易地感覺到他的不開心，像是「都怪我沒唸什麼書，我都聽不懂你在說什麼」這類的話語便是被動攻擊，不明講你的不是，而是迂迴的攻擊你。&lt;/p&gt;
-
-&lt;p&gt;要解決這類的攻擊，首先要避免情緒的波動，攻擊者期待的便是你主動挑起戰爭，若你生氣便中他的招了，再來是接受你跟他之間有衝突，衝突不一定都是壞事，衝突可以幫助我們去釐清彼此的期待和需求，接著是客觀描述對方的行為加上自己的感受，最後是表達你期待的溝通方式。舉個例子來說，你可以跟對方說，你這樣跟我對話的時候（客觀行為），其實我心裡很受傷（感受），如果你不喜歡___，可以直接告訴我（期待的溝通方式）。&lt;/p&gt;
-
-&lt;h2 id=&quot;當關係充滿指責該怎麼辦&quot;&gt;當關係充滿指責，該怎麼辦？&lt;/h2&gt;
-
-&lt;p&gt;一個常指責他人的人，通常有以下幾點特性：&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;缺乏發現的能力&lt;/p&gt;
-
-    &lt;p&gt;碰到不舒服的事情無法去辨識這不舒適的來源是他人的冒犯還是自己偏頗的解讀&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;缺乏溝通的意願&lt;/p&gt;
-
-    &lt;p&gt;有可能他只是想要宣洩情緒，並沒有意願或勇氣與對方溝通&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;缺乏反省的行動&lt;/p&gt;
-
-    &lt;p&gt;把情緒往別人身上丟是解決負面情緒最快的方式，錯的都是別人，自己完全沒有責任&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;在想要指責他人，把不舒服的情緒丟出去之前，可以先看看上面的敘述，是不是自己還有些事情是可以解決這件事情的。&lt;/p&gt;
-
-&lt;p&gt;那要如何因應別人的指責呢？&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;儘量避開&lt;/li&gt;
-  &lt;li&gt;不要期待對方會改變&lt;/li&gt;
-  &lt;li&gt;被指責也不一定要被動接受，可以將頭腦冷靜了以後再透過「我訊息」跟對方溝通&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;面對看不順眼的人該怎麼辦&quot;&gt;面對看不順眼的人，該怎麼辦？&lt;/h2&gt;
-
-&lt;p&gt;想要降低與特定人士的不舒服感，首先要先減少對他的負面情緒，如果找不到任何方式來減少的話，可以試著去「聽」他的故事。有時候我們討厭某人是因為對方的價值觀與我們的價值觀不同，致使對行為的期待也不一樣，而我們可以試著再更深入地去了解為什麼他會形成這樣的價值觀，當你對這樣價值觀形塑的了解更多了以後，或許就不會這麼討厭與你不同的價值觀，因為你知道其背後的緣由了。&lt;/p&gt;
-
-&lt;h2 id=&quot;面對總是擺臭臉的人該怎麼辦&quot;&gt;面對總是「擺臭臉」的人，該怎麼辦？&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;不要在情緒高漲、氣氛肅殺的時候跟對方互動&lt;/li&gt;
-  &lt;li&gt;先想好要講的話，以避免因為負面的情緒而打亂了原本想要溝通的事情&lt;/li&gt;
-  &lt;li&gt;提醒自己解決事情才是重點，他的臉色並不重要&lt;/li&gt;
-  &lt;li&gt;擺臭臉可能是他的習慣，跟你的所作所為或許沒有關係&lt;/li&gt;
-  &lt;li&gt;尊重每個人表達情緒的方式，把他人的情緒帶到自己的身上就會變成你自己的課題&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;面對總是講不聽的人該怎麼辦&quot;&gt;面對總是「講不聽」的人，該怎麼辦？&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;讓對方感受到被理解&lt;/p&gt;
-
-    &lt;p&gt;要想要說服他人，首先需要讓對方感受到你是理解並支持他的，或許這件事情在情緒上不容易做到，但我們可以把自己抽得客觀一些，看看能否有所改善&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;肯定對方付出的努力&lt;/p&gt;
-
-    &lt;p&gt;雖說我們可能不認同對方為了這件事情上面所做的事情，但其實他也是以他所想到的方式在解決問題，或許這樣的方式並不是社會或是你個人可以接受的，這不代表你就可以無視他的努力&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;引導對方發現行動的成效&lt;/p&gt;
-
-    &lt;p&gt;陪伴對方探索他的想法是否對於解決問題有所助益，好的部分可以留下來繼續執行，不好的地方可以一起討論來想新方法&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;提供具體策略&lt;/p&gt;
-
-    &lt;p&gt;在秉持著肯定對方的態度下，總結一下目前為止達成的共識，試著提出自己的想法給對方，這邊可以用「參考看看」、「隨意聽聽」等話語先放低姿態&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;面對總是愛批評的人該怎麼辦&quot;&gt;面對總是「愛批評」的人，該怎麼辦？&lt;/h2&gt;
-
-&lt;p&gt;如果想要從批評當中獲取回饋的話，可以試試底下的方式&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;寫下來：把對方說的話記錄下來&lt;/li&gt;
-  &lt;li&gt;刪除：刪除那些難聽、髒字、人身攻擊的話語&lt;/li&gt;
-  &lt;li&gt;檢視重點：在剩餘的內容裡面，是不是有你真的沒有做好的部分&lt;/li&gt;
-  &lt;li&gt;調整或拋棄：如果有找到可以調整的部分，可以試著去調整看看，如果沒有，就把這個紀錄刪掉吧&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;持續做這樣的練習，可以減低這件事情對你帶來的情緒強度，能夠更理性的去面對批評，在心理學裡面被稱作「減敏感」。&lt;/p&gt;
-
-&lt;h2 id=&quot;面對很愛聊八卦的人該怎麼辦&quot;&gt;面對很愛「聊八卦」的人，該怎麼辦？&lt;/h2&gt;
-
-&lt;p&gt;避免表達價值判斷，不要對當事者加以評論，更不要在公開場合作出是非對錯的評論，因為嘴巴長在別人身上，你不到最後會被傳成什麼樣子。&lt;/p&gt;
-
-&lt;h2 id=&quot;面對總是太超過的人該怎麼辦&quot;&gt;面對總是「太超過」的人，該怎麼辦？&lt;/h2&gt;
-
-&lt;p&gt;你也是不敢拒絕別人的人嗎？如果是，那們你的「不敢」是因為擔心著什麼呢？是因為不幫助別人就沒有價值了嗎？&lt;/p&gt;
-
-&lt;p&gt;「答應」和「拒絕」像是個光譜，在中間還有許許多多可以被切分的部分，你可以有限度的幫忙對方：&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;我可以幫忙哪些地方&lt;/li&gt;
-  &lt;li&gt;可以幫忙到什麼程度&lt;/li&gt;
-  &lt;li&gt;如果要幫忙，這件事的優先序如何&lt;/li&gt;
-  &lt;li&gt;讓對方知道情況，如果他能接受就幫忙，不能接受的話你也有釋出善意了&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;學會拒絕才能讓自己更自在，你不需要為沒有幫助到對方而道歉，沒有必要犧牲自己成就他人，尊重自己的意願幫助他人，不論對方是否滿意，都跟你有沒有價值無關。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Book" /><summary type="html">節錄部分《擺脫邊緣人生》這本書的內容以及自己的一些心得。</summary></entry><entry><title type="html">REINFORCE和Proximal Policy Optimization</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/" rel="alternate" type="text/html" title="REINFORCE和Proximal Policy Optimization" /><published>2020-07-26T00:00:00+00:00</published><updated>2020-07-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/">&lt;p&gt;在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。&lt;/p&gt;
+&lt;p&gt;在這篇paper裡面，作者結合了兩個傳統DQN的架構，多衍伸出了一個維度，來一次性解決廣告系統需要決定的三件事情，這樣的架構除了用在廣告系統上，還可以應用在其他的任務當中。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><category term="Recommendation-System" /><summary type="html">用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。</summary></entry><entry><title type="html">REINFORCE和Proximal Policy Optimization</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/" rel="alternate" type="text/html" title="REINFORCE和Proximal Policy Optimization" /><published>2020-07-26T00:00:00+00:00</published><updated>2020-07-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/">&lt;p&gt;在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1389,7 +432,7 @@ ImportError: attempted relative import with no known parent package
 &lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'POST'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;post_handling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;Incoming payload&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Incoming payload&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
     &lt;span class=&quot;c1&quot;&gt;# Slack need to check application is valid
 &lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;challenge&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
@@ -1986,4 +1029,121 @@ ImportError: attempted relative import with no known parent package
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><summary type="html">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</summary></entry></feed>
+&lt;p&gt;在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><summary type="html">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</summary></entry><entry><title type="html">TF-IDF簡介</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/" rel="alternate" type="text/html" title="TF-IDF簡介" /><published>2020-04-02T00:00:00+00:00</published><updated>2020-04-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/">&lt;p&gt;這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
+
+&lt;p&gt;TF-IDF的全稱是&lt;strong&gt;Term Frequency - Inverse Document Frequency&lt;/strong&gt;，可以看&lt;a href=&quot;https://zh.wikipedia.org/wiki/Tf-idf&quot;&gt;它的wiki&lt;/a&gt;有詳細的介紹，簡單來說就是一種統計的方法，可以應用在搜尋引擎上。&lt;/p&gt;
+
+&lt;p&gt;假設今天在搜尋欄上打上了一些字詞，我們想要去尋找網路上有哪些文章跟搜尋欄中的字詞的相關程度最高，而TF-IDF的主要概念就是去看每一篇文章當中該字詞出現的頻率，如果出現的頻率很高的話，就可以說該文章跟搜尋欄的字詞是有高度相關的。&lt;/p&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+
+&lt;h3 id=&quot;term-frequency-tf&quot;&gt;Term Frequency (TF)&lt;/h3&gt;
+
+&lt;p&gt;假設網路上的文章\(d_j\)使用到的字詞種類總共有\(k\)個，分別為\(t_{1,d_j}, t_{2,d_j}, ..., t_{k,d_j}\)，其中\(t_{1,d_j}\)出現了3次，\(t_{2,d_j}\)出現了5次等等，我們就可以定義說每個字詞種類\(t_{i,d_j}\)對於這篇文章的重要程度為&lt;/p&gt;
+
+\[tf_{t_{i,d_j}}=\frac{n_{t_{i,d_j}}}{\sum_k n_{t_{k,d_j}}}\]
+
+&lt;p&gt;上面的\(n_{t_{i,d_j}}\)指的是字詞種類\(t_{i,d_j}\)在文章\(d_j\)出現的次數，像\(t_{1,d_j}\)在文章中出現了3次，那\(n_{t_{i,d_j}}\)就等於3，這個式子的概念其實就是計算這個字詞種類佔了這篇文章多少比重，假設文章\(d_j\)總共有100個字(亦即\(\sum_k n_{t_{k,d_j}}=100\))，其中\(t_{1,d_j}\)出現了3次，那\(t_{1,d_j}\)在這篇文章的重要程度就是\(3/100\)。&lt;/p&gt;
+
+&lt;p&gt;由上面的式子算出了每個字詞種類\(t_{i,d_j}\)對文章\(d_j\)的重要程度以後，我們可以接著算出各個文章\(d_1, d_2, ..., d_l\)中各個字詞種類對該文章的重要程度，得到一堆的term frequency。&lt;/p&gt;
+
+&lt;h3 id=&quot;inverse-document-frequency-idf&quot;&gt;Inverse Document Frequency (IDF)&lt;/h3&gt;
+
+&lt;p&gt;如果只考慮字詞出現的次數的話，有可能會被比較一般常用的字詞，像是助詞”的”、”了”所影響，可以想像我在搜尋欄打上”國王的新衣”，因為”的”在每個文章出現的次數都很多，所以只單看term frequency的話，找出來的文章應該都不會是我所想要的。&lt;/p&gt;
+
+&lt;p&gt;為此需要再多考慮一個inverse document frequency，也就是某個字詞在文章間的出現頻率，假如”國王”在全部1000個文章裡面只出現在10篇文章裡，那這10篇文章想必是比其他文章還要來得接近我想要找的東西，inverse document frequency定義如下&lt;/p&gt;
+
+\[idf_{t_i}=\frac{\vert D\vert}{\vert \{ j:t_i\in d_j \}\vert}\]
+
+&lt;p&gt;上面式子的意思是，某個字詞\(t_i\)在文章間的獨特程度被定義成文章總數(\(\vert D\vert\))，除上字詞\(t_i\)出現的文章數(\(\vert {j:t_i\in d_j}\vert\))，以上面”國王”的例子來看，1000個文章裡面只出現在10個文章裡，其\(idf=\frac{1000}{10}\)。&lt;/p&gt;
+
+&lt;h3 id=&quot;使用的方式&quot;&gt;使用的方式&lt;/h3&gt;
+
+&lt;p&gt;只要給定了一堆的文章，使用在上面定義的公式，就可以算出每個字詞對每篇文章的term frequency和每個字詞的inverse document frequency。&lt;/p&gt;
+
+&lt;p&gt;當我今天輸入一些關鍵字在搜尋欄裡面時，找出相關文件的方式就是用關鍵字的inverse document frequency去乘上文章中該字詞的term frequency並加總起來，得到關鍵字和文件的相似程度。&lt;/p&gt;
+
+&lt;p&gt;假設我今天在搜尋欄當中輸入了”\(t_1\) \(t_2\)“，與文章\(d_j\)相似程度的算法為&lt;/p&gt;
+
+\[tf\text{-}idf_{d_j}=tf_{t_1,d_j}\times idf_{t_1} + tf_{t_2,d_j}\times idf_{t_2}\]
+
+&lt;p&gt;有了相似程度的分數就能做排序，得到與搜尋關鍵字相關的文章了。&lt;/p&gt;
+
+&lt;h3 id=&quot;其他tf-idf的算法&quot;&gt;其他TF-IDF的算法&lt;/h3&gt;
+
+&lt;p&gt;上面所介紹的tf-idf可以說是最基礎的算法，而有很多人嘗試用不一樣的方式來計算tf和idf，有興趣的話可以參考&lt;a href=&quot;https://en.wikipedia.org/wiki/Okapi_BM25&quot;&gt;Okapi BM25&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;應用在分類上&quot;&gt;應用在分類上&lt;/h2&gt;
+
+&lt;p&gt;前面提到了如何使用tf-idf來做一個簡易的搜尋，這邊提一下另外一個應用的方式，就是拿來做一個簡單的文字分類器。假如我們今天想要對使用者輸入進來的文字做sentiment analysis，我們手上所收集到的訓練資料如下&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;啊不就好棒棒 負面
+我就爛 負面
+您真厲害 正面
+醒醒吧你沒有妹妹 負面
+感謝乾爹 正面
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;我們想要知道使用者輸入的資料究竟是正面還是負面，做法上可以將正面和負面的label的文字全部串起來當作是一個文章&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;您真厲害感謝乾爹 （文章_正面）
+啊不就好棒棒我就爛醒醒吧你沒有妹妹 （文章_負面）
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然後各自去算文章字詞的tf和idf，接著把使用者輸入的文字當作是搜尋關鍵字，得到它對各個文章的相似度排序，便能知道輸入的文字是比較偏向正面還是比較偏向負面了，上述的做法也適用label的種類超過兩個的情況。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html">這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</summary></entry><entry><title type="html">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/" rel="alternate" type="text/html" title="BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" /><published>2020-03-29T00:00:00+00:00</published><updated>2020-03-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">&lt;p&gt;這篇介紹一下常常聽到的&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;BERT&lt;/a&gt;是怎麼樣運作的。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
+
+&lt;p&gt;在很多NLP的任務上常常可以聽到某個團隊用了BERT以後達到了state-of-the-art，而聽說現在在做NLP的時候都會使用BERT產生出來的embedding，再拿去給後面想要解決的NLP任務使用，得到的效果通常都還不錯，BERT成為了做各種NLP任務的起手式。&lt;/p&gt;
+
+&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
+
+&lt;p&gt;BERT的架構是前一篇&lt;a href=&quot;https://wjohn1483.github.io/2020/03/21/attention-is-all-you-need/&quot;&gt;Attention Is All You Need&lt;/a&gt;當中所提到的Transformer的encoder，只是訓練的方式和參數的設定比較不一樣，在BERT這篇paper裡面使用了兩種參數&lt;/p&gt;
+
+\[\mathrm{BERT}_{BASE}:L=12,H=768,A=12, total\ parameters=110\mathrm{M}\\\mathrm{BERT}_{LARGE}:L=24,H=1024,A=16, total\ parameters=340\mathrm{M}\]
+
+&lt;p&gt;其中\(L\)代表層數、\(H\)代表hidden size、\(A\)代表self-attention的head數。&lt;/p&gt;
+
+&lt;h3 id=&quot;訓練方式&quot;&gt;訓練方式&lt;/h3&gt;
+
+&lt;h4 id=&quot;input-representation&quot;&gt;Input Representation&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;input-representation.png&quot; alt=&quot;Input Representation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由於BERT後面所接的NLP任務可能會需要sentence embedding，或同時考慮多個sentence，所以BERT在這個地方有設計兩個特別的token，分別是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[SEP]&lt;/code&gt;，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[SEP]&lt;/code&gt;是用來分開兩個句子的，而&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;是用來做classification的embedding，因為BERT是用self-attention layer為基礎，所以即便放在第一個，其輸出的embedding仍然包含整個句子的資訊。&lt;/p&gt;
+
+&lt;p&gt;而上圖中的Segment Embeddings是為了能夠更分開兩個句子之間的差異，可以想像成\(\mathrm{E_A}\)是一個純量等於\(0\)，\(\mathrm{E_B}\)也是一個純量等於\(1\)，更詳細的解說可以參考&lt;a href=&quot;https://www.cnblogs.com/d0main/p/10447853.html&quot;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;masked-lm&quot;&gt;Masked LM&lt;/h4&gt;
+
+&lt;p&gt;BERT在做pre-training的時候，會同時訓練兩種任務，分別是masked LM以及next sentence prediction，而masked LM做的事情有點像是克漏字，在輸入一段文字進來的時候，在每個token會有15%的機率會被替換成&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[MASK]&lt;/code&gt;這個token，而最終希望透過一個classifier，輸入&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[MASK]&lt;/code&gt;經過BERT得到的embedding，輸出原本被替換掉的token。&lt;/p&gt;
+
+&lt;h4 id=&quot;next-sentence-prediction-nsp&quot;&gt;Next Sentence Prediction (NSP)&lt;/h4&gt;
+
+&lt;p&gt;Next sentence prediction做的事情就是去判斷輸入進來的這兩個句子，是不是在順序上是連續的，像是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;人之初&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;性本善&lt;/code&gt;就是連續的句子，但&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;人之初&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;你好嗎&lt;/code&gt;就不是連續的句子，而訓練的方式是會拿&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;經過BERT得出來的embedding，來當作classifier的輸入，希望這個classifier輸出\(\mathrm{IsNext}\)或是\(\mathrm{NotNext}\)。&lt;/p&gt;
+
+&lt;p&gt;底下是整體的架構圖，其實在fine-tuning的時候，會根據不一樣的任務而拿不同位置輸出的結果，細節可以參考&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;原本的paper&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;overall-procedure.png&quot; alt=&quot;Overall procedure&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;test-results.png&quot; alt=&quot;Test Results&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上圖為BERT部分的實驗結果，可以看到它技壓群雄。&lt;/p&gt;
+
+&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
+
+&lt;p&gt;BERT是一個基於Transformer架構的模型，需要大量的資料來做訓練，好在作者們有提供已經訓練好的模型參數，可以直接下載下來做使用，期望使用BERT以後，能夠讓想要解決的NLP任務結果一飛沖天。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/d0main/p/10447853.html&quot;&gt;【译】为什么BERT有3个嵌入层，它们都是如何实现的&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇介紹一下常常聽到的BERT是怎麼樣運作的。</summary></entry></feed>

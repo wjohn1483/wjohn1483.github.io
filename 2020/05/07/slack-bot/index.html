@@ -385,7 +385,7 @@
 <span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'POST'</span><span class="p">])</span>
 <span class="k">def</span> <span class="nf">post_handling</span><span class="p">():</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">get_json</span><span class="p">()</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">f"Incoming payload</span><span class="se">\n</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"Incoming payload</span><span class="se">\n</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 
     <span class="c1"># Slack need to check application is valid
 </span>    <span class="k">if</span> <span class="s">"challenge"</span> <span class="ow">in</span> <span class="n">data</span><span class="p">.</span><span class="n">keys</span><span class="p">():</span>
