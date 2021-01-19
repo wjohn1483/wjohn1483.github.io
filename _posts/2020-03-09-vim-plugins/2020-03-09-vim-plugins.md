@@ -15,12 +15,12 @@ mathjax_autoNumber: true
 
 目前我所使用的設定檔，原先是來自於[timss/vimconf](https://github.com/timss/vimconf)，看star數也蠻多人推薦[amix/vimrc](https://github.com/amix/vimrc)，你也可以去網路上找你心目中所屬的設定檔。
 
-## Vundle
+## vim-plug
 
-[Vundle](https://github.com/VundleVim/Vundle.vim)是一個vim套件的管理工具，使你可以直接打上vim plugin repo的名字就能安裝至你的vim上，像是
+[vim-plug](https://github.com/junegunn/vim-plug)是一個vim套件的管理工具，使你可以直接打上vim plugin repo的名字就能安裝至你的vim上，像是
 
 ```bash
-Plug 'gmarik/Vundle.vim'
+Plug 'ervandew/supertab'
 ```
 
 在宣告好想要安裝的套件以後，打開vim，再打上`:PlugInstall`就會將宣告的套件安裝在**[user name]/.vim/bundle**裡面。如果想要移除某個套件，只需要在設定檔將套件的宣告移除，並在vim裡面打上`:PlugClean`，相當的方便。
@@ -192,9 +192,13 @@ endif
 
 其功能跟上面的**junegunn/vim-easy-align**蠻相近的。
 
-### [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
+### [mg979/vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 
-讓vim擁有像Sublime那樣的多個游標的功能。
+讓vim擁有像Sublime那樣的多個游標的功能，在plugin的GitHub說明裡，安裝時有多加branch。
+
+```
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+```
 
 ### [roxma/vim-paste-easy](https://github.com/roxma/vim-paste-easy)
 
