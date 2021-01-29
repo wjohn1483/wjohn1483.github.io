@@ -1,4 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-01-19T05:55:41+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">利用Circle CI來更新GitHub Pages</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/" rel="alternate" type="text/html" title="利用Circle CI來更新GitHub Pages" /><published>2020-11-21T00:00:00+00:00</published><updated>2020-11-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/">&lt;p&gt;有鑒於&lt;a href=&quot;https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing&quot;&gt;Travis CI要開始收費了&lt;/a&gt;，所以我將部落格的CI轉移到&lt;a href=&quot;https://circleci.com&quot;&gt;Circle CI&lt;/a&gt;上，在這篇文章記錄一下轉移的過程。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-01-29T14:39:49+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">網路安全的基本知識</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction/" rel="alternate" type="text/html" title="網路安全的基本知識" /><published>2021-01-26T00:00:00+00:00</published><updated>2021-01-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction/">&lt;p&gt;有鑑於有時會接觸到一些網路安全的東西，這邊簡單紀錄一下碰到的一些東西。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;非對稱式密碼學&quot;&gt;非對稱式密碼學&lt;/h2&gt;
+
+&lt;p&gt;在網路安全當中的很多基礎是建立在&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86&quot;&gt;非對稱式密碼學（Asymmetric cryptography）&lt;/a&gt;上，而非對稱式密碼學又是奠基在&lt;a href=&quot;https://zh.wikipedia.org/wiki/RSA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95&quot;&gt;RSA&lt;/a&gt;等非對稱加密演算法上。非對稱加密演算法可以產生出成對的公鑰和私鑰，用公鑰加密的文件只能用私鑰來解開，而用私鑰加密的文件也只能用公鑰來解開，在這樣的基礎上，我們就可以與其他人安全的傳遞資料，不怕被其他人偷看。&lt;/p&gt;
+
+&lt;h3 id=&quot;安全傳遞訊息&quot;&gt;安全傳遞訊息&lt;/h3&gt;
+
+&lt;p&gt;這邊簡單說明一下，如何使用非對稱加密演算法來安全的傳遞訊息。&lt;/p&gt;
+
+&lt;p&gt;假如說今天愛麗絲想要傳遞訊息給鮑伯，但怕透過網路的話她所傳遞的訊息會被別人看到，這時，鮑伯可以用非對稱加密演算法先產生一對公鑰和私鑰，透過網路將公鑰傳遞給愛麗絲，而愛麗絲將她想要傳遞的訊息透過鮑伯的公鑰加密以後，透過網路再傳回給鮑伯，鮑伯再用私鑰來將訊息讀取出來。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Public_key_encryption_alice_to_bob.svg/langzh-500px-Public_key_encryption_alice_to_bob.svg.png&quot; alt=&quot;透過非對稱加密演算法安全傳遞訊息&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果有人一直在竊聽兩個人的對話，他雖然可以拿到鮑伯的公鑰以及愛麗絲透過公鑰加密過後的訊息，但因為沒有鮑伯的私鑰的關係，所以也看不到愛麗絲傳給鮑伯的訊息。&lt;/p&gt;
+
+&lt;h3 id=&quot;數位簽章&quot;&gt;數位簽章&lt;/h3&gt;
+
+&lt;p&gt;在上面的例子當中，雖說第三人沒有辦法看到愛麗絲傳遞給鮑伯的訊息，但他擁有鮑伯的公鑰，可以巧妙的偽裝成愛麗絲傳遞訊息給鮑伯。為了防止有人偽裝成愛麗絲，愛麗絲可以利用她自己的私鑰搭配雜湊函數來對訊息做簽名，而鮑伯拿到訊息以後，除了用自己的私鑰解開以外，還需要用愛麗絲的公鑰對簽名做驗證，如此便能防止有人假冒了。&lt;/p&gt;
+
+&lt;h2 id=&quot;常見的網路安全名詞&quot;&gt;常見的網路安全名詞&lt;/h2&gt;
+
+&lt;h3 id=&quot;ssltls&quot;&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%82%B3%E8%BC%B8%E5%B1%A4%E5%AE%89%E5%85%A8%E6%80%A7%E5%8D%94%E5%AE%9A&quot;&gt;SSL/TLS&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;SSL的全稱是Secure Sockets Layer，而TLS的全稱是Transport Layer Security，SSL是TLS的前身，而這兩個都是transport layer的安全協定。&lt;/p&gt;
+
+&lt;h3 id=&quot;oauth&quot;&gt;OAuth&lt;/h3&gt;
+
+&lt;p&gt;OAuth是一個開放的標準，來讓第三方的app有權利可以存取使用者在其他網站上面的資源，而不用將使用者的帳號密碼給第三方app，OAuth其實是個生活中常用到的標準，舉凡在Slack裡面連結Google Drive的帳戶，或是在電子信箱裡面連結其他電子信箱等，底層使用的可能都是OAuth的標準。&lt;/p&gt;
+
+&lt;p&gt;OAuth具體的操作方式可以參考&lt;a href=&quot;https://petertc.medium.com/oauth-2-0-196a5550b668&quot;&gt;這篇文章&lt;/a&gt;，簡單來說，假設我今天想要透過服務A存取我放在服務B的資料，我得要先去服務B那邊申請說我想要讓第三方服務存取資料，並從服務B拿到Authorization Code，接著我把這Authorization Code給服務A，服務A會拿著這個Authorization Code去服務B那邊換取Access Token，之後服務A就可以使用這Access Token存取我在服務B上面的資料了。&lt;/p&gt;
+
+&lt;h3 id=&quot;yubikey&quot;&gt;Yubikey&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/YubiKey&quot;&gt;Yubikey&lt;/a&gt;是由Yubico這家公司出產的身分認證裝置，常用在二階段認證上，在使用的時候是插在電腦上，並在需要時觸碰它。&lt;/p&gt;
+
+&lt;h3 id=&quot;x509&quot;&gt;X.509&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/X.509&quot;&gt;X.509&lt;/a&gt;是一個格式標準，常用在包括SSL/TLS在內的網路協定裡。它的概念是說，當我想要跟某台素未蒙面的主機聯繫的時候，我不清楚那台主機能不能夠被信任、是不是別人假裝的，這時就會需要一個公正的CA（Certificate Authority）來幫忙，如果對方的主機可以提供我所信任的CA的憑證（Certificate），那麼我就相信對方是可以被信任的而傳送資料過去。&lt;/p&gt;
+
+&lt;p&gt;而CA的架構是金字塔型，主要頒發憑證的是中間的認證中心，他們上面還有更高的認證中心，詳細的資訊可以參考&lt;a href=&quot;https://www.imacat.idv.tw/tech/sslcerts.html.zh-tw#sslx509&quot;&gt;這篇文章&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;athenz&quot;&gt;Athenz&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/yahoo/athenz&quot;&gt;Athenz&lt;/a&gt;是由Yahoo開源、基於X.509權限管理系統，使用集中式的授權，並以role為基礎，透過指定某個role對某個資源允許或拒絕某些動作來達成授權行為，任何服務想要知道我有沒有權限存取資料的時候，都要去跟權限管理系統詢問，所以可能會有單點故障以及流量的問題，具體的授權流程可以參考&lt;a href=&quot;https://github.com/yahoo/athenz/blob/master/docs/auth_flow.md&quot;&gt;官方的文件&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;mtls&quot;&gt;mTLS&lt;/h3&gt;
+
+&lt;p&gt;mTLS的全稱應該是Mutual TLS，指的是雙方都去驗證對方的身分。在一般的情境下，可能只有使用者需要去驗證服務是不是可以被信任的，但有些時候如果要交換一些比較機密的資料時，就會需要兩邊都做驗證，也就是雙方要各自準備好各自的key、certificate和CA的certificate。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Server需要準備：server.key、server.crt、ca.crt&lt;/li&gt;
+  &lt;li&gt;Client需要準備：client.key、client.crt、ca.crt&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;okta&quot;&gt;Okta&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Okta_(identity_management)&quot;&gt;Okta&lt;/a&gt;是一家公司，提供其他企業SSO（Single Sign On）的服務，讓企業的員工可以只登入一次就可以存取各式各樣的服務，Okta還提供其他多重要素驗證等等的服務。&lt;/p&gt;
+
+&lt;h3 id=&quot;ckms&quot;&gt;CKMS&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.cryptomathic.com/products/key-management/crypto-key-management-system&quot;&gt;CKMS&lt;/a&gt;的全稱好像是Crypto Key Management System，是一個幫忙更新、部署key的系統。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@RiverChan/%E5%9F%BA%E7%A4%8E%E5%AF%86%E7%A2%BC%E5%AD%B8-%E5%B0%8D%E7%A8%B1%E5%BC%8F%E8%88%87%E9%9D%9E%E5%B0%8D%E7%A8%B1%E5%BC%8F%E5%8A%A0%E5%AF%86%E6%8A%80%E8%A1%93-de25fd5fa537&quot;&gt;基礎密碼學(對稱式與非對稱式加密技術)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://petertc.medium.com/oauth-2-0-196a5550b668&quot;&gt;妳知道第三方應用是怎麼存取妳的雲端資料嗎？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jimwayne.blogspot.com/2019/04/athenz.html&quot;&gt;黑毛到白毛的攻城獅之路: Athenz 的授權流程&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.imacat.idv.tw/tech/sslcerts.html.zh-tw#sslx509&quot;&gt;如何製作SSL X.509憑證？&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.google.com/url?sa=t&amp;amp;rct=j&amp;amp;q=&amp;amp;esrc=s&amp;amp;source=web&amp;amp;cd=&amp;amp;ved=2ahUKEwjKlqe_qcHuAhWRyYsBHaRAB8AQFjADegQICBAC&amp;amp;url=https%3A%2F%2Fblog.csdn.net%2Fustccw%2Farticle%2Fdetails%2F76691248&amp;amp;usg=AOvVaw3SJiQY0B573tpV5gZmAb-x&quot;&gt;SSL/TLS 双向认证(一) – SSL/TLS 工作原理_ustccw-CSDN博客&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Network-Security" /><summary type="html">有鑑於有時會接觸到一些網路安全的東西，這邊簡單紀錄一下碰到的一些東西。</summary></entry><entry><title type="html">利用Circle CI來更新GitHub Pages</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/" rel="alternate" type="text/html" title="利用Circle CI來更新GitHub Pages" /><published>2020-11-21T00:00:00+00:00</published><updated>2020-11-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/21/circle-ci/">&lt;p&gt;有鑒於&lt;a href=&quot;https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing&quot;&gt;Travis CI要開始收費了&lt;/a&gt;，所以我將部落格的CI轉移到&lt;a href=&quot;https://circleci.com&quot;&gt;Circle CI&lt;/a&gt;上，在這篇文章記錄一下轉移的過程。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1094,56 +1167,4 @@ ImportError: attempted relative import with no known parent package
 啊不就好棒棒我就爛醒醒吧你沒有妹妹 （文章_負面）
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;然後各自去算文章字詞的tf和idf，接著把使用者輸入的文字當作是搜尋關鍵字，得到它對各個文章的相似度排序，便能知道輸入的文字是比較偏向正面還是比較偏向負面了，上述的做法也適用label的種類超過兩個的情況。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html">這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</summary></entry><entry><title type="html">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/" rel="alternate" type="text/html" title="BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" /><published>2020-03-29T00:00:00+00:00</published><updated>2020-03-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">&lt;p&gt;這篇介紹一下常常聽到的&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;BERT&lt;/a&gt;是怎麼樣運作的。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
-
-&lt;p&gt;在很多NLP的任務上常常可以聽到某個團隊用了BERT以後達到了state-of-the-art，而聽說現在在做NLP的時候都會使用BERT產生出來的embedding，再拿去給後面想要解決的NLP任務使用，得到的效果通常都還不錯，BERT成為了做各種NLP任務的起手式。&lt;/p&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-
-&lt;p&gt;BERT的架構是前一篇&lt;a href=&quot;https://wjohn1483.github.io/2020/03/21/attention-is-all-you-need/&quot;&gt;Attention Is All You Need&lt;/a&gt;當中所提到的Transformer的encoder，只是訓練的方式和參數的設定比較不一樣，在BERT這篇paper裡面使用了兩種參數&lt;/p&gt;
-
-\[\mathrm{BERT}_{BASE}:L=12,H=768,A=12, total\ parameters=110\mathrm{M}\\\mathrm{BERT}_{LARGE}:L=24,H=1024,A=16, total\ parameters=340\mathrm{M}\]
-
-&lt;p&gt;其中\(L\)代表層數、\(H\)代表hidden size、\(A\)代表self-attention的head數。&lt;/p&gt;
-
-&lt;h3 id=&quot;訓練方式&quot;&gt;訓練方式&lt;/h3&gt;
-
-&lt;h4 id=&quot;input-representation&quot;&gt;Input Representation&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;input-representation.png&quot; alt=&quot;Input Representation&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;由於BERT後面所接的NLP任務可能會需要sentence embedding，或同時考慮多個sentence，所以BERT在這個地方有設計兩個特別的token，分別是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[SEP]&lt;/code&gt;，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[SEP]&lt;/code&gt;是用來分開兩個句子的，而&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;是用來做classification的embedding，因為BERT是用self-attention layer為基礎，所以即便放在第一個，其輸出的embedding仍然包含整個句子的資訊。&lt;/p&gt;
-
-&lt;p&gt;而上圖中的Segment Embeddings是為了能夠更分開兩個句子之間的差異，可以想像成\(\mathrm{E_A}\)是一個純量等於\(0\)，\(\mathrm{E_B}\)也是一個純量等於\(1\)，更詳細的解說可以參考&lt;a href=&quot;https://www.cnblogs.com/d0main/p/10447853.html&quot;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h4 id=&quot;masked-lm&quot;&gt;Masked LM&lt;/h4&gt;
-
-&lt;p&gt;BERT在做pre-training的時候，會同時訓練兩種任務，分別是masked LM以及next sentence prediction，而masked LM做的事情有點像是克漏字，在輸入一段文字進來的時候，在每個token會有15%的機率會被替換成&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[MASK]&lt;/code&gt;這個token，而最終希望透過一個classifier，輸入&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[MASK]&lt;/code&gt;經過BERT得到的embedding，輸出原本被替換掉的token。&lt;/p&gt;
-
-&lt;h4 id=&quot;next-sentence-prediction-nsp&quot;&gt;Next Sentence Prediction (NSP)&lt;/h4&gt;
-
-&lt;p&gt;Next sentence prediction做的事情就是去判斷輸入進來的這兩個句子，是不是在順序上是連續的，像是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;人之初&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;性本善&lt;/code&gt;就是連續的句子，但&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;人之初&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;你好嗎&lt;/code&gt;就不是連續的句子，而訓練的方式是會拿&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[CLS]&lt;/code&gt;經過BERT得出來的embedding，來當作classifier的輸入，希望這個classifier輸出\(\mathrm{IsNext}\)或是\(\mathrm{NotNext}\)。&lt;/p&gt;
-
-&lt;p&gt;底下是整體的架構圖，其實在fine-tuning的時候，會根據不一樣的任務而拿不同位置輸出的結果，細節可以參考&lt;a href=&quot;https://arxiv.org/pdf/1810.04805.pdf&quot;&gt;原本的paper&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;overall-procedure.png&quot; alt=&quot;Overall procedure&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;test-results.png&quot; alt=&quot;Test Results&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;上圖為BERT部分的實驗結果，可以看到它技壓群雄。&lt;/p&gt;
-
-&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
-
-&lt;p&gt;BERT是一個基於Transformer架構的模型，需要大量的資料來做訓練，好在作者們有提供已經訓練好的模型參數，可以直接下載下來做使用，期望使用BERT以後，能夠讓想要解決的NLP任務結果一飛沖天。&lt;/p&gt;
-
-&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.cnblogs.com/d0main/p/10447853.html&quot;&gt;【译】为什么BERT有3个嵌入层，它们都是如何实现的&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Natural-Language-Processing" /><summary type="html">這篇介紹一下常常聽到的BERT是怎麼樣運作的。</summary></entry></feed>
+&lt;p&gt;然後各自去算文章字詞的tf和idf，接著把使用者輸入的文字當作是搜尋關鍵字，得到它對各個文章的相似度排序，便能知道輸入的文字是比較偏向正面還是比較偏向負面了，上述的做法也適用label的種類超過兩個的情況。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html">這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</summary></entry></feed>
