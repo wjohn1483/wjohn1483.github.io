@@ -206,6 +206,36 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 更多資訊可以參考上面附的GitHub連結或是[這裡](https://vimawesome.com/plugin/vim-paste-easy)。
 
+### [lervag/vimtex](https://github.com/lervag/vimtex)
+
+在vim裡面實時編譯latex檔案，建議搭配PDF閱讀器[Zathura](https://pwmt.org/projects/zathura/)一起使用，在mac上面安裝Zathura可以透過brew。
+
+```bash
+brew tap zegervdv/zathura
+brew install xdotool
+brew install girara --HEAD
+brew install zathura --HEAD
+brew install zathura-pdf-poppler
+mkdir -p $(brew --prefix zathura)/lib/zathura
+ln -s $(brew --prefix zathura-pdf-poppler)/libpdf-poppler.dylib $(brew --prefix zathura)/lib/zathura/libpdf-poppler.dylib
+mkdir -p ~/.config/zathura
+echo "set selection-clipboard clipboard" >> ~/.config/zathura/zathurarc
+```
+
+安裝好Zathura以後，記得要在.vimrc裡面設定用Zathura打開PDF檔。
+
+```
+" VimTex
+if exists('g:plugs["vimtex"]')
+    let g:vimtex_view_method = 'zathura'
+    let g:vimtex_view_general_viewer = 'zathura'
+    let g:vimtex_quickfix_open_on_warning = 0
+    let g:vimtex_view_general_options = '--synctex-forward @line:@col:@tex'
+endif
+```
+
+安裝完成了以後，用vim打開.tex的檔案，按快捷鍵`\ll`就會啟動實時編譯了，按`\lt`會顯示table of content，讓你可以快速地在文件中移動。
+
 
 ## Tips
 
