@@ -475,6 +475,34 @@ endif
 
 <p>更多資訊可以參考上面附的GitHub連結或是<a href="https://vimawesome.com/plugin/vim-paste-easy">這裡</a>。</p>
 
+<h3 id="lervagvimtex"><a href="https://github.com/lervag/vimtex">lervag/vimtex</a></h3>
+
+<p>在vim裡面實時編譯latex檔案，建議搭配PDF閱讀器<a href="https://pwmt.org/projects/zathura/">Zathura</a>一起使用，在mac上面安裝Zathura可以透過brew。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap zegervdv/zathura
+brew <span class="nb">install </span>xdotool
+brew <span class="nb">install </span>girara <span class="nt">--HEAD</span>
+brew <span class="nb">install </span>zathura <span class="nt">--HEAD</span>
+brew <span class="nb">install </span>zathura-pdf-poppler
+<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="si">$(</span>brew <span class="nt">--prefix</span> zathura<span class="si">)</span>/lib/zathura
+<span class="nb">ln</span> <span class="nt">-s</span> <span class="si">$(</span>brew <span class="nt">--prefix</span> zathura-pdf-poppler<span class="si">)</span>/libpdf-poppler.dylib <span class="si">$(</span>brew <span class="nt">--prefix</span> zathura<span class="si">)</span>/lib/zathura/libpdf-poppler.dylib
+<span class="nb">mkdir</span> <span class="nt">-p</span> ~/.config/zathura
+<span class="nb">echo</span> <span class="s2">"set selection-clipboard clipboard"</span> <span class="o">&gt;&gt;</span> ~/.config/zathura/zathurarc
+</code></pre></div></div>
+
+<p>安裝好Zathura以後，記得要在.vimrc裡面設定用Zathura打開PDF檔。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>" VimTex
+if exists('g:plugs["vimtex"]')
+    let g:vimtex_view_method = 'zathura'
+    let g:vimtex_view_general_viewer = 'zathura'
+    let g:vimtex_quickfix_open_on_warning = 0
+    let g:vimtex_view_general_options = '--synctex-forward @line:@col:@tex'
+endif
+</code></pre></div></div>
+
+<p>安裝完成了以後，用vim打開.tex的檔案，按快捷鍵<code class="language-plaintext highlighter-rouge">\ll</code>就會啟動實時編譯了，按<code class="language-plaintext highlighter-rouge">\lt</code>會顯示table of content，讓你可以快速地在文件中移動。</p>
+
 <h2 id="tips">Tips</h2>
 
 <p>紀錄一下常用到的快捷鍵。</p>
