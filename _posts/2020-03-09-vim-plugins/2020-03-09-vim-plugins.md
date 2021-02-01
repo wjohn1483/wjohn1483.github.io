@@ -236,6 +236,8 @@ endif
 
 安裝完成了以後，用vim打開.tex的檔案，按快捷鍵`\ll`就會啟動實時編譯了，按`\lt`會顯示table of content，讓你可以快速地在文件中移動。
 
+[這篇文章](https://castel.dev/post/lecture-notes-1/)裡頭有講述作者如何使用各種技巧來讓用Latex做筆記變得相當容易，有興趣可以看看。
+
 
 ## Tips
 
