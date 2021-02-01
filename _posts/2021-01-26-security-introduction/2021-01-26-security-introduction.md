@@ -79,7 +79,7 @@ mTLS的全稱應該是Mutual TLS，指的是雙方都去驗證對方的身分。
 2. [妳知道第三方應用是怎麼存取妳的雲端資料嗎？](https://petertc.medium.com/oauth-2-0-196a5550b668)
 3. [黑毛到白毛的攻城獅之路: Athenz 的授權流程](https://jimwayne.blogspot.com/2019/04/athenz.html)
 4. [如何製作SSL X.509憑證？](https://www.imacat.idv.tw/tech/sslcerts.html.zh-tw#sslx509)
-5. [SSL/TLS 双向认证(一) -- SSL/TLS 工作原理_ustccw-CSDN博客](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjKlqe_qcHuAhWRyYsBHaRAB8AQFjADegQICBAC&url=https%3A%2F%2Fblog.csdn.net%2Fustccw%2Farticle%2Fdetails%2F76691248&usg=AOvVaw3SJiQY0B573tpV5gZmAb-x)
+5. [SSL/TLS 双向认证(一) -- SSL/TLS 工作原理_ustccw-CSDN博客](https://blog.csdn.net/ustccw/article/details/76691248)
 
 
 
