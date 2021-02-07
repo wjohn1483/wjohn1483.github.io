@@ -511,9 +511,35 @@ endif
 
 <h3 id="查看現在所開啟檔案的相對絕對路徑">查看現在所開啟檔案的相對/絕對路徑</h3>
 
-<p>想要查看檔案的相對路徑時，可以按下<code class="language-plaintext highlighter-rouge">&lt;Ctrl-G&gt;</code>，但過不久就會消失。</p>
+<p>想要查看檔案的相對路徑時，可以按下<code class="language-plaintext highlighter-rouge">&lt;Ctrl-G&gt;</code>。</p>
 
-<p>若是想要看絕對路徑的話，按下<code class="language-plaintext highlighter-rouge">1 &lt;Ctrl-G&gt;</code>，vim會等你按下enter以後再把路徑隱藏。</p>
+<p>若是想要看絕對路徑的話，可以按下<code class="language-plaintext highlighter-rouge">1 &lt;Ctrl-G&gt;</code>。</p>
+
+<h3 id="快速執行現在開啟的檔案">快速執行現在開啟的檔案</h3>
+
+<p>在Intellij裡面有快捷鍵可以執行現在打開的檔案，而vim也可以透過自行設定快捷鍵來對現在開啟的檔案做一些操作，我們可以在<code class="language-plaintext highlighter-rouge">.vimrc</code>裡面設定nnoremap搭配檔名當作變數。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nnoremap &lt;Leader&gt;c :!cat %<span class="se">\|</span>pbcopy&lt;CR&gt;
+</code></pre></div></div>
+
+<p>在上面的例子當中，我將<code class="language-plaintext highlighter-rouge">&lt;Leader&gt;c</code>對應到<code class="language-plaintext highlighter-rouge">cat %|pbcopy</code>的指令，是我可以用快捷鍵將現在的檔案複製進剪貼簿裡面，其中<code class="language-plaintext highlighter-rouge">%</code>指的是現在開啟的檔案路徑。</p>
+
+<h3 id="將對文件的操作錄製起來並回放">將對文件的操作錄製起來並回放</h3>
+
+<p>在vim裡面有個功能是可以錄製使用者對文件的操作，並在錄製好以後進行多次回放，像是如果對某一行程式碼進行了複雜的修改，而這些修改需要套用至多行的話，可以嘗試看看這個做法。</p>
+
+<p>在Normal mode的狀態下打<code class="language-plaintext highlighter-rouge">qa</code>，vim應該會出現類似下面的訊息</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>recording @a
+</code></pre></div></div>
+
+<p>指的是現在正在錄製，結果會放在<code class="language-plaintext highlighter-rouge">a</code>這個macro裡面。</p>
+
+<p>如果要停止錄製的話，回到Normal mode按<code class="language-plaintext highlighter-rouge">q</code>就行，可以打<code class="language-plaintext highlighter-rouge">:echo @a</code>來看看剛剛錄製的東西長怎樣，要回放的話打<code class="language-plaintext highlighter-rouge">@a</code>就會開始執行剛剛錄製的動作，在前面加上數字可以控制回放幾次，<code class="language-plaintext highlighter-rouge">99@a</code>會回放99次。</p>
+
+<h3 id="快速轉大小寫">快速轉大小寫</h3>
+
+<p>只要將想要轉大小寫的文字在Visual mode框起來，按下<code class="language-plaintext highlighter-rouge">~</code>就可以了。</p>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-03-09T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
