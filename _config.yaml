@@ -133,6 +133,7 @@ comments:
     admin: # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
       - "wjohn1483"
       # - your GitHub Id
+    proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token
 
   # Valine
   # please refer to https://valine.js.org/en/ for more info.
