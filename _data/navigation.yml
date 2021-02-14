@@ -35,3 +35,9 @@ header:
       en      : &EN       Audio to Scene
       # @end locale config
     url: /audio_to_scene
+
+  - titles:
+      # @start locale config
+      en      : &EN       Give Feedback
+      # @end locale config
+    url: /give_feedback

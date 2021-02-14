@@ -5,9 +5,9 @@ set -e
 
 TARGET_STRING=$1
 NEW_STRING=$2
+TARGET_FILE=$3
 
-FILE="./_config.yaml"
-TMP_FILE="_config.yaml.tmp"
+TMP_FILE="./tmp"
 
-sed s/${TARGET_STRING}/${NEW_STRING}/ ${FILE} > ${TMP_FILE}
-mv ${TMP_FILE} ${FILE}
+sed s/${TARGET_STRING}/${NEW_STRING}/ ${TARGET_FILE} > ${TMP_FILE}
+mv ${TMP_FILE} ${TARGET_FILE}

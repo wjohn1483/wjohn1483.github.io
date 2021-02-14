@@ -11,11 +11,11 @@ jobs:
       - checkout
       - ruby/bundle-install
       - run:
-          name: Replace variables in config
+          name: Replace variables
           command: |
             if [ -z ${CIRCLE_PULL_REQUEST} ]; then
-              bash ./.circleci/replace_var.sh ENV_CLIENT_ID ${CLIENT_ID}
-              bash ./.circleci/replace_var.sh ENV_CLIENT_SECRET ${CLIENT_SECRET}
+              bash ./.circleci/replace_var.sh ENV_CLIENT_ID ${CLIENT_ID} ./give_feedback/index.html
+              bash ./.circleci/replace_var.sh ENV_CLIENT_SECRET ${CLIENT_SECRET} ./give_feedback/index.html
             fi
       - run:
           name: Build website
