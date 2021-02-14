@@ -19,7 +19,7 @@ jobs:
             fi
       - run:
           name: Build website
-          command: bundle exec jekyll build
+          command: JEKYLL_ENV=production bundle exec jekyll build
       - run:
           name: Install rsync
           command: sudo apt install -y rsync
