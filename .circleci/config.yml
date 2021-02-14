@@ -11,6 +11,13 @@ jobs:
       - checkout
       - ruby/bundle-install
       - run:
+          name: Replace variables in config
+          command: |
+            if [ -z ${CIRCLE_PULL_REQUEST} ]; then
+              bash ./.circleci/replace_var.sh ENV_CLIENT_ID ${CLIENT_ID}
+              bash ./.circleci/replace_var.sh ENV_CLIENT_SECRET ${CLIENT_SECRET}
+            fi
+      - run:
           name: Build website
           command: bundle exec jekyll build
       - run:
