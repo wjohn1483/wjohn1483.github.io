@@ -114,6 +114,12 @@ bundle exec jekyll serve --trace
 
 如果成功看到網頁跑出來，就代表套用算是成功了，接下來就可以開始進行客製化，像是去**\_conf.yaml**做一些設定、調整**\_include**裡面的html模板等等，把網頁刻成你的樣子。
 
+值得一提的是，在jekyll-TeXt-theme裡面，有預設一些套件在本機預覽的時候不會顯現，如果要在本機預覽完整的網頁，需要設定`JEKYLL_ENV`為`production`。
+
+```bash
+JEKYLL_ENV=production bundle exec jekyll serve --trace
+```
+
 ## 部署到GitHub Page上
 在把網頁變成了你的樣子以後，接著就會想讓世人看看，想把網頁丟到GitHub Page上。
 因為Github會自動幫你編譯Jekyll，所以並不需要將整個**_site/**資料夾上傳，記得把不需要的東西放入**.gitignore**當中。
