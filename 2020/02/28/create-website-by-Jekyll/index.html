@@ -399,6 +399,11 @@ index.html
 
 <p>如果成功看到網頁跑出來，就代表套用算是成功了，接下來就可以開始進行客製化，像是去<strong>_conf.yaml</strong>做一些設定、調整<strong>_include</strong>裡面的html模板等等，把網頁刻成你的樣子。</p>
 
+<p>值得一提的是，在jekyll-TeXt-theme裡面，有預設一些套件在本機預覽的時候不會顯現，如果要在本機預覽完整的網頁，需要設定<code class="language-plaintext highlighter-rouge">JEKYLL_ENV</code>為<code class="language-plaintext highlighter-rouge">production</code>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll serve <span class="nt">--trace</span>
+</code></pre></div></div>
+
 <h2 id="部署到github-page上">部署到GitHub Page上</h2>
 <p>在把網頁變成了你的樣子以後，接著就會想讓世人看看，想把網頁丟到GitHub Page上。
 因為Github會自動幫你編譯Jekyll，所以並不需要將整個<strong>_site/</strong>資料夾上傳，記得把不需要的東西放入<strong>.gitignore</strong>當中。</p>
@@ -544,7 +549,7 @@ upload_files
   });
 })();
 </script>
-</div><section class="page__comments d-print-none">}</section></article><!-- start custom main bottom snippet -->
+</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
 </div>

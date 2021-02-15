@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-02-14T14:59:10+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">網路安全的基本知識</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction/" rel="alternate" type="text/html" title="網路安全的基本知識" /><published>2021-01-26T00:00:00+00:00</published><updated>2021-01-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction/">&lt;p&gt;有鑑於有時會接觸到一些網路安全的東西，這邊簡單紀錄一下碰到的一些東西。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-02-15T10:39:20+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">利用Gitalk在靜態網頁裡面新增留言區</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction/" rel="alternate" type="text/html" title="利用Gitalk在靜態網頁裡面新增留言區" /><published>2021-02-07T00:00:00+00:00</published><updated>2021-02-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction/">&lt;p&gt;先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;gitalk&quot;&gt;Gitalk&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/gitalk/gitalk&quot;&gt;Gitalk&lt;/a&gt;是一個使用GitHub issue來當作留言板的工具，讓使用者們可以簡單的在他們的網頁上面安插一些javascript就可以做到留言板的效果，還可以支援Markdown語法，可以看&lt;a href=&quot;https://gitalk.github.io/&quot;&gt;官方的demo&lt;/a&gt;來感受成品大概長什麼樣子。&lt;/p&gt;
+
+&lt;h2 id=&quot;套用在部落格上&quot;&gt;套用在部落格上&lt;/h2&gt;
+
+&lt;p&gt;在jekyll的主題，&lt;a href=&quot;https://github.com/kitian616/jekyll-TeXt-theme&quot;&gt;jekyll-TeXt-theme&lt;/a&gt;裡面，已經有內建好可以搭配Gitalk使用，只是需要一些前置步驟並修改一下設定。&lt;/p&gt;
+
+&lt;h3 id=&quot;建立github-application&quot;&gt;建立GitHub Application&lt;/h3&gt;
+
+&lt;p&gt;為了要讓Gitalk可以直接在GitHub上面幫你留言，我們需要建立一個GitHub Application，讓Gitalk以&lt;a href=&quot;https://wjohn1483.github.io/2021/01/26/security-introduction/#oauth&quot;&gt;OAuth&lt;/a&gt;的方式代替你去GitHub上的issue留言，創建一個Application可以點&lt;a href=&quot;https://github.com/settings/applications/new&quot;&gt;這邊&lt;/a&gt;。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Application name：應用程式的名字，可以隨意取&lt;/li&gt;
+  &lt;li&gt;Homepage URL：應用程式的首頁，以GitHub page的部落格而言，我是填GitHub page的網址&lt;/li&gt;
+  &lt;li&gt;Application description：非必填&lt;/li&gt;
+  &lt;li&gt;Authorization callback URL：同上面的&lt;strong&gt;Homepage URL&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在建立好GitHub Application以後，網頁上應該會出現client id和client secret，在後面的設定會使用到，值得一提的是，client secret只會顯示這麼一次，記得要好好的保存起來。&lt;/p&gt;
+
+&lt;h3 id=&quot;修改_configyml&quot;&gt;修改_config.yml&lt;/h3&gt;
+
+&lt;p&gt;在_config.yml裡面可以找到&lt;a href=&quot;https://github.com/kitian616/jekyll-TeXt-theme/blob/master/_config.yml#L118-L144&quot;&gt;有關comment設定的部分&lt;/a&gt;，需要修改的地方有兩塊，一個是需要把&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;provider&lt;/code&gt;改成gitalk，另一個是在底下&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gitalk&lt;/code&gt;的區塊要把列出來的資訊填好，而設定中的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;repository&lt;/code&gt;是將來儲存comment的repo，未來comment會儲存在該repo的issue裡面，必須要是public的，這個repo可以跟存放網頁的repo不同，一個修改過後的範例貼在底下，記得要將client id和client secret改掉。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;comments&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;provider&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gitalk&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# false (default), &quot;disqus&quot;, &quot;gitalk&quot;, &quot;valine&quot;, &quot;custom&quot;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# Disqus&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;disqus&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;shortname&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the Disqus shortname for the site&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;## Gitalk&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# please refer to https://github.com/gitalk/gitalk for more info.&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;gitalk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;clientID    &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ENV_CLIENT_ID&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# GitHub Application Client ID&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;clientSecret&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ENV_CLIENT_SECRET&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# GitHub Application Client Secret&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;repository  &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;wjohn1483.github.io&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# GitHub repo&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;owner       &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;wjohn1483&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# GitHub repo owner&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;wjohn1483&quot;&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;# - your GitHub Id&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;proxy&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# Valine&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# please refer to https://valine.js.org/en/ for more info.&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;valine&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app_id      &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# LeanCloud App id&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;app_key     &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# LeanCloud App key&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;placeholder &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Prompt information&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;visitor     &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# false (default)&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;meta        &lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# &quot;[nick, mail, link]&quot; (default) nickname, E-mail, Personal-site&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;值得一提的是，原本預設的proxy好像開始限定流量了，所以如果用預設的proxy會無法使用，範例中參考了&lt;a href=&quot;https://github.com/gitalk/gitalk/issues/429&quot;&gt;Gitalk issue&lt;/a&gt;中的解法，改掉預設的proxy。&lt;/p&gt;
+
+&lt;h3 id=&quot;在文章當中加入key&quot;&gt;在文章當中加入key&lt;/h3&gt;
+
+&lt;p&gt;為了要讓Gitalk知道那篇文章對應到那個issue，我們需要給每一篇文章獨一無二的id，並寫在文章的front matter裡面。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;article&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Document - Writing Posts&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;mathjax&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your-article-id&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;這個id在front matter裡面稱作&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;key&lt;/code&gt;，它的命名規則可以參考&lt;a href=&quot;https://tianqi.name/jekyll-TeXt-theme/docs/en/layouts#page-layout&quot;&gt;這裡&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;在設定好以後，在本機執行編譯的指令，應該就能在每篇文章底下找到留言板了。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;JEKYLL_ENV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;直接使用在靜態網頁上&quot;&gt;直接使用在靜態網頁上&lt;/h2&gt;
+
+&lt;p&gt;如果想要直接使用在單個html上面，不想跟jekyll主題綁在一起的話，可以參考&lt;a href=&quot;https://github.com/gitalk/gitalk#install&quot;&gt;Gitalk文件當中的方式&lt;/a&gt;，使用起來相當的簡單。&lt;/p&gt;
+
+&lt;p&gt;只需要在你的html裡面&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt;的地方，多引入Gitalk的javascript。&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;並在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;body&amp;gt;&lt;/code&gt;裡面新增&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;&lt;/code&gt;，並把相關的變數設定好就行，client id和client secret的取得可以參考文章上面的&lt;a href=&quot;#建立github-application&quot;&gt;建立GitHub Application&lt;/a&gt;。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;gitalk&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Gitalk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;clientID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;GitHub Application Client ID&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;clientSecret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;GitHub Application Client Secret&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;repo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;GitHub repo&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// The repository of store comments,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;owner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;GitHub repo owner&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;admin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;GitHub repo owner and collaborators, only these guys can initialize github issues&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;location&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pathname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// Ensure uniqueness and length less than 50&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;distractionFreeMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Facebook-like distraction free mode&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;gitalk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;gitalk-container&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;這邊有帶入&lt;a href=&quot;https://github.com/gitalk/gitalk/issues/429&quot;&gt;Gitalk issue&lt;/a&gt;裡面所提到的，其他人所提供的proxy，如果想用原本預設的proxy，直接將proxy的設定拿掉就行。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://xsaxy.gitee.io/blog/post/2019/12/10/%E4%B8%BB%E9%A2%98TeXt%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E4%B8%AD%E7%9A%84%E5%9D%91.html&quot;&gt;主题TeXt评论系统设置中的坑&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/gitalk/gitalk/issues/429&quot;&gt;在授权gitalk后出现403错误&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/Lwl9rf95EqlTYLfconjflQ&quot;&gt;记录一次 Bug 排查过程并分享一些经验&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。</summary></entry><entry><title type="html">網路安全的基本知識</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction/" rel="alternate" type="text/html" title="網路安全的基本知識" /><published>2021-01-26T00:00:00+00:00</published><updated>2021-01-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction/">&lt;p&gt;有鑑於有時會接觸到一些網路安全的東西，這邊簡單紀錄一下碰到的一些東西。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1102,69 +1217,4 @@ ImportError: attempted relative import with no known parent package
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><summary type="html">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</summary></entry><entry><title type="html">TF-IDF簡介</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/" rel="alternate" type="text/html" title="TF-IDF簡介" /><published>2020-04-02T00:00:00+00:00</published><updated>2020-04-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/02/tf-idf-introduction/">&lt;p&gt;這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
-
-&lt;p&gt;TF-IDF的全稱是&lt;strong&gt;Term Frequency - Inverse Document Frequency&lt;/strong&gt;，可以看&lt;a href=&quot;https://zh.wikipedia.org/wiki/Tf-idf&quot;&gt;它的wiki&lt;/a&gt;有詳細的介紹，簡單來說就是一種統計的方法，可以應用在搜尋引擎上。&lt;/p&gt;
-
-&lt;p&gt;假設今天在搜尋欄上打上了一些字詞，我們想要去尋找網路上有哪些文章跟搜尋欄中的字詞的相關程度最高，而TF-IDF的主要概念就是去看每一篇文章當中該字詞出現的頻率，如果出現的頻率很高的話，就可以說該文章跟搜尋欄的字詞是有高度相關的。&lt;/p&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-
-&lt;h3 id=&quot;term-frequency-tf&quot;&gt;Term Frequency (TF)&lt;/h3&gt;
-
-&lt;p&gt;假設網路上的文章\(d_j\)使用到的字詞種類總共有\(k\)個，分別為\(t_{1,d_j}, t_{2,d_j}, ..., t_{k,d_j}\)，其中\(t_{1,d_j}\)出現了3次，\(t_{2,d_j}\)出現了5次等等，我們就可以定義說每個字詞種類\(t_{i,d_j}\)對於這篇文章的重要程度為&lt;/p&gt;
-
-\[tf_{t_{i,d_j}}=\frac{n_{t_{i,d_j}}}{\sum_k n_{t_{k,d_j}}}\]
-
-&lt;p&gt;上面的\(n_{t_{i,d_j}}\)指的是字詞種類\(t_{i,d_j}\)在文章\(d_j\)出現的次數，像\(t_{1,d_j}\)在文章中出現了3次，那\(n_{t_{i,d_j}}\)就等於3，這個式子的概念其實就是計算這個字詞種類佔了這篇文章多少比重，假設文章\(d_j\)總共有100個字(亦即\(\sum_k n_{t_{k,d_j}}=100\))，其中\(t_{1,d_j}\)出現了3次，那\(t_{1,d_j}\)在這篇文章的重要程度就是\(3/100\)。&lt;/p&gt;
-
-&lt;p&gt;由上面的式子算出了每個字詞種類\(t_{i,d_j}\)對文章\(d_j\)的重要程度以後，我們可以接著算出各個文章\(d_1, d_2, ..., d_l\)中各個字詞種類對該文章的重要程度，得到一堆的term frequency。&lt;/p&gt;
-
-&lt;h3 id=&quot;inverse-document-frequency-idf&quot;&gt;Inverse Document Frequency (IDF)&lt;/h3&gt;
-
-&lt;p&gt;如果只考慮字詞出現的次數的話，有可能會被比較一般常用的字詞，像是助詞”的”、”了”所影響，可以想像我在搜尋欄打上”國王的新衣”，因為”的”在每個文章出現的次數都很多，所以只單看term frequency的話，找出來的文章應該都不會是我所想要的。&lt;/p&gt;
-
-&lt;p&gt;為此需要再多考慮一個inverse document frequency，也就是某個字詞在文章間的出現頻率，假如”國王”在全部1000個文章裡面只出現在10篇文章裡，那這10篇文章想必是比其他文章還要來得接近我想要找的東西，inverse document frequency定義如下&lt;/p&gt;
-
-\[idf_{t_i}=\frac{\vert D\vert}{\vert \{ j:t_i\in d_j \}\vert}\]
-
-&lt;p&gt;上面式子的意思是，某個字詞\(t_i\)在文章間的獨特程度被定義成文章總數(\(\vert D\vert\))，除上字詞\(t_i\)出現的文章數(\(\vert {j:t_i\in d_j}\vert\))，以上面”國王”的例子來看，1000個文章裡面只出現在10個文章裡，其\(idf=\frac{1000}{10}\)。&lt;/p&gt;
-
-&lt;h3 id=&quot;使用的方式&quot;&gt;使用的方式&lt;/h3&gt;
-
-&lt;p&gt;只要給定了一堆的文章，使用在上面定義的公式，就可以算出每個字詞對每篇文章的term frequency和每個字詞的inverse document frequency。&lt;/p&gt;
-
-&lt;p&gt;當我今天輸入一些關鍵字在搜尋欄裡面時，找出相關文件的方式就是用關鍵字的inverse document frequency去乘上文章中該字詞的term frequency並加總起來，得到關鍵字和文件的相似程度。&lt;/p&gt;
-
-&lt;p&gt;假設我今天在搜尋欄當中輸入了”\(t_1\) \(t_2\)“，與文章\(d_j\)相似程度的算法為&lt;/p&gt;
-
-\[tf\text{-}idf_{d_j}=tf_{t_1,d_j}\times idf_{t_1} + tf_{t_2,d_j}\times idf_{t_2}\]
-
-&lt;p&gt;有了相似程度的分數就能做排序，得到與搜尋關鍵字相關的文章了。&lt;/p&gt;
-
-&lt;h3 id=&quot;其他tf-idf的算法&quot;&gt;其他TF-IDF的算法&lt;/h3&gt;
-
-&lt;p&gt;上面所介紹的tf-idf可以說是最基礎的算法，而有很多人嘗試用不一樣的方式來計算tf和idf，有興趣的話可以參考&lt;a href=&quot;https://en.wikipedia.org/wiki/Okapi_BM25&quot;&gt;Okapi BM25&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;應用在分類上&quot;&gt;應用在分類上&lt;/h2&gt;
-
-&lt;p&gt;前面提到了如何使用tf-idf來做一個簡易的搜尋，這邊提一下另外一個應用的方式，就是拿來做一個簡單的文字分類器。假如我們今天想要對使用者輸入進來的文字做sentiment analysis，我們手上所收集到的訓練資料如下&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;啊不就好棒棒 負面
-我就爛 負面
-您真厲害 正面
-醒醒吧你沒有妹妹 負面
-感謝乾爹 正面
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;我們想要知道使用者輸入的資料究竟是正面還是負面，做法上可以將正面和負面的label的文字全部串起來當作是一個文章&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;您真厲害感謝乾爹 （文章_正面）
-啊不就好棒棒我就爛醒醒吧你沒有妹妹 （文章_負面）
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;然後各自去算文章字詞的tf和idf，接著把使用者輸入的文字當作是搜尋關鍵字，得到它對各個文章的相似度排序，便能知道輸入的文字是比較偏向正面還是比較偏向負面了，上述的做法也適用label的種類超過兩個的情況。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html">這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</summary></entry></feed>
+&lt;p&gt;在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><summary type="html">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</summary></entry></feed>

@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>利用Gitalk在靜態網頁裡面新增留言區 - wjohn1483.github.io</title>
 
-<meta name="description" content="這篇介紹一下常常聽到的BERT是怎麼樣運作的。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2021/02/07/gitalk-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -289,79 +289,139 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>利用Gitalk在靜態網頁裡面新增留言區</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-03-29-BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/2020-03-29-BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2021-02-07-gitalk-introduction/2021-02-07-gitalk-introduction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="利用Gitalk在靜態網頁裡面新增留言區"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 29, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-29T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Natural-Language-Processing"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Tool">Tool</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 07, 2021</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-02-07T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>這篇介紹一下常常聽到的<a href="https://arxiv.org/pdf/1810.04805.pdf">BERT</a>是怎麼樣運作的。</p>
+<div class="article__content" itemprop="articleBody"><p>先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。</p>
 
 <!--more-->
 
-<h2 id="簡介">簡介</h2>
+<h2 id="gitalk">Gitalk</h2>
 
-<p>在很多NLP的任務上常常可以聽到某個團隊用了BERT以後達到了state-of-the-art，而聽說現在在做NLP的時候都會使用BERT產生出來的embedding，再拿去給後面想要解決的NLP任務使用，得到的效果通常都還不錯，BERT成為了做各種NLP任務的起手式。</p>
+<p><a href="https://github.com/gitalk/gitalk">Gitalk</a>是一個使用GitHub issue來當作留言板的工具，讓使用者們可以簡單的在他們的網頁上面安插一些javascript就可以做到留言板的效果，還可以支援Markdown語法，可以看<a href="https://gitalk.github.io/">官方的demo</a>來感受成品大概長什麼樣子。</p>
 
-<h2 id="方法">方法</h2>
+<h2 id="套用在部落格上">套用在部落格上</h2>
 
-<p>BERT的架構是前一篇<a href="https://wjohn1483.github.io/2020/03/21/attention-is-all-you-need/">Attention Is All You Need</a>當中所提到的Transformer的encoder，只是訓練的方式和參數的設定比較不一樣，在BERT這篇paper裡面使用了兩種參數</p>
+<p>在jekyll的主題，<a href="https://github.com/kitian616/jekyll-TeXt-theme">jekyll-TeXt-theme</a>裡面，已經有內建好可以搭配Gitalk使用，只是需要一些前置步驟並修改一下設定。</p>
 
-\[\mathrm{BERT}_{BASE}:L=12,H=768,A=12, total\ parameters=110\mathrm{M}\\\mathrm{BERT}_{LARGE}:L=24,H=1024,A=16, total\ parameters=340\mathrm{M}\]
+<h3 id="建立github-application">建立GitHub Application</h3>
 
-<p>其中\(L\)代表層數、\(H\)代表hidden size、\(A\)代表self-attention的head數。</p>
+<p>為了要讓Gitalk可以直接在GitHub上面幫你留言，我們需要建立一個GitHub Application，讓Gitalk以<a href="https://wjohn1483.github.io/2021/01/26/security-introduction/#oauth">OAuth</a>的方式代替你去GitHub上的issue留言，創建一個Application可以點<a href="https://github.com/settings/applications/new">這邊</a>。</p>
 
-<h3 id="訓練方式">訓練方式</h3>
+<ul>
+  <li>Application name：應用程式的名字，可以隨意取</li>
+  <li>Homepage URL：應用程式的首頁，以GitHub page的部落格而言，我是填GitHub page的網址</li>
+  <li>Application description：非必填</li>
+  <li>Authorization callback URL：同上面的<strong>Homepage URL</strong></li>
+</ul>
 
-<h4 id="input-representation">Input Representation</h4>
+<p>在建立好GitHub Application以後，網頁上應該會出現client id和client secret，在後面的設定會使用到，值得一提的是，client secret只會顯示這麼一次，記得要好好的保存起來。</p>
 
-<p><img src="input-representation.png" alt="Input Representation" /></p>
+<h3 id="修改_configyml">修改_config.yml</h3>
 
-<p>由於BERT後面所接的NLP任務可能會需要sentence embedding，或同時考慮多個sentence，所以BERT在這個地方有設計兩個特別的token，分別是<code class="language-plaintext highlighter-rouge">[CLS]</code>和<code class="language-plaintext highlighter-rouge">[SEP]</code>，<code class="language-plaintext highlighter-rouge">[SEP]</code>是用來分開兩個句子的，而<code class="language-plaintext highlighter-rouge">[CLS]</code>是用來做classification的embedding，因為BERT是用self-attention layer為基礎，所以即便放在第一個，其輸出的embedding仍然包含整個句子的資訊。</p>
+<p>在_config.yml裡面可以找到<a href="https://github.com/kitian616/jekyll-TeXt-theme/blob/master/_config.yml#L118-L144">有關comment設定的部分</a>，需要修改的地方有兩塊，一個是需要把<code class="language-plaintext highlighter-rouge">provider</code>改成gitalk，另一個是在底下<code class="language-plaintext highlighter-rouge">gitalk</code>的區塊要把列出來的資訊填好，而設定中的<code class="language-plaintext highlighter-rouge">repository</code>是將來儲存comment的repo，未來comment會儲存在該repo的issue裡面，必須要是public的，這個repo可以跟存放網頁的repo不同，一個修改過後的範例貼在底下，記得要將client id和client secret改掉。</p>
 
-<p>而上圖中的Segment Embeddings是為了能夠更分開兩個句子之間的差異，可以想像成\(\mathrm{E_A}\)是一個純量等於\(0\)，\(\mathrm{E_B}\)也是一個純量等於\(1\)，更詳細的解說可以參考<a href="https://www.cnblogs.com/d0main/p/10447853.html">這裡</a>。</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">comments</span><span class="pi">:</span>
+  <span class="na">provider</span><span class="pi">:</span> <span class="s">gitalk</span> <span class="c1"># false (default), "disqus", "gitalk", "valine", "custom"</span>
 
-<h4 id="masked-lm">Masked LM</h4>
+  <span class="c1"># Disqus</span>
+  <span class="na">disqus</span><span class="pi">:</span>
+    <span class="na">shortname</span><span class="pi">:</span> <span class="c1"># the Disqus shortname for the site</span>
 
-<p>BERT在做pre-training的時候，會同時訓練兩種任務，分別是masked LM以及next sentence prediction，而masked LM做的事情有點像是克漏字，在輸入一段文字進來的時候，在每個token會有15%的機率會被替換成<code class="language-plaintext highlighter-rouge">[MASK]</code>這個token，而最終希望透過一個classifier，輸入<code class="language-plaintext highlighter-rouge">[MASK]</code>經過BERT得到的embedding，輸出原本被替換掉的token。</p>
+  <span class="c1">## Gitalk</span>
+  <span class="c1"># please refer to https://github.com/gitalk/gitalk for more info.</span>
+  <span class="na">gitalk</span><span class="pi">:</span>
+    <span class="na">clientID    </span><span class="pi">:</span> <span class="s">ENV_CLIENT_ID</span> <span class="c1"># GitHub Application Client ID</span>
+    <span class="na">clientSecret</span><span class="pi">:</span> <span class="s">ENV_CLIENT_SECRET</span> <span class="c1"># GitHub Application Client Secret</span>
+    <span class="na">repository  </span><span class="pi">:</span> <span class="s2">"</span><span class="s">wjohn1483.github.io"</span> <span class="c1"># GitHub repo</span>
+    <span class="na">owner       </span><span class="pi">:</span> <span class="s2">"</span><span class="s">wjohn1483"</span> <span class="c1"># GitHub repo owner</span>
+    <span class="na">admin</span><span class="pi">:</span> <span class="c1"># GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">wjohn1483"</span>
+      <span class="c1"># - your GitHub Id</span>
+    <span class="na">proxy</span><span class="pi">:</span> <span class="s">https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token</span>
 
-<h4 id="next-sentence-prediction-nsp">Next Sentence Prediction (NSP)</h4>
+  <span class="c1"># Valine</span>
+  <span class="c1"># please refer to https://valine.js.org/en/ for more info.</span>
+  <span class="na">valine</span><span class="pi">:</span>
+    <span class="na">app_id      </span><span class="pi">:</span> <span class="c1"># LeanCloud App id</span>
+    <span class="na">app_key     </span><span class="pi">:</span> <span class="c1"># LeanCloud App key</span>
+    <span class="na">placeholder </span><span class="pi">:</span> <span class="c1"># Prompt information</span>
+    <span class="na">visitor     </span><span class="pi">:</span> <span class="c1"># false (default)</span>
+    <span class="na">meta        </span><span class="pi">:</span> <span class="c1"># "[nick, mail, link]" (default) nickname, E-mail, Personal-site</span>
+</code></pre></div></div>
 
-<p>Next sentence prediction做的事情就是去判斷輸入進來的這兩個句子，是不是在順序上是連續的，像是<code class="language-plaintext highlighter-rouge">人之初</code>和<code class="language-plaintext highlighter-rouge">性本善</code>就是連續的句子，但<code class="language-plaintext highlighter-rouge">人之初</code>和<code class="language-plaintext highlighter-rouge">你好嗎</code>就不是連續的句子，而訓練的方式是會拿<code class="language-plaintext highlighter-rouge">[CLS]</code>經過BERT得出來的embedding，來當作classifier的輸入，希望這個classifier輸出\(\mathrm{IsNext}\)或是\(\mathrm{NotNext}\)。</p>
+<p>值得一提的是，原本預設的proxy好像開始限定流量了，所以如果用預設的proxy會無法使用，範例中參考了<a href="https://github.com/gitalk/gitalk/issues/429">Gitalk issue</a>中的解法，改掉預設的proxy。</p>
 
-<p>底下是整體的架構圖，其實在fine-tuning的時候，會根據不一樣的任務而拿不同位置輸出的結果，細節可以參考<a href="https://arxiv.org/pdf/1810.04805.pdf">原本的paper</a>。</p>
+<h3 id="在文章當中加入key">在文章當中加入key</h3>
 
-<p><img src="overall-procedure.png" alt="Overall procedure" /></p>
+<p>為了要讓Gitalk知道那篇文章對應到那個issue，我們需要給每一篇文章獨一無二的id，並寫在文章的front matter裡面。</p>
 
-<h2 id="實驗">實驗</h2>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">article</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Document - Writing Posts</span>
+<span class="na">mathjax</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">key</span><span class="pi">:</span> <span class="s">your-article-id</span>
+<span class="nn">---</span>
+</code></pre></div></div>
 
-<p><img src="test-results.png" alt="Test Results" /></p>
+<p>這個id在front matter裡面稱作<code class="language-plaintext highlighter-rouge">key</code>，它的命名規則可以參考<a href="https://tianqi.name/jekyll-TeXt-theme/docs/en/layouts#page-layout">這裡</a>。</p>
 
-<p>上圖為BERT部分的實驗結果，可以看到它技壓群雄。</p>
+<p>在設定好以後，在本機執行編譯的指令，應該就能在每篇文章底下找到留言板了。</p>
 
-<h2 id="結論">結論</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">JEKYLL_ENV</span><span class="o">=</span>production bundle <span class="nb">exec </span>jekyll build
+</code></pre></div></div>
 
-<p>BERT是一個基於Transformer架構的模型，需要大量的資料來做訓練，好在作者們有提供已經訓練好的模型參數，可以直接下載下來做使用，期望使用BERT以後，能夠讓想要解決的NLP任務結果一飛沖天。</p>
+<h2 id="直接使用在靜態網頁上">直接使用在靜態網頁上</h2>
+
+<p>如果想要直接使用在單個html上面，不想跟jekyll主題綁在一起的話，可以參考<a href="https://github.com/gitalk/gitalk#install">Gitalk文件當中的方式</a>，使用起來相當的簡單。</p>
+
+<p>只需要在你的html裡面<code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>的地方，多引入Gitalk的javascript。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+</code></pre></div></div>
+
+<p>並在<code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>裡面新增<code class="language-plaintext highlighter-rouge">&lt;script type="text/javascript"&gt;</code>，並把相關的變數設定好就行，client id和client secret的取得可以參考文章上面的<a href="#建立github-application">建立GitHub Application</a>。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">gitalk</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gitalk</span><span class="p">({</span>
+  <span class="na">clientID</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GitHub Application Client ID</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">clientSecret</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GitHub Application Client Secret</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">repo</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GitHub repo</span><span class="dl">'</span><span class="p">,</span>      <span class="c1">// The repository of store comments,</span>
+  <span class="na">owner</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GitHub repo owner</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">admin</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">GitHub repo owner and collaborators, only these guys can initialize github issues</span><span class="dl">'</span><span class="p">],</span>
+  <span class="na">id</span><span class="p">:</span> <span class="nx">location</span><span class="p">.</span><span class="nx">pathname</span><span class="p">,</span>      <span class="c1">// Ensure uniqueness and length less than 50</span>
+  <span class="na">distractionFreeMode</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>  <span class="c1">// Facebook-like distraction free mode</span>
+  <span class="na">proxy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token</span><span class="dl">'</span>
+<span class="p">})</span>
+
+<span class="nx">gitalk</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">gitalk-container</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊有帶入<a href="https://github.com/gitalk/gitalk/issues/429">Gitalk issue</a>裡面所提到的，其他人所提供的proxy，如果想用原本預設的proxy，直接將proxy的設定拿掉就行。</p>
 
 <h2 id="參考資料">參考資料</h2>
 
 <ol>
-  <li><a href="https://www.cnblogs.com/d0main/p/10447853.html">【译】为什么BERT有3个嵌入层，它们都是如何实现的</a></li>
+  <li><a href="https://xsaxy.gitee.io/blog/post/2019/12/10/%E4%B8%BB%E9%A2%98TeXt%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E4%B8%AD%E7%9A%84%E5%9D%91.html">主题TeXt评论系统设置中的坑</a></li>
+  <li><a href="https://github.com/gitalk/gitalk/issues/429">在授权gitalk后出现403错误</a></li>
+  <li><a href="https://mp.weixin.qq.com/s/Lwl9rf95EqlTYLfconjflQ">记录一次 Bug 排查过程并分享一些经验</a></li>
 </ol>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-03-29T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-02-07T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/03/28/terminal-tools/">Terminal小工具</a></div><div class="next"><span>NEXT</span><a href="/2020/04/02/tf-idf-introduction/">TF-IDF簡介</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2021/01/26/security-introduction/">網路安全的基本知識</a></div></div></div>
 
 </div>
 
