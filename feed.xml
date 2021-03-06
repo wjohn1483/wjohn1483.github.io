@@ -1,4 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-02-28T13:26:50+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">利用Gitalk在靜態網頁裡面新增留言區</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction/" rel="alternate" type="text/html" title="利用Gitalk在靜態網頁裡面新增留言區" /><published>2021-02-07T00:00:00+00:00</published><updated>2021-02-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction/">&lt;p&gt;先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-03-06T08:59:08+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">利用GitHub Actions來部署部落格</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions/" rel="alternate" type="text/html" title="利用GitHub Actions來部署部落格" /><published>2021-02-28T00:00:00+00:00</published><updated>2021-02-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions/">&lt;p&gt;前陣子發現到GitHub Actions可以用來做CI，試著使用看看。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;github-actions&quot;&gt;GitHub Actions&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/features/actions&quot;&gt;GitHub Actions&lt;/a&gt;是GitHub自己出的一套CI/CD的工具，可以讓你在推code、看CI/CD都在GitHub上面解決。&lt;/p&gt;
+
+&lt;p&gt;GitHub Actions相較於其他CI/CD的工具，我覺得它的優勢在於免費的額度比較多，如果是public repository，actions的使用是免費的，而private repository每個月也有2000分鐘的使用時間，而且如果有其他人fork你的repository，這些CI/CD的設定也會跟著被帶走，別人也可以無痛的使用相同的CI/CD流程。&lt;/p&gt;
+
+&lt;h2 id=&quot;開始使用github-actions&quot;&gt;開始使用GitHub Actions&lt;/h2&gt;
+
+&lt;p&gt;只要在repository裡面創建&lt;strong&gt;.github/workflows/&lt;/strong&gt;，並在裡面放好設定檔，就可以觸發GitHub Actions了，你也可以在repository頁面的上方點Actions的頁籤，裡面有一些設定檔的範本可以選擇。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;My first github actions&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;master&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Checkout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2&lt;/span&gt;
+
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;echo &quot;hello&quot;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;設定檔跟其他的工具長相差不多，在steps裡面填寫你想要做的事情，GitHub就會起一個virtual machine來執行。&lt;/p&gt;
+
+&lt;h2 id=&quot;設定環境變數&quot;&gt;設定環境變數&lt;/h2&gt;
+
+&lt;p&gt;如果想要在Actions裡面傳入環境變數的話，需要先去repository網頁當中的右上角&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Settings&lt;/code&gt;裡面，點選左下角的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Secrets&lt;/code&gt;，再點選右上角的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;New repository secret&lt;/code&gt;，並打上環境變數的名稱以及值。&lt;/p&gt;
+
+&lt;p&gt;repository裡面設定好環境變數以後，在設定檔需要宣告使用哪些環境變數，之後在steps裡面就可以直接使用了。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;My first github actions&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;master&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;USER_NAME&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${{secrets.USER_NAME}}&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Checkout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2&lt;/span&gt;
+
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;echo &quot;${USER_NAME}&quot;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;想要在actions裡面push程式碼到repository&quot;&gt;想要在Actions裡面push程式碼到repository&lt;/h2&gt;
+
+&lt;p&gt;在Actions裡面有人寫好了&lt;a href=&quot;https://github.com/marketplace/actions/webfactory-ssh-agent&quot;&gt;工具&lt;/a&gt;可以讓你宣告ssh key，就能像一般利用ssh key push的方式推程式碼到你的repository裡面，產生和設定ssh public/private key的方式請參考&lt;a href=&quot;https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh&quot;&gt;GitHub的官方文件&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;在GitHub設定好public key以後，將private key弄到ssh-agent的方式可以參考底下。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;My first github actions&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;master&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    
+&lt;span class=&quot;na&quot;&gt;jobs&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;USER_NAME&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${{secrets.USER_NAME}}&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;runs-on&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu-latest&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Checkout&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/checkout@v2&lt;/span&gt;
+        
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;webfactory/ssh-agent@v0.5.0&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;ssh-private-key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${{secrets.SSH_PRIVATE_KEY}}&lt;/span&gt;
+
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Build&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;|&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;echo &quot;${USER_NAME}&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@JainKai/%E6%B7%BA%E8%AB%87-%E7%94%A8github-actions-%E7%B0%A1%E6%98%93%E7%9A%84-ci-%E4%BE%86%E7%99%BC%E5%B8%83gitpages-6ae48e52467e&quot;&gt;[淺談]用GitHub Actions 簡易的 CI 來發布GitPages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/thinkthenrant/githubactionsintro-94be66a8a9f1&quot;&gt;帶著走的CI/CD：GitHub Actions! (Take the CI/CD with you: GitHub Actions!)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;webfactory/ssh-agent&quot;&gt;webfactory/ssh-agent&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">前陣子發現到GitHub Actions可以用來做CI，試著使用看看。</summary></entry><entry><title type="html">利用Gitalk在靜態網頁裡面新增留言區</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction/" rel="alternate" type="text/html" title="利用Gitalk在靜態網頁裡面新增留言區" /><published>2021-02-07T00:00:00+00:00</published><updated>2021-02-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/07/gitalk-introduction/">&lt;p&gt;先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1155,66 +1260,4 @@ ImportError: attempted relative import with no known parent package
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;在這篇paper裡面作者使用GAN的技術來模擬真實的使用者，讓用RL來訓練推薦系統變得沒有那麼遙不可及。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Generative-Adversarial-Network" /><category term="Recommendation-System" /><category term="Reinforcement-Learning" /><summary type="html">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</summary></entry><entry><title type="html">Playing Atari with Deep Reinforcement Learning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/" rel="alternate" type="text/html" title="Playing Atari with Deep Reinforcement Learning" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/playing-atari-with-deep-reinforcement-learning/">&lt;p&gt;在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
-
-&lt;p&gt;在&lt;a href=&quot;https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf&quot;&gt;這篇paper&lt;/a&gt;當中，作者利用Deep Reinforcement Learning的方法，讓機器學會打Atari小遊戲，並成功打破人類的紀錄，立下了RL的里程碑。&lt;/p&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-
-&lt;h3 id=&quot;背景介紹&quot;&gt;背景介紹&lt;/h3&gt;
-
-&lt;p&gt;在進入到方法之前，先介紹一下基本的設定以及Value function和Q function，在底下model訓練的時候會被用到。&lt;/p&gt;
-
-&lt;h4 id=&quot;基本設定&quot;&gt;基本設定&lt;/h4&gt;
-
-&lt;p&gt;在遊戲中我們可以說遊戲本身是一個環境\(\mathcal{E}\)，而玩家這個角色可以稱之為actor，玩家們所能觀測到的遊戲畫面稱之為state，而角色所能夠採取的動作，像是上下左右移動、射擊等等，稱之為action。&lt;/p&gt;
-
-&lt;p&gt;當我們現在觀測到遊戲畫面\(s_t\)，我們可以採取一個動作\(a_t\)，將\((s_t,a_t)\)傳送給環境\(\mathcal{E}\)後會得到新的遊戲畫面\(s_{t+1}\)以及該動作的reward \(r_t\)，這邊的reward可以想成是遊戲分數上升了多少。&lt;/p&gt;
-
-&lt;h4 id=&quot;value-function&quot;&gt;Value Function&lt;/h4&gt;
-
-&lt;p&gt;Value function做的事情是去判斷以現在的policy \(\pi\)，處在現在這個state \(s_t\)最終的cumulated reward期望值會是多少，policy可以想做是這個玩家的思維或是操作，如果是某個玩家在現在的處境下，所能得到最終分數會是多少的感覺，寫作\(V^\pi(s)\)。&lt;/p&gt;
-
-&lt;p&gt;而value function的求法主要有兩種，分別是Monte-Carlo (MC)和Temporal-Difference (TD)。MC的方式就是讓玩家繼續玩到最後，並記錄他最終的cumulated reward，回頭再統計一下每個state的cumulated reward，假如說玩家\(\pi\)，在第一次遊玩的過程中，經過了state \(s\)，最終得到的遊戲分數是\(G_a\)，第二次遊玩也同樣經過了state \(s\)，但得到的遊戲分數是\(G_b\)，那麼state \(s\)的value function便可寫作\(V^\pi(s)=(G_a+G_b)/2\)。而TD的作法為\(V^\pi(s_{t+1})=V^\pi(s_t)+r_t\)，概念是我現在這個state \(s_t\)的value function所算出來的值，跟我下一個state \(s_{t+1}\)的值，應該只差了一個reward \(r_t\)而已。&lt;/p&gt;
-
-&lt;p&gt;MC和TD各有各的缺點，像是MC的缺點是它的variance比較大，每次遊戲在遊玩的時候會有一些隨機性存在，使得state在統計它的cumulated reward時variance不小，而TD雖然一次只看一步的reward，但它需要擔心的是value function估不準的問題。&lt;/p&gt;
-
-&lt;h4 id=&quot;q-function&quot;&gt;Q-Function&lt;/h4&gt;
-
-&lt;p&gt;Q-function和value function做的事情很像，但這邊Q-function還多考慮了採取的動作，也就是以現在的policy \(\pi\)，處在state \(s_t\)，採取action \(a_t\)，所能得到的cumulated reward期望值是多少，寫作\(Q^\pi(s, a)\)。&lt;/p&gt;
-
-&lt;h3 id=&quot;deep-q-network&quot;&gt;Deep Q-Network&lt;/h3&gt;
-
-&lt;p&gt;這邊DQN想要做的事情，便是去尋找Q function，在看到一個遊戲畫面\(s\)的時候，去選擇\(Q^\pi(s, a)\)最大的action \(a\)，來當作是policy \(\pi\)，而\(Q^\pi(s,a)\)的算法是使用TD的算法。&lt;/p&gt;
-
-\[Q^*(s,a)=\mathbb{E}_{s&apos;\sim\mathcal{E}}\left[r+\gamma\max\limits_{a&apos;}Q^*(s&apos;,a&apos;)\vert s,a\right]\]
-
-&lt;p&gt;這邊的\(s&apos;\)、\(a&apos;\)代表的是下一個時間點的state和action，底下是整個DQN的algorithm。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;dqn-algorithm.png&quot; alt=&quot;DQN Algorithm&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;epsilon-greedy&quot;&gt;\(\epsilon\)-greedy&lt;/h4&gt;
-
-&lt;p&gt;在演算法當中可以看到，在第二個迴圈一開始，會以\(\epsilon\)的機率去隨機選擇一個動作\(a_t\)，目的是為了要去探索環境中的各種可能性，假如我們每次都選\(a_t=\max\limits_{a} Q(s, a)\)的話，很容易會讓model做出同樣的選擇，有可能有一些可以拿高分的可能性就被忽略了。&lt;/p&gt;
-
-&lt;h4 id=&quot;experience-replay&quot;&gt;Experience Replay&lt;/h4&gt;
-
-&lt;p&gt;在演算法的一開始有一個replay memory \(\mathcal{D}\)，其大小為\(N\)，這個memory的目的是去紀錄與環境互動的結果，可以看到在第二個迴圈裡，會把\((\phi_t, a_t, r_t, \phi_{t+1})\)，放進memory \(\mathcal{D}\)中，而在訓練的時候會從memory裡面sample一個batch來做訓練。&lt;/p&gt;
-
-&lt;h4 id=&quot;target-network&quot;&gt;Target Network&lt;/h4&gt;
-
-&lt;p&gt;在式(1)和上面的演算法中，我們可以看到，這個DQN的目標是能夠精確的預估出\(r+\gamma\max\limits_{a&apos;} Q(s&apos;, a&apos;;\theta)\)，但這個目標裡面又包含了自己這個network的output，這樣在訓練起來是比較不穩定的，為此，在實作上通常會用另一個network \(Q&apos;\)來放進objective function，亦即model要去預估的是\(r+\gamma\max\limits_{a&apos;}Q&apos;(s&apos;,a&apos;;\theta)\)，這個network \(Q&apos;\)其實就是前幾步的model \(Q\)，更具體的說，當\(Q\)以\(Q&apos;\)為目標訓練一陣子以後，會複製一份\(Q\)的參數當作\(Q&apos;\)的參數，並將之固定以後，繼續訓練\(Q\)的參數。&lt;/p&gt;
-
-&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;dqn-experiments.png&quot; alt=&quot;DQN Experiments&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在表中可以看到，DQN在一些遊戲上超過了人類可以達到的分數。&lt;/p&gt;
-
-&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
-
-&lt;p&gt;在這篇paper當中，作者提出了DQN，用deep learning的方式來去找Q function，並最終成功超越人類的表現。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><summary type="html">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</summary></entry></feed>
+&lt;p&gt;在這篇paper裡面作者使用GAN的技術來模擬真實的使用者，讓用RL來訓練推薦系統變得沒有那麼遙不可及。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Generative-Adversarial-Network" /><category term="Recommendation-System" /><category term="Reinforcement-Learning" /><summary type="html">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</summary></entry></feed>
