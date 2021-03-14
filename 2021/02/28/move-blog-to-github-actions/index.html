@@ -340,7 +340,17 @@
 
 <h2 id="設定環境變數">設定環境變數</h2>
 
-<p>如果想要在Actions裡面傳入環境變數的話，需要先去repository網頁當中的右上角<code class="language-plaintext highlighter-rouge">Settings</code>裡面，點選左下角的<code class="language-plaintext highlighter-rouge">Secrets</code>，再點選右上角的<code class="language-plaintext highlighter-rouge">New repository secret</code>，並打上環境變數的名稱以及值。</p>
+<p>如果想要在Actions裡面傳入環境變數的話，可以參考底下的步驟。</p>
+
+<pre><code class="language-mermaid">graph TD;
+	A(點選Repository右上角的Settings)
+	B(點選左下角的Secrets)
+	C(點選右上角的New repository secret)
+	D(打上環境變數的名稱以及值)
+    A--&gt;B;
+    B--&gt;C;
+    C--&gt;D;
+</code></pre>
 
 <p>repository裡面設定好環境變數以後，在設定檔需要宣告使用哪些環境變數，之後在steps裡面就可以直接使用了。</p>
 
@@ -1030,6 +1040,14 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
 
     </div>
     <script>(function () {
