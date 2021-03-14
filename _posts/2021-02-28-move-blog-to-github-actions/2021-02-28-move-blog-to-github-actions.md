@@ -5,7 +5,6 @@ layout: article
 footer: false
 aside:
   toc: true
-mathjax: true
 mathjax_autoNumber: true
 published: true
 ---
@@ -50,7 +49,18 @@ jobs:
 
 ## 設定環境變數
 
-如果想要在Actions裡面傳入環境變數的話，需要先去repository網頁當中的右上角`Settings`裡面，點選左下角的`Secrets`，再點選右上角的`New repository secret`，並打上環境變數的名稱以及值。
+如果想要在Actions裡面傳入環境變數的話，可以參考底下的步驟。
+
+```mermaid
+graph TD;
+	A(點選Repository右上角的Settings)
+	B(點選左下角的Secrets)
+	C(點選右上角的New repository secret)
+	D(打上環境變數的名稱以及值)
+    A-->B;
+    B-->C;
+    C-->D;
+```
 
 repository裡面設定好環境變數以後，在設定檔需要宣告使用哪些環境變數，之後在steps裡面就可以直接使用了。
 
