@@ -17,7 +17,6 @@ layout: article
 footer: false
 aside:
   toc: true
-mathjax: true
 mathjax_autoNumber: true
 published: true
 ---
