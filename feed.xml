@@ -1,4 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-03-14T06:38:03+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">利用GitHub Actions來部署部落格</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions/" rel="alternate" type="text/html" title="利用GitHub Actions來部署部落格" /><published>2021-02-28T00:00:00+00:00</published><updated>2021-02-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions/">&lt;p&gt;前陣子發現到GitHub Actions可以用來做CI，試著使用看看。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-03-27T12:00:45+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Deep Interest Evolution Network for Click-Through Rate Prediction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/" rel="alternate" type="text/html" title="Deep Interest Evolution Network for Click-Through Rate Prediction" /><published>2021-03-21T00:00:00+00:00</published><updated>2021-03-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/">&lt;p&gt;簡單記錄一下，看完此篇paper的筆記。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1809.03672.pdf&quot;&gt;這篇paper&lt;/a&gt;是由阿里巴巴提出來，利用使用者的行為和基本資訊，來去預測使用者對廣告的CTR，榮獲AAAI 2019 accepted paper。&lt;/p&gt;
+
+&lt;h2 id=&quot;dien&quot;&gt;DIEN&lt;/h2&gt;
+
+&lt;p&gt;在這篇paper當中，作者將他們的model稱之為DIEN（Deep Interest Evolution Network），其架構如下圖。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./model_architecture.png&quot; alt=&quot;Model Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看到在架構圖中右下方的地方，有三個輸入，分別是&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Target Ad&lt;/strong&gt;：被預測的廣告embedding&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Context Feature&lt;/strong&gt;：這個feature我沒有看得很懂，從paper的原文裡面說是時間以及其他的東西&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;UserProfile Feature&lt;/strong&gt;：使用者的embedding，包含性別、年齡等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;左方的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b(1)、b(2)、b(T-1)、b(T)&lt;/code&gt;是使用者行為，像是使用者點過什麼廣告，經過&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Embedding Layer&lt;/code&gt;以後稱之為&lt;strong&gt;behavior feature&lt;/strong&gt;，之後這些feature會被餵到&lt;a href=&quot;#interest-extractor-layer&quot;&gt;Interest Extractor Layer&lt;/a&gt;和&lt;a href=&quot;#interest-evolving-layer&quot;&gt;Interest Evolving Layer&lt;/a&gt;，最終產生一個embeeding \(h&apos;(T)\)。&lt;/p&gt;
+
+&lt;p&gt;最後\(h&apos;(T)\)會與右方的&lt;strong&gt;Target Ad&lt;/strong&gt;、&lt;strong&gt;Context Feature&lt;/strong&gt;和&lt;strong&gt;UserProfile Feature&lt;/strong&gt;一同串起來，經過一些fully connected layers以後，產生出2維的輸出（點、不點），並利用binary cross entropy來當作loss function。&lt;/p&gt;
+
+\[L_{target}=-\frac{1}{N}\sum\limits^{N}\limits_{(\textbf{x},y)\in\mathcal{D}}(y\log p(\textbf{x})+(1-y)\log (1-p(\textbf{x})))\]
+
+&lt;h3 id=&quot;interest-extractor-layer&quot;&gt;Interest Extractor Layer&lt;/h3&gt;
+
+&lt;p&gt;在Interest Extractor Layer裡面會去將使用者行為透過GRU製作成feature，在這邊作者使用的是使用者廣告的點擊來當作使用者行為，也就是照著時間順序將使用者點擊的廣告的embedding餵入GRU中，值得一提的是，作者將GRU的輸出額外拉出來做auxiliary loss，來幫助GRU訓練得更好。&lt;/p&gt;
+
+&lt;h4 id=&quot;auxiliary-loss&quot;&gt;Auxiliary Loss&lt;/h4&gt;
+
+&lt;p&gt;在每一個時間點\(t\)，GRU會產生一個輸出\(h(t)\)，這時會將使用者下一個時間點\(t+1\)點擊的廣告embedding \(e(t+1)\)拿出來，接著從眾多廣告embedding中隨機取樣一個沒有點擊的出來作為\(e(t+1)\prime\)，並將有點擊的label成\(1\)，沒點擊的label成\(0\)來做訓練，藉此來讓\(h(t)\)更能含有可以預測出下一個點擊的資訊。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR;
+    gru(&quot;h(t)&quot;)
+    sig1[&quot;Sigmoid&quot;]
+    sig2[&quot;Sigmoid&quot;]
+    pos(&quot;e(t+1)&quot;)
+    neg(&quot;e(t+1)&apos;&quot;)
+    label1((1))
+    label0((0))
+    pos--&amp;gt;sig1;
+    gru--&amp;gt;sig1;
+    sig1--&amp;gt;label1;
+    gru--&amp;gt;sig2;
+    sig2--&amp;gt;label0;
+    neg--&amp;gt;sig2;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;整體的loss fcuntion因此會變成&lt;/p&gt;
+
+\[L=L_{target}+\alpha*L_{aux}\]
+
+\[L_{aux}=-\frac{1}{N}\left( \sum\limits_{i=1}\limits^{N} \sum\limits_{t}\log\sigma(\textbf{h}^i_t,\textbf{e}^i_b[t+1])+\log(1-\sigma(\textbf{h}^i_t,\hat{\textbf{e}^i_b}[t+1]))\right )\]
+
+&lt;h3 id=&quot;interest-evolving-layer&quot;&gt;Interest Evolving Layer&lt;/h3&gt;
+
+&lt;p&gt;使用者可能同時間表現出多種興趣，而我們比較想要知道的是使用者對某特定廣告的興趣有多少，所以在這邊作者加了Interest Evolving Layer，亦即另一層GRU，來去從使用者行為當中萃取出相對應廣告的興趣。&lt;/p&gt;
+
+&lt;p&gt;作者使用的方式是利用attention的機制，透過目標廣告的embedding與Interest Extractor Layer出來的embeeding做相似度的計算&lt;/p&gt;
+
+\[a_t=\frac{\exp(\textbf{h}_tW\textbf{e}_a)}{\sum\limits_{j=1}\limits^{T}\exp(\textbf{h}_jW\textbf{e}_a)}\]
+
+&lt;p&gt;並利用各種不同的方式將這個attention weight融入至GRU中。&lt;/p&gt;
+
+&lt;h4 id=&quot;gru-with-attentional-input-aigru&quot;&gt;GRU with attentional input (AIGRU)&lt;/h4&gt;
+
+&lt;p&gt;第一種方式是直接將Interest Extractor Layer的輸出\(\textbf{h}_t\)直接乘上attention weight \(a_t\)，然後輸入至Interest Evolving Layer中。&lt;/p&gt;
+
+\[\textbf{i}&apos;_t=\textbf{h}_t*a_t\]
+
+&lt;h4 id=&quot;attention-based-gru-agru&quot;&gt;Attention based GRU (AGRU)&lt;/h4&gt;
+
+&lt;p&gt;第二種方式是透過算出來的attention weight來決定Interest Evolving Layer中hidden state \(\textbf{h}&apos;_t\)要被更新多少。&lt;/p&gt;
+
+\[\textbf{h}&apos;_t=(1-a_t)*\textbf{h}&apos;_{t-1}+a_t*\tilde{\textbf{h}&apos;_t}\]
+
+&lt;p&gt;其中\(\textbf{h}&apos;_{t-1}\)是前一個時間點，Interest Evolving Layer的輸出，而\(\tilde{\textbf{h}&apos;_t}\)是當下這個時間點\(t\)，GRU內部所計算出來的hidden state，可以參照原先GRU的更新算式，或是&lt;a href=&quot;https://arxiv.org/pdf/1809.03672.pdf&quot;&gt;paper當中的式(2)~式(5)&lt;/a&gt;。&lt;/p&gt;
+
+&lt;h4 id=&quot;gru-with-attentional-update-gate-augru&quot;&gt;GRU with attentional update gate (AUGRU)&lt;/h4&gt;
+
+&lt;p&gt;第三種方式是將update gate的值與attention weight相乘，直接控制update gate，這個方式也是實驗當中表現最好的方式。&lt;/p&gt;
+
+\[\tilde{\textbf{u}}&apos;_t=a_t*\textbf{u}&apos;_t\]
+
+\[\textbf{h}&apos;_t=(1-\tilde{\textbf{u}}&apos;_t)\circ\textbf{h}&apos;_{t-1}+\tilde{\textbf{u}}&apos;_t\circ\tilde{\textbf{h}}&apos;_t\]
+
+&lt;h2 id=&quot;experiments&quot;&gt;Experiments&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;public_dataset_auc.png&quot; alt=&quot;Public Dataset AUC&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;將DIEN套用在&lt;a href=&quot;https://arxiv.org/pdf/1809.03672.pdf#cite.mcauley2015image&quot;&gt;Amazon Dataset&lt;/a&gt;上面可以看到，DIEN的AUC是裡面最佳的，而作者有將這個model套用在企業的資料上，也獲得了不俗的成績。&lt;/p&gt;
+
+&lt;p&gt;在paper裡面實驗的章節中作者做了許多的實驗來去驗證model裡面的每一個環節都是有必要的，有興趣的人可以去看看原本的paper。&lt;/p&gt;
+
+&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
+
+&lt;p&gt;在這篇paper裡面，作者提出了有點類似wide and deep架構的模型來去解CTR prediction的問題，也加入了各式各樣的方式來應用attention weight，只不過在實驗當中只有展示Electronics和Books這兩個類別的成效，如果可以加入不同類別的比較我覺得可以讓讀者了解model適合套用在哪種類別的場景當中會更好。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><summary type="html">簡單記錄一下，看完此篇paper的筆記。</summary></entry><entry><title type="html">利用GitHub Actions來部署部落格</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions/" rel="alternate" type="text/html" title="利用GitHub Actions來部署部落格" /><published>2021-02-28T00:00:00+00:00</published><updated>2021-02-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions/">&lt;p&gt;前陣子發現到GitHub Actions可以用來做CI，試著使用看看。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1186,88 +1284,4 @@ ImportError: attempted relative import with no known parent package
 
 &lt;p&gt;在上面的程式碼中，我們寫了一個for迴圈去改&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[5]]&lt;/code&gt;到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[7]]&lt;/code&gt;的值，我們將&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;label&lt;/code&gt;拿出來並以&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\n&lt;/code&gt;切成數字部分和百分比的部分，接著把數字部分塞逗號進去以後再與百分比部分接起來，最後再將圖畫出來，就達成我們想要的效果了。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;venn-comma.png&quot; alt=&quot;Venn Comma&quot; /&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</summary></entry><entry><title type="html">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/" rel="alternate" type="text/html" title="Generative Adversarial User Model for Reinforcement Learning Based Recommendation System" /><published>2020-04-19T00:00:00+00:00</published><updated>2020-04-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">&lt;p&gt;Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1812.10613.pdf&quot;&gt;這篇paper&lt;/a&gt;是ICML 2019的oral，主要是在講述，如何在推薦系統上套用Reinforcement Learning的框架，為此需要建立一個user model當作是環境，好讓推薦系統與之互動，作者還提出了Cascading Q-Network來做組合的推薦。&lt;/p&gt;
-
-&lt;p&gt;如果想對這篇paper瞭解更多的話，可以參考&lt;a href=&quot;https://icml.cc/media/Slides/icml/2019/201(11-14-00)-11-14-25-4831-generative_adve.pdf&quot;&gt;作者在Oral的投影片&lt;/a&gt;和&lt;a href=&quot;https://slideslive.com/38917397/time-series&quot;&gt;演講錄影&lt;/a&gt;(從25:50開始)。&lt;/p&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-
-&lt;h3 id=&quot;推薦系統與環境的互動方式&quot;&gt;推薦系統與環境的互動方式&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;interaction.png&quot; alt=&quot;Interaction&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;一開始作者先簡單介紹了一下推薦系統跟環境(user)互動的方式&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;我們可以先從過去的資料蒐集該使用者過去點選過的東西，也就是上圖左下角的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state at t&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;推薦系統會根據state推薦出一些使用者可能有興趣的東西&lt;/li&gt;
-  &lt;li&gt;使用者從中選擇出他有興趣的物品，或是選擇以上皆沒有興趣&lt;/li&gt;
-  &lt;li&gt;將使用者新的選擇放入歷史資料中&lt;/li&gt;
-  &lt;li&gt;算出新的state以後回到步驟2&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;兩者互動的方式便是推薦系統不斷推薦物品，而使用者不斷從中選擇他有興趣的東西，如此反覆來創造訓練資料。&lt;/p&gt;
-
-&lt;h3 id=&quot;generative-adversarial-user-model&quot;&gt;Generative Adversarial User Model&lt;/h3&gt;
-
-&lt;p&gt;在前面有提到，訓練RL需要與環境互動很多次才能訓練得好，然而這在推薦系統上是一件難以做到的事情，因為推薦系統的環境便是真實的使用者，而真實的使用者並沒有那麼的有耐心，願意陪你訓練推薦系統。另一個用RL訓練推薦系統的難處是，我們沒辦法去量化使用者的reward，我們只能從使用者的行為判斷出他可能比較喜歡哪一個物品，卻沒有辦法知道他有多喜歡，舉例來說，我們推出了十個物品給使用者，使用者點選了其中一個，接著又推出另外十個物品給使用者，使用者又點選了其中一個，雖然使用者在兩次的推薦當中都有點選物品，但我們無法知道使用者是不是喜歡第一次推薦的物品大過第二次推薦的物品。&lt;/p&gt;
-
-&lt;p&gt;為此，作者訓練了一個使用者模型來去模擬真實使用者的選擇，並產生出量化的reward，方便推薦系統做訓練。&lt;/p&gt;
-
-&lt;h4 id=&quot;framework&quot;&gt;Framework&lt;/h4&gt;
-
-&lt;p&gt;&lt;img class=&quot;image image--xl&quot; src=&quot;gan-user-model.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;身為一個使用者，他會看到推薦系統所推薦的物品清單\(A^t\)，generator會根據過去的選擇(使用者的喜好)，選擇出他有興趣的物品\(a^t\sim \phi(s^t, A^t)\)，而discriminator想要做的便是對generator給出的物品打個reward分數\(r(s^t,a^t)\)。&lt;/p&gt;
-
-\[\phi(s^t, A^t)=\arg\max\limits_{\phi}\mathbb{E}_\phi[r(s^t,a^t)]-R(\phi)/\eta\]
-
-\[r_\theta(s^t,a^t)=\mathbf{v}\sigma(\mathbf{V}(s^t,f_{a^t})+b)\]
-
-&lt;p&gt;式(1)中的\(R(\phi)/\eta\)是一個regularisation term，generator希望能獲取最大的reward，而reward其實就是將使用者過去的選擇和商品的feature餵入一層NN而得到一個純量，兩者想要最佳化的式子如下&lt;/p&gt;
-
-\[\min\limits_{\theta}\max\limits_{\phi}\left( \mathbb{E}_\phi[\sum^T_{t=1}r_\theta(s^t_{true}, a^t)]-R(\phi)/\eta\right) - \sum^T_{t=1}r_\theta(s^t_{true},a^t_{true})\]
-
-&lt;p&gt;擁有下標\(true\)的代表是使用者真實的選擇，而generator想要最佳化的是第一項，discriminator想要最佳化的是第二項，也就是說generator想要讓自己產生出的選擇跟使用者真正的選擇越貼近越好，而discriminator想要讓使用者真正的選擇所得到的reward越大越好。&lt;/p&gt;
-
-&lt;h4 id=&quot;user-state&quot;&gt;User State&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;user-model-state.png&quot; alt=&quot;State of user model&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在generator和discriminator都有用同使用到的\(s^t\)代表的是使用者過去的選擇，也就是使用者的喜好，其被實作的方式其實就是把過去所選擇的那些物品的feature(文字敘述、圖片等等做成embedding)，通過LSTM或者是直接乘上一個大矩陣並concatenate在一起，就完成了。&lt;/p&gt;
-
-&lt;h3 id=&quot;cascading-q-networks&quot;&gt;Cascading Q-Networks&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;set-recommendation.png&quot; alt=&quot;Set Recommendation&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在前面使用類似GAN的方法得到了user model以後，接下來就是做一個推薦系統來從廣大的物品池裡面找出使用者會喜歡的商品，倘若想要使用\(Q-function\)來去對每一個可能的組合去做評估的話(式(4))，可以想像得到我們應該是算不完的，因為組合數實在是太多了，假如\(K=3000\)、\(k=10\)，我們就得要計算\(3000\choose10\)這麼多個可能，是故作者推出了Cascading Q-Networks來解決這個問題。&lt;/p&gt;
-
-\[a^*_1, a^*_2, ..., a^*_k=\arg\max Q(s^t, a_1, a_2, ..., a_k)\]
-
-&lt;p&gt;&lt;img src=&quot;cdqn.png&quot; alt=&quot;Cascading Q-Networks&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;其想法很簡單，如果組合數太多的話，那我就一個一個求出該被放進去的物品，直至\(k\)個物品都被選擇好。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;cdqn-formula.png&quot; alt=&quot;CDQN formula&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;而這個Cascading Q-Networks的訓練方式可以想成是訓練\(k\)個DQN，而每個DQN的reward都是一樣的，是user model給予整個組合的分數。&lt;/p&gt;
-
-&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;user-model-number.png&quot; alt=&quot;User Model&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;首先作者想要知道用GAN所訓練出來的user model的表現如何，便將這個user model去跟其他推薦系統相比較，可以看到用GAN訓練出來的user model表現蠻好的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;recommendation-performance.png&quot; alt=&quot;Recommendation Performance&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;再來是對Cascading Q-Networks的實驗，想要知道以DQN作為推薦系統的表現怎麼樣，也可以看到CDQN的表現也相當亮眼。&lt;/p&gt;
-
-&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
-
-&lt;p&gt;在這篇paper裡面作者使用GAN的技術來模擬真實的使用者，讓用RL來訓練推薦系統變得沒有那麼遙不可及。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Generative-Adversarial-Network" /><category term="Recommendation-System" /><category term="Reinforcement-Learning" /><summary type="html">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;venn-comma.png&quot; alt=&quot;Venn Comma&quot; /&gt;&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</summary></entry></feed>

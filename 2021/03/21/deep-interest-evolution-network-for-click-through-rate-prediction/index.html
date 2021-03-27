@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>利用GitHub Actions來部署部落格 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Deep Interest Evolution Network for Click-Through Rate Prediction - wjohn1483.github.io</title>
 
-<meta name="description" content="前陣子發現到GitHub Actions可以用來做CI，試著使用看看。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2021/02/28/move-blog-to-github-actions/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="簡單記錄一下，看完此篇paper的筆記。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -289,139 +289,122 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>利用GitHub Actions來部署部落格</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Deep Interest Evolution Network for Click-Through Rate Prediction</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2021-02-28-move-blog-to-github-actions/2021-02-28-move-blog-to-github-actions.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="利用GitHub Actions來部署部落格"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2021-03-21-deep-interest-evolution-network-for-click-through-rate-prediction/2021-03-21-deep-interest-evolution-network-for-click-through-rate-prediction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Deep Interest Evolution Network for Click-Through Rate Prediction"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 28, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-02-28T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Paper">Paper</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 21, 2021</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-03-21T00:00:00+00:00">
+    <meta itemprop="keywords" content="Paper"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>前陣子發現到GitHub Actions可以用來做CI，試著使用看看。</p>
+<div class="article__content" itemprop="articleBody"><p>簡單記錄一下，看完此篇paper的筆記。</p>
 
 <!--more-->
 
-<h2 id="github-actions">GitHub Actions</h2>
+<p><a href="https://arxiv.org/pdf/1809.03672.pdf">這篇paper</a>是由阿里巴巴提出來，利用使用者的行為和基本資訊，來去預測使用者對廣告的CTR，榮獲AAAI 2019 accepted paper。</p>
 
-<p><a href="https://github.com/features/actions">GitHub Actions</a>是GitHub自己出的一套CI/CD的工具，可以讓你在推code、看CI/CD都在GitHub上面解決。</p>
+<h2 id="dien">DIEN</h2>
 
-<p>GitHub Actions相較於其他CI/CD的工具，我覺得它的優勢在於免費的額度比較多，如果是public repository，actions的使用是免費的，而private repository每個月也有2000分鐘的使用時間，而且如果有其他人fork你的repository，這些CI/CD的設定也會跟著被帶走，別人也可以無痛的使用相同的CI/CD流程。</p>
+<p>在這篇paper當中，作者將他們的model稱之為DIEN（Deep Interest Evolution Network），其架構如下圖。</p>
 
-<h2 id="開始使用github-actions">開始使用GitHub Actions</h2>
+<p><img src="./model_architecture.png" alt="Model Architecture" /></p>
 
-<p>只要在repository裡面創建<strong>.github/workflows/</strong>，並在裡面放好設定檔，就可以觸發GitHub Actions了，你也可以在repository頁面的上方點Actions的頁籤，裡面有一些設定檔的範本可以選擇。</p>
+<p>可以看到在架構圖中右下方的地方，有三個輸入，分別是</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">My first github actions</span>
+<ul>
+  <li><strong>Target Ad</strong>：被預測的廣告embedding</li>
+  <li><strong>Context Feature</strong>：這個feature我沒有看得很懂，從paper的原文裡面說是時間以及其他的東西</li>
+  <li><strong>UserProfile Feature</strong>：使用者的embedding，包含性別、年齡等</li>
+</ul>
 
-<span class="na">on</span><span class="pi">:</span>
-  <span class="na">push</span><span class="pi">:</span>
-    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
+<p>左方的<code class="language-plaintext highlighter-rouge">b(1)、b(2)、b(T-1)、b(T)</code>是使用者行為，像是使用者點過什麼廣告，經過<code class="language-plaintext highlighter-rouge">Embedding Layer</code>以後稱之為<strong>behavior feature</strong>，之後這些feature會被餵到<a href="#interest-extractor-layer">Interest Extractor Layer</a>和<a href="#interest-evolving-layer">Interest Evolving Layer</a>，最終產生一個embeeding \(h'(T)\)。</p>
 
-<span class="na">jobs</span><span class="pi">:</span>
-  <span class="na">build</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+<p>最後\(h'(T)\)會與右方的<strong>Target Ad</strong>、<strong>Context Feature</strong>和<strong>UserProfile Feature</strong>一同串起來，經過一些fully connected layers以後，產生出2維的輸出（點、不點），並利用binary cross entropy來當作loss function。</p>
 
-    <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+\[L_{target}=-\frac{1}{N}\sum\limits^{N}\limits_{(\textbf{x},y)\in\mathcal{D}}(y\log p(\textbf{x})+(1-y)\log (1-p(\textbf{x})))\]
 
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">echo "hello"</span>
+<h3 id="interest-extractor-layer">Interest Extractor Layer</h3>
 
-</code></pre></div></div>
+<p>在Interest Extractor Layer裡面會去將使用者行為透過GRU製作成feature，在這邊作者使用的是使用者廣告的點擊來當作使用者行為，也就是照著時間順序將使用者點擊的廣告的embedding餵入GRU中，值得一提的是，作者將GRU的輸出額外拉出來做auxiliary loss，來幫助GRU訓練得更好。</p>
 
-<p>設定檔跟其他的工具長相差不多，在steps裡面填寫你想要做的事情，GitHub就會起一個virtual machine來執行。</p>
+<h4 id="auxiliary-loss">Auxiliary Loss</h4>
 
-<h2 id="設定環境變數">設定環境變數</h2>
+<p>在每一個時間點\(t\)，GRU會產生一個輸出\(h(t)\)，這時會將使用者下一個時間點\(t+1\)點擊的廣告embedding \(e(t+1)\)拿出來，接著從眾多廣告embedding中隨機取樣一個沒有點擊的出來作為\(e(t+1)\prime\)，並將有點擊的label成\(1\)，沒點擊的label成\(0\)來做訓練，藉此來讓\(h(t)\)更能含有可以預測出下一個點擊的資訊。</p>
 
-<p>如果想要在Actions裡面傳入環境變數的話，可以參考底下的步驟。</p>
-
-<pre><code class="language-mermaid">graph TD;
-	A(點選Repository右上角的Settings)
-	B(點選左下角的Secrets)
-	C(點選右上角的New repository secret)
-	D(打上環境變數的名稱以及值)
-    A--&gt;B;
-    B--&gt;C;
-    C--&gt;D;
+<pre><code class="language-mermaid">graph LR;
+    gru("h(t)")
+    sig1["Sigmoid"]
+    sig2["Sigmoid"]
+    pos("e(t+1)")
+    neg("e(t+1)'")
+    label1((1))
+    label0((0))
+    pos--&gt;sig1;
+    gru--&gt;sig1;
+    sig1--&gt;label1;
+    gru--&gt;sig2;
+    sig2--&gt;label0;
+    neg--&gt;sig2;
 </code></pre>
 
-<p>repository裡面設定好環境變數以後，在設定檔需要宣告使用哪些環境變數，之後在steps裡面就可以直接使用了。</p>
+<p>整體的loss fcuntion因此會變成</p>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">My first github actions</span>
+\[L=L_{target}+\alpha*L_{aux}\]
 
-<span class="na">on</span><span class="pi">:</span>
-  <span class="na">push</span><span class="pi">:</span>
-    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
-    
-<span class="na">jobs</span><span class="pi">:</span>
-  <span class="na">build</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-    <span class="na">env</span><span class="pi">:</span>
-      <span class="na">USER_NAME</span><span class="pi">:</span> <span class="s">${{secrets.USER_NAME}}</span>
-    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+\[L_{aux}=-\frac{1}{N}\left( \sum\limits_{i=1}\limits^{N} \sum\limits_{t}\log\sigma(\textbf{h}^i_t,\textbf{e}^i_b[t+1])+\log(1-\sigma(\textbf{h}^i_t,\hat{\textbf{e}^i_b}[t+1]))\right )\]
 
-    <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
+<h3 id="interest-evolving-layer">Interest Evolving Layer</h3>
 
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">echo "${USER_NAME}"</span>
+<p>使用者可能同時間表現出多種興趣，而我們比較想要知道的是使用者對某特定廣告的興趣有多少，所以在這邊作者加了Interest Evolving Layer，亦即另一層GRU，來去從使用者行為當中萃取出相對應廣告的興趣。</p>
 
-</code></pre></div></div>
+<p>作者使用的方式是利用attention的機制，透過目標廣告的embedding與Interest Extractor Layer出來的embeeding做相似度的計算</p>
 
-<h2 id="想要在actions裡面push程式碼到repository">想要在Actions裡面push程式碼到repository</h2>
+\[a_t=\frac{\exp(\textbf{h}_tW\textbf{e}_a)}{\sum\limits_{j=1}\limits^{T}\exp(\textbf{h}_jW\textbf{e}_a)}\]
 
-<p>在Actions裡面有人寫好了<a href="https://github.com/marketplace/actions/webfactory-ssh-agent">工具</a>可以讓你宣告ssh key，就能像一般利用ssh key push的方式推程式碼到你的repository裡面，產生和設定ssh public/private key的方式請參考<a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">GitHub的官方文件</a>。</p>
+<p>並利用各種不同的方式將這個attention weight融入至GRU中。</p>
 
-<p>在GitHub設定好public key以後，將private key弄到ssh-agent的方式可以參考底下。</p>
+<h4 id="gru-with-attentional-input-aigru">GRU with attentional input (AIGRU)</h4>
 
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">My first github actions</span>
+<p>第一種方式是直接將Interest Extractor Layer的輸出\(\textbf{h}_t\)直接乘上attention weight \(a_t\)，然後輸入至Interest Evolving Layer中。</p>
 
-<span class="na">on</span><span class="pi">:</span>
-  <span class="na">push</span><span class="pi">:</span>
-    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
-    
-<span class="na">jobs</span><span class="pi">:</span>
-  <span class="na">build</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-    <span class="na">env</span><span class="pi">:</span>
-      <span class="na">USER_NAME</span><span class="pi">:</span> <span class="s">${{secrets.USER_NAME}}</span>
-    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+\[\textbf{i}'_t=\textbf{h}_t*a_t\]
 
-    <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
-        
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">webfactory/ssh-agent@v0.5.0</span>
-        <span class="na">with</span><span class="pi">:</span>
-          <span class="na">ssh-private-key</span><span class="pi">:</span> <span class="s">${{secrets.SSH_PRIVATE_KEY}}</span>
+<h4 id="attention-based-gru-agru">Attention based GRU (AGRU)</h4>
 
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">echo "${USER_NAME}"</span>
-</code></pre></div></div>
+<p>第二種方式是透過算出來的attention weight來決定Interest Evolving Layer中hidden state \(\textbf{h}'_t\)要被更新多少。</p>
 
-<h2 id="參考資料">參考資料</h2>
+\[\textbf{h}'_t=(1-a_t)*\textbf{h}'_{t-1}+a_t*\tilde{\textbf{h}'_t}\]
 
-<ol>
-  <li><a href="https://medium.com/@JainKai/%E6%B7%BA%E8%AB%87-%E7%94%A8github-actions-%E7%B0%A1%E6%98%93%E7%9A%84-ci-%E4%BE%86%E7%99%BC%E5%B8%83gitpages-6ae48e52467e">[淺談]用GitHub Actions 簡易的 CI 來發布GitPages</a></li>
-  <li><a href="https://medium.com/thinkthenrant/githubactionsintro-94be66a8a9f1">帶著走的CI/CD：GitHub Actions! (Take the CI/CD with you: GitHub Actions!)</a></li>
-  <li><a href="webfactory/ssh-agent">webfactory/ssh-agent</a></li>
-</ol>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-02-28T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>其中\(\textbf{h}'_{t-1}\)是前一個時間點，Interest Evolving Layer的輸出，而\(\tilde{\textbf{h}'_t}\)是當下這個時間點\(t\)，GRU內部所計算出來的hidden state，可以參照原先GRU的更新算式，或是<a href="https://arxiv.org/pdf/1809.03672.pdf">paper當中的式(2)~式(5)</a>。</p>
+
+<h4 id="gru-with-attentional-update-gate-augru">GRU with attentional update gate (AUGRU)</h4>
+
+<p>第三種方式是將update gate的值與attention weight相乘，直接控制update gate，這個方式也是實驗當中表現最好的方式。</p>
+
+\[\tilde{\textbf{u}}'_t=a_t*\textbf{u}'_t\]
+
+\[\textbf{h}'_t=(1-\tilde{\textbf{u}}'_t)\circ\textbf{h}'_{t-1}+\tilde{\textbf{u}}'_t\circ\tilde{\textbf{h}}'_t\]
+
+<h2 id="experiments">Experiments</h2>
+
+<p><img src="public_dataset_auc.png" alt="Public Dataset AUC" /></p>
+
+<p>將DIEN套用在<a href="https://arxiv.org/pdf/1809.03672.pdf#cite.mcauley2015image">Amazon Dataset</a>上面可以看到，DIEN的AUC是裡面最佳的，而作者有將這個model套用在企業的資料上，也獲得了不俗的成績。</p>
+
+<p>在paper裡面實驗的章節中作者做了許多的實驗來去驗證model裡面的每一個環節都是有必要的，有興趣的人可以去看看原本的paper。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>在這篇paper裡面，作者提出了有點類似wide and deep架構的模型來去解CTR prediction的問題，也加入了各式各樣的方式來應用attention weight，只不過在實驗當中只有展示Electronics和Books這兩個類別的成效，如果可以加入不同類別的比較我覺得可以讓讀者了解model適合套用在哪種類別的場景當中會更好。</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-03-21T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2021/02/07/gitalk-introduction/">利用Gitalk在靜態網頁裡面新增留言區</a></div><div class="next"><span>NEXT</span><a href="/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/">Deep Interest Evolution Network for Click-Through Rate Prediction</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2021/02/28/move-blog-to-github-actions/">利用GitHub Actions來部署部落格</a></div></div></div>
 
 </div>
 
