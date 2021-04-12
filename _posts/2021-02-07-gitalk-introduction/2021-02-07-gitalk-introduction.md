@@ -103,7 +103,7 @@ JEKYLL_ENV=production bundle exec jekyll build
 </head>
 ```
 
-並在`<body>`裡面新增`<script type="text/javascript">`，並把相關的變數設定好就行，client id和client secret的取得可以參考文章上面的[建立GitHub Application](#建立github-application)。
+並在`<body>`裡面新增`<script type="text/javascript">`，把相關的變數設定好，client id和client secret的取得可以參考文章上面的[建立GitHub Application](#建立github-application)。
 
 ```javascript
 const gitalk = new Gitalk({
@@ -121,6 +121,12 @@ gitalk.render('gitalk-container')
 ```
 
 這邊有帶入[Gitalk issue](https://github.com/gitalk/gitalk/issues/429)裡面所提到的，其他人所提供的proxy，如果想用原本預設的proxy，直接將proxy的設定拿掉就行。
+
+最後在想要插入Gitalk的地方放個`<div>`就可以了。
+
+```html
+<div id="gitalk-container"></div>
+```
 
 ## 參考資料
 
