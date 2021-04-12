@@ -392,7 +392,7 @@
 <span class="nt">&lt;/head&gt;</span>
 </code></pre></div></div>
 
-<p>並在<code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>裡面新增<code class="language-plaintext highlighter-rouge">&lt;script type="text/javascript"&gt;</code>，並把相關的變數設定好就行，client id和client secret的取得可以參考文章上面的<a href="#建立github-application">建立GitHub Application</a>。</p>
+<p>並在<code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>裡面新增<code class="language-plaintext highlighter-rouge">&lt;script type="text/javascript"&gt;</code>，把相關的變數設定好，client id和client secret的取得可以參考文章上面的<a href="#建立github-application">建立GitHub Application</a>。</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">gitalk</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gitalk</span><span class="p">({</span>
   <span class="na">clientID</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GitHub Application Client ID</span><span class="dl">'</span><span class="p">,</span>
@@ -409,6 +409,11 @@
 </code></pre></div></div>
 
 <p>這邊有帶入<a href="https://github.com/gitalk/gitalk/issues/429">Gitalk issue</a>裡面所提到的，其他人所提供的proxy，如果想用原本預設的proxy，直接將proxy的設定拿掉就行。</p>
+
+<p>最後在想要插入Gitalk的地方放個<code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>就可以了。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"gitalk-container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
 
 <h2 id="參考資料">參考資料</h2>
 
