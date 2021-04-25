@@ -1,8 +1,19 @@
----
-title: Audio to Scene Samples
-layout: page
-footer: false
----
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Audio to Scene Samples</title>
+    <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+</head>
+<body>
+    <div class="container">
+        <h1 align="center">Audio to Scene Samples</h1>
 
         <h2>Qualitative Results</h2>
 
@@ -195,3 +206,6 @@ footer: false
                 </tr>
             </tbody>
         </table>
+    </div>
+</body>
+</html>
