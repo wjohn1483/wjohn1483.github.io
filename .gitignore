@@ -5,3 +5,4 @@ Gemfile.lock
 vendor/
 .sass-cache/
 _site/
+.ruby-version
