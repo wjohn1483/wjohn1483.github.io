@@ -1,4 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-05-27T15:06:52+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何利用Swift製作倒數計時器</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer/" rel="alternate" type="text/html" title="如何利用Swift製作倒數計時器" /><published>2021-05-24T00:00:00+00:00</published><updated>2021-05-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer/">&lt;p&gt;先前都有在使用Mac app來幫我在電腦上倒計時，但有些功能需要付費才可以解鎖，剛好附近有人有在弄Mac app，想說自己來寫一個&lt;a href=&quot;https://github.com/wjohn1483/NLUTimer&quot;&gt;倒數計時器&lt;/a&gt;，在這邊紀錄一下製作的過程。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-06-05T14:39:42+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">在Google Sheet裡面呈現html</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/" rel="alternate" type="text/html" title="在Google Sheet裡面呈現html" /><published>2021-06-05T00:00:00+00:00</published><updated>2021-06-05T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/">&lt;p&gt;前陣子有人推薦了一個好用的資料呈現套件&lt;a href=&quot;https://plotly.com/&quot;&gt;plotly&lt;/a&gt;，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;具體實現的方法是建立一個Google Apps Script，並綁定Google Sheet上面的物件，讓使用者跟這個物件互動的時候跳出一個Dialog擺html來跟使用者互動，底下會詳述各個步驟該如何設定。&lt;/p&gt;
+
+&lt;h2 id=&quot;google-apps-script&quot;&gt;Google Apps Script&lt;/h2&gt;
+
+&lt;p&gt;首先先打開Google Sheet，並在工具的地方按下Script editor。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./script_editor.png&quot; alt=&quot;Script Editor&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;按下去以後會跳出新的分頁，在這裡可以寫一些程式碼來去與Google的服務做互動。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./new_app_script.png&quot; alt=&quot;New App Script&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在這邊我們將底下的程式碼貼到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Code.gs&lt;/code&gt;的檔案裡面，記得將&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;YOUR_HTML_FILENAME&amp;gt;&lt;/code&gt;替換成你html的檔名、想一個要顯示在Dialog的名稱替換掉&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;TITLE_OF_DIALOG&amp;gt;&lt;/code&gt;。目前設定跳出來的Dialog的大小是1000*1000，可以根據你想要顯示的大小做調整。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;openDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HtmlService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createHtmlOutputFromFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;lt;YOUR_HTML_FILENAME&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setSandboxMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HtmlService&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;SandboxMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NATIVE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setWidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);;&lt;/span&gt; 
+  &lt;span class=&quot;nx&quot;&gt;SpreadsheetApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getUi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;showModalDialog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;lt;TITLE_OF_DIALOG&amp;gt;&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;最後在檔案旁邊的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt;號點選新增html，並將你想要呈現的html貼在裡面並按下旁邊的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Save project&lt;/code&gt;就完成這個部分了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./new_html.png&quot; alt=&quot;New html&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./save_project.png&quot; alt=&quot;Save Project&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;記得新增的html名稱要跟程式碼裡面寫的一致。&lt;/p&gt;
+
+&lt;h2 id=&quot;綁定google-sheet物件&quot;&gt;綁定Google Sheet物件&lt;/h2&gt;
+
+&lt;p&gt;首先，我們要先創建一個物件讓使用者跟它做互動，這邊我們自己畫一個像按鈕的圖樣。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./new_drawing.png&quot; alt=&quot;New Drawing&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./drawing_example.png&quot; alt=&quot;Draw Example&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;建立好物件後，點選右上角的三個點，選擇&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Assign script&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assign_script_dropdown.png&quot; alt=&quot;Assign Script&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在跳出的視窗填上剛剛程式碼中的function名稱&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;openDialog&lt;/code&gt;後按下OK。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./assign_script_popup.png&quot; alt=&quot;Assign Script&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;到這邊就全部設定完成了！之後使用者點選物件就會跳出你製作的html。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./result.gif&quot; alt=&quot;Result&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;值得一提的是，在使用者第一次點選的時候，應該會跳出像底下的權限要求，照著提示准許就行。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./authorization.png&quot; alt=&quot;Authorization&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如果之後想要移動物件位置的話，對物件按滑鼠右鍵即可。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.quora.com/How-do-I-add-HTML-code-in-a-Google-Spreadsheet-Cell&quot;&gt;How do I add HTML code in a Google Spredsheet Cell&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">前陣子有人推薦了一個好用的資料呈現套件plotly，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。</summary></entry><entry><title type="html">如何利用Swift製作倒數計時器</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer/" rel="alternate" type="text/html" title="如何利用Swift製作倒數計時器" /><published>2021-05-24T00:00:00+00:00</published><updated>2021-05-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer/">&lt;p&gt;先前都有在使用Mac app來幫我在電腦上倒計時，但有些功能需要付費才可以解鎖，剛好附近有人有在弄Mac app，想說自己來寫一個&lt;a href=&quot;https://github.com/wjohn1483/NLUTimer&quot;&gt;倒數計時器&lt;/a&gt;，在這邊紀錄一下製作的過程。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -992,157 +1058,4 @@ ImportError: attempted relative import with no known parent package
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OAKAZhFmYoI&quot;&gt;DRL Lecture 2:  Proximal Policy Optimization (PPO)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Your Name</name></author><category term="Reinforcement-Learning" /><summary type="html">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</summary></entry><entry><title type="html">如何製作Slack機器人</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot/" rel="alternate" type="text/html" title="如何製作Slack機器人" /><published>2020-05-07T00:00:00+00:00</published><updated>2020-05-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/05/07/slack-bot/">&lt;p&gt;這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;目標&quot;&gt;目標&lt;/h2&gt;
-
-&lt;p&gt;由於一些原因，使我想要製作一個slack機器人，來幫助我將slack上的訊息貼到某個google sheet上，底下將會介紹我如何做到這件事情。&lt;/p&gt;
-
-&lt;h2 id=&quot;google-cloud-platform-gcp&quot;&gt;Google Cloud Platform (GCP)&lt;/h2&gt;
-
-&lt;p&gt;在開始製作slack機器人之前，我們需要先找到一個24小時不間斷運行的機器來執行我們的機器人程式，而這個機器最好有public IP，來讓slack可以透過這個IP跟機器人互動，最終，我選擇了Google Cloud Platform (GCP)來放我的機器人，因為它現在有&lt;a href=&quot;https://cloud.google.com/free/docs/gcp-free-tier?hl=zh-tw&quot;&gt;「一律免費」的方案&lt;/a&gt;可以使用，這個方案的額度允許你永久免費使用一個f1-micro的機器，還搭配有一個public IP，詳細的使用資訊可以參考連接中&lt;strong&gt;Compute Engine&lt;/strong&gt;的部分。&lt;/p&gt;
-
-&lt;h3 id=&quot;註冊&quot;&gt;註冊&lt;/h3&gt;
-
-&lt;p&gt;註冊的部分就照著&lt;a href=&quot;https://cloud.google.com/&quot;&gt;官網&lt;/a&gt;的指示一步一步填寫資料就完成了，不過這邊會需要填寫信用卡資料，當你使用超過免費的額度的時候會從信用卡扣款。&lt;/p&gt;
-
-&lt;h3 id=&quot;開啟虛擬機&quot;&gt;開啟虛擬機&lt;/h3&gt;
-
-&lt;p&gt;在註冊完成了以後就可以準備來開啟一個虛擬機了，可以直接到&lt;a href=&quot;https://console.cloud.google.com/projectselector/compute/instances&quot;&gt;Compute Engine&lt;/a&gt;這邊選擇，如果你沒有新增過任何專案的話，這邊會提示你新增一個專案，如果已經有建立好專案了，就可以直接選擇它。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;wait-vm.png&quot; alt=&quot;Wait for VM&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;這邊可能會需要一點時間來設定一些東西，當設定完成了以後就可以按下&lt;strong&gt;建立&lt;/strong&gt;，來設定虛擬機的規格。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;vm-settings.png&quot; alt=&quot;VM settings&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如果要使用f1-micro的機器，也就是一律免費所提供的機型的話，在區域的部分只能選美國，接著就是在機器類型的地方選擇f1-micro，這時在畫面的右上角就應該可以看到一律免費所提供的免費時數。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;vm-image.png&quot; alt=&quot;VM image&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在下方開機磁碟的部分，可以選擇自己喜歡的作業系統，而一律免費的方案提供你30GB的HDD硬碟可以使用，記得要在這邊把容量改成30GB。&lt;/p&gt;
-
-&lt;p&gt;最後按下建立就能成功建立一個虛擬機了。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;vm-ip.png&quot; alt=&quot;VM IP&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;這邊可以看到虛擬機的內部IP和外部IP，而想要在虛擬機裡面下指令的話，可以點選右邊SSH的按鈕，會在瀏覽器裡面幫你開啟一個terminal，你就能任意的安裝、執行你想要的程式碼了。&lt;/p&gt;
-
-&lt;h3 id=&quot;防火牆&quot;&gt;防火牆&lt;/h3&gt;
-
-&lt;p&gt;在開好虛擬機以後，接著就是希望slack傳送的資料可以被虛擬機接收到，為此需要開通防火牆，可以點選虛擬機旁邊設定中的&lt;strong&gt;查看網路詳細資料&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;go-network-settings.png&quot; alt=&quot;Go network settings&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;接著點選左邊的&lt;strong&gt;防火牆規則&lt;/strong&gt;、右邊的&lt;strong&gt;建立防火牆規則&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;go-firewall-settings.png&quot; alt=&quot;Go firewall settings&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;自行設定一下需要的網路設定，按下&lt;strong&gt;建立&lt;/strong&gt;就完成了，如此一來就能讓slack透過你所設定的port進行溝通。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;firewall-settings.png&quot; alt=&quot;Firewall settings&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;slack-bot&quot;&gt;Slack Bot&lt;/h2&gt;
-
-&lt;p&gt;在有了可以跑slack bot的虛擬機以後，接著便是來創建slack bot。&lt;/p&gt;
-
-&lt;h3 id=&quot;創建slack-app並選擇bot&quot;&gt;創建Slack app並選擇Bot&lt;/h3&gt;
-
-&lt;p&gt;首先我們會先需要在&lt;a href=&quot;https://api.slack.com/apps&quot;&gt;slack API中創建一個application&lt;/a&gt;，並且選擇我們這個application的種類。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;slack-app-feature.png&quot; alt=&quot;Slack API features&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;接著會需要告訴slack說這個bot需要的權限有哪些，可以點選左邊的&lt;strong&gt;OAuth &amp;amp; Permissions&lt;/strong&gt;，在底下的&lt;strong&gt;Scopes&lt;/strong&gt;新增想要的權限。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;slack-app-scope.png&quot; alt=&quot;Slack Scopes&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;這邊我選擇了兩個權限，分別是讓bot有權可以讀取它被mention的訊息，以及以bot的帳戶傳送訊息到channel中。選擇好權限以後，就能在上圖最上方點選把bot安裝到你的workspace中(由於我已經安裝過了，所以現在顯示&lt;strong&gt;Reinstall App&lt;/strong&gt;)。&lt;/p&gt;
-
-&lt;h3 id=&quot;event-subscription&quot;&gt;Event Subscription&lt;/h3&gt;
-
-&lt;p&gt;至此，我們應該已經可以在slack中看到我們所創建的bot帳戶，接著就是希望bot可以在事件發生時(在這邊是希望被mention的時候)，可以有適當的反應，而slack這邊的做法其實就是當事件發生的時候，會傳送一個HTTP POST request到你所設定的網址，所以我們只需要在前面創立的虛擬機裡面，架設一個Web server來接受slack的POST request就行。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;slack-event-subscription.png&quot; alt=&quot;Slack Event Subscription&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;值得一提的是，在設定slack要傳送的POST位址時，slack為確保網址是活著的，所以在設定的時候就會傳送一個POST request過去，裡面會包含一個&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;challenge&lt;/code&gt;的參數，我們會需要直接return &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;challenge&lt;/code&gt;這個參數的內容給slack才可以設定成功。&lt;/p&gt;
-
-&lt;h3 id=&quot;傳送訊息&quot;&gt;傳送訊息&lt;/h3&gt;
-
-&lt;p&gt;至於怎麼創立Web server跟slack互動以及傳送訊息至channel裡，可以參考&lt;a href=&quot;https://github.com/SlackAPI/python-slackclient&quot;&gt;Slack的python-slackclient&lt;/a&gt;裡面的&lt;a href=&quot;https://github.com/slackapi/python-slackclient/tree/master/tutorial&quot;&gt;tutorial&lt;/a&gt;。&lt;/p&gt;
-
-&lt;p&gt;簡單來說，上面的例子就是使用Flask建立一個Web server，不過會需要&lt;a href=&quot;https://github.com/slackapi/python-slackclient/blob/master/tutorial/PythOnBoardingBot/app.py#L12-L15&quot;&gt;使用到這個bot的憑證&lt;/a&gt;(可以看tutorial裡面的截圖)，接著就是設定一些&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;slack_events_adapter&lt;/code&gt;來處理不同的event。&lt;/p&gt;
-
-&lt;p&gt;不過我個人使用時，不知道為什麼&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;slack_events_adapter&lt;/code&gt;好像沒有什麼用處，我自己的程式碼是長得像底下這樣的。&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;flask&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;slack&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebClient&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;slackeventsapi&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SlackEventAdapter&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Flask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;slack_events_adapter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SlackEventAdapter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slack_signing_secret&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/slack/events&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;slack_web_client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;slack_bot_token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;POST&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;post_handling&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Incoming payload&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;# Slack need to check application is valid
-&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;challenge&quot;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Check accessibility&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;challenge&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;# Handle slack events
-&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;event&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;channel_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;channel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;user_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;event_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;thread_ts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;thread_ts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;app_mention&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;# Do what you want to do here
-&lt;/span&gt;            
-        &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;slack_web_client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chat_postMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;channel_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;return_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;thread_ts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;其中最後一行是把訊息傳送到slack的API，其中的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;channel_id&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ts&lt;/code&gt;是從slack的POST request來的，分別是channel的id和thread的ts，而&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;return_message&lt;/code&gt;是一個單純的string，在呼叫&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chat_postMessage()&lt;/code&gt;以後，就會將訊息回覆在thread中，若想要直接回覆在群組中，只需要把&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chat_postMessage()&lt;/code&gt;裡的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;thread_ts&lt;/code&gt;部分拿掉就可以了。&lt;/p&gt;
-
-&lt;h2 id=&quot;與google-sheet互動&quot;&gt;與Google Sheet互動&lt;/h2&gt;
-
-&lt;p&gt;當初創立這個Bot的目的是希望把一些東西貼到google sheet上，在這邊介紹一下怎麼用command line來跟google sheet互動，使用的套件是&lt;a href=&quot;https://github.com/burnash/gspread&quot;&gt;gspread&lt;/a&gt;，這邊的介紹主要是參考&lt;a href=&quot;https://towardsdatascience.com/accessing-google-spreadsheet-data-using-python-90a5bc214fd2&quot;&gt;Accessing Google Spreadsheet Data using Python&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;建立service-account&quot;&gt;建立service account&lt;/h3&gt;
-
-&lt;p&gt;為了要讓Bot可以修改google sheet，我們需要為他建立一個google bot帳號，來在google sheet的設定裡賦予它編輯者的權限，而設定的方法也很簡單，首先先去google clound console選擇&lt;strong&gt;APIs &amp;amp; Services&lt;/strong&gt;的&lt;strong&gt;Library&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;google-api-library.png&quot; alt=&quot;Google API Library&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;並在跳出來的畫面搜尋&lt;strong&gt;Google Sheets API&lt;/strong&gt;，點進去並啟用以後，應該會引導到底下的畫面，新增一個新的credential。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://miro.medium.com/max/1300/1*XVy7hsGwyiNwSx-7hQXL8A.png&quot; alt=&quot;Add credential&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;需要記得把上圖中的Which API are you using換成Google Sheets API&lt;/strong&gt;，完成了以後我們可以得到一個json檔，裡面包含了一些credential來讓我們使用Google Sheets API。&lt;/p&gt;
-
-&lt;p&gt;印象中在建立的途中會提示你建立一個service account，只需要填寫一個代表這個bot的名字就可以獲得一個電子信箱位址。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;google-credential.png&quot; alt=&quot;Google credential&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;可以去&lt;strong&gt;APIs &amp;amp; Services&lt;/strong&gt;的&lt;strong&gt;Credentials&lt;/strong&gt;裡面去看到是否有一個domain name為&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iam.gserviceaccount.com&lt;/code&gt;的電子信箱，最後就是將這電子信箱加入google sheet的協作者就可以了。&lt;/p&gt;
-
-&lt;h3 id=&quot;gspread&quot;&gt;gspread&lt;/h3&gt;
-
-&lt;p&gt;至此，bot已經有權限可以修改google sheet了，最後就是透過gspread來跟google sheet做互動，範例的程式碼如下。&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gspread&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;oauth2client.service_account&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServiceAccountCredentials&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;https://spreadsheets.google.com/feeds&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;credential&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ServiceAccountCredentials&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from_json_keyfile_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;/path/to/your/credential.json&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gspread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;authorize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;credential&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;sheet&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;open_by_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sheet_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sheet1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;這邊的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/path/to/you/credential.json&lt;/code&gt;是前面所下載的json檔，而&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sheet_url&lt;/code&gt;是你google sheet的網址，其他gspread的使用方法可以參考它的&lt;a href=&quot;https://gspread.readthedocs.io/en/latest/&quot;&gt;documentation&lt;/a&gt;。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>Your Name</name></author><category term="Reinforcement-Learning" /><summary type="html">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</summary></entry></feed>
