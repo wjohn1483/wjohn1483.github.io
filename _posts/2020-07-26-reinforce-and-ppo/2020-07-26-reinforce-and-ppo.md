@@ -57,6 +57,16 @@ $$\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{
 
 在前面REINFORCE的式子裡面我們可以看到它是一個on-policy的方法，那on-policy的方法需要很長的訓練時間，因為跟環境互動完的trajectory拿來更新一次model的參數以後就不能夠再被使用了，因為新的model所採取的action會不一樣，而PPO就是嘗試把REINFORCE從on-policy變成off-policy，好讓訓練時間縮短。
 
+### Model-based v.s. Model-free
+
+這裡順便提一下model-based和model-free的差異。
+
+> Model-based：agent可以直接拿到environment的transitition function和reward function，或是他們的近似
+
+> Model-free；agent拿不到environment的transition function和reward function
+
+一個簡單的判斷方法是，如果agent訓練完以後，可以去預測environment的下一個state或是reward的話，那便是model-based，反之就是model-free。
+
 ### Importance Sampling
 
 PPO使用的便是將importance sampling融入進objective function裡面，這邊先提一下什麼是importance sampling。
@@ -113,4 +123,5 @@ $$J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta
 
 ## 參考資料
 
-* [DRL Lecture 2:  Proximal Policy Optimization (PPO)](https://www.youtube.com/watch?v=OAKAZhFmYoI)
+1. [DRL Lecture 2:  Proximal Policy Optimization (PPO)](https://www.youtube.com/watch?v=OAKAZhFmYoI)
+2. [What's the difference between model-free and model-based reinforcement learning?](https://ai.stackexchange.com/questions/4456/whats-the-difference-between-model-free-and-model-based-reinforcement-learning)
