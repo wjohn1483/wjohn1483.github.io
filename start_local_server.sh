@@ -2,4 +2,4 @@
 
 set -x
 
-JEKYLL_ENV=production bundle exec jekyll serve --trace
+JEKYLL_ENV=production bundle exec jekyll serve --trace --future

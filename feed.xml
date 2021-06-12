@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-06-05T14:39:42+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">在Google Sheet裡面呈現html</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/" rel="alternate" type="text/html" title="在Google Sheet裡面呈現html" /><published>2021-06-05T00:00:00+00:00</published><updated>2021-06-05T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/">&lt;p&gt;前陣子有人推薦了一個好用的資料呈現套件&lt;a href=&quot;https://plotly.com/&quot;&gt;plotly&lt;/a&gt;，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-06-12T15:11:57+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">在Google Sheet裡面呈現html</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/" rel="alternate" type="text/html" title="在Google Sheet裡面呈現html" /><published>2021-06-05T00:00:00+00:00</published><updated>2021-06-05T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/">&lt;p&gt;前陣子有人推薦了一個好用的資料呈現套件&lt;a href=&quot;https://plotly.com/&quot;&gt;plotly&lt;/a&gt;，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1000,6 +1000,20 @@ ImportError: attempted relative import with no known parent package
 
 &lt;p&gt;在前面REINFORCE的式子裡面我們可以看到它是一個on-policy的方法，那on-policy的方法需要很長的訓練時間，因為跟環境互動完的trajectory拿來更新一次model的參數以後就不能夠再被使用了，因為新的model所採取的action會不一樣，而PPO就是嘗試把REINFORCE從on-policy變成off-policy，好讓訓練時間縮短。&lt;/p&gt;
 
+&lt;h3 id=&quot;model-based-vs-model-free&quot;&gt;Model-based v.s. Model-free&lt;/h3&gt;
+
+&lt;p&gt;這裡順便提一下model-based和model-free的差異。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Model-based：agent可以直接拿到environment的transitition function和reward function，或是他們的近似&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Model-free；agent拿不到environment的transition function和reward function&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;一個簡單的判斷方法是，如果agent訓練完以後，可以去預測environment的下一個state或是reward的話，那便是model-based，反之就是model-free。&lt;/p&gt;
+
 &lt;h3 id=&quot;importance-sampling&quot;&gt;Importance Sampling&lt;/h3&gt;
 
 &lt;p&gt;PPO使用的便是將importance sampling融入進objective function裡面，這邊先提一下什麼是importance sampling。&lt;/p&gt;
@@ -1056,6 +1070,7 @@ ImportError: attempted relative import with no known parent package
 
 &lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
 
-&lt;ul&gt;
+&lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OAKAZhFmYoI&quot;&gt;DRL Lecture 2:  Proximal Policy Optimization (PPO)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Your Name</name></author><category term="Reinforcement-Learning" /><summary type="html">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</summary></entry></feed>
+  &lt;li&gt;&lt;a href=&quot;https://ai.stackexchange.com/questions/4456/whats-the-difference-between-model-free-and-model-based-reinforcement-learning&quot;&gt;What’s the difference between model-free and model-based reinforcement learning?&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Reinforcement-Learning" /><summary type="html">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</summary></entry></feed>
