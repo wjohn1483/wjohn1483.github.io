@@ -1,4 +1,152 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-06-12T15:11:57+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">在Google Sheet裡面呈現html</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/" rel="alternate" type="text/html" title="在Google Sheet裡面呈現html" /><published>2021-06-05T00:00:00+00:00</published><updated>2021-06-05T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/">&lt;p&gt;前陣子有人推薦了一個好用的資料呈現套件&lt;a href=&quot;https://plotly.com/&quot;&gt;plotly&lt;/a&gt;，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-06-14T11:48:05+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">語音辨識概觀</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/" rel="alternate" type="text/html" title="語音辨識概觀" /><published>2021-06-14T00:00:00+00:00</published><updated>2021-06-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/">&lt;p&gt;在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;基礎介紹&quot;&gt;基礎介紹&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph LR;
+	waveform(&quot;Waveform (X)&quot;)
+	word(&quot;Word (Y)&quot;)
+	waveform--ASR System--&amp;gt;word
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;語音辨識（Automatic Speech Recognition, ASR）所做的事情如上圖所示，將輸入的訊號轉換成文字，亦即是去尋找&lt;/p&gt;
+
+\[\arg\max\limits_Y P(Y\vert X)\]
+
+&lt;h3 id=&quot;輸入&quot;&gt;輸入&lt;/h3&gt;
+
+&lt;p&gt;關於ASR輸入的部分，在大多數的情況下，我們並不會直接將waveform當作輸入，而是會先對這個waveform做一些處理，最常見的做法是將waveform轉成MFCC sequence後再餵入ASR系統裡面。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mel-frequency Cepstrum Coefficients (MFCC)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在一般的設定當中，語音訊號的採樣頻率是16k，也就是1秒會有16k個數值，而&lt;a href=&quot;https://en.wikipedia.org/wiki/Mel-frequency_cepstrum&quot;&gt;MFCC&lt;/a&gt;會以25ms為一個window、每10ms為間隔去將25ms的音訊轉成39維的向量。概括來說MFCC做的事情是先將waveform過傅立葉轉換，再通過一群filter bank，最後從頻域轉回來，而這些filter bank是過去人們研究耳朵的構造所訂定出來的，專門為了辨識音訊所設計。&lt;/p&gt;
+
+&lt;p&gt;MFCC具體上做的事情還蠻複雜的，好在現在可以直接使用&lt;a href=&quot;https://github.com/kaldi-asr/kaldi&quot;&gt;Kaldi&lt;/a&gt;幫我們將音訊轉成MFCC，只要將音訊餵進去，它就可以幫忙將音訊轉成MFCC sequence，也就是一堆39維的向量組成的序列，接著就可以開始製作ASR系統了。&lt;/p&gt;
+
+&lt;p&gt;值得一提的是，近期有蠻多研究會直接使用過完filter bank以後得到的輸出當作ASR系統的輸入，可以看需求來選擇不同的feature，在Kaldi裡面都有支援。&lt;/p&gt;
+
+&lt;h3 id=&quot;輸出&quot;&gt;輸出&lt;/h3&gt;
+
+&lt;p&gt;在ASR系統輸出的部分，我們最終想要輸出的是文字，但在語音辨識裡面，通常ASR系統輸出的並不會直接是文字，而是比文字再更小的單位，因為一個字通常是由很多音來組成的，像是注音符號就是一個比文字再更小的單位，底下介紹一下常用的輸出有什麼。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Phoneme&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Phoneme是發音的最小單位，可以想像成是類似英文的音標，而這種輸出會需要有該語言的專業人士告訴我們每一個字所對應到的phoneme是什麼，好讓ASR系統在產生出phoneme以後，能藉由查表的方式轉換成文字。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Graphme&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Graphme是書寫的最小單位，在英文的話會是英文字母，在中文的話會是每一個中文字，雖說中文字有上萬個，但實際上常用的中文字大概在3000-5000的量級。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Morpheme&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Morpheme是比graphme再大一點的單位，可以說是英文的字根字首。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unbelievable&lt;/code&gt;→&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;un&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;believe&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;able&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;hybrid-asr&quot;&gt;Hybrid ASR&lt;/h2&gt;
+
+&lt;p&gt;接下來稍微講一下ASR系統該怎麼做，不過在做語音辨識之前，我們會要先去蒐集語音及其相對應的文字\(\mathcal{D}_l=\{(X_i, Y_i)\}^{N}_{i=1}\)，其中\(X=[x_1, ..., x_T]\in (\mathbb{R}^m)^*\)，\(x_t\)是一個\(m\)維的向量，可以想成是之前提到的MFCC，而\(Y=[y_1, ..., y_L] \in B^*\)，\(B\)代表的是文字的vocabulary，我們想要製作的ASR系統其實就是\(p_\theta(Y\vert X)\)，將音訊輸入進去以後，告訴我們文字出現的機率。&lt;/p&gt;
+
+&lt;p&gt;這個章節想要提的hybrid ASR主要由三個部分組成：Language Model（LM）、Pronunciation Model（PM）、Acoustic Model（AM）。&lt;/p&gt;
+
+&lt;h3 id=&quot;language-model&quot;&gt;Language Model&lt;/h3&gt;
+
+&lt;p&gt;Language model做的事情是判斷這個文字序列\(Y\)出現的機率有多少，有點像是鍵盤輸入法的校正，隨著輸入的文字越來越長，去找最適當的文字該要是什麼，寫成數學式如下。&lt;/p&gt;
+
+\[p_{LM}(Y)=\prod^L_{i=1}p(y_i\vert y_1, ..., y_{i-1})\]
+
+&lt;h3 id=&quot;pronunciation-model&quot;&gt;Pronunciation Model&lt;/h3&gt;
+
+&lt;p&gt;Pronunciation model其實就是前面所提到的，文字跟phoneme的對應表，又稱為lexicon。每一個\(Y\)，都可以根據這個表對應成phoneme sequence。&lt;/p&gt;
+
+\[P=[p_1, ..., p_M]=f_{PM}(Y)\in O^*\]
+
+&lt;p&gt;其中\(f_{PM}(Y)\)代表mapping function，\(O\)表示phoneme inventory，也就是所有的phoneme有哪些。&lt;/p&gt;
+
+&lt;h3 id=&quot;acoustic-model&quot;&gt;Acoustic Model&lt;/h3&gt;
+
+&lt;p&gt;Acoustic model做的事情是去決定phoneme sequence產生出\(X\)的機率，亦即\(p_{AM}(X\vert P)\)，而phoneme sequence當中的每一個phoneme \(p\)都有可能產生出不定長度的feature \(x\)，我們並不知道\(X=[x_1, ..., x_T]\)當中的哪些\(x_t\)是由哪個\(p_t\)產生的，為此，我們對於每一個phoneme都用一個&lt;a href=&quot;https://en.wikipedia.org/wiki/Hidden_Markov_model#Applications&quot;&gt;Hidden Markov Model（HMM）&lt;/a&gt;來model。&lt;/p&gt;
+
+&lt;p&gt;可以想成是說，我們創造了另一個比phoneme更小的單位，HMM的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;state&lt;/code&gt;，來代表一個phoneme，可能一個phoneme 是由3個state組成\(p_1=[a_1, a_2, a_3]\)，當\(X=[a_1, a_1, a_2, a_2, a_2, a_3]\)，我們就有機會可以說\(X\)是由phoneme \(p_1\)產生出來的，因此原先的phoneme sequence \(P\)，可以以HMM state來改寫成\(A=[a_1, ..., a_T]\)，這邊\(A\)的長度與\(X\)的長度一致，所以\(A\)又被稱之為alignment。&lt;/p&gt;
+
+\[\begin{aligned} 
+p_{AM}(X,A\vert P) &amp;amp; =p_{emit}(X\vert A)p_{tran}(A\vert P) \\
+&amp;amp; =\prod\limits_t p_{emit}(x_t\vert a_t)p_{tran}(a_t\vert a_{t-1}; P)
+\end{aligned}\]
+
+&lt;p&gt;有了alignment以後，我們可以根據這些state來算出joint probability，上面的\(p_{tran}\)表示的是HMM當中的transition probability，而\(p_{emit}\)表示emission probability，亦即這個state產生出這個feature的機率，通常使用&lt;a href=&quot;https://scikit-learn.org/stable/modules/mixture.html&quot;&gt;Gaussian Mixture Model（GMM）&lt;/a&gt;來model。&lt;/p&gt;
+
+&lt;p&gt;而實際上我們想要知道的\(p_{AM}(X\vert P)\)就是將所有有可能的\(A\)都加起來&lt;/p&gt;
+
+\[\begin{aligned}
+p_{AM}(X\vert P) &amp;amp; =\sum_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
+&amp;amp; \approx \max_A p_{emit}(X\vert A)p_{train}(A\vert P)
+\end{aligned}\]
+
+&lt;p&gt;雖然在算式裡面有很多的\(\sum\)和\(\prod\)還有窮舉，其實在做計算的時候會使用&lt;a href=&quot;https://en.wikipedia.org/wiki/Forward%E2%80%93backward_algorithm&quot;&gt;forward-backward algorithm&lt;/a&gt;和&lt;a href=&quot;https://en.wikipedia.org/wiki/Viterbi_algorithm&quot;&gt;Viterbi algorithm&lt;/a&gt;這些類似dynamic programming的方式來有效率的計算。&lt;/p&gt;
+
+&lt;h3 id=&quot;組合hybrid-asr&quot;&gt;組合Hybrid ASR&lt;/h3&gt;
+
+&lt;p&gt;前面介紹了hybrid ASR當中重要的三個部分：LM、PM、AM，而它們三個組合起來的方式如下&lt;/p&gt;
+
+\[\begin{aligned}
+p_\theta(X,Y) &amp;amp; = p_{AM}(X\vert f_{PM}(Y))p_{LM}(Y) \\
+&amp;amp; = \sum_Ap_{emit}(X\vert A)p_{tran}(A\vert f_{PM}(Y))p_{LM}(Y) \\
+&amp;amp; \approx \max_Ap_{emit}(X\vert A) p_{tran}(A\vert f_{PM}(Y))p_{LM}(Y)
+\end{aligned}\]
+
+&lt;p&gt;雖說它們存在於同一個數學式當中，但實際上LM和AM通常是會被分開訓練的，它們有各自的objective function。&lt;/p&gt;
+
+\[p^*_{LM}=\arg\max\limits_{p_{LM}}\sum\limits^{N}\limits_{i=1}\log p_{LM}(Y_i)\]
+
+\[p^*_{AM}=\arg\max\limits_{p_{AM}}\sum\limits^N\limits_{i=1}\log p_{AM}(X_i\vert f_{PM}(Y_i))\]
+
+&lt;p&gt;在知道怎麼計算joint probability \(p_\theta(X,Y)\)以後，我們想要求得的\(\arg \max\limits_Y p_\theta(Y\vert X)\)就是去尋找最大的joint probability \(p_\theta(X,Y)\)。&lt;/p&gt;
+
+\[\begin{aligned}
+\arg\max\limits_Yp_\theta(Y\vert X) &amp;amp; = \arg\max\limits_Y\frac{p_\theta(X,Y)}{p(X)} \\
+&amp;amp; \approx \arg\max\limits_Yp_\theta(X,Y)
+\end{aligned}\]
+
+&lt;p&gt;其中\(p(X)\)是語音\(X\)出現的機率，假設每一段語音出現的機率都均等的話，我們可以忽略不看。&lt;/p&gt;
+
+&lt;p&gt;實際上在操作的時候，我們會將HMM emission probability、transition probability、lexicon和language model共同組成&lt;a href=&quot;https://en.wikipedia.org/wiki/Finite-state_transducer&quot;&gt;Weighted Finite State Transducers（WFST）&lt;/a&gt;，並從中去尋找最佳路徑，與此同時還會引入一個\(\alpha\)來去調配acoustic model和language model的平衡。&lt;/p&gt;
+
+\[p_{\theta,\alpha}(X,Y)\propto p_{AM}(X\vert f_{PM}(Y))p_{LM}(Y)^\alpha\]
+
+&lt;p&gt;而這個\(\alpha\)是在development set \(\{(\tilde X_i,\tilde Y_i)\}^{\tilde N}_{i=1}\)最小化edit distance得到的。&lt;/p&gt;
+
+\[\alpha=\arg\min\limits_\alpha\sum\limits_{i=1}\limits^{\tilde N}ED\left ( \tilde Y_i,\arg\max\limits_Y \left (\log p_{AM}(\tilde X\vert f_{PM}(Y))+ \alpha*\log p_{LM}(Y)\right ) \right )\]
+
+&lt;p&gt;所以最終語音辨識出來的文字會是&lt;/p&gt;
+
+\[Y^*=\arg\max\limits_Yp_{\theta,\alpha}(X,Y)\]
+
+&lt;h3 id=&quot;在hybrid-asr裡面使用dnn&quot;&gt;在Hybrid ASR裡面使用DNN&lt;/h3&gt;
+
+&lt;p&gt;隨著neural network的興起，語音辨識也逐漸引入deep learning來幫助辨識，在這個hybrid ASR系統裡面，我們也可以使用DNN來幫助我們提高辨識率。&lt;/p&gt;
+
+&lt;p&gt;在acoustic model裡面，我們想要算的是\(p_{AM}(X\vert P)\)，在前面的推導當中，我們得到&lt;/p&gt;
+
+\[p_{AM}(X\vert P)\approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P)\]
+
+&lt;p&gt;其中再去細鑽下去的話&lt;/p&gt;
+
+\[\begin{aligned}
+p_{AM}(X\vert P) &amp;amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
+&amp;amp; = \max\limits_A\prod\limits^T\limits_{t=1}p_{emit}(x_t\vert a_t)p_{tran}(a_t\vert a_{t-1}; P) \\
+&amp;amp; = \max\limits_A\prod\limits^T\limits_{t=1}\frac{p(a_t\vert x_t)p(x_t)}{p(a_t)}p_{tran}(a_t\vert a_{t-1}; P)
+\end{aligned}\]
+
+&lt;p&gt;其中\(p_{tran}(a_t\vert a_{t-1}; P)\)一樣是由HMM來，\(p(a_t)\)可以從HMM裡面統計出來\(p(a_t)=\frac{a_t出現的次數}{所有state出現的次數}\)，而\(p(a_t\vert x_t)\)就可以用DNN來做訓練。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=AIKu43goh-8&quot;&gt;[DLHLP 2020] Speech Recognition (1/7) - Overview&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/abs/2105.11084&quot;&gt;Unsupervised Speech Recognition&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Speech-Recognition" /><summary type="html">在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。</summary></entry><entry><title type="html">在Google Sheet裡面呈現html</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/" rel="alternate" type="text/html" title="在Google Sheet裡面呈現html" /><published>2021-06-05T00:00:00+00:00</published><updated>2021-06-05T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/">&lt;p&gt;前陣子有人推薦了一個好用的資料呈現套件&lt;a href=&quot;https://plotly.com/&quot;&gt;plotly&lt;/a&gt;，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -950,127 +1098,4 @@ ImportError: attempted relative import with no known parent package
 
 &lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
 
-&lt;p&gt;在這篇paper裡面，作者結合了兩個傳統DQN的架構，多衍伸出了一個維度，來一次性解決廣告系統需要決定的三件事情，這樣的架構除了用在廣告系統上，還可以應用在其他的任務當中。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><category term="Recommendation-System" /><summary type="html">用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。</summary></entry><entry><title type="html">REINFORCE和Proximal Policy Optimization</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/" rel="alternate" type="text/html" title="REINFORCE和Proximal Policy Optimization" /><published>2020-07-26T00:00:00+00:00</published><updated>2020-07-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/07/26/reinforce-and-ppo/">&lt;p&gt;在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;reinforce&quot;&gt;REINFORCE&lt;/h2&gt;
-
-&lt;p&gt;首先，我們先來定義一下state、action和reward之間的關係。當機器看到眼前的state \(s_1\)時，會根據自身的演算法決定做出動作\(a_1\)，此時環境會根據機器做出的\(a_1\)給予reward \(r_1\)，而隨著這個動作，機器所看到的state會從\(s_1\)轉移到\(s_2\)，接著機器會根據\(s_2\)做出動作\(a_2\)，並獲得\(r_2\)，以此類推。而我們的目標就是希望機器能學會一個厲害的policy，使得expected reward最大。&lt;/p&gt;
-
-\[\begin{aligned} expected\ reward &amp;amp; =\sum R(\tau)p_\theta(\tau)\\ &amp;amp; =\mathbb{E}_{\tau\sim p_\theta(\tau)}[R(\tau)] \end{aligned}\]
-
-&lt;p&gt;其中\(\tau\)是trajectory，指的是\(\left[ s_1, a_1, s_2, a_2, ... \right]\)的序列，而\(R(\tau)\)是序列\(\tau\)中所獲得的所有\(r_i\)的總和、\(\theta\)是policy的參數、\(p_\theta(\tau)\)是序列\(\tau\)出現的機率，因為policy會影響到action \(a_i\)的產生，所以\(\tau\)的機率跟\(\theta\)有關。&lt;/p&gt;
-
-&lt;p&gt;若我們以expected reward為objective function，對它做微分，我們可以得到&lt;/p&gt;
-
-\[\begin{aligned}\bigtriangledown R_\theta &amp;amp;= \sum R(\tau) \bigtriangledown p_\theta(\tau) \end{aligned}\]
-
-&lt;p&gt;因為\(R(\tau)\)是由環境給予的，亦可以是人工定義的，跟policy的參數沒有什麼關係，所以當我們做微分的時候不會有什麼影響，接著再稍微整理一下&lt;/p&gt;
-
-\[\begin{aligned} \bigtriangledown R_\theta &amp;amp;= \sum R(\tau)\bigtriangledown p_\theta(\tau) \\ &amp;amp;= \sum R(\tau) p_\theta(\tau)\frac{\bigtriangledown p_\theta(\tau)}{p_\theta(\tau)} \\ &amp;amp;= \sum R(\tau)p_\theta(\tau)\bigtriangledown\log p_\theta(\tau) \\ &amp;amp;= \mathbb{E}_{\tau\sim p_\theta(\tau)} [R(\tau)\bigtriangledown\log p_\theta(\tau)] \\ &amp;amp;\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}R(\tau^n)\bigtriangledown\log p_\theta(\tau^n) \\ &amp;amp;\approx \frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}R(\tau^n)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n) \end{aligned}\]
-
-&lt;p&gt;在式子最後所得出來的式子，其實跟常見的、label是one-hot vector的cross entropy很類似，只不過多出了\(R(\tau^n)\)，在概念上可以想像成，每一步都在讓model自己產生的action的log probability越大越好，但是用\(R(\tau^n)\)來控制log probability要多大。&lt;/p&gt;
-
-&lt;h3 id=&quot;advantage&quot;&gt;Advantage&lt;/h3&gt;
-
-&lt;p&gt;在前面的段落裡，我們可以看到，當環境給予的reward都是正值的時候，objective function裡\(R(\tau^n)\)這項的值會是正的，使得在\(s_t^n\)時，機器所採取的任何一個\(a_t^n\)的log probability都是會漸漸變大的，雖說隨著時間的拉長，能獲得較大reward的\(a_t^n\)的log probability應該會是最大的，然而訓練起來要花的時間就會比較多，因此通常在訓練的時候，會稍微調整一下objective function，變成底下&lt;/p&gt;
-
-\[\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}[R(\tau^n)-b]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ b=\mathbb{E}[R(\tau)]\]
-
-&lt;p&gt;這邊的\(b\)是trajectory的平均reward，使得\([R(\tau^n)-b]\)這項的意思變成，這個action \(a_t^n\)相對於平均而言有多好。&lt;/p&gt;
-
-&lt;p&gt;而再更精細的去看objective function會發現\(R(\tau^n)\)代表的是整個trajectory的reward，但卻用來衡量每個時間點\(a_t^n\)的好壞，這樣有一點不太公平，可能在某個\(s_t^n\)採取\(a_t^n\)對拿到reward是很有幫助的，但因為其他action表現得不好，使得整個trajectory拿到的reward低於平均，這時這個好的action的log probability就會被降低，為了讓前面這項更能反映每個action的好壞，會再修改成&lt;/p&gt;
-
-\[\bigtriangledown R_\theta=\frac{1}{N}\sum\limits_{n=1}\limits^{N}\sum\limits_{t=1}\limits^{T_n}\left[ \sum\limits_{t^\prime=t}\limits^{T_n}\gamma^{t^\prime-t}r_{t^\prime}^n-b \right]\bigtriangledown\log p_\theta(a_t^n\vert s_t^n),\ \gamma&amp;lt;1\]
-
-&lt;p&gt;也就是用該action未來的reward再稍微打個折以後加總起來，當作是這個action有多好，而前面中括號裡的這項通常會被拉出來變成\(A^\theta(s_t,a_t)\)稱為advantage function用以衡量在\(s_t\)採取\(a_t\)相較其他action有多好。&lt;/p&gt;
-
-&lt;h2 id=&quot;proximal-policy-optimization-ppo&quot;&gt;Proximal Policy Optimization (PPO)&lt;/h2&gt;
-
-&lt;h3 id=&quot;on-policy-vs-off-policy&quot;&gt;On-policy v.s. Off-policy&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;On-policy：要訓練的model正是與環境互動的&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Off-policy：要訓練的model和與環境互動的model不同&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;在前面REINFORCE的式子裡面我們可以看到它是一個on-policy的方法，那on-policy的方法需要很長的訓練時間，因為跟環境互動完的trajectory拿來更新一次model的參數以後就不能夠再被使用了，因為新的model所採取的action會不一樣，而PPO就是嘗試把REINFORCE從on-policy變成off-policy，好讓訓練時間縮短。&lt;/p&gt;
-
-&lt;h3 id=&quot;model-based-vs-model-free&quot;&gt;Model-based v.s. Model-free&lt;/h3&gt;
-
-&lt;p&gt;這裡順便提一下model-based和model-free的差異。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Model-based：agent可以直接拿到environment的transitition function和reward function，或是他們的近似&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Model-free；agent拿不到environment的transition function和reward function&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;一個簡單的判斷方法是，如果agent訓練完以後，可以去預測environment的下一個state或是reward的話，那便是model-based，反之就是model-free。&lt;/p&gt;
-
-&lt;h3 id=&quot;importance-sampling&quot;&gt;Importance Sampling&lt;/h3&gt;
-
-&lt;p&gt;PPO使用的便是將importance sampling融入進objective function裡面，這邊先提一下什麼是importance sampling。&lt;/p&gt;
-
-&lt;p&gt;在一般我們計算從某個機率分佈\(p\)抽樣出\(x\)的\(f(x)\)的期望值時，會寫成底下的式子&lt;/p&gt;
-
-\[\mathbb{E}_{x\sim p}[f(x)] \approx \frac{1}{N}\sum\limits_{i=1}\limits^{N}f(x_i)\]
-
-&lt;p&gt;倘若今天因為某種特殊的原因，使得我們無法直接從機率分佈\(p\)直接抽樣的時候，我們可以使用另外一個機率分佈\(q\)抽樣出\(x\)再經過\(p\)、\(q\)之間的轉換來達到一樣的結果&lt;/p&gt;
-
-\[\begin{aligned} \mathbb{E}_{x\sim p}[f(x)] &amp;amp;=\int f(x)p(x)dx \\ &amp;amp;= \int f(x)\frac{p(x)}{q(x)}q(x)dx \\ &amp;amp;= \mathbb{E}_{x\sim q}\left[ f(x)\frac{p(x)}{q(x)} \right] \end{aligned}\]
-
-&lt;p&gt;而importance sampling代表的就是底下的式子&lt;/p&gt;
-
-\[\mathbb{E}_{x\sim p}[f(x)]=\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]\]
-
-&lt;p&gt;雖然看起來當機率分佈\(p\)無法被取樣的時候，我們可以使用任意的機率分佈\(q\)來替代，但這其中還是會有一些誤差，我們知道一個機率分佈的變異數的算法如下&lt;/p&gt;
-
-\[Var[X]=\mathbb{E}[X^2]-(\mathbb{E}[X])^2\]
-
-&lt;p&gt;機率分佈\(p\)的變異數為&lt;/p&gt;
-
-\[Var_{x\sim p}[f(x)]=\mathbb{E}_{x\sim p}[f(x)^2]-(\mathbb{E}_{x\sim p}[f(x)])^2\]
-
-&lt;p&gt;如果使用importance sampling來得到的變異數為&lt;/p&gt;
-
-\[\begin{aligned} Var_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right] &amp;amp;=\mathbb{E}_{x\sim q}\left[f(x)^2\frac{p(x)^2}{q(x)^2}\right]-\left(\mathbb{E}_{x\sim q}\left[f(x)\frac{p(x)}{q(x)}\right]\right)^2 \\ &amp;amp;= \mathbb{E}_{x\sim p}\left[f(x)^2\frac{p(x)}{q(x)}\right]-\left(\mathbb{E}_{x\sim p}[f(x)]\right)^2\end{aligned}\]
-
-&lt;p&gt;從上式我們可以看到，當機率分佈\(p\)和\(q\)兩者的差異過大的時候，會造成兩者的變異數也相差很多，所以在使用importance sampling的時候，使用機率分佈較近的\(q\)是很重要的。&lt;/p&gt;
-
-&lt;h3 id=&quot;ppo&quot;&gt;PPO&lt;/h3&gt;
-
-&lt;p&gt;在這裡，我們想要將前面的REINFORCE從on-policy換成off-policy，讓原先跟環境做互動的\(\pi_\theta\)換成\(\pi_{\theta^\prime}\)，為此我們套用上面的importance sampling&lt;/p&gt;
-
-\[\begin{aligned} \bigtriangledown R_\theta &amp;amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_\theta} \left[ A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &amp;amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(s_t, a_t)}{p_{\theta^\prime}(s_t, a_t)}A^\theta(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \\ &amp;amp;= \mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}A^{\theta^\prime}(s_t,a_t)\bigtriangledown\log p_\theta(a_t^n\vert s_t^n)\right] \end{aligned}\]
-
-&lt;p&gt;從第二行到第三行中間做了一件特別的事情，這裡假設\(\pi_\theta\)和\(\pi_{\theta^\prime}\)所能得到的reward是差不多的，所以將\(\theta\)跟環境做互動得到的\(A^\theta(s_t,a_t)\)替換成了\(A^{\theta^\prime}(s_t,a_t)\)。&lt;/p&gt;
-
-&lt;p&gt;而又假設一個state \(s_t\)被觀測到的機率其實跟model沒有什麼關係的話，\(\frac{p_\theta(s_t)}{p_{\theta^\prime}(s_t)}\)就可以忽略不看，最終我們就可以得到底下的式子做為我們的objective function&lt;/p&gt;
-
-\[J^{\theta^\prime}(\theta)=\mathbb{E}_{(s_t,a_t)\sim\pi_{\theta^\prime}}\left[\frac{p_\theta(a_t\vert s_t)}{p_{\theta^\prime}(a_t\vert s_t)}A^{\theta^\prime}(s_t,a_t)\right]\]
-
-&lt;p&gt;因為\(\bigtriangledown f(x)=f(x)\bigtriangledown\log f(x)\)，我們可以得到\(\bigtriangledown p_\theta(a_t\vert s_t)=p_\theta(a_t\vert s_t)\bigtriangledown\log p_\theta(a_t\vert s_t)\)&lt;/p&gt;
-
-&lt;p&gt;但由於importance sampling在兩個機率分佈差異很大的時候會讓結果壞掉，所以PPO做的事情便是在objective function裡面多加\(\beta KL(\theta, \theta^\prime)\)這項，其中\(\beta\)是一個hyperparameter，讓兩個機率分佈差異不要太大&lt;/p&gt;
-
-\[J_{PPO}^{\theta^\prime}=J^{\theta^\prime}(\theta)-\beta KL(\theta, \theta^\prime)\]
-
-&lt;p&gt;值得一提的是，這邊的\(KL()\)不是只兩個model參數之間的KL divergence，而是兩者的output，也就是兩者的behavior所算出來的KL divergence。&lt;/p&gt;
-
-&lt;p&gt;而PPO的前身，TRPO的式子跟PPO幾乎一樣，只是它把KL這項當作是一個限制，在實作起來會比起PPO來要來得複雜得多。&lt;/p&gt;
-
-\[J_{TRPO}^{\theta^\prime}(\theta)=J^{\theta^\prime}(\theta),\ KL(\theta, \theta^\prime)&amp;lt;\delta\]
-
-&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OAKAZhFmYoI&quot;&gt;DRL Lecture 2:  Proximal Policy Optimization (PPO)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://ai.stackexchange.com/questions/4456/whats-the-difference-between-model-free-and-model-based-reinforcement-learning&quot;&gt;What’s the difference between model-free and model-based reinforcement learning?&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Reinforcement-Learning" /><summary type="html">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</summary></entry></feed>
+&lt;p&gt;在這篇paper裡面，作者結合了兩個傳統DQN的架構，多衍伸出了一個維度，來一次性解決廣告系統需要決定的三件事情，這樣的架構除了用在廣告系統上，還可以應用在其他的任務當中。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><category term="Recommendation-System" /><summary type="html">用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。</summary></entry></feed>
