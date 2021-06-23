@@ -28,13 +28,13 @@ published: true
 在這邊我們將底下的程式碼貼到`Code.gs`的檔案裡面，記得將`<YOUR_HTML_FILENAME>`替換成你html的檔名、想一個要顯示在Dialog的名稱替換掉`<TITLE_OF_DIALOG>`。目前設定跳出來的Dialog的大小是1000*1000，可以根據你想要顯示的大小做調整。
 
 ```javascript
-function openDialog() { 
-  var html = HtmlService.createHtmlOutputFromFile('<YOUR_HTML_FILENAME>') 
+function openDialog() {
+  var html = HtmlService.createHtmlOutputFromFile('<YOUR_HTML_FILENAME>')
     .setSandboxMode(HtmlService.SandboxMode.NATIVE)
     .setHeight(1000)
-    .setWidth(1000);; 
+    .setWidth(1000);
   SpreadsheetApp.getUi() 
-    .showModalDialog(html, '<TITLE_OF_DIALOG>'); 
+    .showModalDialog(html, '<TITLE_OF_DIALOG>');
 }
 ```
 
