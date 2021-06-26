@@ -332,7 +332,7 @@
 
 <p>值得一提的是，如果你今天是直接打<code class="language-plaintext highlighter-rouge">python</code>進入interactive shell，那麼當下shell的<code class="language-plaintext highlighter-rouge">__name__</code>就會是<code class="language-plaintext highlighter-rouge">__main__</code>。</p>
 
-<h2 id="relative-import">Relative Import</h2>
+<h3 id="relative-import">Relative Import</h3>
 
 <p>relative import會透過module的名字來去決定package的位置，假設我們現在稍微修改一下目錄的架構變成底下</p>
 
@@ -356,7 +356,7 @@ ImportError: attempted relative import with no known parent package
 
 <p>這時可以改用<code class="language-plaintext highlighter-rouge">python -m package.subpackage.moduleB</code>來把<code class="language-plaintext highlighter-rouge">moduleB.py</code>當作module執行。</p>
 
-<h2 id="absolute-import">Absolute Import</h2>
+<h3 id="absolute-import">Absolute Import</h3>
 
 <p>根據當前執行目錄的絕對路徑來import module，值得一提的是，當前執行的目錄並不是你執行python時所在的目錄，而是top-level script所在的目錄。</p>
 
@@ -370,12 +370,77 @@ ImportError: attempted relative import with no known parent package
 
 <p>以上面的結構來說，若我在當前目錄<code class="language-plaintext highlighter-rouge">./</code>執行<code class="language-plaintext highlighter-rouge">python package/moduleA.py</code>，那麼若要在<code class="language-plaintext highlighter-rouge">moduleA.py</code>裡面import moduleB，就得要用<code class="language-plaintext highlighter-rouge">from subpackage import moduleB</code>，而不是<code class="language-plaintext highlighter-rouge">from package.subpackage import moduleB</code>，因為<code class="language-plaintext highlighter-rouge">moduleA.py</code>在<code class="language-plaintext highlighter-rouge">./package</code>裡面，python會從那邊起始點。</p>
 
+<h2 id="__init__py的用途">__init__.py的用途</h2>
+
+<p>在上面的例子當中，我們都沒有使用到<code class="language-plaintext highlighter-rouge">__init__.py</code>，但應該在很多地方都可以看到他的蹤影，而<code class="language-plaintext highlighter-rouge">__init__.py</code>的作用是將一個目錄轉變成package。</p>
+
+<p>舉例來說，在上面的例子裡面，我們將<code class="language-plaintext highlighter-rouge">__init__.py</code>放到<code class="language-plaintext highlighter-rouge">package/</code>底下，這時<code class="language-plaintext highlighter-rouge">package</code>就變成了一個regular package。</p>
+
+<h3 id="regular-packages">Regular Packages</h3>
+
+<p>在python裡面<a href="https://docs.python.org/3/reference/import.html#regular-packages">主要有兩種package</a>，分別是regular package和namespace package，而regular package就如同上面所說的，只要有<code class="language-plaintext highlighter-rouge">__init__.py</code>在目錄裡面的，就是regular package。當我們import regular package的時候，<code class="language-plaintext highlighter-rouge">__init__.py</code>會被執行，也因此我們可以在<code class="language-plaintext highlighter-rouge">__init__.py</code>裡面做一些手腳，讓這個package變得更易於使用。</p>
+
+<h3 id="namespace-packages">Namespace Packages</h3>
+
+<p>倘若我們不放<code class="language-plaintext highlighter-rouge">__init__.py</code>在目錄裡面，在python 3.3以後，我們依然可以<code class="language-plaintext highlighter-rouge">import package</code>，就像上面absolute import的章節中做的一樣，但不一樣的是，被import進來的<code class="language-plaintext highlighter-rouge">package</code>會被當作namespace package。<a href="https://packaging.python.org/guides/packaging-namespace-packages/">Namespace package</a>的用途主要是讓你可以切分多個sub-package到不同的目錄當中，但仍屬於同樣的namespace，以方便使用者import，舉例來說，我們在regular package的方式下做好了一個package如下。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mynamespace/
+    __init__.py
+    subpackage_a/
+        __init__.py
+        ...
+    subpackage_b/
+        __init__.py
+        ...
+    module_b.py
+setup.py
+</code></pre></div></div>
+
+<p>而我們import他們的方式會是</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mynamespace</span> <span class="kn">import</span> <span class="n">subpackage_a</span>
+<span class="kn">from</span> <span class="nn">mynamespace</span> <span class="kn">import</span> <span class="n">subpackage_b</span>
+</code></pre></div></div>
+
+<p>但某些時候我們可能只需要<code class="language-plaintext highlighter-rouge">subpackage_a</code>就行，不想要額外安裝<code class="language-plaintext highlighter-rouge">subpackage_b</code>，這時可以將<code class="language-plaintext highlighter-rouge">mynamespace</code>拆成兩個package，拆成兩個package的方法可以參考<a href="https://packaging.python.org/guides/packaging-namespace-packages/#native-namespace-packages">官方文件</a>。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mynamespace-subpackage-a/
+    setup.py
+    mynamespace/
+        subpackage_a/
+            __init__.py
+
+mynamespace-subpackage-b/
+    setup.py
+    mynamespace/
+        subpackage_b/
+            __init__.py
+        module_b.py
+</code></pre></div></div>
+
+<p>使用者就可以根據自己的需求pip install相對應的package，而這兩個package在安裝完以後都會同屬於<code class="language-plaintext highlighter-rouge">mynamespace</code>這個namespace底下，因此一樣可以用<code class="language-plaintext highlighter-rouge">from mynamespace import subpackage_a, subpackage_b</code>來import。</p>
+
+<p>值得一提的是，如果import<code class="language-plaintext highlighter-rouge">.zip</code>檔，一樣會被當作是namespace package。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"./module_zip.zip"</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">module_zip</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">module_zip</span><span class="p">.</span><span class="n">__path__</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">_NamespacePath</span><span class="p">([</span><span class="s">'./module_zip.zip/module_zip'</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">module_zip</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s">'module_zip'</span> <span class="p">(</span><span class="n">namespace</span><span class="p">)</span><span class="o">&gt;</span>
+</code></pre></div></div>
+
 <h2 id="reference">Reference</h2>
 
-<ul>
+<ol>
   <li><a href="https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time">Relative imports for the billionth time</a></li>
-</ul>
-
+  <li><a href="https://docs.python.org/3/reference/import.html#regular-packages">The import system</a></li>
+</ol>
 </div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-11-15T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->

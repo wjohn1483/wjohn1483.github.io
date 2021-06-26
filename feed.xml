@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-06-23T13:26:52+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">語音辨識概觀</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/" rel="alternate" type="text/html" title="語音辨識概觀" /><published>2021-06-14T00:00:00+00:00</published><updated>2021-06-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/">&lt;p&gt;在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-06-26T09:12:27+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">語音辨識概觀</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/" rel="alternate" type="text/html" title="語音辨識概觀" /><published>2021-06-14T00:00:00+00:00</published><updated>2021-06-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/">&lt;p&gt;在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -985,7 +985,7 @@ p_{AM}(X\vert P) &amp;amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P) \
 
 &lt;p&gt;值得一提的是，如果你今天是直接打&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt;進入interactive shell，那麼當下shell的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__name__&lt;/code&gt;就會是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__main__&lt;/code&gt;。&lt;/p&gt;
 
-&lt;h2 id=&quot;relative-import&quot;&gt;Relative Import&lt;/h2&gt;
+&lt;h3 id=&quot;relative-import&quot;&gt;Relative Import&lt;/h3&gt;
 
 &lt;p&gt;relative import會透過module的名字來去決定package的位置，假設我們現在稍微修改一下目錄的架構變成底下&lt;/p&gt;
 
@@ -1009,7 +1009,7 @@ ImportError: attempted relative import with no known parent package
 
 &lt;p&gt;這時可以改用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python -m package.subpackage.moduleB&lt;/code&gt;來把&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;moduleB.py&lt;/code&gt;當作module執行。&lt;/p&gt;
 
-&lt;h2 id=&quot;absolute-import&quot;&gt;Absolute Import&lt;/h2&gt;
+&lt;h3 id=&quot;absolute-import&quot;&gt;Absolute Import&lt;/h3&gt;
 
 &lt;p&gt;根據當前執行目錄的絕對路徑來import module，值得一提的是，當前執行的目錄並不是你執行python時所在的目錄，而是top-level script所在的目錄。&lt;/p&gt;
 
@@ -1023,11 +1023,77 @@ ImportError: attempted relative import with no known parent package
 
 &lt;p&gt;以上面的結構來說，若我在當前目錄&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./&lt;/code&gt;執行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python package/moduleA.py&lt;/code&gt;，那麼若要在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;moduleA.py&lt;/code&gt;裡面import moduleB，就得要用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;from subpackage import moduleB&lt;/code&gt;，而不是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;from package.subpackage import moduleB&lt;/code&gt;，因為&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;moduleA.py&lt;/code&gt;在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./package&lt;/code&gt;裡面，python會從那邊起始點。&lt;/p&gt;
 
+&lt;h2 id=&quot;__init__py的用途&quot;&gt;__init__.py的用途&lt;/h2&gt;
+
+&lt;p&gt;在上面的例子當中，我們都沒有使用到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;，但應該在很多地方都可以看到他的蹤影，而&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;的作用是將一個目錄轉變成package。&lt;/p&gt;
+
+&lt;p&gt;舉例來說，在上面的例子裡面，我們將&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;放到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package/&lt;/code&gt;底下，這時&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package&lt;/code&gt;就變成了一個regular package。&lt;/p&gt;
+
+&lt;h3 id=&quot;regular-packages&quot;&gt;Regular Packages&lt;/h3&gt;
+
+&lt;p&gt;在python裡面&lt;a href=&quot;https://docs.python.org/3/reference/import.html#regular-packages&quot;&gt;主要有兩種package&lt;/a&gt;，分別是regular package和namespace package，而regular package就如同上面所說的，只要有&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;在目錄裡面的，就是regular package。當我們import regular package的時候，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;會被執行，也因此我們可以在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;裡面做一些手腳，讓這個package變得更易於使用。&lt;/p&gt;
+
+&lt;h3 id=&quot;namespace-packages&quot;&gt;Namespace Packages&lt;/h3&gt;
+
+&lt;p&gt;倘若我們不放&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__init__.py&lt;/code&gt;在目錄裡面，在python 3.3以後，我們依然可以&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import package&lt;/code&gt;，就像上面absolute import的章節中做的一樣，但不一樣的是，被import進來的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;package&lt;/code&gt;會被當作namespace package。&lt;a href=&quot;https://packaging.python.org/guides/packaging-namespace-packages/&quot;&gt;Namespace package&lt;/a&gt;的用途主要是讓你可以切分多個sub-package到不同的目錄當中，但仍屬於同樣的namespace，以方便使用者import，舉例來說，我們在regular package的方式下做好了一個package如下。&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mynamespace/
+    __init__.py
+    subpackage_a/
+        __init__.py
+        ...
+    subpackage_b/
+        __init__.py
+        ...
+    module_b.py
+setup.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;而我們import他們的方式會是&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;mynamespace&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subpackage_a&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;mynamespace&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subpackage_b&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;但某些時候我們可能只需要&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;subpackage_a&lt;/code&gt;就行，不想要額外安裝&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;subpackage_b&lt;/code&gt;，這時可以將&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mynamespace&lt;/code&gt;拆成兩個package，拆成兩個package的方法可以參考&lt;a href=&quot;https://packaging.python.org/guides/packaging-namespace-packages/#native-namespace-packages&quot;&gt;官方文件&lt;/a&gt;。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mynamespace-subpackage-a/
+    setup.py
+    mynamespace/
+        subpackage_a/
+            __init__.py
+
+mynamespace-subpackage-b/
+    setup.py
+    mynamespace/
+        subpackage_b/
+            __init__.py
+        module_b.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;使用者就可以根據自己的需求pip install相對應的package，而這兩個package在安裝完以後都會同屬於&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mynamespace&lt;/code&gt;這個namespace底下，因此一樣可以用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;from mynamespace import subpackage_a, subpackage_b&lt;/code&gt;來import。&lt;/p&gt;
+
+&lt;p&gt;值得一提的是，如果import&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.zip&lt;/code&gt;檔，一樣會被當作是namespace package。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./module_zip.zip&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;module_zip&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module_zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__path__&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_NamespacePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;./module_zip.zip/module_zip&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module_zip&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;module_zip&apos;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;namespace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h2 id=&quot;reference&quot;&gt;Reference&lt;/h2&gt;
 
-&lt;ul&gt;
+&lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time&quot;&gt;Relative imports for the billionth time&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Your Name</name></author><category term="Python" /><summary type="html">在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。</summary></entry><entry><title type="html">Deep Reinforcement Learning for Online Advertising in Recommender Systems</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/" rel="alternate" type="text/html" title="Deep Reinforcement Learning for Online Advertising in Recommender Systems" /><published>2020-11-04T00:00:00+00:00</published><updated>2020-11-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">&lt;p&gt;用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。&lt;/p&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/reference/import.html#regular-packages&quot;&gt;The import system&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Python" /><summary type="html">在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。</summary></entry><entry><title type="html">Deep Reinforcement Learning for Online Advertising in Recommender Systems</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/" rel="alternate" type="text/html" title="Deep Reinforcement Learning for Online Advertising in Recommender Systems" /><published>2020-11-04T00:00:00+00:00</published><updated>2020-11-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">&lt;p&gt;用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
