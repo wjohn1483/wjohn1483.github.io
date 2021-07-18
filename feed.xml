@@ -1,4 +1,132 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-06-26T09:12:27+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">語音辨識概觀</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/" rel="alternate" type="text/html" title="語音辨識概觀" /><published>2021-06-14T00:00:00+00:00</published><updated>2021-06-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/">&lt;p&gt;在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-07-18T03:22:33+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">深度學習於語音辨識</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/18/speech-recognition-with-deep-learning/" rel="alternate" type="text/html" title="深度學習於語音辨識" /><published>2021-07-18T00:00:00+00:00</published><updated>2021-07-18T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/18/speech-recognition-with-deep-learning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/18/speech-recognition-with-deep-learning/">&lt;p&gt;在&lt;a href=&quot;https://wjohn1483.github.io/2021/06/14/introduction-to-speech-recognition/&quot;&gt;先前的文章&lt;/a&gt;裡頭，介紹了在深度學習蓬勃發展之前，語音辨識大概是如何達成的，而這篇文章會簡單介紹一下，在加入了深度學習以後，語音辨識的技術有了什麼樣的更動。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;過去在做語音辨識的時候，會需要不同的模型互相協作，而隨著深度學習的發展，有些語音辨識的方法已經可以將所有的模型整合成一個模型，大大簡化了語音辨識的複雜度。&lt;/p&gt;
+
+&lt;h2 id=&quot;listen-attend-and-spelllas&quot;&gt;Listen, Attend and Spell（LAS）&lt;/h2&gt;
+
+&lt;p&gt;第一個要提到的模型是LAS，是一個End-to-end的語音辨識模型，輸入語音訊號，輸出就是character。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./LAS_model_architecture.png&quot; alt=&quot;LAS Model Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上圖為LAS模型的架構，其實就是一個sequence to sequence的model搭配attention，不過比較特別的是，在encoder也就是上圖中的Listener裡頭，使用的是pyramidal bidirectional LSTM，因為輸入的語音訊號的個數通常都遠大於輸出的字數，所以透過pyramidal的方式來減少decoder attend的數量；另一個特別的地方是，在decoder的也就是上圖中的Speller裡面，仍然會將RNN的輸出拉回來放進下一個時間點的輸入。&lt;/p&gt;
+
+&lt;p&gt;LAS的model雖然可以幫助我們做語音辨識，但這個模型需要將整個句子都聽完才可以開始辨識，如果輸入進來的語音訊號很長，或是想要對串流語音做語音辨識，就得要使用其他的方式，可以參考底下的方法。&lt;/p&gt;
+
+&lt;h2 id=&quot;connectionist-temporal-classificationctc&quot;&gt;Connectionist Temporal Classification（CTC）&lt;/h2&gt;
+
+&lt;p&gt;CTC是一種基於RNN loss function的方法，可以把比較長的輸入\(X\)轉換成比較短的輸出\(Z\)，跟語音辨識所需要的條件相同，而CTC的特點在於輸出的時候會多一個&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blank&lt;/code&gt;的符號，每一個時間點RNN的輸出除了可以是vocabulary裡面的字以外，還可以是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blank&lt;/code&gt;，寫作&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./CTC_model_architecture.png&quot; alt=&quot;CTC Model Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;假如說我們拿一段語音訊號\(X=[x_1, x_2, ..., x_T]\)輸入到LSTM裡面，每個時間點LSTM都會輸出一個長度為\(L+1\)的向量\(y_t=[y_t^{-}, y_t^1, ..., y_t^L]\)，其中\(L\)表示vocabulary的大小，雖然我們知道這整段語音訊號\(X\)所對應到的文字是\(Z=[z_1, z_2, ..., z_U]\)，但因為LSTM整個輸出的長度跟輸入長度相同，都是\(T\)，而文字的長度是\(U\)，兩者對不起來，沒辦法直接一對一對應做gradient descent，所以CTC在這裡使用了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blank&lt;/code&gt;並將\(Z\)裡面的文字重複來把\(Z\)的長度擴充到跟\(T\)一樣，並搭配一個mapping function \(B()\)來把所有&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blank&lt;/code&gt;和相鄰的重複輸出去除掉，保留不相鄰的輸出。&lt;/p&gt;
+
+&lt;p&gt;舉例來說，假設今天放進LSTM的\(X\)長度為4，而對應的\(Z\)為\([讚, 啦]\)，我們可以透過加入&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-&lt;/code&gt;或重複\(Z\)裡面的字來讓長度變為4，之後再讓\(B()\)幫我們把修改過的輸出\(Z^*\)的輸出對回\(Z\)，亦即&lt;/p&gt;
+
+\[B([-, 讚, 啦, 啦])=[讚, 啦] \\
+B([讚, 讚, 啦, 啦])=[讚, 啦] \\
+B([-, 讚, 啦, -])=[讚, 啦]\]
+
+&lt;p&gt;其中每一個\(B()\)的輸入\([-, 讚, 啦, 啦]\)、\([讚, 讚, 啦, 啦]\)等都可以是LSTM用來學習的目標，而我們會透過&lt;a href=&quot;https://en.wikipedia.org/wiki/Forward%E2%80%93backward_algorithm&quot;&gt;Forward-backward Algorithm&lt;/a&gt;來將所有可能的組合都囊括進來。&lt;/p&gt;
+
+&lt;p&gt;我們將LSTM每一個時間點的輸出\(y_t\)攤開來，並取出所有在\(Z\)裡面文字的機率，再在每個label之間都插入&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blank&lt;/code&gt;的符號，如上圖中的上半部。在這邊，我們限定每個時間點的轉移只能往右邊或右上角走，不能往右下或左邊走，如此便可以透過Forward Algorithm將最後一個時間點的機率總和來當作觀察到輸出\(Z\)的機率\(P(Z\vert X)\)，其中每一個可能的\(Z^*\)的機率可以被表示為&lt;/p&gt;
+
+\[P(Z^*\vert X)=\coprod\limits_{t=1}\limits^{T}y_t^{Z^*_t}\]
+
+&lt;p&gt;而\(P(Z\vert X)\)可以被表示為&lt;/p&gt;
+
+\[P(Z\vert X)=\sum\limits_{Z^* \in B^{-1}(Z)}P(Z^*\vert X)\]
+
+&lt;p&gt;最後就可以透過底下的loss function做訓練了&lt;/p&gt;
+
+\[\mathcal{L}_{CTC}=-\sum\limits_{\forall(X,Z^*)\in\theta}\ln P(Z^*\vert X)\]
+
+&lt;p&gt;訓練完CTC以後，就可以直接將聲音訊號餵進去，選擇每一個時間點最大的文字搭配\(B()\)當作是語音辨識的輸出，也可以使用beam search來增進performance。&lt;/p&gt;
+
+&lt;h2 id=&quot;rnn-transducerrnn-t&quot;&gt;RNN Transducer（RNN-T）&lt;/h2&gt;
+
+&lt;p&gt;在上述CTC的部分裡面，我們透過在label裡面加入&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blank&lt;/code&gt;來讓串流語音辨識成為可能，然而在CTC裡面，每一個時間點的輸出跟下一個時間點的輸出是互相獨立的，這會使得後面時間的要輸出的時候因為不確定前面輸出過了沒造成結巴的現象，而RNN-T所做的改動便是將上一個時間點的輸出拉回來當作是下一個時間點的輸入，並改變predict文字的方式。&lt;/p&gt;
+
+&lt;p&gt;在前面CTC的部分裡，每一個時間點LSTM會吃一個向量進來，輸出一個文字，但在RNN-T裡面，每一個時間點LSTM會重複吃一同個向量，直到predict出&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NULL&lt;/code&gt;以後才會吃下一個輸入。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mermaid&quot;&gt;graph BT;
+    LSTM1[LSTM]
+    LSTM2[LSTM]
+    LSTM3[LSTM]
+    LSTM4[LSTM]
+    LSTM5[LSTM]
+    LSTM6[LSTM]
+    i1[i1]
+    i2[i2]
+    i3[i3]
+    o1[c]
+    o2[a]
+    o3[NULL]
+    o4[t]
+    o5[NULL]
+    o6[NULL]
+    i1--&amp;gt;LSTM1
+    LSTM1--&amp;gt;o1
+    i1--&amp;gt;LSTM2
+    LSTM2--&amp;gt;o2
+    i1--&amp;gt;LSTM3
+    LSTM3--&amp;gt;o3
+    i2--&amp;gt;LSTM4
+    LSTM4--&amp;gt;o4
+    i2--&amp;gt;LSTM5
+    LSTM5--&amp;gt;o5
+    i3--&amp;gt;LSTM6
+    LSTM6--&amp;gt;o6
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;所以當輸入的語音embedding長度為\(T\)時，我們就會在對應的答案裡面加入\(T\)個&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NULL&lt;/code&gt;，至於要如何將\(T\)個&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NULL&lt;/code&gt;放進去就跟CTC的方式相同。&lt;/p&gt;
+
+&lt;p&gt;RNN-T除了predict方式的不同，還有在輸出的最後放一個language model，並把language model的輸出與下一個時間點的輸入一用餵進LSTM當中，可以看&lt;a href=&quot;https://youtu.be/CGuLuBaLIeI?t=1870&quot;&gt;影片中的架構&lt;/a&gt;來獲得比較清楚的了解。&lt;/p&gt;
+
+&lt;p&gt;總的來說，RNN-T的架構如下圖，由三個部分所構成成：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Encoder：可以想成是acoustic model，也就是上面架構圖中的LSTM，計算語音訊號的特徵。&lt;/li&gt;
+  &lt;li&gt;Prediction Network：可以想成是language model，在&lt;a href=&quot;https://youtu.be/CGuLuBaLIeI?t=1870&quot;&gt;影片中的架構&lt;/a&gt;裡面最上層的部分。&lt;/li&gt;
+  &lt;li&gt;Joint Network：綜合Encoder和Prediction Network的輸出決定最後的文字是什麼，在&lt;a href=&quot;https://youtu.be/CGuLuBaLIeI?t=1870&quot;&gt;影片中的架構&lt;/a&gt;中是黃色的框框。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://www.researchgate.net/publication/335044103/figure/fig3/AS:789632253952000@1565274408664/Recurrent-neural-network-RNN-transducer-structure-38.png&quot; alt=&quot;RNN-T Overview&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;neural-transducer&quot;&gt;Neural Transducer&lt;/h2&gt;
+
+&lt;p&gt;Neural Transducer和RNN-T的作法類似，與RNN-T不同的地方在於，輸入從單一個acoustic feature變成多個acoustic feature，並在其中加入attention的機制。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./neural_transducer_architecture.png&quot; alt=&quot;Neural Transducer Architecture&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在neural transducer裡，輸入進來的acoustic feature們會用固定大小\(W\)的window切開，分成多個block，每次模型會根據當前輸入的block中的acoustic feature來做predict，直到model predict出&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NULL&lt;/code&gt;以後才會輸入下一個block。&lt;/p&gt;
+
+&lt;h2 id=&quot;monotonic-chunkwise-attentionmocha&quot;&gt;Monotonic Chunkwise Attention（MoChA）&lt;/h2&gt;
+
+&lt;p&gt;MoChA又對neural transducer做了一些變形，在neural transducer裡使用固定大小的\(W\)來對acoustic feature分塊，而MoChA想讓model來自己決定block要怎麼切。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./mocha_attention.png&quot; alt=&quot;MoChA Attention&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在上圖(a)是一般的soft attention，在輸出\(y\)的時候會對所有的input算attention。&lt;/p&gt;
+
+&lt;p&gt;圖(b)是monotonic attention，由model來決定要attend多少input，\(\otimes\)是有被選中的input，而\(\bullet\)是決定要停止的地方，下一個時間點會從上一個時間點停止的地方開始往後預測該要在哪個input停下來。&lt;/p&gt;
+
+&lt;p&gt;圖(c)是MoChA，與圖(b)的作法類似，但在這邊會設定一個window size \(W\)，在停下來的地方往前框\(W\)個feature來當作模型的輸入，在圖中的例子是設定\(W=3\)。&lt;/p&gt;
+
+&lt;h2 id=&quot;總結&quot;&gt;總結&lt;/h2&gt;
+
+&lt;p&gt;在這篇文章裡面介紹了一些End-to-end的方式來訓練語音辨識的模型，它們的辨識錯誤率跟先前的HMM-DNN hybrid模型相近，如果資料量夠大的話，end-to-end的模型還可以把錯誤率再調降，可以根據擁有的資料量來決定要使用哪一種方式來製作你的語音辨識模型。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=CGuLuBaLIeI&quot;&gt;[DLHLP 2020] Speech Recognition (3/7) - CTC, RNN-T and more&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1508.01211.pdf&quot;&gt;Listen, Attend and Spell&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.researchgate.net/figure/Recurrent-neural-network-RNN-transducer-structure-38_fig3_335044103&quot;&gt;Figure 4 - available via license: Creative Commons Attribution 4.0 International&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1511.04868.pdf&quot;&gt;A Neural Transducer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://arxiv.org/pdf/1712.05382.pdf&quot;&gt;Monotonic Chunkwise Attention&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Speech-Recognition" /><summary type="html">在先前的文章裡頭，介紹了在深度學習蓬勃發展之前，語音辨識大概是如何達成的，而這篇文章會簡單介紹一下，在加入了深度學習以後，語音辨識的技術有了什麼樣的更動。</summary></entry><entry><title type="html">語音辨識概觀</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/" rel="alternate" type="text/html" title="語音辨識概觀" /><published>2021-06-14T00:00:00+00:00</published><updated>2021-06-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/">&lt;p&gt;在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1093,75 +1221,4 @@ mynamespace-subpackage-b/
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/14132789/relative-imports-for-the-billionth-time&quot;&gt;Relative imports for the billionth time&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.python.org/3/reference/import.html#regular-packages&quot;&gt;The import system&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Python" /><summary type="html">在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。</summary></entry><entry><title type="html">Deep Reinforcement Learning for Online Advertising in Recommender Systems</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/" rel="alternate" type="text/html" title="Deep Reinforcement Learning for Online Advertising in Recommender Systems" /><published>2020-11-04T00:00:00+00:00</published><updated>2020-11-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">&lt;p&gt;用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;簡介&quot;&gt;簡介&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://arxiv.org/pdf/1909.03602.pdf&quot;&gt;這篇paper&lt;/a&gt;想要使用Reinforcement Learning來解決廣告系統當中，廣告曝光數以及使用者體驗的平衡，當廣告曝光的越多，使用者體驗就會下降，反之，沒有廣告的曝光，平台本身的獲利就會減少。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;advertising_scenario.png&quot; alt=&quot;Advertising Scenario&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;在這篇paper當中，假設平台本身已經有一個很好的推薦系統，每當使用者發request進來的時候，便會推薦使用者感興趣的內容，而這篇paper想要研究的就是中間的Advertising Agent，並解決底下息息相關的三個問題&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;要不要在本次的推薦當中安插廣告？&lt;/li&gt;
-  &lt;li&gt;如果要放廣告，那要放哪一個廣告？&lt;/li&gt;
-  &lt;li&gt;放在推薦的內容中的哪一個位置？&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;方法&quot;&gt;方法&lt;/h2&gt;
-
-&lt;p&gt;作者提出的模型如下圖&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;proposed_architecture.png&quot; alt=&quot;Proposed Architecture&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;模型的輸入總共有五個&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(p^{rec}_t\)：使用者過去所看過內容的feature，把過去每個時間點看過的內容的feature都丟進GRU裡面取最後一個時間點的hidden state&lt;/li&gt;
-  &lt;li&gt;\(p^{ad}_t\)：使用者過去所看過廣告的feature，把過去每個時間點看過的廣告的feature都丟進GRU裡面取最後一個時間點的hidden state&lt;/li&gt;
-  &lt;li&gt;\(c_t\)：使用者的資訊，像是使用的是iOS還是Android等等基本的資訊&lt;/li&gt;
-  &lt;li&gt;\(rec_t\)：當前推薦內容的feature，把所有的內容的feature接在一塊過一層layer，\(rec_t=\tanh(W_{rec}concat(rec_1, ..., rec_L)+b_{rec})\)&lt;/li&gt;
-  &lt;li&gt;\(a^{ad}_t\)：廣告的feature&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;把上面四個合併在一起就是代表使用者狀態的\(s_t\)，\(s_t=concat(p^{rec}_t,p^{ad}_t,c_t,rec_t)\)。&lt;/p&gt;
-
-&lt;p&gt;左圖(a)為作者一開始想到的模型架構，藉由把使用者的狀態\(s_t\)和廣告的feature \(a^{ad}_t\)餵進去，讓model去預測把廣告插在不同位置的分數，\(Q(s_t,a^{ad}_t)^1, Q(s_t,a^{ad}_t)^2\)代表的便是插在位置1和2的分數，而紅色圈圈的\(Q(s_t,a^{ad}_t)^0\)是不插廣告的分數，讓一次model的predict就可以一次解決上述的三個問題（要決定插哪一個廣告就把所有候選的廣告都丟進model裡面去predict，取最高分的）。&lt;/p&gt;
-
-&lt;p&gt;當今天使用者的體驗不錯的時候，可以適時地加入廣告增加平台收入，而當使用者體驗不好的時候，就不應該插入廣告，作者想要將這樣的概念加入至model當中，所以架構從(a)修改成了(b)，左邊的\(V(s_t)\)的輸入只有使用者的\(s_t\)，代表使用者到現在的體驗如何，而右邊的\(A(s_t,a^{ad}_t)\)多加入了廣告的feature，代表插入廣告以後的分數如何，而最終的分數便是兩者的加總。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;classic_architecture.png&quot; alt=&quot;Classic Architecture&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;作者所提出來的架構跟原本DQN的架構類似，只是又多了一個維度，如果使用上圖的(a)、(b)，和上上圖的(a)架構來玩倉庫番的話，他們的概念是這樣子的&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;上圖(a)：給定遊戲畫面（\(s_t\)），預測往上下左右走的分數（\(Q(s_t,a)^1,...,Q(s_t,a)^{k+1}\)）&lt;/li&gt;
-  &lt;li&gt;上圖(b)：給定遊戲畫面（\(s_t\)）和動作（往上\(a_t\)），model會預測出這個組合的分數&lt;/li&gt;
-  &lt;li&gt;上上圖(a)：給定遊戲畫面（\(s_t\)）和動作（往上\(a_t\)），model會預測出往上走0步、1步、n步的分數（\(Q(s_t,a)^0,...,Q(s_t,a)^{k+1}\)）&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;實驗&quot;&gt;實驗&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;performance_comparison.png&quot; alt=&quot;Performance Comparison&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;作者首先將這個model（DEAR）與其他RL的model做比較，可以看到這篇paper model的表現是最好的。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;component_study.png&quot; alt=&quot;Component Study&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;再來作者將model去掉一部份，看看各個部件對performance的影響。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;DEAR-1：將Reinforcement Learning改成Supervised Learning&lt;/li&gt;
-  &lt;li&gt;DEAR-2：把使用者過去所看過內容的feature，從GRU改成Dense&lt;/li&gt;
-  &lt;li&gt;DEAR-3：在原本DQN架構圖(b)的架構，並多在輸入的地方接一個1-hot vector代表廣告要插在哪一個位置&lt;/li&gt;
-  &lt;li&gt;DEAR-4：不把\(V(s_t)\)和\(A(s_t,a^{ad}_t)\)分開算，也就是作者所提出的架構圖中的(a)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;可以看到最終版本的架構的表現最好。&lt;/p&gt;
-
-&lt;h2 id=&quot;結論&quot;&gt;結論&lt;/h2&gt;
-
-&lt;p&gt;在這篇paper裡面，作者結合了兩個傳統DQN的架構，多衍伸出了一個維度，來一次性解決廣告系統需要決定的三件事情，這樣的架構除了用在廣告系統上，還可以應用在其他的任務當中。&lt;/p&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Reinforcement-Learning" /><category term="Recommendation-System" /><summary type="html">用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Python" /><summary type="html">在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。</summary></entry></feed>
