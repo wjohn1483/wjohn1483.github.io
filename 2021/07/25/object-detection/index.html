@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Object Detection概論 - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/page3/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="簡單整理一下目前有關object detection的一些研究。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2021/07/25/object-detection/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -265,7 +265,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -283,118 +283,169 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/"><h2 itemprop="headline" class="item__header">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</div><p><a href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Object Detection概論</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2021-07-25-object_detection/2021-07-25-object-detection.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Object Detection概論"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
+                href="/archive/?tag=Computer-Vision">Computer-Vision</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Generative-Adversarial-Network">Generative-Adversarial-Network</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Generative-Adversarial-Network,Recommendation-System,Reinforcement-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/02/tf-idf-introduction/"><h2 itemprop="headline" class="item__header">TF-IDF簡介</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</div><p><a href="/2020/04/02/tf-idf-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 02, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Machine-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/"><h2 itemprop="headline" class="item__header">BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇介紹一下常常聽到的BERT是怎麼樣運作的。</div><p><a href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 29, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-29T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Natural-Language-Processing"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/28/terminal-tools/"><h2 itemprop="headline" class="item__header">Terminal小工具</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇記錄一下我在terminal裡面常使用的一些小工具們。</div><p><a href="/2020/03/28/terminal-tools/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 28, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-28T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/23/deep-contextualized-word-representation/"><h2 itemprop="headline" class="item__header">Deep contextualized word representation</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇簡單介紹一下赫赫有名的ELMo，其源自於Deep contextualized word representation這篇paper。</div><p><a href="/2020/03/23/deep-contextualized-word-representation/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 23, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Natural-Language-Processing"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/21/attention-is-all-you-need/"><h2 itemprop="headline" class="item__header">Attention Is All You Need</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章想要簡介一下被廣泛使用的Transformer是什麼。</div><p><a href="/2020/03/21/attention-is-all-you-need/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 21, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-21T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Natural-Language-Processing"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/09/vim-plugins/"><h2 itemprop="headline" class="item__header">Vim Plugins</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這邊記錄一下我目前所使用的Vim plugin以及它們的功能。</div><p><a href="/2020/03/09/vim-plugins/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 09, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-09T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/07/gradient-descent-and-learning-rate/"><h2 itemprop="headline" class="item__header">Gradient Descent和Learning Rate</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">稍微講一下Machine Learning當中經常被使用的gradient descent的概念以及調整learning rate的方法。</div><p><a href="/2020/03/07/gradient-descent-and-learning-rate/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 07, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="Machine-Learning"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>27 post articles, 4 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/page2">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-              </li><li>
-              <div class="button button--primary button--circle focus"><span>3</span></div>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-              </li><li><a class="button button--secondary button--circle" href="/page4">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+                href="/archive/?tag=Object-Detection">Object-Detection</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 25, 2021</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-07-25T00:00:00+00:00">
+    <meta itemprop="keywords" content="Computer-Vision,Object-Detection"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>簡單整理一下目前有關object detection的一些研究。</p>
+
+<!--more-->
+
+<h2 id="暴力做object-detection">暴力做Object Detection</h2>
+
+<p>隨著深度學習的興起，現在已經有各式各樣的model可以幫助我們做image classification，辨識出圖片裡面的是什麼東西。如果想要直接用這些model做物件偵測，一個簡單暴力的方式是，用不同大小的方框掃過整張圖片，把每一個方框的圖片都丟進去model裡面做物件分類來達到物件偵測的效果。</p>
+
+<h2 id="region-with-cnnr-cnn">Region with CNN（R-CNN）</h2>
+
+<p>在前面提到我們可以用不同的方框掃過整張圖片來做物件偵測，但這樣的效率明顯不高，而且很吃計算量，這邊要介紹的<a href="https://arxiv.org/pdf/1311.2524.pdf">R-CNN</a>便是透過Selective Search來選取可能有東西的區域，再拿去model裡面分類，其大致上的流程如下：</p>
+
+<ol>
+  <li>產生大約2000個可能有東西的區域（Region Proposals）</li>
+  <li>透過預先訓練好的模型像是AlexNet、Inception等抽取圖片特徵</li>
+  <li>將特徵透過SVM來去分辨裡面有沒有含有特定物體</li>
+</ol>
+
+<p><img src="./rcnn_architecture.png" alt="R-CNN Architecture" /></p>
+
+<h3 id="selective-search">Selective Search</h3>
+
+<p><a href="https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf">Selective search</a>是以<a href="http://cs.brown.edu/people/pfelzens/papers/seg-ijcv.pdf">Graph Based Segmentation</a>的結果為基礎，使用階層群聚演算法來得到要輸入進model的region proposal，Graph Based Segmentation在Open CV裡面有支援，使用的方式可以參考<a href="https://blog.gtwang.org/programming/opencv-graph-based-segmentation-tutorial/">這篇部落格</a>。</p>
+
+<p>階層群聚演算法會從Graph Based Segmentation的結果裡面，每次挑選出兩個最相近的區塊做合併，而相似度的計算包含了顏色、紋理、大小等等的因素，綜合起來來判斷兩個區塊的相似度，詳細的介紹可以參考<a href="https://blog.gtwang.org/programming/selective-search-for-object-detection/">這篇部落格</a>，具體演算法的流程可以參考下圖。</p>
+
+<p><img src="./selective_search_algorithm.png" alt="Selective Search Algorithm" /></p>
+
+<h3 id="bounding-box-regression">Bounding-box Regression</h3>
+
+<p>R-CNN除了使用selective search找到有可能的region proposal以外，有另外透過bounding-box regression來調整selective search框出來的bounding box。</p>
+
+<p>對於每一個bounding box，我們可以透過\((x, y, w, h)\)​來表示，這四個數值分別代表這個bounding box中心點座標和長寬，而bounding-box regression是想要透過一個平移加縮放的mapping function \(f()\)​來把selective search得到的bounding box \((P_x, P_y, P_w, P_y)\)透過轉換以後可以越接近label好的bounding box \((G_x, G_y, G_w, G_h)\)​越好。</p>
+
+\[f(P_x, P_y, P_w, P_y)=(\hat{G}_x, \hat{G}_y, \hat{G}_w, \hat{G}_h)\approx(G_x, G_y, G_w, G_h)\]
+
+<p>透過將\(f()\)​弄成regression task，之後便可以透過gradient descent來訓練\(f()\)​，更詳細的說明可以參考<a href="https://blog.csdn.net/zijin0802034/article/details/77685438">這篇文章</a>。</p>
+
+<h2 id="fast-r-cnn">Fast R-CNN</h2>
+
+<p>在上面的R-CNN裡面，每一個region proposal都會被丟進預先訓練好的模型來抽取圖片特徵，然而很多時候region proposal之間會有重疊的部分，其實並不需要重新再算一遍，因此在<a href="https://arxiv.org/pdf/1504.08083.pdf">Fast R-CNN</a>裡面想要直接把region proposal對應到feature map中，來避免掉不必要的計算。</p>
+
+<p><img src="./fast_rcnn_architecture.png" alt="Fast R-CNN Architecture" /></p>
+
+<p>Fast R-CNN跟R-CNN一樣，會先需要先選好region proposal，在把圖片經過CNN得到feature map的時候，也會將選好的region proposal也投影到跟feature map一樣的大小，直接對該區塊內的feature map做max pooling後得到固定大小的feature，最後透過fully connected layers來得到region裡面物體的類別，以及對bounding box做回歸，這個方法被稱作Region of Interest Pooling（RoI Pooling）。</p>
+
+<p><img src="https://deepsense.ai/wp-content/uploads/2017/02/roi_pooling-1.gif" alt="RoI Pooling" /></p>
+
+<p><em><a href="https://deepsense.ai/region-of-interest-pooling-explained/">Region of interest pooling explained</a></em></p>
+
+<h2 id="faster-r-cnn">Faster R-CNN</h2>
+
+<p>在Fast R-CNN裡面還是會需要跑selective search來得到region proposal，而<a href="https://arxiv.org/pdf/1506.01497.pdf">Faster R-CNN</a>的想法是想要直接在CNN的feature map裡面透過Region Proposal Network來直接得到region proposal。</p>
+
+<p>Region Proposal Network是一個CNN，它會先用個sliding window去掃過整張圖片，在每個window的中心點去套用\(k\)​​個預先定義好、不同大小的anchor box，將anchor box框出來的feature map輸入進CNN以後，predict出含有物體的機率，以及實際bounding box的座標。</p>
+
+<p><img src="./region_proposal_network.png" alt="Region Proposal Network" /></p>
+
+<p>其整體的架構畫出來大概長底下這樣，中間的區塊是Faster R-CNN提出來的RPN，而右邊的是原本Fast R-CNN既有的部分。</p>
+
+<p><img src="./faster_rcnn_graph.png" alt="Faster R-CNN Graph" /></p>
+
+<p><em><a href="https://blog.csdn.net/jiongnima/article/details/79094159">实例分割模型Mask R-CNN详解：从R-CNN，Fast R-CNN，Faster R-CNN再到Mask R-CNN</a></em></p>
+
+<h2 id="mask-r-cnn">Mask R-CNN</h2>
+
+<p><a href="https://arxiv.org/pdf/1703.06870.pdf">Mask R-CNN</a>在Faster R-CNN的基礎上，修改了RoI Pooling，調整成RoI Align，並多加入Mask prediction。</p>
+
+<p><img src="./mask_rcnn_graph.png" alt="Mask R-CNN Graph" /></p>
+
+<p><em><a href="https://blog.csdn.net/jiongnima/article/details/79094159">实例分割模型Mask R-CNN详解：从R-CNN，Fast R-CNN，Faster R-CNN再到Mask R-CNN</a></em></p>
+
+<h3 id="roi-align">RoI Align</h3>
+
+<p>在原本RoI Pooling的使用情境下，會需要在把region proposal投影到feature map的維度時把座標取整數，在計算max pooling的時候也需要對區塊的範圍取整數，雖然說在feature map上面取整數去除掉的零頭看起來不大，但feature map實際上是圖片經過了很多CNN，濃縮過的feature，去除掉的零頭在原本圖片上的影響其實是比想像中大的。</p>
+
+<p>因此在Mask R-CNN裡面使用bilinear interpolation來避免掉取整數的問題，下圖中的藍色方框是CNN輸出的feature map，而黑色方框是RoI，藉由interpolation的方式來計算出要輸入至後面的feature。</p>
+
+<p><img src="roi_align.png" alt="RoI Align" /></p>
+
+<h3 id="mask-prediction">Mask Prediction</h3>
+
+<p>在Mask R-CNN做的另一件事情是引入<a href="https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Long_Fully_Convolutional_Networks_2015_CVPR_paper.pdf">Fully Convolutional Networks（FCN）</a>來做pixel-wise的mask，FCN主要是先使用CNN來對圖片做降維，之後再透過deconvolution CNN來把feature還原到圖片原本的大小，並predict出segmentation。</p>
+
+<p><img src="./fcn_diagram.png" alt="FCN Diagram" /></p>
+
+<h2 id="yolo">YOLO</h2>
+
+<p>前面所提的R-CNN們都是region-based的方法，會需要先決定有可能的region proposal再往後進行下去，而<a href="https://pjreddie.com/media/files/papers/yolo.pdf">YOLO</a>是You Only Look Once的縮寫，一個region-free的方法，希望可以只跑一次CNN就同時產生出bounding box和物體的類別。</p>
+
+<p><img src="yolo_model.png" alt="YOLO Model" /></p>
+
+<p>首先，YOLO會先把圖片切成\(S \times S\)​個grid，並讓每一個grid都用neural network去預測\(B\)​個可能的bounding box、含有物件的信心程度以及物件的類別。在圖中上半部不同的黑框便是預測出來的bounding box，而不同的粗細表示信心程度的大小，而下半部是物件類別的預測結果。</p>
+
+<p>在選出了有可能的bounding box和類別偵測的結果以後，會先用一個固定的threshold把信心程度太低的bounding box去除掉，然後使用Non-Maximum Supression（NMS）來計算出最後的輸出結果，NMS運作的方式可以參考<a href="https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-non-maximum-suppression-nms-aa70c45adffa">這篇文章</a>，裡頭有詳細的圖解可以參考。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li><a href="https://blog.gtwang.org/programming/opencv-graph-based-segmentation-tutorial/">OpenCV 教學：實作 Graph Based Segmentation 圖形分割演算法</a></li>
+  <li><a href="https://blog.gtwang.org/programming/selective-search-for-object-detection/">OpenCV 教學：實作 Selective Search 物體偵測候選區域演算法</a></li>
+  <li><a href="https://blog.csdn.net/zijin0802034/article/details/77685438">边框回归(Bounding Box Regression)详解</a></li>
+  <li><a href="https://ccshenyltw.medium.com/object-detection-r-cnn-fast-rcnn-faster-rcnn-mask-rcnn-retinanet-to-be-continued-71b67640445">Object Detection : R-CNN, Fast-RCNN, Faster RCNN</a></li>
+  <li><a href="https://medium.com/cubo-ai/%E7%89%A9%E9%AB%94%E5%81%B5%E6%B8%AC-object-detection-740096ec4540">關於影像辨識，所有你應該知道的深度學習模型</a></li>
+  <li><a href="https://blog.csdn.net/jiongnima/article/details/79094159">实例分割模型Mask R-CNN详解：从R-CNN，Fast R-CNN，Faster R-CNN再到Mask R-CNN</a></li>
+  <li><a href="https://deepsense.ai/region-of-interest-pooling-explained/">Region of interest pooling explained</a></li>
+  <li><a href="https://chih-sheng-huang821.medium.com/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-you-only-look-once-yolo-4fb9cf49453c">深度學習-物件偵測:You Only Look Once (YOLO)</a></li>
+  <li><a href="https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-non-maximum-suppression-nms-aa70c45adffa">機器/深度學習: 物件偵測 Non-Maximum Suppression (NMS)</a></li>
+</ol>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-07-25T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2021/07/18/speech-recognition-with-deep-learning/">深度學習於語音辨識</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -917,6 +968,68 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
