@@ -128,7 +128,16 @@ noremap <silent><Leader>c  :SyntasticCheck<CR>
 
 也是做語法檢查的套件，與[syntastic](#vim-syntasticsyntastic)不同的是，ale是asynchronous的執行，所以在開啟、寫入檔案的時候不會卡住。
 
-我自己會加上底下的設定，以在各個error當中跳轉。
+在安裝好ale在vim上面以後，仍會需要安裝各個語言的linter，ale才能把linter的訊息顯示在vim上，一般的gcc、python通常都已經先安裝在作業系統裡了，底下列一些常用語言的linter安裝指令。
+
+```bash
+# Markdown
+gem install mdl
+# SQL
+npm i -g sql-lint
+```
+
+另外，我自己會加上底下的設定，以在各個error當中跳轉。
 
 ```bash
 nnoremap <Leader>d :ALEDetail<CR>
