@@ -247,6 +247,10 @@ endif
 
 [這篇文章](https://castel.dev/post/lecture-notes-1/)裡頭有講述作者如何使用各種技巧來讓用Latex做筆記變得相當容易，有興趣可以看看。
 
+###  [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)
+
+整合了多個語言的語言包，可以一次安裝完成，不用對每個語言個別去下載對應的語言包。
+
 
 ## Tips
 
