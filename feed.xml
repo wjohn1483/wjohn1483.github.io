@@ -1,4 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-08-27T05:55:46+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Object Detection概論</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection/" rel="alternate" type="text/html" title="Object Detection概論" /><published>2021-07-25T00:00:00+00:00</published><updated>2021-07-25T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection/">&lt;p&gt;簡單整理一下目前有關object detection的一些研究。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2021-09-11T09:33:59+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Unsupervised Speech Recognition</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/08/28/unsupervised-speech-recognition/" rel="alternate" type="text/html" title="Unsupervised Speech Recognition" /><published>2021-08-28T00:00:00+00:00</published><updated>2021-08-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/08/28/unsupervised-speech-recognition</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/08/28/unsupervised-speech-recognition/">&lt;p&gt;簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的&lt;a href=&quot;https://ai.facebook.com/research/publications/unsupervised-speech-recognition&quot;&gt;paper&lt;/a&gt;。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;model-framework&quot;&gt;Model Framework&lt;/h2&gt;
+
+&lt;p&gt;在這篇&lt;a href=&quot;https://ai.facebook.com/blog/wav2vec-unsupervised-speech-recognition-without-supervision/&quot;&gt;官方的部落格文章&lt;/a&gt;裡面有對整篇paper有個大致的介紹，也有一段影片講解這篇paper使用的方法。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./wav2vec_u_framework.png&quot; alt=&quot;wav2vec U Framework&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上圖是這篇paper wav2vec U的整體架構，首先會先把整段語音透過wav2vec 2.0轉換成feature sequence，再來對這些feature做k-means，藉由k-means所獲得的cluster來對語音訊號做segmentation，最後將segment好的語音訊號的feature輸入至generator中轉換成phoneme sequence，搭配GAN的方式來去做訓練。&lt;/p&gt;
+
+&lt;h2 id=&quot;wav2vec-20&quot;&gt;wav2vec 2.0&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;./wav2vec_2_framework.png&quot; alt=&quot;wav2vec 2.0 Framework&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;wav2vec 2.0的訓練方式跟BERT有些類似，首先會先將語音訊號透過CNN抽取出這段語音的特徵，接著對它做product quantization，在把quantization前的feature輸入進transformer以後，希望在被mask掉的位置所產生出來的feature要越像quantization後的feature越好，在訓練的時候也會拿其他時間點經過quantization後的feature來做contrasive training。&lt;/p&gt;
+
+&lt;h3 id=&quot;product-quantization&quot;&gt;Product Quantization&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://i.typlog.com/fabwrite/NM/ZL0fPpntjxi3pzrQirdw.png?x-oss-process=style/l&quot; alt=&quot;Product Quantization&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;a href=&quot;http://www.fabwrite.com/productquantization&quot;&gt;实例理解product quantization算法&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;假如說我們現在有5萬張圖片的feature，每個feature有1024維，我們將這1024維切成8份，每份有128維如上圖那樣，接著以維度為單位來做k-means，這邊令k=256，我們就可以將原先1024維的feature轉換成由8個cluster id所組成的向量，把1024維降成了8維。&lt;/p&gt;
+
+&lt;h2 id=&quot;segment-representations&quot;&gt;Segment Representations&lt;/h2&gt;
+
+&lt;p&gt;一段語音輸入進wav2vec 2.0以後，我們可以得到一串vector sequence，而作者們把所有訓練資料裡面的語音都丟進去wav2vec 2.0，將產生出來的一堆向量拿去做k-means，可以說是對每一小段語音訊號都給它一個編號。如果我們發現到說一段語音裡面相鄰兩個feature的編號相同，就可以將他們視為在同一個segment裡面，直到碰到不同編號。&lt;/p&gt;
+
+&lt;p&gt;作者們將同一個segment裡面的feature做平均來當作是這個segment的representation，值得一提的是，作者們並不是直接使用wav2vec 2.0產生出來的feature做平均，而是先對所有訓練資料經過wav2vec 2.0產生出的feature做PCA，用經過PCA轉換的feature再來做平均以後當作segment的representation。&lt;/p&gt;
+
+&lt;h2 id=&quot;gan&quot;&gt;GAN&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;./gan_framework.png&quot; alt=&quot;GAN Framework&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在得到了segment representation以後，接下來作者們將這些representation輸入進generator裡面，希望generator直接產生出phoneme distribution，這邊再搭配實際上文字的所轉換出來的phoneme 1-hot encoding，透過discriminator來讓generator產生出的phoneme distribution能越像真實的phoneme越好。另外在這邊作者們有將generator產生出來、argmax以後是相同的output再做一次平均，之後才輸入進discriminator中。&lt;/p&gt;
+
+&lt;h2 id=&quot;experiment-results&quot;&gt;Experiment Results&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;./librispeech_results.png&quot; alt=&quot;Librispeech Results&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在經過繁複的訓練流程以後，可以看到wav2vec U的表現不俗，搭配厲害的language model以後，error rate可以媲美數年前supervised learning的結果。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;./low_resource_languages_results.png&quot; alt=&quot;Low Resource Languages Results&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在low-resource上的表現甚至可以贏過supervised learning的結果。&lt;/p&gt;
+
+&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.fabwrite.com/productquantization&quot;&gt;实例理解product quantization算法&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Paper" /><category term="Speech-Recognition" /><summary type="html">簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的paper。</summary></entry><entry><title type="html">Object Detection概論</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection/" rel="alternate" type="text/html" title="Object Detection概論" /><published>2021-07-25T00:00:00+00:00</published><updated>2021-07-25T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection/">&lt;p&gt;簡單整理一下目前有關object detection的一些研究。&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -1100,77 +1152,4 @@ p_{AM}(X\vert P) &amp;amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P) \
   &lt;li&gt;&lt;a href=&quot;https://xsaxy.gitee.io/blog/post/2019/12/10/%E4%B8%BB%E9%A2%98TeXt%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E4%B8%AD%E7%9A%84%E5%9D%91.html&quot;&gt;主题TeXt评论系统设置中的坑&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/gitalk/gitalk/issues/429&quot;&gt;在授权gitalk后出现403错误&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/Lwl9rf95EqlTYLfconjflQ&quot;&gt;记录一次 Bug 排查过程并分享一些经验&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。</summary></entry><entry><title type="html">網路安全的基本知識</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction/" rel="alternate" type="text/html" title="網路安全的基本知識" /><published>2021-01-26T00:00:00+00:00</published><updated>2021-01-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/01/26/security-introduction/">&lt;p&gt;有鑑於有時會接觸到一些網路安全的東西，這邊簡單紀錄一下碰到的一些東西。&lt;/p&gt;
-
-&lt;!--more--&gt;
-
-&lt;h2 id=&quot;非對稱式密碼學&quot;&gt;非對稱式密碼學&lt;/h2&gt;
-
-&lt;p&gt;在網路安全當中的很多基礎是建立在&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86&quot;&gt;非對稱式密碼學（Asymmetric cryptography）&lt;/a&gt;上，而非對稱式密碼學又是奠基在&lt;a href=&quot;https://zh.wikipedia.org/wiki/RSA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95&quot;&gt;RSA&lt;/a&gt;等非對稱加密演算法上。非對稱加密演算法可以產生出成對的公鑰和私鑰，用公鑰加密的文件只能用私鑰來解開，而用私鑰加密的文件也只能用公鑰來解開，在這樣的基礎上，我們就可以與其他人安全的傳遞資料，不怕被其他人偷看。&lt;/p&gt;
-
-&lt;h3 id=&quot;安全傳遞訊息&quot;&gt;安全傳遞訊息&lt;/h3&gt;
-
-&lt;p&gt;這邊簡單說明一下，如何使用非對稱加密演算法來安全的傳遞訊息。&lt;/p&gt;
-
-&lt;p&gt;假如說今天愛麗絲想要傳遞訊息給鮑伯，但怕透過網路的話她所傳遞的訊息會被別人看到，這時，鮑伯可以用非對稱加密演算法先產生一對公鑰和私鑰，透過網路將公鑰傳遞給愛麗絲，而愛麗絲將她想要傳遞的訊息透過鮑伯的公鑰加密以後，透過網路再傳回給鮑伯，鮑伯再用私鑰來將訊息讀取出來。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Public_key_encryption_alice_to_bob.svg/langzh-500px-Public_key_encryption_alice_to_bob.svg.png&quot; alt=&quot;透過非對稱加密演算法安全傳遞訊息&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;如果有人一直在竊聽兩個人的對話，他雖然可以拿到鮑伯的公鑰以及愛麗絲透過公鑰加密過後的訊息，但因為沒有鮑伯的私鑰的關係，所以也看不到愛麗絲傳給鮑伯的訊息。&lt;/p&gt;
-
-&lt;h3 id=&quot;數位簽章&quot;&gt;數位簽章&lt;/h3&gt;
-
-&lt;p&gt;在上面的例子當中，雖說第三人沒有辦法看到愛麗絲傳遞給鮑伯的訊息，但他擁有鮑伯的公鑰，可以巧妙的偽裝成愛麗絲傳遞訊息給鮑伯。為了防止有人偽裝成愛麗絲，愛麗絲可以利用她自己的私鑰搭配雜湊函數來對訊息做簽名，而鮑伯拿到訊息以後，除了用自己的私鑰解開以外，還需要用愛麗絲的公鑰對簽名做驗證，如此便能防止有人假冒了。&lt;/p&gt;
-
-&lt;h2 id=&quot;常見的網路安全名詞&quot;&gt;常見的網路安全名詞&lt;/h2&gt;
-
-&lt;h3 id=&quot;ssltls&quot;&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%82%B3%E8%BC%B8%E5%B1%A4%E5%AE%89%E5%85%A8%E6%80%A7%E5%8D%94%E5%AE%9A&quot;&gt;SSL/TLS&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;SSL的全稱是Secure Sockets Layer，而TLS的全稱是Transport Layer Security，SSL是TLS的前身，而這兩個都是transport layer的安全協定。&lt;/p&gt;
-
-&lt;h3 id=&quot;oauth&quot;&gt;OAuth&lt;/h3&gt;
-
-&lt;p&gt;OAuth是一個開放的標準，來讓第三方的app有權利可以存取使用者在其他網站上面的資源，而不用將使用者的帳號密碼給第三方app，OAuth其實是個生活中常用到的標準，舉凡在Slack裡面連結Google Drive的帳戶，或是在電子信箱裡面連結其他電子信箱等，底層使用的可能都是OAuth的標準。&lt;/p&gt;
-
-&lt;p&gt;OAuth具體的操作方式可以參考&lt;a href=&quot;https://petertc.medium.com/oauth-2-0-196a5550b668&quot;&gt;這篇文章&lt;/a&gt;，簡單來說，假設我今天想要透過服務A存取我放在服務B的資料，我得要先去服務B那邊申請說我想要讓第三方服務存取資料，並從服務B拿到Authorization Code，接著我把這Authorization Code給服務A，服務A會拿著這個Authorization Code去服務B那邊換取Access Token，之後服務A就可以使用這Access Token存取我在服務B上面的資料了。&lt;/p&gt;
-
-&lt;h3 id=&quot;yubikey&quot;&gt;Yubikey&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/YubiKey&quot;&gt;Yubikey&lt;/a&gt;是由Yubico這家公司出產的身分認證裝置，常用在二階段認證上，在使用的時候是插在電腦上，並在需要時觸碰它。&lt;/p&gt;
-
-&lt;h3 id=&quot;x509&quot;&gt;X.509&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/X.509&quot;&gt;X.509&lt;/a&gt;是一個格式標準，常用在包括SSL/TLS在內的網路協定裡。它的概念是說，當我想要跟某台素未蒙面的主機聯繫的時候，我不清楚那台主機能不能夠被信任、是不是別人假裝的，這時就會需要一個公正的CA（Certificate Authority）來幫忙，如果對方的主機可以提供我所信任的CA的憑證（Certificate），那麼我就相信對方是可以被信任的而傳送資料過去。&lt;/p&gt;
-
-&lt;p&gt;而CA的架構是金字塔型，主要頒發憑證的是中間的認證中心，他們上面還有更高的認證中心，詳細的資訊可以參考&lt;a href=&quot;https://www.imacat.idv.tw/tech/sslcerts.html.zh-tw#sslx509&quot;&gt;這篇文章&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;athenz&quot;&gt;Athenz&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/yahoo/athenz&quot;&gt;Athenz&lt;/a&gt;是由Yahoo開源、基於X.509權限管理系統，使用集中式的授權，並以role為基礎，透過指定某個role對某個資源允許或拒絕某些動作來達成授權行為，任何服務想要知道我有沒有權限存取資料的時候，都要去跟權限管理系統詢問，所以可能會有單點故障以及流量的問題，具體的授權流程可以參考&lt;a href=&quot;https://github.com/yahoo/athenz/blob/master/docs/auth_flow.md&quot;&gt;官方的文件&lt;/a&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;mtls&quot;&gt;mTLS&lt;/h3&gt;
-
-&lt;p&gt;mTLS的全稱應該是Mutual TLS，指的是雙方都去驗證對方的身分。在一般的情境下，可能只有使用者需要去驗證服務是不是可以被信任的，但有些時候如果要交換一些比較機密的資料時，就會需要兩邊都做驗證，也就是雙方要各自準備好各自的key、certificate和CA的certificate。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Server需要準備：server.key、server.crt、ca.crt&lt;/li&gt;
-  &lt;li&gt;Client需要準備：client.key、client.crt、ca.crt&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;okta&quot;&gt;Okta&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Okta_(identity_management)&quot;&gt;Okta&lt;/a&gt;是一家公司，提供其他企業SSO（Single Sign On）的服務，讓企業的員工可以只登入一次就可以存取各式各樣的服務，Okta還提供其他多重要素驗證等等的服務。&lt;/p&gt;
-
-&lt;h3 id=&quot;ckms&quot;&gt;CKMS&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.cryptomathic.com/products/key-management/crypto-key-management-system&quot;&gt;CKMS&lt;/a&gt;的全稱好像是Crypto Key Management System，是一個幫忙更新、部署key的系統。&lt;/p&gt;
-
-&lt;h2 id=&quot;參考資料&quot;&gt;參考資料&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/@RiverChan/%E5%9F%BA%E7%A4%8E%E5%AF%86%E7%A2%BC%E5%AD%B8-%E5%B0%8D%E7%A8%B1%E5%BC%8F%E8%88%87%E9%9D%9E%E5%B0%8D%E7%A8%B1%E5%BC%8F%E5%8A%A0%E5%AF%86%E6%8A%80%E8%A1%93-de25fd5fa537&quot;&gt;基礎密碼學(對稱式與非對稱式加密技術)&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://petertc.medium.com/oauth-2-0-196a5550b668&quot;&gt;妳知道第三方應用是怎麼存取妳的雲端資料嗎？&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jimwayne.blogspot.com/2019/04/athenz.html&quot;&gt;黑毛到白毛的攻城獅之路: Athenz 的授權流程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.imacat.idv.tw/tech/sslcerts.html.zh-tw#sslx509&quot;&gt;如何製作SSL X.509憑證？&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/ustccw/article/details/76691248&quot;&gt;SSL/TLS 双向认证(一) – SSL/TLS 工作原理_ustccw-CSDN博客&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Network-Security" /><summary type="html">有鑑於有時會接觸到一些網路安全的東西，這邊簡單紀錄一下碰到的一些東西。</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="Tool" /><summary type="html">先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。</summary></entry></feed>

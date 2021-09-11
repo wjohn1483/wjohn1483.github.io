@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Archive - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Unsupervised Speech Recognition - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/archive/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的paper。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2021/08/28/unsupervised-speech-recognition/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -265,7 +265,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -283,264 +283,113 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Archive</h1></header></div><meta itemprop="headline" content="Archive"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--archive js-all"><div class="site-tags js-tags">
-  <ul class="menu">
-    <li>
-      <button type="button" class="button button--secondary button--pill tag-button tag-button--all" data-encode="">
-        Show All<div class="tag-button__count">29</div>
-      </button>
-    </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Auxiliary-Learning">
-          <span>Auxiliary-Learning</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Computer-Vision">
-          <span>Computer-Vision</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Generative-Adversarial-Network">
-          <span>Generative-Adversarial-Network</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Machine-Learning">
-          <span>Machine-Learning</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Meta-Learning">
-          <span>Meta-Learning</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="Natural-Language-Processing">
-          <span>Natural-Language-Processing</span><div class="tag-button__count">3</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Network-Security">
-          <span>Network-Security</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Object-Detection">
-          <span>Object-Detection</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-4" data-encode="Paper">
-          <span>Paper</span><div class="tag-button__count">10</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Python">
-          <span>Python</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Recommendation-System">
-          <span>Recommendation-System</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="Reinforcement-Learning">
-          <span>Reinforcement-Learning</span><div class="tag-button__count">4</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-2" data-encode="Speech-Recognition">
-          <span>Speech-Recognition</span><div class="tag-button__count">3</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Swift">
-          <span>Swift</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-4" data-encode="Tool">
-          <span>Tool</span><div class="tag-button__count">10</div>
-        </button>
-      </li></ul>
-</div>
-<div class="js-result layout--archive__result d-none"><div class="article-list items"><section><h2 class="article-list__group-header">2021</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Speech-Recognition">
-        <div class="item__content"><span class="item__meta">Aug 28</span><a itemprop="headline" class="item__header" href="/2021/08/28/unsupervised-speech-recognition/">Unsupervised Speech Recognition</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Computer-Vision,Object-Detection">
-        <div class="item__content"><span class="item__meta">Jul 25</span><a itemprop="headline" class="item__header" href="/2021/07/25/object-detection/">Object Detection概論</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Jul 25</span><a itemprop="headline" class="item__header" href="/2021/07/25/remote-job-finish-notification/">在遠端的job執行完成時發送通知</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Speech-Recognition">
-        <div class="item__content"><span class="item__meta">Jul 18</span><a itemprop="headline" class="item__header" href="/2021/07/18/speech-recognition-with-deep-learning/">深度學習於語音辨識</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Speech-Recognition">
-        <div class="item__content"><span class="item__meta">Jun 14</span><a itemprop="headline" class="item__header" href="/2021/06/14/introduction-to-speech-recognition/">語音辨識概觀</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Jun 05</span><a itemprop="headline" class="item__header" href="/2021/06/05/display-html-in-google-sheet/">在Google Sheet裡面呈現html</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Swift">
-        <div class="item__content"><span class="item__meta">May 24</span><a itemprop="headline" class="item__header" href="/2021/05/24/swift-menu-bar-timer/">如何利用Swift製作倒數計時器</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper">
-        <div class="item__content"><span class="item__meta">Mar 21</span><a itemprop="headline" class="item__header" href="/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/">Deep Interest Evolution Network for Click-Through Rate Prediction</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 28</span><a itemprop="headline" class="item__header" href="/2021/02/28/move-blog-to-github-actions/">利用GitHub Actions來部署部落格</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 07</span><a itemprop="headline" class="item__header" href="/2021/02/07/gitalk-introduction/">利用Gitalk在靜態網頁裡面新增留言區</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Network-Security">
-        <div class="item__content"><span class="item__meta">Jan 26</span><a itemprop="headline" class="item__header" href="/2021/01/26/security-introduction/">網路安全的基本知識</a></div>
-      </li></ul></section><section><h2 class="article-list__group-header">2020</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Nov 21</span><a itemprop="headline" class="item__header" href="/2020/11/21/circle-ci/">利用Circle CI來更新GitHub Pages</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Python">
-        <div class="item__content"><span class="item__meta">Nov 15</span><a itemprop="headline" class="item__header" href="/2020/11/15/python-import/">Python Import Introduction</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Reinforcement-Learning,Recommendation-System">
-        <div class="item__content"><span class="item__meta">Nov 04</span><a itemprop="headline" class="item__header" href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">Deep Reinforcement Learning for Online Advertising in Recommender Systems</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Reinforcement-Learning">
-        <div class="item__content"><span class="item__meta">Jul 26</span><a itemprop="headline" class="item__header" href="/2020/07/26/reinforce-and-ppo/">REINFORCE和Proximal Policy Optimization</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">May 07</span><a itemprop="headline" class="item__header" href="/2020/05/07/slack-bot/">如何製作Slack機器人</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Apr 25</span><a itemprop="headline" class="item__header" href="/2020/04/25/plot-data-with-r/">用R來作圖</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Generative-Adversarial-Network,Recommendation-System,Reinforcement-Learning">
-        <div class="item__content"><span class="item__meta">Apr 19</span><a itemprop="headline" class="item__header" href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Reinforcement-Learning">
-        <div class="item__content"><span class="item__meta">Apr 19</span><a itemprop="headline" class="item__header" href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/">Playing Atari with Deep Reinforcement Learning</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Machine-Learning">
-        <div class="item__content"><span class="item__meta">Apr 02</span><a itemprop="headline" class="item__header" href="/2020/04/02/tf-idf-introduction/">TF-IDF簡介</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Natural-Language-Processing">
-        <div class="item__content"><span class="item__meta">Mar 29</span><a itemprop="headline" class="item__header" href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Mar 28</span><a itemprop="headline" class="item__header" href="/2020/03/28/terminal-tools/">Terminal小工具</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Natural-Language-Processing">
-        <div class="item__content"><span class="item__meta">Mar 23</span><a itemprop="headline" class="item__header" href="/2020/03/23/deep-contextualized-word-representation/">Deep contextualized word representation</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Natural-Language-Processing">
-        <div class="item__content"><span class="item__meta">Mar 21</span><a itemprop="headline" class="item__header" href="/2020/03/21/attention-is-all-you-need/">Attention Is All You Need</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Mar 09</span><a itemprop="headline" class="item__header" href="/2020/03/09/vim-plugins/">Vim Plugins</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Machine-Learning">
-        <div class="item__content"><span class="item__meta">Mar 07</span><a itemprop="headline" class="item__header" href="/2020/03/07/gradient-descent-and-learning-rate/">Gradient Descent和Learning Rate</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Meta-Learning">
-        <div class="item__content"><span class="item__meta">Mar 06</span><a itemprop="headline" class="item__header" href="/2020/03/06/model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks/">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Meta-Learning,Auxiliary-Learning">
-        <div class="item__content"><span class="item__meta">Mar 01</span><a itemprop="headline" class="item__header" href="/2020/03/01/self-supervised-generalisation-with-meta-auxiliary-learning/">Self-Supervised Generalisation with Meta Auxiliary Learning</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 28</span><a itemprop="headline" class="item__header" href="/2020/02/28/create-website-by-Jekyll/">如何使用Jekyll建立網站在Github Page上</a></div>
-      </li></div>
-</div>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Unsupervised Speech Recognition</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2021-08-28-unsupervised-speech-recognition/2021-08-28-unsupervised-speech-recognition.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Unsupervised Speech Recognition"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive/?tag=Paper">Paper</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive/?tag=Speech-Recognition">Speech-Recognition</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Aug 28, 2021</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-08-28T00:00:00+00:00">
+    <meta itemprop="keywords" content="Paper,Speech-Recognition"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的<a href="https://ai.facebook.com/research/publications/unsupervised-speech-recognition">paper</a>。</p>
+
+<!--more-->
+
+<h2 id="model-framework">Model Framework</h2>
+
+<p>在這篇<a href="https://ai.facebook.com/blog/wav2vec-unsupervised-speech-recognition-without-supervision/">官方的部落格文章</a>裡面有對整篇paper有個大致的介紹，也有一段影片講解這篇paper使用的方法。</p>
+
+<p><img src="./wav2vec_u_framework.png" alt="wav2vec U Framework" /></p>
+
+<p>上圖是這篇paper wav2vec U的整體架構，首先會先把整段語音透過wav2vec 2.0轉換成feature sequence，再來對這些feature做k-means，藉由k-means所獲得的cluster來對語音訊號做segmentation，最後將segment好的語音訊號的feature輸入至generator中轉換成phoneme sequence，搭配GAN的方式來去做訓練。</p>
+
+<h2 id="wav2vec-20">wav2vec 2.0</h2>
+
+<p><img src="./wav2vec_2_framework.png" alt="wav2vec 2.0 Framework" /></p>
+
+<p>wav2vec 2.0的訓練方式跟BERT有些類似，首先會先將語音訊號透過CNN抽取出這段語音的特徵，接著對它做product quantization，在把quantization前的feature輸入進transformer以後，希望在被mask掉的位置所產生出來的feature要越像quantization後的feature越好，在訓練的時候也會拿其他時間點經過quantization後的feature來做contrasive training。</p>
+
+<h3 id="product-quantization">Product Quantization</h3>
+
+<p><img src="https://i.typlog.com/fabwrite/NM/ZL0fPpntjxi3pzrQirdw.png?x-oss-process=style/l" alt="Product Quantization" /></p>
+
+<p><em><a href="http://www.fabwrite.com/productquantization">实例理解product quantization算法</a></em></p>
+
+<p>假如說我們現在有5萬張圖片的feature，每個feature有1024維，我們將這1024維切成8份，每份有128維如上圖那樣，接著以維度為單位來做k-means，這邊令k=256，我們就可以將原先1024維的feature轉換成由8個cluster id所組成的向量，把1024維降成了8維。</p>
+
+<h2 id="segment-representations">Segment Representations</h2>
+
+<p>一段語音輸入進wav2vec 2.0以後，我們可以得到一串vector sequence，而作者們把所有訓練資料裡面的語音都丟進去wav2vec 2.0，將產生出來的一堆向量拿去做k-means，可以說是對每一小段語音訊號都給它一個編號。如果我們發現到說一段語音裡面相鄰兩個feature的編號相同，就可以將他們視為在同一個segment裡面，直到碰到不同編號。</p>
+
+<p>作者們將同一個segment裡面的feature做平均來當作是這個segment的representation，值得一提的是，作者們並不是直接使用wav2vec 2.0產生出來的feature做平均，而是先對所有訓練資料經過wav2vec 2.0產生出的feature做PCA，用經過PCA轉換的feature再來做平均以後當作segment的representation。</p>
+
+<h2 id="gan">GAN</h2>
+
+<p><img src="./gan_framework.png" alt="GAN Framework" /></p>
+
+<p>在得到了segment representation以後，接下來作者們將這些representation輸入進generator裡面，希望generator直接產生出phoneme distribution，這邊再搭配實際上文字的所轉換出來的phoneme 1-hot encoding，透過discriminator來讓generator產生出的phoneme distribution能越像真實的phoneme越好。另外在這邊作者們有將generator產生出來、argmax以後是相同的output再做一次平均，之後才輸入進discriminator中。</p>
+
+<h2 id="experiment-results">Experiment Results</h2>
+
+<p><img src="./librispeech_results.png" alt="Librispeech Results" /></p>
+
+<p>在經過繁複的訓練流程以後，可以看到wav2vec U的表現不俗，搭配厲害的language model以後，error rate可以媲美數年前supervised learning的結果。</p>
+
+<p><img src="./low_resource_languages_results.png" alt="Low Resource Languages Results" /></p>
+
+<p>在low-resource上的表現甚至可以贏過supervised learning的結果。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li><a href="http://www.fabwrite.com/productquantization">实例理解product quantization算法</a></li>
+</ol>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-08-28T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2021/07/25/remote-job-finish-notification/">在遠端的job執行完成時發送通知</a></div></div></div>
+
 </div>
 
 <script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
-  function queryString() {
-    // This function is anonymous, is executed immediately and
-    // the return value is assigned to QueryString!
-    var i = 0, queryObj = {}, pair;
-    var queryStr = window.location.search.substring(1);
-    var queryArr = queryStr.split('&');
-    for (i = 0; i < queryArr.length; i++) {
-      pair = queryArr[i].split('=');
-      // If first entry with this name
-      if (typeof queryObj[pair[0]] === 'undefined') {
-        queryObj[pair[0]] = pair[1];
-        // If second entry with this name
-      } else if (typeof queryObj[pair[0]] === 'string') {
-        queryObj[pair[0]] = [queryObj[pair[0]], pair[1]];
-        // If third or later entry with this name
-      } else {
-        queryObj[pair[0]].push(pair[1]);
-      }
-    }
-    return queryObj;
-  }
-
-  var setUrlQuery = (function() {
-    var baseUrl =  window.location.href.split('?')[0];
-    return function(query) {
-      if (typeof query === 'string') {
-        window.history.replaceState(null, '', baseUrl + query);
-      } else {
-        window.history.replaceState(null, '', baseUrl);
-      }
-    };
-  })();
-
   window.Lazyload.js(SOURCES.jquery, function() {
-    var $tags = $('.js-tags');
-    var $articleTags = $tags.find('button');
-    var $tagShowAll = $tags.find('.tag-button--all');
-    var $result = $('.js-result');
-    var $sections = $result.find('section');
-    var sectionArticles = [];
-    var $lastFocusButton = null;
-    var sectionTopArticleIndex = [];
-    var hasInit = false;
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
 
-    $sections.each(function() {
-      sectionArticles.push($(this).find('.item'));
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
     });
-
-    function init() {
-      var i, index = 0;
-      for (i = 0; i < $sections.length; i++) {
-        sectionTopArticleIndex.push(index);
-        index += $sections.eq(i).find('.item').length;
-      }
-      sectionTopArticleIndex.push(index);
-    }
-
-    function searchButtonsByTag(_tag/*raw tag*/) {
-      if (!_tag) {
-        return $tagShowAll;
-      }
-      var _buttons = $articleTags.filter('[data-encode="' + _tag + '"]');
-      if (_buttons.length === 0) {
-        return $tagShowAll;
-      }
-      return _buttons;
-    }
-    function buttonFocus(target) {
-      if (target) {
-        target.addClass('focus');
-        $lastFocusButton && !$lastFocusButton.is(target) && $lastFocusButton.removeClass('focus');
-        $lastFocusButton = target;
-      }
-    }
-
-    function tagSelect (tag/*raw tag*/, target) {
-      var result = {}, $articles;
-      var i, j, k, _tag;
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        $articles = sectionArticles[i];
-        for (j = 0; j < $articles.length; j++) {
-          if (tag === '' || tag === undefined) {
-            result[i] || (result[i] = {});
-            result[i][j] = true;
-          } else {
-            var tags = $articles.eq(j).data('tags').split(',');
-            for (k = 0; k < tags.length; k++) {
-              if (tags[k] === tag) {
-                result[i] || (result[i] = {});
-                result[i][j] = true; break;
-              }
-            }
-          }
-        }
-      }
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        result[i] && $sections.eq(i).removeClass('d-none');
-        result[i] || $sections.eq(i).addClass('d-none');
-        for (j = 0; j < sectionArticles[i].length; j++) {
-          if (result[i] && result[i][j]) {
-            sectionArticles[i].eq(j).removeClass('d-none');
-          } else {
-            sectionArticles[i].eq(j).addClass('d-none');
-          }
-        }
-      }
-
-      hasInit || ($result.removeClass('d-none'), hasInit = true);
-
-
-      if (target) {
-        buttonFocus(target);
-        _tag = target.attr('data-encode');
-        if (_tag === '' || typeof _tag !== 'string') {
-          setUrlQuery();
-        } else {
-          setUrlQuery('?tag=' + _tag);
-        }
-      } else {
-        buttonFocus(searchButtonsByTag(tag));
-      }
-    }
-
-    var query = queryString(), _tag = query.tag;
-    init(); tagSelect(_tag);
-    $tags.on('click', 'button', function() {
-      tagSelect($(this).data('encode'), $(this));
-    });
-
   });
 })();
 </script>
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -1063,6 +912,68 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
