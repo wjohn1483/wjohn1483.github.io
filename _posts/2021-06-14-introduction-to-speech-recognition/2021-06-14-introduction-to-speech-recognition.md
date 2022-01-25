@@ -96,7 +96,7 @@ $$
 $$
 \begin{aligned}
 p_{AM}(X\vert P) & =\sum_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
-& \approx \max_A p_{emit}(X\vert A)p_{train}(A\vert P)
+& \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P)
 \end{aligned}
 $$
 
