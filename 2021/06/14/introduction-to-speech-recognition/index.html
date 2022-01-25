@@ -384,7 +384,7 @@ p_{AM}(X,A\vert P) &amp; =p_{emit}(X\vert A)p_{tran}(A\vert P) \\
 
 \[\begin{aligned}
 p_{AM}(X\vert P) &amp; =\sum_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
-&amp; \approx \max_A p_{emit}(X\vert A)p_{train}(A\vert P)
+&amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P)
 \end{aligned}\]
 
 <p>雖然在算式裡面有很多的\(\sum\)和\(\prod\)還有窮舉，其實在做計算的時候會使用<a href="https://en.wikipedia.org/wiki/Forward%E2%80%93backward_algorithm">forward-backward algorithm</a>和<a href="https://en.wikipedia.org/wiki/Viterbi_algorithm">Viterbi algorithm</a>這些類似dynamic programming的方式來有效率的計算。</p>
