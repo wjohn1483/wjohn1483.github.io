@@ -1,4 +1,136 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-02-02T02:41:52+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">AutoKeras介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction/" rel="alternate" type="text/html" title="AutoKeras介紹" /><published>2021-12-23T00:00:00+00:00</published><updated>2021-12-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction/"><![CDATA[<p>現在市面上有眾多AutoML的框架，而用深度學習並有Neural Architecture Search（NAS）功能的並不多，這邊紀錄一下使用AutoKeras的心得。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-02-26T09:20:19+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Airflow介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction/" rel="alternate" type="text/html" title="Airflow介紹" /><published>2022-02-26T00:00:00+00:00</published><updated>2022-02-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction/"><![CDATA[<p>這篇文章紀錄一下嘗試使用Airflow的經歷。</p>
+
+<!--more-->
+
+<p>之前在聽一些技術分享的時候，有聽到別人使用Airflow來作為他們的排程系統，剛好在網路上也有看到別人<a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">使用Airflow來追漫畫連載</a>，想說我也來做一個簡單的每天登入領獎勵的程式來學習Airflow怎麼使用，底下紀錄一下製作的過程。</p>
+
+<h2 id="安裝airflow">安裝Airflow</h2>
+
+<p><a href="https://airflow.apache.org/">Airflow</a>是由Airbnb開發的排程系統，主要是由python編寫，安裝起來也相當地方便，只需要執行底下的指令就行。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install</span> <span class="s2">"apache-airflow[crypto, slack]"</span>
+</code></pre></div></div>
+
+<h3 id="初始化database">初始化database</h3>
+
+<p>在安裝完成以後，會需要先初始化airflow的database，這個database會用來儲存任務執行的設定和log。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># export AIRFLOW_HOME=/path/you/want</span>
+airflow db init
+</code></pre></div></div>
+
+<p>預設的路徑會放在<code class="language-plaintext highlighter-rouge">~/airflow</code>，你也可以藉由<code class="language-plaintext highlighter-rouge">export AIRFLOW_HOME</code>來選擇自己喜歡的位置。</p>
+
+<h3 id="開啟web-server">開啟web server</h3>
+
+<p>接下來就可以準備啟動airflow了，我們可以使用底下的指令開啟web server，並設定port為8080。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airflow webserver <span class="nt">-p</span> 8080
+</code></pre></div></div>
+
+<p>這時就可以連去<code class="language-plaintext highlighter-rouge">localhost:8080</code>來看到airflow的使用者介面了，但進去的時候會發現要帳號密碼才能登入，我們可以透過下面的指令來創建一個權限為admin的帳戶，其帳號密碼都是<code class="language-plaintext highlighter-rouge">admin</code>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airflow <span class="nb">users </span>create <span class="nt">--role</span> Admin <span class="nt">--username</span> admin <span class="nt">--email</span> admin <span class="nt">--firstname</span> admin <span class="nt">--lastname</span> admin <span class="nt">--password</span> admin
+</code></pre></div></div>
+
+<p>理論上在這個步驟做完以後就能順利地看到類似於底下的畫面了。</p>
+
+<p><img src="./airflow_ui.png" alt="Airflow UI" /></p>
+
+<h3 id="開啟scheduler">開啟scheduler</h3>
+
+<p>雖說UI已經打得開了，但會發現上面的任務都沒辦法執行，原因是因為實際上排程這些任務的是scheduler，而web server就真的只是一個UI讓使用者方便使用，所以我們還需要執行底下的指令才能啟動。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airflow scheduler
+</code></pre></div></div>
+
+<p>scheduler和web server的關係可以參考<a href="https://airflow.apache.org/docs/apache-airflow/stable/concepts/overview.html">airflow官方文件</a>裡面的架構圖。</p>
+
+<p><img src="https://airflow.apache.org/docs/apache-airflow/stable/_images/arch-diag-basic.png" alt="Airflow Architecture" /></p>
+
+<h2 id="建立屬於自己的任務">建立屬於自己的任務</h2>
+
+<p>前面有提到airflow主要是由python來編寫的，當我們要加入一個新的任務時，我們也是寫一個python的script，並放入<code class="language-plaintext highlighter-rouge">${AIRFLOW_HOME}/dags/</code>（預設是<code class="language-plaintext highlighter-rouge">~/airflow/dags/</code>）這個路徑底下，airflow就會自動抓取你寫的script，在UI上面顯示出來。</p>
+
+<h3 id="airflow-python-script">Airflow Python Script</h3>
+
+<p>一個簡單的任務可以參考底下的程式碼。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python_operator</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.dummy_operator</span> <span class="kn">import</span> <span class="n">DummyOperator</span>
+
+
+<span class="k">def</span> <span class="nf">login_func</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Attempt to login with account = </span><span class="si">{</span><span class="n">account</span><span class="si">}</span><span class="s">, password = </span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+
+<span class="n">account</span> <span class="o">=</span> <span class="s">"user"</span>
+<span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span>
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"owner"</span><span class="p">:</span> <span class="s">"THE_ONE"</span><span class="p">,</span>
+    <span class="s">"start_date"</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s">"schedule_interval"</span><span class="p">:</span> <span class="s">"@daily"</span><span class="p">,</span>
+    <span class="s">"retries"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">"retry_delay"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s">"login_dag"</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">login</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="s">"login"</span><span class="p">,</span>
+        <span class="n">python_callable</span><span class="o">=</span><span class="n">login_func</span><span class="p">,</span>
+        <span class="n">op_args</span><span class="o">=</span><span class="p">[</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">],</span>
+        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
+    <span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">DummyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s">"do_nothing"</span><span class="p">)</span>
+
+    <span class="n">login</span> <span class="o">&gt;&gt;</span> <span class="n">end</span>
+</code></pre></div></div>
+
+<p>在上面的程式碼裡面，我們先定義了一個function，假裝是要登入某個服務，接著定義了function需要使用到的參數<code class="language-plaintext highlighter-rouge">account</code>和<code class="language-plaintext highlighter-rouge">password</code>，再來是這個任務的參數，最後是整個任務的流程。</p>
+
+<p><a href="https://airflow.apache.org/docs/apache-airflow/stable/concepts/operators.html">airflow提供了許許多多的operator</a>，可以根據自己的需要來去選擇哪一個operator比較適合這個任務，在定義好了operator的object以後，再透過<code class="language-plaintext highlighter-rouge">login &gt;&gt; end</code>這樣的方式來去把這些operator串在一起，這邊也支援分支，只要整個流程是一個Directed Acyclic Graph（DAG）就行。</p>
+
+<p>值得一提的是，我在寫的時候如果把<code class="language-plaintext highlighter-rouge">with DAG(...):</code>這一段放進<code class="language-plaintext highlighter-rouge">if __name__ == "__main__"</code>的話，好像airflow就抓不到的樣子，在寫的時候需要注意一下。</p>
+
+<h3 id="測試新加入的任務">測試新加入的任務</h3>
+
+<p>在寫好上面的script以後，可以直接像以往寫python的方式那樣去執行看看，它並不會真的去執行，airflow會去看有沒有哪邊有語法上的錯誤。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 /path/to/your/script.py
+</code></pre></div></div>
+
+<p>如果想要實際測試看看，可以上去UI、點進job裡面，右上角有個三角形可以手動跑整個流程試試看。</p>
+
+<p><img src="./airflow_job.png" alt="Airflow Job Page" /></p>
+
+<p>如果跑起來有符合預期的話，就能toggle左上角的選項，啟動這個DAG，讓它根據設定的頻率來執行了。</p>
+
+<p>值得一提的是，當開啟這個DAG以後，airflow會補跑<code class="language-plaintext highlighter-rouge">start_date</code>到今天的所有job，所以要先確定一下<code class="language-plaintext highlighter-rouge">start_date</code>有沒有設定對再開啟會比較好。</p>
+
+<h3 id="開始的時間跟預期的不同">開始的時間跟預期的不同？</h3>
+
+<p>在上面的script裡面，我們設定</p>
+
+<pre><code class="language-python3">    "start_date": datetime(2022, 2, 8, 11, 0),
+    "schedule_interval": "@daily",
+</code></pre>
+
+<p>期望它可以從2022/2/8的早上11點開始執行第一次，並以天為頻率來執行，但實際上會發現它第一次的執行時間會是2022/2/9的早上11點，原因是因為上面寫的是任務時間，跟實際上執行的時間不同，airflow會在<code class="language-plaintext highlighter-rouge">start_date+schedule_interval</code>的時間過完以後才開始處理<code class="language-plaintext highlighter-rouge">start_date+schedule_interval</code>的資料。</p>
+
+<p>想法上有點類似於，我想將今天使用者的資料統整起來，並壓上今天的日期，但我實際執行統整這個動作的時間會是在明天，因為今天還沒有過完，如果今天就做統整，就會有部分的資料被漏掉。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>Airflow是個安裝簡單、功能也很齊全的排程系統，上面敘述的部分只是airflow的九牛一毛而已，還有許許多多的功能沒有被覆蓋到，如果有興趣或是有複雜的功能想要實現，可以去看看<a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html">airflow的官方文件</a>。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li><a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a></li>
+</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章紀錄一下嘗試使用Airflow的經歷。]]></summary></entry><entry><title type="html">AutoKeras介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction/" rel="alternate" type="text/html" title="AutoKeras介紹" /><published>2021-12-23T00:00:00+00:00</published><updated>2021-12-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction/"><![CDATA[<p>現在市面上有眾多AutoML的框架，而用深度學習並有Neural Architecture Search（NAS）功能的並不多，這邊紀錄一下使用AutoKeras的心得。</p>
 
 <!--more-->
 
@@ -1045,119 +1177,4 @@ p_{AM}(X\vert P) &amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
 
 <h2 id="結論">結論</h2>
 
-<p>在這篇paper裡面，作者提出了有點類似wide and deep架構的模型來去解CTR prediction的問題，也加入了各式各樣的方式來應用attention weight，只不過在實驗當中只有展示Electronics和Books這兩個類別的成效，如果可以加入不同類別的比較我覺得可以讓讀者了解model適合套用在哪種類別的場景當中會更好。</p>]]></content><author><name>Your Name</name></author><category term="Paper" /><summary type="html"><![CDATA[簡單記錄一下，看完此篇paper的筆記。]]></summary></entry><entry><title type="html">利用GitHub Actions來部署部落格</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions/" rel="alternate" type="text/html" title="利用GitHub Actions來部署部落格" /><published>2021-02-28T00:00:00+00:00</published><updated>2021-02-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/02/28/move-blog-to-github-actions/"><![CDATA[<p>前陣子發現到GitHub Actions可以用來做CI，試著使用看看。</p>
-
-<!--more-->
-
-<h2 id="github-actions">GitHub Actions</h2>
-
-<p><a href="https://github.com/features/actions">GitHub Actions</a>是GitHub自己出的一套CI/CD的工具，可以讓你在推code、看CI/CD都在GitHub上面解決。</p>
-
-<p>GitHub Actions相較於其他CI/CD的工具，我覺得它的優勢在於免費的額度比較多，如果是public repository，actions的使用是免費的，而private repository每個月也有2000分鐘的使用時間，而且如果有其他人fork你的repository，這些CI/CD的設定也會跟著被帶走，別人也可以無痛的使用相同的CI/CD流程。</p>
-
-<h2 id="開始使用github-actions">開始使用GitHub Actions</h2>
-
-<p>只要在repository裡面創建<strong>.github/workflows/</strong>，並在裡面放好設定檔，就可以觸發GitHub Actions了，你也可以在repository頁面的上方點Actions的頁籤，裡面有一些設定檔的範本可以選擇。</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">My first github actions</span>
-
-<span class="na">on</span><span class="pi">:</span>
-  <span class="na">push</span><span class="pi">:</span>
-    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
-
-<span class="na">jobs</span><span class="pi">:</span>
-  <span class="na">build</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
-
-    <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
-
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">echo "hello"</span>
-
-</code></pre></div></div>
-
-<p>設定檔跟其他的工具長相差不多，在steps裡面填寫你想要做的事情，GitHub就會起一個virtual machine來執行。</p>
-
-<h2 id="設定環境變數">設定環境變數</h2>
-
-<p>如果想要在Actions裡面傳入環境變數的話，可以參考底下的步驟。</p>
-
-<pre><code class="language-mermaid">graph TD;
-	A(點選Repository右上角的Settings)
-	B(點選左下角的Secrets)
-	C(點選右上角的New repository secret)
-	D(打上環境變數的名稱以及值)
-    A--&gt;B;
-    B--&gt;C;
-    C--&gt;D;
-</code></pre>
-
-<p>repository裡面設定好環境變數以後，在設定檔需要宣告使用哪些環境變數，之後在steps裡面就可以直接使用了。</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">My first github actions</span>
-
-<span class="na">on</span><span class="pi">:</span>
-  <span class="na">push</span><span class="pi">:</span>
-    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
-    
-<span class="na">jobs</span><span class="pi">:</span>
-  <span class="na">build</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-    <span class="na">env</span><span class="pi">:</span>
-      <span class="na">USER_NAME</span><span class="pi">:</span> <span class="s">${{secrets.USER_NAME}}</span>
-    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
-
-    <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
-
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">echo "${USER_NAME}"</span>
-
-</code></pre></div></div>
-
-<h2 id="想要在actions裡面push程式碼到repository">想要在Actions裡面push程式碼到repository</h2>
-
-<p>在Actions裡面有人寫好了<a href="https://github.com/marketplace/actions/webfactory-ssh-agent">工具</a>可以讓你宣告ssh key，就能像一般利用ssh key push的方式推程式碼到你的repository裡面，產生和設定ssh public/private key的方式請參考<a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">GitHub的官方文件</a>。</p>
-
-<p>在GitHub設定好public key以後，將private key弄到ssh-agent的方式可以參考底下。</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">My first github actions</span>
-
-<span class="na">on</span><span class="pi">:</span>
-  <span class="na">push</span><span class="pi">:</span>
-    <span class="na">branches</span><span class="pi">:</span> <span class="pi">[</span> <span class="nv">master</span> <span class="pi">]</span>
-    
-<span class="na">jobs</span><span class="pi">:</span>
-  <span class="na">build</span><span class="pi">:</span>
-    <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-    <span class="na">env</span><span class="pi">:</span>
-      <span class="na">USER_NAME</span><span class="pi">:</span> <span class="s">${{secrets.USER_NAME}}</span>
-    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
-
-    <span class="na">steps</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v2</span>
-        
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span>
-        <span class="na">uses</span><span class="pi">:</span> <span class="s">webfactory/ssh-agent@v0.5.0</span>
-        <span class="na">with</span><span class="pi">:</span>
-          <span class="na">ssh-private-key</span><span class="pi">:</span> <span class="s">${{secrets.SSH_PRIVATE_KEY}}</span>
-
-      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Build</span>
-        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">echo "${USER_NAME}"</span>
-</code></pre></div></div>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li><a href="https://medium.com/@JainKai/%E6%B7%BA%E8%AB%87-%E7%94%A8github-actions-%E7%B0%A1%E6%98%93%E7%9A%84-ci-%E4%BE%86%E7%99%BC%E5%B8%83gitpages-6ae48e52467e">[淺談]用GitHub Actions 簡易的 CI 來發布GitPages</a></li>
-  <li><a href="https://medium.com/thinkthenrant/githubactionsintro-94be66a8a9f1">帶著走的CI/CD：GitHub Actions! (Take the CI/CD with you: GitHub Actions!)</a></li>
-  <li><a href="webfactory/ssh-agent">webfactory/ssh-agent</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[前陣子發現到GitHub Actions可以用來做CI，試著使用看看。]]></summary></entry></feed>
+<p>在這篇paper裡面，作者提出了有點類似wide and deep架構的模型來去解CTR prediction的問題，也加入了各式各樣的方式來應用attention weight，只不過在實驗當中只有展示Electronics和Books這兩個類別的成效，如果可以加入不同類別的比較我覺得可以讓讀者了解model適合套用在哪種類別的場景當中會更好。</p>]]></content><author><name>Your Name</name></author><category term="Paper" /><summary type="html"><![CDATA[簡單記錄一下，看完此篇paper的筆記。]]></summary></entry></feed>
