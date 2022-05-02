@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Airflow介紹 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Superset介紹 - wjohn1483.github.io</title>
 
-<meta name="description" content="這篇文章紀錄一下嘗試使用Airflow的經歷。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2022/02/26/airflow-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇文章簡單記錄一下如何安裝superset並從Google Sheets和CSV當中匯入資料做成dashboard。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2022/05/02/superset-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -289,156 +289,170 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Airflow介紹</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Superset介紹</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2022-02-26-airflow-introduction/2022-02-26-airflow-introduction.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Airflow介紹"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2022-05-02-superset-introduction/2022-05-02-superset-introduction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Superset介紹"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 26, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-02-26T00:00:00+00:00">
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 02, 2022</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-05-02T00:00:00+00:00">
     <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>這篇文章紀錄一下嘗試使用Airflow的經歷。</p>
+<div class="article__content" itemprop="articleBody"><p>這篇文章簡單記錄一下如何安裝superset並從Google Sheets和CSV當中匯入資料做成dashboard。</p>
 
 <!--more-->
 
-<p>之前在聽一些技術分享的時候，有聽到別人使用Airflow來作為他們的排程系統，剛好在網路上也有看到別人<a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">使用Airflow來追漫畫連載</a>，想說我也來做一個簡單的每天登入領獎勵的程式來學習Airflow怎麼使用，底下紀錄一下製作的過程。</p>
+<h2 id="superset簡介">Superset簡介</h2>
 
-<h2 id="安裝airflow">安裝Airflow</h2>
+<p>Superset是個最早由Airbnb開發，後來開源到Apache的businese intelligence工具，讓使用者可以方便地視覺化資料庫裡面的資料，而這邊的資料庫除了常見的PostgreSQL、Hive以外，還支援從Google Sheets和使用者上傳的CSV來當作資料的源頭。</p>
 
-<p><a href="https://airflow.apache.org/">Airflow</a>是由Airbnb開發的排程系統，主要是由python編寫，安裝起來也相當地方便，只需要執行底下的指令就行。</p>
+<h2 id="安裝superset">安裝Superset</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install</span> <span class="s2">"apache-airflow[crypto, slack]"</span>
+<p>這邊放上我安裝時使用的指令，其他的安裝方法或詳細的介紹可以參考<a href="https://superset.apache.org/docs/installation/installing-superset-from-scratch">官方的安裝文件</a>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> gcc gcc-c++ libffi-devel python-devel python-pip python-wheel openssl-devel cyrus-sasl-devel openldap-devel bzip2-devel xz-devel
+pip3 <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+pip3 <span class="nb">install </span>apache-superset <span class="nv">MarkupSafe</span><span class="o">==</span>2.0.1
+<span class="c"># Recompile python if is shows python cannot import bz2</span>
+
+<span class="nb">export </span><span class="nv">FLASK_APP</span><span class="o">=</span>superset
+superset db upgrade
+
+<span class="c"># Create default roles and permissions</span>
+superset init
+
+<span class="c"># Create an admin user in your metadata database (use `admin` as username to be able to load the examples)</span>
+superset fab create-admin
+
+<span class="c"># Load some data to play with</span>
+superset load_examples
+
+<span class="c"># To start a development web server on port 8088, use -p to bind to another port</span>
+superset run <span class="nt">-p</span> 8088 <span class="nt">--with-threads</span> <span class="nt">--reload</span> <span class="nt">--debugger</span>
 </code></pre></div></div>
 
-<h3 id="初始化database">初始化database</h3>
+<p>在上面的指令中，我們有建立了一個admin帳號，其帳號密碼都是<code class="language-plaintext highlighter-rouge">admin</code>，並在最後一行的指令啟動了superset，這時理論上連到<code class="language-plaintext highlighter-rouge">localhost:8088</code>就能看到superset的UI了。</p>
 
-<p>在安裝完成以後，會需要先初始化airflow的database，這個database會用來儲存任務執行的設定和log。</p>
+<h2 id="製作dashboard流程">製作Dashboard流程</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># export AIRFLOW_HOME=/path/you/want</span>
-airflow db init
-</code></pre></div></div>
-
-<p>預設的路徑會放在<code class="language-plaintext highlighter-rouge">~/airflow</code>，你也可以藉由<code class="language-plaintext highlighter-rouge">export AIRFLOW_HOME</code>來選擇自己喜歡的位置。</p>
-
-<h3 id="開啟web-server">開啟web server</h3>
-
-<p>接下來就可以準備啟動airflow了，我們可以使用底下的指令開啟web server，並設定port為8080。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airflow webserver <span class="nt">-p</span> 8080
-</code></pre></div></div>
-
-<p>這時就可以連去<code class="language-plaintext highlighter-rouge">localhost:8080</code>來看到airflow的使用者介面了，但進去的時候會發現要帳號密碼才能登入，我們可以透過下面的指令來創建一個權限為admin的帳戶，其帳號密碼都是<code class="language-plaintext highlighter-rouge">admin</code>。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airflow <span class="nb">users </span>create <span class="nt">--role</span> Admin <span class="nt">--username</span> admin <span class="nt">--email</span> admin <span class="nt">--firstname</span> admin <span class="nt">--lastname</span> admin <span class="nt">--password</span> admin
-</code></pre></div></div>
-
-<p>理論上在這個步驟做完以後就能順利地看到類似於底下的畫面了。</p>
-
-<p><img src="./airflow_ui.png" alt="Airflow UI" /></p>
-
-<h3 id="開啟scheduler">開啟scheduler</h3>
-
-<p>雖說UI已經打得開了，但會發現上面的任務都沒辦法執行，原因是因為實際上排程這些任務的是scheduler，而web server就真的只是一個UI讓使用者方便使用，所以我們還需要執行底下的指令才能啟動。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>airflow scheduler
-</code></pre></div></div>
-
-<p>scheduler和web server的關係可以參考<a href="https://airflow.apache.org/docs/apache-airflow/stable/concepts/overview.html">airflow官方文件</a>裡面的架構圖。</p>
-
-<p><img src="https://airflow.apache.org/docs/apache-airflow/stable/_images/arch-diag-basic.png" alt="Airflow Architecture" /></p>
-
-<h2 id="建立屬於自己的任務">建立屬於自己的任務</h2>
-
-<p>前面有提到airflow主要是由python來編寫的，當我們要加入一個新的任務時，我們也是寫一個python的script，並放入<code class="language-plaintext highlighter-rouge">${AIRFLOW_HOME}/dags/</code>（預設是<code class="language-plaintext highlighter-rouge">~/airflow/dags/</code>）這個路徑底下，airflow就會自動抓取你寫的script，在UI上面顯示出來。</p>
-
-<h3 id="airflow-python-script">Airflow Python Script</h3>
-
-<p>一個簡單的任務可以參考底下的程式碼。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
-
-<span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
-<span class="kn">from</span> <span class="nn">airflow.operators.python_operator</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
-<span class="kn">from</span> <span class="nn">airflow.operators.dummy_operator</span> <span class="kn">import</span> <span class="n">DummyOperator</span>
-
-
-<span class="k">def</span> <span class="nf">login_func</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Attempt to login with account = </span><span class="si">{</span><span class="n">account</span><span class="si">}</span><span class="s">, password = </span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
-
-
-<span class="n">account</span> <span class="o">=</span> <span class="s">"user"</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span>
-<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"owner"</span><span class="p">:</span> <span class="s">"THE_ONE"</span><span class="p">,</span>
-    <span class="s">"start_date"</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="s">"schedule_interval"</span><span class="p">:</span> <span class="s">"@daily"</span><span class="p">,</span>
-    <span class="s">"retries"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s">"retry_delay"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s">"login_dag"</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">login</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="s">"login"</span><span class="p">,</span>
-        <span class="n">python_callable</span><span class="o">=</span><span class="n">login_func</span><span class="p">,</span>
-        <span class="n">op_args</span><span class="o">=</span><span class="p">[</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">],</span>
-        <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
-    <span class="p">)</span>
-    <span class="n">end</span> <span class="o">=</span> <span class="n">DummyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s">"do_nothing"</span><span class="p">)</span>
-
-    <span class="n">login</span> <span class="o">&gt;&gt;</span> <span class="n">end</span>
-</code></pre></div></div>
-
-<p>在上面的程式碼裡面，我們先定義了一個function，假裝是要登入某個服務，接著定義了function需要使用到的參數<code class="language-plaintext highlighter-rouge">account</code>和<code class="language-plaintext highlighter-rouge">password</code>，再來是這個任務的參數，最後是整個任務的流程。</p>
-
-<p><a href="https://airflow.apache.org/docs/apache-airflow/stable/concepts/operators.html">airflow提供了許許多多的operator</a>，可以根據自己的需要來去選擇哪一個operator比較適合這個任務，在定義好了operator的object以後，再透過<code class="language-plaintext highlighter-rouge">login &gt;&gt; end</code>這樣的方式來去把這些operator串在一起，這邊也支援分支，只要整個流程是一個Directed Acyclic Graph（DAG）就行。</p>
-
-<p>值得一提的是，我在寫的時候如果把<code class="language-plaintext highlighter-rouge">with DAG(...):</code>這一段放進<code class="language-plaintext highlighter-rouge">if __name__ == "__main__"</code>的話，好像airflow就抓不到的樣子，在寫的時候需要注意一下。</p>
-
-<h3 id="測試新加入的任務">測試新加入的任務</h3>
-
-<p>在寫好上面的script以後，可以直接像以往寫python的方式那樣去執行看看，它並不會真的去執行，airflow會去看有沒有哪邊有語法上的錯誤。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 /path/to/your/script.py
-</code></pre></div></div>
-
-<p>如果想要實際測試看看，可以上去UI、點進job裡面，右上角有個三角形可以手動跑整個流程試試看。</p>
-
-<p><img src="./airflow_job.png" alt="Airflow Job Page" /></p>
-
-<p>如果跑起來有符合預期的話，就能toggle左上角的選項，啟動這個DAG，讓它根據設定的頻率來執行了。</p>
-
-<p>值得一提的是，當開啟這個DAG以後，airflow會補跑<code class="language-plaintext highlighter-rouge">start_date</code>到今天的所有job，所以要先確定一下<code class="language-plaintext highlighter-rouge">start_date</code>有沒有設定對再開啟會比較好。</p>
-
-<h3 id="開始的時間跟預期的不同">開始的時間跟預期的不同？</h3>
-
-<p>在上面的script裡面，我們設定</p>
-
-<pre><code class="language-python3">    "start_date": datetime(2022, 2, 8, 11, 0),
-    "schedule_interval": "@daily",
-</code></pre>
-
-<p>期望它可以從2022/2/8的早上11點開始執行第一次，並以天為頻率來執行，但實際上會發現它第一次的執行時間會是2022/2/9的早上11點，原因是因為上面寫的是任務時間，跟實際上執行的時間不同，airflow會在<code class="language-plaintext highlighter-rouge">start_date+schedule_interval</code>的時間過完以後才開始處理<code class="language-plaintext highlighter-rouge">start_date+schedule_interval</code>的資料。</p>
-
-<p>想法上有點類似於，我想將今天使用者的資料統整起來，並壓上今天的日期，但我實際執行統整這個動作的時間會是在明天，因為今天還沒有過完，如果今天就做統整，就會有部分的資料被漏掉。</p>
-
-<h2 id="結論">結論</h2>
-
-<p>Airflow是個安裝簡單、功能也很齊全的排程系統，上面敘述的部分只是airflow的九牛一毛而已，還有許許多多的功能沒有被覆蓋到，如果有興趣或是有複雜的功能想要實現，可以去看看<a href="https://airflow.apache.org/docs/apache-airflow/stable/index.html">airflow的官方文件</a>。</p>
-
-<h2 id="參考資料">參考資料</h2>
+<p>在superset裡面要製作最後的dashboard前有幾個步驟需要先執行：</p>
 
 <ol>
-  <li><a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a></li>
+  <li>
+    <p>建立Database：與database建立連線，讓superset能從database裡面撈取資料出來。</p>
+  </li>
+  <li>
+    <p>建立Dataset：從database裡面引入table，在database裡面可能有千千萬萬個table，這邊我們需要告訴superset我們有興趣的table是哪些，只把有興趣的table schema引入到superset裡面。</p>
+  </li>
+  <li>
+    <p>製作chart：引入了table以後，就能寫SQL或是用預先定義好的metric（$SUM(\star)$、$COUNT(\star)$）來視覺化table的資訊。</p>
+  </li>
+  <li>
+    <p>製作dashboard：把前一個步驟製作的chart的呈現在一個dashboard中，方便一次瀏覽多個table視覺化的結果。</p>
+  </li>
 </ol>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-02-26T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<h2 id="建立database">建立Database</h2>
+
+<p>底下介紹如何使用連結Google Sheets和PostgreSQL這兩個database，如果想要連結其他database的話，可以參考<a href="https://superset.apache.org/docs/databases/installing-database-drivers">官方文件</a>。由於superset主要是由python所編寫的，為了要能跟database做連線，我們需要安裝相關database的python API，在文件裡面有建議要安裝哪些套件。</p>
+
+<h3 id="google-sheets">Google Sheets</h3>
+
+<h4 id="安裝driver">安裝driver</h4>
+
+<p>因為在 前面是透過<code class="language-plaintext highlighter-rouge">pip3 install</code>來安裝superset的，所以在這邊也只需要簡單的安裝pip package就能讓superset使用了，不過有可能會需要重新啟動superset來讓它吃到最新的API。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>shillelagh
+</code></pre></div></div>
+
+<h4 id="引入database">引入database</h4>
+
+<p>在安裝好Google Sheets driver以後，在superset的UI上面點選<code class="language-plaintext highlighter-rouge">Data&gt;Databases</code>，在右邊可以看到新增Database的按鈕，點下去以後理論上就能看到<code class="language-plaintext highlighter-rouge">Google Sheets</code>的選項了。</p>
+
+<p><img src="./supported_databases_google_sheets.png" alt="Supported Databases - Google Sheets" /></p>
+
+<p>在下一個畫面當中只要填上相對應的名稱和網址就能順利建立了，需要注意的是Google Sheets的權限必須要設定成所有人都能觀看才能引入，如果想要讓私人的Google Sheets能被superset讀取的話，可以參考<a href="https://docs.preset.io/docs/google-sheets-private-connection">這篇文章</a>，另外Google Sheets裡面每一個不同的tab都需要手動新增進來，假如說我們想要引入這個sheets裡面的<code class="language-plaintext highlighter-rouge">Simple sheet</code>、<code class="language-plaintext highlighter-rouge">2 header sheet</code>和<code class="language-plaintext highlighter-rouge">birth_names</code>的話，就會需要填寫以下的設定。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Name: simple sheet
+URL: https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid<span class="o">=</span>0
+
+Name: 2 header sheet
+URL: https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid<span class="o">=</span>1077884006
+
+Name: birth names
+URL: https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid<span class="o">=</span>174770703
+</code></pre></div></div>
+
+<h3 id="postgresql">PostgreSQL</h3>
+
+<h4 id="安裝postgresql">安裝PostgreSQL</h4>
+
+<p>安裝PostgreSQL的方式在不同的OS上不太一樣，這邊貼上我安裝時使用的指令。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+<span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> postgresql14-server
+<span class="nb">sudo</span> /usr/pgsql-14/bin/postgresql-14-setup initdb
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>postgresql-14
+<span class="nb">sudo </span>systemctl start postgresql-14
+</code></pre></div></div>
+
+<p>安裝好PostgreSQL以後，我們需要在其中建立使用者帳號，可以參考底下的指令，記得將<code class="language-plaintext highlighter-rouge">USER_NAME</code>替換成自己的帳號名稱。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> <span class="nt">-i</span> <span class="nt">-u</span> postgres
+createuser USER_NAME
+createdb USER_NAME
+</code></pre></div></div>
+
+<p>如果順利的話，理論上在自己帳號底下執行<code class="language-plaintext highlighter-rouge">psql</code>應該就能進入PostgreSQL的介面了，這時我們需要幫這個帳號設定一個密碼方便superset來登入。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In psql command line</span>
+alter user USER_NAME password <span class="s1">'PASSWORD'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="安裝driver-1">安裝driver</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>psycopg2-binary
+</code></pre></div></div>
+
+<h4 id="引入database-1">引入database</h4>
+
+<p>安裝好driver以後，在按下新增database的按鈕時，應該就能看到PostgreSQL的選項了，這邊貼上預設的設定，理論上把<code class="language-plaintext highlighter-rouge">USER_NAME</code>、<code class="language-plaintext highlighter-rouge">PASSWORD</code>替換成自行設定的值後按下connect就可以了。</p>
+
+<p><img class="image image--xl" src="./postgresql_database_settings.png" /></p>
+
+<p>如果希望讓superset支援CSV上傳的功能，需要在<code class="language-plaintext highlighter-rouge">ADVANCED</code>的設定中的<code class="language-plaintext highlighter-rouge">Security</code>裡面勾選<code class="language-plaintext highlighter-rouge">Allow data upload</code>的選項，上傳的CSV會在PostgreSQL裡面建立一張新的table。</p>
+
+<h2 id="建立dataset">建立Dataset</h2>
+
+<p>在成功引入database以後，在<code class="language-plaintext highlighter-rouge">Data&gt;Datasets</code>裡面按下新增Dataset的按鈕，選擇好database就能看到前面引入的database裡面的table們了，點選<code class="language-plaintext highlighter-rouge">ADD</code>以後就能在chart裡面讀取這些table的資料。</p>
+
+<p><img class="image image--xl" src="./add_dataset.png" /></p>
+
+<h2 id="製作chart">製作Chart</h2>
+
+<p>成功引入dataset以後，在create chart的部分就能找到先前引入的dataset了，接著就能根據想看的資訊來做出漂亮的圖表。</p>
+
+<p><img src="./create_new_chart.png" alt="Create New Chart" /></p>
+
+<p><img src="./chart_settings.png" alt="Chart Settings" /></p>
+
+<h2 id="製作dashboard">製作Dashboard</h2>
+
+<p>在把table的資訊視覺化成chart以後，如果想要將多個chart顯示在同一個畫面可以使用dashboard，在建立dashboard的畫面裡面可以用拖曳的方式來把想要顯示的chart放進來。</p>
+
+<p><img src="./dashboard_settings.png" alt="Dashboard Settings" /></p>
+
+<p>最後按下Save就大功告成了。</p>
+
+<p><img src="./dashboard_demo.png" alt="Dashboard Demo" /></p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-05-02T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2021/12/23/autokeras-introduction/">AutoKeras介紹</a></div><div class="next"><span>NEXT</span><a href="/2022/05/02/superset-introduction/">Superset介紹</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2022/02/26/airflow-introduction/">Airflow介紹</a></div></div></div>
 
 </div>
 

@@ -1,4 +1,150 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-02-26T09:20:19+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Airflow介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction/" rel="alternate" type="text/html" title="Airflow介紹" /><published>2022-02-26T00:00:00+00:00</published><updated>2022-02-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction/"><![CDATA[<p>這篇文章紀錄一下嘗試使用Airflow的經歷。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-05-02T13:52:46+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Superset介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction/" rel="alternate" type="text/html" title="Superset介紹" /><published>2022-05-02T00:00:00+00:00</published><updated>2022-05-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction/"><![CDATA[<p>這篇文章簡單記錄一下如何安裝superset並從Google Sheets和CSV當中匯入資料做成dashboard。</p>
+
+<!--more-->
+
+<h2 id="superset簡介">Superset簡介</h2>
+
+<p>Superset是個最早由Airbnb開發，後來開源到Apache的businese intelligence工具，讓使用者可以方便地視覺化資料庫裡面的資料，而這邊的資料庫除了常見的PostgreSQL、Hive以外，還支援從Google Sheets和使用者上傳的CSV來當作資料的源頭。</p>
+
+<h2 id="安裝superset">安裝Superset</h2>
+
+<p>這邊放上我安裝時使用的指令，其他的安裝方法或詳細的介紹可以參考<a href="https://superset.apache.org/docs/installation/installing-superset-from-scratch">官方的安裝文件</a>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> gcc gcc-c++ libffi-devel python-devel python-pip python-wheel openssl-devel cyrus-sasl-devel openldap-devel bzip2-devel xz-devel
+pip3 <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+pip3 <span class="nb">install </span>apache-superset <span class="nv">MarkupSafe</span><span class="o">==</span>2.0.1
+<span class="c"># Recompile python if is shows python cannot import bz2</span>
+
+<span class="nb">export </span><span class="nv">FLASK_APP</span><span class="o">=</span>superset
+superset db upgrade
+
+<span class="c"># Create default roles and permissions</span>
+superset init
+
+<span class="c"># Create an admin user in your metadata database (use `admin` as username to be able to load the examples)</span>
+superset fab create-admin
+
+<span class="c"># Load some data to play with</span>
+superset load_examples
+
+<span class="c"># To start a development web server on port 8088, use -p to bind to another port</span>
+superset run <span class="nt">-p</span> 8088 <span class="nt">--with-threads</span> <span class="nt">--reload</span> <span class="nt">--debugger</span>
+</code></pre></div></div>
+
+<p>在上面的指令中，我們有建立了一個admin帳號，其帳號密碼都是<code class="language-plaintext highlighter-rouge">admin</code>，並在最後一行的指令啟動了superset，這時理論上連到<code class="language-plaintext highlighter-rouge">localhost:8088</code>就能看到superset的UI了。</p>
+
+<h2 id="製作dashboard流程">製作Dashboard流程</h2>
+
+<p>在superset裡面要製作最後的dashboard前有幾個步驟需要先執行：</p>
+
+<ol>
+  <li>
+    <p>建立Database：與database建立連線，讓superset能從database裡面撈取資料出來。</p>
+  </li>
+  <li>
+    <p>建立Dataset：從database裡面引入table，在database裡面可能有千千萬萬個table，這邊我們需要告訴superset我們有興趣的table是哪些，只把有興趣的table schema引入到superset裡面。</p>
+  </li>
+  <li>
+    <p>製作chart：引入了table以後，就能寫SQL或是用預先定義好的metric（$SUM(\star)$、$COUNT(\star)$）來視覺化table的資訊。</p>
+  </li>
+  <li>
+    <p>製作dashboard：把前一個步驟製作的chart的呈現在一個dashboard中，方便一次瀏覽多個table視覺化的結果。</p>
+  </li>
+</ol>
+
+<h2 id="建立database">建立Database</h2>
+
+<p>底下介紹如何使用連結Google Sheets和PostgreSQL這兩個database，如果想要連結其他database的話，可以參考<a href="https://superset.apache.org/docs/databases/installing-database-drivers">官方文件</a>。由於superset主要是由python所編寫的，為了要能跟database做連線，我們需要安裝相關database的python API，在文件裡面有建議要安裝哪些套件。</p>
+
+<h3 id="google-sheets">Google Sheets</h3>
+
+<h4 id="安裝driver">安裝driver</h4>
+
+<p>因為在 前面是透過<code class="language-plaintext highlighter-rouge">pip3 install</code>來安裝superset的，所以在這邊也只需要簡單的安裝pip package就能讓superset使用了，不過有可能會需要重新啟動superset來讓它吃到最新的API。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>shillelagh
+</code></pre></div></div>
+
+<h4 id="引入database">引入database</h4>
+
+<p>在安裝好Google Sheets driver以後，在superset的UI上面點選<code class="language-plaintext highlighter-rouge">Data&gt;Databases</code>，在右邊可以看到新增Database的按鈕，點下去以後理論上就能看到<code class="language-plaintext highlighter-rouge">Google Sheets</code>的選項了。</p>
+
+<p><img src="./supported_databases_google_sheets.png" alt="Supported Databases - Google Sheets" /></p>
+
+<p>在下一個畫面當中只要填上相對應的名稱和網址就能順利建立了，需要注意的是Google Sheets的權限必須要設定成所有人都能觀看才能引入，如果想要讓私人的Google Sheets能被superset讀取的話，可以參考<a href="https://docs.preset.io/docs/google-sheets-private-connection">這篇文章</a>，另外Google Sheets裡面每一個不同的tab都需要手動新增進來，假如說我們想要引入這個sheets裡面的<code class="language-plaintext highlighter-rouge">Simple sheet</code>、<code class="language-plaintext highlighter-rouge">2 header sheet</code>和<code class="language-plaintext highlighter-rouge">birth_names</code>的話，就會需要填寫以下的設定。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Name: simple sheet
+URL: https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid<span class="o">=</span>0
+
+Name: 2 header sheet
+URL: https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid<span class="o">=</span>1077884006
+
+Name: birth names
+URL: https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid<span class="o">=</span>174770703
+</code></pre></div></div>
+
+<h3 id="postgresql">PostgreSQL</h3>
+
+<h4 id="安裝postgresql">安裝PostgreSQL</h4>
+
+<p>安裝PostgreSQL的方式在不同的OS上不太一樣，這邊貼上我安裝時使用的指令。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+<span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> postgresql14-server
+<span class="nb">sudo</span> /usr/pgsql-14/bin/postgresql-14-setup initdb
+<span class="nb">sudo </span>systemctl <span class="nb">enable </span>postgresql-14
+<span class="nb">sudo </span>systemctl start postgresql-14
+</code></pre></div></div>
+
+<p>安裝好PostgreSQL以後，我們需要在其中建立使用者帳號，可以參考底下的指令，記得將<code class="language-plaintext highlighter-rouge">USER_NAME</code>替換成自己的帳號名稱。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> <span class="nt">-i</span> <span class="nt">-u</span> postgres
+createuser USER_NAME
+createdb USER_NAME
+</code></pre></div></div>
+
+<p>如果順利的話，理論上在自己帳號底下執行<code class="language-plaintext highlighter-rouge">psql</code>應該就能進入PostgreSQL的介面了，這時我們需要幫這個帳號設定一個密碼方便superset來登入。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In psql command line</span>
+alter user USER_NAME password <span class="s1">'PASSWORD'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="安裝driver-1">安裝driver</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>psycopg2-binary
+</code></pre></div></div>
+
+<h4 id="引入database-1">引入database</h4>
+
+<p>安裝好driver以後，在按下新增database的按鈕時，應該就能看到PostgreSQL的選項了，這邊貼上預設的設定，理論上把<code class="language-plaintext highlighter-rouge">USER_NAME</code>、<code class="language-plaintext highlighter-rouge">PASSWORD</code>替換成自行設定的值後按下connect就可以了。</p>
+
+<p><img class="image image--xl" src="./postgresql_database_settings.png" /></p>
+
+<p>如果希望讓superset支援CSV上傳的功能，需要在<code class="language-plaintext highlighter-rouge">ADVANCED</code>的設定中的<code class="language-plaintext highlighter-rouge">Security</code>裡面勾選<code class="language-plaintext highlighter-rouge">Allow data upload</code>的選項，上傳的CSV會在PostgreSQL裡面建立一張新的table。</p>
+
+<h2 id="建立dataset">建立Dataset</h2>
+
+<p>在成功引入database以後，在<code class="language-plaintext highlighter-rouge">Data&gt;Datasets</code>裡面按下新增Dataset的按鈕，選擇好database就能看到前面引入的database裡面的table們了，點選<code class="language-plaintext highlighter-rouge">ADD</code>以後就能在chart裡面讀取這些table的資料。</p>
+
+<p><img class="image image--xl" src="./add_dataset.png" /></p>
+
+<h2 id="製作chart">製作Chart</h2>
+
+<p>成功引入dataset以後，在create chart的部分就能找到先前引入的dataset了，接著就能根據想看的資訊來做出漂亮的圖表。</p>
+
+<p><img src="./create_new_chart.png" alt="Create New Chart" /></p>
+
+<p><img src="./chart_settings.png" alt="Chart Settings" /></p>
+
+<h2 id="製作dashboard">製作Dashboard</h2>
+
+<p>在把table的資訊視覺化成chart以後，如果想要將多個chart顯示在同一個畫面可以使用dashboard，在建立dashboard的畫面裡面可以用拖曳的方式來把想要顯示的chart放進來。</p>
+
+<p><img src="./dashboard_settings.png" alt="Dashboard Settings" /></p>
+
+<p>最後按下Save就大功告成了。</p>
+
+<p><img src="./dashboard_demo.png" alt="Dashboard Demo" /></p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章簡單記錄一下如何安裝superset並從Google Sheets和CSV當中匯入資料做成dashboard。]]></summary></entry><entry><title type="html">Airflow介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction/" rel="alternate" type="text/html" title="Airflow介紹" /><published>2022-02-26T00:00:00+00:00</published><updated>2022-02-26T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/02/26/airflow-introduction/"><![CDATA[<p>這篇文章紀錄一下嘗試使用Airflow的經歷。</p>
 
 <!--more-->
 
@@ -1079,102 +1225,4 @@ p_{AM}(X\vert P) &amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
 <ol>
   <li><a href="https://medium.com/@acwrightdesign/creating-a-macos-menu-bar-application-using-swiftui-54572a5d5f87">Create a macOS Menu Bar Application Using SwiftUI</a></li>
   <li><a href="https://www.hackingwithswift.com/articles/117/the-ultimate-guide-to-timer">The ultimate guide to Timer</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Swift" /><summary type="html"><![CDATA[先前都有在使用Mac app來幫我在電腦上倒計時，但有些功能需要付費才可以解鎖，剛好附近有人有在弄Mac app，想說自己來寫一個倒數計時器，在這邊紀錄一下製作的過程。]]></summary></entry><entry><title type="html">Deep Interest Evolution Network for Click-Through Rate Prediction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/" rel="alternate" type="text/html" title="Deep Interest Evolution Network for Click-Through Rate Prediction" /><published>2021-03-21T00:00:00+00:00</published><updated>2021-03-21T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/"><![CDATA[<p>簡單記錄一下，看完此篇paper的筆記。</p>
-
-<!--more-->
-
-<p><a href="https://arxiv.org/pdf/1809.03672.pdf">這篇paper</a>是由阿里巴巴提出來，利用使用者的行為和基本資訊，來去預測使用者對廣告的CTR，榮獲AAAI 2019 accepted paper。</p>
-
-<h2 id="dien">DIEN</h2>
-
-<p>在這篇paper當中，作者將他們的model稱之為DIEN（Deep Interest Evolution Network），其架構如下圖。</p>
-
-<p><img src="./model_architecture.png" alt="Model Architecture" /></p>
-
-<p>可以看到在架構圖中右下方的地方，有三個輸入，分別是</p>
-
-<ul>
-  <li><strong>Target Ad</strong>：被預測的廣告embedding</li>
-  <li><strong>Context Feature</strong>：這個feature我沒有看得很懂，從paper的原文裡面說是時間以及其他的東西</li>
-  <li><strong>UserProfile Feature</strong>：使用者的embedding，包含性別、年齡等</li>
-</ul>
-
-<p>左方的<code class="language-plaintext highlighter-rouge">b(1)、b(2)、b(T-1)、b(T)</code>是使用者行為，像是使用者點過什麼廣告，經過<code class="language-plaintext highlighter-rouge">Embedding Layer</code>以後稱之為<strong>behavior feature</strong>，之後這些feature會被餵到<a href="#interest-extractor-layer">Interest Extractor Layer</a>和<a href="#interest-evolving-layer">Interest Evolving Layer</a>，最終產生一個embeeding \(h'(T)\)。</p>
-
-<p>最後\(h'(T)\)會與右方的<strong>Target Ad</strong>、<strong>Context Feature</strong>和<strong>UserProfile Feature</strong>一同串起來，經過一些fully connected layers以後，產生出2維的輸出（點、不點），並利用binary cross entropy來當作loss function。</p>
-
-\[L_{target}=-\frac{1}{N}\sum\limits^{N}\limits_{(\textbf{x},y)\in\mathcal{D}}(y\log p(\textbf{x})+(1-y)\log (1-p(\textbf{x})))\]
-
-<h3 id="interest-extractor-layer">Interest Extractor Layer</h3>
-
-<p>在Interest Extractor Layer裡面會去將使用者行為透過GRU製作成feature，在這邊作者使用的是使用者廣告的點擊來當作使用者行為，也就是照著時間順序將使用者點擊的廣告的embedding餵入GRU中，值得一提的是，作者將GRU的輸出額外拉出來做auxiliary loss，來幫助GRU訓練得更好。</p>
-
-<h4 id="auxiliary-loss">Auxiliary Loss</h4>
-
-<p>在每一個時間點\(t\)，GRU會產生一個輸出\(h(t)\)，這時會將使用者下一個時間點\(t+1\)點擊的廣告embedding \(e(t+1)\)拿出來，接著從眾多廣告embedding中隨機取樣一個沒有點擊的出來作為\(e(t+1)\prime\)，並將有點擊的label成\(1\)，沒點擊的label成\(0\)來做訓練，藉此來讓\(h(t)\)更能含有可以預測出下一個點擊的資訊。</p>
-
-<pre><code class="language-mermaid">graph LR;
-    gru("h(t)")
-    sig1["Sigmoid"]
-    sig2["Sigmoid"]
-    pos("e(t+1)")
-    neg("e(t+1)'")
-    label1((1))
-    label0((0))
-    pos--&gt;sig1;
-    gru--&gt;sig1;
-    sig1--&gt;label1;
-    gru--&gt;sig2;
-    sig2--&gt;label0;
-    neg--&gt;sig2;
-</code></pre>
-
-<p>整體的loss fcuntion因此會變成</p>
-
-\[L=L_{target}+\alpha*L_{aux}\]
-
-\[L_{aux}=-\frac{1}{N}\left( \sum\limits_{i=1}\limits^{N} \sum\limits_{t}\log\sigma(\textbf{h}^i_t,\textbf{e}^i_b[t+1])+\log(1-\sigma(\textbf{h}^i_t,\hat{\textbf{e}^i_b}[t+1]))\right )\]
-
-<h3 id="interest-evolving-layer">Interest Evolving Layer</h3>
-
-<p>使用者可能同時間表現出多種興趣，而我們比較想要知道的是使用者對某特定廣告的興趣有多少，所以在這邊作者加了Interest Evolving Layer，亦即另一層GRU，來去從使用者行為當中萃取出相對應廣告的興趣。</p>
-
-<p>作者使用的方式是利用attention的機制，透過目標廣告的embedding與Interest Extractor Layer出來的embeeding做相似度的計算</p>
-
-\[a_t=\frac{\exp(\textbf{h}_tW\textbf{e}_a)}{\sum\limits_{j=1}\limits^{T}\exp(\textbf{h}_jW\textbf{e}_a)}\]
-
-<p>並利用各種不同的方式將這個attention weight融入至GRU中。</p>
-
-<h4 id="gru-with-attentional-input-aigru">GRU with attentional input (AIGRU)</h4>
-
-<p>第一種方式是直接將Interest Extractor Layer的輸出\(\textbf{h}_t\)直接乘上attention weight \(a_t\)，然後輸入至Interest Evolving Layer中。</p>
-
-\[\textbf{i}'_t=\textbf{h}_t*a_t\]
-
-<h4 id="attention-based-gru-agru">Attention based GRU (AGRU)</h4>
-
-<p>第二種方式是透過算出來的attention weight來決定Interest Evolving Layer中hidden state \(\textbf{h}'_t\)要被更新多少。</p>
-
-\[\textbf{h}'_t=(1-a_t)*\textbf{h}'_{t-1}+a_t*\tilde{\textbf{h}'_t}\]
-
-<p>其中\(\textbf{h}'_{t-1}\)是前一個時間點，Interest Evolving Layer的輸出，而\(\tilde{\textbf{h}'_t}\)是當下這個時間點\(t\)，GRU內部所計算出來的hidden state，可以參照原先GRU的更新算式，或是<a href="https://arxiv.org/pdf/1809.03672.pdf">paper當中的式(2)~式(5)</a>。</p>
-
-<h4 id="gru-with-attentional-update-gate-augru">GRU with attentional update gate (AUGRU)</h4>
-
-<p>第三種方式是將update gate的值與attention weight相乘，直接控制update gate，這個方式也是實驗當中表現最好的方式。</p>
-
-\[\tilde{\textbf{u}}'_t=a_t*\textbf{u}'_t\]
-
-\[\textbf{h}'_t=(1-\tilde{\textbf{u}}'_t)\circ\textbf{h}'_{t-1}+\tilde{\textbf{u}}'_t\circ\tilde{\textbf{h}}'_t\]
-
-<h2 id="experiments">Experiments</h2>
-
-<p><img src="public_dataset_auc.png" alt="Public Dataset AUC" /></p>
-
-<p>將DIEN套用在<a href="https://arxiv.org/pdf/1809.03672.pdf#cite.mcauley2015image">Amazon Dataset</a>上面可以看到，DIEN的AUC是裡面最佳的，而作者有將這個model套用在企業的資料上，也獲得了不俗的成績。</p>
-
-<p>在paper裡面實驗的章節中作者做了許多的實驗來去驗證model裡面的每一個環節都是有必要的，有興趣的人可以去看看原本的paper。</p>
-
-<h2 id="結論">結論</h2>
-
-<p>在這篇paper裡面，作者提出了有點類似wide and deep架構的模型來去解CTR prediction的問題，也加入了各式各樣的方式來應用attention weight，只不過在實驗當中只有展示Electronics和Books這兩個類別的成效，如果可以加入不同類別的比較我覺得可以讓讀者了解model適合套用在哪種類別的場景當中會更好。</p>]]></content><author><name>Your Name</name></author><category term="Paper" /><summary type="html"><![CDATA[簡單記錄一下，看完此篇paper的筆記。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Swift" /><summary type="html"><![CDATA[先前都有在使用Mac app來幫我在電腦上倒計時，但有些功能需要付費才可以解鎖，剛好附近有人有在弄Mac app，想說自己來寫一個倒數計時器，在這邊紀錄一下製作的過程。]]></summary></entry></feed>
