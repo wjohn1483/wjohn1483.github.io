@@ -1,4 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-05-02T13:52:46+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Superset介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction/" rel="alternate" type="text/html" title="Superset介紹" /><published>2022-05-02T00:00:00+00:00</published><updated>2022-05-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction/"><![CDATA[<p>這篇文章簡單記錄一下如何安裝superset並從Google Sheets和CSV當中匯入資料做成dashboard。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-05-14T10:17:59+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/" rel="alternate" type="text/html" title="Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction" /><published>2022-05-14T00:00:00+00:00</published><updated>2022-05-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/"><![CDATA[<p>簡單記錄一下看完這篇paper的筆記。</p>
+
+<!--more-->
+
+<p><a href="https://arxiv.org/abs/1911.09419">這篇paper</a>是AAAI 2020中被發表的paper，相較於其他knowledge graph的paper，這篇paper把所有的entity都放進極座標當中，希望讓模型學習到越內層的entity是階層中比較高的，越外層的eneity是階層中比較低的。</p>
+
+<h2 id="hierarchy-aware-knowledge-graph-embedding-hake">Hierarchy-Aware Knowledge Graph Embedding (HAKE)</h2>
+
+<p><img src="./model_illustration.png" alt="Model Illustration" /></p>
+
+<h3 id="annotation">Annotation</h3>
+
+<p>在輸入給模型的資料當中，主要會是各個entity之間的relation，寫作<code class="language-plaintext highlighter-rouge">(head, relation, tail)</code>，指得是說<code class="language-plaintext highlighter-rouge">head</code>和<code class="language-plaintext highlighter-rouge">tail</code>之間有<code class="language-plaintext highlighter-rouge">relation</code>，而<code class="language-plaintext highlighter-rouge">head</code>是比較上層的，以上面圖片中的例子來說，可能的資料會是</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">(Device,</span><span class="w"> </span><span class="err">has_function,</span><span class="w"> </span><span class="err">Source)</span><span class="w">
+</span><span class="err">(Device,</span><span class="w"> </span><span class="err">has_function,</span><span class="w"> </span><span class="err">Support)</span><span class="w">
+</span><span class="err">(Source,</span><span class="w"> </span><span class="err">has_object,</span><span class="w"> </span><span class="err">Lamp)</span><span class="w">
+</span><span class="err">(Source,</span><span class="w"> </span><span class="err">has_object,</span><span class="w"> </span><span class="err">Light)</span><span class="w">
+</span><span class="err">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p>在paper裡面我們會給每一個<code class="language-plaintext highlighter-rouge">head</code>、<code class="language-plaintext highlighter-rouge">relation</code>和<code class="language-plaintext highlighter-rouge">tail</code>各一個embedding，分別寫作$\mathbf{h}$、$\mathbf{r}$和$\mathbf{t}$，其中因為作者想要將embedding存在在極座標當中，所以每一個embedding都會存在有modulus和phase的這兩個部分，以head的embedding為例，他們分別會被寫作$\mathbf{h}_m$、$\mathbf{h}_p$。</p>
+
+<h3 id="modulus-distance">Modulus Distance</h3>
+
+<p>在計算兩個embedding相似性的時候，會把modulus和phase這兩個部分拆開來看，我們會希望$\mathbf{h}_m$在經過relation的轉換以後，越像$\mathbf{t}_m$越好，亦即</p>
+
+\[\mathbf{h}_m \circ \mathbf{r}_m = \mathbf{t}_m\]
+
+<p>而距離的部分就是看實際上跟預期的落差有多少</p>
+
+\[d_{r,m}(\mathbf{h}_m, \mathbf{t}_m)=\left\| \mathbf{h}_m\circ\mathbf{r}_m-\mathbf{t}_m\right\|_2\]
+
+<p>其中值得一提的是，雖然embedding本身可以有負值，但$\mathbf{r}_m$的部分會限制裡面所有的值都必須要大於零，原因是因為我們想要階層比較高的entity在接近原點的位置，由於$[\mathbf{r}_m]_i&gt;0$的特性，模型漸漸地就會將階層低的embedding往外推了。</p>
+
+<h3 id="phase-distance">Phase Distance</h3>
+
+<p>在phase的部分跟modulus差不多，我們希望$\mathbf{h}_p$在經過relation的轉換以後，越像$\mathbf{t}_p$越好</p>
+
+\[(\mathbf{h}_p+\mathbf{r}_p)\mod 2\pi=\mathbf{t}_p,\ where\ \mathbf{h}_p,\mathbf{r}_p,\mathbf{t}_p\in[0,2\pi)^k\]
+
+<p>距離上也是看兩者相差多少</p>
+
+\[d_{r,p}(\mathbf{h}_p, \mathbf{t}_p)=\left\| \sin((\mathbf{h}_p+\mathbf{r}_p-\mathbf{t}_p)/2)\right\|_1\]
+
+<h3 id="loss-function">Loss Function</h3>
+
+<p>上面分別定義了modulus distance和phase distance，兩個entity實際的距離便可定義成</p>
+
+\[d_r(\mathbf{h},\mathbf{t})=d_{r,m}(\mathbf{h}_m,\mathbf{t}_m)+\lambda d_{r,p}(\mathbf{h}_p,\mathbf{t}_p)\]
+
+<p>其中的$\lambda$是由model自行學出的參數（$\lambda\in\mathbb{R}$），而loss function便是用self-adversarial的loss，希望positive sample的距離要小於$\gamma$，negative sample的距離要大於$\gamma$</p>
+
+\[L=-\log\sigma(\gamma-d_r(\mathbf{h},\mathbf{t}))-\sum\limits^{n}\limits_{i=1}p(h'_i,r,t'_i)\log\sigma(d_r(\mathbf{h}'_i,\mathbf{t}'_i)-\gamma)\]
+
+\[p(h'_j,r,y'_j\vert\left\{(h_i,r_i,t_i)\right\})=\frac{\exp\alpha f_r(\mathbf{h}'_j,\mathbf{t}'_j)}{\sum_i\exp\alpha f_r(\mathbf{h}'_i,\mathbf{t}'_i)},\ where\ \alpha\ is\ temperature\]
+
+\[f_r(\mathbf{h},\mathbf{t})=-d_r(\mathbf{h},\mathbf{t})=-d_{r,m}(\mathbf{h},\mathbf{t})-\lambda d_{r,p}(\mathbf{h},\mathbf{t})\]
+
+<h2 id="experiments">Experiments</h2>
+
+<p>作者把這個HAKE模型使用在底下三個dataset上，它們的一些數據放在底下的表格中。</p>
+
+<p><img src="./datasets.png" alt="Datasets" /></p>
+
+<p><img src="./results.png" alt="Results" /></p>
+
+<p>上面是與其他模型在這三個dataset上的比較，可以看到HAKE的表現不俗。</p>]]></content><author><name>Your Name</name></author><category term="Paper" /><category term="Graph-Model" /><summary type="html"><![CDATA[簡單記錄一下看完這篇paper的筆記。]]></summary></entry><entry><title type="html">Superset介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction/" rel="alternate" type="text/html" title="Superset介紹" /><published>2022-05-02T00:00:00+00:00</published><updated>2022-05-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/02/superset-introduction/"><![CDATA[<p>這篇文章簡單記錄一下如何安裝superset並從Google Sheets和CSV當中匯入資料做成dashboard。</p>
 
 <!--more-->
 
@@ -976,253 +1043,4 @@ p_{AM}(X\vert P) &amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
 
 <ol>
   <li><a href="https://www.quora.com/How-do-I-add-HTML-code-in-a-Google-Spreadsheet-Cell">How do I add HTML code in a Google Spredsheet Cell</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[前陣子有人推薦了一個好用的資料呈現套件plotly，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。]]></summary></entry><entry><title type="html">如何利用Swift製作倒數計時器</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer/" rel="alternate" type="text/html" title="如何利用Swift製作倒數計時器" /><published>2021-05-24T00:00:00+00:00</published><updated>2021-05-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/05/24/swift-menu-bar-timer/"><![CDATA[<p>先前都有在使用Mac app來幫我在電腦上倒計時，但有些功能需要付費才可以解鎖，剛好附近有人有在弄Mac app，想說自己來寫一個<a href="https://github.com/wjohn1483/NLUTimer">倒數計時器</a>，在這邊紀錄一下製作的過程。</p>
-
-<!--more-->
-
-<h2 id="安裝xcode">安裝Xcode</h2>
-
-<p>工欲善其事必先利其器，在開始寫app之前，需要先安裝Apple的Xcode，可以直接去App Store裡面下載，只不過要先空下電腦裡面30GB的空間才可以下載，雖然我自己看安裝完成只佔了10GB左右。</p>
-
-<h2 id="創建project">創建Project</h2>
-
-<p>在前面的部分主要是參考<a href="https://medium.com/@acwrightdesign/creating-a-macos-menu-bar-application-using-swiftui-54572a5d5f87">這篇教學</a>來設定好project，並弄出最基本的框架，如果覺得底下的步驟看不太懂的話，建議看看這篇教學。</p>
-
-<ol>
-  <li>點選File→New→Project</li>
-  <li>選擇<code class="language-plaintext highlighter-rouge">App</code></li>
-  <li>設定project名稱</li>
-  <li>Interface選擇<code class="language-plaintext highlighter-rouge">SwiftUI</code></li>
-  <li>Language選擇<code class="language-plaintext highlighter-rouge">Swift</code></li>
-  <li>選定project存放的位置以後按下<code class="language-plaintext highlighter-rouge">Create</code></li>
-</ol>
-
-<p>執行完上面的步驟以後就完成了基本的project設定了，接下來就可以開始著手建造自己的app。</p>
-
-<h2 id="製作popover">製作Popover</h2>
-
-<p>在創建好project以後，Xcode會自動先生成兩個<code class="language-plaintext highlighter-rouge">.swift</code>檔，分別是<code class="language-plaintext highlighter-rouge">AppDelegate.swift</code>和<code class="language-plaintext highlighter-rouge">ContentView.swift</code>，我的理解是，程式執行時，會先執行<code class="language-plaintext highlighter-rouge">AppDelegate.swift</code>裡面的<code class="language-plaintext highlighter-rouge">applicationDidFinishLaunching()</code>，而在該function裡面會去new <code class="language-plaintext highlighter-rouge">ContentView</code>的物件來展示畫面給使用者，可以想成是<code class="language-plaintext highlighter-rouge">ContentView.swift</code>是用來刻UI，而<code class="language-plaintext highlighter-rouge">AppDelegate.swift</code>用來實作feature。</p>
-
-<p>而在這邊我想要做的是像底下的popover，點選menu bar上面的icon以後，跳出一個視窗讓使用者輸入時間，所以預設的大部分程式碼都可以先刪除。</p>
-
-<p><img src="./input_textfield.png" alt="Popover" /></p>
-
-<p>為了創建popover我們會需要宣告一個<code class="language-plaintext highlighter-rouge">NSPopover</code>的物件，一個簡單的例子如下</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">Cocoa</span>
-<span class="kd">import</span> <span class="kt">SwiftUI</span>
-
-<span class="kd">@NSApplicationMain</span>
-<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSApplicationDelegate</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">popover</span><span class="p">:</span> <span class="kt">NSPopover</span><span class="o">!</span>
-    
-    <span class="kd">func</span> <span class="nf">applicationDidFinishLaunching</span><span class="p">(</span><span class="n">_</span> <span class="nv">aNotification</span><span class="p">:</span> <span class="kt">Notification</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Create the SwiftUI view that provides the window contents.</span>
-        <span class="k">let</span> <span class="nv">contentView</span> <span class="o">=</span> <span class="kt">ContentView</span><span class="p">()</span>
-
-        <span class="c1">// Create the popover</span>
-        <span class="k">let</span> <span class="nv">popover</span> <span class="o">=</span> <span class="kt">NSPopover</span><span class="p">()</span>
-        <span class="n">popover</span><span class="o">.</span><span class="n">contentSize</span> <span class="o">=</span> <span class="kt">NSSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">50</span><span class="p">)</span>
-        <span class="n">popover</span><span class="o">.</span><span class="n">behavior</span> <span class="o">=</span> <span class="o">.</span><span class="n">transient</span>
-        <span class="n">popover</span><span class="o">.</span><span class="n">contentViewController</span> <span class="o">=</span> <span class="kt">NSHostingController</span><span class="p">(</span><span class="nv">rootView</span><span class="p">:</span> <span class="n">contentView</span><span class="p">)</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">popover</span> <span class="o">=</span> <span class="n">popover</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>在上面的例子裡面，我們將<code class="language-plaintext highlighter-rouge">contentView</code>放進popover裡頭，所以在<code class="language-plaintext highlighter-rouge">ContentView.swift</code>裡面刻的UI就會顯示在popover裡面了。</p>
-
-<h2 id="製作menu-bar-item">製作Menu Bar Item</h2>
-
-<p>在設定好popover該顯示的東西以後，我們還需要將一個按鈕放到Mac的menu bar上面，讓使用者點選這個按鈕以後跳出popover。</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">Cocoa</span>
-<span class="kd">import</span> <span class="kt">SwiftUI</span>
-
-<span class="kd">@NSApplicationMain</span>
-<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSApplicationDelegate</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">popover</span><span class="p">:</span> <span class="kt">NSPopover</span><span class="o">!</span>
-    <span class="k">var</span> <span class="nv">statusBarItem</span><span class="p">:</span> <span class="kt">NSStatusItem</span><span class="o">!</span>
-    
-    <span class="kd">func</span> <span class="nf">applicationDidFinishLaunching</span><span class="p">(</span><span class="n">_</span> <span class="nv">aNotification</span><span class="p">:</span> <span class="kt">Notification</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Create the SwiftUI view that provides the window contents.</span>
-        <span class="k">let</span> <span class="nv">contentView</span> <span class="o">=</span> <span class="kt">ContentView</span><span class="p">()</span>
-
-        <span class="c1">// Create the popover</span>
-        <span class="k">let</span> <span class="nv">popover</span> <span class="o">=</span> <span class="kt">NSPopover</span><span class="p">()</span>
-        <span class="n">popover</span><span class="o">.</span><span class="n">contentSize</span> <span class="o">=</span> <span class="kt">NSSize</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">50</span><span class="p">)</span>
-        <span class="n">popover</span><span class="o">.</span><span class="n">behavior</span> <span class="o">=</span> <span class="o">.</span><span class="n">transient</span>
-        <span class="n">popover</span><span class="o">.</span><span class="n">contentViewController</span> <span class="o">=</span> <span class="kt">NSHostingController</span><span class="p">(</span><span class="nv">rootView</span><span class="p">:</span> <span class="n">contentView</span><span class="p">)</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">popover</span> <span class="o">=</span> <span class="n">popover</span>
-        
-        <span class="c1">// Create the status item</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">statusBarItem</span> <span class="o">=</span> <span class="kt">NSStatusBar</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="nf">statusItem</span><span class="p">(</span><span class="nv">withLength</span><span class="p">:</span> <span class="kt">CGFloat</span><span class="p">(</span><span class="kt">NSStatusItem</span><span class="o">.</span><span class="n">variableLength</span><span class="p">))</span>
-        
-        <span class="k">if</span> <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">statusBarItem</span><span class="o">.</span><span class="n">button</span> <span class="p">{</span>
-            <span class="n">button</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="kt">NSImage</span><span class="p">(</span><span class="nv">named</span><span class="p">:</span> <span class="s">"Icon"</span><span class="p">)</span>
-            <span class="n">button</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="kd">#selector(</span><span class="nf">togglePopover(_:)</span><span class="kd">)</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
-    <span class="kd">@objc</span> <span class="kd">func</span> <span class="nf">togglePopover</span><span class="p">(</span><span class="n">_</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="k">let</span> <span class="nv">button</span> <span class="o">=</span> <span class="k">self</span><span class="o">.</span><span class="n">statusBarItem</span><span class="o">.</span><span class="n">button</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="k">self</span><span class="o">.</span><span class="n">popover</span><span class="o">.</span><span class="n">isShown</span> <span class="p">{</span>
-                <span class="k">self</span><span class="o">.</span><span class="n">popover</span><span class="o">.</span><span class="nf">performClose</span><span class="p">(</span><span class="n">sender</span><span class="p">)</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">self</span><span class="o">.</span><span class="n">popover</span><span class="o">.</span><span class="nf">show</span><span class="p">(</span><span class="nv">relativeTo</span><span class="p">:</span> <span class="n">button</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="nv">of</span><span class="p">:</span> <span class="n">button</span><span class="p">,</span> <span class="nv">preferredEdge</span><span class="p">:</span> <span class="kt">NSRectEdge</span><span class="o">.</span><span class="n">minY</span><span class="p">)</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>   
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>在上面的程式碼裡面，我們建立了一個按鈕並設定它被點擊的時候呼叫<code class="language-plaintext highlighter-rouge">tooglePopover()</code>這個函式，而在該函式裡面會去顯示/隱藏popover。另外，在創建按鈕的時候有設定它顯示的圖片，設定的方式請參考下面的章節。</p>
-
-<h2 id="引入圖片至project">引入圖片至Project</h2>
-
-<ol>
-  <li>點選<code class="language-plaintext highlighter-rouge">Assets.xcassets</code></li>
-  <li>在跳出的畫面左下角有個<code class="language-plaintext highlighter-rouge">+</code>的符號</li>
-  <li>設定圖片的名稱，這個名稱需要跟程式碼裡頭的一致</li>
-  <li>在右邊的側欄裡面可以設定圖片的一些屬性，如果是要放在menu bar的圖示的話，可以參考<a href="https://medium.com/@acwrightdesign/creating-a-macos-menu-bar-application-using-swiftui-54572a5d5f87">教學</a>裡面的<strong>Createing a Menu Bar Icon</strong>的設定。</li>
-  <li>將圖片拖曳到Xcode裡面的方框中就完成了</li>
-</ol>
-
-<h2 id="在dock裡面隱藏app">在Dock裡面隱藏App</h2>
-
-<p>由於想要做的是menu bar app，不希望程式在執行的時候在dock也出現圖示，這時可以去<strong>Info.plist</strong>裡面加入<code class="language-plaintext highlighter-rouge">Application is agent (UIElement)</code>這個參數並將value設成<code class="language-plaintext highlighter-rouge">YES</code>。</p>
-
-<p>至此，一個簡單的popover app就完成了，底下會簡單介紹一下在製作倒數計時器的時候用到的一些東西，如果想看完整的程式碼，可以參考<a href="https://github.com/wjohn1483/NLUTimer">最後完成的成品</a>，或許可以解決部分你遇到的問題。</p>
-
-<h2 id="swift-timer">Swift Timer</h2>
-
-<p>我所製作的倒數計時器主要是使用Swift的Timer這個class來完成主要的功能，Timer會根據使用者指定的時間固定去執行設定好的函式，詳細的介紹可以參考<a href="https://www.hackingwithswift.com/articles/117/the-ultimate-guide-to-timer">這篇教學</a>。</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">timer</span> <span class="o">=</span> <span class="kt">Timer</span><span class="o">.</span><span class="nf">scheduledTimer</span><span class="p">(</span><span class="nv">withTimeInterval</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nv">repeats</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="nv">block</span><span class="p">:</span> <span class="p">{</span> <span class="n">timer</span> <span class="k">in</span>
-    <span class="c1">// Your function here</span>
-<span class="p">})</span>
-</code></pre></div></div>
-
-<p>在上面的程式碼裡面，我們製作了一個Timer，它每過一秒就會執行大括號裡面的程式碼。</p>
-
-<p>如果想要讓這個Timer停下來，不再每秒執行，只需要呼叫<code class="language-plaintext highlighter-rouge">invalidate()</code>即可。</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">timer</span><span class="p">?</span><span class="o">.</span><span class="nf">invalidate</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>值得一提的是，Timer一旦被invalidate以後，如果未來還想要它繼續執行的話，就得要重新製作一個Timer，不能重複利用，建議將創建Timer弄成一個function以方便快速的建立。</p>
-
-<h2 id="為app建立global-shortcut">為App建立Global Shortcut</h2>
-
-<p>在Swift裡面好像沒有可以直接設定global shortcut的方法，讓你能在任意視窗按下設定好的快捷鍵就打開你所寫的app，好在網路上有很多大神有做了好用的package，只要加進去project裡面就能簡單做到了，在這裡我所使用的是<a href="https://github.com/sindresorhus/KeyboardShortcuts">KeyboardShortcuts</a>這個套件。</p>
-
-<h3 id="swift-package-manager">Swift Package Manager</h3>
-
-<p>將套件加入project的方式還蠻簡單的，點選menu bar的File→Swift Packages→Add Package Dependency…，在跳出的視窗貼上package GitHub repository的網址，最後按下確認就可以了。</p>
-
-<h3 id="keyboardshortcuts">KeyboardShortcuts</h3>
-
-<p>在引入好KeyboardShortcuts以後，只需要使用下面的程式碼就能設定好global shortcut了。</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">KeyboardShortcuts</span>
-
-<span class="kd">extension</span> <span class="kt">KeyboardShortcuts</span><span class="o">.</span><span class="kt">Name</span> <span class="p">{</span>
-    <span class="kd">static</span> <span class="k">let</span> <span class="nv">toggleUnicornMode</span> <span class="o">=</span> <span class="kt">Self</span><span class="p">(</span><span class="s">"togglePopover"</span><span class="p">,</span> <span class="k">default</span><span class="p">:</span> <span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="o">.</span><span class="n">k</span><span class="p">,</span> <span class="nv">modifiers</span><span class="p">:</span> <span class="p">[</span><span class="o">.</span><span class="n">command</span><span class="p">,</span> <span class="o">.</span><span class="n">option</span><span class="p">]))</span>
-<span class="p">}</span>
-
-<span class="kd">@main</span>
-<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSApplicationDelegate</span> <span class="p">{</span>
-    <span class="kd">func</span> <span class="nf">applicationDidFinishLaunching</span><span class="p">(</span><span class="n">_</span> <span class="nv">aNotification</span><span class="p">:</span> <span class="kt">Notification</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Set shortcut action</span>
-        <span class="kt">KeyboardShortcuts</span><span class="o">.</span><span class="nf">onKeyUp</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">togglePopover</span><span class="p">)</span> <span class="p">{</span> <span class="p">[</span><span class="k">self</span><span class="p">]</span> <span class="k">in</span>
-            <span class="c1">// Your function here</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>在extension的部分，我們設定快捷鍵為command+option+k，並觸發<code class="language-plaintext highlighter-rouge">togglePopover</code>這個名字的function。</p>
-
-<p>在app運行的時候我們還需要去綁定<code class="language-plaintext highlighter-rouge">togglePopover</code>這個名字實際上是去連接到哪一個function，也就是設定<code class="language-plaintext highlighter-rouge">KeyboardShortcuts.onKeyUp()</code>的部分。</p>
-
-<h2 id="在app內播放音樂">在App內播放音樂</h2>
-
-<h3 id="將音樂引入project">將音樂引入project</h3>
-
-<p>直接從Finder裡面將音檔拖曳到Xcode左邊側欄的檔案列表就行了。</p>
-
-<h3 id="播放音樂">播放音樂</h3>
-
-<p>這邊使用Swift內建的套件來達成。</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">AVFoundation</span>
-
-<span class="c1">// Import sound file</span>
-<span class="k">let</span> <span class="nv">bundle</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="o">.</span><span class="n">main</span>
-<span class="k">guard</span> <span class="k">let</span> <span class="nv">sound</span> <span class="o">=</span> <span class="n">bundle</span><span class="o">.</span><span class="nf">path</span><span class="p">(</span><span class="nv">forResource</span><span class="p">:</span> <span class="kt">SOUND_PATH</span><span class="p">,</span> <span class="nv">ofType</span><span class="p">:</span> <span class="kt">SOUND_TYPE</span><span class="p">)</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-<span class="k">do</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Found sound file"</span><span class="p">)</span>
-    <span class="k">let</span> <span class="nv">audioPlayer</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">AVAudioPlayer</span><span class="p">(</span><span class="nv">contentsOf</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">fileURLWithPath</span><span class="p">:</span> <span class="n">sound</span><span class="p">))</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
-    <span class="nf">print</span><span class="p">(</span><span class="s">"Sound file not found"</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="c1">// Play music audioPlayDefaultCount+1 times</span>
-<span class="n">audioPlayer</span><span class="o">.</span><span class="n">numberOfLoops</span> <span class="o">=</span> <span class="n">audioPlayDefaultCount</span>
-<span class="n">audioPlayer</span><span class="o">.</span><span class="n">currentTime</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">audioPlayer</span><span class="o">.</span><span class="nf">play</span><span class="p">()</span>
-<span class="n">audioPlayer</span><span class="o">.</span><span class="nf">stop</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p>在import sound file的部分需要將<code class="language-plaintext highlighter-rouge">SOUND_PATH</code>和<code class="language-plaintext highlighter-rouge">SOUND_TYPE</code>替換掉，<code class="language-plaintext highlighter-rouge">SOUND_PATH</code>就是音檔的名稱，但不包含副檔名，而<code class="language-plaintext highlighter-rouge">SOUND_TYPE</code>是音檔的副檔名，像是<code class="language-plaintext highlighter-rouge">.wav</code>等。</p>
-
-<p>在使用時可以透過<code class="language-plaintext highlighter-rouge">numberOfLoops</code>設定音樂要播幾次，音樂會播你所設定的數字加一次，所以如果只想播一次的話，可以不寫這行或是將數字設成0，如果是負數的話就會不斷循環播放不停止。</p>
-
-<p>在上面的例子裡面有將<code class="language-plaintext highlighter-rouge">currentTime</code>設為0，其原因是當我們呼叫<code class="language-plaintext highlighter-rouge">stop()</code>以後，下次在呼叫<code class="language-plaintext highlighter-rouge">play()</code>時，會從上次停止的地方再開始播放，如果想要從頭播放的話，就需要將<code class="language-plaintext highlighter-rouge">currentTime</code>設成0。</p>
-
-<h2 id="傳送通知">傳送通知</h2>
-
-<p>如果想要讓app發出系統通知顯示在螢幕的右上角，可以參考底下的程式碼，只需要修改<code class="language-plaintext highlighter-rouge">title</code>和<code class="language-plaintext highlighter-rouge">informativeText</code>就能決定顯示在通知裡面的文字訊息。</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">notification</span> <span class="o">=</span> <span class="kt">NSUserNotification</span><span class="p">()</span>
-<span class="n">notification</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">"Time's Up !!!"</span>
-<span class="n">notification</span><span class="o">.</span><span class="n">informativeText</span> <span class="o">=</span> <span class="s">"Click notification to dismiss"</span>
-<span class="n">notification</span><span class="o">.</span><span class="n">soundName</span> <span class="o">=</span> <span class="kt">NSUserNotificationDefaultSoundName</span>
-<span class="kt">NSUserNotificationCenter</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">deliver</span><span class="p">(</span><span class="n">notification</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>如果想要讓使用者點選通知以後觸發某個動作，這時需要一個繼承了<code class="language-plaintext highlighter-rouge">NSObject</code>和<code class="language-plaintext highlighter-rouge">NSUserNotificationCenterDelegate</code>的class，並override <code class="language-plaintext highlighter-rouge">userNotificationCenter</code>這個函式，最後在<code class="language-plaintext highlighter-rouge">NSUserNotificationCenter</code>綁定這個class的instance。</p>
-
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">NLUTimer</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSUserNotificationCenterDelegate</span> <span class="p">{</span>    
-    <span class="kd">func</span> <span class="nf">showNotification</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="nv">notification</span> <span class="o">=</span> <span class="kt">NSUserNotification</span><span class="p">()</span>
-        <span class="n">notification</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="s">"Time's Up !!!"</span>
-        <span class="n">notification</span><span class="o">.</span><span class="n">informativeText</span> <span class="o">=</span> <span class="s">"Click notification to dismiss"</span>
-        <span class="n">notification</span><span class="o">.</span><span class="n">soundName</span> <span class="o">=</span> <span class="kt">NSUserNotificationDefaultSoundName</span>
-        <span class="n">notification</span><span class="o">.</span><span class="n">hasActionButton</span> <span class="o">=</span> <span class="kc">false</span>
-        <span class="kt">NSUserNotificationCenter</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span> <span class="c1">// Binding this instance</span>
-        <span class="kt">NSUserNotificationCenter</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">deliver</span><span class="p">(</span><span class="n">notification</span><span class="p">)</span>
-    <span class="p">}</span>
-    
-    <span class="kd">func</span> <span class="nf">userNotificationCenter</span><span class="p">(</span><span class="n">_</span> <span class="nv">center</span><span class="p">:</span> <span class="kt">NSUserNotificationCenter</span><span class="p">,</span> <span class="n">didActivate</span> <span class="nv">notification</span><span class="p">:</span> <span class="kt">NSUserNotification</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nf">print</span><span class="p">(</span><span class="s">"Click notification"</span><span class="p">)</span>
-        <span class="c1">// Do what you want here</span>
-        
-        <span class="c1">// Close notification</span>
-        <span class="kt">NSUserNotificationCenter</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">removeAllDeliveredNotifications</span><span class="p">()</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h2 id="輸出成app的格式">輸出成.app的格式</h2>
-
-<p>在完成了project的所有功能以後，Xcode有提供打包成<code class="language-plaintext highlighter-rouge">.app</code>的功能，方便開發者分享給其他使用者。</p>
-
-<p>只需要在Xcode的menu bar點選Product→Archive，在跳出的視窗選擇Distribute App→Copy App，最後選擇輸出的路徑就可以了。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li><a href="https://medium.com/@acwrightdesign/creating-a-macos-menu-bar-application-using-swiftui-54572a5d5f87">Create a macOS Menu Bar Application Using SwiftUI</a></li>
-  <li><a href="https://www.hackingwithswift.com/articles/117/the-ultimate-guide-to-timer">The ultimate guide to Timer</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Swift" /><summary type="html"><![CDATA[先前都有在使用Mac app來幫我在電腦上倒計時，但有些功能需要付費才可以解鎖，剛好附近有人有在弄Mac app，想說自己來寫一個倒數計時器，在這邊紀錄一下製作的過程。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[前陣子有人推薦了一個好用的資料呈現套件plotly，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。]]></summary></entry></feed>
