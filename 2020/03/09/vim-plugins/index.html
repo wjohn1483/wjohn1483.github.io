@@ -301,8 +301,9 @@
     <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>這邊記錄一下我目前所使用的Vim plugin以及它們的功能。
-<!--more--></p>
+<div class="article__content" itemprop="articleBody"><p>這邊記錄一下我目前所使用的Vim plugin以及它們的功能。</p>
+
+<!--more-->
 
 <p>市面上有很多Integrated Development Environment (IDE)來幫助你開發，像是<a href="https://developer.apple.com/xcode/">Xcode</a>、<a href="https://visualstudio.microsoft.com/zh-hant/">Visual Studio</a>、<a href="https://www.jetbrains.com/idea/">Intellij</a>、<a href="https://www.jetbrains.com/pycharm/">Pycharm</a>、<a href="https://www.sublimetext.com/">Sublime</a>等等，然而在終端機上的文字編輯器，應該大多都是用vim來開發，而vim本身也有很多神人開發的套件，讓你可以在vim裡面做到像上面IDE一樣的操作，底下介紹一下我目前所使用的一些套件。</p>
 
@@ -333,6 +334,7 @@
 <p>也是一個自動完成各種東西的套件，只是安裝起來沒有像supertab那樣簡單，不僅需要宣告在設定檔裡，還需要安裝其他程式語言，像是go、nodejs等，詳細的安裝流程可以參考官方的GitHub。</p>
 
 <p>我會在設定檔裡面多加底下的設定，使你可以按下enter就可以選擇自動完成的東西(預設好像是按<code class="language-plaintext highlighter-rouge">Ctrl + y</code>)，另一個設定是讓你能用<code class="language-plaintext highlighter-rouge">&lt;Leader&gt;g</code>跳到function定義的部分。</p>
+
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if </span>exists<span class="o">(</span><span class="s1">'g:plugs["YouCompleteMe"]'</span><span class="o">)</span>
     <span class="nb">let </span>g:ycm_autoclose_preview_window_after_completion<span class="o">=</span>1
     <span class="nb">let </span>g:ycm_key_list_stop_completion <span class="o">=</span> <span class="o">[</span><span class="s1">'&lt;C-y&gt;'</span>, <span class="s1">'&lt;CR&gt;'</span><span class="o">]</span>
@@ -426,6 +428,15 @@ npm i <span class="nt">-g</span> sql-lint
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nnoremap &lt;Leader&gt;d :ALEDetail&lt;CR&gt;
 nnoremap &lt;Leader&gt;cn :ALENext&lt;CR&gt;
 nnoremap &lt;Leader&gt;cp :ALEPrevious&lt;CR&gt;
+</code></pre></div></div>
+
+<p>如果發現到ALE可能沒有在執行的話，可以試著在用vim開啟程式碼以後，在vim裡面打<code class="language-plaintext highlighter-rouge">:ALEInfo</code>來看目前ALE能抓到的linter和實際使用的linter，也能在<code class="language-plaintext highlighter-rouge">.vimrc</code>裡面設定ALE根據不同的語言用哪種特定的linter，底下是一個簡單的範例。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">let </span>g:ale_linters <span class="o">=</span> <span class="o">{</span>
+<span class="se">\ </span>  <span class="s1">'python'</span>: <span class="o">[</span><span class="s1">'pylint'</span>, <span class="s1">'mypy'</span><span class="o">]</span>,
+<span class="se">\ </span>  <span class="s1">'java'</span>: <span class="o">[</span><span class="s1">'javac'</span><span class="o">]</span>,
+<span class="se">\ </span>  <span class="s1">'sql'</span>: <span class="o">[</span><span class="s1">'sql-lint'</span><span class="o">]</span>,
+<span class="se">\}</span>
 </code></pre></div></div>
 
 <h3 id="milkypostmanvim-togglelist"><a href="https://github.com/milkypostman/vim-togglelist">milkypostman/vim-togglelist</a></h3>
