@@ -1,4 +1,5 @@
 ---
+
 title: Vim Plugins
 tags: Tool
 layout: article
@@ -7,8 +8,11 @@ aside:
   toc: true
 mathjax: true
 mathjax_autoNumber: true
+
 ---
+
 這邊記錄一下我目前所使用的Vim plugin以及它們的功能。
+
 <!--more-->
 
 市面上有很多Integrated Development Environment (IDE)來幫助你開發，像是[Xcode](https://developer.apple.com/xcode/)、[Visual Studio](https://visualstudio.microsoft.com/zh-hant/)、[Intellij](https://www.jetbrains.com/idea/)、[Pycharm](https://www.jetbrains.com/pycharm/)、[Sublime](https://www.sublimetext.com/)等等，然而在終端機上的文字編輯器，應該大多都是用vim來開發，而vim本身也有很多神人開發的套件，讓你可以在vim裡面做到像上面IDE一樣的操作，底下介紹一下我目前所使用的一些套件。
@@ -33,8 +37,6 @@ Plug 'ervandew/supertab'
 Plug '[plugin name]'
 ```
 
-
-
 ### [ervandew/supertab](https://github.com/ervandew/supertab)
 
 一個可以讓你用tab自動完成各種東西的套件，可以用tab完成function、variable等等。
@@ -44,6 +46,7 @@ Plug '[plugin name]'
 也是一個自動完成各種東西的套件，只是安裝起來沒有像supertab那樣簡單，不僅需要宣告在設定檔裡，還需要安裝其他程式語言，像是go、nodejs等，詳細的安裝流程可以參考官方的GitHub。
 
 我會在設定檔裡面多加底下的設定，使你可以按下enter就可以選擇自動完成的東西(預設好像是按`Ctrl + y`)，另一個設定是讓你能用`<Leader>g`跳到function定義的部分。
+
 ```bash
 if exists('g:plugs["YouCompleteMe"]')
     let g:ycm_autoclose_preview_window_after_completion=1
@@ -144,6 +147,18 @@ nnoremap <Leader>d :ALEDetail<CR>
 nnoremap <Leader>cn :ALENext<CR>
 nnoremap <Leader>cp :ALEPrevious<CR>
 ```
+
+如果發現到ALE可能沒有在執行的話，可以試著在用vim開啟程式碼以後，在vim裡面打`:ALEInfo`來看目前ALE能抓到的linter和實際使用的linter，也能在`.vimrc`裡面設定ALE根據不同的語言用哪種特定的linter，底下是一個簡單的範例。
+
+```bash
+let g:ale_linters = {
+\   'python': ['pylint', 'mypy'],
+\   'java': ['javac'],
+\   'sql': ['sql-lint'],
+\}
+```
+
+
 
 ### [milkypostman/vim-togglelist](https://github.com/milkypostman/vim-togglelist)
 
@@ -247,10 +262,9 @@ endif
 
 [這篇文章](https://castel.dev/post/lecture-notes-1/)裡頭有講述作者如何使用各種技巧來讓用Latex做筆記變得相當容易，有興趣可以看看。
 
-###  [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)
+### [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot)
 
 整合了多個語言的語言包，可以一次安裝完成，不用對每個語言個別去下載對應的語言包。
-
 
 ## Tips
 
