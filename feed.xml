@@ -1,4 +1,169 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-05-20T05:43:05+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/" rel="alternate" type="text/html" title="Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction" /><published>2022-05-14T00:00:00+00:00</published><updated>2022-05-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/"><![CDATA[<p>簡單記錄一下看完這篇paper的筆記。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-05-29T09:19:20+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">MLflow介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction/" rel="alternate" type="text/html" title="MLflow介紹" /><published>2022-05-29T00:00:00+00:00</published><updated>2022-05-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction/"><![CDATA[<p>隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。</p>
+
+<!--more-->
+
+<h2 id="mlops">MLOps</h2>
+
+<p>在開始介紹MLflow之前先簡單介紹一下MLOps想要做的事情，MLOps可以說跟DevOps一樣是一種精神，主要是希望能讓Machine Learning跟Operations能夠合作的更融洽，這邊Machine Learning的部分包含了對資料清理、建立並訓練模型、驗證模型成效等等的事情，而Operations指的是把模型部署到系統裡面進行預測。</p>
+
+<p><img src="https://cloud.google.com/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-2-manual-ml.svg" alt="MLOps Manual Process" /></p>
+
+<p><em><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></em></p>
+
+<p>上圖是一個簡單的pipeline，左半邊ML的部分是一般machine learning的流程，包含了資料處理和建立模型的過程，而最終產生的模型會放進model registry裡面，Operations再從model registry裡面把模型拿出來做serving。</p>
+
+<p>這個pipeline簡單有效，但如果未來有新的資料進來或是模型的成效開始下降等可能會需要重新訓練的模型的情況發生的話，Operations就會需要再請ML的人幫忙訓練模型，為此另一個比較穩定的pipeline可以是如下圖。</p>
+
+<p><img src="https://cloud.google.com/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-3-ml-automation-ct.svg" alt="MLOps Pipeline Automation" /></p>
+
+<p><em><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></em></p>
+
+<p>在這個pipeline裡面，ML所交付的不再是一個模型，而是產生出這個模型的pipeline，包含了資料驗證、清理、建立模型、驗證模型等，而Operations會將這個pipeline部署到系統裡面自行去產生模型出來，如果說有新的資料或是有需要重新訓練模型的情況發生，Operations就能直接重跑這個pipeline來得到新的模型。</p>
+
+<p>然而要建立這種pipeline會需要花費蠻多工夫的，而MLflow可以幫助我們降低一些建立這種pipeline的困難。</p>
+
+<h2 id="mlflow">MLflow</h2>
+
+<p><a href="https://mlflow.org/">MLflow</a>是一個開源的平台，主要是應用在machine learning lifecycle當中，MLflow包含了四個部分</p>
+
+<ul>
+  <li>
+    <p>Tracking：用以記錄在訓練模型是所使用的參數和訓練過程中的一些metrics</p>
+  </li>
+  <li>
+    <p>Projects：讓使用者可以建立一套pipeline來讓其他人可以輕易地重現出模型</p>
+  </li>
+  <li>
+    <p>Models：把模型包裝起來，在裡面會紀錄讓模型運行所需要的環境和模型本身，讓其他人方便直接使用模型</p>
+  </li>
+  <li>
+    <p>Registry：存放模型並支援版本控制</p>
+  </li>
+</ul>
+
+<p>底下的文章將會簡述一下Tracking和Projects的部分。</p>
+
+<h3 id="mlflow-tracking">MLflow Tracking</h3>
+
+<p>我們先快速看一下底下的程式碼</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">mlflow</span> <span class="kn">import</span> <span class="n">log_metric</span><span class="p">,</span> <span class="n">log_param</span><span class="p">,</span> <span class="n">log_artifact</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="c1"># Log a parameter (key-value pair)
+</span>    <span class="n">log_param</span><span class="p">(</span><span class="s">"param1"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+    <span class="n">log_param</span><span class="p">(</span><span class="s">"param2"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
+</span>    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"first file!"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"second file!"</span><span class="p">)</span>
+    <span class="n">log_artifact</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">)</span>
+    <span class="n">log_artifact</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在上面的程式碼中我們可以看到mlflow提供了三種不同log的function，<code class="language-plaintext highlighter-rouge">log_param</code>用來記錄這次訓練模型時所使用的hyperparameters像是learning rate、batch size等等，而<code class="language-plaintext highlighter-rouge">log_metric</code>用來記錄訓練模型中會變動的資料，像是loss、accuracy等，最後<code class="language-plaintext highlighter-rouge">log_artifact</code>會把該路徑的檔案放進artifact中，主要是把這次訓練完成以後想要留存的檔案儲存下來，像是模型本身、前處理/後處理用到的字典檔等。</p>
+
+<p>有了這些function以後，我們就能在編寫程式的時候把這些function安插進來，之後就能在command line上面下<code class="language-plaintext highlighter-rouge">mlflow server</code>的指令來打開mlflow的UI來檢視訓練的成果，然而每次手動寫這些function有點麻煩，mlflow有另外提供了auto tracking的功能，只需要在程式碼裡面加個幾行，mlflow就會幫你自動紀錄這些參數和結果了。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""Trains and evaluate a simple MLP
+on the Reuters newswire topic classification task.
+"""</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+
+<span class="c1"># The following import and function call are the only additions to code required
+# to automatically log metrics and parameters to MLflow.
+</span><span class="kn">import</span> <span class="nn">mlflow.keras</span>
+
+<span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">autolog</span><span class="p">()</span>
+
+<span class="n">max_words</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Loading data..."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/keras/train.py">mlflow/examples/keras/train.py</a></em></p>
+
+<p>在上面是一個用keras訓練模型的範例，在裡面我們只需要加入<code class="language-plaintext highlighter-rouge">import mlflow.keras</code>、<code class="language-plaintext highlighter-rouge">mlflow.keras.autolog()</code>這兩行就能讓mlflow幫我們紀錄參數了。</p>
+
+<p><img src="./mlflow_keras.png" alt="MLflow Keras" /></p>
+
+<h3 id="mlflow-projects">MLflow Projects</h3>
+
+<p>假如我們想要分享我們訓練模型所做的所有步驟，我們可以寫一個<code class="language-plaintext highlighter-rouge">MLproject</code>的檔案，來讓其他人可以簡單下一個指令<code class="language-plaintext highlighter-rouge">mlflow run .</code>就能重現模型訓練的結果。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">mnist-autolog-example</span>
+
+<span class="na">conda_env</span><span class="pi">:</span> <span class="s">conda.yaml</span>
+
+<span class="na">entry_points</span><span class="pi">:</span>
+  <span class="na">main</span><span class="pi">:</span>
+    <span class="na">parameters</span><span class="pi">:</span>
+      <span class="na">max_epochs</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">5</span><span class="pi">}</span>
+      <span class="na">gpus</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">0</span><span class="pi">}</span>
+      <span class="na">strategy</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s2">"</span><span class="s">None"</span><span class="pi">}</span>
+      <span class="na">batch_size</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">64</span><span class="pi">}</span>
+      <span class="na">num_workers</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">3</span><span class="pi">}</span>
+      <span class="na">learning_rate</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">float</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">0.001</span><span class="pi">}</span>
+      <span class="na">patience</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">3</span><span class="pi">}</span>
+      <span class="na">mode</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">min'</span><span class="pi">}</span>
+      <span class="na">verbose</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type bool</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">True</span><span class="pi">}</span>
+      <span class="na">monitor</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">val_loss'</span><span class="pi">}</span>
+
+    <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">python mnist_autolog_example.py \</span>
+            <span class="s">--max_epochs {max_epochs} \</span>
+            <span class="s">--gpus {gpus} \</span>
+            <span class="s">--strategy {strategy} \</span>
+            <span class="s">--batch_size {batch_size} \</span>
+            <span class="s">--num_workers {num_workers} \</span>
+            <span class="s">--lr {learning_rate} \</span>
+            <span class="s">--es_patience {patience} \</span>
+            <span class="s">--es_mode {mode} \</span>
+            <span class="s">--es_verbose {verbose} \</span>
+            <span class="s">--es_monitor {monitor}</span>
+</code></pre></div></div>
+
+<p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/pytorch/MNIST/MLproject">mlflow/examples/pytorch/MNIST/MLproject</a></em></p>
+
+<p>MLflow在讀取這個檔案的時候會先在conda裡面建立一個virtual environment，並按照<code class="language-plaintext highlighter-rouge">conda.yaml</code>的設定來去安裝package們，接下來會去執行entry_points裡面<code class="language-plaintext highlighter-rouge">main</code>的部分，如果說想要使用不同的參數試試看的話，可以使用<code class="language-plaintext highlighter-rouge">mlflow run . -P PARAM=VALUE</code>的方式來去替換掉預設值。</p>
+
+<p>如果在整個pipeline中還有其他資料處理或模型驗證的步驟，可以參考<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>要把整個pipeline包裝成可重複執行的程式碼還是需要蠻多工夫的，好在MLflow可以幫我們省去一些，而且其auto tracking的功能也很適合在做實驗的過程當中來使用。</p>
+
+<p>另外在實作的過程當中值得一提的是，如果想要在auto tracking當中另外手動存入其他artifact，需要把<code class="language-plaintext highlighter-rouge">log_artifact</code>這個function放在同一個run裡面</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="n">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
+    <span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">autolog</span><span class="p">()</span>
+    <span class="c1"># Training
+</span>    <span class="n">mlflow</span><span class="p">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s">"PATH_TO_ARTIFACT"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>而在pipeline處理的過程中，假如說我們有個entry point是處理資料、另一個entry point是訓練模型，我們應該會希望每次pipeline跑起來便去檢查資料是否已經處理好了，如果已經處理好就直接跑訓練模型的部分就好，我目前還沒有在MLflow看到比較好的看有沒有執行過某個entry point的方法，可能還是需要像前面<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例那樣，自己寫個<code class="language-plaintext highlighter-rouge">main.py</code>來去檢查。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li>
+    <p><a href="https://medium.com/ai-blog-tw/%E7%B5%A6ml-engineer%E7%9A%84mlops%E7%B0%A1%E8%BF%B0-%E6%8C%81%E7%BA%8C%E9%96%8B%E7%99%BC%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92service%E7%9A%84%E9%AB%98%E6%95%88%E7%90%86%E5%BF%B5-8bd552876299">給ML Engineer的MLOps簡述: 持續開發機器學習Service的高效理念</a></p>
+  </li>
+  <li>
+    <p><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></p>
+  </li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。]]></summary></entry><entry><title type="html">Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/" rel="alternate" type="text/html" title="Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction" /><published>2022-05-14T00:00:00+00:00</published><updated>2022-05-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/"><![CDATA[<p>簡單記錄一下看完這篇paper的筆記。</p>
 
 <!--more-->
 
@@ -977,70 +1142,4 @@ p_{AM}(X\vert P) &amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
 <ol>
   <li><a href="https://www.youtube.com/watch?v=AIKu43goh-8">[DLHLP 2020] Speech Recognition (1/7) - Overview</a></li>
   <li><a href="https://arxiv.org/abs/2105.11084">Unsupervised Speech Recognition</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Speech-Recognition" /><summary type="html"><![CDATA[在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。]]></summary></entry><entry><title type="html">在Google Sheet裡面呈現html</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/" rel="alternate" type="text/html" title="在Google Sheet裡面呈現html" /><published>2021-06-05T00:00:00+00:00</published><updated>2021-06-05T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/05/display-html-in-google-sheet/"><![CDATA[<p>前陣子有人推薦了一個好用的資料呈現套件<a href="https://plotly.com/">plotly</a>，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。</p>
-
-<!--more-->
-
-<p>具體實現的方法是建立一個Google Apps Script，並綁定Google Sheet上面的物件，讓使用者跟這個物件互動的時候跳出一個Dialog擺html來跟使用者互動，底下會詳述各個步驟該如何設定。</p>
-
-<h2 id="google-apps-script">Google Apps Script</h2>
-
-<p>首先先打開Google Sheet，並在工具的地方按下Script editor。</p>
-
-<p><img src="./script_editor.png" alt="Script Editor" /></p>
-
-<p>按下去以後會跳出新的分頁，在這裡可以寫一些程式碼來去與Google的服務做互動。</p>
-
-<p><img src="./new_app_script.png" alt="New App Script" /></p>
-
-<p>在這邊我們將底下的程式碼貼到<code class="language-plaintext highlighter-rouge">Code.gs</code>的檔案裡面，記得將<code class="language-plaintext highlighter-rouge">&lt;YOUR_HTML_FILENAME&gt;</code>替換成你html的檔名、想一個要顯示在Dialog的名稱替換掉<code class="language-plaintext highlighter-rouge">&lt;TITLE_OF_DIALOG&gt;</code>。目前設定跳出來的Dialog的大小是1000*1000，可以根據你想要顯示的大小做調整。</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">openDialog</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">HtmlService</span><span class="p">.</span><span class="nx">createHtmlOutputFromFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;YOUR_HTML_FILENAME&gt;</span><span class="dl">'</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">setSandboxMode</span><span class="p">(</span><span class="nx">HtmlService</span><span class="p">.</span><span class="nx">SandboxMode</span><span class="p">.</span><span class="nx">NATIVE</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-  <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getUi</span><span class="p">()</span> 
-    <span class="p">.</span><span class="nx">showModalDialog</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&lt;TITLE_OF_DIALOG&gt;</span><span class="dl">'</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>最後在檔案旁邊的<code class="language-plaintext highlighter-rouge">+</code>號點選新增html，並將你想要呈現的html貼在裡面並按下旁邊的<code class="language-plaintext highlighter-rouge">Save project</code>就完成這個部分了。</p>
-
-<p><img src="./new_html.png" alt="New html" /></p>
-
-<p><img src="./save_project.png" alt="Save Project" /></p>
-
-<p>記得新增的html名稱要跟程式碼裡面寫的一致。</p>
-
-<h2 id="綁定google-sheet物件">綁定Google Sheet物件</h2>
-
-<p>首先，我們要先創建一個物件讓使用者跟它做互動，這邊我們自己畫一個像按鈕的圖樣。</p>
-
-<p><img src="./new_drawing.png" alt="New Drawing" /></p>
-
-<p><img src="./drawing_example.png" alt="Draw Example" /></p>
-
-<p>建立好物件後，點選右上角的三個點，選擇<code class="language-plaintext highlighter-rouge">Assign script</code>。</p>
-
-<p><img src="./assign_script_dropdown.png" alt="Assign Script" /></p>
-
-<p>在跳出的視窗填上剛剛程式碼中的function名稱<code class="language-plaintext highlighter-rouge">openDialog</code>後按下OK。</p>
-
-<p><img src="./assign_script_popup.png" alt="Assign Script" /></p>
-
-<p>到這邊就全部設定完成了！之後使用者點選物件就會跳出你製作的html。</p>
-
-<p><img src="./result.gif" alt="Result" /></p>
-
-<p>值得一提的是，在使用者第一次點選的時候，應該會跳出像底下的權限要求，照著提示准許就行。</p>
-
-<p><img src="./authorization.png" alt="Authorization" /></p>
-
-<p>如果之後想要移動物件位置的話，對物件按滑鼠右鍵即可。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li><a href="https://www.quora.com/How-do-I-add-HTML-code-in-a-Google-Spreadsheet-Cell">How do I add HTML code in a Google Spredsheet Cell</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[前陣子有人推薦了一個好用的資料呈現套件plotly，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Speech-Recognition" /><summary type="html"><![CDATA[在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。]]></summary></entry></feed>

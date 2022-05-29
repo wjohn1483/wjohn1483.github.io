@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>MLflow介紹 - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/page5/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2022/05/29/mlflow-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -265,7 +265,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -283,60 +283,223 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/01/self-supervised-generalisation-with-meta-auxiliary-learning/"><h2 itemprop="headline" class="item__header">Self-Supervised Generalisation with Meta Auxiliary Learning</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">通常在訓練的時候，如果能有一些輔助的任務(task)，通常會對主要的任務在效能上有所提升，然而這些輔助任務的答案通常會需要人類來標注，並不能隨意的想加輔助任務就加輔助任務，而這篇文章要介紹的NeurIPS 2019的Self-Supervised Generalisation with Meta Auxiliary Learning，將輔助任務的答案都用機器來產生，免去了準備輔助任務答案的麻煩。</div><p><a href="/2020/03/01/self-supervised-generalisation-with-meta-auxiliary-learning/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Meta-Learning">Meta-Learning</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Auxiliary-Learning">Auxiliary-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 01, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-01T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Meta-Learning,Auxiliary-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/02/28/create-website-by-Jekyll/"><h2 itemprop="headline" class="item__header">如何使用Jekyll建立網站在Github Page上</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章將會簡單介紹一下Jekyll，以及我如何使用Jekyll將網站建置在GitHub Page上的經歷。</div><p><a href="/2020/02/28/create-website-by-Jekyll/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>MLflow介紹</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2022-05-29-mlflow-introduction/2022-05-29-mlflow-introduction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="MLflow介紹"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 28, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-02-28T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>34 post articles, 5 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/page4">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-              </li><li>
-                <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-              </li><li>
-                <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-              </li><li>
-              <div class="button button--primary button--circle focus"><span>5</span></div>
-            </li><li><div class="button button--secondary button--circle disabled">
-            <i class="fas fa-angle-right"></i>
-          </div></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 29, 2022</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-05-29T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。</p>
+
+<!--more-->
+
+<h2 id="mlops">MLOps</h2>
+
+<p>在開始介紹MLflow之前先簡單介紹一下MLOps想要做的事情，MLOps可以說跟DevOps一樣是一種精神，主要是希望能讓Machine Learning跟Operations能夠合作的更融洽，這邊Machine Learning的部分包含了對資料清理、建立並訓練模型、驗證模型成效等等的事情，而Operations指的是把模型部署到系統裡面進行預測。</p>
+
+<p><img src="https://cloud.google.com/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-2-manual-ml.svg" alt="MLOps Manual Process" /></p>
+
+<p><em><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></em></p>
+
+<p>上圖是一個簡單的pipeline，左半邊ML的部分是一般machine learning的流程，包含了資料處理和建立模型的過程，而最終產生的模型會放進model registry裡面，Operations再從model registry裡面把模型拿出來做serving。</p>
+
+<p>這個pipeline簡單有效，但如果未來有新的資料進來或是模型的成效開始下降等可能會需要重新訓練的模型的情況發生的話，Operations就會需要再請ML的人幫忙訓練模型，為此另一個比較穩定的pipeline可以是如下圖。</p>
+
+<p><img src="https://cloud.google.com/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-3-ml-automation-ct.svg" alt="MLOps Pipeline Automation" /></p>
+
+<p><em><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></em></p>
+
+<p>在這個pipeline裡面，ML所交付的不再是一個模型，而是產生出這個模型的pipeline，包含了資料驗證、清理、建立模型、驗證模型等，而Operations會將這個pipeline部署到系統裡面自行去產生模型出來，如果說有新的資料或是有需要重新訓練模型的情況發生，Operations就能直接重跑這個pipeline來得到新的模型。</p>
+
+<p>然而要建立這種pipeline會需要花費蠻多工夫的，而MLflow可以幫助我們降低一些建立這種pipeline的困難。</p>
+
+<h2 id="mlflow">MLflow</h2>
+
+<p><a href="https://mlflow.org/">MLflow</a>是一個開源的平台，主要是應用在machine learning lifecycle當中，MLflow包含了四個部分</p>
+
+<ul>
+  <li>
+    <p>Tracking：用以記錄在訓練模型是所使用的參數和訓練過程中的一些metrics</p>
+  </li>
+  <li>
+    <p>Projects：讓使用者可以建立一套pipeline來讓其他人可以輕易地重現出模型</p>
+  </li>
+  <li>
+    <p>Models：把模型包裝起來，在裡面會紀錄讓模型運行所需要的環境和模型本身，讓其他人方便直接使用模型</p>
+  </li>
+  <li>
+    <p>Registry：存放模型並支援版本控制</p>
+  </li>
+</ul>
+
+<p>底下的文章將會簡述一下Tracking和Projects的部分。</p>
+
+<h3 id="mlflow-tracking">MLflow Tracking</h3>
+
+<p>我們先快速看一下底下的程式碼</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">mlflow</span> <span class="kn">import</span> <span class="n">log_metric</span><span class="p">,</span> <span class="n">log_param</span><span class="p">,</span> <span class="n">log_artifact</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="c1"># Log a parameter (key-value pair)
+</span>    <span class="n">log_param</span><span class="p">(</span><span class="s">"param1"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+    <span class="n">log_param</span><span class="p">(</span><span class="s">"param2"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
+</span>    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
+</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"first file!"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"second file!"</span><span class="p">)</span>
+    <span class="n">log_artifact</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">)</span>
+    <span class="n">log_artifact</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在上面的程式碼中我們可以看到mlflow提供了三種不同log的function，<code class="language-plaintext highlighter-rouge">log_param</code>用來記錄這次訓練模型時所使用的hyperparameters像是learning rate、batch size等等，而<code class="language-plaintext highlighter-rouge">log_metric</code>用來記錄訓練模型中會變動的資料，像是loss、accuracy等，最後<code class="language-plaintext highlighter-rouge">log_artifact</code>會把該路徑的檔案放進artifact中，主要是把這次訓練完成以後想要留存的檔案儲存下來，像是模型本身、前處理/後處理用到的字典檔等。</p>
+
+<p>有了這些function以後，我們就能在編寫程式的時候把這些function安插進來，之後就能在command line上面下<code class="language-plaintext highlighter-rouge">mlflow server</code>的指令來打開mlflow的UI來檢視訓練的成果，然而每次手動寫這些function有點麻煩，mlflow有另外提供了auto tracking的功能，只需要在程式碼裡面加個幾行，mlflow就會幫你自動紀錄這些參數和結果了。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""Trains and evaluate a simple MLP
+on the Reuters newswire topic classification task.
+"""</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+
+<span class="c1"># The following import and function call are the only additions to code required
+# to automatically log metrics and parameters to MLflow.
+</span><span class="kn">import</span> <span class="nn">mlflow.keras</span>
+
+<span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">autolog</span><span class="p">()</span>
+
+<span class="n">max_words</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">"Loading data..."</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/keras/train.py">mlflow/examples/keras/train.py</a></em></p>
+
+<p>在上面是一個用keras訓練模型的範例，在裡面我們只需要加入<code class="language-plaintext highlighter-rouge">import mlflow.keras</code>、<code class="language-plaintext highlighter-rouge">mlflow.keras.autolog()</code>這兩行就能讓mlflow幫我們紀錄參數了。</p>
+
+<p><img src="./mlflow_keras.png" alt="MLflow Keras" /></p>
+
+<h3 id="mlflow-projects">MLflow Projects</h3>
+
+<p>假如我們想要分享我們訓練模型所做的所有步驟，我們可以寫一個<code class="language-plaintext highlighter-rouge">MLproject</code>的檔案，來讓其他人可以簡單下一個指令<code class="language-plaintext highlighter-rouge">mlflow run .</code>就能重現模型訓練的結果。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">mnist-autolog-example</span>
+
+<span class="na">conda_env</span><span class="pi">:</span> <span class="s">conda.yaml</span>
+
+<span class="na">entry_points</span><span class="pi">:</span>
+  <span class="na">main</span><span class="pi">:</span>
+    <span class="na">parameters</span><span class="pi">:</span>
+      <span class="na">max_epochs</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">5</span><span class="pi">}</span>
+      <span class="na">gpus</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">0</span><span class="pi">}</span>
+      <span class="na">strategy</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s2">"</span><span class="s">None"</span><span class="pi">}</span>
+      <span class="na">batch_size</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">64</span><span class="pi">}</span>
+      <span class="na">num_workers</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">3</span><span class="pi">}</span>
+      <span class="na">learning_rate</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">float</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">0.001</span><span class="pi">}</span>
+      <span class="na">patience</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">3</span><span class="pi">}</span>
+      <span class="na">mode</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">min'</span><span class="pi">}</span>
+      <span class="na">verbose</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type bool</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">True</span><span class="pi">}</span>
+      <span class="na">monitor</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">val_loss'</span><span class="pi">}</span>
+
+    <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">python mnist_autolog_example.py \</span>
+            <span class="s">--max_epochs {max_epochs} \</span>
+            <span class="s">--gpus {gpus} \</span>
+            <span class="s">--strategy {strategy} \</span>
+            <span class="s">--batch_size {batch_size} \</span>
+            <span class="s">--num_workers {num_workers} \</span>
+            <span class="s">--lr {learning_rate} \</span>
+            <span class="s">--es_patience {patience} \</span>
+            <span class="s">--es_mode {mode} \</span>
+            <span class="s">--es_verbose {verbose} \</span>
+            <span class="s">--es_monitor {monitor}</span>
+</code></pre></div></div>
+
+<p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/pytorch/MNIST/MLproject">mlflow/examples/pytorch/MNIST/MLproject</a></em></p>
+
+<p>MLflow在讀取這個檔案的時候會先在conda裡面建立一個virtual environment，並按照<code class="language-plaintext highlighter-rouge">conda.yaml</code>的設定來去安裝package們，接下來會去執行entry_points裡面<code class="language-plaintext highlighter-rouge">main</code>的部分，如果說想要使用不同的參數試試看的話，可以使用<code class="language-plaintext highlighter-rouge">mlflow run . -P PARAM=VALUE</code>的方式來去替換掉預設值。</p>
+
+<p>如果在整個pipeline中還有其他資料處理或模型驗證的步驟，可以參考<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>要把整個pipeline包裝成可重複執行的程式碼還是需要蠻多工夫的，好在MLflow可以幫我們省去一些，而且其auto tracking的功能也很適合在做實驗的過程當中來使用。</p>
+
+<p>另外在實作的過程當中值得一提的是，如果想要在auto tracking當中另外手動存入其他artifact，需要把<code class="language-plaintext highlighter-rouge">log_artifact</code>這個function放在同一個run裡面</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="n">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
+    <span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">autolog</span><span class="p">()</span>
+    <span class="c1"># Training
+</span>    <span class="n">mlflow</span><span class="p">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s">"PATH_TO_ARTIFACT"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>而在pipeline處理的過程中，假如說我們有個entry point是處理資料、另一個entry point是訓練模型，我們應該會希望每次pipeline跑起來便去檢查資料是否已經處理好了，如果已經處理好就直接跑訓練模型的部分就好，我目前還沒有在MLflow看到比較好的看有沒有執行過某個entry point的方法，可能還是需要像前面<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例那樣，自己寫個<code class="language-plaintext highlighter-rouge">main.py</code>來去檢查。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li>
+    <p><a href="https://medium.com/ai-blog-tw/%E7%B5%A6ml-engineer%E7%9A%84mlops%E7%B0%A1%E8%BF%B0-%E6%8C%81%E7%BA%8C%E9%96%8B%E7%99%BC%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92service%E7%9A%84%E9%AB%98%E6%95%88%E7%90%86%E5%BF%B5-8bd552876299">給ML Engineer的MLOps簡述: 持續開發機器學習Service的高效理念</a></p>
+  </li>
+  <li>
+    <p><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></p>
+  </li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-05-29T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/">Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -859,10 +1022,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>
