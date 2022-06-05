@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>MLflow介紹 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Python logging介紹 - wjohn1483.github.io</title>
 
-<meta name="description" content="隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2022/05/29/mlflow-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇文章簡單介紹一下python logging這個package的使用方法。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2022/06/04/python-logging-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -289,189 +289,218 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>MLflow介紹</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Python logging介紹</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2022-05-29-mlflow-introduction/2022-05-29-mlflow-introduction.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="MLflow介紹"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2022-06-04-python-logging-introduction/2022-06-04-python-logging-introduction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Python logging介紹"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 29, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-05-29T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive/?tag=Python">Python</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jun 04, 2022</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-06-04T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool,Python"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。</p>
+<div class="article__content" itemprop="articleBody"><p>這篇文章簡單介紹一下python logging這個package的使用方法。</p>
 
 <!--more-->
 
-<h2 id="mlops">MLOps</h2>
+<p>在python裡面想要去debug你的程式除了使用<code class="language-plaintext highlighter-rouge">print()</code>直接把變數印出來以外，可以使用原生的<code class="language-plaintext highlighter-rouge">logging</code> package來去把log給印出來。</p>
 
-<p>在開始介紹MLflow之前先簡單介紹一下MLOps想要做的事情，MLOps可以說跟DevOps一樣是一種精神，主要是希望能讓Machine Learning跟Operations能夠合作的更融洽，這邊Machine Learning的部分包含了對資料清理、建立並訓練模型、驗證模型成效等等的事情，而Operations指的是把模型部署到系統裡面進行預測。</p>
+<h2 id="log的分類">Log的分類</h2>
 
-<p><img src="https://cloud.google.com/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-2-manual-ml.svg" alt="MLOps Manual Process" /></p>
-
-<p><em><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></em></p>
-
-<p>上圖是一個簡單的pipeline，左半邊ML的部分是一般machine learning的流程，包含了資料處理和建立模型的過程，而最終產生的模型會放進model registry裡面，Operations再從model registry裡面把模型拿出來做serving。</p>
-
-<p>這個pipeline簡單有效，但如果未來有新的資料進來或是模型的成效開始下降等可能會需要重新訓練的模型的情況發生的話，Operations就會需要再請ML的人幫忙訓練模型，為此另一個比較穩定的pipeline可以是如下圖。</p>
-
-<p><img src="https://cloud.google.com/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-3-ml-automation-ct.svg" alt="MLOps Pipeline Automation" /></p>
-
-<p><em><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></em></p>
-
-<p>在這個pipeline裡面，ML所交付的不再是一個模型，而是產生出這個模型的pipeline，包含了資料驗證、清理、建立模型、驗證模型等，而Operations會將這個pipeline部署到系統裡面自行去產生模型出來，如果說有新的資料或是有需要重新訓練模型的情況發生，Operations就能直接重跑這個pipeline來得到新的模型。</p>
-
-<p>然而要建立這種pipeline會需要花費蠻多工夫的，而MLflow可以幫助我們降低一些建立這種pipeline的困難。</p>
-
-<h2 id="mlflow">MLflow</h2>
-
-<p><a href="https://mlflow.org/">MLflow</a>是一個開源的平台，主要是應用在machine learning lifecycle當中，MLflow包含了四個部分</p>
+<p>在開始介紹logging怎麼使用之前，我們可以先來認識一下log有分成不同的等級，在<a href="https://docs.python.org/3/howto/logging.html#when-to-use-logging">python的文件</a>中有介紹什麼時候該使用哪種方法來顯示訊息，像是<code class="language-plaintext highlighter-rouge">print()</code>主要是用來顯示usage等一般用途，而<code class="language-plaintext highlighter-rouge">logging.warning()</code>是表示發現到有問題，但並不影響執行，詳細的介紹建議閱讀上面的文件，底下簡單介紹一下log的分級。</p>
 
 <ul>
   <li>
-    <p>Tracking：用以記錄在訓練模型是所使用的參數和訓練過程中的一些metrics</p>
+    <p>DEBUG：顯示詳細的訊息，主要是在追查問題的時候使用</p>
   </li>
   <li>
-    <p>Projects：讓使用者可以建立一套pipeline來讓其他人可以輕易地重現出模型</p>
+    <p>INFO：顯示確認的訊息，表示程式有正確地在執行</p>
   </li>
   <li>
-    <p>Models：把模型包裝起來，在裡面會紀錄讓模型運行所需要的環境和模型本身，讓其他人方便直接使用模型</p>
+    <p>WARNING：表示有些預料外的事情發生或預告可能的問題像是硬碟空間快不夠了，但程式仍可以繼續執行</p>
   </li>
   <li>
-    <p>Registry：存放模型並支援版本控制</p>
+    <p>ERROR：程式執行的過程當中碰到了一些問題，可能有些function不能被執行了</p>
+  </li>
+  <li>
+    <p>CRITICAL：程式碰到了更嚴重的問題，已經無法繼續執行</p>
   </li>
 </ul>
 
-<p>底下的文章將會簡述一下Tracking和Projects的部分。</p>
+<h2 id="簡單使用logging">簡單使用logging</h2>
 
-<h3 id="mlflow-tracking">MLflow Tracking</h3>
+<p>在<code class="language-plaintext highlighter-rouge">logging</code>裡面有根據上述不同等級的log有對應的function可以呼叫，可以看底下的例子</p>
 
-<p>我們先快速看一下底下的程式碼</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">mlflow</span> <span class="kn">import</span> <span class="n">log_metric</span><span class="p">,</span> <span class="n">log_param</span><span class="p">,</span> <span class="n">log_artifact</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在實際執行上面的程式碼以後我們可以得到下面的結果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING:root:Warning message
+ERROR:root:Error message
+CRITICAL:root:Critical message
+</code></pre></div></div>
+
+<p>在使用<code class="language-plaintext highlighter-rouge">logging</code>的function時，<code class="language-plaintext highlighter-rouge">logging</code>會去創建一個名叫<code class="language-plaintext highlighter-rouge">root</code>的logger，並把訊息透過這個logger來紀錄，而其預設的格式是<code class="language-plaintext highlighter-rouge">severity:logger name:message</code>，而且只會顯示WARNING以上的訊息，如果想要設定顯示哪種log的等級的話，可以在最前面呼叫<code class="language-plaintext highlighter-rouge">basicConcig()</code>來設定</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>此時得到的結果會是</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEBUG:root:Debug message
+INFO:root:Info message
+WARNING:root:Warning message
+ERROR:root:Error message
+CRITICAL:root:Critical message
+</code></pre></div></div>
+
+<p>這樣的作法在當程式碼裡面有引入多個module的時候也適用</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
+</span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">func</span><span class="p">()</span>
+
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="c1"># Log a parameter (key-value pair)
-</span>    <span class="n">log_param</span><span class="p">(</span><span class="s">"param1"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
-    <span class="n">log_param</span><span class="p">(</span><span class="s">"param2"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
-</span>    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
-</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"first file!"</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"second file!"</span><span class="p">)</span>
-    <span class="n">log_artifact</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">)</span>
-    <span class="n">log_artifact</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">main</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>在上面的程式碼中我們可以看到mlflow提供了三種不同log的function，<code class="language-plaintext highlighter-rouge">log_param</code>用來記錄這次訓練模型時所使用的hyperparameters像是learning rate、batch size等等，而<code class="language-plaintext highlighter-rouge">log_metric</code>用來記錄訓練模型中會變動的資料，像是loss、accuracy等，最後<code class="language-plaintext highlighter-rouge">log_artifact</code>會把該路徑的檔案放進artifact中，主要是把這次訓練完成以後想要留存的檔案儲存下來，像是模型本身、前處理/後處理用到的字典檔等。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib.py
+</span><span class="kn">import</span> <span class="nn">logging</span>
 
-<p>有了這些function以後，我們就能在編寫程式的時候把這些function安插進來，之後就能在command line上面下<code class="language-plaintext highlighter-rouge">mlflow server</code>的指令來打開mlflow的UI來檢視訓練的成果，然而每次手動寫這些function有點麻煩，mlflow有另外提供了auto tracking的功能，只需要在程式碼裡面加個幾行，mlflow就會幫你自動紀錄這些參數和結果了。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""Trains and evaluate a simple MLP
-on the Reuters newswire topic classification task.
-"""</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
-
-<span class="c1"># The following import and function call are the only additions to code required
-# to automatically log metrics and parameters to MLflow.
-</span><span class="kn">import</span> <span class="nn">mlflow.keras</span>
-
-<span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">autolog</span><span class="p">()</span>
-
-<span class="n">max_words</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s">"Loading data..."</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/keras/train.py">mlflow/examples/keras/train.py</a></em></p>
+<p>在上面我們寫了兩個python script，分別為<strong>main.py</strong>和<strong>lib.py</strong>，其中<strong>main.py</strong>會去呼叫定義在<strong>lib.py</strong>裡面的<code class="language-plaintext highlighter-rouge">func()</code>，這時如果去執行<strong>main.py</strong>的話會得到下面的結果</p>
 
-<p>在上面是一個用keras訓練模型的範例，在裡面我們只需要加入<code class="language-plaintext highlighter-rouge">import mlflow.keras</code>、<code class="language-plaintext highlighter-rouge">mlflow.keras.autolog()</code>這兩行就能讓mlflow幫我們紀錄參數了。</p>
-
-<p><img src="./mlflow_keras.png" alt="MLflow Keras" /></p>
-
-<h3 id="mlflow-projects">MLflow Projects</h3>
-
-<p>假如我們想要分享我們訓練模型所做的所有步驟，我們可以寫一個<code class="language-plaintext highlighter-rouge">MLproject</code>的檔案，來讓其他人可以簡單下一個指令<code class="language-plaintext highlighter-rouge">mlflow run .</code>就能重現模型訓練的結果。</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">mnist-autolog-example</span>
-
-<span class="na">conda_env</span><span class="pi">:</span> <span class="s">conda.yaml</span>
-
-<span class="na">entry_points</span><span class="pi">:</span>
-  <span class="na">main</span><span class="pi">:</span>
-    <span class="na">parameters</span><span class="pi">:</span>
-      <span class="na">max_epochs</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">5</span><span class="pi">}</span>
-      <span class="na">gpus</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">0</span><span class="pi">}</span>
-      <span class="na">strategy</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s2">"</span><span class="s">None"</span><span class="pi">}</span>
-      <span class="na">batch_size</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">64</span><span class="pi">}</span>
-      <span class="na">num_workers</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">3</span><span class="pi">}</span>
-      <span class="na">learning_rate</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">float</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">0.001</span><span class="pi">}</span>
-      <span class="na">patience</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">3</span><span class="pi">}</span>
-      <span class="na">mode</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">min'</span><span class="pi">}</span>
-      <span class="na">verbose</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type bool</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">True</span><span class="pi">}</span>
-      <span class="na">monitor</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">val_loss'</span><span class="pi">}</span>
-
-    <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">python mnist_autolog_example.py \</span>
-            <span class="s">--max_epochs {max_epochs} \</span>
-            <span class="s">--gpus {gpus} \</span>
-            <span class="s">--strategy {strategy} \</span>
-            <span class="s">--batch_size {batch_size} \</span>
-            <span class="s">--num_workers {num_workers} \</span>
-            <span class="s">--lr {learning_rate} \</span>
-            <span class="s">--es_patience {patience} \</span>
-            <span class="s">--es_mode {mode} \</span>
-            <span class="s">--es_verbose {verbose} \</span>
-            <span class="s">--es_monitor {monitor}</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INFO:root:info from main
+ERROR:root:error from main
+INFO:root:info from lib
+ERROR:root:error from lib
 </code></pre></div></div>
 
-<p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/pytorch/MNIST/MLproject">mlflow/examples/pytorch/MNIST/MLproject</a></em></p>
+<p>在<strong>lib.py</strong>裡面設定的訊息也一樣會被顯示出來，然而美中不足的是，如果我們沒有特意在log裡面留下跟檔案有關的訊息的話，就很難從log裡面看出這個是從哪裡產生出來的log了，底下會介紹python文件當中比較建議，為每個檔案建立logger的方法。</p>
 
-<p>MLflow在讀取這個檔案的時候會先在conda裡面建立一個virtual environment，並按照<code class="language-plaintext highlighter-rouge">conda.yaml</code>的設定來去安裝package們，接下來會去執行entry_points裡面<code class="language-plaintext highlighter-rouge">main</code>的部分，如果說想要使用不同的參數試試看的話，可以使用<code class="language-plaintext highlighter-rouge">mlflow run . -P PARAM=VALUE</code>的方式來去替換掉預設值。</p>
+<h2 id="使用複數logger">使用複數logger</h2>
 
-<p>如果在整個pipeline中還有其他資料處理或模型驗證的步驟，可以參考<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例。</p>
+<p>在上面我們碰到了無法辨別log是從哪個module產生出來的問題，而解決這個問題的<a href="https://docs.python.org/3/howto/logging.html#advanced-logging-tutorial">建議做法</a>是對每一個module都建立專屬於他們的logger，也就是使用<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>來建立logger以後，再用logger來紀錄我們的訊息。</p>
 
-<h2 id="結論">結論</h2>
+<p>這邊我們把上面例子中的<code class="language-plaintext highlighter-rouge">logging</code>都替換成<code class="language-plaintext highlighter-rouge">logger</code></p>
 
-<p>要把整個pipeline包裝成可重複執行的程式碼還是需要蠻多工夫的，好在MLflow可以幫我們省去一些，而且其auto tracking的功能也很適合在做實驗的過程當中來使用。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
+</span><span class="kn">import</span> <span class="nn">logging</span>
 
-<p>另外在實作的過程當中值得一提的是，如果想要在auto tracking當中另外手動存入其他artifact，需要把<code class="language-plaintext highlighter-rouge">log_artifact</code>這個function放在同一個run裡面</p>
+<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="n">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
-    <span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">autolog</span><span class="p">()</span>
-    <span class="c1"># Training
-</span>    <span class="n">mlflow</span><span class="p">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s">"PATH_TO_ARTIFACT"</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">main</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>而在pipeline處理的過程中，假如說我們有個entry point是處理資料、另一個entry point是訓練模型，我們應該會希望每次pipeline跑起來便去檢查資料是否已經處理好了，如果已經處理好就直接跑訓練模型的部分就好，我目前還沒有在MLflow看到比較好的看有沒有執行過某個entry point的方法，可能還是需要像前面<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例那樣，自己寫個<code class="language-plaintext highlighter-rouge">main.py</code>來去檢查。</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib.py
+</span><span class="kn">import</span> <span class="nn">logging</span>
 
-<h2 id="參考資料">參考資料</h2>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
-<ul>
-  <li>
-    <p><a href="https://medium.com/ai-blog-tw/%E7%B5%A6ml-engineer%E7%9A%84mlops%E7%B0%A1%E8%BF%B0-%E6%8C%81%E7%BA%8C%E9%96%8B%E7%99%BC%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92service%E7%9A%84%E9%AB%98%E6%95%88%E7%90%86%E5%BF%B5-8bd552876299">給ML Engineer的MLOps簡述: 持續開發機器學習Service的高效理念</a></p>
-  </li>
-  <li>
-    <p><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></p>
-  </li>
-</ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-05-29T00:00:00+00:00"><!-- start custom article footer snippet -->
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊我們將<code class="language-plaintext highlighter-rouge">__name__</code>傳入<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>當中，這時logging就會幫我們建立一個以<code class="language-plaintext highlighter-rouge">__name__</code>為名稱的logger，而<code class="language-plaintext highlighter-rouge">__name__</code>會在python裡面被代換成檔案名稱，這時再執行<strong>main.py</strong>就能得到以下的結果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INFO:__main__:info from main
+ERROR:__main__:error from main
+INFO:lib:info from lib
+ERROR:lib:error from lib
+</code></pre></div></div>
+
+<p>如此便能方便地知道這個log是從哪個module產生的了。</p>
+
+<h2 id="logger的階層">Logger的階層</h2>
+
+<p>在上面的例子裡面我們建立了兩個logger，分別是<code class="language-plaintext highlighter-rouge">__main__</code>和<code class="language-plaintext highlighter-rouge">lib</code>，這兩個logger不會各自將訊息直接印出來，而是將訊息傳到他們上層的logger，讓上層logger中的handler來決定log要怎麼被處理，在這個例子裡面它們會將log傳給<code class="language-plaintext highlighter-rouge">root</code>這個logger，再去看<code class="language-plaintext highlighter-rouge">root</code>裡面的handler的設定來去做處理，詳細的處理流程可以參考<a href="https://docs.python.org/3/howto/logging.html#logging-flow">文件</a></p>
+
+<p><img src="https://docs.python.org/3/_images/logging_flow.png" alt="Logging Flow" /></p>
+
+<p>雖然在程式碼裡面看起來我們沒有為root logger設定任何handler，但其實在我們呼叫<code class="language-plaintext highlighter-rouge">logging.basicConfig()</code>的時候它就會<a href="https://docs.python.org/dev/library/logging.html#logging.basicConfig">自動幫我們建立好</a>，如果想要自行設定的話也可以使用<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>，在其中不給任何的參數來拿到root logger，接著再透過<code class="language-plaintext highlighter-rouge">logger.addHandler()</code>來去新增handler。</p>
+
+<h2 id="logging-format">Logging Format</h2>
+
+<p>如果說我們想要自定義顯示出來的log的格式的話，可以在<code class="language-plaintext highlighter-rouge">logging.basicConfig()</code>的地方設定root logger中handler印出log的格式，因為底下的logger會把log往上傳給root logger，所以只需要在root logger中設定好，所有印出來的log都會是一樣的格式。</p>
+
+<p>假如我們在<strong>main.py</strong>裡面多加個參數</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">log_format</span><span class="o">=</span><span class="s">"%(asctime)s %(filename)s:%(lineno)d - %(message)s"</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">)</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>而<strong>lib.py</strong>維持不變，這時印出來的訊息就會變成</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2022-06-04 23:02:58,775 main.py:8 - info from main
+2022-06-04 23:02:58,775 main.py:9 - error from main
+2022-06-04 23:02:58,775 lib.py:6 - info from lib
+2022-06-04 23:02:58,775 lib.py:7 - error from lib
+</code></pre></div></div>
+
+<p>更多logging支援的attribute，可以看其<a href="https://docs.python.org/3/library/logging.html#logrecord-attributes">官方文件</a>。</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-06-04T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/">Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction</a></div><div class="next"><span>NEXT</span><a href="/2022/06/04/python-logging-introduction/">Python logging介紹</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2022/05/29/mlflow-introduction/">MLflow介紹</a></div></div></div>
 
 </div>
 

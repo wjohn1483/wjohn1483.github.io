@@ -1,4 +1,195 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-05-29T09:19:20+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">MLflow介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction/" rel="alternate" type="text/html" title="MLflow介紹" /><published>2022-05-29T00:00:00+00:00</published><updated>2022-05-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction/"><![CDATA[<p>隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-06-05T04:29:21+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Python logging介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction/" rel="alternate" type="text/html" title="Python logging介紹" /><published>2022-06-04T00:00:00+00:00</published><updated>2022-06-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction/"><![CDATA[<p>這篇文章簡單介紹一下python logging這個package的使用方法。</p>
+
+<!--more-->
+
+<p>在python裡面想要去debug你的程式除了使用<code class="language-plaintext highlighter-rouge">print()</code>直接把變數印出來以外，可以使用原生的<code class="language-plaintext highlighter-rouge">logging</code> package來去把log給印出來。</p>
+
+<h2 id="log的分類">Log的分類</h2>
+
+<p>在開始介紹logging怎麼使用之前，我們可以先來認識一下log有分成不同的等級，在<a href="https://docs.python.org/3/howto/logging.html#when-to-use-logging">python的文件</a>中有介紹什麼時候該使用哪種方法來顯示訊息，像是<code class="language-plaintext highlighter-rouge">print()</code>主要是用來顯示usage等一般用途，而<code class="language-plaintext highlighter-rouge">logging.warning()</code>是表示發現到有問題，但並不影響執行，詳細的介紹建議閱讀上面的文件，底下簡單介紹一下log的分級。</p>
+
+<ul>
+  <li>
+    <p>DEBUG：顯示詳細的訊息，主要是在追查問題的時候使用</p>
+  </li>
+  <li>
+    <p>INFO：顯示確認的訊息，表示程式有正確地在執行</p>
+  </li>
+  <li>
+    <p>WARNING：表示有些預料外的事情發生或預告可能的問題像是硬碟空間快不夠了，但程式仍可以繼續執行</p>
+  </li>
+  <li>
+    <p>ERROR：程式執行的過程當中碰到了一些問題，可能有些function不能被執行了</p>
+  </li>
+  <li>
+    <p>CRITICAL：程式碰到了更嚴重的問題，已經無法繼續執行</p>
+  </li>
+</ul>
+
+<h2 id="簡單使用logging">簡單使用logging</h2>
+
+<p>在<code class="language-plaintext highlighter-rouge">logging</code>裡面有根據上述不同等級的log有對應的function可以呼叫，可以看底下的例子</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在實際執行上面的程式碼以後我們可以得到下面的結果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING:root:Warning message
+ERROR:root:Error message
+CRITICAL:root:Critical message
+</code></pre></div></div>
+
+<p>在使用<code class="language-plaintext highlighter-rouge">logging</code>的function時，<code class="language-plaintext highlighter-rouge">logging</code>會去創建一個名叫<code class="language-plaintext highlighter-rouge">root</code>的logger，並把訊息透過這個logger來紀錄，而其預設的格式是<code class="language-plaintext highlighter-rouge">severity:logger name:message</code>，而且只會顯示WARNING以上的訊息，如果想要設定顯示哪種log的等級的話，可以在最前面呼叫<code class="language-plaintext highlighter-rouge">basicConcig()</code>來設定</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>此時得到的結果會是</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEBUG:root:Debug message
+INFO:root:Info message
+WARNING:root:Warning message
+ERROR:root:Error message
+CRITICAL:root:Critical message
+</code></pre></div></div>
+
+<p>這樣的作法在當程式碼裡面有引入多個module的時候也適用</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
+</span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib.py
+</span><span class="kn">import</span> <span class="nn">logging</span>
+
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在上面我們寫了兩個python script，分別為<strong>main.py</strong>和<strong>lib.py</strong>，其中<strong>main.py</strong>會去呼叫定義在<strong>lib.py</strong>裡面的<code class="language-plaintext highlighter-rouge">func()</code>，這時如果去執行<strong>main.py</strong>的話會得到下面的結果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INFO:root:info from main
+ERROR:root:error from main
+INFO:root:info from lib
+ERROR:root:error from lib
+</code></pre></div></div>
+
+<p>在<strong>lib.py</strong>裡面設定的訊息也一樣會被顯示出來，然而美中不足的是，如果我們沒有特意在log裡面留下跟檔案有關的訊息的話，就很難從log裡面看出這個是從哪裡產生出來的log了，底下會介紹python文件當中比較建議，為每個檔案建立logger的方法。</p>
+
+<h2 id="使用複數logger">使用複數logger</h2>
+
+<p>在上面我們碰到了無法辨別log是從哪個module產生出來的問題，而解決這個問題的<a href="https://docs.python.org/3/howto/logging.html#advanced-logging-tutorial">建議做法</a>是對每一個module都建立專屬於他們的logger，也就是使用<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>來建立logger以後，再用logger來紀錄我們的訊息。</p>
+
+<p>這邊我們把上面例子中的<code class="language-plaintext highlighter-rouge">logging</code>都替換成<code class="language-plaintext highlighter-rouge">logger</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
+</span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib.py
+</span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊我們將<code class="language-plaintext highlighter-rouge">__name__</code>傳入<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>當中，這時logging就會幫我們建立一個以<code class="language-plaintext highlighter-rouge">__name__</code>為名稱的logger，而<code class="language-plaintext highlighter-rouge">__name__</code>會在python裡面被代換成檔案名稱，這時再執行<strong>main.py</strong>就能得到以下的結果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INFO:__main__:info from main
+ERROR:__main__:error from main
+INFO:lib:info from lib
+ERROR:lib:error from lib
+</code></pre></div></div>
+
+<p>如此便能方便地知道這個log是從哪個module產生的了。</p>
+
+<h2 id="logger的階層">Logger的階層</h2>
+
+<p>在上面的例子裡面我們建立了兩個logger，分別是<code class="language-plaintext highlighter-rouge">__main__</code>和<code class="language-plaintext highlighter-rouge">lib</code>，這兩個logger不會各自將訊息直接印出來，而是將訊息傳到他們上層的logger，讓上層logger中的handler來決定log要怎麼被處理，在這個例子裡面它們會將log傳給<code class="language-plaintext highlighter-rouge">root</code>這個logger，再去看<code class="language-plaintext highlighter-rouge">root</code>裡面的handler的設定來去做處理，詳細的處理流程可以參考<a href="https://docs.python.org/3/howto/logging.html#logging-flow">文件</a></p>
+
+<p><img src="https://docs.python.org/3/_images/logging_flow.png" alt="Logging Flow" /></p>
+
+<p>雖然在程式碼裡面看起來我們沒有為root logger設定任何handler，但其實在我們呼叫<code class="language-plaintext highlighter-rouge">logging.basicConfig()</code>的時候它就會<a href="https://docs.python.org/dev/library/logging.html#logging.basicConfig">自動幫我們建立好</a>，如果想要自行設定的話也可以使用<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>，在其中不給任何的參數來拿到root logger，接著再透過<code class="language-plaintext highlighter-rouge">logger.addHandler()</code>來去新增handler。</p>
+
+<h2 id="logging-format">Logging Format</h2>
+
+<p>如果說我們想要自定義顯示出來的log的格式的話，可以在<code class="language-plaintext highlighter-rouge">logging.basicConfig()</code>的地方設定root logger中handler印出log的格式，因為底下的logger會把log往上傳給root logger，所以只需要在root logger中設定好，所有印出來的log都會是一樣的格式。</p>
+
+<p>假如我們在<strong>main.py</strong>裡面多加個參數</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+    <span class="n">log_format</span><span class="o">=</span><span class="s">"%(asctime)s %(filename)s:%(lineno)d - %(message)s"</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">)</span>
+    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>而<strong>lib.py</strong>維持不變，這時印出來的訊息就會變成</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2022-06-04 23:02:58,775 main.py:8 - info from main
+2022-06-04 23:02:58,775 main.py:9 - error from main
+2022-06-04 23:02:58,775 lib.py:6 - info from lib
+2022-06-04 23:02:58,775 lib.py:7 - error from lib
+</code></pre></div></div>
+
+<p>更多logging支援的attribute，可以看其<a href="https://docs.python.org/3/library/logging.html#logrecord-attributes">官方文件</a>。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Python" /><summary type="html"><![CDATA[這篇文章簡單介紹一下python logging這個package的使用方法。]]></summary></entry><entry><title type="html">MLflow介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction/" rel="alternate" type="text/html" title="MLflow介紹" /><published>2022-05-29T00:00:00+00:00</published><updated>2022-05-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction/"><![CDATA[<p>隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。</p>
 
 <!--more-->
 
@@ -994,152 +1185,4 @@ B([-, 讚, 啦, -])=[讚, 啦]\]
   <li><a href="https://www.researchgate.net/figure/Recurrent-neural-network-RNN-transducer-structure-38_fig3_335044103">Figure 4 - available via license: Creative Commons Attribution 4.0 International</a></li>
   <li><a href="https://arxiv.org/pdf/1511.04868.pdf">A Neural Transducer</a></li>
   <li><a href="https://arxiv.org/pdf/1712.05382.pdf">Monotonic Chunkwise Attention</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Speech-Recognition" /><summary type="html"><![CDATA[在先前的文章裡頭，介紹了在深度學習蓬勃發展之前，語音辨識大概是如何達成的，而這篇文章會簡單介紹一下，在加入了深度學習以後，語音辨識的技術有了什麼樣的更動。]]></summary></entry><entry><title type="html">語音辨識概觀</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/" rel="alternate" type="text/html" title="語音辨識概觀" /><published>2021-06-14T00:00:00+00:00</published><updated>2021-06-14T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/06/14/introduction-to-speech-recognition/"><![CDATA[<p>在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。</p>
-
-<!--more-->
-
-<h2 id="基礎介紹">基礎介紹</h2>
-
-<pre><code class="language-mermaid">graph LR;
-	waveform("Waveform (X)")
-	word("Word (Y)")
-	waveform--ASR System--&gt;word
-</code></pre>
-
-<p>語音辨識（Automatic Speech Recognition, ASR）所做的事情如上圖所示，將輸入的訊號轉換成文字，亦即是去尋找</p>
-
-\[\arg\max\limits_Y P(Y\vert X)\]
-
-<h3 id="輸入">輸入</h3>
-
-<p>關於ASR輸入的部分，在大多數的情況下，我們並不會直接將waveform當作輸入，而是會先對這個waveform做一些處理，最常見的做法是將waveform轉成MFCC sequence後再餵入ASR系統裡面。</p>
-
-<p><strong>Mel-frequency Cepstrum Coefficients (MFCC)</strong></p>
-
-<p>在一般的設定當中，語音訊號的採樣頻率是16k，也就是1秒會有16k個數值，而<a href="https://en.wikipedia.org/wiki/Mel-frequency_cepstrum">MFCC</a>會以25ms為一個window、每10ms為間隔去將25ms的音訊轉成39維的向量。概括來說MFCC做的事情是先將waveform過傅立葉轉換，再通過一群filter bank，最後從頻域轉回來，而這些filter bank是過去人們研究耳朵的構造所訂定出來的，專門為了辨識音訊所設計。</p>
-
-<p>MFCC具體上做的事情還蠻複雜的，好在現在可以直接使用<a href="https://github.com/kaldi-asr/kaldi">Kaldi</a>幫我們將音訊轉成MFCC，只要將音訊餵進去，它就可以幫忙將音訊轉成MFCC sequence，也就是一堆39維的向量組成的序列，接著就可以開始製作ASR系統了。</p>
-
-<p>值得一提的是，近期有蠻多研究會直接使用過完filter bank以後得到的輸出當作ASR系統的輸入，可以看需求來選擇不同的feature，在Kaldi裡面都有支援。</p>
-
-<h3 id="輸出">輸出</h3>
-
-<p>在ASR系統輸出的部分，我們最終想要輸出的是文字，但在語音辨識裡面，通常ASR系統輸出的並不會直接是文字，而是比文字再更小的單位，因為一個字通常是由很多音來組成的，像是注音符號就是一個比文字再更小的單位，底下介紹一下常用的輸出有什麼。</p>
-
-<p><strong>Phoneme</strong></p>
-
-<p>Phoneme是發音的最小單位，可以想像成是類似英文的音標，而這種輸出會需要有該語言的專業人士告訴我們每一個字所對應到的phoneme是什麼，好讓ASR系統在產生出phoneme以後，能藉由查表的方式轉換成文字。</p>
-
-<p><strong>Graphme</strong></p>
-
-<p>Graphme是書寫的最小單位，在英文的話會是英文字母，在中文的話會是每一個中文字，雖說中文字有上萬個，但實際上常用的中文字大概在3000-5000的量級。</p>
-
-<p><strong>Morpheme</strong></p>
-
-<p>Morpheme是比graphme再大一點的單位，可以說是英文的字根字首。</p>
-
-<p><code class="language-plaintext highlighter-rouge">unbelievable</code>→<code class="language-plaintext highlighter-rouge">un</code>、<code class="language-plaintext highlighter-rouge">believe</code>、<code class="language-plaintext highlighter-rouge">able</code></p>
-
-<h2 id="hybrid-asr">Hybrid ASR</h2>
-
-<p>接下來稍微講一下ASR系統該怎麼做，不過在做語音辨識之前，我們會要先去蒐集語音及其相對應的文字\(\mathcal{D}_l=\{(X_i, Y_i)\}^{N}_{i=1}\)，其中\(X=[x_1, ..., x_T]\in (\mathbb{R}^m)^*\)，\(x_t\)是一個\(m\)維的向量，可以想成是之前提到的MFCC，而\(Y=[y_1, ..., y_L] \in B^*\)，\(B\)代表的是文字的vocabulary，我們想要製作的ASR系統其實就是\(p_\theta(Y\vert X)\)，將音訊輸入進去以後，告訴我們文字出現的機率。</p>
-
-<p>這個章節想要提的hybrid ASR主要由三個部分組成：Language Model（LM）、Pronunciation Model（PM）、Acoustic Model（AM）。</p>
-
-<h3 id="language-model">Language Model</h3>
-
-<p>Language model做的事情是判斷這個文字序列\(Y\)出現的機率有多少，有點像是鍵盤輸入法的校正，隨著輸入的文字越來越長，去找最適當的文字該要是什麼，寫成數學式如下。</p>
-
-\[p_{LM}(Y)=\prod^L_{i=1}p(y_i\vert y_1, ..., y_{i-1})\]
-
-<h3 id="pronunciation-model">Pronunciation Model</h3>
-
-<p>Pronunciation model其實就是前面所提到的，文字跟phoneme的對應表，又稱為lexicon。每一個\(Y\)，都可以根據這個表對應成phoneme sequence。</p>
-
-\[P=[p_1, ..., p_M]=f_{PM}(Y)\in O^*\]
-
-<p>其中\(f_{PM}(Y)\)代表mapping function，\(O\)表示phoneme inventory，也就是所有的phoneme有哪些。</p>
-
-<h3 id="acoustic-model">Acoustic Model</h3>
-
-<p>Acoustic model做的事情是去決定phoneme sequence產生出\(X\)的機率，亦即\(p_{AM}(X\vert P)\)，而phoneme sequence當中的每一個phoneme \(p\)都有可能產生出不定長度的feature \(x\)，我們並不知道\(X=[x_1, ..., x_T]\)當中的哪些\(x_t\)是由哪個\(p_t\)產生的，為此，我們對於每一個phoneme都用一個<a href="https://en.wikipedia.org/wiki/Hidden_Markov_model#Applications">Hidden Markov Model（HMM）</a>來model。</p>
-
-<p>可以想成是說，我們創造了另一個比phoneme更小的單位，HMM的<code class="language-plaintext highlighter-rouge">state</code>，來代表一個phoneme，可能一個phoneme 是由3個state組成\(p_1=[a_1, a_2, a_3]\)，當\(X=[a_1, a_1, a_2, a_2, a_2, a_3]\)，我們就有機會可以說\(X\)是由phoneme \(p_1\)產生出來的，因此原先的phoneme sequence \(P\)，可以以HMM state來改寫成\(A=[a_1, ..., a_T]\)，這邊\(A\)的長度與\(X\)的長度一致，所以\(A\)又被稱之為alignment。</p>
-
-\[\begin{aligned} 
-p_{AM}(X,A\vert P) &amp; =p_{emit}(X\vert A)p_{tran}(A\vert P) \\
-&amp; =\prod\limits_t p_{emit}(x_t\vert a_t)p_{tran}(a_t\vert a_{t-1}; P)
-\end{aligned}\]
-
-<p>有了alignment以後，我們可以根據這些state來算出joint probability，上面的\(p_{tran}\)表示的是HMM當中的transition probability，而\(p_{emit}\)表示emission probability，亦即這個state產生出這個feature的機率，通常使用<a href="https://scikit-learn.org/stable/modules/mixture.html">Gaussian Mixture Model（GMM）</a>來model。</p>
-
-<p>而實際上我們想要知道的\(p_{AM}(X\vert P)\)就是將所有有可能的\(A\)都加起來</p>
-
-\[\begin{aligned}
-p_{AM}(X\vert P) &amp; =\sum_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
-&amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P)
-\end{aligned}\]
-
-<p>雖然在算式裡面有很多的\(\sum\)和\(\prod\)還有窮舉，其實在做計算的時候會使用<a href="https://en.wikipedia.org/wiki/Forward%E2%80%93backward_algorithm">forward-backward algorithm</a>和<a href="https://en.wikipedia.org/wiki/Viterbi_algorithm">Viterbi algorithm</a>這些類似dynamic programming的方式來有效率的計算。</p>
-
-<h3 id="組合hybrid-asr">組合Hybrid ASR</h3>
-
-<p>前面介紹了hybrid ASR當中重要的三個部分：LM、PM、AM，而它們三個組合起來的方式如下</p>
-
-\[\begin{aligned}
-p_\theta(X,Y) &amp; = p_{AM}(X\vert f_{PM}(Y))p_{LM}(Y) \\
-&amp; = \sum_Ap_{emit}(X\vert A)p_{tran}(A\vert f_{PM}(Y))p_{LM}(Y) \\
-&amp; \approx \max_Ap_{emit}(X\vert A) p_{tran}(A\vert f_{PM}(Y))p_{LM}(Y)
-\end{aligned}\]
-
-<p>雖說它們存在於同一個數學式當中，但實際上LM和AM通常是會被分開訓練的，它們有各自的objective function。</p>
-
-\[p^*_{LM}=\arg\max\limits_{p_{LM}}\sum\limits^{N}\limits_{i=1}\log p_{LM}(Y_i)\]
-
-\[p^*_{AM}=\arg\max\limits_{p_{AM}}\sum\limits^N\limits_{i=1}\log p_{AM}(X_i\vert f_{PM}(Y_i))\]
-
-<p>在知道怎麼計算joint probability \(p_\theta(X,Y)\)以後，我們想要求得的\(\arg \max\limits_Y p_\theta(Y\vert X)\)就是去尋找最大的joint probability \(p_\theta(X,Y)\)。</p>
-
-\[\begin{aligned}
-\arg\max\limits_Yp_\theta(Y\vert X) &amp; = \arg\max\limits_Y\frac{p_\theta(X,Y)}{p(X)} \\
-&amp; \approx \arg\max\limits_Yp_\theta(X,Y)
-\end{aligned}\]
-
-<p>其中\(p(X)\)是語音\(X\)出現的機率，假設每一段語音出現的機率都均等的話，我們可以忽略不看。</p>
-
-<p>實際上在操作的時候，我們會將HMM emission probability、transition probability、lexicon和language model共同組成<a href="https://en.wikipedia.org/wiki/Finite-state_transducer">Weighted Finite State Transducers（WFST）</a>，並從中去尋找最佳路徑，與此同時還會引入一個\(\alpha\)來去調配acoustic model和language model的平衡。</p>
-
-\[p_{\theta,\alpha}(X,Y)\propto p_{AM}(X\vert f_{PM}(Y))p_{LM}(Y)^\alpha\]
-
-<p>而這個\(\alpha\)是在development set \(\{(\tilde X_i,\tilde Y_i)\}^{\tilde N}_{i=1}\)最小化edit distance得到的。</p>
-
-\[\alpha=\arg\min\limits_\alpha\sum\limits_{i=1}\limits^{\tilde N}ED\left ( \tilde Y_i,\arg\max\limits_Y \left (\log p_{AM}(\tilde X\vert f_{PM}(Y))+ \alpha*\log p_{LM}(Y)\right ) \right )\]
-
-<p>所以最終語音辨識出來的文字會是</p>
-
-\[Y^*=\arg\max\limits_Yp_{\theta,\alpha}(X,Y)\]
-
-<h3 id="在hybrid-asr裡面使用dnn">在Hybrid ASR裡面使用DNN</h3>
-
-<p>隨著neural network的興起，語音辨識也逐漸引入deep learning來幫助辨識，在這個hybrid ASR系統裡面，我們也可以使用DNN來幫助我們提高辨識率。</p>
-
-<p>在acoustic model裡面，我們想要算的是\(p_{AM}(X\vert P)\)，在前面的推導當中，我們得到</p>
-
-\[p_{AM}(X\vert P)\approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P)\]
-
-<p>其中再去細鑽下去的話</p>
-
-\[\begin{aligned}
-p_{AM}(X\vert P) &amp; \approx \max_A p_{emit}(X\vert A)p_{tran}(A\vert P) \\
-&amp; = \max\limits_A\prod\limits^T\limits_{t=1}p_{emit}(x_t\vert a_t)p_{tran}(a_t\vert a_{t-1}; P) \\
-&amp; = \max\limits_A\prod\limits^T\limits_{t=1}\frac{p(a_t\vert x_t)p(x_t)}{p(a_t)}p_{tran}(a_t\vert a_{t-1}; P)
-\end{aligned}\]
-
-<p>其中\(p_{tran}(a_t\vert a_{t-1}; P)\)一樣是由HMM來，\(p(a_t)\)可以從HMM裡面統計出來\(p(a_t)=\frac{a_t出現的次數}{所有state出現的次數}\)，而\(p(a_t\vert x_t)\)就可以用DNN來做訓練。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li><a href="https://www.youtube.com/watch?v=AIKu43goh-8">[DLHLP 2020] Speech Recognition (1/7) - Overview</a></li>
-  <li><a href="https://arxiv.org/abs/2105.11084">Unsupervised Speech Recognition</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Speech-Recognition" /><summary type="html"><![CDATA[在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Speech-Recognition" /><summary type="html"><![CDATA[在先前的文章裡頭，介紹了在深度學習蓬勃發展之前，語音辨識大概是如何達成的，而這篇文章會簡單介紹一下，在加入了深度學習以後，語音辨識的技術有了什麼樣的更動。]]></summary></entry></feed>
