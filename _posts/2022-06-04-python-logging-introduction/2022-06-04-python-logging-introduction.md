@@ -205,3 +205,83 @@ if __name__ == "__main__":
 ```
 
 更多logging支援的attribute，可以看其[官方文件](https://docs.python.org/3/library/logging.html#logrecord-attributes)。
+
+### 在log中加入顏色
+
+如果想在terminal裡面讓不同等級的log有不同顏色的話，可以參考從[這裡](https://stackoverflow.com/questions/384076/how-can-i-color-python-logging-output)改編而來的方法，寫一個**log.py**
+
+```python
+# log.py
+import logging
+
+
+class CustomFormatter(logging.Formatter):
+    grey = "\x1b[38;20m"
+    cyan = "\x1b[36;20m"
+    light_green = "\x1b[32;20m"
+    yellow = "\x1b[33;20m"
+    red = "\x1b[31;20m"
+    bold_red = "\x1b[31;1m"
+    reset = "\x1b[0m"
+    log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)"
+
+    FORMATS = {
+        logging.DEBUG: light_green + log_format + reset,
+        logging.INFO: cyan + log_format + reset,
+        logging.WARNING: yellow + log_format + reset,
+        logging.ERROR: red + log_format + reset,
+        logging.CRITICAL: bold_red + log_format + reset
+    }
+
+    def format(self, record):
+        log_fmt = self.FORMATS.get(record.levelno)
+        formatter = logging.Formatter(log_fmt)
+        return formatter.format(record)
+
+
+root_logger = logging.getLogger()
+root_handler = logging.StreamHandler()
+root_handler.setFormatter(CustomFormatter())
+root_logger.addHandler(root_handler)
+```
+
+在上面的程式碼裡面我們自訂了一個formatter，並根據不同等級的log加入不同顏色的前綴和後綴，而且在底下也設定了root logger的handler，要使用的時候我們在新的程式碼裡面簡單import它並設定level就可以了
+
+```python
+# main.py
+import logging
+
+import log
+from lib import func
+
+logger = logging.getLogger(__name__)
+
+def main():
+    logger.debug("debug message")
+    logger.info("info message")
+    logger.warning("warning message")
+    logger.error("error message")
+    logger.critical("critical message")
+    func()
+
+
+if __name__ == "__main__":
+    logging.getLogger().setLevel(logging.DEBUG)
+    main()
+```
+
+跑出來的log就能有顏色了
+
+![Colorful Log](./colorful_log.png)
+
+不過要小心的是，如果把log寫成檔案的話，這些顏色前綴和後綴都會被寫進檔案裡面，建議視情況來使用
+
+```bash
+[32;20m2022-06-09 18:20:41,750 - __main__ - DEBUG - debug message (main.py:11)[0m
+[36;20m2022-06-09 18:20:41,750 - __main__ - INFO - info message (main.py:12)[0m
+[33;20m2022-06-09 18:20:41,750 - __main__ - WARNING - warning message (main.py:13)[0m
+[31;20m2022-06-09 18:20:41,750 - __main__ - ERROR - error message (main.py:14)[0m
+[31;1m2022-06-09 18:20:41,750 - __main__ - CRITICAL - critical message (main.py:15)[0m
+[36;20m2022-06-09 18:20:41,750 - lib - INFO - info from lib (lib.py:8)[0m
+[31;20m2022-06-09 18:20:41,750 - lib - ERROR - error from lib (lib.py:9)[0m
+```
