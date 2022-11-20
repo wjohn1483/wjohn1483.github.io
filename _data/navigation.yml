@@ -41,3 +41,9 @@ header:
       en      : &EN       Give Feedback
       # @end locale config
     url: /give_feedback
+
+  - titles:
+      # @start locale config
+      en      : &EN       About
+      # @end locale config
+    url: /about
