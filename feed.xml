@@ -1,4 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-11-20T12:38:45+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Tensorflow JS介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection/" rel="alternate" type="text/html" title="Tensorflow JS介紹" /><published>2022-11-19T00:00:00+00:00</published><updated>2022-11-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection/"><![CDATA[<p>隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-11-24T13:51:04+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">自己建立Overleaf伺服器</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf/" rel="alternate" type="text/html" title="自己建立Overleaf伺服器" /><published>2022-11-24T00:00:00+00:00</published><updated>2022-11-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf/"><![CDATA[<p>在過去寫paper的時候通常都是使用<a href="https://www.overleaf.com/">overleaf</a>來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。</p>
+
+<!--more-->
+
+<h2 id="overleaf介紹">Overleaf介紹</h2>
+
+<p>Overleaf是一個線上latex的共同編輯器，提供了一個平台可以讓大家在上面共同編輯latex的文件，與此同時也支援實時編譯和瀏覽結果，適合個人或者團隊在製作paper、投影片或正式文件的時候使用。</p>
+
+<p>在<a href="https://www.overleaf.com/">overleaf</a>裡面除了有上述功能以外，還額外整合了git來做版本控制，也能直接在語句中留言，而開源版本的overleaf只有比較基本的共同編輯和實時編譯的功能。</p>
+
+<h2 id="建置overleaf伺服器">建置Overleaf伺服器</h2>
+
+<p>詳細的說明可以參考<a href="https://github.com/overleaf/overleaf">開源版本overleaf的GitHub</a>。</p>
+
+<h3 id="設置overleaf">設置Overleaf</h3>
+
+<p>在建立伺服器之前，我們需要先對它進行一些設定，像是要使用哪個port和IP，底下的指令會把overleaf相關的程式碼下載下來，並產生一些預設的設定檔。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/overleaf/toolkit.git ./overleaf-toolkit
+<span class="nb">cd</span> ./overleaf-toolkit
+./bin/init
+</code></pre></div></div>
+
+<p>執行完上面的指令以後，會在當前的目錄下建立<code class="language-plaintext highlighter-rouge">./config/</code>的資料夾，其中我們比較需要常去修改的是<strong>./config/overleaf.rc</strong>，在裡面就能去調整伺服器的IP和port了。預設的IP是<code class="language-plaintext highlighter-rouge">127.0.0.1</code>，如果想要讓別人可以存取的話，記得把設定改成<code class="language-plaintext highlighter-rouge">SHARELATEX_LISTEN_IP=0.0.0.0</code>或是其他想要的IP。</p>
+
+<h3 id="透過docker建立伺服器">透過Docker建立伺服器</h3>
+
+<p>在檔案裡面把參數設定好以後，我們就能開始建立伺服器了。overleaf有提供docker image讓大家直接使用，但會需要先安裝docker和docker-compose，docker-compose可以直接透過pip來安裝。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>docker-compose
+</code></pre></div></div>
+
+<p>接著就能執行底下的指令把伺服器起起來了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/up
+</code></pre></div></div>
+
+<p>如果想要把伺服器停掉，可以直接用<code class="language-plaintext highlighter-rouge">Ctrl+C</code>停掉，而停掉後想要繼續的話可以用start的指令。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/start
+</code></pre></div></div>
+
+<h3 id="建立admin帳號">建立Admin帳號</h3>
+
+<p>伺服器起來以後需要先建立一個admin帳號，方便之後把其他人加進來一同協作，建立admin的方法是使用瀏覽器直接連線到<a href="http://localhost/launchpad">http://localhost/launchpad</a>，照著提示輸入email和密碼就行了，記得要將網址裡面的<code class="language-plaintext highlighter-rouge">localhost</code>改成你設定的IP和port。</p>
+
+<h2 id="開始使用overleaf">開始使用Overleaf</h2>
+
+<p>把伺服器開起來並有了admin帳號以後，就能開始使用overleaf來編寫簡單的latex文件了，但如果要在latex裡使用一些<code class="language-plaintext highlighter-rouge">\usepackage{}</code>的時候會發現這些package沒有被安裝，原因是因為overleaf提供的docker image只包含了最基本的套件而已，目的是不想要docker image太大以減少下載image需要的時間，如果想要用<code class="language-plaintext highlighter-rouge">\usepackage{}</code>的話，我們可以自己更新textlive。</p>
+
+<h3 id="更新textlive">更新textlive</h3>
+
+<p>詳細的說明可以參考<a href="https://github.com/overleaf/toolkit/blob/master/doc/ce-upgrading-texlive.md">這邊的文件</a>。</p>
+
+<p>首先，我們需要先連進overleaf的container中</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/shell
+</code></pre></div></div>
+
+<p>接著就能透過<code class="language-plaintext highlighter-rouge">tlmgr</code>來安裝想要的套件了，<code class="language-plaintext highlighter-rouge">tlmgr</code>的使用方式可以下<code class="language-plaintext highlighter-rouge">tlmgr help</code>來看說明文件</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The following command is executed in the container</span>
+<span class="c"># tlmgr install PACKAGE_YOU_WANT_TO_USE</span>
+tlmgr <span class="nb">install </span>tikzlings tikzmarmots tikzducks
+</code></pre></div></div>
+
+<p>如果說不想要一個一個把需要的套件安裝進去，想一次安裝全部的話，可以使用底下的指令</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The following command is executed in the container</span>
+tlmgr <span class="nb">install </span>scheme-full
+</code></pre></div></div>
+
+<p>在安裝完套件以後，理論上就能在伺服器上使用豐富的package了，但這些package在下次重新建立container的時候會消失，如果我們想要保留這個有豐富套件的container，我們可以透過<code class="language-plaintext highlighter-rouge">docker commit</code>的方式來保存。</p>
+
+<p>首先，我們先透過<code class="language-plaintext highlighter-rouge">exit</code>或<code class="language-plaintext highlighter-rouge">Ctrl+D</code>來離開container，接著下底下的指令來儲存一個commit</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker commit sharelatex sharelatex/sharelatex:with-texlive-full
+</code></pre></div></div>
+
+<p>然後在<code class="language-plaintext highlighter-rouge">./config/</code>底下建立一個<strong>docker-compose.override.yml</strong>的檔案，在其中貼上底下的內容</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2.2'</span>
+<span class="na">services</span><span class="pi">:</span>
+    <span class="na">sharelatex</span><span class="pi">:</span>
+        <span class="na">image</span><span class="pi">:</span> <span class="s">sharelatex/sharelatex:with-texlive-full</span>
+</code></pre></div></div>
+
+<p>最後再執行底下的指令來重新建立container。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/stop <span class="o">&amp;&amp;</span> bin/docker-compose <span class="nb">rm</span> <span class="nt">-f</span> sharelatex <span class="o">&amp;&amp;</span> bin/up
+</code></pre></div></div>
+
+<h3 id="開帳號與共享">開帳號與共享</h3>
+
+<p>在開完admin帳號並創立好project以後，我們就可以直接透過瀏覽器去幫其他人開帳號並分享project給他們，開帳號的方式是點畫面右上角<code class="language-plaintext highlighter-rouge">Admin</code>底下的<code class="language-plaintext highlighter-rouge">Manage Users</code></p>
+
+<p><img src="./manage_users.png" alt="Manage users" /></p>
+
+<p>在下一個畫面中打上對方的email按下<code class="language-plaintext highlighter-rouge">Register</code>後，就能產生啟動連結</p>
+
+<p><img src="./register_new_users.png" alt="Register new users" /></p>
+
+<p>記得把啟動連結裡面的<code class="language-plaintext highlighter-rouge">localhost</code>替換成前面設定的IP和port以後傳給對方，對方就能透過連結自行設定密碼來建立帳號。</p>
+
+<p>在project內選擇分享並打上對方的email，對方就能在project列表裡面看到邀請通知，點開就能共同編輯同一個project了。如果是新建立的使用者，會需要先創建一個空白的project以後才能跳轉到project列表中。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在過去寫paper的時候通常都是使用overleaf來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。]]></summary></entry><entry><title type="html">Tensorflow JS介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection/" rel="alternate" type="text/html" title="Tensorflow JS介紹" /><published>2022-11-19T00:00:00+00:00</published><updated>2022-11-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection/"><![CDATA[<p>隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。</p>
 
 <!--more-->
 
@@ -1078,74 +1183,4 @@ airflow db init
   <li><a href="https://deepsense.ai/region-of-interest-pooling-explained/">Region of interest pooling explained</a></li>
   <li><a href="https://chih-sheng-huang821.medium.com/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-you-only-look-once-yolo-4fb9cf49453c">深度學習-物件偵測:You Only Look Once (YOLO)</a></li>
   <li><a href="https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-non-maximum-suppression-nms-aa70c45adffa">機器/深度學習: 物件偵測 Non-Maximum Suppression (NMS)</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Computer-Vision" /><category term="Object-Detection" /><summary type="html"><![CDATA[簡單整理一下目前有關object detection的一些研究。]]></summary></entry><entry><title type="html">在遠端的job執行完成時發送通知</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/remote-job-finish-notification/" rel="alternate" type="text/html" title="在遠端的job執行完成時發送通知" /><published>2021-07-25T00:00:00+00:00</published><updated>2021-07-25T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/remote-job-finish-notification</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/remote-job-finish-notification/"><![CDATA[<p>這邊記錄一個方法來當server上的job跑完時，可以在MacBook上面跳出一個通知。</p>
-
-<!--more-->
-
-<h2 id="方法簡介">方法簡介</h2>
-
-<p>使用的方法是透過在SSH連線至遠端server的時候，順便做port forwarding，把自己電腦的port 22接上遠端server，如此便可以讓遠端server透過SSH連線回電腦上使用command line跳出通知。</p>
-
-<h2 id="在macbook上面允許ssh連線">在MacBook上面允許SSH連線</h2>
-
-<p>首先，我們必須要讓MacBook可以接受SSH離線，只需要在<code class="language-plaintext highlighter-rouge">設定→共享</code>裡面打開SSH連線的設定就可以了，在<a href="https://support.apple.com/zh-tw/guide/mac-help/mchlp1066/mac">Apple官方的使用手冊</a>上有詳細的說明。</p>
-
-<h2 id="forward-local-port">Forward Local Port</h2>
-
-<p>在SSH連線到遠端server的時候，可以多加<code class="language-plaintext highlighter-rouge">-R</code>這個option，便可以把本機的port接到遠端server上。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-R</span> 2000:localhost:22 &lt;username&gt;@&lt;<span class="nb">hostname</span><span class="o">&gt;</span>
-</code></pre></div></div>
-
-<p>在上面的指令當中，便是將遠端server的port 2000跟本機的port 22做連結。</p>
-
-<h2 id="從server連回本機">從Server連回本機</h2>
-
-<p>在連上server以後，可以先試著將底下的<code class="language-plaintext highlighter-rouge">username</code>換成本機的使用者名稱測試看看能不能連回來。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-p</span> 2000 &lt;username&gt;@localhost
-</code></pre></div></div>
-
-<p>如果能順利連回來的話，接下來便是把public key放到本機裡面，以避免每次連線都要打密碼，詳細的流程看底下的步驟，主要是參考<a href="https://help.dreamhost.com/hc/en-us/articles/216499537-How-to-configure-passwordless-login-in-Mac-OS-X-and-Linux">這篇文章</a>。</p>
-
-<ol>
-  <li>
-    <p>在server上使用底下的指令創造key</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ssh-keygen
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>把創建出來，帶有<code class="language-plaintext highlighter-rouge">.pub</code>副檔名的檔案裡面所有的內容複製進本機的<strong>~/.ssh/authorized_keys</strong>這份檔案中，如果這個檔案原本不存在，可以直接用文字編輯器建立</p>
-  </li>
-  <li>
-    <p>在server上透過key來連線至本機</p>
-
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ssh <span class="nt">-i</span> &lt;path to private key&gt; <span class="nt">-p</span> &lt;port&gt; &lt;username&gt;@localhost
-</code></pre></div>    </div>
-
-    <p>預設private key的路徑會是<strong>~/.ssh/id_rsa</strong>。</p>
-  </li>
-</ol>
-
-<h2 id="傳送notification">傳送Notification</h2>
-
-<p>在能順利從server連回本機以後，就可以透過command line來傳送notification了，底下的指令是使用MacBook原生的指令來產生notification，其他argument可以參考<a href="https://code-maven.com/display-notification-from-the-mac-command-line">這篇文章</a>。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>osascript <span class="nt">-e</span> <span class="s1">'display notification "" with title "Job Finished!" subtitle ""'</span>
-</code></pre></div></div>
-
-<p>在通知跳出來以後，可以對著通知按右鍵對通知做設定。</p>
-
-<h2 id="總結">總結</h2>
-
-<p>上面使用了一個簡單的方式來讓server控制本機發送通知，可以將連線、發送通知寫成腳本，並在server完成job時呼叫這個腳本來提醒你job已經跑完了。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Your <span class="nb">command</span><span class="o">]</span> <span class="o">||</span> send_notification.sh
-</code></pre></div></div>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li><a href="https://serverfault.com/questions/175798/ssh-back-to-the-local-machine-from-a-remote-ssh-session">SSH back to the local machine from a remote SSH session</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這邊記錄一個方法來當server上的job跑完時，可以在MacBook上面跳出一個通知。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Computer-Vision" /><category term="Object-Detection" /><summary type="html"><![CDATA[簡單整理一下目前有關object detection的一些研究。]]></summary></entry></feed>
