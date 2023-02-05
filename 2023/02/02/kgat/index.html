@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>KGAT: Knowledge Graph Attention Network for Recommendation - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2023/02/02/kgat/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -265,7 +265,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -278,19 +278,22 @@
 	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
 </svg>
 <a title="" href="/">wjohn1483.github.io</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item navigation__item--active"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li class="navigation__item"><a href="/give_feedback">Give Feedback</a></li><li class="navigation__item"><a href="/about">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li class="navigation__item"><a href="/give_feedback">Give Feedback</a></li><li class="navigation__item"><a href="/about">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/02/kgat/"><h2 itemprop="headline" class="item__header">KGAT: Knowledge Graph Attention Network for Recommendation</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。</div><p><a href="/2023/02/02/kgat/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>KGAT: Knowledge Graph Attention Network for Recommendation</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2023-02-02-kgat/2023-02-02-kgat.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="KGAT: Knowledge Graph Attention Network for Recommendation"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Graph-Model">Graph-Model</a>
             </li><li>
@@ -301,99 +304,177 @@
                 href="/archive/?tag=Machine-Learning">Machine-Learning</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 02, 2023</span>
             </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Graph-Model,Recommendation-System,Machine-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/24/overleaf/"><h2 itemprop="headline" class="item__header">自己建立Overleaf伺服器</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在過去寫paper的時候通常都是使用overleaf來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。</div><p><a href="/2022/11/24/overleaf/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 24, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-11-24T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/19/tensorflow-js-pose-detection/"><h2 itemprop="headline" class="item__header">Tensorflow JS介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。</div><p><a href="/2022/11/19/tensorflow-js-pose-detection/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Computer-Vision">Computer-Vision</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 19, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-11-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool,Computer-Vision"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/06/04/python-logging-introduction/"><h2 itemprop="headline" class="item__header">Python logging介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章簡單介紹一下python logging這個package的使用方法。</div><p><a href="/2022/06/04/python-logging-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Python">Python</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jun 04, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-06-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool,Python"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/05/29/mlflow-introduction/"><h2 itemprop="headline" class="item__header">MLflow介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。</div><p><a href="/2022/05/29/mlflow-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 29, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-05-29T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/"><h2 itemprop="headline" class="item__header">Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">簡單記錄一下看完這篇paper的筆記。</div><p><a href="/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Graph-Model">Graph-Model</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 14, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-05-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Graph-Model"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/05/02/superset-introduction/"><h2 itemprop="headline" class="item__header">Superset介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章簡單記錄一下如何安裝superset並從Google Sheets和CSV當中匯入資料做成dashboard。</div><p><a href="/2022/05/02/superset-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 02, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-05-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/02/26/airflow-introduction/"><h2 itemprop="headline" class="item__header">Airflow介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下嘗試使用Airflow的經歷。</div><p><a href="/2022/02/26/airflow-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 26, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-02-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>38 post articles, 5 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
-            <i class="fas fa-angle-left"></i>
-          </div></li><li>
-              <div class="button button--primary button--circle focus"><span>1</span></div>
-            </li><li>
-                <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-              </li><li>
-                <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-              </li><li>
-                <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-              </li><li>
-                <a class="button button--secondary button--circle" href="/page5"><span>5</span></a>
-              </li><li><a class="button button--secondary button--circle" href="/page2">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+    <meta itemprop="keywords" content="Graph-Model,Recommendation-System,Machine-Learning"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>這篇文章紀錄一下看了<a href="https://arxiv.org/pdf/1905.07854.pdf">KGAT: Knowledge Graph Attention Network for Recommendation</a>的筆記。</p>
+
+<!--more-->
+
+<p>在過去的推薦系統當中，蠻常使用collaborative filtering（CF）來產生推薦，藉由觀察使用者和商品的互動行為，來找出目標使用者跟哪些現有的使用者相似，用現有使用者有互動過的商品來推薦給目標使用者。</p>
+
+<p>然而，在collaborative filtering當中，比較少著墨於使用者本身的特性以及商品之間的關聯，主要只使用使用者對商品的行為來當作輸入，而這篇paper嘗試引入了knowledge graph進來，藉此補足collaborative filtering不足的部分。</p>
+
+<h2 id="task-formulation">Task Formulation</h2>
+
+<p>這邊先介紹一下在這篇paper裡面所使用到的graph，主要是由兩個bipartite組成。</p>
+
+<p><img src="./collaborative_knowledge_graph.png" alt="Collaborative knowledge graph" /></p>
+
+<p>上半部的Users、Items是collaborative filtering的部分，由user和item組成，其中兩者的關係$r_1$是指user看過item的意思，舉例來說user $u_1$看過item $i_1$，就會在上圖有個$u_1$的node，並有一個箭頭$r_1$指向item $i_1$的node。</p>
+
+<p>下半部的Items、Entities是knowledge graph的部分，每一個$e_n$表示的是item的特性，而item和entity之間可能有很多的關係像是電影種類、導演、演員等。</p>
+
+<p>作者將這個由兩個bipartite組成的graph稱之為<strong>Collaborative Knowledge Graph</strong>，可以簡單想成是我們把$u_1$看過$i_1$做成$(u_1, r_1, i_1)$這樣的triplet也放進knowledge graph裡面。</p>
+
+<h2 id="method">Method</h2>
+
+<p>上面的部分主要是模型輸入的部分，而下圖是整個模型的架構圖。</p>
+
+<p><img src="./model_overview.png" alt="Model overview" /></p>
+
+<h3 id="embedding-layer">Embedding Layer</h3>
+
+<p>在這邊我們會給每一個user、item、entity和relation一個embedding，不過因為我們已經轉換成了knowledge graph的形式，成為了$(head, relation, tail)$的triplet們，所以在底下便會用$\mathbf{e}_h, \mathbf{e}_t \in \mathbb{R}^d$來代表head和tail的embedding，用$\mathbf{e}_r\in\mathbb{R}^k$來代表relation的embedding。</p>
+
+<p>在knowledge graph裡面我們會需要一個來衡量這個triplet目前學得怎麼樣的分數，而這篇paper的定義如下</p>
+
+\[g(h, r, t)=\left \| \mathbf{W}_r\mathbf{e}_h+\mathbf{e}_r-\mathbf{W}_r\mathbf{e}_t\right \|_2^2\]
+
+<p>在上面的$\mathbf{W}_r\in\mathbb{R}^{k\times d}$是一個transformation matrix，幫忙把head和tail的embedding轉換到relation的空間，並直接用head和relation向量相加的位置跟tail的位置差異來為triplet打分數，一個越小的$g(h, r, t)$是越好的。</p>
+
+<p>而要訓練的loss function便是希望有存在在graph裡面的triplet的$g(h, r, t)$要比隨機抽樣的tail $t’$的$g(h, r, t’)$還要來得小。</p>
+
+\[\mathcal{L}_{KG}=\sum\limits_{(h, r, t, t') \in \tau}-\ln\sigma\left( g(h, r, t')-g(h, r, t) \right)\\ \tau=\{ (h, r, t, t')|(h, r, t)\in\mathcal{G}, (h, r, t')\notin\mathcal{G}\}\]
+
+<p>上面算式中的$\sigma$是sigmoid function。</p>
+
+<h3 id="attentive-embedding-propagation-layers">Attentive Embedding Propagation Layers</h3>
+
+<h4 id="information-propagation">Information Propagation</h4>
+
+<p>在這篇paper裡面，embedding除了被上面knowledge graph的gradient更新以外，這裡還會根據鄰居的embedding來影響本身的embedding。</p>
+
+<p>假如現在有一個entity $h$，它的鄰居就是與$h$相鄰的所有node，而我們把這些鄰居按照重要性weighted sum成一個單一的embedding $\mathbf{e}_{\mathcal{N}_h}$。</p>
+
+\[\mathbf{e}_{\mathcal{N}_h}=\sum\limits_{(h, r, t)\in\mathcal{N}_h}\pi(h,r,t)\mathbf{e}_t\\ \mathcal{N}_h = \{(h, r, t) \vert (h, r, t) \in \mathcal{G} \}\]
+
+<h4 id="knowledge-aware-attention">Knowledge-aware Attention</h4>
+
+<p>在式$(3)$裡面的$\pi(h,r,t)$所定義每個鄰居的重要程度是由底下的式子定義出來的</p>
+
+\[\pi(h,r,t)=(\mathbf{W}_r\mathbf{e}_t)^\top\tanh\left((\mathbf{W}_r\mathbf{e}_h+\mathbf{e}_r)\right)\]
+
+<p>在這邊我們把entity和它的鄰居透過transformation matrix轉換到relation的空間以後，透過dot product來算出跟entity $h$的相關性來表示鄰居的重要程度，接著再做normalize。</p>
+
+\[\pi(h, r, t)=\frac{\exp(\pi(h,r,t))}{\sum_{(h,r',t')\in\mathcal{N}_h}\exp(\pi(h,r',t'))}\]
+
+<h4 id="information-aggregation">Information Aggregation</h4>
+
+<p>在有了鄰居的embedding $\mathbf{e}_{\mathcal{N}_h}$以後，這篇paper提出了三種function來更新原本的entity embedding $\mathbf{e}_h$。</p>
+
+<ul>
+  <li>GCN Aggregator</li>
+</ul>
+
+\[f_{GCN}=\mathrm{LeakyReLU}\left( \mathbf{W}(\mathbf{e}_h+\mathbf{e}_{\mathcal{N}_h}) \right)\]
+
+<ul>
+  <li>GraphSage Aggregator</li>
+</ul>
+
+\[f_{GraphSage}=\mathrm{LeakyReLU}\left( \mathbf{W}(\mathbf{e}_h\|\mathbf{e}_{\mathcal{N}_h})\right)\]
+
+<ul>
+  <li>Bi-Interaction Aggregator</li>
+</ul>
+
+\[f_{Bi-Interaction}=\mathrm{LeakyReLU}\left(\mathbf{W}_1(\mathbf{e}_h+\mathbf{e}_{\mathcal{N}_h})\right)+\mathrm{LeakyReLU}\left(\mathbf{W}_2(\mathbf{e}_h\odot\mathbf{e}_{\mathcal{N}_h})\right)\]
+
+<p>上面的$\mathbf{W}_1,\mathbf{W}_2\in\mathbb{R}^{d’\times d}$是可被訓練的參數，而$\odot$是element-wise product。</p>
+
+<h4 id="high-order-propagation">High-order Propagation</h4>
+
+<p>在上面我們定義了如何把entity $h$的鄰居的資訊整合起來變成一個embedding，也定義了一些function來更新entity $h$的embedding，而這樣的步驟可以重複很多次來得到多個embedding表示距離從近到遠的資訊總和，這邊假設我們重複$l$次，每次entity $h$的embedding為</p>
+
+\[\mathbf{e}^{(l)}_h=f\left(\mathbf{e}^{(l-1)}_h,\mathbf{e}^{(l-1)}_{\mathcal{N}_h}\right)\]
+
+<p>而鄰居的embedding為</p>
+
+\[\mathbf{e}^{(l-1)}_{\mathcal{N}_h}=\sum\limits_{(h,r,t)\in\mathcal{N}_h}\pi(h,r,t)\mathbf{e}^{(l-1)}_t\]
+
+<h3 id="model-prediction">Model Prediction</h3>
+
+<p>在經過了$l$次的擴散，也就是$L$層layer（每個step在information aggregation都可以有不同的weights）以後，每個user $u$會有$L$個embedding ${\mathbf{e}^{(1)}_u,…,\mathbf{e}^{(L)}_u}$，每個item $i$也會有$L$個embedding ${\mathbf{e}^{(1)}_i,…,\mathbf{e}^{(L)}_i}$，我們把這些embedding都concatenate起來當做是最終user和item的embedding。</p>
+
+\[\mathbf{e}^*_u=\mathbf{e}^{(0)}_u\|...\|\mathbf{e}^{(L)}_u,\mathbf{e}^*_i=\mathbf{e}^{(0)}_i\|...\|\mathbf{e}^{(L)}_i\]
+
+<p>而整個推薦系統的推薦便是以user和item embedding內積的結果大小來排序</p>
+
+\[\hat y(u,i)=\mathbf{e}^{*\top}_u\mathbf{e}^*_i\]
+
+<h3 id="optimization">Optimization</h3>
+
+<p>在loss function的部分除了式$(2)$ knowledge graph的loss $\mathcal{L}_{KG}$以外，我們還需要把使用者跟商品互動的部分，也就是collaborative filter的loss放進去</p>
+
+\[\mathcal{L}_{CF}=\sum\limits_{(u,i,j)\in\mathcal{O}}-\ln\sigma\left(\hat y(u,i)-\hat y(u,j)\right)\\ \mathcal{O}=\{(u,i,j)\vert(u,i)\in\mathcal{R}^+,(u,j)\in\mathcal{R}^- \}\]
+
+<p>式$(13)$裡面的$\mathcal{O}$指的是training data，整個式子的意思是有實際互動過的使用者和商品的組合的分數要比沒有實際互動過的組合要來得高。</p>
+
+<p>整個模型的loss function合起來的樣子如下</p>
+
+\[\mathcal{L}_{KGAT}=\mathcal{L}_{KG}+\mathcal{L}_{CF}+\lambda\|\Theta\|^2_2\\ \Theta=\{\mathbf{E},\mathbf{W}_r,\forall l\in\mathcal{R},\mathbf{W}^{(l)}_1,\mathbf{W}^{(l)}_2,\forall l\in\{1,...,L\}\}\]
+
+<p>其中$\Theta$是整個模型的參數，最後一項是一個$L_2$的regularization。</p>
+
+<h2 id="experiments">Experiments</h2>
+
+<p>作者將這個模型套用在三個dataset上，其相關的統計數值如下。</p>
+
+<p><img src="./dataset.png" alt="Dataset statistics" /></p>
+
+<p>模型跑出來的結果如下</p>
+
+<p><img src="./performance.png" alt="Performance" /></p>
+
+<p>可以看到KGAT在各個dataset上面都有不錯的表現。</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>這篇paper在collaborative filter上又多加了knowledge graph的資訊在裡面，在各個dataset上看獲得了不錯的結果，在paper上面也有附上實作的<a href="https://github.com/xiangwang1223/knowledge_graph_attention_network">程式碼</a>讓大家試試看。</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-02-02T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2022/11/24/overleaf/">自己建立Overleaf伺服器</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -916,10 +997,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>

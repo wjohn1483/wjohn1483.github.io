@@ -1,4 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2022-11-24T13:51:04+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">自己建立Overleaf伺服器</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf/" rel="alternate" type="text/html" title="自己建立Overleaf伺服器" /><published>2022-11-24T00:00:00+00:00</published><updated>2022-11-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf/"><![CDATA[<p>在過去寫paper的時候通常都是使用<a href="https://www.overleaf.com/">overleaf</a>來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-02-05T12:04:53+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">KGAT: Knowledge Graph Attention Network for Recommendation</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat/" rel="alternate" type="text/html" title="KGAT: Knowledge Graph Attention Network for Recommendation" /><published>2023-02-02T00:00:00+00:00</published><updated>2023-02-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat/"><![CDATA[<p>這篇文章紀錄一下看了<a href="https://arxiv.org/pdf/1905.07854.pdf">KGAT: Knowledge Graph Attention Network for Recommendation</a>的筆記。</p>
+
+<!--more-->
+
+<p>在過去的推薦系統當中，蠻常使用collaborative filtering（CF）來產生推薦，藉由觀察使用者和商品的互動行為，來找出目標使用者跟哪些現有的使用者相似，用現有使用者有互動過的商品來推薦給目標使用者。</p>
+
+<p>然而，在collaborative filtering當中，比較少著墨於使用者本身的特性以及商品之間的關聯，主要只使用使用者對商品的行為來當作輸入，而這篇paper嘗試引入了knowledge graph進來，藉此補足collaborative filtering不足的部分。</p>
+
+<h2 id="task-formulation">Task Formulation</h2>
+
+<p>這邊先介紹一下在這篇paper裡面所使用到的graph，主要是由兩個bipartite組成。</p>
+
+<p><img src="./collaborative_knowledge_graph.png" alt="Collaborative knowledge graph" /></p>
+
+<p>上半部的Users、Items是collaborative filtering的部分，由user和item組成，其中兩者的關係$r_1$是指user看過item的意思，舉例來說user $u_1$看過item $i_1$，就會在上圖有個$u_1$的node，並有一個箭頭$r_1$指向item $i_1$的node。</p>
+
+<p>下半部的Items、Entities是knowledge graph的部分，每一個$e_n$表示的是item的特性，而item和entity之間可能有很多的關係像是電影種類、導演、演員等。</p>
+
+<p>作者將這個由兩個bipartite組成的graph稱之為<strong>Collaborative Knowledge Graph</strong>，可以簡單想成是我們把$u_1$看過$i_1$做成$(u_1, r_1, i_1)$這樣的triplet也放進knowledge graph裡面。</p>
+
+<h2 id="method">Method</h2>
+
+<p>上面的部分主要是模型輸入的部分，而下圖是整個模型的架構圖。</p>
+
+<p><img src="./model_overview.png" alt="Model overview" /></p>
+
+<h3 id="embedding-layer">Embedding Layer</h3>
+
+<p>在這邊我們會給每一個user、item、entity和relation一個embedding，不過因為我們已經轉換成了knowledge graph的形式，成為了$(head, relation, tail)$的triplet們，所以在底下便會用$\mathbf{e}_h, \mathbf{e}_t \in \mathbb{R}^d$來代表head和tail的embedding，用$\mathbf{e}_r\in\mathbb{R}^k$來代表relation的embedding。</p>
+
+<p>在knowledge graph裡面我們會需要一個來衡量這個triplet目前學得怎麼樣的分數，而這篇paper的定義如下</p>
+
+\[g(h, r, t)=\left \| \mathbf{W}_r\mathbf{e}_h+\mathbf{e}_r-\mathbf{W}_r\mathbf{e}_t\right \|_2^2\]
+
+<p>在上面的$\mathbf{W}_r\in\mathbb{R}^{k\times d}$是一個transformation matrix，幫忙把head和tail的embedding轉換到relation的空間，並直接用head和relation向量相加的位置跟tail的位置差異來為triplet打分數，一個越小的$g(h, r, t)$是越好的。</p>
+
+<p>而要訓練的loss function便是希望有存在在graph裡面的triplet的$g(h, r, t)$要比隨機抽樣的tail $t’$的$g(h, r, t’)$還要來得小。</p>
+
+\[\mathcal{L}_{KG}=\sum\limits_{(h, r, t, t') \in \tau}-\ln\sigma\left( g(h, r, t')-g(h, r, t) \right)\\ \tau=\{ (h, r, t, t')|(h, r, t)\in\mathcal{G}, (h, r, t')\notin\mathcal{G}\}\]
+
+<p>上面算式中的$\sigma$是sigmoid function。</p>
+
+<h3 id="attentive-embedding-propagation-layers">Attentive Embedding Propagation Layers</h3>
+
+<h4 id="information-propagation">Information Propagation</h4>
+
+<p>在這篇paper裡面，embedding除了被上面knowledge graph的gradient更新以外，這裡還會根據鄰居的embedding來影響本身的embedding。</p>
+
+<p>假如現在有一個entity $h$，它的鄰居就是與$h$相鄰的所有node，而我們把這些鄰居按照重要性weighted sum成一個單一的embedding $\mathbf{e}_{\mathcal{N}_h}$。</p>
+
+\[\mathbf{e}_{\mathcal{N}_h}=\sum\limits_{(h, r, t)\in\mathcal{N}_h}\pi(h,r,t)\mathbf{e}_t\\ \mathcal{N}_h = \{(h, r, t) \vert (h, r, t) \in \mathcal{G} \}\]
+
+<h4 id="knowledge-aware-attention">Knowledge-aware Attention</h4>
+
+<p>在式$(3)$裡面的$\pi(h,r,t)$所定義每個鄰居的重要程度是由底下的式子定義出來的</p>
+
+\[\pi(h,r,t)=(\mathbf{W}_r\mathbf{e}_t)^\top\tanh\left((\mathbf{W}_r\mathbf{e}_h+\mathbf{e}_r)\right)\]
+
+<p>在這邊我們把entity和它的鄰居透過transformation matrix轉換到relation的空間以後，透過dot product來算出跟entity $h$的相關性來表示鄰居的重要程度，接著再做normalize。</p>
+
+\[\pi(h, r, t)=\frac{\exp(\pi(h,r,t))}{\sum_{(h,r',t')\in\mathcal{N}_h}\exp(\pi(h,r',t'))}\]
+
+<h4 id="information-aggregation">Information Aggregation</h4>
+
+<p>在有了鄰居的embedding $\mathbf{e}_{\mathcal{N}_h}$以後，這篇paper提出了三種function來更新原本的entity embedding $\mathbf{e}_h$。</p>
+
+<ul>
+  <li>GCN Aggregator</li>
+</ul>
+
+\[f_{GCN}=\mathrm{LeakyReLU}\left( \mathbf{W}(\mathbf{e}_h+\mathbf{e}_{\mathcal{N}_h}) \right)\]
+
+<ul>
+  <li>GraphSage Aggregator</li>
+</ul>
+
+\[f_{GraphSage}=\mathrm{LeakyReLU}\left( \mathbf{W}(\mathbf{e}_h\|\mathbf{e}_{\mathcal{N}_h})\right)\]
+
+<ul>
+  <li>Bi-Interaction Aggregator</li>
+</ul>
+
+\[f_{Bi-Interaction}=\mathrm{LeakyReLU}\left(\mathbf{W}_1(\mathbf{e}_h+\mathbf{e}_{\mathcal{N}_h})\right)+\mathrm{LeakyReLU}\left(\mathbf{W}_2(\mathbf{e}_h\odot\mathbf{e}_{\mathcal{N}_h})\right)\]
+
+<p>上面的$\mathbf{W}_1,\mathbf{W}_2\in\mathbb{R}^{d’\times d}$是可被訓練的參數，而$\odot$是element-wise product。</p>
+
+<h4 id="high-order-propagation">High-order Propagation</h4>
+
+<p>在上面我們定義了如何把entity $h$的鄰居的資訊整合起來變成一個embedding，也定義了一些function來更新entity $h$的embedding，而這樣的步驟可以重複很多次來得到多個embedding表示距離從近到遠的資訊總和，這邊假設我們重複$l$次，每次entity $h$的embedding為</p>
+
+\[\mathbf{e}^{(l)}_h=f\left(\mathbf{e}^{(l-1)}_h,\mathbf{e}^{(l-1)}_{\mathcal{N}_h}\right)\]
+
+<p>而鄰居的embedding為</p>
+
+\[\mathbf{e}^{(l-1)}_{\mathcal{N}_h}=\sum\limits_{(h,r,t)\in\mathcal{N}_h}\pi(h,r,t)\mathbf{e}^{(l-1)}_t\]
+
+<h3 id="model-prediction">Model Prediction</h3>
+
+<p>在經過了$l$次的擴散，也就是$L$層layer（每個step在information aggregation都可以有不同的weights）以後，每個user $u$會有$L$個embedding ${\mathbf{e}^{(1)}_u,…,\mathbf{e}^{(L)}_u}$，每個item $i$也會有$L$個embedding ${\mathbf{e}^{(1)}_i,…,\mathbf{e}^{(L)}_i}$，我們把這些embedding都concatenate起來當做是最終user和item的embedding。</p>
+
+\[\mathbf{e}^*_u=\mathbf{e}^{(0)}_u\|...\|\mathbf{e}^{(L)}_u,\mathbf{e}^*_i=\mathbf{e}^{(0)}_i\|...\|\mathbf{e}^{(L)}_i\]
+
+<p>而整個推薦系統的推薦便是以user和item embedding內積的結果大小來排序</p>
+
+\[\hat y(u,i)=\mathbf{e}^{*\top}_u\mathbf{e}^*_i\]
+
+<h3 id="optimization">Optimization</h3>
+
+<p>在loss function的部分除了式$(2)$ knowledge graph的loss $\mathcal{L}_{KG}$以外，我們還需要把使用者跟商品互動的部分，也就是collaborative filter的loss放進去</p>
+
+\[\mathcal{L}_{CF}=\sum\limits_{(u,i,j)\in\mathcal{O}}-\ln\sigma\left(\hat y(u,i)-\hat y(u,j)\right)\\ \mathcal{O}=\{(u,i,j)\vert(u,i)\in\mathcal{R}^+,(u,j)\in\mathcal{R}^- \}\]
+
+<p>式$(13)$裡面的$\mathcal{O}$指的是training data，整個式子的意思是有實際互動過的使用者和商品的組合的分數要比沒有實際互動過的組合要來得高。</p>
+
+<p>整個模型的loss function合起來的樣子如下</p>
+
+\[\mathcal{L}_{KGAT}=\mathcal{L}_{KG}+\mathcal{L}_{CF}+\lambda\|\Theta\|^2_2\\ \Theta=\{\mathbf{E},\mathbf{W}_r,\forall l\in\mathcal{R},\mathbf{W}^{(l)}_1,\mathbf{W}^{(l)}_2,\forall l\in\{1,...,L\}\}\]
+
+<p>其中$\Theta$是整個模型的參數，最後一項是一個$L_2$的regularization。</p>
+
+<h2 id="experiments">Experiments</h2>
+
+<p>作者將這個模型套用在三個dataset上，其相關的統計數值如下。</p>
+
+<p><img src="./dataset.png" alt="Dataset statistics" /></p>
+
+<p>模型跑出來的結果如下</p>
+
+<p><img src="./performance.png" alt="Performance" /></p>
+
+<p>可以看到KGAT在各個dataset上面都有不錯的表現。</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>這篇paper在collaborative filter上又多加了knowledge graph的資訊在裡面，在各個dataset上看獲得了不錯的結果，在paper上面也有附上實作的<a href="https://github.com/xiangwang1223/knowledge_graph_attention_network">程式碼</a>讓大家試試看。</p>]]></content><author><name>Your Name</name></author><category term="Graph-Model" /><category term="Recommendation-System" /><category term="Machine-Learning" /><summary type="html"><![CDATA[這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。]]></summary></entry><entry><title type="html">自己建立Overleaf伺服器</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf/" rel="alternate" type="text/html" title="自己建立Overleaf伺服器" /><published>2022-11-24T00:00:00+00:00</published><updated>2022-11-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf/"><![CDATA[<p>在過去寫paper的時候通常都是使用<a href="https://www.overleaf.com/">overleaf</a>來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。</p>
 
 <!--more-->
 
@@ -1075,112 +1209,4 @@ airflow db init
 
 <ol>
   <li><a href="http://www.fabwrite.com/productquantization">实例理解product quantization算法</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Paper" /><category term="Speech-Recognition" /><summary type="html"><![CDATA[簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的paper。]]></summary></entry><entry><title type="html">Object Detection概論</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection/" rel="alternate" type="text/html" title="Object Detection概論" /><published>2021-07-25T00:00:00+00:00</published><updated>2021-07-25T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/07/25/object-detection/"><![CDATA[<p>簡單整理一下目前有關object detection的一些研究。</p>
-
-<!--more-->
-
-<h2 id="暴力做object-detection">暴力做Object Detection</h2>
-
-<p>隨著深度學習的興起，現在已經有各式各樣的model可以幫助我們做image classification，辨識出圖片裡面的是什麼東西。如果想要直接用這些model做物件偵測，一個簡單暴力的方式是，用不同大小的方框掃過整張圖片，把每一個方框的圖片都丟進去model裡面做物件分類來達到物件偵測的效果。</p>
-
-<h2 id="region-with-cnnr-cnn">Region with CNN（R-CNN）</h2>
-
-<p>在前面提到我們可以用不同的方框掃過整張圖片來做物件偵測，但這樣的效率明顯不高，而且很吃計算量，這邊要介紹的<a href="https://arxiv.org/pdf/1311.2524.pdf">R-CNN</a>便是透過Selective Search來選取可能有東西的區域，再拿去model裡面分類，其大致上的流程如下：</p>
-
-<ol>
-  <li>產生大約2000個可能有東西的區域（Region Proposals）</li>
-  <li>透過預先訓練好的模型像是AlexNet、Inception等抽取圖片特徵</li>
-  <li>將特徵透過SVM來去分辨裡面有沒有含有特定物體</li>
-</ol>
-
-<p><img src="./rcnn_architecture.png" alt="R-CNN Architecture" /></p>
-
-<h3 id="selective-search">Selective Search</h3>
-
-<p><a href="https://ivi.fnwi.uva.nl/isis/publications/2013/UijlingsIJCV2013/UijlingsIJCV2013.pdf">Selective search</a>是以<a href="http://cs.brown.edu/people/pfelzens/papers/seg-ijcv.pdf">Graph Based Segmentation</a>的結果為基礎，使用階層群聚演算法來得到要輸入進model的region proposal，Graph Based Segmentation在Open CV裡面有支援，使用的方式可以參考<a href="https://blog.gtwang.org/programming/opencv-graph-based-segmentation-tutorial/">這篇部落格</a>。</p>
-
-<p>階層群聚演算法會從Graph Based Segmentation的結果裡面，每次挑選出兩個最相近的區塊做合併，而相似度的計算包含了顏色、紋理、大小等等的因素，綜合起來來判斷兩個區塊的相似度，詳細的介紹可以參考<a href="https://blog.gtwang.org/programming/selective-search-for-object-detection/">這篇部落格</a>，具體演算法的流程可以參考下圖。</p>
-
-<p><img src="./selective_search_algorithm.png" alt="Selective Search Algorithm" /></p>
-
-<h3 id="bounding-box-regression">Bounding-box Regression</h3>
-
-<p>R-CNN除了使用selective search找到有可能的region proposal以外，有另外透過bounding-box regression來調整selective search框出來的bounding box。</p>
-
-<p>對於每一個bounding box，我們可以透過\((x, y, w, h)\)​來表示，這四個數值分別代表這個bounding box中心點座標和長寬，而bounding-box regression是想要透過一個平移加縮放的mapping function \(f()\)​來把selective search得到的bounding box \((P_x, P_y, P_w, P_y)\)透過轉換以後可以越接近label好的bounding box \((G_x, G_y, G_w, G_h)\)​越好。</p>
-
-\[f(P_x, P_y, P_w, P_y)=(\hat{G}_x, \hat{G}_y, \hat{G}_w, \hat{G}_h)\approx(G_x, G_y, G_w, G_h)\]
-
-<p>透過將\(f()\)​弄成regression task，之後便可以透過gradient descent來訓練\(f()\)​，更詳細的說明可以參考<a href="https://blog.csdn.net/zijin0802034/article/details/77685438">這篇文章</a>。</p>
-
-<h2 id="fast-r-cnn">Fast R-CNN</h2>
-
-<p>在上面的R-CNN裡面，每一個region proposal都會被丟進預先訓練好的模型來抽取圖片特徵，然而很多時候region proposal之間會有重疊的部分，其實並不需要重新再算一遍，因此在<a href="https://arxiv.org/pdf/1504.08083.pdf">Fast R-CNN</a>裡面想要直接把region proposal對應到feature map中，來避免掉不必要的計算。</p>
-
-<p><img src="./fast_rcnn_architecture.png" alt="Fast R-CNN Architecture" /></p>
-
-<p>Fast R-CNN跟R-CNN一樣，會先需要先選好region proposal，在把圖片經過CNN得到feature map的時候，也會將選好的region proposal也投影到跟feature map一樣的大小，直接對該區塊內的feature map做max pooling後得到固定大小的feature，最後透過fully connected layers來得到region裡面物體的類別，以及對bounding box做回歸，這個方法被稱作Region of Interest Pooling（RoI Pooling）。</p>
-
-<p><img src="https://deepsense.ai/wp-content/uploads/2017/02/roi_pooling-1.gif" alt="RoI Pooling" /></p>
-
-<p><em><a href="https://deepsense.ai/region-of-interest-pooling-explained/">Region of interest pooling explained</a></em></p>
-
-<h2 id="faster-r-cnn">Faster R-CNN</h2>
-
-<p>在Fast R-CNN裡面還是會需要跑selective search來得到region proposal，而<a href="https://arxiv.org/pdf/1506.01497.pdf">Faster R-CNN</a>的想法是想要直接在CNN的feature map裡面透過Region Proposal Network來直接得到region proposal。</p>
-
-<p>Region Proposal Network是一個CNN，它會先用個sliding window去掃過整張圖片，在每個window的中心點去套用\(k\)​​個預先定義好、不同大小的anchor box，將anchor box框出來的feature map輸入進CNN以後，predict出含有物體的機率，以及實際bounding box的座標。</p>
-
-<p><img src="./region_proposal_network.png" alt="Region Proposal Network" /></p>
-
-<p>其整體的架構畫出來大概長底下這樣，中間的區塊是Faster R-CNN提出來的RPN，而右邊的是原本Fast R-CNN既有的部分。</p>
-
-<p><img src="./faster_rcnn_graph.png" alt="Faster R-CNN Graph" /></p>
-
-<p><em><a href="https://blog.csdn.net/jiongnima/article/details/79094159">实例分割模型Mask R-CNN详解：从R-CNN，Fast R-CNN，Faster R-CNN再到Mask R-CNN</a></em></p>
-
-<h2 id="mask-r-cnn">Mask R-CNN</h2>
-
-<p><a href="https://arxiv.org/pdf/1703.06870.pdf">Mask R-CNN</a>在Faster R-CNN的基礎上，修改了RoI Pooling，調整成RoI Align，並多加入Mask prediction。</p>
-
-<p><img src="./mask_rcnn_graph.png" alt="Mask R-CNN Graph" /></p>
-
-<p><em><a href="https://blog.csdn.net/jiongnima/article/details/79094159">实例分割模型Mask R-CNN详解：从R-CNN，Fast R-CNN，Faster R-CNN再到Mask R-CNN</a></em></p>
-
-<h3 id="roi-align">RoI Align</h3>
-
-<p>在原本RoI Pooling的使用情境下，會需要在把region proposal投影到feature map的維度時把座標取整數，在計算max pooling的時候也需要對區塊的範圍取整數，雖然說在feature map上面取整數去除掉的零頭看起來不大，但feature map實際上是圖片經過了很多CNN，濃縮過的feature，去除掉的零頭在原本圖片上的影響其實是比想像中大的。</p>
-
-<p>因此在Mask R-CNN裡面使用bilinear interpolation來避免掉取整數的問題，下圖中的藍色方框是CNN輸出的feature map，而黑色方框是RoI，藉由interpolation的方式來計算出要輸入至後面的feature。</p>
-
-<p><img src="roi_align.png" alt="RoI Align" /></p>
-
-<h3 id="mask-prediction">Mask Prediction</h3>
-
-<p>在Mask R-CNN做的另一件事情是引入<a href="https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Long_Fully_Convolutional_Networks_2015_CVPR_paper.pdf">Fully Convolutional Networks（FCN）</a>來做pixel-wise的mask，FCN主要是先使用CNN來對圖片做降維，之後再透過deconvolution CNN來把feature還原到圖片原本的大小，並predict出segmentation。</p>
-
-<p><img src="./fcn_diagram.png" alt="FCN Diagram" /></p>
-
-<h2 id="yolo">YOLO</h2>
-
-<p>前面所提的R-CNN們都是region-based的方法，會需要先決定有可能的region proposal再往後進行下去，而<a href="https://pjreddie.com/media/files/papers/yolo.pdf">YOLO</a>是You Only Look Once的縮寫，一個region-free的方法，希望可以只跑一次CNN就同時產生出bounding box和物體的類別。</p>
-
-<p><img src="yolo_model.png" alt="YOLO Model" /></p>
-
-<p>首先，YOLO會先把圖片切成\(S \times S\)​個grid，並讓每一個grid都用neural network去預測\(B\)​個可能的bounding box、含有物件的信心程度以及物件的類別。在圖中上半部不同的黑框便是預測出來的bounding box，而不同的粗細表示信心程度的大小，而下半部是物件類別的預測結果。</p>
-
-<p>在選出了有可能的bounding box和類別偵測的結果以後，會先用一個固定的threshold把信心程度太低的bounding box去除掉，然後使用Non-Maximum Supression（NMS）來計算出最後的輸出結果，NMS運作的方式可以參考<a href="https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-non-maximum-suppression-nms-aa70c45adffa">這篇文章</a>，裡頭有詳細的圖解可以參考。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li><a href="https://blog.gtwang.org/programming/opencv-graph-based-segmentation-tutorial/">OpenCV 教學：實作 Graph Based Segmentation 圖形分割演算法</a></li>
-  <li><a href="https://blog.gtwang.org/programming/selective-search-for-object-detection/">OpenCV 教學：實作 Selective Search 物體偵測候選區域演算法</a></li>
-  <li><a href="https://blog.csdn.net/zijin0802034/article/details/77685438">边框回归(Bounding Box Regression)详解</a></li>
-  <li><a href="https://ccshenyltw.medium.com/object-detection-r-cnn-fast-rcnn-faster-rcnn-mask-rcnn-retinanet-to-be-continued-71b67640445">Object Detection : R-CNN, Fast-RCNN, Faster RCNN</a></li>
-  <li><a href="https://medium.com/cubo-ai/%E7%89%A9%E9%AB%94%E5%81%B5%E6%B8%AC-object-detection-740096ec4540">關於影像辨識，所有你應該知道的深度學習模型</a></li>
-  <li><a href="https://blog.csdn.net/jiongnima/article/details/79094159">实例分割模型Mask R-CNN详解：从R-CNN，Fast R-CNN，Faster R-CNN再到Mask R-CNN</a></li>
-  <li><a href="https://deepsense.ai/region-of-interest-pooling-explained/">Region of interest pooling explained</a></li>
-  <li><a href="https://chih-sheng-huang821.medium.com/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-you-only-look-once-yolo-4fb9cf49453c">深度學習-物件偵測:You Only Look Once (YOLO)</a></li>
-  <li><a href="https://chih-sheng-huang821.medium.com/%E6%A9%9F%E5%99%A8-%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92-%E7%89%A9%E4%BB%B6%E5%81%B5%E6%B8%AC-non-maximum-suppression-nms-aa70c45adffa">機器/深度學習: 物件偵測 Non-Maximum Suppression (NMS)</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Computer-Vision" /><category term="Object-Detection" /><summary type="html"><![CDATA[簡單整理一下目前有關object detection的一些研究。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Paper" /><category term="Speech-Recognition" /><summary type="html"><![CDATA[簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的paper。]]></summary></entry></feed>
