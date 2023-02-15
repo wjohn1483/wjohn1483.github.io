@@ -1,4 +1,274 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-02-05T12:04:53+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">KGAT: Knowledge Graph Attention Network for Recommendation</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat/" rel="alternate" type="text/html" title="KGAT: Knowledge Graph Attention Network for Recommendation" /><published>2023-02-02T00:00:00+00:00</published><updated>2023-02-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat/"><![CDATA[<p>這篇文章紀錄一下看了<a href="https://arxiv.org/pdf/1905.07854.pdf">KGAT: Knowledge Graph Attention Network for Recommendation</a>的筆記。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-02-15T14:54:08+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">xsv使用介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv/" rel="alternate" type="text/html" title="xsv使用介紹" /><published>2023-02-15T00:00:00+00:00</published><updated>2023-02-15T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv/"><![CDATA[<p>這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。</p>
+
+<!--more-->
+
+<p><a href="https://github.com/BurntSushi/xsv">xsv</a>是一個command line工具，專門用來處理csv檔案，方便使用者在處理資料或是觀察資料的時候可以迅速地得到想要的結果。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
+    xsv &lt;command&gt; [&lt;args&gt;...]
+    xsv [options]
+
+Options:
+    --list        List all commands available.
+    -h, --help    Display this message
+    &lt;command&gt; -h  Display the command help message
+    --version     Print version info and exit
+
+Commands:
+    cat         Concatenate by row or column
+    count       Count records
+    fixlengths  Makes all records have same length
+    flatten     Show one field per line
+    fmt         Format CSV output (change field delimiter)
+    frequency   Show frequency tables
+    headers     Show header names
+    help        Show this usage message.
+    index       Create CSV index for faster access
+    input       Read CSV data with special quoting rules
+    join        Join CSV files
+    sample      Randomly sample CSV data
+    search      Search CSV data with regexes
+    select      Select columns from CSV
+    slice       Slice records from CSV
+    sort        Sort CSV data
+    split       Split CSV data into many files
+    stats       Compute basic statistics
+    table       Align CSV data into columns
+</code></pre></div></div>
+
+<p>上面是xsv的usage，底下會走過一遍在<a href="https://github.com/BurntSushi/xsv/blob/master/README.md">xsv的README.md</a>裡面的範例，會更清楚各個指令的使用情況。</p>
+
+<h2 id="取得範例資料">取得範例資料</h2>
+
+<p>在開始執行範例之前，會需要先準備一個csv檔案來作為指令的作用對象，在README.md裡面提供了一個範例資料，記載了世界上每個城市的人口。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-LO</span> https://burntsushi.net/stuff/worldcitiespop.csv
+</code></pre></div></div>
+
+<h2 id="安裝xsv">安裝xsv</h2>
+
+<p>安裝xsv的方法可以參照<a href="https://github.com/BurntSushi/xsv#installation">官方文件裡面的說明</a>，如果是mac的話可以直接使用底下的指令。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>xsv
+</code></pre></div></div>
+
+<p>如果是Windows或是Linux，xsv也有提供<a href="https://github.com/BurntSushi/xsv/releases/">binary檔在GitHub上可以下載</a>，下面的指令是以Linux為範例。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://github.com/BurntSushi/xsv/releases/download/0.13.0/xsv-0.13.0-x86_64-unknown-linux-musl.tar.gz
+<span class="nb">tar </span>zxvf xsv-0.13.0-x86_64-unknown-linux-musl.tar.gz
+<span class="nb">sudo mv </span>xsv /usr/local/bin
+</code></pre></div></div>
+
+<h2 id="查看csv的基本資料">查看csv的基本資料</h2>
+
+<h3 id="csv裡面有哪些欄位">csv裡面有哪些欄位</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv headers worldcitiespop.csv
+1   Country
+2   City
+3   AccentCity
+4   Region
+5   Population
+6   Latitude
+7   Longitude
+</code></pre></div></div>
+
+<h3 id="各個欄位的統計數據">各個欄位的統計數據</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv stats <span class="nt">--everything</span> worldcitiespop.csv | xsv table
+field       <span class="nb">type     sum                 </span>min            max            min_length  max_length  mean                stddev              median      mode         cardinality
+Country     Unicode                      ad             zw             2           2                                                               cn           234
+City        Unicode                       bab el ahmar  Þykkvibaer     1           91                                                              san jose     2351892
+AccentCity  Unicode                       Bâb el Ahmar  ïn Bou Chella  1           91                                                              San Antonio  2375760
+Region      Unicode                      00             Z9             0           2                                                   13          04           397
+Population  Integer  2289584999          7              31480498       0           8           47719.570633597126  302885.5592040396   10779                    28754
+Latitude    Float    86294096.37312101   <span class="nt">-54</span>.933333     82.483333      1           12          27.188165808468785  21.95261384912504   32.4972221  51.15        1038349
+Longitude   Float    117718483.57958724  <span class="nt">-179</span>.9833333   180            1           14          37.08885989656418   63.223010459241635  35.28       23.8         1167162
+</code></pre></div></div>
+
+<p>在指令裡面的<code class="language-plaintext highlighter-rouge">--everything</code>是把所有可以得到的統計數字都列出來，在這個例子裡面如果不下<code class="language-plaintext highlighter-rouge">--everything</code>的話，欄位就會少了median、mode和cardinality，<code class="language-plaintext highlighter-rouge">xsv stats</code>最後產生出來的會是csv的格式，為了在terminal上面比較好觀察，所以把結果pipe到<code class="language-plaintext highlighter-rouge">xsv table</code>裡面讓它把結果排整齊。</p>
+
+<h3 id="csv有多少筆資料">csv有多少筆資料</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv count worldcitiespop.csv
+3173958
+</code></pre></div></div>
+
+<h2 id="查看csv的內容">查看csv的內容</h2>
+
+<h3 id="查看csv的特定列數">查看csv的特定列數</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv slice worldcitiespop.csv <span class="nt">-s</span> 0 <span class="nt">-e</span> 5 | xsv table
+Country  City        AccentCity  Region  Population  Latitude    Longitude
+ad       aixas       Aixàs       06                  42.4833333  1.4666667
+ad       aixirivali  Aixirivali  06                  42.4666667  1.5
+ad       aixirivall  Aixirivall  06                  42.4666667  1.5
+ad       aixirvall   Aixirvall   06                  42.4666667  1.5
+ad       aixovall    Aixovall    06                  42.4666667  1.4833333
+</code></pre></div></div>
+
+<p>在指令裡面的<code class="language-plaintext highlighter-rouge">-s/--start</code>是開始的列數，這邊index是0-based的，所以第一筆資料的index是0，而<code class="language-plaintext highlighter-rouge">-e/--end</code>是結束的列數，所給予的index<strong>不會</strong>包含在輸出裡面，可以想成會輸出的資料列數是<code class="language-plaintext highlighter-rouge">[start, end)</code>。</p>
+
+<p>在<code class="language-plaintext highlighter-rouge">xsv slice</code>裡面還有提供<code class="language-plaintext highlighter-rouge">-l/--len</code>的argument來讓使用者決定要輸出多少列。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv slice worldcitiespop.csv <span class="nt">-s</span> 0 <span class="nt">-l</span> 6 | xsv table
+Country  City        AccentCity  Region  Population  Latitude    Longitude
+ad       aixas       Aixàs       06                  42.4833333  1.4666667
+ad       aixirivali  Aixirivali  06                  42.4666667  1.5
+ad       aixirivall  Aixirivall  06                  42.4666667  1.5
+ad       aixirvall   Aixirvall   06                  42.4666667  1.5
+ad       aixovall    Aixovall    06                  42.4666667  1.4833333
+ad       andorra     Andorra     07                  42.5        1.5166667
+</code></pre></div></div>
+
+<p>如果只是想看特定某一列的話，可以用<code class="language-plaintext highlighter-rouge">-i/--index</code>來看。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv slice worldcitiespop.csv <span class="nt">-i</span> 1 | xsv table
+Country  City        AccentCity  Region  Population  Latitude    Longitude
+ad       aixirivali  Aixirivali  06                  42.4666667  1.5
+</code></pre></div></div>
+
+<p>如果csv裡面有很多column的話，可以把指令後面的table換成flatten，改用直的方式印出來。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv slice worldcitiespop.csv <span class="nt">-s</span> 0 <span class="nt">-l</span> 2 | xsv flatten
+Country     ad
+City        aixas
+AccentCity  Aixàs
+Region      06
+Population
+Latitude    42.4833333
+Longitude   1.4666667
+<span class="c">#</span>
+Country     ad
+City        aixirivali
+AccentCity  Aixirivali
+Region      06
+Population
+Latitude    42.4666667
+Longitude   1.5
+</code></pre></div></div>
+
+<h3 id="查看特定column">查看特定column</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv <span class="k">select </span>Country,AccentCity,Population worldcitiespop.csv | xsv sample 10 | xsv table
+Country  AccentCity            Population
+us       Thomas Crossing
+lk       Egodagoda
+ir       Sarbandan
+rs       Malo Lukare
+lv       Polumyza Mazindritsa
+ru       Sovkhoznyy            3916
+ne       Balidey
+mk       <span class="o">((</span> Kisela Voda <span class="o">))</span>
+br       Japuim
+ir       Qal<span class="sb">`</span>ehgah-e Khalifeh
+</code></pre></div></div>
+
+<p>上面指令的<code class="language-plaintext highlighter-rouge">xsv select</code>後面接的是column的名稱，這邊也可以用index來替代，不過這邊就是1-based的計數方式，所以在上面我們需要把<code class="language-plaintext highlighter-rouge">Country,AccentCity,Population</code>替換成<code class="language-plaintext highlighter-rouge">1,3,5</code>來得到一樣的column。</p>
+
+<p>如果多個column有相同的名稱可以在後面用中括號來表示這個第幾個重複的column，像是<code class="language-plaintext highlighter-rouge">xsv select 'Foo[2]'</code>就是拿第三個叫<code class="language-plaintext highlighter-rouge">Foo</code>的column，而如果要抓取某個範圍內的column，可以用<code class="language-plaintext highlighter-rouge">-</code>來選取中間所有的column，像是<code class="language-plaintext highlighter-rouge">Country-Population</code>或<code class="language-plaintext highlighter-rouge">1-5</code>，更多的操作方法可以看<code class="language-plaintext highlighter-rouge">xsv select -h</code>裡面的說明。</p>
+
+<h3 id="每個value的出現次數">每個value的出現次數</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv frequency worldcitiespop.csv <span class="nt">--limit</span> 3 | xsv table
+field       value        count
+Country     cn           238985
+Country     ru           215938
+Country     <span class="nb">id           </span>176546
+City        san jose     328
+City        san antonio  320
+City        santa rosa   296
+AccentCity  San Antonio  317
+AccentCity  Santa Rosa   296
+AccentCity  Santa Cruz   281
+Region      04           159916
+Region      02           142158
+Region      07           126867
+Population  <span class="o">(</span>NULL<span class="o">)</span>       3125978
+Population  2310         12
+Population  2230         11
+Latitude    51.15        777
+Latitude    51.083333    772
+Latitude    51.116667    769
+Longitude   23.8         484
+Longitude   23.2         477
+Longitude   23.05        476
+</code></pre></div></div>
+
+<p>這邊<code class="language-plaintext highlighter-rouge">xsv frequency</code>會去計算每個column裡面的每一個value在這個csv裡面出現了幾次，而<code class="language-plaintext highlighter-rouge">--limit</code>會限制取出現次數最多的前N名，如果想看頻率由小到大的排序，可以用<code class="language-plaintext highlighter-rouge">-a/--asc</code>的option。</p>
+
+<h3 id="搜尋欄位的值">搜尋欄位的值</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv search <span class="nt">-s</span> Population <span class="s1">'[0-9]'</span> worldcitiespop.csv | xsv <span class="k">select </span>Country,AccentCity,Population | xsv sample 10 | xsv table
+Country  AccentCity  Population
+cz       Sumperk     29604
+co       Vianí       1586
+ph       La Curva    3359
+fr       Eaubonne    23739
+<span class="k">in       </span>Kamareddi   71049
+ru       Ust-Kulom   5205
+us       Brent       22735
+ph       Lupao       11000
+ro       Caraula     2628
+ph       Bacnar      4606
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">-s/--select</code>可以指定要搜尋的是哪一個column，而後面搜尋的pattern是regular expression，如果想要排除有比對到的結果，可以用<code class="language-plaintext highlighter-rouge">-v/--invert-match</code>，<code class="language-plaintext highlighter-rouge">xsv search</code>會把所有有比對到的列都印出來變成csv檔，所以如果要只顯示部分的欄位就需要再使用<code class="language-plaintext highlighter-rouge">xsv select</code>或是<code class="language-plaintext highlighter-rouge">xsv slice</code>做處理。</p>
+
+<h2 id="join兩個csv">join兩個csv</h2>
+
+<p>在上面的例子裡面，如果我們想要知道每個Country的縮寫實際代表的國家是哪個的話，可以透過查表的方式來得到，底下的指令會下載一個csv檔，裡面記載著國家縮寫的全稱是什麼。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-LO</span> https://gist.githubusercontent.com/anonymous/063cb470e56e64e98cf1/raw/98e2589b801f6ca3ff900b01a87fbb7452eb35c7/countrynames.csv
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv headers countrynames.csv
+1   Abbrev
+2   Country
+</code></pre></div></div>
+
+<p>我們也可以使用join的方式來直接把所有的縮寫都轉成全稱。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv <span class="nb">join</span> <span class="nt">--no-case</span> Abbrev countrynames.csv Country worldcitiespop.csv | xsv sample 10 | xsv table
+Abbrev  Country     Country  City             AccentCity       Region  Population  Latitude     Longitude
+CO      Colombia    co       santa marta      Santa Marta      28                  3.883889     <span class="nt">-75</span>.102222
+LV      Latvia      lv       kozes            Kozes            10                  56.2         25.7
+TN      Tunisia     tn       bir bou rekba    Bir Bou Rekba    19                  36.434824    10.565897
+LA      Laos        la       ban poung        Ban Poung        22                  19.928056    100.608611
+GE      Georgia     ge       zakvi            Zakvi            06                  41.5063889   43.4997222
+MZ      Mozambique  mz       gube             Gubé             04                  <span class="nt">-26</span>.2833333  32.5666667
+PE      Peru        pe       cruz de callana  Cruz de Callana  11                  <span class="nt">-13</span>.75       <span class="nt">-75</span>.9333333
+MZ      Mozambique  mz       maguezane        Maguezane        03                  <span class="nt">-21</span>.5166667  34.6375
+TH      Thailand    th       ban tang pra     Ban Tang Pra     35                  14.678472    100.351278
+LA      Laos        la       ban xiangkheng   Ban Xiangkheng   16                  21.333333    100.883333
+</code></pre></div></div>
+
+<p>在<code class="language-plaintext highlighter-rouge">xsv join</code>裡面，需要先把想要join的key擺在前面，後面再接csv檔。除了上面的inner join以外，xsv還有支援left join、right join等，可以看<code class="language-plaintext highlighter-rouge">xsv join -h</code>裡面的說明。</p>
+
+<p>在上面的結果裡面，如果我們只想要保留國家的全稱就好，想把join的key都拿掉的話，可以再過一個<code class="language-plaintext highlighter-rouge">xsv select '!Abbrev,Country[1]'</code>，把除了Abbrev和第二個Country以外的全部欄位都選出來。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv <span class="nb">join</span> <span class="nt">--no-case</span> Abbrev countrynames.csv Country worldcitiespop.csv | xsv <span class="k">select</span> <span class="s1">'!Abbrev,Country[1]'</span> | xsv sample 10 | xsv table
+Country                          City           AccentCity     Region  Population  Latitude     Longitude
+Peru                             cachisama      Cachisama      05                  <span class="nt">-13</span>.1166667  <span class="nt">-74</span>.3
+Bosnia and Herzegovina | Bosnia  gecet          Gecet          01                  44.5666667   16.1005556
+China                            caihuaqiao     Caihuaqiao     07                  27.035278    119.777222
+Pakistan                         kothung        Kothung        07                  35.384052    75.74772
+Pakistan                         dhok waraich   Dhok Waraich   04                  33.727099    72.242949
+Russian Federation | Russia      yasenok        Yasenok        10                  53.218388    32.851209
+Philippines                      padaraonan     Padaraonan     J3                  10.4919      122.4906
+Indonesia                        gunungaseupan  Gunungaseupan  30                  <span class="nt">-7</span>.039722    107.505278
+Colombia                         dificil        Dificil        38                  9.849747     <span class="nt">-74</span>.236267
+Ukraine                          lesnichevka    Lesnichëvka    23                  48.613614    28.180124
+</code></pre></div></div>
+
+<h2 id="加速xsv的計算">加速xsv的計算</h2>
+
+<p>xsv支援先對csv檔做index，來讓xsv的其他操作像是<code class="language-plaintext highlighter-rouge">stats</code>、<code class="language-plaintext highlighter-rouge">slice</code>等可以變得更快。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv index worldcitiespop.csv
+</code></pre></div></div>
+
+<p>執行完上面的指令以後會產生一個<strong>wordcitiespop.csv.idx</strong>的檔案，接下來在執行其他操作的時候就會自動加速了，不過如果原本的檔案內容有被更動過的話，會需要再重新製作一個index檔。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。]]></summary></entry><entry><title type="html">KGAT: Knowledge Graph Attention Network for Recommendation</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat/" rel="alternate" type="text/html" title="KGAT: Knowledge Graph Attention Network for Recommendation" /><published>2023-02-02T00:00:00+00:00</published><updated>2023-02-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat/"><![CDATA[<p>這篇文章紀錄一下看了<a href="https://arxiv.org/pdf/1905.07854.pdf">KGAT: Knowledge Graph Attention Network for Recommendation</a>的筆記。</p>
 
 <!--more-->
 
@@ -283,13 +553,13 @@ tlmgr <span class="nb">install </span>scheme-full
 
 <p>在<code class="language-plaintext highlighter-rouge">logging</code>裡面有根據上述不同等級的log有對應的function可以呼叫，可以看底下的例子</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在實際執行上面的程式碼以後我們可以得到下面的結果</p>
@@ -301,14 +571,14 @@ CRITICAL:root:Critical message
 
 <p>在使用<code class="language-plaintext highlighter-rouge">logging</code>的function時，<code class="language-plaintext highlighter-rouge">logging</code>會去創建一個名叫<code class="language-plaintext highlighter-rouge">root</code>的logger，並把訊息透過這個logger來紀錄，而其預設的格式是<code class="language-plaintext highlighter-rouge">severity:logger name:message</code>，而且只會顯示WARNING以上的訊息，如果想要設定顯示哪種log的等級的話，可以在最前面呼叫<code class="language-plaintext highlighter-rouge">basicConcig()</code>來設定</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>此時得到的結果會是</p>
@@ -323,29 +593,29 @@ CRITICAL:root:Critical message
 <p>這樣的作法在當程式碼裡面有引入多個module的時候也適用</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
-</span><span class="kn">import</span> <span class="nn">logging</span>
+</span><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+<span class="kn">from</span> <span class="n">lib</span> <span class="kn">import</span> <span class="n">func</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
-    <span class="n">func</span><span class="p">()</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="nf">func</span><span class="p">()</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
-    <span class="n">main</span><span class="p">()</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib.py
-</span><span class="kn">import</span> <span class="nn">logging</span>
+</span><span class="kn">import</span> <span class="n">logging</span>
 
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
-    <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
-    <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在上面我們寫了兩個python script，分別為<strong>main.py</strong>和<strong>lib.py</strong>，其中<strong>main.py</strong>會去呼叫定義在<strong>lib.py</strong>裡面的<code class="language-plaintext highlighter-rouge">func()</code>，這時如果去執行<strong>main.py</strong>的話會得到下面的結果</p>
@@ -365,31 +635,31 @@ ERROR:root:error from lib
 <p>這邊我們把上面例子中的<code class="language-plaintext highlighter-rouge">logging</code>都替換成<code class="language-plaintext highlighter-rouge">logger</code></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
-</span><span class="kn">import</span> <span class="nn">logging</span>
+</span><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+<span class="kn">from</span> <span class="n">lib</span> <span class="kn">import</span> <span class="n">func</span>
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
-    <span class="n">func</span><span class="p">()</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="nf">func</span><span class="p">()</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
-    <span class="n">main</span><span class="p">()</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib.py
-</span><span class="kn">import</span> <span class="nn">logging</span>
+</span><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>這邊我們將<code class="language-plaintext highlighter-rouge">__name__</code>傳入<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>當中，這時logging就會幫我們建立一個以<code class="language-plaintext highlighter-rouge">__name__</code>為名稱的logger，而<code class="language-plaintext highlighter-rouge">__name__</code>會在python裡面被代換成檔案名稱，這時再執行<strong>main.py</strong>就能得到以下的結果</p>
@@ -416,22 +686,22 @@ ERROR:lib:error from lib
 
 <p>假如我們在<strong>main.py</strong>裡面多加個參數</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+<span class="kn">from</span> <span class="n">lib</span> <span class="kn">import</span> <span class="n">func</span>
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
-    <span class="n">func</span><span class="p">()</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="nf">func</span><span class="p">()</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
     <span class="n">log_format</span><span class="o">=</span><span class="s">"%(asctime)s %(filename)s:%(lineno)d - %(message)s"</span>
-    <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">)</span>
-    <span class="n">main</span><span class="p">()</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">)</span>
+    <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
 
 <p>而<strong>lib.py</strong>維持不變，這時印出來的訊息就會變成</p>
@@ -449,7 +719,7 @@ ERROR:lib:error from lib
 <p>如果想在terminal裡面讓不同等級的log有不同顏色的話，可以參考從<a href="https://stackoverflow.com/questions/384076/how-can-i-color-python-logging-output">這裡</a>改編而來的方法，寫一個<strong>log.py</strong></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># log.py
-</span><span class="kn">import</span> <span class="nn">logging</span>
+</span><span class="kn">import</span> <span class="n">logging</span>
 
 
 <span class="k">class</span> <span class="nc">CustomFormatter</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">):</span>
@@ -470,40 +740,40 @@ ERROR:lib:error from lib
         <span class="n">logging</span><span class="p">.</span><span class="n">CRITICAL</span><span class="p">:</span> <span class="n">bold_red</span> <span class="o">+</span> <span class="n">log_format</span> <span class="o">+</span> <span class="n">reset</span>
     <span class="p">}</span>
 
-    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
-        <span class="n">log_fmt</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">FORMATS</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">levelno</span><span class="p">)</span>
-        <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">(</span><span class="n">log_fmt</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">formatter</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="n">log_fmt</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">FORMATS</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">levelno</span><span class="p">)</span>
+        <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nc">Formatter</span><span class="p">(</span><span class="n">log_fmt</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">formatter</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
 
 
-<span class="n">root_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">()</span>
-<span class="n">root_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">StreamHandler</span><span class="p">()</span>
-<span class="n">root_handler</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">CustomFormatter</span><span class="p">())</span>
-<span class="n">root_logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">root_handler</span><span class="p">)</span>
+<span class="n">root_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">()</span>
+<span class="n">root_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nc">StreamHandler</span><span class="p">()</span>
+<span class="n">root_handler</span><span class="p">.</span><span class="nf">setFormatter</span><span class="p">(</span><span class="nc">CustomFormatter</span><span class="p">())</span>
+<span class="n">root_logger</span><span class="p">.</span><span class="nf">addHandler</span><span class="p">(</span><span class="n">root_handler</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在上面的程式碼裡面我們自訂了一個formatter，並根據不同等級的log加入不同顏色的前綴和後綴，而且在底下也設定了root logger的handler，要使用的時候我們在新的程式碼裡面簡單import它並設定level就可以了</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
-</span><span class="kn">import</span> <span class="nn">logging</span>
+</span><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="kn">import</span> <span class="nn">log</span>
-<span class="kn">from</span> <span class="nn">lib</span> <span class="kn">import</span> <span class="n">func</span>
+<span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="n">lib</span> <span class="kn">import</span> <span class="n">func</span>
 
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">"debug message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"info message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">"warning message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">"error message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">"critical message"</span><span class="p">)</span>
-    <span class="n">func</span><span class="p">()</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"debug message"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"info message"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"warning message"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"error message"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"critical message"</span><span class="p">)</span>
+    <span class="nf">func</span><span class="p">()</span>
 
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">().</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
-    <span class="n">main</span><span class="p">()</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">().</span><span class="nf">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+    <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
 
 <p>跑出來的log就能有顏色了</p>
@@ -568,22 +838,22 @@ ERROR:lib:error from lib
 
 <p>我們先快速看一下底下的程式碼</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">mlflow</span> <span class="kn">import</span> <span class="n">log_metric</span><span class="p">,</span> <span class="n">log_param</span><span class="p">,</span> <span class="n">log_artifact</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">os</span>
+<span class="kn">from</span> <span class="n">mlflow</span> <span class="kn">import</span> <span class="n">log_metric</span><span class="p">,</span> <span class="n">log_param</span><span class="p">,</span> <span class="n">log_artifact</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
     <span class="c1"># Log a parameter (key-value pair)
-</span>    <span class="n">log_param</span><span class="p">(</span><span class="s">"param1"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
-    <span class="n">log_param</span><span class="p">(</span><span class="s">"param2"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
-</span>    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="n">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
-</span>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"first file!"</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">"second file!"</span><span class="p">)</span>
-    <span class="n">log_artifact</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">)</span>
-    <span class="n">log_artifact</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">)</span>
+</span>    <span class="nf">log_param</span><span class="p">(</span><span class="s">"param1"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+    <span class="nf">log_param</span><span class="p">(</span><span class="s">"param2"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
+</span>    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
+</span>    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s">"first file!"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s">"second file!"</span><span class="p">)</span>
+    <span class="nf">log_artifact</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">)</span>
+    <span class="nf">log_artifact</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在上面的程式碼中我們可以看到mlflow提供了三種不同log的function，<code class="language-plaintext highlighter-rouge">log_param</code>用來記錄這次訓練模型時所使用的hyperparameters像是learning rate、batch size等等，而<code class="language-plaintext highlighter-rouge">log_metric</code>用來記錄訓練模型中會變動的資料，像是loss、accuracy等，最後<code class="language-plaintext highlighter-rouge">log_artifact</code>會把該路徑的檔案放進artifact中，主要是把這次訓練完成以後想要留存的檔案儲存下來，像是模型本身、前處理/後處理用到的字典檔等。</p>
@@ -593,24 +863,24 @@ ERROR:lib:error from lib
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""Trains and evaluate a simple MLP
 on the Reuters newswire topic classification task.
 """</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="n">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">from</span> <span class="n">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
+<span class="kn">from</span> <span class="n">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="n">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span>
+<span class="kn">from</span> <span class="n">tensorflow.keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
 
 <span class="c1"># The following import and function call are the only additions to code required
 # to automatically log metrics and parameters to MLflow.
-</span><span class="kn">import</span> <span class="nn">mlflow.keras</span>
+</span><span class="kn">import</span> <span class="n">mlflow.keras</span>
 
-<span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">autolog</span><span class="p">()</span>
+<span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="nf">autolog</span><span class="p">()</span>
 
 <span class="n">max_words</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">"Loading data..."</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Loading data..."</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/keras/train.py">mlflow/examples/keras/train.py</a></em></p>
@@ -667,10 +937,10 @@ on the Reuters newswire topic classification task.
 
 <p>另外在實作的過程當中值得一提的是，如果想要在auto tracking當中另外手動存入其他artifact，需要把<code class="language-plaintext highlighter-rouge">log_artifact</code>這個function放在同一個run裡面</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="n">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
-    <span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">autolog</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="nf">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
+    <span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="nf">autolog</span><span class="p">()</span>
     <span class="c1"># Training
-</span>    <span class="n">mlflow</span><span class="p">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="s">"PATH_TO_ARTIFACT"</span><span class="p">)</span>
+</span>    <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_artifact</span><span class="p">(</span><span class="s">"PATH_TO_ARTIFACT"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>而在pipeline處理的過程中，假如說我們有個entry point是處理資料、另一個entry point是訓練模型，我們應該會希望每次pipeline跑起來便去檢查資料是否已經處理好了，如果已經處理好就直接跑訓練模型的部分就好，我目前還沒有在MLflow看到比較好的看有沒有執行過某個entry point的方法，可能還是需要像前面<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例那樣，自己寫個<code class="language-plaintext highlighter-rouge">main.py</code>來去檢查。</p>
@@ -955,35 +1225,35 @@ airflow db init
 
 <p>一個簡單的任務可以參考底下的程式碼。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 
-<span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
-<span class="kn">from</span> <span class="nn">airflow.operators.python_operator</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
-<span class="kn">from</span> <span class="nn">airflow.operators.dummy_operator</span> <span class="kn">import</span> <span class="n">DummyOperator</span>
+<span class="kn">from</span> <span class="n">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="n">airflow.operators.python_operator</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+<span class="kn">from</span> <span class="n">airflow.operators.dummy_operator</span> <span class="kn">import</span> <span class="n">DummyOperator</span>
 
 
 <span class="k">def</span> <span class="nf">login_func</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
-    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Attempt to login with account = </span><span class="si">{</span><span class="n">account</span><span class="si">}</span><span class="s">, password = </span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Attempt to login with account = </span><span class="si">{</span><span class="n">account</span><span class="si">}</span><span class="s">, password = </span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
 
 
 <span class="n">account</span> <span class="o">=</span> <span class="s">"user"</span>
 <span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span>
 <span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">"owner"</span><span class="p">:</span> <span class="s">"THE_ONE"</span><span class="p">,</span>
-    <span class="s">"start_date"</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="s">"start_date"</span><span class="p">:</span> <span class="nf">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
     <span class="s">"schedule_interval"</span><span class="p">:</span> <span class="s">"@daily"</span><span class="p">,</span>
     <span class="s">"retries"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s">"retry_delay"</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="s">"retry_delay"</span><span class="p">:</span> <span class="nf">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="k">with</span> <span class="n">DAG</span><span class="p">(</span><span class="s">"login_dag"</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
-    <span class="n">login</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+<span class="k">with</span> <span class="nc">DAG</span><span class="p">(</span><span class="s">"login_dag"</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+    <span class="n">login</span> <span class="o">=</span> <span class="nc">PythonOperator</span><span class="p">(</span>
         <span class="n">task_id</span><span class="o">=</span><span class="s">"login"</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">login_func</span><span class="p">,</span>
         <span class="n">op_args</span><span class="o">=</span><span class="p">[</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">],</span>
         <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
     <span class="p">)</span>
-    <span class="n">end</span> <span class="o">=</span> <span class="n">DummyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s">"do_nothing"</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nc">DummyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s">"do_nothing"</span><span class="p">)</span>
 
     <span class="n">login</span> <span class="o">&gt;&gt;</span> <span class="n">end</span>
 </code></pre></div></div>
@@ -1048,46 +1318,46 @@ airflow db init
 
 <p>底下的程式碼會去從網路上抓取dataset下來，並做成numpy，值得一提的是，文字的部分我們並沒有轉成index，而是單純的string，轉成index的部分會交由autokeras放在模型裡面。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">os</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="n">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 
 
-<span class="k">print</span><span class="p">(</span><span class="s">"Preparing data..."</span><span class="p">)</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="n">get_file</span><span class="p">(</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Preparing data..."</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="nf">get_file</span><span class="p">(</span>
     <span class="n">fname</span><span class="o">=</span><span class="s">"aclImdb.tar.gz"</span><span class="p">,</span>
     <span class="n">origin</span><span class="o">=</span><span class="s">"http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz"</span><span class="p">,</span>
     <span class="n">extract</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="c1"># set path to dataset
-</span><span class="n">IMDB_DATADIR</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="s">"aclImdb"</span><span class="p">)</span>
+</span><span class="n">IMDB_DATADIR</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="s">"aclImdb"</span><span class="p">)</span>
 
 <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"pos"</span><span class="p">,</span> <span class="s">"neg"</span><span class="p">]</span>
-<span class="n">train_data</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span>
-    <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">IMDB_DATADIR</span><span class="p">,</span> <span class="s">"train"</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">classes</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="nf">load_files</span><span class="p">(</span>
+    <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">IMDB_DATADIR</span><span class="p">,</span> <span class="s">"train"</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">classes</span>
 <span class="p">)</span>
-<span class="n">test_data</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span>
-    <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">IMDB_DATADIR</span><span class="p">,</span> <span class="s">"test"</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">classes</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="nf">load_files</span><span class="p">(</span>
+    <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">IMDB_DATADIR</span><span class="p">,</span> <span class="s">"test"</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">classes</span>
 <span class="p">)</span>
 
-<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
-<span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
 
 <span class="c1"># Minimize training size for tutorial
 </span><span class="n">sample_size</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[:</span><span class="n">sample_size</span><span class="p">]</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">sample_size</span><span class="p">]</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s">"Data samples..."</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (sample_size,)
-</span><span class="k">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (sample_size,)
-</span><span class="k">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">50</span><span class="p">])</span>  <span class="c1"># b'Zero Day leads you to think, even re-think why two'
-</span><span class="k">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">30</span><span class="p">])</span>  <span class="c1"># [1 0 1 0 0 1 1 0 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 0 1 0 0 0 1 0]
+<span class="nf">print</span><span class="p">(</span><span class="s">"Data samples..."</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (sample_size,)
+</span><span class="nf">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (sample_size,)
+</span><span class="nf">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">50</span><span class="p">])</span>  <span class="c1"># b'Zero Day leads you to think, even re-think why two'
+</span><span class="nf">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">30</span><span class="p">])</span>  <span class="c1"># [1 0 1 0 0 1 1 0 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 0 1 0 0 0 1 0]
 </span></code></pre></div></div>
 
 <h3 id="訓練模型">訓練模型</h3>
@@ -1096,20 +1366,20 @@ airflow db init
 
 <p>在<code class="language-plaintext highlighter-rouge">fit()</code>裡面有設定<code class="language-plaintext highlighter-rouge">epochs</code>，表示每一個模型架構會訓練多少個epoch。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">autokeras</span> <span class="k">as</span> <span class="n">ak</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">autokeras</span> <span class="k">as</span> <span class="n">ak</span>
 
 
-<span class="k">print</span><span class="p">(</span><span class="s">"Building model..."</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Building model..."</span><span class="p">)</span>
 <span class="c1"># Initialize the text classifier.
-</span><span class="n">clf</span> <span class="o">=</span> <span class="n">ak</span><span class="p">.</span><span class="n">TextClassifier</span><span class="p">(</span>
+</span><span class="n">clf</span> <span class="o">=</span> <span class="n">ak</span><span class="p">.</span><span class="nc">TextClassifier</span><span class="p">(</span>
     <span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>  <span class="c1"># It only tries 2 models as a quick demo.
-</span><span class="n">clf</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span class="n">clf</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>值得一提的是，<code class="language-plaintext highlighter-rouge">TextClassifier</code>可以設定模型的metrics要是什麼，預設是<code class="language-plaintext highlighter-rouge">val_loss</code>，可以依據任務的需求來做修改。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cls</span> <span class="o">=</span> <span class="n">ak</span><span class="p">.</span><span class="n">TextClassifier</span><span class="p">(</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cls</span> <span class="o">=</span> <span class="n">ak</span><span class="p">.</span><span class="nc">TextClassifier</span><span class="p">(</span>
     <span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
     <span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="n">objective</span><span class="o">=</span><span class="s">"accuracy"</span><span class="p">,</span>  <span class="c1"># Change to other metric that is suitable for your task
@@ -1118,95 +1388,43 @@ airflow db init
 
 <p>另外，<code class="language-plaintext highlighter-rouge">TextClassifier</code>會自己去判斷label有多少個，並自己對label做index，只是在預測的時候並不會自動把index轉回原本label的樣子，建議這邊自己先用<code class="language-plaintext highlighter-rouge">sklearn.preprocessing.LabelEncoder</code>先對label做index，並在<code class="language-plaintext highlighter-rouge">fit()</code>的時候餵入轉好index的資料，之後在預測時，就可以使用<code class="language-plaintext highlighter-rouge">LabelEncoder</code>來轉回label原本的樣子。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pickle</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">pickle</span>
 
 
 <span class="c1"># Before training
-</span><span class="n">labeler</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">().</span><span class="n">fit</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-<span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">labeler</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
-<span class="n">pickle</span><span class="p">.</span><span class="n">dump</span><span class="p">(</span><span class="n">labeler</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s">"/path/to/labeler.pkl"</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">),</span> <span class="n">pickle</span><span class="p">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+</span><span class="n">labeler</span> <span class="o">=</span> <span class="nc">LabelEncoder</span><span class="p">().</span><span class="nf">fit</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">labeler</span><span class="p">.</span><span class="nf">transform</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+<span class="n">pickle</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">labeler</span><span class="p">,</span> <span class="nf">open</span><span class="p">(</span><span class="s">"/path/to/labeler.pkl"</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">),</span> <span class="n">pickle</span><span class="p">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
 
 <span class="c1"># After training
-</span><span class="n">labeler</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s">"/path/to/labeler.pkl"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">))</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">labeler</span><span class="p">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+</span><span class="n">labeler</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nf">open</span><span class="p">(</span><span class="s">"/path/to/labeler.pkl"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">))</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">labeler</span><span class="p">.</span><span class="nf">inverse_transform</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div></div>
 
 <h3 id="儲存模型">儲存模型</h3>
 
 <p>這邊會儲存表現最好的模型。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="n">export_model</span><span class="p">()</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="nf">export_model</span><span class="p">()</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">model</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"./model"</span><span class="p">,</span> <span class="n">save_format</span><span class="o">=</span><span class="s">"tf"</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="s">"./model"</span><span class="p">,</span> <span class="n">save_format</span><span class="o">=</span><span class="s">"tf"</span><span class="p">)</span>
 <span class="k">except</span> <span class="nb">Exception</span><span class="p">:</span>
-    <span class="n">model</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"./model.h5"</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="s">"./model.h5"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h3 id="模型預測">模型預測</h3>
 
 <p>autokeras輸出的模型跟一般keras訓練出來的模型相同，所以我們可以用keras的<code class="language-plaintext highlighter-rouge">load_model()</code>來讀取模型，不過會需要在後面加上<code class="language-plaintext highlighter-rouge">custom_objects</code>，把autokeras自定義的object帶進來。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
 
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s">"./model"</span><span class="p">,</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">ak</span><span class="p">.</span><span class="n">CUSTOM_OBJECTS</span><span class="p">)</span>
-<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
-<span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="nf">load_model</span><span class="p">(</span><span class="s">"./model"</span><span class="p">,</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">ak</span><span class="p">.</span><span class="n">CUSTOM_OBJECTS</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="nf">summary</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="結論">結論</h2>
 
-<p>可以稍微瀏覽一下<a href="https://autokeras.com/tutorial/overview/">autokeras的tutorial</a>，如果碰到的任務種類有在裡面，可以嘗試看看，只不過會需要跑在可以連上外網的機器上，因為autokeras會去網路上抓一些pretrain的模型下來，另外也需要注意一下硬碟的使用量，因為autokeras會把每個trial訓練的模型儲存下來，很容易把硬碟吃滿，不然就是需要在<a href="https://autokeras.com/text_classifier/">ak.TextClassifier</a>裡面限制<code class="language-plaintext highlighter-rouge">max_model_size</code>的大小。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[現在市面上有眾多AutoML的框架，而用深度學習並有Neural Architecture Search（NAS）功能的並不多，這邊紀錄一下使用AutoKeras的心得。]]></summary></entry><entry><title type="html">Unsupervised Speech Recognition</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/08/28/unsupervised-speech-recognition/" rel="alternate" type="text/html" title="Unsupervised Speech Recognition" /><published>2021-08-28T00:00:00+00:00</published><updated>2021-08-28T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/08/28/unsupervised-speech-recognition</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/08/28/unsupervised-speech-recognition/"><![CDATA[<p>簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的<a href="https://ai.facebook.com/research/publications/unsupervised-speech-recognition">paper</a>。</p>
-
-<!--more-->
-
-<h2 id="model-framework">Model Framework</h2>
-
-<p>在這篇<a href="https://ai.facebook.com/blog/wav2vec-unsupervised-speech-recognition-without-supervision/">官方的部落格文章</a>裡面有對整篇paper有個大致的介紹，也有一段影片講解這篇paper使用的方法。</p>
-
-<p><img src="./wav2vec_u_framework.png" alt="wav2vec U Framework" /></p>
-
-<p>上圖是這篇paper wav2vec U的整體架構，首先會先把整段語音透過wav2vec 2.0轉換成feature sequence，再來對這些feature做k-means，藉由k-means所獲得的cluster來對語音訊號做segmentation，最後將segment好的語音訊號的feature輸入至generator中轉換成phoneme sequence，搭配GAN的方式來去做訓練。</p>
-
-<h2 id="wav2vec-20">wav2vec 2.0</h2>
-
-<p><img src="./wav2vec_2_framework.png" alt="wav2vec 2.0 Framework" /></p>
-
-<p>wav2vec 2.0的訓練方式跟BERT有些類似，首先會先將語音訊號透過CNN抽取出這段語音的特徵，接著對它做product quantization，在把quantization前的feature輸入進transformer以後，希望在被mask掉的位置所產生出來的feature要越像quantization後的feature越好，在訓練的時候也會拿其他時間點經過quantization後的feature來做contrasive training。</p>
-
-<h3 id="product-quantization">Product Quantization</h3>
-
-<p><img src="https://i.typlog.com/fabwrite/NM/ZL0fPpntjxi3pzrQirdw.png?x-oss-process=style/l" alt="Product Quantization" /></p>
-
-<p><em><a href="http://www.fabwrite.com/productquantization">实例理解product quantization算法</a></em></p>
-
-<p>假如說我們現在有5萬張圖片的feature，每個feature有1024維，我們將這1024維切成8份，每份有128維如上圖那樣，接著以維度為單位來做k-means，這邊令k=256，我們就可以將原先1024維的feature轉換成由8個cluster id所組成的向量，把1024維降成了8維。</p>
-
-<h2 id="segment-representations">Segment Representations</h2>
-
-<p>一段語音輸入進wav2vec 2.0以後，我們可以得到一串vector sequence，而作者們把所有訓練資料裡面的語音都丟進去wav2vec 2.0，將產生出來的一堆向量拿去做k-means，可以說是對每一小段語音訊號都給它一個編號。如果我們發現到說一段語音裡面相鄰兩個feature的編號相同，就可以將他們視為在同一個segment裡面，直到碰到不同編號。</p>
-
-<p>作者們將同一個segment裡面的feature做平均來當作是這個segment的representation，值得一提的是，作者們並不是直接使用wav2vec 2.0產生出來的feature做平均，而是先對所有訓練資料經過wav2vec 2.0產生出的feature做PCA，用經過PCA轉換的feature再來做平均以後當作segment的representation。</p>
-
-<h2 id="gan">GAN</h2>
-
-<p><img src="./gan_framework.png" alt="GAN Framework" /></p>
-
-<p>在得到了segment representation以後，接下來作者們將這些representation輸入進generator裡面，希望generator直接產生出phoneme distribution，這邊再搭配實際上文字的所轉換出來的phoneme 1-hot encoding，透過discriminator來讓generator產生出的phoneme distribution能越像真實的phoneme越好。另外在這邊作者們有將generator產生出來、argmax以後是相同的output再做一次平均，之後才輸入進discriminator中。</p>
-
-<h2 id="experiment-results">Experiment Results</h2>
-
-<p><img src="./librispeech_results.png" alt="Librispeech Results" /></p>
-
-<p>在經過繁複的訓練流程以後，可以看到wav2vec U的表現不俗，搭配厲害的language model以後，error rate可以媲美數年前supervised learning的結果。</p>
-
-<p><img src="./low_resource_languages_results.png" alt="Low Resource Languages Results" /></p>
-
-<p>在low-resource上的表現甚至可以贏過supervised learning的結果。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li><a href="http://www.fabwrite.com/productquantization">实例理解product quantization算法</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Paper" /><category term="Speech-Recognition" /><summary type="html"><![CDATA[簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的paper。]]></summary></entry></feed>
+<p>可以稍微瀏覽一下<a href="https://autokeras.com/tutorial/overview/">autokeras的tutorial</a>，如果碰到的任務種類有在裡面，可以嘗試看看，只不過會需要跑在可以連上外網的機器上，因為autokeras會去網路上抓一些pretrain的模型下來，另外也需要注意一下硬碟的使用量，因為autokeras會把每個trial訓練的模型儲存下來，很容易把硬碟吃滿，不然就是需要在<a href="https://autokeras.com/text_classifier/">ak.TextClassifier</a>裡面限制<code class="language-plaintext highlighter-rouge">max_model_size</code>的大小。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[現在市面上有眾多AutoML的框架，而用深度學習並有Neural Architecture Search（NAS）功能的並不多，這邊紀錄一下使用AutoKeras的心得。]]></summary></entry></feed>

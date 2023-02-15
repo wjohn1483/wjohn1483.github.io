@@ -398,8 +398,8 @@ setup.py
 
 <p>而我們import他們的方式會是</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">mynamespace</span> <span class="kn">import</span> <span class="n">subpackage_a</span>
-<span class="kn">from</span> <span class="nn">mynamespace</span> <span class="kn">import</span> <span class="n">subpackage_b</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">mynamespace</span> <span class="kn">import</span> <span class="n">subpackage_a</span>
+<span class="kn">from</span> <span class="n">mynamespace</span> <span class="kn">import</span> <span class="n">subpackage_b</span>
 </code></pre></div></div>
 
 <p>但某些時候我們可能只需要<code class="language-plaintext highlighter-rouge">subpackage_a</code>就行，不想要額外安裝<code class="language-plaintext highlighter-rouge">subpackage_b</code>，這時可以將<code class="language-plaintext highlighter-rouge">mynamespace</code>拆成兩個package，拆成兩個package的方法可以參考<a href="https://packaging.python.org/guides/packaging-namespace-packages/#native-namespace-packages">官方文件</a>。</p>
@@ -422,14 +422,14 @@ mynamespace-subpackage-b/
 
 <p>值得一提的是，如果import<code class="language-plaintext highlighter-rouge">.zip</code>檔，一樣會被當作是namespace package。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">sys</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="n">sys</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">"./module_zip.zip"</span><span class="p">)</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">sys</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"./module_zip.zip"</span><span class="p">)</span>
 
-<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">module_zip</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="kn">import</span> <span class="n">module_zip</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">module_zip</span><span class="p">.</span><span class="n">__path__</span>
-<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">_NamespacePath</span><span class="p">([</span><span class="s">'./module_zip.zip/module_zip'</span><span class="p">])</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="nf">_NamespacePath</span><span class="p">([</span><span class="s">'./module_zip.zip/module_zip'</span><span class="p">])</span>
 
 <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">module_zip</span>
 <span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">module</span> <span class="s">'module_zip'</span> <span class="p">(</span><span class="n">namespace</span><span class="p">)</span><span class="o">&gt;</span>

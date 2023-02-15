@@ -319,13 +319,13 @@
 
 <p>在這邊我們將底下的程式碼貼到<code class="language-plaintext highlighter-rouge">Code.gs</code>的檔案裡面，記得將<code class="language-plaintext highlighter-rouge">&lt;YOUR_HTML_FILENAME&gt;</code>替換成你html的檔名、想一個要顯示在Dialog的名稱替換掉<code class="language-plaintext highlighter-rouge">&lt;TITLE_OF_DIALOG&gt;</code>。目前設定跳出來的Dialog的大小是1000*1000，可以根據你想要顯示的大小做調整。</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">openDialog</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">HtmlService</span><span class="p">.</span><span class="nx">createHtmlOutputFromFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;YOUR_HTML_FILENAME&gt;</span><span class="dl">'</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">setSandboxMode</span><span class="p">(</span><span class="nx">HtmlService</span><span class="p">.</span><span class="nx">SandboxMode</span><span class="p">.</span><span class="nx">NATIVE</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">setHeight</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">setWidth</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-  <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nx">getUi</span><span class="p">()</span> 
-    <span class="p">.</span><span class="nx">showModalDialog</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&lt;TITLE_OF_DIALOG&gt;</span><span class="dl">'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">openDialog</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">HtmlService</span><span class="p">.</span><span class="nf">createHtmlOutputFromFile</span><span class="p">(</span><span class="dl">'</span><span class="s1">&lt;YOUR_HTML_FILENAME&gt;</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">setSandboxMode</span><span class="p">(</span><span class="nx">HtmlService</span><span class="p">.</span><span class="nx">SandboxMode</span><span class="p">.</span><span class="nx">NATIVE</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">setHeight</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="p">.</span><span class="nf">setWidth</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+  <span class="nx">SpreadsheetApp</span><span class="p">.</span><span class="nf">getUi</span><span class="p">()</span> 
+    <span class="p">.</span><span class="nf">showModalDialog</span><span class="p">(</span><span class="nx">html</span><span class="p">,</span> <span class="dl">'</span><span class="s1">&lt;TITLE_OF_DIALOG&gt;</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 

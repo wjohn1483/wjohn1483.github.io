@@ -1,0 +1,1218 @@
+<!DOCTYPE html><html lang="en">
+  <head><!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KMRDWLPQ85"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-KMRDWLPQ85');
+		
+			gtag('config', 'G-KMRDWLPQ85', { 'anonymize_ip': true });
+		
+	</script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>xsv使用介紹 - wjohn1483.github.io</title>
+
+<meta name="description" content="這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2023/02/15/xsv/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet --><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: 'https://use.fontawesome.com/releases/v5.0.13/css/all.css',
+        jquery: 'https://unpkg.com/jquery@3.3.1/dist/jquery.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://unpkg.com/chart.js@2.7.2/dist/Chart.min.js',
+        gitalk: {
+          js: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.min.js',
+          css: 'https://unpkg.com/gitalk@1.2.2/dist/gitalk.css'
+        },
+        valine: 'https//unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24">
+<style type="text/css">
+	.st0{fill:#515151;}
+</style>
+<path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
+	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
+</svg>
+<a title="" href="/">wjohn1483.github.io</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li class="navigation__item"><a href="/give_feedback">Give Feedback</a></li><li class="navigation__item"><a href="/about">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>xsv使用介紹</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2023-02-15-xsv/2023-02-15-xsv.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="xsv使用介紹"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive/?tag=Tool">Tool</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 15, 2023</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-15T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。</p>
+
+<!--more-->
+
+<p><a href="https://github.com/BurntSushi/xsv">xsv</a>是一個command line工具，專門用來處理csv檔案，方便使用者在處理資料或是觀察資料的時候可以迅速地得到想要的結果。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage:
+    xsv &lt;command&gt; [&lt;args&gt;...]
+    xsv [options]
+
+Options:
+    --list        List all commands available.
+    -h, --help    Display this message
+    &lt;command&gt; -h  Display the command help message
+    --version     Print version info and exit
+
+Commands:
+    cat         Concatenate by row or column
+    count       Count records
+    fixlengths  Makes all records have same length
+    flatten     Show one field per line
+    fmt         Format CSV output (change field delimiter)
+    frequency   Show frequency tables
+    headers     Show header names
+    help        Show this usage message.
+    index       Create CSV index for faster access
+    input       Read CSV data with special quoting rules
+    join        Join CSV files
+    sample      Randomly sample CSV data
+    search      Search CSV data with regexes
+    select      Select columns from CSV
+    slice       Slice records from CSV
+    sort        Sort CSV data
+    split       Split CSV data into many files
+    stats       Compute basic statistics
+    table       Align CSV data into columns
+</code></pre></div></div>
+
+<p>上面是xsv的usage，底下會走過一遍在<a href="https://github.com/BurntSushi/xsv/blob/master/README.md">xsv的README.md</a>裡面的範例，會更清楚各個指令的使用情況。</p>
+
+<h2 id="取得範例資料">取得範例資料</h2>
+
+<p>在開始執行範例之前，會需要先準備一個csv檔案來作為指令的作用對象，在README.md裡面提供了一個範例資料，記載了世界上每個城市的人口。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-LO</span> https://burntsushi.net/stuff/worldcitiespop.csv
+</code></pre></div></div>
+
+<h2 id="安裝xsv">安裝xsv</h2>
+
+<p>安裝xsv的方法可以參照<a href="https://github.com/BurntSushi/xsv#installation">官方文件裡面的說明</a>，如果是mac的話可以直接使用底下的指令。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>xsv
+</code></pre></div></div>
+
+<p>如果是Windows或是Linux，xsv也有提供<a href="https://github.com/BurntSushi/xsv/releases/">binary檔在GitHub上可以下載</a>，下面的指令是以Linux為範例。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://github.com/BurntSushi/xsv/releases/download/0.13.0/xsv-0.13.0-x86_64-unknown-linux-musl.tar.gz
+<span class="nb">tar </span>zxvf xsv-0.13.0-x86_64-unknown-linux-musl.tar.gz
+<span class="nb">sudo mv </span>xsv /usr/local/bin
+</code></pre></div></div>
+
+<h2 id="查看csv的基本資料">查看csv的基本資料</h2>
+
+<h3 id="csv裡面有哪些欄位">csv裡面有哪些欄位</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv headers worldcitiespop.csv
+1   Country
+2   City
+3   AccentCity
+4   Region
+5   Population
+6   Latitude
+7   Longitude
+</code></pre></div></div>
+
+<h3 id="各個欄位的統計數據">各個欄位的統計數據</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv stats <span class="nt">--everything</span> worldcitiespop.csv | xsv table
+field       <span class="nb">type     sum                 </span>min            max            min_length  max_length  mean                stddev              median      mode         cardinality
+Country     Unicode                      ad             zw             2           2                                                               cn           234
+City        Unicode                       bab el ahmar  Þykkvibaer     1           91                                                              san jose     2351892
+AccentCity  Unicode                       Bâb el Ahmar  ïn Bou Chella  1           91                                                              San Antonio  2375760
+Region      Unicode                      00             Z9             0           2                                                   13          04           397
+Population  Integer  2289584999          7              31480498       0           8           47719.570633597126  302885.5592040396   10779                    28754
+Latitude    Float    86294096.37312101   <span class="nt">-54</span>.933333     82.483333      1           12          27.188165808468785  21.95261384912504   32.4972221  51.15        1038349
+Longitude   Float    117718483.57958724  <span class="nt">-179</span>.9833333   180            1           14          37.08885989656418   63.223010459241635  35.28       23.8         1167162
+</code></pre></div></div>
+
+<p>在指令裡面的<code class="language-plaintext highlighter-rouge">--everything</code>是把所有可以得到的統計數字都列出來，在這個例子裡面如果不下<code class="language-plaintext highlighter-rouge">--everything</code>的話，欄位就會少了median、mode和cardinality，<code class="language-plaintext highlighter-rouge">xsv stats</code>最後產生出來的會是csv的格式，為了在terminal上面比較好觀察，所以把結果pipe到<code class="language-plaintext highlighter-rouge">xsv table</code>裡面讓它把結果排整齊。</p>
+
+<h3 id="csv有多少筆資料">csv有多少筆資料</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv count worldcitiespop.csv
+3173958
+</code></pre></div></div>
+
+<h2 id="查看csv的內容">查看csv的內容</h2>
+
+<h3 id="查看csv的特定列數">查看csv的特定列數</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv slice worldcitiespop.csv <span class="nt">-s</span> 0 <span class="nt">-e</span> 5 | xsv table
+Country  City        AccentCity  Region  Population  Latitude    Longitude
+ad       aixas       Aixàs       06                  42.4833333  1.4666667
+ad       aixirivali  Aixirivali  06                  42.4666667  1.5
+ad       aixirivall  Aixirivall  06                  42.4666667  1.5
+ad       aixirvall   Aixirvall   06                  42.4666667  1.5
+ad       aixovall    Aixovall    06                  42.4666667  1.4833333
+</code></pre></div></div>
+
+<p>在指令裡面的<code class="language-plaintext highlighter-rouge">-s/--start</code>是開始的列數，這邊index是0-based的，所以第一筆資料的index是0，而<code class="language-plaintext highlighter-rouge">-e/--end</code>是結束的列數，所給予的index<strong>不會</strong>包含在輸出裡面，可以想成會輸出的資料列數是<code class="language-plaintext highlighter-rouge">[start, end)</code>。</p>
+
+<p>在<code class="language-plaintext highlighter-rouge">xsv slice</code>裡面還有提供<code class="language-plaintext highlighter-rouge">-l/--len</code>的argument來讓使用者決定要輸出多少列。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv slice worldcitiespop.csv <span class="nt">-s</span> 0 <span class="nt">-l</span> 6 | xsv table
+Country  City        AccentCity  Region  Population  Latitude    Longitude
+ad       aixas       Aixàs       06                  42.4833333  1.4666667
+ad       aixirivali  Aixirivali  06                  42.4666667  1.5
+ad       aixirivall  Aixirivall  06                  42.4666667  1.5
+ad       aixirvall   Aixirvall   06                  42.4666667  1.5
+ad       aixovall    Aixovall    06                  42.4666667  1.4833333
+ad       andorra     Andorra     07                  42.5        1.5166667
+</code></pre></div></div>
+
+<p>如果只是想看特定某一列的話，可以用<code class="language-plaintext highlighter-rouge">-i/--index</code>來看。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv slice worldcitiespop.csv <span class="nt">-i</span> 1 | xsv table
+Country  City        AccentCity  Region  Population  Latitude    Longitude
+ad       aixirivali  Aixirivali  06                  42.4666667  1.5
+</code></pre></div></div>
+
+<p>如果csv裡面有很多column的話，可以把指令後面的table換成flatten，改用直的方式印出來。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv slice worldcitiespop.csv <span class="nt">-s</span> 0 <span class="nt">-l</span> 2 | xsv flatten
+Country     ad
+City        aixas
+AccentCity  Aixàs
+Region      06
+Population
+Latitude    42.4833333
+Longitude   1.4666667
+<span class="c">#</span>
+Country     ad
+City        aixirivali
+AccentCity  Aixirivali
+Region      06
+Population
+Latitude    42.4666667
+Longitude   1.5
+</code></pre></div></div>
+
+<h3 id="查看特定column">查看特定column</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv <span class="k">select </span>Country,AccentCity,Population worldcitiespop.csv | xsv sample 10 | xsv table
+Country  AccentCity            Population
+us       Thomas Crossing
+lk       Egodagoda
+ir       Sarbandan
+rs       Malo Lukare
+lv       Polumyza Mazindritsa
+ru       Sovkhoznyy            3916
+ne       Balidey
+mk       <span class="o">((</span> Kisela Voda <span class="o">))</span>
+br       Japuim
+ir       Qal<span class="sb">`</span>ehgah-e Khalifeh
+</code></pre></div></div>
+
+<p>上面指令的<code class="language-plaintext highlighter-rouge">xsv select</code>後面接的是column的名稱，這邊也可以用index來替代，不過這邊就是1-based的計數方式，所以在上面我們需要把<code class="language-plaintext highlighter-rouge">Country,AccentCity,Population</code>替換成<code class="language-plaintext highlighter-rouge">1,3,5</code>來得到一樣的column。</p>
+
+<p>如果多個column有相同的名稱可以在後面用中括號來表示這個第幾個重複的column，像是<code class="language-plaintext highlighter-rouge">xsv select 'Foo[2]'</code>就是拿第三個叫<code class="language-plaintext highlighter-rouge">Foo</code>的column，而如果要抓取某個範圍內的column，可以用<code class="language-plaintext highlighter-rouge">-</code>來選取中間所有的column，像是<code class="language-plaintext highlighter-rouge">Country-Population</code>或<code class="language-plaintext highlighter-rouge">1-5</code>，更多的操作方法可以看<code class="language-plaintext highlighter-rouge">xsv select -h</code>裡面的說明。</p>
+
+<h3 id="每個value的出現次數">每個value的出現次數</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv frequency worldcitiespop.csv <span class="nt">--limit</span> 3 | xsv table
+field       value        count
+Country     cn           238985
+Country     ru           215938
+Country     <span class="nb">id           </span>176546
+City        san jose     328
+City        san antonio  320
+City        santa rosa   296
+AccentCity  San Antonio  317
+AccentCity  Santa Rosa   296
+AccentCity  Santa Cruz   281
+Region      04           159916
+Region      02           142158
+Region      07           126867
+Population  <span class="o">(</span>NULL<span class="o">)</span>       3125978
+Population  2310         12
+Population  2230         11
+Latitude    51.15        777
+Latitude    51.083333    772
+Latitude    51.116667    769
+Longitude   23.8         484
+Longitude   23.2         477
+Longitude   23.05        476
+</code></pre></div></div>
+
+<p>這邊<code class="language-plaintext highlighter-rouge">xsv frequency</code>會去計算每個column裡面的每一個value在這個csv裡面出現了幾次，而<code class="language-plaintext highlighter-rouge">--limit</code>會限制取出現次數最多的前N名，如果想看頻率由小到大的排序，可以用<code class="language-plaintext highlighter-rouge">-a/--asc</code>的option。</p>
+
+<h3 id="搜尋欄位的值">搜尋欄位的值</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv search <span class="nt">-s</span> Population <span class="s1">'[0-9]'</span> worldcitiespop.csv | xsv <span class="k">select </span>Country,AccentCity,Population | xsv sample 10 | xsv table
+Country  AccentCity  Population
+cz       Sumperk     29604
+co       Vianí       1586
+ph       La Curva    3359
+fr       Eaubonne    23739
+<span class="k">in       </span>Kamareddi   71049
+ru       Ust-Kulom   5205
+us       Brent       22735
+ph       Lupao       11000
+ro       Caraula     2628
+ph       Bacnar      4606
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">-s/--select</code>可以指定要搜尋的是哪一個column，而後面搜尋的pattern是regular expression，如果想要排除有比對到的結果，可以用<code class="language-plaintext highlighter-rouge">-v/--invert-match</code>，<code class="language-plaintext highlighter-rouge">xsv search</code>會把所有有比對到的列都印出來變成csv檔，所以如果要只顯示部分的欄位就需要再使用<code class="language-plaintext highlighter-rouge">xsv select</code>或是<code class="language-plaintext highlighter-rouge">xsv slice</code>做處理。</p>
+
+<h2 id="join兩個csv">join兩個csv</h2>
+
+<p>在上面的例子裡面，如果我們想要知道每個Country的縮寫實際代表的國家是哪個的話，可以透過查表的方式來得到，底下的指令會下載一個csv檔，裡面記載著國家縮寫的全稱是什麼。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-LO</span> https://gist.githubusercontent.com/anonymous/063cb470e56e64e98cf1/raw/98e2589b801f6ca3ff900b01a87fbb7452eb35c7/countrynames.csv
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv headers countrynames.csv
+1   Abbrev
+2   Country
+</code></pre></div></div>
+
+<p>我們也可以使用join的方式來直接把所有的縮寫都轉成全稱。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv <span class="nb">join</span> <span class="nt">--no-case</span> Abbrev countrynames.csv Country worldcitiespop.csv | xsv sample 10 | xsv table
+Abbrev  Country     Country  City             AccentCity       Region  Population  Latitude     Longitude
+CO      Colombia    co       santa marta      Santa Marta      28                  3.883889     <span class="nt">-75</span>.102222
+LV      Latvia      lv       kozes            Kozes            10                  56.2         25.7
+TN      Tunisia     tn       bir bou rekba    Bir Bou Rekba    19                  36.434824    10.565897
+LA      Laos        la       ban poung        Ban Poung        22                  19.928056    100.608611
+GE      Georgia     ge       zakvi            Zakvi            06                  41.5063889   43.4997222
+MZ      Mozambique  mz       gube             Gubé             04                  <span class="nt">-26</span>.2833333  32.5666667
+PE      Peru        pe       cruz de callana  Cruz de Callana  11                  <span class="nt">-13</span>.75       <span class="nt">-75</span>.9333333
+MZ      Mozambique  mz       maguezane        Maguezane        03                  <span class="nt">-21</span>.5166667  34.6375
+TH      Thailand    th       ban tang pra     Ban Tang Pra     35                  14.678472    100.351278
+LA      Laos        la       ban xiangkheng   Ban Xiangkheng   16                  21.333333    100.883333
+</code></pre></div></div>
+
+<p>在<code class="language-plaintext highlighter-rouge">xsv join</code>裡面，需要先把想要join的key擺在前面，後面再接csv檔。除了上面的inner join以外，xsv還有支援left join、right join等，可以看<code class="language-plaintext highlighter-rouge">xsv join -h</code>裡面的說明。</p>
+
+<p>在上面的結果裡面，如果我們只想要保留國家的全稱就好，想把join的key都拿掉的話，可以再過一個<code class="language-plaintext highlighter-rouge">xsv select '!Abbrev,Country[1]'</code>，把除了Abbrev和第二個Country以外的全部欄位都選出來。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv <span class="nb">join</span> <span class="nt">--no-case</span> Abbrev countrynames.csv Country worldcitiespop.csv | xsv <span class="k">select</span> <span class="s1">'!Abbrev,Country[1]'</span> | xsv sample 10 | xsv table
+Country                          City           AccentCity     Region  Population  Latitude     Longitude
+Peru                             cachisama      Cachisama      05                  <span class="nt">-13</span>.1166667  <span class="nt">-74</span>.3
+Bosnia and Herzegovina | Bosnia  gecet          Gecet          01                  44.5666667   16.1005556
+China                            caihuaqiao     Caihuaqiao     07                  27.035278    119.777222
+Pakistan                         kothung        Kothung        07                  35.384052    75.74772
+Pakistan                         dhok waraich   Dhok Waraich   04                  33.727099    72.242949
+Russian Federation | Russia      yasenok        Yasenok        10                  53.218388    32.851209
+Philippines                      padaraonan     Padaraonan     J3                  10.4919      122.4906
+Indonesia                        gunungaseupan  Gunungaseupan  30                  <span class="nt">-7</span>.039722    107.505278
+Colombia                         dificil        Dificil        38                  9.849747     <span class="nt">-74</span>.236267
+Ukraine                          lesnichevka    Lesnichëvka    23                  48.613614    28.180124
+</code></pre></div></div>
+
+<h2 id="加速xsv的計算">加速xsv的計算</h2>
+
+<p>xsv支援先對csv檔做index，來讓xsv的其他操作像是<code class="language-plaintext highlighter-rouge">stats</code>、<code class="language-plaintext highlighter-rouge">slice</code>等可以變得更快。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv index worldcitiespop.csv
+</code></pre></div></div>
+
+<p>執行完上面的指令以後會產生一個<strong>wordcitiespop.csv.idx</strong>的檔案，接下來在執行其他操作的時候就會自動加速了，不過如果原本的檔案內容有被更動過的話，會需要再重新製作一個index檔。</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-02-15T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2023/02/02/kgat/">KGAT: Knowledge Graph Attention Network for Recommendation</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script>
+</div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script><script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+</script>
+<script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  window.Lazyload.js('https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
+</script>
+
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+

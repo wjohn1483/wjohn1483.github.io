@@ -368,7 +368,7 @@
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">layout</span><span class="pi">:</span> <span class="s">article</span>
 <span class="na">title</span><span class="pi">:</span> <span class="s">Document - Writing Posts</span>
-<span class="na">mathjax</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">mathjax</span><span class="pi">:</span> <span class="kc">true</span>
 <span class="na">key</span><span class="pi">:</span> <span class="s">your-article-id</span>
 <span class="nn">---</span>
 </code></pre></div></div>
@@ -394,7 +394,7 @@
 
 <p>並在<code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>裡面新增<code class="language-plaintext highlighter-rouge">&lt;script type="text/javascript"&gt;</code>，把相關的變數設定好，client id和client secret的取得可以參考文章上面的<a href="#建立github-application">建立GitHub Application</a>。</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">gitalk</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Gitalk</span><span class="p">({</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">gitalk</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Gitalk</span><span class="p">({</span>
   <span class="na">clientID</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GitHub Application Client ID</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">clientSecret</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GitHub Application Client Secret</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">repo</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GitHub repo</span><span class="dl">'</span><span class="p">,</span>      <span class="c1">// The repository of store comments,</span>
@@ -405,7 +405,7 @@
   <span class="na">proxy</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token</span><span class="dl">'</span>
 <span class="p">})</span>
 
-<span class="nx">gitalk</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">gitalk-container</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">gitalk</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">gitalk-container</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>這邊有帶入<a href="https://github.com/gitalk/gitalk/issues/429">Gitalk issue</a>裡面所提到的，其他人所提供的proxy，如果想用原本預設的proxy，直接將proxy的設定拿掉就行。</p>
