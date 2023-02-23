@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-02-15T14:54:08+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">xsv使用介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv/" rel="alternate" type="text/html" title="xsv使用介紹" /><published>2023-02-15T00:00:00+00:00</published><updated>2023-02-15T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv/"><![CDATA[<p>這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-02-23T12:08:15+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Google Apps Script介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/23/google-apps-script/" rel="alternate" type="text/html" title="Google Apps Script介紹" /><published>2023-02-23T00:00:00+00:00</published><updated>2023-02-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/23/google-apps-script</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/23/google-apps-script/"><![CDATA[<p>在<a href="https://wjohn1483.github.io/2021/06/05/display-html-in-google-sheet/">先前的文章</a>裡面，使用了Google apps script來在Google sheet裡面顯示html，而Google apps script還可以做到更多的事情，這篇文章簡單介紹一下Google apps script是什麼，並如何使用它操作Google calendar。</p>
+
+<!--more-->
+
+<h2 id="google-apps-script">Google Apps Script</h2>
+
+<p><a href="https://www.google.com/script/start/">Google Apps Script（GAS）</a>是一個基於javascript的開發平台，可以在其中方便地跟Google Workspace的服務像是Gmail、Google Calendar、Google Maps等做整合，讓你可以對這些服務做更細緻的操作或是讓多個服務做連動。舉例來說，可以透過Google Sheet整理要一併寄出的收件者和內容，透過GAS來串連Gmail做寄出，又或者可以用GAS來設定今天這個Google Form收到多少回覆後就自動停止等。</p>
+
+<p>除了寫給讓自己的生活更便利以外，GAS還可以部署成web api或者是extension來讓其他人打、使用，是個簡單卻又強大的功能，以下會帶一個<a href="https://developers.google.com/apps-script/samples/automations/vacation-calendar">同步group mail底下個人行事曆到共享行事曆的例子</a>來看看GAS要怎麼寫，如果想看其他更多的應用除了可以看<a href="https://developers.google.com/apps-script/samples">官方文件的範例</a>以外，強烈建議可以看<a href="https://ithelp.ithome.com.tw/articles/10275214">這篇文章</a>，裡面詳述地記載了一些常用到的scenario，並有實際的程式碼來一步一步帶領你建立屬於你的GAS。</p>
+
+<h2 id="同步行事曆">同步行事曆</h2>
+
+<p>在一個團隊裡面有時會有不定人數的人請假，為了能更方便地一眼看到誰請假，避免打擾到休假的人，我們時常會建立一個共享的團隊行事曆，讓大家去填上哪天休假，但這時請假的人就會需要在個人的行事曆上建立請假的事件，並額外在共享的行事曆上也建立相同的事件。</p>
+
+<p>這種類型的事情，就很適合透過GAS來達成，我們可以寫一個GAS去週期性地掃團隊裡面的每個人的行事曆，把有特殊關鍵字的事件引入到共享的行事曆中，就可以節省團隊成員手動建立事件到共享行事曆的時間了。</p>
+
+<p>詳細的程式碼和說明可以參考<a href="https://developers.google.com/apps-script/samples/automations/vacation-calendar">官方文件</a>，底下會稍微解釋一下這件事情是如何被達成的。</p>
+
+<h3 id="程式概覽">程式概覽</h3>
+
+<p>在跟著<a href="https://developers.google.com/apps-script/samples/automations/vacation-calendar">官方文件</a>建立新的行事曆以後，有個按鈕可以打開範例的專案，建立副本以後就能做修改了，理論上照著說明把變數換成你想要的並執行就能達到上述的功能了。</p>
+
+<p>在專案裡面分成兩大塊，在Services裡面可以看到有個<code class="language-plaintext highlighter-rouge">Calendar</code>的service，表示我們在<code class="language-plaintext highlighter-rouge">Code.gs</code>裡面會需要用到calendar的API，而<code class="language-plaintext highlighter-rouge">Code.gs</code>是我們主要實現邏輯的地方。</p>
+
+<p>在<code class="language-plaintext highlighter-rouge">Code.gs</code>裡面有底下幾個function：</p>
+
+<ul>
+  <li>
+    <p>setup：設定trigger來去定期地執行sync</p>
+  </li>
+  <li>
+    <p>sync：程式的進入點，去逐一掃描團隊個人行事曆裡面的事件是不是有包含到定義的關鍵字，如果有，就引入到共享行事曆中</p>
+  </li>
+  <li>
+    <p>importEvent：引入event到共享行事曆中</p>
+  </li>
+  <li>
+    <p>findEvents：尋找哪些event該被引入到共享行事曆中</p>
+  </li>
+  <li>
+    <p>shoudImportEvent：判斷該不該引入event</p>
+  </li>
+  <li>
+    <p>formatDateAsRFC3339：把日期轉成特定格式</p>
+  </li>
+</ul>
+
+<p>其實裡面的邏輯並不複雜，註解也寫得很詳細，可以很快速地看懂每個function想要做的事情，而裡面所使用的物件method可以在<a href="https://developers.google.com/apps-script/reference/calendar">Apps Script的文件</a>當中找到每個method的定義、傳入值和回傳值。</p>
+
+<h3 id="測試程式">測試程式</h3>
+
+<p><img src="./debug.png" alt="Debug" /></p>
+
+<p>在寫好了想要的邏輯以後，可以在畫面上方的menu bar裡面選擇想要測試的function並點擊<code class="language-plaintext highlighter-rouge">Debug</code>的按鈕來測試想要的功能有沒有被實現，如果在上面找不到寫好的function，可能是因為還沒有儲存專案的關係。</p>
+
+<p>如果想要印出debug訊息，除了使用<code class="language-plaintext highlighter-rouge">Debug</code>按鈕提供的sidebar以外，可以使用<code class="language-plaintext highlighter-rouge">console.log()</code>來把訊息寫在console中。</p>
+
+<h3 id="定期執行程式">定期執行程式</h3>
+
+<p>在<code class="language-plaintext highlighter-rouge">setup()</code>裡面會透過API建立一個每30分鐘執行一次的排程作業，我們也可以透過左邊的Triggers手動建立一個trigger來定期執行GAS，而GAS會在GCP的default專案裡面被執行，也就是使用你個人的資源來運行，不過Google有提供<a href="https://developers.google.com/apps-script/guides/services/quotas">免費的quota</a>來做使用，而每次執行的log都可以在左邊Executions的tab裡面找到。</p>
+
+<p>如果想要把專案部署成API、使用Service API的次數超過免費額度，就會需要把這份GAS改放到其他專案裡面，根據用量來付費。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>GAS是個方便統整Google服務的平台，除了<a href="https://ithelp.ithome.com.tw/articles/10275214">上述文章</a>提供的使用情境外，還可以根據自身碰到的情況來做擴充，藉由研讀Google服務們所提供的API來達到你的需求。</p>
+
+<p>像是在上面同步行事曆的GAS裡面，如果有人後來決定不請假的話，在程式碼裡面是不會判斷這件事並把共享行事曆裡面的事件刪除掉的，這時就可以參考Calendar的API來自行撰寫刪除事件的function。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Delete all events in the calendar with id TEAM_CALENDAR_ID
+ */</span>
+<span class="kd">function</span> <span class="nf">deleteAllEvents</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">calendar</span> <span class="o">=</span> <span class="nx">CalendarApp</span><span class="p">.</span><span class="nf">getCalendarById</span><span class="p">(</span><span class="nx">TEAM_CALENDAR_ID</span><span class="p">);</span>
+  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Delete all events in calendar "</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">calendar</span><span class="p">.</span><span class="nf">getName</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"</span><span class="se">\n</span><span class="s1">from "</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">start</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"</span><span class="se">\n</span><span class="s1">to "</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">end</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">events</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nf">getEvents</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">);</span>
+  <span class="nx">events</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Deleting: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nf">getTitle</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="s1">starting from </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nf">getStartTime</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="s1">end at </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nf">getEndTime</span><span class="p">());</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nf">deleteEvent</span><span class="p">();</span>
+    <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">});</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Deleted </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">count</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> events</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>上面的function會把共享行事曆裡面特定日期內的所有事件都刪除，我們就能用這個簡單的方式在import事件之前把事件都清空，再把event引入到行事曆中來達到event同步刪除的功能。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在先前的文章裡面，使用了Google apps script來在Google sheet裡面顯示html，而Google apps script還可以做到更多的事情，這篇文章簡單介紹一下Google apps script是什麼，並如何使用它操作Google calendar。]]></summary></entry><entry><title type="html">xsv使用介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv/" rel="alternate" type="text/html" title="xsv使用介紹" /><published>2023-02-15T00:00:00+00:00</published><updated>2023-02-15T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/15/xsv/"><![CDATA[<p>這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。</p>
 
 <!--more-->
 
@@ -1299,132 +1385,4 @@ airflow db init
 
 <ol>
   <li><a href="https://leemeng.tw/a-story-about-airflow-and-data-engineering-using-how-to-use-python-to-catch-up-with-latest-comics-as-an-example.html">一段 Airflow 與資料工程的故事：談如何用 Python 追漫畫連載</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章紀錄一下嘗試使用Airflow的經歷。]]></summary></entry><entry><title type="html">AutoKeras介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction/" rel="alternate" type="text/html" title="AutoKeras介紹" /><published>2021-12-23T00:00:00+00:00</published><updated>2021-12-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2021/12/23/autokeras-introduction/"><![CDATA[<p>現在市面上有眾多AutoML的框架，而用深度學習並有Neural Architecture Search（NAS）功能的並不多，這邊紀錄一下使用AutoKeras的心得。</p>
-
-<!--more-->
-
-<h2 id="安裝autokeras">安裝AutoKeras</h2>
-
-<p>安裝的方式很簡單，只需要<code class="language-plaintext highlighter-rouge">pip install</code>就行了，不過值得一提的是，在文章撰寫的當下，雖然<a href="https://autokeras.com/install/">AutoKeras的官網</a>上寫支援tensorflow 2.3.0以上的版本，但實際用tensorflow 2.7.0的時候會出現問題，建議還是先使用tensorflow 2.3.0。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span><span class="nv">tensorflow</span><span class="o">==</span>2.3.0 autokeras
-</code></pre></div></div>
-
-<h2 id="利用autokeras做text-classification">利用AutoKeras做text classification</h2>
-
-<p>在<a href="https://autokeras.com/tutorial/overview/">AutoKeras的官網</a>上有很多tutorial來做不同的任務，像是text classification、image classification等等，這邊嘗試的是tutorial裡面的text classification，任務是sentiment analysis，給定一個評論，判斷這個評論是正面還是負面的。</p>
-
-<h3 id="準備訓練用的資料">準備訓練用的資料</h3>
-
-<p>底下的程式碼會去從網路上抓取dataset下來，並做成numpy，值得一提的是，文字的部分我們並沒有轉成index，而是單純的string，轉成index的部分會交由autokeras放在模型裡面。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">os</span>
-
-<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="n">tensorflow</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="n">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
-
-
-<span class="nf">print</span><span class="p">(</span><span class="s">"Preparing data..."</span><span class="p">)</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="nf">get_file</span><span class="p">(</span>
-    <span class="n">fname</span><span class="o">=</span><span class="s">"aclImdb.tar.gz"</span><span class="p">,</span>
-    <span class="n">origin</span><span class="o">=</span><span class="s">"http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz"</span><span class="p">,</span>
-    <span class="n">extract</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="c1"># set path to dataset
-</span><span class="n">IMDB_DATADIR</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="s">"aclImdb"</span><span class="p">)</span>
-
-<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"pos"</span><span class="p">,</span> <span class="s">"neg"</span><span class="p">]</span>
-<span class="n">train_data</span> <span class="o">=</span> <span class="nf">load_files</span><span class="p">(</span>
-    <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">IMDB_DATADIR</span><span class="p">,</span> <span class="s">"train"</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">classes</span>
-<span class="p">)</span>
-<span class="n">test_data</span> <span class="o">=</span> <span class="nf">load_files</span><span class="p">(</span>
-    <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">IMDB_DATADIR</span><span class="p">,</span> <span class="s">"test"</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">classes</span>
-<span class="p">)</span>
-
-<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
-<span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
-
-<span class="c1"># Minimize training size for tutorial
-</span><span class="n">sample_size</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[:</span><span class="n">sample_size</span><span class="p">]</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">sample_size</span><span class="p">]</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="s">"Data samples..."</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (sample_size,)
-</span><span class="nf">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (sample_size,)
-</span><span class="nf">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">50</span><span class="p">])</span>  <span class="c1"># b'Zero Day leads you to think, even re-think why two'
-</span><span class="nf">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">30</span><span class="p">])</span>  <span class="c1"># [1 0 1 0 0 1 1 0 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 0 1 0 0 0 1 0]
-</span></code></pre></div></div>
-
-<h3 id="訓練模型">訓練模型</h3>
-
-<p>在這邊我們使用autokeras裡面的TextClassifier，設定<code class="language-plaintext highlighter-rouge">max_trials</code>為2，代表嘗試2種不同的模型架構，可以視情況把這個數字調大，而<code class="language-plaintext highlighter-rouge">overwrite</code>會將上次訓練的結果覆蓋掉，如果想接續上次訓練，可以改成<code class="language-plaintext highlighter-rouge">False</code>。</p>
-
-<p>在<code class="language-plaintext highlighter-rouge">fit()</code>裡面有設定<code class="language-plaintext highlighter-rouge">epochs</code>，表示每一個模型架構會訓練多少個epoch。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">autokeras</span> <span class="k">as</span> <span class="n">ak</span>
-
-
-<span class="nf">print</span><span class="p">(</span><span class="s">"Building model..."</span><span class="p">)</span>
-<span class="c1"># Initialize the text classifier.
-</span><span class="n">clf</span> <span class="o">=</span> <span class="n">ak</span><span class="p">.</span><span class="nc">TextClassifier</span><span class="p">(</span>
-    <span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span>
-<span class="p">)</span>  <span class="c1"># It only tries 2 models as a quick demo.
-</span><span class="n">clf</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>值得一提的是，<code class="language-plaintext highlighter-rouge">TextClassifier</code>可以設定模型的metrics要是什麼，預設是<code class="language-plaintext highlighter-rouge">val_loss</code>，可以依據任務的需求來做修改。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cls</span> <span class="o">=</span> <span class="n">ak</span><span class="p">.</span><span class="nc">TextClassifier</span><span class="p">(</span>
-    <span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-    <span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">objective</span><span class="o">=</span><span class="s">"accuracy"</span><span class="p">,</span>  <span class="c1"># Change to other metric that is suitable for your task
-</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>另外，<code class="language-plaintext highlighter-rouge">TextClassifier</code>會自己去判斷label有多少個，並自己對label做index，只是在預測的時候並不會自動把index轉回原本label的樣子，建議這邊自己先用<code class="language-plaintext highlighter-rouge">sklearn.preprocessing.LabelEncoder</code>先對label做index，並在<code class="language-plaintext highlighter-rouge">fit()</code>的時候餵入轉好index的資料，之後在預測時，就可以使用<code class="language-plaintext highlighter-rouge">LabelEncoder</code>來轉回label原本的樣子。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">pickle</span>
-
-
-<span class="c1"># Before training
-</span><span class="n">labeler</span> <span class="o">=</span> <span class="nc">LabelEncoder</span><span class="p">().</span><span class="nf">fit</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
-<span class="n">label</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">labeler</span><span class="p">.</span><span class="nf">transform</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
-<span class="n">pickle</span><span class="p">.</span><span class="nf">dump</span><span class="p">(</span><span class="n">labeler</span><span class="p">,</span> <span class="nf">open</span><span class="p">(</span><span class="s">"/path/to/labeler.pkl"</span><span class="p">,</span> <span class="s">"wb"</span><span class="p">),</span> <span class="n">pickle</span><span class="p">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
-
-<span class="c1"># After training
-</span><span class="n">labeler</span> <span class="o">=</span> <span class="n">pickle</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="nf">open</span><span class="p">(</span><span class="s">"/path/to/labeler.pkl"</span><span class="p">,</span> <span class="s">"rb"</span><span class="p">))</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">predictions</span> <span class="o">=</span> <span class="n">labeler</span><span class="p">.</span><span class="nf">inverse_transform</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-</code></pre></div></div>
-
-<h3 id="儲存模型">儲存模型</h3>
-
-<p>這邊會儲存表現最好的模型。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">clf</span><span class="p">.</span><span class="nf">export_model</span><span class="p">()</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">model</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="s">"./model"</span><span class="p">,</span> <span class="n">save_format</span><span class="o">=</span><span class="s">"tf"</span><span class="p">)</span>
-<span class="k">except</span> <span class="nb">Exception</span><span class="p">:</span>
-    <span class="n">model</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="s">"./model.h5"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h3 id="模型預測">模型預測</h3>
-
-<p>autokeras輸出的模型跟一般keras訓練出來的模型相同，所以我們可以用keras的<code class="language-plaintext highlighter-rouge">load_model()</code>來讀取模型，不過會需要在後面加上<code class="language-plaintext highlighter-rouge">custom_objects</code>，把autokeras自定義的object帶進來。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
-
-
-<span class="n">model</span> <span class="o">=</span> <span class="nf">load_model</span><span class="p">(</span><span class="s">"./model"</span><span class="p">,</span> <span class="n">custom_objects</span><span class="o">=</span><span class="n">ak</span><span class="p">.</span><span class="n">CUSTOM_OBJECTS</span><span class="p">)</span>
-<span class="n">model</span><span class="p">.</span><span class="nf">summary</span><span class="p">()</span>
-<span class="n">model</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h2 id="結論">結論</h2>
-
-<p>可以稍微瀏覽一下<a href="https://autokeras.com/tutorial/overview/">autokeras的tutorial</a>，如果碰到的任務種類有在裡面，可以嘗試看看，只不過會需要跑在可以連上外網的機器上，因為autokeras會去網路上抓一些pretrain的模型下來，另外也需要注意一下硬碟的使用量，因為autokeras會把每個trial訓練的模型儲存下來，很容易把硬碟吃滿，不然就是需要在<a href="https://autokeras.com/text_classifier/">ak.TextClassifier</a>裡面限制<code class="language-plaintext highlighter-rouge">max_model_size</code>的大小。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[現在市面上有眾多AutoML的框架，而用深度學習並有Neural Architecture Search（NAS）功能的並不多，這邊紀錄一下使用AutoKeras的心得。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章紀錄一下嘗試使用Airflow的經歷。]]></summary></entry></feed>
