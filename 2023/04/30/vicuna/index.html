@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>如何在本機上跑Vicuna模型 - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2023/04/30/vicuna/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -265,7 +265,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -278,19 +278,22 @@
 	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
 </svg>
 <a title="" href="/">wjohn1483.github.io</a></div><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></div><nav class="navigation">
-        <ul><li class="navigation__item navigation__item--active"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li class="navigation__item"><a href="/give_feedback">Give Feedback</a></li><li class="navigation__item"><a href="/about">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
+        <ul><li class="navigation__item"><a href="/">Posts</a></li><li class="navigation__item"><a href="/archive">Archive</a></li><li class="navigation__item"><a href="/audio_to_scene">Audio to Scene</a></li><li class="navigation__item"><a href="/give_feedback">Give Feedback</a></li><li class="navigation__item"><a href="/about">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li></ul>
       </nav></div>
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/04/30/vicuna/"><h2 itemprop="headline" class="item__header">如何在本機上跑Vicuna模型</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。</div><p><a href="/2023/04/30/vicuna/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>如何在本機上跑Vicuna模型</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2023-04-30-vicuna/2023-04-30-vicuna.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="如何在本機上跑Vicuna模型"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
             </li><li>
@@ -298,105 +301,114 @@
                 href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
             </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 30, 2023</span>
             </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-04-30T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool,Natural-Language-Processing"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/03/23/pyspark-executor-log/"><h2 itemprop="headline" class="item__header">將PySpark Executor的Log蒐集到Driver</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章記錄一下如何用spark內建的accumulator把在executor的資訊帶回driver上。</div><p><a href="/2023/03/23/pyspark-executor-log/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 23, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-03-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/03/18/temporal-collaborative-ranking-via-personalized-transformer/"><h2 itemprop="headline" class="item__header">Temporal Collaborative Ranking Via Personalized Transformer</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章記錄一下看完這篇paper的筆記。</div><p><a href="/2023/03/18/temporal-collaborative-ranking-via-personalized-transformer/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 18, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-03-18T00:00:00+00:00">
-    <meta itemprop="keywords" content="Recommendation-System,Paper"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/23/google-apps-script/"><h2 itemprop="headline" class="item__header">Google Apps Script介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在先前的文章裡面，使用了Google apps script來在Google sheet裡面顯示html，而Google apps script還可以做到更多的事情，這篇文章簡單介紹一下Google apps script是什麼，並如何使用它操作Google calendar。</div><p><a href="/2023/02/23/google-apps-script/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 23, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/15/xsv/"><h2 itemprop="headline" class="item__header">xsv使用介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。</div><p><a href="/2023/02/15/xsv/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 15, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/02/kgat/"><h2 itemprop="headline" class="item__header">KGAT: Knowledge Graph Attention Network for Recommendation</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。</div><p><a href="/2023/02/02/kgat/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Graph-Model">Graph-Model</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 02, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Graph-Model,Recommendation-System,Machine-Learning,Paper"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/24/overleaf/"><h2 itemprop="headline" class="item__header">自己建立Overleaf伺服器</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在過去寫paper的時候通常都是使用overleaf來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。</div><p><a href="/2022/11/24/overleaf/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 24, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-11-24T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/19/tensorflow-js-pose-detection/"><h2 itemprop="headline" class="item__header">Tensorflow JS介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。</div><p><a href="/2022/11/19/tensorflow-js-pose-detection/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Computer-Vision">Computer-Vision</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 19, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-11-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool,Computer-Vision"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>43 post articles, 6 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
-            <i class="fas fa-angle-left"></i>
-          </div></li><li>
-              <div class="button button--primary button--circle focus"><span>1</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-                </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page6"><span>6</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page2">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+    <meta itemprop="keywords" content="Tool,Natural-Language-Processing"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。</p>
+
+<!--more-->
+
+<h2 id="vicuna">Vicuna</h2>
+
+<p><a href="https://vicuna.lmsys.org/">Vicuna</a>是一個基於<a href="https://github.com/facebookresearch/llama">LLaMA</a>的大型語言模型（LLM），開發團隊使用GPT-4來當作評審去評論Vicuna和ChatGPT的回答哪個比較好，而Vicuna在測試裡面達到了90%的水準，是個表現相當不錯的模型，個人覺得回答的效果比起<a href="https://crfm.stanford.edu/2023/03/13/alpaca.html">Alpaca</a>和單純的LLaMA還要好上不少。</p>
+
+<p>底下會講一下如何在本機上面執行Vicuna，在ChatGPT跑不出你想要的結果時，不妨嘗試將問題問看看Vicuna。</p>
+
+<h2 id="下載llama">下載LLaMA</h2>
+
+<p>由於Vicuna是基於LLaMA的模型，首先我們會需要先拿到LLaMA的參數，正規的方式是去這份<a href="https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform">google表單</a>上面填寫資料，跟Meta申請使用許可，不過網路社群上也提供了很多其他的方式來讓大家下載，像是<a href="https://github.com/juncongmoo/pyllama">pyllama</a>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>pyllama <span class="nt">-U</span>
+python <span class="nt">-m</span> llama.download <span class="nt">--model_size</span> 13B <span class="nt">--folder</span> /tmp/pyllama_data
+</code></pre></div></div>
+
+<p>只要下上面的指令就能簡單下載到LLaMA 13B的參數了，詳細的說明可以參考pyllama的文件。</p>
+
+<p>在執行的過程中有可能連線會卡住，可以使用<code class="language-plaintext highlighter-rouge">Ctrl+C</code>將連線斷開以後執行第二行的指令，它會從斷掉的地方繼續下載，不用怕會需要從頭下載，下載下來的參數僅限於研究的用途，不應該再被拿去做其他使用。</p>
+
+<h2 id="轉成huggingface的格式">轉成huggingface的格式</h2>
+
+<p>在下載好LLaMA的參數以後，我們需要將下載下來的參數轉成hugging face的格式，為此我們需要安裝<code class="language-plaintext highlighter-rouge">transformers</code>在機器上，而Vicuna要求transformers的版本要在<strong>4.28.0</strong>以上，如果直接用pip安裝的版本不夠高的話，可以直接下下面的指令來安裝最新版。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>https://github.com/huggingface/transformers/archive/refs/heads/main.zip
+</code></pre></div></div>
+
+<p>接著就能將LLaMA轉成hugging face的格式了</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 ./convert_llama_weights_to_hf.py <span class="se">\</span>
+    <span class="nt">--input_dir</span> ./pyllama_data <span class="se">\</span>
+    <span class="nt">--model_size</span> 13B <span class="se">\</span>
+    <span class="nt">--output_dir</span> ./llama_hf
+</code></pre></div></div>
+
+<p>上面指令裡面的<code class="language-plaintext highlighter-rouge">convert_llama_weights_to_hf.py</code>是使用<a href="https://huggingface.co/docs/transformers/main/model_doc/llama">LLaMA在hugging face頁面上</a>所提供的<a href="https://github.com/huggingface/transformers/blob/main/src/transformers/models/llama/convert_llama_weights_to_hf.py">這份</a>，而<code class="language-plaintext highlighter-rouge">./pyllama_data</code>是上面使用pyllama下載下來的資料夾、<code class="language-plaintext highlighter-rouge">./llama_hf</code>是輸出的資料夾。</p>
+
+<h2 id="下載vicuna-delta">下載Vicuna delta</h2>
+
+<p>Vicuna的參數放在他們的<a href="https://huggingface.co/lmsys">hugging face帳戶上</a>，但因為裡面有包含了非常大檔案的參數檔，所以在使用git clone下來之前會需要先安裝<a href="https://git-lfs.com/">Git Large File Storage（LFS）</a>才能將大檔案下載下來，底下是在Cent OS上安裝並下載的指令。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | <span class="nb">sudo </span>bash
+<span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> git-lfs
+git lfs <span class="nb">install
+</span>git clone https://huggingface.co/lmsys/vicuna-13b-delta-v1.1
+</code></pre></div></div>
+
+<h2 id="apply-vicuna-delta">Apply Vicuna delta</h2>
+
+<p>有了LLaMA的參數和Vicuna的delta後，我們需要將delta套用在LLaMA的參數上來獲得實際的Vicuna，套用的方法是使用pip <code class="language-plaintext highlighter-rouge">fschat</code>的套件。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>fschat
+python3 <span class="nt">-m</span> fastchat.model.apply_delta <span class="se">\</span>
+    <span class="nt">--base</span> ./llama_hf <span class="se">\</span>
+    <span class="nt">--target</span> ./vicuna-13b <span class="se">\</span>
+    <span class="nt">--delta</span> ./vicuna-13b-delta-v1.1
+</code></pre></div></div>
+
+<p>使用套件裡面的<code class="language-plaintext highlighter-rouge">apply_delta</code>搭配先前準備好的hugging face格式的LLaMA和Vicuna delta就能獲得實際的Vicuna了，值得一提的是套用7B的模型需要30GB的RAM，而13B的模型需要60GB，如果RAM沒有那麼足夠的話，可以參考<a href="https://github.com/lm-sys/FastChat#low-cpu-memory-conversion">文件當中的方式</a>來降低記憶體的使用。</p>
+
+<h2 id="使用vicuna">使用Vicuna</h2>
+
+<p>準備好Vicuna得參數後，便能使用fastchat提供的function來在terminal上面跟Vicuna對話了，詳細的參數可以參考<a href="https://github.com/lm-sys/FastChat#inference-with-command-line-interface">文件</a>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> fastchat.serve.cli <span class="nt">--model-path</span> ./vicuna-13b-delta-v1.1
+</code></pre></div></div>
+
+<p>如果想用網頁版的方式來互動，fastchat也有使用<a href="https://gradio.app/">Gradio</a>來包成網頁，詳細的說明請參考<a href="https://github.com/lm-sys/FastChat#serving-with-web-gui">文件</a>。</p>
+
+<p>Vicuna有另外推出了<a href="https://github.com/lm-sys/FastChat#fastchat-t5">FastChat-T5</a>供大家在商業上使用，指令跟上面文章的相同，只需要將模型的路徑指到FastChat-T5就行了。</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-04-30T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2023/03/23/pyspark-executor-log/">將PySpark Executor的Log蒐集到Driver</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -919,10 +931,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>
