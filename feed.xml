@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-04-30T14:17:22+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何在本機上跑Vicuna模型</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/" rel="alternate" type="text/html" title="如何在本機上跑Vicuna模型" /><published>2023-04-30T00:00:00+00:00</published><updated>2023-04-30T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/"><![CDATA[<p>隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-05-27T03:36:17+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何在本機上跑Vicuna模型</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/" rel="alternate" type="text/html" title="如何在本機上跑Vicuna模型" /><published>2023-04-30T00:00:00+00:00</published><updated>2023-04-30T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/"><![CDATA[<p>隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。</p>
 
 <!--more-->
 
@@ -117,7 +117,7 @@ python3 <span class="nt">-m</span> fastchat.model.apply_delta <span class="se">\
 
 
 <span class="k">def</span> <span class="nf">manipulate_dict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">accumulator</span><span class="p">):</span>
-    <span class="n">accumulator</span><span class="p">.</span><span class="nf">add</span><span class="p">({</span><span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s">"This is the executor processing </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">"</span><span class="p">})</span>
+    <span class="n">accumulator</span><span class="p">.</span><span class="nf">add</span><span class="p">({</span><span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="s">This is the executor processing </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="sh">"</span><span class="p">})</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 
 
@@ -132,14 +132,14 @@ python3 <span class="nt">-m</span> fastchat.model.apply_delta <span class="se">\
     <span class="nf">print</span><span class="p">(</span><span class="n">accumulator</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
 
 <p>在上面的程式碼裡面，我們寫了一個<code class="language-plaintext highlighter-rouge">manipulate_dict()</code>的UDF，在function裡面會去把收到的參數放進accumulator裡面並回傳參數的平方出去，這個程式執行後在driver印出來的結果如下</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">]</span>
-<span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s">'This is the executor processing 0'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s">'This is the executor processing 1'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s">'This is the executor processing 2'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s">'This is the executor processing 3'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s">'This is the executor processing 4'</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s">'This is the executor processing 5'</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s">'This is the executor processing 6'</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="s">'This is the executor processing 7'</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s">'This is the executor processing 8'</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s">'This is the executor processing 9'</span><span class="p">}</span>
+<span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 0</span><span class="sh">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 1</span><span class="sh">'</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 2</span><span class="sh">'</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 3</span><span class="sh">'</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 4</span><span class="sh">'</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 5</span><span class="sh">'</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 6</span><span class="sh">'</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 7</span><span class="sh">'</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 8</span><span class="sh">'</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="sh">'</span><span class="s">This is the executor processing 9</span><span class="sh">'</span><span class="p">}</span>
 </code></pre></div></div>
 
 <p>如果說只是想要寫入單純的字串到accumulator裡面，可以改用<code class="language-plaintext highlighter-rouge">list</code>的param來達成搜集executor log的目的</p>
@@ -158,7 +158,7 @@ python3 <span class="nt">-m</span> fastchat.model.apply_delta <span class="se">\
 
 
 <span class="k">def</span> <span class="nf">manipulate_list</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">accumulator</span><span class="p">):</span>
-    <span class="n">accumulator</span><span class="p">.</span><span class="nf">add</span><span class="p">([</span><span class="sa">f</span><span class="s">"This is the executor processing </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s">"</span><span class="p">])</span>
+    <span class="n">accumulator</span><span class="p">.</span><span class="nf">add</span><span class="p">([</span><span class="sa">f</span><span class="sh">"</span><span class="s">This is the executor processing </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="sh">"</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 
 
@@ -173,14 +173,14 @@ python3 <span class="nt">-m</span> fastchat.model.apply_delta <span class="se">\
     <span class="nf">print</span><span class="p">(</span><span class="n">accumulator</span><span class="p">)</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
 
 <p>在driver上印出的結果如下</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">]</span>
-<span class="p">[</span><span class="s">'This is the executor processing 0'</span><span class="p">,</span> <span class="s">'This is the executor processing 1'</span><span class="p">,</span> <span class="s">'This is the executor processing 2'</span><span class="p">,</span> <span class="s">'This is the executor processing 3'</span><span class="p">,</span> <span class="s">'This is the executor processing 4'</span><span class="p">,</span> <span class="s">'This is the executor processing 5'</span><span class="p">,</span> <span class="s">'This is the executor processing 6'</span><span class="p">,</span> <span class="s">'This is the executor processing 7'</span><span class="p">,</span> <span class="s">'This is the executor processing 8'</span><span class="p">,</span> <span class="s">'This is the executor processing 9'</span><span class="p">]</span>
+<span class="p">[</span><span class="sh">'</span><span class="s">This is the executor processing 0</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 1</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 2</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 3</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 4</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 5</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 6</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 7</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 8</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">This is the executor processing 9</span><span class="sh">'</span><span class="p">]</span>
 </code></pre></div></div>
 
 <p>透過自定義<code class="language-plaintext highlighter-rouge">AccumulatorParam</code>，我們可以很彈性地在UDF回傳想要印在driver上的資料，讓debug spark的程式變得輕鬆一些。</p>
@@ -1204,7 +1204,7 @@ tlmgr <span class="nb">install </span>scheme-full
 
 <p>在<a href="https://experiments.withgoogle.com/move-mirror">Move Mirror</a>裡面，我們可以透過使用者的動作來找到相似的圖片，主要的方法是透過CDCL的模型來去對電腦鏡頭拍攝出來的人像做辨識，從中取得每個關節的座標，接著把座標正規化以後去跟照片去算cosine similarity，而在<a href="https://blog.tensorflow.org/2018/07/move-mirror-ai-experiment-with-pose-estimation-tensorflow-js.html">部落格文章</a>當中還有講述把模型給的信心分數放進算座標距離的方法和快速計算多張照片的方式，建議閱讀文章的內容來更理解詳細的做法。</p>
 
-<p>有了這個CDCL模型和距離計算的方式，我們可以對它稍做修改，改成給定一張照片，去計算電腦鏡頭拍攝的人像和照片的距離有多少，來讓使用者可以練習擺跟照片一樣的姿勢，我個人修改過後的結果可以<a href="https://wjohn1483.github.io/pose_copier/?model=movenet">在這邊看到</a>。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Computer-Vision" /><summary type="html"><![CDATA[隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。]]></summary></entry><entry><title type="html">Python logging介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction/" rel="alternate" type="text/html" title="Python logging介紹" /><published>2022-06-04T00:00:00+00:00</published><updated>2022-06-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction/"><![CDATA[<p>這篇文章簡單介紹一下python logging這個package的使用方法。</p>
+<p>有了這個CDCL模型和距離計算的方式，我們可以對它稍做修改，改成給定一張照片，去計算電腦鏡頭拍攝的人像和照片的距離有多少，來讓使用者可以練習擺跟照片一樣的姿勢，我個人修改過後的結果可以<a href="https://wjohn1483.github.io/Pose-Copier/dist/?model=movenet">在這邊看到</a>。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Computer-Vision" /><summary type="html"><![CDATA[隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。]]></summary></entry><entry><title type="html">Python logging介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction/" rel="alternate" type="text/html" title="Python logging介紹" /><published>2022-06-04T00:00:00+00:00</published><updated>2022-06-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction/"><![CDATA[<p>這篇文章簡單介紹一下python logging這個package的使用方法。</p>
 
 <!--more-->
 
@@ -1238,11 +1238,11 @@ tlmgr <span class="nb">install </span>scheme-full
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">Debug message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">Info message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">Error message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">Critical message</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在實際執行上面的程式碼以後我們可以得到下面的結果</p>
@@ -1257,11 +1257,11 @@ CRITICAL:root:Critical message
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
 
 <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">Debug message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">Info message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">Error message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">Critical message</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>此時得到的結果會是</p>
@@ -1282,12 +1282,12 @@ CRITICAL:root:Critical message
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
     <span class="nf">func</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1297,8 +1297,8 @@ CRITICAL:root:Critical message
 
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
-    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
-    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from lib</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from lib</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在上面我們寫了兩個python script，分別為<strong>main.py</strong>和<strong>lib.py</strong>，其中<strong>main.py</strong>會去呼叫定義在<strong>lib.py</strong>裡面的<code class="language-plaintext highlighter-rouge">func()</code>，這時如果去執行<strong>main.py</strong>的話會得到下面的結果</p>
@@ -1325,12 +1325,12 @@ ERROR:root:error from lib
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
     <span class="nf">func</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1341,8 +1341,8 @@ ERROR:root:error from lib
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from lib</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from lib</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>這邊我們將<code class="language-plaintext highlighter-rouge">__name__</code>傳入<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>當中，這時logging就會幫我們建立一個以<code class="language-plaintext highlighter-rouge">__name__</code>為名稱的logger，而<code class="language-plaintext highlighter-rouge">__name__</code>會在python裡面被代換成檔案名稱，這時再執行<strong>main.py</strong>就能得到以下的結果</p>
@@ -1376,13 +1376,13 @@ ERROR:lib:error from lib
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
     <span class="nf">func</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="n">log_format</span><span class="o">=</span><span class="s">"%(asctime)s %(filename)s:%(lineno)d - %(message)s"</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">log_format</span><span class="o">=</span><span class="sh">"</span><span class="s">%(asctime)s %(filename)s:%(lineno)d - %(message)s</span><span class="sh">"</span>
     <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">)</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1406,14 +1406,14 @@ ERROR:lib:error from lib
 
 
 <span class="k">class</span> <span class="nc">CustomFormatter</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">):</span>
-    <span class="n">grey</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[38;20m"</span>
-    <span class="n">cyan</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[36;20m"</span>
-    <span class="n">light_green</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[32;20m"</span>
-    <span class="n">yellow</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[33;20m"</span>
-    <span class="n">red</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[31;20m"</span>
-    <span class="n">bold_red</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[31;1m"</span>
-    <span class="n">reset</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[0m"</span>
-    <span class="n">log_format</span> <span class="o">=</span> <span class="s">"%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)"</span>
+    <span class="n">grey</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[38;20m</span><span class="sh">"</span>
+    <span class="n">cyan</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[36;20m</span><span class="sh">"</span>
+    <span class="n">light_green</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[32;20m</span><span class="sh">"</span>
+    <span class="n">yellow</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[33;20m</span><span class="sh">"</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[31;20m</span><span class="sh">"</span>
+    <span class="n">bold_red</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[31;1m</span><span class="sh">"</span>
+    <span class="n">reset</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[0m</span><span class="sh">"</span>
+    <span class="n">log_format</span> <span class="o">=</span> <span class="sh">"</span><span class="s">%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)</span><span class="sh">"</span>
 
     <span class="n">FORMATS</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">:</span> <span class="n">light_green</span> <span class="o">+</span> <span class="n">log_format</span> <span class="o">+</span> <span class="n">reset</span><span class="p">,</span>
@@ -1446,15 +1446,15 @@ ERROR:lib:error from lib
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"debug message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"info message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"warning message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"error message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"critical message"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">debug message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">info message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">warning message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">error message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">critical message</span><span class="sh">"</span><span class="p">)</span>
     <span class="nf">func</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">().</span><span class="nf">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
@@ -1524,28 +1524,28 @@ ERROR:lib:error from lib
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">os</span>
 <span class="kn">from</span> <span class="n">mlflow</span> <span class="kn">import</span> <span class="n">log_metric</span><span class="p">,</span> <span class="n">log_param</span><span class="p">,</span> <span class="n">log_artifact</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="c1"># Log a parameter (key-value pair)
-</span>    <span class="nf">log_param</span><span class="p">(</span><span class="s">"param1"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
-    <span class="nf">log_param</span><span class="p">(</span><span class="s">"param2"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
-</span>    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
-</span>    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s">"first file!"</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s">"second file!"</span><span class="p">)</span>
-    <span class="nf">log_artifact</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">)</span>
-    <span class="nf">log_artifact</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">)</span>
+</span>    <span class="nf">log_param</span><span class="p">(</span><span class="sh">"</span><span class="s">param1</span><span class="sh">"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+    <span class="nf">log_param</span><span class="p">(</span><span class="sh">"</span><span class="s">param2</span><span class="sh">"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
+</span>    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
+</span>    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">output1.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">first file!</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">output2.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">second file!</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">output1.txt</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">output2.txt</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在上面的程式碼中我們可以看到mlflow提供了三種不同log的function，<code class="language-plaintext highlighter-rouge">log_param</code>用來記錄這次訓練模型時所使用的hyperparameters像是learning rate、batch size等等，而<code class="language-plaintext highlighter-rouge">log_metric</code>用來記錄訓練模型中會變動的資料，像是loss、accuracy等，最後<code class="language-plaintext highlighter-rouge">log_artifact</code>會把該路徑的檔案放進artifact中，主要是把這次訓練完成以後想要留存的檔案儲存下來，像是模型本身、前處理/後處理用到的字典檔等。</p>
 
 <p>有了這些function以後，我們就能在編寫程式的時候把這些function安插進來，之後就能在command line上面下<code class="language-plaintext highlighter-rouge">mlflow server</code>的指令來打開mlflow的UI來檢視訓練的成果，然而每次手動寫這些function有點麻煩，mlflow有另外提供了auto tracking的功能，只需要在程式碼裡面加個幾行，mlflow就會幫你自動紀錄這些參數和結果了。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""Trains and evaluate a simple MLP
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">Trains and evaluate a simple MLP
 on the Reuters newswire topic classification task.
-"""</span>
+</span><span class="sh">"""</span>
 <span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="n">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">from</span> <span class="n">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
@@ -1563,8 +1563,8 @@ on the Reuters newswire topic classification task.
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">"Loading data..."</span><span class="p">)</span>
-</code></pre></div></div>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Loading data</span><span class="gp">...</span><span class="sh">"</span><span class="s">)
+</span></code></pre></div></div>
 
 <p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/keras/train.py">mlflow/examples/keras/train.py</a></em></p>
 
@@ -1623,7 +1623,7 @@ on the Reuters newswire topic classification task.
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="nf">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
     <span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="nf">autolog</span><span class="p">()</span>
     <span class="c1"># Training
-</span>    <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_artifact</span><span class="p">(</span><span class="s">"PATH_TO_ARTIFACT"</span><span class="p">)</span>
+</span>    <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">PATH_TO_ARTIFACT</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>而在pipeline處理的過程中，假如說我們有個entry point是處理資料、另一個entry point是訓練模型，我們應該會希望每次pipeline跑起來便去檢查資料是否已經處理好了，如果已經處理好就直接跑訓練模型的部分就好，我目前還沒有在MLflow看到比較好的看有沒有執行過某個entry point的方法，可能還是需要像前面<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例那樣，自己寫個<code class="language-plaintext highlighter-rouge">main.py</code>來去檢查。</p>

@@ -353,28 +353,28 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">os</span>
 <span class="kn">from</span> <span class="n">mlflow</span> <span class="kn">import</span> <span class="n">log_metric</span><span class="p">,</span> <span class="n">log_param</span><span class="p">,</span> <span class="n">log_artifact</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="c1"># Log a parameter (key-value pair)
-</span>    <span class="nf">log_param</span><span class="p">(</span><span class="s">"param1"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
-    <span class="nf">log_param</span><span class="p">(</span><span class="s">"param2"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
-</span>    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nf">log_metric</span><span class="p">(</span><span class="s">"foo"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
-</span>    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s">"first file!"</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">,</span> <span class="s">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s">"second file!"</span><span class="p">)</span>
-    <span class="nf">log_artifact</span><span class="p">(</span><span class="s">"output1.txt"</span><span class="p">)</span>
-    <span class="nf">log_artifact</span><span class="p">(</span><span class="s">"output2.txt"</span><span class="p">)</span>
+</span>    <span class="nf">log_param</span><span class="p">(</span><span class="sh">"</span><span class="s">param1</span><span class="sh">"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+    <span class="nf">log_param</span><span class="p">(</span><span class="sh">"</span><span class="s">param2</span><span class="sh">"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
+</span>    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
+</span>    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">output1.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">first file!</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">output2.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">second file!</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">output1.txt</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">output2.txt</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在上面的程式碼中我們可以看到mlflow提供了三種不同log的function，<code class="language-plaintext highlighter-rouge">log_param</code>用來記錄這次訓練模型時所使用的hyperparameters像是learning rate、batch size等等，而<code class="language-plaintext highlighter-rouge">log_metric</code>用來記錄訓練模型中會變動的資料，像是loss、accuracy等，最後<code class="language-plaintext highlighter-rouge">log_artifact</code>會把該路徑的檔案放進artifact中，主要是把這次訓練完成以後想要留存的檔案儲存下來，像是模型本身、前處理/後處理用到的字典檔等。</p>
 
 <p>有了這些function以後，我們就能在編寫程式的時候把這些function安插進來，之後就能在command line上面下<code class="language-plaintext highlighter-rouge">mlflow server</code>的指令來打開mlflow的UI來檢視訓練的成果，然而每次手動寫這些function有點麻煩，mlflow有另外提供了auto tracking的功能，只需要在程式碼裡面加個幾行，mlflow就會幫你自動紀錄這些參數和結果了。</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""Trains and evaluate a simple MLP
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">Trains and evaluate a simple MLP
 on the Reuters newswire topic classification task.
-"""</span>
+</span><span class="sh">"""</span>
 <span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="n">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">from</span> <span class="n">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
@@ -392,8 +392,8 @@ on the Reuters newswire topic classification task.
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="s">"Loading data..."</span><span class="p">)</span>
-</code></pre></div></div>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Loading data</span><span class="gp">...</span><span class="sh">"</span><span class="s">)
+</span></code></pre></div></div>
 
 <p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/keras/train.py">mlflow/examples/keras/train.py</a></em></p>
 
@@ -452,7 +452,7 @@ on the Reuters newswire topic classification task.
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="nf">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
     <span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="nf">autolog</span><span class="p">()</span>
     <span class="c1"># Training
-</span>    <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_artifact</span><span class="p">(</span><span class="s">"PATH_TO_ARTIFACT"</span><span class="p">)</span>
+</span>    <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">PATH_TO_ARTIFACT</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>而在pipeline處理的過程中，假如說我們有個entry point是處理資料、另一個entry point是訓練模型，我們應該會希望每次pipeline跑起來便去檢查資料是否已經處理好了，如果已經處理好就直接跑訓練模型的部分就好，我目前還沒有在MLflow看到比較好的看有沒有執行過某個entry point的方法，可能還是需要像前面<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例那樣，自己寫個<code class="language-plaintext highlighter-rouge">main.py</code>來去檢查。</p>

@@ -367,27 +367,27 @@ airflow db init
 
 
 <span class="k">def</span> <span class="nf">login_func</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">):</span>
-    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Attempt to login with account = </span><span class="si">{</span><span class="n">account</span><span class="si">}</span><span class="s">, password = </span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Attempt to login with account = </span><span class="si">{</span><span class="n">account</span><span class="si">}</span><span class="s">, password = </span><span class="si">{</span><span class="n">password</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
 
 
-<span class="n">account</span> <span class="o">=</span> <span class="s">"user"</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span>
+<span class="n">account</span> <span class="o">=</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span>
+<span class="n">password</span> <span class="o">=</span> <span class="sh">"</span><span class="s">password</span><span class="sh">"</span>
 <span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">"owner"</span><span class="p">:</span> <span class="s">"THE_ONE"</span><span class="p">,</span>
-    <span class="s">"start_date"</span><span class="p">:</span> <span class="nf">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="s">"schedule_interval"</span><span class="p">:</span> <span class="s">"@daily"</span><span class="p">,</span>
-    <span class="s">"retries"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s">"retry_delay"</span><span class="p">:</span> <span class="nf">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="sh">"</span><span class="s">owner</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">THE_ONE</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">start_date</span><span class="sh">"</span><span class="p">:</span> <span class="nf">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="sh">"</span><span class="s">schedule_interval</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">@daily</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">retries</span><span class="sh">"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">retry_delay</span><span class="sh">"</span><span class="p">:</span> <span class="nf">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="p">}</span>
 
-<span class="k">with</span> <span class="nc">DAG</span><span class="p">(</span><span class="s">"login_dag"</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
+<span class="k">with</span> <span class="nc">DAG</span><span class="p">(</span><span class="sh">"</span><span class="s">login_dag</span><span class="sh">"</span><span class="p">,</span> <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">)</span> <span class="k">as</span> <span class="n">dag</span><span class="p">:</span>
     <span class="n">login</span> <span class="o">=</span> <span class="nc">PythonOperator</span><span class="p">(</span>
-        <span class="n">task_id</span><span class="o">=</span><span class="s">"login"</span><span class="p">,</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="sh">"</span><span class="s">login</span><span class="sh">"</span><span class="p">,</span>
         <span class="n">python_callable</span><span class="o">=</span><span class="n">login_func</span><span class="p">,</span>
         <span class="n">op_args</span><span class="o">=</span><span class="p">[</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">],</span>
         <span class="n">provide_context</span><span class="o">=</span><span class="bp">True</span>
     <span class="p">)</span>
-    <span class="n">end</span> <span class="o">=</span> <span class="nc">DummyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="s">"do_nothing"</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nc">DummyOperator</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="sh">"</span><span class="s">do_nothing</span><span class="sh">"</span><span class="p">)</span>
 
     <span class="n">login</span> <span class="o">&gt;&gt;</span> <span class="n">end</span>
 </code></pre></div></div>

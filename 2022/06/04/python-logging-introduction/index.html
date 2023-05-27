@@ -338,11 +338,11 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
 
-<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">Debug message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">Info message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">Error message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">Critical message</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在實際執行上面的程式碼以後我們可以得到下面的結果</p>
@@ -357,11 +357,11 @@ CRITICAL:root:Critical message
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
 
 <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"Debug message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"Info message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Warning message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Error message"</span><span class="p">)</span>
-<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Critical message"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">Debug message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">Info message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">Error message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">Critical message</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>此時得到的結果會是</p>
@@ -382,12 +382,12 @@ CRITICAL:root:Critical message
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
     <span class="nf">func</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
@@ -397,8 +397,8 @@ CRITICAL:root:Critical message
 
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
-    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
-    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from lib</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from lib</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>在上面我們寫了兩個python script，分別為<strong>main.py</strong>和<strong>lib.py</strong>，其中<strong>main.py</strong>會去呼叫定義在<strong>lib.py</strong>裡面的<code class="language-plaintext highlighter-rouge">func()</code>，這時如果去執行<strong>main.py</strong>的話會得到下面的結果</p>
@@ -425,12 +425,12 @@ ERROR:root:error from lib
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
     <span class="nf">func</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
@@ -441,8 +441,8 @@ ERROR:root:error from lib
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from lib"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from lib"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from lib</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from lib</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>這邊我們將<code class="language-plaintext highlighter-rouge">__name__</code>傳入<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>當中，這時logging就會幫我們建立一個以<code class="language-plaintext highlighter-rouge">__name__</code>為名稱的logger，而<code class="language-plaintext highlighter-rouge">__name__</code>會在python裡面被代換成檔案名稱，這時再執行<strong>main.py</strong>就能得到以下的結果</p>
@@ -476,13 +476,13 @@ ERROR:lib:error from lib
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"info from main"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"error from main"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
     <span class="nf">func</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
-    <span class="n">log_format</span><span class="o">=</span><span class="s">"%(asctime)s %(filename)s:%(lineno)d - %(message)s"</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">log_format</span><span class="o">=</span><span class="sh">"</span><span class="s">%(asctime)s %(filename)s:%(lineno)d - %(message)s</span><span class="sh">"</span>
     <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">)</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
@@ -506,14 +506,14 @@ ERROR:lib:error from lib
 
 
 <span class="k">class</span> <span class="nc">CustomFormatter</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">):</span>
-    <span class="n">grey</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[38;20m"</span>
-    <span class="n">cyan</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[36;20m"</span>
-    <span class="n">light_green</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[32;20m"</span>
-    <span class="n">yellow</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[33;20m"</span>
-    <span class="n">red</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[31;20m"</span>
-    <span class="n">bold_red</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[31;1m"</span>
-    <span class="n">reset</span> <span class="o">=</span> <span class="s">"</span><span class="se">\x1b</span><span class="s">[0m"</span>
-    <span class="n">log_format</span> <span class="o">=</span> <span class="s">"%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)"</span>
+    <span class="n">grey</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[38;20m</span><span class="sh">"</span>
+    <span class="n">cyan</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[36;20m</span><span class="sh">"</span>
+    <span class="n">light_green</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[32;20m</span><span class="sh">"</span>
+    <span class="n">yellow</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[33;20m</span><span class="sh">"</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[31;20m</span><span class="sh">"</span>
+    <span class="n">bold_red</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[31;1m</span><span class="sh">"</span>
+    <span class="n">reset</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[0m</span><span class="sh">"</span>
+    <span class="n">log_format</span> <span class="o">=</span> <span class="sh">"</span><span class="s">%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)</span><span class="sh">"</span>
 
     <span class="n">FORMATS</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">:</span> <span class="n">light_green</span> <span class="o">+</span> <span class="n">log_format</span> <span class="o">+</span> <span class="n">reset</span><span class="p">,</span>
@@ -546,15 +546,15 @@ ERROR:lib:error from lib
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="s">"debug message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="s">"info message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"warning message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"error message"</span><span class="p">)</span>
-    <span class="n">logger</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"critical message"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">debug message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">info message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">warning message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">error message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">critical message</span><span class="sh">"</span><span class="p">)</span>
     <span class="nf">func</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
     <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">().</span><span class="nf">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
     <span class="nf">main</span><span class="p">()</span>
 </code></pre></div></div>
