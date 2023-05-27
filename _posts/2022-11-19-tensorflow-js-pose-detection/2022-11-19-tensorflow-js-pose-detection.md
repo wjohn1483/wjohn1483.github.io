@@ -23,4 +23,4 @@ published: true
 
 在[Move Mirror](https://experiments.withgoogle.com/move-mirror)裡面，我們可以透過使用者的動作來找到相似的圖片，主要的方法是透過CDCL的模型來去對電腦鏡頭拍攝出來的人像做辨識，從中取得每個關節的座標，接著把座標正規化以後去跟照片去算cosine similarity，而在[部落格文章](https://blog.tensorflow.org/2018/07/move-mirror-ai-experiment-with-pose-estimation-tensorflow-js.html)當中還有講述把模型給的信心分數放進算座標距離的方法和快速計算多張照片的方式，建議閱讀文章的內容來更理解詳細的做法。
 
-有了這個CDCL模型和距離計算的方式，我們可以對它稍做修改，改成給定一張照片，去計算電腦鏡頭拍攝的人像和照片的距離有多少，來讓使用者可以練習擺跟照片一樣的姿勢，我個人修改過後的結果可以[在這邊看到](https://wjohn1483.github.io/pose_copier/?model=movenet)。
+有了這個CDCL模型和距離計算的方式，我們可以對它稍做修改，改成給定一張照片，去計算電腦鏡頭拍攝的人像和照片的距離有多少，來讓使用者可以練習擺跟照片一樣的姿勢，我個人修改過後的結果可以[在這邊看到](https://wjohn1483.github.io/Pose-Copier/dist/?model=movenet)。
