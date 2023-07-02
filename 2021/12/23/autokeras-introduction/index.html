@@ -327,39 +327,39 @@
 <span class="kn">from</span> <span class="n">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 
 
-<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Preparing data</span><span class="gp">...</span><span class="sh">"</span><span class="s">)
-dataset = tf.keras.utils.get_file(
-    fname=</span><span class="sh">"</span><span class="n">aclImdb</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span><span class="sh">"</span><span class="s">,
-    origin=</span><span class="sh">"</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ai</span><span class="p">.</span><span class="n">stanford</span><span class="p">.</span><span class="n">edu</span><span class="o">/~</span><span class="n">amaas</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">sentiment</span><span class="o">/</span><span class="n">aclImdb_v1</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span><span class="sh">"</span><span class="s">,
-    extract=True,
-)
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Preparing data...</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">tf</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="n">utils</span><span class="p">.</span><span class="nf">get_file</span><span class="p">(</span>
+    <span class="n">fname</span><span class="o">=</span><span class="sh">"</span><span class="s">aclImdb.tar.gz</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">origin</span><span class="o">=</span><span class="sh">"</span><span class="s">http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">extract</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">)</span>
 
-# set path to dataset
-IMDB_DATADIR = os.path.join(os.path.dirname(dataset), </span><span class="sh">"</span><span class="n">aclImdb</span><span class="sh">"</span><span class="s">)
+<span class="c1"># set path to dataset
+</span><span class="n">IMDB_DATADIR</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">dirname</span><span class="p">(</span><span class="n">dataset</span><span class="p">),</span> <span class="sh">"</span><span class="s">aclImdb</span><span class="sh">"</span><span class="p">)</span>
 
-classes = [</span><span class="sh">"</span><span class="n">pos</span><span class="sh">"</span><span class="s">, </span><span class="sh">"</span><span class="n">neg</span><span class="sh">"</span><span class="s">]
-train_data = load_files(
-    os.path.join(IMDB_DATADIR, </span><span class="sh">"</span><span class="n">train</span><span class="sh">"</span><span class="s">), shuffle=True, categories=classes
-)
-test_data = load_files(
-    os.path.join(IMDB_DATADIR, </span><span class="sh">"</span><span class="n">test</span><span class="sh">"</span><span class="s">), shuffle=False, categories=classes
-)
+<span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="sh">"</span><span class="s">pos</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">neg</span><span class="sh">"</span><span class="p">]</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="nf">load_files</span><span class="p">(</span>
+    <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">IMDB_DATADIR</span><span class="p">,</span> <span class="sh">"</span><span class="s">train</span><span class="sh">"</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">classes</span>
+<span class="p">)</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="nf">load_files</span><span class="p">(</span>
+    <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="n">IMDB_DATADIR</span><span class="p">,</span> <span class="sh">"</span><span class="s">test</span><span class="sh">"</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">categories</span><span class="o">=</span><span class="n">classes</span>
+<span class="p">)</span>
 
-x_train = np.array(train_data.data)
-y_train = np.array(train_data.target)
-x_test = np.array(test_data.data)
-y_test = np.array(test_data.target)
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">train_data</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">test_data</span><span class="p">.</span><span class="n">target</span><span class="p">)</span>
 
-# Minimize training size for tutorial
-sample_size = 1000
-x_train = x_train[:sample_size]
-y_train = y_train[:sample_size]
+<span class="c1"># Minimize training size for tutorial
+</span><span class="n">sample_size</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[:</span><span class="n">sample_size</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="n">sample_size</span><span class="p">]</span>
 
-print(</span><span class="sh">"</span><span class="n">Data</span> <span class="n">samples</span><span class="p">...</span><span class="sh">"</span><span class="s">)
-print(x_train.shape)  # (sample_size,)
-print(y_train.shape)  # (sample_size,)
-print(x_train[0][:50])  # b</span><span class="sh">'</span><span class="s">Zero Day leads you to think, even re-think why two</span><span class="sh">'</span><span class="s">
-print(y_train[0:30])  # [1 0 1 0 0 1 1 0 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 0 1 0 0 0 1 0]
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Data samples...</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (sample_size,)
+</span><span class="nf">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (sample_size,)
+</span><span class="nf">print</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">50</span><span class="p">])</span>  <span class="c1"># b'Zero Day leads you to think, even re-think why two'
+</span><span class="nf">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">30</span><span class="p">])</span>  <span class="c1"># [1 0 1 0 0 1 1 0 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 0 1 0 0 0 1 0]
 </span></code></pre></div></div>
 
 <h3 id="訓練模型">訓練模型</h3>
@@ -371,13 +371,13 @@ print(y_train[0:30])  # [1 0 1 0 0 1 1 0 0 1 0 0 0 1 0 1 1 1 1 1 1 1 0 0 1 0 0 0
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">autokeras</span> <span class="k">as</span> <span class="n">ak</span>
 
 
-<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Building model</span><span class="gp">...</span><span class="sh">"</span><span class="s">)
-# Initialize the text classifier.
-clf = ak.TextClassifier(
-    overwrite=True, max_trials=2
-)  # It only tries 2 models as a quick demo.
-clf.fit(x_train, y_train, epochs=10)
-</span></code></pre></div></div>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Building model...</span><span class="sh">"</span><span class="p">)</span>
+<span class="c1"># Initialize the text classifier.
+</span><span class="n">clf</span> <span class="o">=</span> <span class="n">ak</span><span class="p">.</span><span class="nc">TextClassifier</span><span class="p">(</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>  <span class="c1"># It only tries 2 models as a quick demo.
+</span><span class="n">clf</span><span class="p">.</span><span class="nf">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>值得一提的是，<code class="language-plaintext highlighter-rouge">TextClassifier</code>可以設定模型的metrics要是什麼，預設是<code class="language-plaintext highlighter-rouge">val_loss</code>，可以依據任務的需求來做修改。</p>
 

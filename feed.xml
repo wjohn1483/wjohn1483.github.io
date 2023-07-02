@@ -1,4 +1,136 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-05-27T03:36:17+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何在本機上跑Vicuna模型</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/" rel="alternate" type="text/html" title="如何在本機上跑Vicuna模型" /><published>2023-04-30T00:00:00+00:00</published><updated>2023-04-30T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/"><![CDATA[<p>隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-07-02T14:41:52+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">在本機使用Stable Diffusion產生圖片</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion/" rel="alternate" type="text/html" title="在本機使用Stable Diffusion產生圖片" /><published>2023-07-02T00:00:00+00:00</published><updated>2023-07-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion/"><![CDATA[<p>在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。</p>
+
+<!--more-->
+
+<h2 id="stable-diffusion介紹">Stable Diffusion介紹</h2>
+
+<p>Stable Diffusion是一種擴散模型（Diffusion model）的衍生，關於擴散模型的介紹可以參考<a href="https://www.youtube.com/watch?v=ifCDXFdeaaM">李宏毅老師的影片</a>，簡單來說就是使用一個類神經網路去不斷地對照片做去除雜訊的動作，於此同時，我們可以在這整個過程裡面加入其他latent variable，來指示圖片生的的樣子，隨著開源的社群把相關的程式碼整理得很好、有簡潔的UI來讓大家使用，造就了一波AI算圖的風潮。</p>
+
+<h2 id="安裝stable-diffusion">安裝Stable Diffusion</h2>
+
+<p>這邊就來介紹一下如何在本機上面安裝Stable Diffusion及其UI，更詳細的說明可以參考<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">官方文件</a>，根據文件裡面的說明，要在Linux上面安裝Stable Diffusion的UI只需要執行底下的指令就可以了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash &lt;<span class="o">(</span>wget <span class="nt">-qO-</span> https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh<span class="o">)</span>
+<span class="nb">cd</span> ./stable-diffusion-webui
+bash ./webui.sh
+</code></pre></div></div>
+
+<h3 id="疑難排解">疑難排解</h3>
+
+<p>如果在安裝的過程當中碰到了一些錯誤，可以參考<a href="https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/errors/">網路上整理的疑難排解</a>，這邊放上我在安裝時碰到的問題及解法。</p>
+
+<h4 id="執行webuish時碰上repository-clone不下來">執行webui.sh時碰上repository clone不下來</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RuntimeError: Couldn<span class="s1">'t checkout {name}'</span>s <span class="nb">hash</span>: <span class="o">{</span>commithash<span class="o">}</span><span class="nb">.</span>
+Command: <span class="s2">"git"</span> <span class="nt">-C</span> <span class="s2">"/home/wjohn1483/stable-diffusion-webui/repositories/k-diffusion"</span> checkout c9fe758757e022f05ca5a53fa8fac28889e4f1cf
+Error code: 129
+stderr: Unknown option: <span class="nt">-C</span>
+</code></pre></div></div>
+
+<p>會碰到這個問題是因為git的版本太舊了，還沒有支援<code class="language-plaintext highlighter-rouge">-C</code>的選項，只需要更新git的版本就可以了，在CentOS裡面更新的指令如下。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nt">-y</span> <span class="nb">install </span>https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+<span class="nb">sudo </span>yum <span class="nb">install </span>git
+</code></pre></div></div>
+
+<h4 id="執行webuish時碰上libgl找不到">執行webui.sh時碰上libGL找不到</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ImportError: libGL.so.1: cannot open shared object file: No such file or directory
+</code></pre></div></div>
+
+<p>網路上是建議將<code class="language-plaintext highlighter-rouge">opencv-python</code>移除掉，改安裝<code class="language-plaintext highlighter-rouge">opencv-python-headless</code>就能解決。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 uninstall opencv-python
+pip3 <span class="nb">install </span>opencv-python-headless
+</code></pre></div></div>
+
+<p>不過有些套件的requirements裡面會要求安裝<code class="language-plaintext highlighter-rouge">opencv-python</code>，所以建議的解法會是安裝好相關的套件，如果是CentOS的話可以使用下面的指令。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> mesa-libGL
+</code></pre></div></div>
+
+<h4 id="啟動server時出現not-implemented-for-half">啟動server時，出現not implemented for ‘Half’</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RuntimeError: <span class="s2">"addmm_impl_cpu_"</span> not implemented <span class="k">for</span> <span class="s1">'Half'</span>
+RuntimeError: <span class="s2">"LayerNormKernelImpl"</span> not implemented <span class="k">for</span> <span class="s1">'Half'</span>
+</code></pre></div></div>
+
+<p>這個查起來是浮點數精度的問題，可以在<strong>webui-user.sh</strong>裡面的<code class="language-plaintext highlighter-rouge">COMMANDLINE_ARGS</code>多加底下的參數來解決。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">COMMANDLINE_ARGS</span><span class="o">=</span><span class="s2">"--precision full --no-half"</span>
+</code></pre></div></div>
+
+<h4 id="成功啟動server了但是想讓遠端連進來">成功啟動server了，但是想讓遠端連進來</h4>
+
+<p>預設server會起在<code class="language-plaintext highlighter-rouge">127.0.0.1</code>，如果想改成<code class="language-plaintext highlighter-rouge">0.0.0.0</code>讓其他人可以連線的話，可以在<strong>webui-user.sh</strong>中新增<code class="language-plaintext highlighter-rouge">--listen</code>到<code class="language-plaintext highlighter-rouge">COMMANDLINE_ARGS</code>中。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">COMMANDLINE_ARGS</span><span class="o">=</span><span class="s2">"--precision full --no-half --listen"</span>
+</code></pre></div></div>
+
+<p>如果想讓遠端連進來的人可以隨意安裝擴充套件的話，需要額外再加<code class="language-plaintext highlighter-rouge">--enable-insecure-extension-access</code>到其中。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">COMMANDLINE_ARGS</span><span class="o">=</span><span class="s2">"--precision full --no-half --listen --enable-insecure-extension-access"</span>
+</code></pre></div></div>
+
+<h2 id="使用各種模型擴充套件">使用各種模型、擴充套件</h2>
+
+<p>在安裝好UI以後，它會預設幫你下載好一個模型，我們就可以直接在上面打字讓模型幫我們產生圖片了，但如果你想要使用其他特化的模型，或是使用擴充套件的話，可以直接在UI上面擴充。</p>
+
+<h3 id="civitai">Civitai</h3>
+
+<p>如果想要擴充模型的話，除了在HuggingFace上面搜尋以外，還可以在<a href="https://civitai.com/">Civitai</a>上面下載，另外在<a href="https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/download-models/">這邊</a>也有人整理了一些有趣的模型們。</p>
+
+<p>安裝的方式很簡單，只需要把下載下來的<code class="language-plaintext highlighter-rouge">.ckpt</code>或者是<code class="language-plaintext highlighter-rouge">.safetensors</code>的檔案放進<strong>stable-diffusion-webui/models/Stable-diffusion</strong>的資料夾下就行了，也可以使用wget來下載。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># https://civitai.com/models/56383/pirsus-epic-realism</span>
+wget https://civitai.com/api/download/models/96535
+<span class="nb">mv </span>96535 ./models/Stable-diffusion/pirsusEpicRealism_v21.safetensors
+</code></pre></div></div>
+
+<p>這邊的模型編號跟網址列上面的不同，需要使用網頁開發工具來看Download按鈕的URL。</p>
+
+<p>下載完以後應該就能在UI最上方checkpoint的地方看到新的模型了。</p>
+
+<p><img src="checkpoint.png" alt="New Checkpoint" /></p>
+
+<h3 id="controlnet">ControlNet</h3>
+
+<p>除了嘗試用各式各樣的模型和prompt來產生想像中的圖片以外，還可以使用<a href="https://github.com/lllyasviel/ControlNet">ControlNet</a>這個擴充套件來給予模型更精細的指示，像是希望產生的圖片動作要跟範例圖片中的相同。</p>
+
+<p>安裝的方式蠻簡單的，在<code class="language-plaintext highlighter-rouge">Extensions</code>的頁面、選擇<code class="language-plaintext highlighter-rouge">Install from URL</code>、貼上下面的網址、按下Install、到<code class="language-plaintext highlighter-rouge">Installed</code>的tab按下重啟就行了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/Mikubill/sd-webui-controlnet
+</code></pre></div></div>
+
+<p><img src="install_extension.png" alt="Install Extension" /></p>
+
+<p>接著我們還需要去<a href="https://huggingface.co/webui/ControlNet-modules-safetensors/tree/main">HuggingFace</a>上面下載ControlNet的模型下來到<strong>extensions/sd-webui-controlnet-main/models</strong>的目錄底下。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_openpose-fp16.safetensors <span class="nt">-P</span> ./extensions/sd-webui-controlnet/models
+wget https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_normal-fp16.safetensors <span class="nt">-P</span> ./extensions/sd-webui-controlnet/models
+wget https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_scribble-fp16.safetensors <span class="nt">-P</span> ./extensions/sd-webui-controlnet/models
+</code></pre></div></div>
+
+<p>這邊先下載了三個模型下來，可以根據自己的需求下載不同的模型，這些模型的效果可以參考<a href="https://home.gamer.com.tw/artwork.php?sn=5662905">這篇文章</a>。</p>
+
+<p>安裝擴充套件回到<code class="language-plaintext highlighter-rouge">txt2img</code>的頁面後，應該就能在底下看到ControlNet的區塊了，在這邊我們可以把<code class="language-plaintext highlighter-rouge">Enable</code>打勾、丟上參考圖片、並在Preprocessor的地方選擇你想要的preprocessor，就能使用prompt跟參考圖片來產生更細緻的的圖片了。</p>
+
+<p><img src="controlnet.png" alt="ControlNet Settings" /></p>
+
+<p>這邊我胡亂使用prompt <code class="language-plaintext highlighter-rouge">A strong male</code>和上面的參考圖片，就能產生如底下的圖片了。</p>
+
+<p><img src="generated_image.png" alt="Generated Image" /></p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li>
+    <p><a href="https://home.gamer.com.tw/artwork.php?sn=5662905">Stable diffusion ControlNet使用心得 - tark455365的創作 - 巴哈姆特</a></p>
+  </li>
+  <li>
+    <p><a href="https://ivonblog.com/posts/windows-stable-diffusion-webui/">AI繪圖：Windows安裝Stable Diffusion WebUI教學 | Ivon的部落格</a></p>
+  </li>
+</ol>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><category term="Computer-Vision" /><category term="Tool" /><summary type="html"><![CDATA[在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。]]></summary></entry><entry><title type="html">如何在本機上跑Vicuna模型</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/" rel="alternate" type="text/html" title="如何在本機上跑Vicuna模型" /><published>2023-04-30T00:00:00+00:00</published><updated>2023-04-30T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/"><![CDATA[<p>隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。</p>
 
 <!--more-->
 
@@ -1472,169 +1604,4 @@ ERROR:lib:error from lib
 [31<span class="p">;</span>1m2022-06-09 18:20:41,750 - __main__ - CRITICAL - critical message <span class="o">(</span>main.py:15<span class="o">)</span>[0m
 [36<span class="p">;</span>20m2022-06-09 18:20:41,750 - lib - INFO - info from lib <span class="o">(</span>lib.py:8<span class="o">)</span>[0m
 [31<span class="p">;</span>20m2022-06-09 18:20:41,750 - lib - ERROR - error from lib <span class="o">(</span>lib.py:9<span class="o">)</span>[0m
-</code></pre></div></div>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Python" /><summary type="html"><![CDATA[這篇文章簡單介紹一下python logging這個package的使用方法。]]></summary></entry><entry><title type="html">MLflow介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction/" rel="alternate" type="text/html" title="MLflow介紹" /><published>2022-05-29T00:00:00+00:00</published><updated>2022-05-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/05/29/mlflow-introduction/"><![CDATA[<p>隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。</p>
-
-<!--more-->
-
-<h2 id="mlops">MLOps</h2>
-
-<p>在開始介紹MLflow之前先簡單介紹一下MLOps想要做的事情，MLOps可以說跟DevOps一樣是一種精神，主要是希望能讓Machine Learning跟Operations能夠合作的更融洽，這邊Machine Learning的部分包含了對資料清理、建立並訓練模型、驗證模型成效等等的事情，而Operations指的是把模型部署到系統裡面進行預測。</p>
-
-<p><img src="https://cloud.google.com/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-2-manual-ml.svg" alt="MLOps Manual Process" /></p>
-
-<p><em><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></em></p>
-
-<p>上圖是一個簡單的pipeline，左半邊ML的部分是一般machine learning的流程，包含了資料處理和建立模型的過程，而最終產生的模型會放進model registry裡面，Operations再從model registry裡面把模型拿出來做serving。</p>
-
-<p>這個pipeline簡單有效，但如果未來有新的資料進來或是模型的成效開始下降等可能會需要重新訓練的模型的情況發生的話，Operations就會需要再請ML的人幫忙訓練模型，為此另一個比較穩定的pipeline可以是如下圖。</p>
-
-<p><img src="https://cloud.google.com/architecture/images/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning-3-ml-automation-ct.svg" alt="MLOps Pipeline Automation" /></p>
-
-<p><em><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></em></p>
-
-<p>在這個pipeline裡面，ML所交付的不再是一個模型，而是產生出這個模型的pipeline，包含了資料驗證、清理、建立模型、驗證模型等，而Operations會將這個pipeline部署到系統裡面自行去產生模型出來，如果說有新的資料或是有需要重新訓練模型的情況發生，Operations就能直接重跑這個pipeline來得到新的模型。</p>
-
-<p>然而要建立這種pipeline會需要花費蠻多工夫的，而MLflow可以幫助我們降低一些建立這種pipeline的困難。</p>
-
-<h2 id="mlflow">MLflow</h2>
-
-<p><a href="https://mlflow.org/">MLflow</a>是一個開源的平台，主要是應用在machine learning lifecycle當中，MLflow包含了四個部分</p>
-
-<ul>
-  <li>
-    <p>Tracking：用以記錄在訓練模型是所使用的參數和訓練過程中的一些metrics</p>
-  </li>
-  <li>
-    <p>Projects：讓使用者可以建立一套pipeline來讓其他人可以輕易地重現出模型</p>
-  </li>
-  <li>
-    <p>Models：把模型包裝起來，在裡面會紀錄讓模型運行所需要的環境和模型本身，讓其他人方便直接使用模型</p>
-  </li>
-  <li>
-    <p>Registry：存放模型並支援版本控制</p>
-  </li>
-</ul>
-
-<p>底下的文章將會簡述一下Tracking和Projects的部分。</p>
-
-<h3 id="mlflow-tracking">MLflow Tracking</h3>
-
-<p>我們先快速看一下底下的程式碼</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">os</span>
-<span class="kn">from</span> <span class="n">mlflow</span> <span class="kn">import</span> <span class="n">log_metric</span><span class="p">,</span> <span class="n">log_param</span><span class="p">,</span> <span class="n">log_artifact</span>
-
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
-    <span class="c1"># Log a parameter (key-value pair)
-</span>    <span class="nf">log_param</span><span class="p">(</span><span class="sh">"</span><span class="s">param1</span><span class="sh">"</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
-    <span class="nf">log_param</span><span class="p">(</span><span class="sh">"</span><span class="s">param2</span><span class="sh">"</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="c1"># Log a metric; metrics can be updated throughout the run
-</span>    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="nf">log_metric</span><span class="p">(</span><span class="sh">"</span><span class="s">foo</span><span class="sh">"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="c1"># Log an artifact (output file)
-</span>    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">output1.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">first file!</span><span class="sh">"</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">"</span><span class="s">output2.txt</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">w</span><span class="sh">"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="sh">"</span><span class="s">second file!</span><span class="sh">"</span><span class="p">)</span>
-    <span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">output1.txt</span><span class="sh">"</span><span class="p">)</span>
-    <span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">output2.txt</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>在上面的程式碼中我們可以看到mlflow提供了三種不同log的function，<code class="language-plaintext highlighter-rouge">log_param</code>用來記錄這次訓練模型時所使用的hyperparameters像是learning rate、batch size等等，而<code class="language-plaintext highlighter-rouge">log_metric</code>用來記錄訓練模型中會變動的資料，像是loss、accuracy等，最後<code class="language-plaintext highlighter-rouge">log_artifact</code>會把該路徑的檔案放進artifact中，主要是把這次訓練完成以後想要留存的檔案儲存下來，像是模型本身、前處理/後處理用到的字典檔等。</p>
-
-<p>有了這些function以後，我們就能在編寫程式的時候把這些function安插進來，之後就能在command line上面下<code class="language-plaintext highlighter-rouge">mlflow server</code>的指令來打開mlflow的UI來檢視訓練的成果，然而每次手動寫這些function有點麻煩，mlflow有另外提供了auto tracking的功能，只需要在程式碼裡面加個幾行，mlflow就會幫你自動紀錄這些參數和結果了。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">Trains and evaluate a simple MLP
-on the Reuters newswire topic classification task.
-</span><span class="sh">"""</span>
-<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">from</span> <span class="n">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
-<span class="kn">from</span> <span class="n">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
-<span class="kn">from</span> <span class="n">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="n">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Activation</span>
-<span class="kn">from</span> <span class="n">tensorflow.keras.preprocessing.text</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
-
-<span class="c1"># The following import and function call are the only additions to code required
-# to automatically log metrics and parameters to MLflow.
-</span><span class="kn">import</span> <span class="n">mlflow.keras</span>
-
-<span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="nf">autolog</span><span class="p">()</span>
-
-<span class="n">max_words</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Loading data</span><span class="gp">...</span><span class="sh">"</span><span class="s">)
-</span></code></pre></div></div>
-
-<p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/keras/train.py">mlflow/examples/keras/train.py</a></em></p>
-
-<p>在上面是一個用keras訓練模型的範例，在裡面我們只需要加入<code class="language-plaintext highlighter-rouge">import mlflow.keras</code>、<code class="language-plaintext highlighter-rouge">mlflow.keras.autolog()</code>這兩行就能讓mlflow幫我們紀錄參數了。</p>
-
-<p><img src="./mlflow_keras.png" alt="MLflow Keras" /></p>
-
-<h3 id="mlflow-projects">MLflow Projects</h3>
-
-<p>假如我們想要分享我們訓練模型所做的所有步驟，我們可以寫一個<code class="language-plaintext highlighter-rouge">MLproject</code>的檔案，來讓其他人可以簡單下一個指令<code class="language-plaintext highlighter-rouge">mlflow run .</code>就能重現模型訓練的結果。</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">mnist-autolog-example</span>
-
-<span class="na">conda_env</span><span class="pi">:</span> <span class="s">conda.yaml</span>
-
-<span class="na">entry_points</span><span class="pi">:</span>
-  <span class="na">main</span><span class="pi">:</span>
-    <span class="na">parameters</span><span class="pi">:</span>
-      <span class="na">max_epochs</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">5</span><span class="pi">}</span>
-      <span class="na">gpus</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">0</span><span class="pi">}</span>
-      <span class="na">strategy</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s2">"</span><span class="s">None"</span><span class="pi">}</span>
-      <span class="na">batch_size</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">64</span><span class="pi">}</span>
-      <span class="na">num_workers</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">3</span><span class="pi">}</span>
-      <span class="na">learning_rate</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type</span><span class="pi">:</span> <span class="nv">float</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">0.001</span><span class="pi">}</span>
-      <span class="na">patience</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type int</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">3</span><span class="pi">}</span>
-      <span class="na">mode</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">min'</span><span class="pi">}</span>
-      <span class="na">verbose</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type bool</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="nv">True</span><span class="pi">}</span>
-      <span class="na">monitor</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">type str</span><span class="pi">,</span> <span class="nv">default</span><span class="pi">:</span> <span class="s1">'</span><span class="s">val_loss'</span><span class="pi">}</span>
-
-    <span class="na">command</span><span class="pi">:</span> <span class="pi">|</span>
-          <span class="s">python mnist_autolog_example.py \</span>
-            <span class="s">--max_epochs {max_epochs} \</span>
-            <span class="s">--gpus {gpus} \</span>
-            <span class="s">--strategy {strategy} \</span>
-            <span class="s">--batch_size {batch_size} \</span>
-            <span class="s">--num_workers {num_workers} \</span>
-            <span class="s">--lr {learning_rate} \</span>
-            <span class="s">--es_patience {patience} \</span>
-            <span class="s">--es_mode {mode} \</span>
-            <span class="s">--es_verbose {verbose} \</span>
-            <span class="s">--es_monitor {monitor}</span>
-</code></pre></div></div>
-
-<p><em><a href="https://github.com/mlflow/mlflow/blob/master/examples/pytorch/MNIST/MLproject">mlflow/examples/pytorch/MNIST/MLproject</a></em></p>
-
-<p>MLflow在讀取這個檔案的時候會先在conda裡面建立一個virtual environment，並按照<code class="language-plaintext highlighter-rouge">conda.yaml</code>的設定來去安裝package們，接下來會去執行entry_points裡面<code class="language-plaintext highlighter-rouge">main</code>的部分，如果說想要使用不同的參數試試看的話，可以使用<code class="language-plaintext highlighter-rouge">mlflow run . -P PARAM=VALUE</code>的方式來去替換掉預設值。</p>
-
-<p>如果在整個pipeline中還有其他資料處理或模型驗證的步驟，可以參考<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例。</p>
-
-<h2 id="結論">結論</h2>
-
-<p>要把整個pipeline包裝成可重複執行的程式碼還是需要蠻多工夫的，好在MLflow可以幫我們省去一些，而且其auto tracking的功能也很適合在做實驗的過程當中來使用。</p>
-
-<p>另外在實作的過程當中值得一提的是，如果想要在auto tracking當中另外手動存入其他artifact，需要把<code class="language-plaintext highlighter-rouge">log_artifact</code>這個function放在同一個run裡面</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">mlflow</span><span class="p">.</span><span class="nf">start_run</span><span class="p">()</span> <span class="k">as</span> <span class="n">run</span><span class="p">:</span>
-    <span class="n">mlflow</span><span class="p">.</span><span class="n">keras</span><span class="p">.</span><span class="nf">autolog</span><span class="p">()</span>
-    <span class="c1"># Training
-</span>    <span class="n">mlflow</span><span class="p">.</span><span class="nf">log_artifact</span><span class="p">(</span><span class="sh">"</span><span class="s">PATH_TO_ARTIFACT</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>而在pipeline處理的過程中，假如說我們有個entry point是處理資料、另一個entry point是訓練模型，我們應該會希望每次pipeline跑起來便去檢查資料是否已經處理好了，如果已經處理好就直接跑訓練模型的部分就好，我目前還沒有在MLflow看到比較好的看有沒有執行過某個entry point的方法，可能還是需要像前面<a href="https://github.com/mlflow/mlflow/tree/master/examples/multistep_workflow">multistep_workflow</a>的範例那樣，自己寫個<code class="language-plaintext highlighter-rouge">main.py</code>來去檢查。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ul>
-  <li>
-    <p><a href="https://medium.com/ai-blog-tw/%E7%B5%A6ml-engineer%E7%9A%84mlops%E7%B0%A1%E8%BF%B0-%E6%8C%81%E7%BA%8C%E9%96%8B%E7%99%BC%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92service%E7%9A%84%E9%AB%98%E6%95%88%E7%90%86%E5%BF%B5-8bd552876299">給ML Engineer的MLOps簡述: 持續開發機器學習Service的高效理念</a></p>
-  </li>
-  <li>
-    <p><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning#devops_versus_mlops">MLOps: Continuous delivery and automation pipelines in machine learning</a></p>
-  </li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[隨著機器學習的興起，有越來越多人嘗試引入MLOps在系統當中，這篇文章簡單介紹一下MLflow的使用心得。]]></summary></entry></feed>
+</code></pre></div></div>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Python" /><summary type="html"><![CDATA[這篇文章簡單介紹一下python logging這個package的使用方法。]]></summary></entry></feed>
