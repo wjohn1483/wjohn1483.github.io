@@ -1,36 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-07-10T04:25:43+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Parameter-Efficient Fine-Tuning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/08/parameter-efficient-fine-tuning/" rel="alternate" type="text/html" title="Parameter-Efficient Fine-Tuning" /><published>2023-07-08T00:00:00+00:00</published><updated>2023-07-08T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/08/parameter-efficient-fine-tuning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/08/parameter-efficient-fine-tuning/"><![CDATA[<p>隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。</p>
-
-<!--more-->
-
-<p>PEFT又或是Parameter-Efficient Fine-Tuning指得便是使用少少的參數來有效率地調整模型，省去調整整個模型的參數來達到fine-tune模型的效果，底下會介紹一些常見的PRFT方法。</p>
-
-<h2 id="adapter-tuning">Adapter Tuning</h2>
-
-<p><img src="adapter_tuning.png" alt="Adapter Tuning" /></p>
-
-<p>Adapter Tuning的概念是在原本Transformer的架構當中，插入Adapter，並在接下來的訓練裡面只訓練Adapter。</p>
-
-<p>在上圖的左邊是Transformer的架構，主要由Attention layer和Feed-forward layer組成，而在<a href="https://arxiv.org/pdf/1902.00751.pdf">paper</a>裡面，作者們把Adapter插在Feed-foward layer後面、skip connection之前。Adapter的架構展示在上圖右邊，是一個會先降維再升維的Feed-forward layer們，其中也包含了一個skip connection，讓Adapter最差的效果等同於Identity matrix，維持原本LLM的水準。</p>
-
-<h2 id="prefix-tuning">Prefix Tuning</h2>
-
-<p><img src="prefix_tuning.png" alt="Prefix Tuning" /></p>
-
-<p><a href="https://arxiv.org/pdf/2101.00190.pdf">Prefix Tuning</a>的概念是在把各個不同任務的文字輸入到LLM，轉換成embedding之前，對每個不同的任務多加了一些Prefix，在fine-tune的時候就只訓練這些Prefix。</p>
-
-<h2 id="prompt-tuning">Prompt Tuning</h2>
-
-<p>這個感覺跟Prefix tuning一樣？</p>
-
-<h2 id="p-tuning">P-Tuning</h2>
-
-<h2 id="lora">LoRA</h2>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ul>
-  <li><a href="https://zhuanlan.zhihu.com/p/618894319">让天下没有难Tuning的大模型-PEFT技术简介</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html"><![CDATA[隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。]]></summary></entry><entry><title type="html">在本機使用Stable Diffusion產生圖片</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion/" rel="alternate" type="text/html" title="在本機使用Stable Diffusion產生圖片" /><published>2023-07-02T00:00:00+00:00</published><updated>2023-07-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion/"><![CDATA[<p>在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-07-11T01:30:12+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">在本機使用Stable Diffusion產生圖片</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion/" rel="alternate" type="text/html" title="在本機使用Stable Diffusion產生圖片" /><published>2023-07-02T00:00:00+00:00</published><updated>2023-07-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion/"><![CDATA[<p>在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。</p>
 
 <!--more-->
 
@@ -1368,4 +1336,272 @@ tlmgr <span class="nb">install </span>scheme-full
 
 <p>在<a href="https://experiments.withgoogle.com/move-mirror">Move Mirror</a>裡面，我們可以透過使用者的動作來找到相似的圖片，主要的方法是透過CDCL的模型來去對電腦鏡頭拍攝出來的人像做辨識，從中取得每個關節的座標，接著把座標正規化以後去跟照片去算cosine similarity，而在<a href="https://blog.tensorflow.org/2018/07/move-mirror-ai-experiment-with-pose-estimation-tensorflow-js.html">部落格文章</a>當中還有講述把模型給的信心分數放進算座標距離的方法和快速計算多張照片的方式，建議閱讀文章的內容來更理解詳細的做法。</p>
 
-<p>有了這個CDCL模型和距離計算的方式，我們可以對它稍做修改，改成給定一張照片，去計算電腦鏡頭拍攝的人像和照片的距離有多少，來讓使用者可以練習擺跟照片一樣的姿勢，我個人修改過後的結果可以<a href="https://wjohn1483.github.io/Pose-Copier/dist/?model=movenet">在這邊看到</a>。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Computer-Vision" /><summary type="html"><![CDATA[隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。]]></summary></entry></feed>
+<p>有了這個CDCL模型和距離計算的方式，我們可以對它稍做修改，改成給定一張照片，去計算電腦鏡頭拍攝的人像和照片的距離有多少，來讓使用者可以練習擺跟照片一樣的姿勢，我個人修改過後的結果可以<a href="https://wjohn1483.github.io/Pose-Copier/dist/?model=movenet">在這邊看到</a>。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Computer-Vision" /><summary type="html"><![CDATA[隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。]]></summary></entry><entry><title type="html">Python logging介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction/" rel="alternate" type="text/html" title="Python logging介紹" /><published>2022-06-04T00:00:00+00:00</published><updated>2022-06-04T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/06/04/python-logging-introduction/"><![CDATA[<p>這篇文章簡單介紹一下python logging這個package的使用方法。</p>
+
+<!--more-->
+
+<p>在python裡面想要去debug你的程式除了使用<code class="language-plaintext highlighter-rouge">print()</code>直接把變數印出來以外，可以使用原生的<code class="language-plaintext highlighter-rouge">logging</code> package來去把log給印出來。</p>
+
+<h2 id="log的分類">Log的分類</h2>
+
+<p>在開始介紹logging怎麼使用之前，我們可以先來認識一下log有分成不同的等級，在<a href="https://docs.python.org/3/howto/logging.html#when-to-use-logging">python的文件</a>中有介紹什麼時候該使用哪種方法來顯示訊息，像是<code class="language-plaintext highlighter-rouge">print()</code>主要是用來顯示usage等一般用途，而<code class="language-plaintext highlighter-rouge">logging.warning()</code>是表示發現到有問題，但並不影響執行，詳細的介紹建議閱讀上面的文件，底下簡單介紹一下log的分級。</p>
+
+<ul>
+  <li>
+    <p>DEBUG：顯示詳細的訊息，主要是在追查問題的時候使用</p>
+  </li>
+  <li>
+    <p>INFO：顯示確認的訊息，表示程式有正確地在執行</p>
+  </li>
+  <li>
+    <p>WARNING：表示有些預料外的事情發生或預告可能的問題像是硬碟空間快不夠了，但程式仍可以繼續執行</p>
+  </li>
+  <li>
+    <p>ERROR：程式執行的過程當中碰到了一些問題，可能有些function不能被執行了</p>
+  </li>
+  <li>
+    <p>CRITICAL：程式碰到了更嚴重的問題，已經無法繼續執行</p>
+  </li>
+</ul>
+
+<h2 id="簡單使用logging">簡單使用logging</h2>
+
+<p>在<code class="language-plaintext highlighter-rouge">logging</code>裡面有根據上述不同等級的log有對應的function可以呼叫，可以看底下的例子</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">Debug message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">Info message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">Error message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">Critical message</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在實際執行上面的程式碼以後我們可以得到下面的結果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING:root:Warning message
+ERROR:root:Error message
+CRITICAL:root:Critical message
+</code></pre></div></div>
+
+<p>在使用<code class="language-plaintext highlighter-rouge">logging</code>的function時，<code class="language-plaintext highlighter-rouge">logging</code>會去創建一個名叫<code class="language-plaintext highlighter-rouge">root</code>的logger，並把訊息透過這個logger來紀錄，而其預設的格式是<code class="language-plaintext highlighter-rouge">severity:logger name:message</code>，而且只會顯示WARNING以上的訊息，如果想要設定顯示哪種log的等級的話，可以在最前面呼叫<code class="language-plaintext highlighter-rouge">basicConcig()</code>來設定</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">Debug message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">Info message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">Warning message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">Error message</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">Critical message</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>此時得到的結果會是</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DEBUG:root:Debug message
+INFO:root:Info message
+WARNING:root:Warning message
+ERROR:root:Error message
+CRITICAL:root:Critical message
+</code></pre></div></div>
+
+<p>這樣的作法在當程式碼裡面有引入多個module的時候也適用</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
+</span><span class="kn">import</span> <span class="n">logging</span>
+
+<span class="kn">from</span> <span class="n">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="nf">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib.py
+</span><span class="kn">import</span> <span class="n">logging</span>
+
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from lib</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from lib</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在上面我們寫了兩個python script，分別為<strong>main.py</strong>和<strong>lib.py</strong>，其中<strong>main.py</strong>會去呼叫定義在<strong>lib.py</strong>裡面的<code class="language-plaintext highlighter-rouge">func()</code>，這時如果去執行<strong>main.py</strong>的話會得到下面的結果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INFO:root:info from main
+ERROR:root:error from main
+INFO:root:info from lib
+ERROR:root:error from lib
+</code></pre></div></div>
+
+<p>在<strong>lib.py</strong>裡面設定的訊息也一樣會被顯示出來，然而美中不足的是，如果我們沒有特意在log裡面留下跟檔案有關的訊息的話，就很難從log裡面看出這個是從哪裡產生出來的log了，底下會介紹python文件當中比較建議，為每個檔案建立logger的方法。</p>
+
+<h2 id="使用複數logger">使用複數logger</h2>
+
+<p>在上面我們碰到了無法辨別log是從哪個module產生出來的問題，而解決這個問題的<a href="https://docs.python.org/3/howto/logging.html#advanced-logging-tutorial">建議做法</a>是對每一個module都建立專屬於他們的logger，也就是使用<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>來建立logger以後，再用logger來紀錄我們的訊息。</p>
+
+<p>這邊我們把上面例子中的<code class="language-plaintext highlighter-rouge">logging</code>都替換成<code class="language-plaintext highlighter-rouge">logger</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
+</span><span class="kn">import</span> <span class="n">logging</span>
+
+<span class="kn">from</span> <span class="n">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="nf">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># lib.py
+</span><span class="kn">import</span> <span class="n">logging</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from lib</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from lib</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊我們將<code class="language-plaintext highlighter-rouge">__name__</code>傳入<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>當中，這時logging就會幫我們建立一個以<code class="language-plaintext highlighter-rouge">__name__</code>為名稱的logger，而<code class="language-plaintext highlighter-rouge">__name__</code>會在python裡面被代換成檔案名稱，這時再執行<strong>main.py</strong>就能得到以下的結果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INFO:__main__:info from main
+ERROR:__main__:error from main
+INFO:lib:info from lib
+ERROR:lib:error from lib
+</code></pre></div></div>
+
+<p>如此便能方便地知道這個log是從哪個module產生的了。</p>
+
+<h2 id="logger的階層">Logger的階層</h2>
+
+<p>在上面的例子裡面我們建立了兩個logger，分別是<code class="language-plaintext highlighter-rouge">__main__</code>和<code class="language-plaintext highlighter-rouge">lib</code>，這兩個logger不會各自將訊息直接印出來，而是將訊息傳到他們上層的logger，讓上層logger中的handler來決定log要怎麼被處理，在這個例子裡面它們會將log傳給<code class="language-plaintext highlighter-rouge">root</code>這個logger，再去看<code class="language-plaintext highlighter-rouge">root</code>裡面的handler的設定來去做處理，詳細的處理流程可以參考<a href="https://docs.python.org/3/howto/logging.html#logging-flow">文件</a></p>
+
+<p><img src="https://docs.python.org/3/_images/logging_flow.png" alt="Logging Flow" /></p>
+
+<p>雖然在程式碼裡面看起來我們沒有為root logger設定任何handler，但其實在我們呼叫<code class="language-plaintext highlighter-rouge">logging.basicConfig()</code>的時候它就會<a href="https://docs.python.org/dev/library/logging.html#logging.basicConfig">自動幫我們建立好</a>，如果想要自行設定的話也可以使用<code class="language-plaintext highlighter-rouge">logging.getLogger()</code>，在其中不給任何的參數來拿到root logger，接著再透過<code class="language-plaintext highlighter-rouge">logger.addHandler()</code>來去新增handler。</p>
+
+<h2 id="logging-format">Logging Format</h2>
+
+<p>如果說我們想要自定義顯示出來的log的格式的話，可以在<code class="language-plaintext highlighter-rouge">logging.basicConfig()</code>的地方設定root logger中handler印出log的格式，因為底下的logger會把log往上傳給root logger，所以只需要在root logger中設定好，所有印出來的log都會是一樣的格式。</p>
+
+<p>假如我們在<strong>main.py</strong>裡面多加個參數</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">logging</span>
+
+<span class="kn">from</span> <span class="n">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">info from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">error from main</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">log_format</span><span class="o">=</span><span class="sh">"</span><span class="s">%(asctime)s %(filename)s:%(lineno)d - %(message)s</span><span class="sh">"</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">log_format</span><span class="p">)</span>
+    <span class="nf">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>而<strong>lib.py</strong>維持不變，這時印出來的訊息就會變成</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2022-06-04 23:02:58,775 main.py:8 - info from main
+2022-06-04 23:02:58,775 main.py:9 - error from main
+2022-06-04 23:02:58,775 lib.py:6 - info from lib
+2022-06-04 23:02:58,775 lib.py:7 - error from lib
+</code></pre></div></div>
+
+<p>更多logging支援的attribute，可以看其<a href="https://docs.python.org/3/library/logging.html#logrecord-attributes">官方文件</a>。</p>
+
+<h3 id="在log中加入顏色">在log中加入顏色</h3>
+
+<p>如果想在terminal裡面讓不同等級的log有不同顏色的話，可以參考從<a href="https://stackoverflow.com/questions/384076/how-can-i-color-python-logging-output">這裡</a>改編而來的方法，寫一個<strong>log.py</strong></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># log.py
+</span><span class="kn">import</span> <span class="n">logging</span>
+
+
+<span class="k">class</span> <span class="nc">CustomFormatter</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">):</span>
+    <span class="n">grey</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[38;20m</span><span class="sh">"</span>
+    <span class="n">cyan</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[36;20m</span><span class="sh">"</span>
+    <span class="n">light_green</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[32;20m</span><span class="sh">"</span>
+    <span class="n">yellow</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[33;20m</span><span class="sh">"</span>
+    <span class="n">red</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[31;20m</span><span class="sh">"</span>
+    <span class="n">bold_red</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[31;1m</span><span class="sh">"</span>
+    <span class="n">reset</span> <span class="o">=</span> <span class="sh">"</span><span class="se">\x1b</span><span class="s">[0m</span><span class="sh">"</span>
+    <span class="n">log_format</span> <span class="o">=</span> <span class="sh">"</span><span class="s">%(asctime)s - %(name)s - %(levelname)s - %(message)s (%(filename)s:%(lineno)d)</span><span class="sh">"</span>
+
+    <span class="n">FORMATS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">:</span> <span class="n">light_green</span> <span class="o">+</span> <span class="n">log_format</span> <span class="o">+</span> <span class="n">reset</span><span class="p">,</span>
+        <span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">:</span> <span class="n">cyan</span> <span class="o">+</span> <span class="n">log_format</span> <span class="o">+</span> <span class="n">reset</span><span class="p">,</span>
+        <span class="n">logging</span><span class="p">.</span><span class="n">WARNING</span><span class="p">:</span> <span class="n">yellow</span> <span class="o">+</span> <span class="n">log_format</span> <span class="o">+</span> <span class="n">reset</span><span class="p">,</span>
+        <span class="n">logging</span><span class="p">.</span><span class="n">ERROR</span><span class="p">:</span> <span class="n">red</span> <span class="o">+</span> <span class="n">log_format</span> <span class="o">+</span> <span class="n">reset</span><span class="p">,</span>
+        <span class="n">logging</span><span class="p">.</span><span class="n">CRITICAL</span><span class="p">:</span> <span class="n">bold_red</span> <span class="o">+</span> <span class="n">log_format</span> <span class="o">+</span> <span class="n">reset</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="n">log_fmt</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">FORMATS</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">record</span><span class="p">.</span><span class="n">levelno</span><span class="p">)</span>
+        <span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nc">Formatter</span><span class="p">(</span><span class="n">log_fmt</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">formatter</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+
+
+<span class="n">root_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">()</span>
+<span class="n">root_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nc">StreamHandler</span><span class="p">()</span>
+<span class="n">root_handler</span><span class="p">.</span><span class="nf">setFormatter</span><span class="p">(</span><span class="nc">CustomFormatter</span><span class="p">())</span>
+<span class="n">root_logger</span><span class="p">.</span><span class="nf">addHandler</span><span class="p">(</span><span class="n">root_handler</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>在上面的程式碼裡面我們自訂了一個formatter，並根據不同等級的log加入不同顏色的前綴和後綴，而且在底下也設定了root logger的handler，要使用的時候我們在新的程式碼裡面簡單import它並設定level就可以了</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># main.py
+</span><span class="kn">import</span> <span class="n">logging</span>
+
+<span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="n">lib</span> <span class="kn">import</span> <span class="n">func</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">debug</span><span class="p">(</span><span class="sh">"</span><span class="s">debug message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">info</span><span class="p">(</span><span class="sh">"</span><span class="s">info message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">warning</span><span class="p">(</span><span class="sh">"</span><span class="s">warning message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="sh">"</span><span class="s">error message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="nf">critical</span><span class="p">(</span><span class="sh">"</span><span class="s">critical message</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">func</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">logging</span><span class="p">.</span><span class="nf">getLogger</span><span class="p">().</span><span class="nf">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+    <span class="nf">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>跑出來的log就能有顏色了</p>
+
+<p><img src="./colorful_log.png" alt="Colorful Log" /></p>
+
+<p>不過要小心的是，如果把log寫成檔案的話，這些顏色前綴和後綴都會被寫進檔案裡面，建議視情況來使用</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[32<span class="p">;</span>20m2022-06-09 18:20:41,750 - __main__ - DEBUG - debug message <span class="o">(</span>main.py:11<span class="o">)</span>[0m
+[36<span class="p">;</span>20m2022-06-09 18:20:41,750 - __main__ - INFO - info message <span class="o">(</span>main.py:12<span class="o">)</span>[0m
+[33<span class="p">;</span>20m2022-06-09 18:20:41,750 - __main__ - WARNING - warning message <span class="o">(</span>main.py:13<span class="o">)</span>[0m
+[31<span class="p">;</span>20m2022-06-09 18:20:41,750 - __main__ - ERROR - error message <span class="o">(</span>main.py:14<span class="o">)</span>[0m
+[31<span class="p">;</span>1m2022-06-09 18:20:41,750 - __main__ - CRITICAL - critical message <span class="o">(</span>main.py:15<span class="o">)</span>[0m
+[36<span class="p">;</span>20m2022-06-09 18:20:41,750 - lib - INFO - info from lib <span class="o">(</span>lib.py:8<span class="o">)</span>[0m
+[31<span class="p">;</span>20m2022-06-09 18:20:41,750 - lib - ERROR - error from lib <span class="o">(</span>lib.py:9<span class="o">)</span>[0m
+</code></pre></div></div>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Python" /><summary type="html"><![CDATA[這篇文章簡單介紹一下python logging這個package的使用方法。]]></summary></entry></feed>
