@@ -6,7 +6,7 @@ footer: false
 aside:
   toc: true
 mathjax_autoNumber: true
-published: true
+published: false
 ---
 
 隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。
