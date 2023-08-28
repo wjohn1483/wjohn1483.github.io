@@ -45,6 +45,29 @@ superset run -p 8088 --with-threads --reload --debugger
 
 在上面的指令中，我們有建立了一個admin帳號，其帳號密碼都是`admin`，並在最後一行的指令啟動了superset，這時理論上連到`localhost:8088`就能看到superset的UI了。
 
+另一個快速使用superset的方法是[透過docker-compose來安裝](https://superset.apache.org/docs/installation/installing-superset-using-docker-compose)，在安裝好docker和docker-compose以後執行底下的指令就可以了。
+
+```bash
+git clone https://github.com/apache/superset.git
+cd superset
+docker-compose -f docker-compose-non-dev.yml pull
+docker-compose -f docker-compose-non-dev.yml up
+```
+
+我個人在嘗試的時候使用上面的指令安裝不起來，需要回到2.1.0的版本才能成功，如果想要從latest回到2.1.0，需要先下`docker volume`把跟superset有關的volume先刪除掉，並修改**docker-compose-non-dev.yml**中docker image的tag，把latest改成2.1.0。
+
+```yml
+x-superset-image: &superset-image apache/superset:2.1.0
+```
+
+最後checkout到2.1.0並執行底下的指令。
+
+```bash
+git checkout 2.1.0
+TAG=2.1.0 docker-compose -f docker-compose-non-dev.yml pull
+TAG=2.1.0 docker-compose -f docker-compose-non-dev.yml up
+```
+
 ## 製作Dashboard流程
 
 在superset裡面要製作最後的dashboard前有幾個步驟需要先執行：
