@@ -336,6 +336,26 @@ superset run <span class="nt">-p</span> 8088 <span class="nt">--with-threads</sp
 
 <p>在上面的指令中，我們有建立了一個admin帳號，其帳號密碼都是<code class="language-plaintext highlighter-rouge">admin</code>，並在最後一行的指令啟動了superset，這時理論上連到<code class="language-plaintext highlighter-rouge">localhost:8088</code>就能看到superset的UI了。</p>
 
+<p>另一個快速使用superset的方法是<a href="https://superset.apache.org/docs/installation/installing-superset-using-docker-compose">透過docker-compose來安裝</a>，在安裝好docker和docker-compose以後執行底下的指令就可以了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/apache/superset.git
+<span class="nb">cd </span>superset
+docker-compose <span class="nt">-f</span> docker-compose-non-dev.yml pull
+docker-compose <span class="nt">-f</span> docker-compose-non-dev.yml up
+</code></pre></div></div>
+
+<p>我個人在嘗試的時候使用上面的指令安裝不起來，需要回到2.1.0的版本才能成功，如果想要從latest回到2.1.0，需要先下<code class="language-plaintext highlighter-rouge">docker volume</code>把跟superset有關的volume先刪除掉，並修改<strong>docker-compose-non-dev.yml</strong>中docker image的tag，把latest改成2.1.0。</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">x-superset-image</span><span class="pi">:</span> <span class="nl">&amp;superset-image</span> <span class="s">apache/superset:2.1.0</span>
+</code></pre></div></div>
+
+<p>最後checkout到2.1.0並執行底下的指令。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout 2.1.0
+<span class="nv">TAG</span><span class="o">=</span>2.1.0 docker-compose <span class="nt">-f</span> docker-compose-non-dev.yml pull
+<span class="nv">TAG</span><span class="o">=</span>2.1.0 docker-compose <span class="nt">-f</span> docker-compose-non-dev.yml up
+</code></pre></div></div>
+
 <h2 id="製作dashboard流程">製作Dashboard流程</h2>
 
 <p>在superset裡面要製作最後的dashboard前有幾個步驟需要先執行：</p>
