@@ -51,7 +51,7 @@ make
 python3 ./convert.py ~/llama-2-13b-chat/
 ```
 
-這時在原本模型儲存的路徑下應該會多出一個**ggml-model-f16.gguf**檔，這時其實就可以使用這個比較小的模型檔來在CPU上面做inference了，不過我們還可以進一步的做quantization，來讓執行時間變得更短
+這時在原本模型儲存的路徑下應該會多出一個**ggml-model-f16.gguf**檔，這時其實就可以使用這個比較小的模型檔來在CPU上面做inference了，不過我們還可以進一步的做quantization，來讓執行時間變得更短。
 
 ```bash
 ./quantize ~/llama-2-13b-chat/ggml-model-f16.gguf ~/llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin q4_0
