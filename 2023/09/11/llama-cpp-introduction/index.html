@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>如何使用CPU跑LLM - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/page3/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2023/09/11/llama-cpp-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -265,7 +265,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -283,108 +283,181 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/12/23/autokeras-introduction/"><h2 itemprop="headline" class="item__header">AutoKeras介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">現在市面上有眾多AutoML的框架，而用深度學習並有Neural Architecture Search（NAS）功能的並不多，這邊紀錄一下使用AutoKeras的心得。</div><p><a href="/2021/12/23/autokeras-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>如何使用CPU跑LLM</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2023-09-11-llama-cpp-introduction/2023-09-11-llama-cpp-introduction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="如何使用CPU跑LLM"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Dec 23, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-12-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/08/28/unsupervised-speech-recognition/"><h2 itemprop="headline" class="item__header">Unsupervised Speech Recognition</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">簡單介紹一下Facebook AI Research前陣子出的、以非監督的方式來做語音辨識的paper。</div><p><a href="/2021/08/28/unsupervised-speech-recognition/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Speech-Recognition">Speech-Recognition</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Aug 28, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-08-28T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Speech-Recognition"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/07/25/remote-job-finish-notification/"><h2 itemprop="headline" class="item__header">在遠端的job執行完成時發送通知</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這邊記錄一個方法來當server上的job跑完時，可以在MacBook上面跳出一個通知。</div><p><a href="/2021/07/25/remote-job-finish-notification/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 25, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-07-25T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/07/25/object-detection/"><h2 itemprop="headline" class="item__header">Object Detection概論</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">簡單整理一下目前有關object detection的一些研究。</div><p><a href="/2021/07/25/object-detection/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Computer-Vision">Computer-Vision</a>
+                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Object-Detection">Object-Detection</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 25, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-07-25T00:00:00+00:00">
-    <meta itemprop="keywords" content="Computer-Vision,Object-Detection"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/07/18/speech-recognition-with-deep-learning/"><h2 itemprop="headline" class="item__header">深度學習於語音辨識</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在先前的文章裡頭，介紹了在深度學習蓬勃發展之前，語音辨識大概是如何達成的，而這篇文章會簡單介紹一下，在加入了深度學習以後，語音辨識的技術有了什麼樣的更動。</div><p><a href="/2021/07/18/speech-recognition-with-deep-learning/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Speech-Recognition">Speech-Recognition</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 18, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-07-18T00:00:00+00:00">
-    <meta itemprop="keywords" content="Speech-Recognition"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/06/14/introduction-to-speech-recognition/"><h2 itemprop="headline" class="item__header">語音辨識概觀</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在我們的生活當中，語音辨識已經越來越普及了，不論是語音輸入、語音助手都有使用到語音辨識的技術，底下簡單介紹一下在大量使用neural network之前語音辨識所使用到的一些技術。</div><p><a href="/2021/06/14/introduction-to-speech-recognition/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Speech-Recognition">Speech-Recognition</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jun 14, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-06-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="Speech-Recognition"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/06/05/display-html-in-google-sheet/"><h2 itemprop="headline" class="item__header">在Google Sheet裡面呈現html</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">前陣子有人推薦了一個好用的資料呈現套件plotly，這個套件可以將結果輸出成html讓使用者與之互動，這邊紀錄一下如何將html呈現在Google Sheet裡面，讓我們不用再找一個地方存放這個html。</div><p><a href="/2021/06/05/display-html-in-google-sheet/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jun 05, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-06-05T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/05/24/swift-menu-bar-timer/"><h2 itemprop="headline" class="item__header">如何利用Swift製作倒數計時器</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">先前都有在使用Mac app來幫我在電腦上倒計時，但有些功能需要付費才可以解鎖，剛好附近有人有在弄Mac app，想說自己來寫一個倒數計時器，在這邊紀錄一下製作的過程。</div><p><a href="/2021/05/24/swift-menu-bar-timer/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Swift">Swift</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 24, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-05-24T00:00:00+00:00">
-    <meta itemprop="keywords" content="Swift"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>46 post articles, 6 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/page2">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page2"><span>2</span></a>
-                </li><li>
-              <div class="button button--primary button--circle focus"><span>3</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-                </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page6"><span>6</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page4">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Sep 11, 2023</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-09-11T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool,Machine-Learning,Natural-Language-Processing"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。</p>
+
+<!--more-->
+
+<h2 id="ggml">GGML</h2>
+
+<p>現在把LLM跑在資源相較匱乏的電腦上的方法主要都是透過quantization來減少模型的計算量，在訓練模型的時候，模型通常都是使用32 bits的浮點數來去儲存參數，倘若我們把浮點數下調一些，用16 bits或是4bits來儲存的話，雖說計算的精準度會下降，但模型在inference的計算量就可以減少很多。</p>
+
+<p>其中quantization最常使用的是<a href="https://github.com/ggerganov/ggml">ggml</a>這個工具，ggml是個用C寫成的套件，它可以幫助你把手上的模型做quantization，而且支援目前大多數的開源LLM模型，支援的模型們可以去它的github上面看。</p>
+
+<h2 id="llamacpp">llama.cpp</h2>
+
+<p><a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>是一個基於ggml的工具，讓你可以很輕易地把你手上建構在llama上的模型做quantization，像是Llama、Alpaca、Vicuna、Llama2等都可以透過llama.cpp來把模型變得更小、計算得更快，底下會講一下如何使用llama.cpp來讓Llama2跑在CPU上。</p>
+
+<h3 id="llama2">Llama2</h3>
+
+<p><a href="https://ai.meta.com/llama/">Llama2</a>是Meta基於Llama訓練出來的有條件可商用模型，如果想要取得Llama2的模型，可以直接去Meta的官網上面填寫資料，之後根據寄來的email上的指示就能將模型的參數們下載回來了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % <span class="nb">ls </span>llama-2-13b-chat
+checklist.chk  consolidated.00.pth  consolidated.01.pth  params.json  tokenizer.model
+</code></pre></div></div>
+
+<h3 id="compile-llamacpp">Compile llama.cpp</h3>
+
+<p>在quantize模型之前，我們需要先編譯一下我們的工具llama.cpp，編譯的方法可以參考github上的<a href="https://github.com/ggerganov/llama.cpp#readme">README.md</a>，如果是Linux的話應該只需要將repository clone下來以後執行make就可以了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/ggerganov/llama.cpp.git
+<span class="nb">cd </span>llama.cpp
+pip3 <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+make
+</code></pre></div></div>
+
+<h3 id="quantization">Quantization</h3>
+
+<p>接下來就可以著手來做quantization了，詳細的步驟也可以參考<a href="https://github.com/ggerganov/llama.cpp#prepare-data--run">官方的README.md</a>，首先我們需要將模型的參數做成16 bits的gguf檔，在過去被稱為ggml，也就是套件的名稱，但後來ggml的格式又做了一些修改，變成了gguf，獲得了更好的可擴充性。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 ./convert.py ~/llama-2-13b-chat/
+</code></pre></div></div>
+
+<p>這時在原本模型儲存的路徑下應該會多出一個<strong>ggml-model-f16.gguf</strong>檔，這時其實就可以使用這個比較小的模型檔來在CPU上面做inference了，不過我們還可以進一步的做quantization，來讓執行時間變得更短</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./quantize ~/llama-2-13b-chat/ggml-model-f16.gguf ~/llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin q4_0
+</code></pre></div></div>
+
+<p>在上面的指令裡面，我們給了3個參數，分別是剛剛做好的gguf檔，再來是做完quantization後想輸出的路徑，最後是quantization的方法，quantization的方法在<a href="https://github.com/ggerganov/llama.cpp#quantization">README.md</a>上面有列表來告訴我們有哪些選項，以及其效果如何。</p>
+
+<p>在<a href="https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF">Hugging Face上</a>也已經有別人quantized好的模型了，如果想直接拿現成的也可以從上面下載下來。</p>
+
+<h3 id="inference">Inference</h3>
+
+<p>在quantize好自己想要的大小的模型以後，接下來就是使用這個模型來執行看看prompt了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./main <span class="nt">-m</span> ~/llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin <span class="nt">-n</span> <span class="nt">-1</span> <span class="nt">-e</span> <span class="nt">-t</span> 8 <span class="nt">-p</span> <span class="s2">"YOUR PROMPT HERE"</span>
+</code></pre></div></div>
+
+<p>關於<code class="language-plaintext highlighter-rouge">main</code>更多的參數可以透過<code class="language-plaintext highlighter-rouge">./main -h</code>來查看，這邊列一下上面指令option所代表的意思。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">-m</span> FNAME, <span class="nt">--model</span> FNAME
+                        model path <span class="o">(</span>default: models/7B/ggml-model-f16.gguf<span class="o">)</span>
+  <span class="nt">-n</span> N, <span class="nt">--n-predict</span> N   number of tokens to predict <span class="o">(</span>default: <span class="nt">-1</span>, <span class="nt">-1</span> <span class="o">=</span> infinity, <span class="nt">-2</span> <span class="o">=</span> <span class="k">until </span>context filled<span class="o">)</span>
+  <span class="nt">-t</span> N, <span class="nt">--threads</span> N     number of threads to use during computation <span class="o">(</span>default: 4<span class="o">)</span>
+  <span class="nt">-p</span> PROMPT, <span class="nt">--prompt</span> PROMPT
+                        prompt to start generation with <span class="o">(</span>default: empty<span class="o">)</span>
+  <span class="nt">-e</span>, <span class="nt">--escape</span>          process prompt escapes sequences <span class="o">(</span><span class="se">\n</span>, <span class="se">\r</span>, <span class="se">\t</span>, <span class="se">\'</span>, <span class="se">\"</span>, <span class="se">\\</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>如果我們想要透過python使用這個quantized好的模型，我們可以使用<a href="https://github.com/abetlen/llama-cpp-python">llama-cpp-python</a>，能過直接透過pip來安裝。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>llama-cpp-python
+</code></pre></div></div>
+
+<p>接著就能使用類似下面的程式碼來使用了，更多的使用方法可以參考其github repository。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">llama_cpp</span> <span class="kn">import</span> <span class="n">Llama</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="nc">Llama</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="sh">"</span><span class="s">./llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="nf">llm</span><span class="p">(</span><span class="sh">"</span><span class="s">YOUR PROMPT HERE</span><span class="sh">"</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>值得一提的是，它所回傳的會是一個類似底下的dict object，需要自己再parse一下。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmpl-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text_completion"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679561337</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./models/7B/ggml-model.bin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q: Name the planets in the solar system? A: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"logprobs"</span><span class="p">:</span><span class="w"> </span><span class="err">None</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"finish_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stop"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"prompt_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"completion_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="gpu-acceleration">GPU Acceleration</h2>
+
+<p>如果你希望能把已經quantized好的模型，跑在GPU上的話，可以考慮在pip install llama-cpp-python的時候，多加一些參數，讓它可以使用GPU的資源，詳細的介紹可以參考<a href="https://github.com/abetlen/llama-cpp-python#installation-with-hardware-acceleration">README.md</a>。</p>
+
+<h3 id="gptq">GPTQ</h3>
+
+<p>上面所使用的quantization方法主要是調整模型參數的bit數，來達到減少運算量的目標，但這樣直接減少bit的數目會對精準度有一些影響，所以就有人在研究怎麼在quantize某一個特定的參數時，適時地調整還沒有被quantize的其他參數，讓整體的loss與quantize前的不要差異太大，其中衍生出了很多方法及其演進（OBD→OBS→OBQ→GPTQ），詳細的介紹和背後的原理推薦看<a href="https://zhuanlan.zhihu.com/p/646210009">QLoRA、GPTQ：模型量化概述</a>這篇文章的介紹。</p>
+
+<p>在<a href="https://huggingface.co/TheBloke/Llama-2-7b-Chat-GPTQ">HuggingFace上</a>，有人使用了GPTQ的技術對Llama2做quantization，並將算出來的模型參數放上去了，如果對上面使用llama.cpp做出來的模型不滿意，且有個不錯的GPU，可以試試看用GPTQ quantize的Llama2。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://zhuanlan.zhihu.com/p/616969812">GPTQ: 模型量化，穷鬼救星</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/646210009">QLoRA、GPTQ：模型量化概述</a></li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2023-09-11T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2023/07/15/parameter-efficient-fine-tuning/">Parameter-Efficient Fine-Tuning</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -907,10 +980,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>

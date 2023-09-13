@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-09-13T13:00:48+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Parameter-Efficient Fine-Tuning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning/" rel="alternate" type="text/html" title="Parameter-Efficient Fine-Tuning" /><published>2023-07-15T00:00:00+00:00</published><updated>2023-07-15T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning/"><![CDATA[<p>隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-09-13T14:42:10+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何使用CPU跑LLM</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction/" rel="alternate" type="text/html" title="如何使用CPU跑LLM" /><published>2023-09-11T00:00:00+00:00</published><updated>2023-09-11T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction/"><![CDATA[<p>Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。</p>
+
+<!--more-->
+
+<h2 id="ggml">GGML</h2>
+
+<p>現在把LLM跑在資源相較匱乏的電腦上的方法主要都是透過quantization來減少模型的計算量，在訓練模型的時候，模型通常都是使用32 bits的浮點數來去儲存參數，倘若我們把浮點數下調一些，用16 bits或是4bits來儲存的話，雖說計算的精準度會下降，但模型在inference的計算量就可以減少很多。</p>
+
+<p>其中quantization最常使用的是<a href="https://github.com/ggerganov/ggml">ggml</a>這個工具，ggml是個用C寫成的套件，它可以幫助你把手上的模型做quantization，而且支援目前大多數的開源LLM模型，支援的模型們可以去它的github上面看。</p>
+
+<h2 id="llamacpp">llama.cpp</h2>
+
+<p><a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>是一個基於ggml的工具，讓你可以很輕易地把你手上建構在llama上的模型做quantization，像是Llama、Alpaca、Vicuna、Llama2等都可以透過llama.cpp來把模型變得更小、計算得更快，底下會講一下如何使用llama.cpp來讓Llama2跑在CPU上。</p>
+
+<h3 id="llama2">Llama2</h3>
+
+<p><a href="https://ai.meta.com/llama/">Llama2</a>是Meta基於Llama訓練出來的有條件可商用模型，如果想要取得Llama2的模型，可以直接去Meta的官網上面填寫資料，之後根據寄來的email上的指示就能將模型的參數們下載回來了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % <span class="nb">ls </span>llama-2-13b-chat
+checklist.chk  consolidated.00.pth  consolidated.01.pth  params.json  tokenizer.model
+</code></pre></div></div>
+
+<h3 id="compile-llamacpp">Compile llama.cpp</h3>
+
+<p>在quantize模型之前，我們需要先編譯一下我們的工具llama.cpp，編譯的方法可以參考github上的<a href="https://github.com/ggerganov/llama.cpp#readme">README.md</a>，如果是Linux的話應該只需要將repository clone下來以後執行make就可以了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/ggerganov/llama.cpp.git
+<span class="nb">cd </span>llama.cpp
+pip3 <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+make
+</code></pre></div></div>
+
+<h3 id="quantization">Quantization</h3>
+
+<p>接下來就可以著手來做quantization了，詳細的步驟也可以參考<a href="https://github.com/ggerganov/llama.cpp#prepare-data--run">官方的README.md</a>，首先我們需要將模型的參數做成16 bits的gguf檔，在過去被稱為ggml，也就是套件的名稱，但後來ggml的格式又做了一些修改，變成了gguf，獲得了更好的可擴充性。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 ./convert.py ~/llama-2-13b-chat/
+</code></pre></div></div>
+
+<p>這時在原本模型儲存的路徑下應該會多出一個<strong>ggml-model-f16.gguf</strong>檔，這時其實就可以使用這個比較小的模型檔來在CPU上面做inference了，不過我們還可以進一步的做quantization，來讓執行時間變得更短</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./quantize ~/llama-2-13b-chat/ggml-model-f16.gguf ~/llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin q4_0
+</code></pre></div></div>
+
+<p>在上面的指令裡面，我們給了3個參數，分別是剛剛做好的gguf檔，再來是做完quantization後想輸出的路徑，最後是quantization的方法，quantization的方法在<a href="https://github.com/ggerganov/llama.cpp#quantization">README.md</a>上面有列表來告訴我們有哪些選項，以及其效果如何。</p>
+
+<p>在<a href="https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF">Hugging Face上</a>也已經有別人quantized好的模型了，如果想直接拿現成的也可以從上面下載下來。</p>
+
+<h3 id="inference">Inference</h3>
+
+<p>在quantize好自己想要的大小的模型以後，接下來就是使用這個模型來執行看看prompt了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./main <span class="nt">-m</span> ~/llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin <span class="nt">-n</span> <span class="nt">-1</span> <span class="nt">-e</span> <span class="nt">-t</span> 8 <span class="nt">-p</span> <span class="s2">"YOUR PROMPT HERE"</span>
+</code></pre></div></div>
+
+<p>關於<code class="language-plaintext highlighter-rouge">main</code>更多的參數可以透過<code class="language-plaintext highlighter-rouge">./main -h</code>來查看，這邊列一下上面指令option所代表的意思。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">-m</span> FNAME, <span class="nt">--model</span> FNAME
+                        model path <span class="o">(</span>default: models/7B/ggml-model-f16.gguf<span class="o">)</span>
+  <span class="nt">-n</span> N, <span class="nt">--n-predict</span> N   number of tokens to predict <span class="o">(</span>default: <span class="nt">-1</span>, <span class="nt">-1</span> <span class="o">=</span> infinity, <span class="nt">-2</span> <span class="o">=</span> <span class="k">until </span>context filled<span class="o">)</span>
+  <span class="nt">-t</span> N, <span class="nt">--threads</span> N     number of threads to use during computation <span class="o">(</span>default: 4<span class="o">)</span>
+  <span class="nt">-p</span> PROMPT, <span class="nt">--prompt</span> PROMPT
+                        prompt to start generation with <span class="o">(</span>default: empty<span class="o">)</span>
+  <span class="nt">-e</span>, <span class="nt">--escape</span>          process prompt escapes sequences <span class="o">(</span><span class="se">\n</span>, <span class="se">\r</span>, <span class="se">\t</span>, <span class="se">\'</span>, <span class="se">\"</span>, <span class="se">\\</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p>如果我們想要透過python使用這個quantized好的模型，我們可以使用<a href="https://github.com/abetlen/llama-cpp-python">llama-cpp-python</a>，能過直接透過pip來安裝。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>llama-cpp-python
+</code></pre></div></div>
+
+<p>接著就能使用類似下面的程式碼來使用了，更多的使用方法可以參考其github repository。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">llama_cpp</span> <span class="kn">import</span> <span class="n">Llama</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="nc">Llama</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="sh">"</span><span class="s">./llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="nf">llm</span><span class="p">(</span><span class="sh">"</span><span class="s">YOUR PROMPT HERE</span><span class="sh">"</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>值得一提的是，它所回傳的會是一個類似底下的dict object，需要自己再parse一下。</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmpl-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text_completion"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679561337</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./models/7B/ggml-model.bin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q: Name the planets in the solar system? A: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"logprobs"</span><span class="p">:</span><span class="w"> </span><span class="err">None</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"finish_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stop"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"prompt_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"completion_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="gpu-acceleration">GPU Acceleration</h2>
+
+<p>如果你希望能把已經quantized好的模型，跑在GPU上的話，可以考慮在pip install llama-cpp-python的時候，多加一些參數，讓它可以使用GPU的資源，詳細的介紹可以參考<a href="https://github.com/abetlen/llama-cpp-python#installation-with-hardware-acceleration">README.md</a>。</p>
+
+<h3 id="gptq">GPTQ</h3>
+
+<p>上面所使用的quantization方法主要是調整模型參數的bit數，來達到減少運算量的目標，但這樣直接減少bit的數目會對精準度有一些影響，所以就有人在研究怎麼在quantize某一個特定的參數時，適時地調整還沒有被quantize的其他參數，讓整體的loss與quantize前的不要差異太大，其中衍生出了很多方法及其演進（OBD→OBS→OBQ→GPTQ），詳細的介紹和背後的原理推薦看<a href="https://zhuanlan.zhihu.com/p/646210009">QLoRA、GPTQ：模型量化概述</a>這篇文章的介紹。</p>
+
+<p>在<a href="https://huggingface.co/TheBloke/Llama-2-7b-Chat-GPTQ">HuggingFace上</a>，有人使用了GPTQ的技術對Llama2做quantization，並將算出來的模型參數放上去了，如果對上面使用llama.cpp做出來的模型不滿意，且有個不錯的GPU，可以試試看用GPTQ quantize的Llama2。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://zhuanlan.zhihu.com/p/616969812">GPTQ: 模型量化，穷鬼救星</a></li>
+  <li><a href="https://zhuanlan.zhihu.com/p/646210009">QLoRA、GPTQ：模型量化概述</a></li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Machine-Learning" /><category term="Natural-Language-Processing" /><summary type="html"><![CDATA[Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。]]></summary></entry><entry><title type="html">Parameter-Efficient Fine-Tuning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning/" rel="alternate" type="text/html" title="Parameter-Efficient Fine-Tuning" /><published>2023-07-15T00:00:00+00:00</published><updated>2023-07-15T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning/"><![CDATA[<p>隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。</p>
 
 <!--more-->
 
@@ -1386,18 +1503,4 @@ tlmgr <span class="nb">install </span>scheme-full
 
 <p>記得把啟動連結裡面的<code class="language-plaintext highlighter-rouge">localhost</code>替換成前面設定的IP和port以後傳給對方，對方就能透過連結自行設定密碼來建立帳號。</p>
 
-<p>在project內選擇分享並打上對方的email，對方就能在project列表裡面看到邀請通知，點開就能共同編輯同一個project了。如果是新建立的使用者，會需要先創建一個空白的project以後才能跳轉到project列表中。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在過去寫paper的時候通常都是使用overleaf來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。]]></summary></entry><entry><title type="html">Tensorflow JS介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection/" rel="alternate" type="text/html" title="Tensorflow JS介紹" /><published>2022-11-19T00:00:00+00:00</published><updated>2022-11-19T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/19/tensorflow-js-pose-detection/"><![CDATA[<p>隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。</p>
-
-<!--more-->
-
-<p>在這篇文章裡面主要會介紹一下tensorflow.js的一些功能，並說明Google團隊先前透過tensorflow.js製作的一個應用<a href="https://experiments.withgoogle.com/move-mirror">Move Mirror</a>大概是如何被製作出來的。</p>
-
-<h2 id="tensorflow-js">Tensorflow JS</h2>
-
-<p><a href="https://www.tensorflow.org/js?hl=zh-tw">tensorflow.js</a>是一個JavaScript的套件，讓機器學習的模型可以在瀏覽器裡面被執行，除了可以把用python訓練出來的模型放在瀏覽器上以外，還可以使用官方包好的模型來去做有趣的應用，可以參考<a href="https://github.com/tensorflow/tfjs-examples">這邊的範例</a>來開始編寫tensorflow.js。</p>
-
-<h2 id="pose-detection">Pose Detection</h2>
-
-<p>在<a href="https://experiments.withgoogle.com/move-mirror">Move Mirror</a>裡面，我們可以透過使用者的動作來找到相似的圖片，主要的方法是透過CDCL的模型來去對電腦鏡頭拍攝出來的人像做辨識，從中取得每個關節的座標，接著把座標正規化以後去跟照片去算cosine similarity，而在<a href="https://blog.tensorflow.org/2018/07/move-mirror-ai-experiment-with-pose-estimation-tensorflow-js.html">部落格文章</a>當中還有講述把模型給的信心分數放進算座標距離的方法和快速計算多張照片的方式，建議閱讀文章的內容來更理解詳細的做法。</p>
-
-<p>有了這個CDCL模型和距離計算的方式，我們可以對它稍做修改，改成給定一張照片，去計算電腦鏡頭拍攝的人像和照片的距離有多少，來讓使用者可以練習擺跟照片一樣的姿勢，我個人修改過後的結果可以<a href="https://wjohn1483.github.io/Pose-Copier/dist/?model=movenet">在這邊看到</a>。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Computer-Vision" /><summary type="html"><![CDATA[隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。]]></summary></entry></feed>
+<p>在project內選擇分享並打上對方的email，對方就能在project列表裡面看到邀請通知，點開就能共同編輯同一個project了。如果是新建立的使用者，會需要先創建一個空白的project以後才能跳轉到project列表中。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在過去寫paper的時候通常都是使用overleaf來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。]]></summary></entry></feed>
