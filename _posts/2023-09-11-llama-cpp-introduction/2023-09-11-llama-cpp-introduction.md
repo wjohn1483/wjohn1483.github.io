@@ -6,7 +6,7 @@ footer: false
 aside:
   toc: true
 mathjax_autoNumber: true
-published: false
+published: true
 ---
 
 Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。
@@ -51,7 +51,7 @@ make
 python3 ./convert.py ~/llama-2-13b-chat/
 ```
 
-這時在原本模型儲存的路徑下應該會多出一個**ggml-model-f16.gguf**檔，這時其實就可以使用這個比較小的模型檔來在CPU上面做inference了，不過我們還可以進一步的做quantization，來讓執行時間變得更短
+這時在原本模型儲存的路徑下應該會多出一個**ggml-model-f16.gguf**檔，這時其實就可以使用這個比較小的模型檔來在CPU上面做inference了，不過我們還可以進一步的做quantization，來讓執行時間變得更短。
 
 ```bash
 ./quantize ~/llama-2-13b-chat/ggml-model-f16.gguf ~/llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin q4_0
@@ -124,8 +124,13 @@ print(output)
 
 如果你希望能把已經quantized好的模型，跑在GPU上的話，可以考慮在pip install llama-cpp-python的時候，多加一些參數，讓它可以使用GPU的資源，詳細的介紹可以參考[README.md](https://github.com/abetlen/llama-cpp-python#installation-with-hardware-acceleration)。
 
-https://huggingface.co/TheBloke/Llama-2-7b-Chat-GPTQ
+### GPTQ
+
+上面所使用的quantization方法主要是調整模型參數的bit數，來達到減少運算量的目標，但這樣直接減少bit的數目會對精準度有一些影響，所以就有人在研究怎麼在quantize某一個特定的參數時，適時地調整還沒有被quantize的其他參數，讓整體的loss與quantize前的不要差異太大，其中衍生出了很多方法及其演進（OBD→OBS→OBQ→GPTQ），詳細的介紹和背後的原理推薦看[QLoRA、GPTQ：模型量化概述](https://zhuanlan.zhihu.com/p/646210009)這篇文章的介紹。
+
+在[HuggingFace上](https://huggingface.co/TheBloke/Llama-2-7b-Chat-GPTQ)，有人使用了GPTQ的技術對Llama2做quantization，並將算出來的模型參數放上去了，如果對上面使用llama.cpp做出來的模型不滿意，且有個不錯的GPU，可以試試看用GPTQ quantize的Llama2。
 
 ## 參考資料
 
 * [GPTQ: 模型量化，穷鬼救星](https://zhuanlan.zhihu.com/p/616969812)
+* [QLoRA、GPTQ：模型量化概述](https://zhuanlan.zhihu.com/p/646210009)
