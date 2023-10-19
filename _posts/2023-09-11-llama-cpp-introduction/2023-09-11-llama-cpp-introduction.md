@@ -122,7 +122,23 @@ print(output)
 
 ## GPU Acceleration
 
-如果你希望能把已經quantized好的模型，跑在GPU上的話，可以考慮在pip install llama-cpp-python的時候，多加一些參數，讓它可以使用GPU的資源，詳細的介紹可以參考[README.md](https://github.com/abetlen/llama-cpp-python#installation-with-hardware-acceleration)。
+如果你希望能把已經quantized好的模型，加速跑得更快的話，可以考慮在`pip install llama-cpp-python`的時候，多加一些參數，讓它可以使用各種[BLAS](https://zh.wikipedia.org/zh-tw/BLAS) backend來加速，如果你安裝的是cuBLAS，還可以使用GPU的資源來加速，詳細的介紹可以參考[README.md](https://github.com/abetlen/llama-cpp-python#installation-with-hardware-acceleration)，下面放上使用cuBLAS的安裝指令。
+
+```bash
+export LLAMA_CUBLAS=1
+CMAKE_ARGS="-DLLAMA_CUBLAS=on" FORCE_CMAKE=1 pip install --upgrade --force-reinstall llama-cpp-python --no-cache-dir
+```
+
+這時我們在使用llama-cpp-python的時候，就能於讀取模型的地方多加`n_gpu_layers`的參數把部分的模型放到GPU上面執行。
+
+```python
+from llama_cpp import Llama
+llm = Llama(model_path="./llama-2-13b-chat/ggml-model-f16.gguf", verbose=True, n_gpu_layers=43)
+output = llm("YOUR PROMPT HERE", max_tokens=128, echo=False, temperature=0.8)
+print(output)
+```
+
+不同的模型、不同quantized的參數產生的模型所需要的GPU記憶體都不同，需要試著跑看看才知道GPU能不能吃的下來，而模型總共有多少layer可以在llama-cpp-python寫出來的log裡面看到，像是llama2總共有43層，`n_gpu_layers`設定超過43跟設43是一樣的效果。
 
 ### GPTQ
 
