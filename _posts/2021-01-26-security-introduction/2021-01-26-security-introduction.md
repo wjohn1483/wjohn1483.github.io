@@ -73,6 +73,14 @@ mTLS的全稱應該是Mutual TLS，指的是雙方都去驗證對方的身分。
 
 [CKMS](https://www.cryptomathic.com/products/key-management/crypto-key-management-system)的全稱好像是Crypto Key Management System，是一個幫忙更新、部署key的系統。
 
+### CIDR
+
+CIDR是無類別區間路由（Classless Inter-Domain Routing）的意思，表示一種IP位址歸類的方法，可以想成用來表示一個IP位址的區塊。
+
+![CIDR](https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/IP_Address_Match.svg/800px-IP_Address_Match.svg.png)
+
+上圖是來自[維基百科](https://zh.wikipedia.org/zh-tw/%E6%97%A0%E7%B1%BB%E5%88%AB%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1)的例子，假如說一個CIDR區塊是10.10.1.32/27，表示前27個bit的數字都一樣的IP才是同一個區域內的IP。
+
 ## 參考資料
 
 1. [基礎密碼學(對稱式與非對稱式加密技術)](https://medium.com/@RiverChan/%E5%9F%BA%E7%A4%8E%E5%AF%86%E7%A2%BC%E5%AD%B8-%E5%B0%8D%E7%A8%B1%E5%BC%8F%E8%88%87%E9%9D%9E%E5%B0%8D%E7%A8%B1%E5%BC%8F%E5%8A%A0%E5%AF%86%E6%8A%80%E8%A1%93-de25fd5fa537)
@@ -80,6 +88,4 @@ mTLS的全稱應該是Mutual TLS，指的是雙方都去驗證對方的身分。
 3. [黑毛到白毛的攻城獅之路: Athenz 的授權流程](https://jimwayne.blogspot.com/2019/04/athenz.html)
 4. [如何製作SSL X.509憑證？](https://www.imacat.idv.tw/tech/sslcerts.html.zh-tw#sslx509)
 5. [SSL/TLS 双向认证(一) -- SSL/TLS 工作原理_ustccw-CSDN博客](https://blog.csdn.net/ustccw/article/details/76691248)
-
-
-
+6. [無類別域間路由 - 維基百科，自由的百科全書](https://zh.wikipedia.org/zh-tw/%E6%97%A0%E7%B1%BB%E5%88%AB%E5%9F%9F%E9%97%B4%E8%B7%AF%E7%94%B1)
