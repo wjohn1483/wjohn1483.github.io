@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>nginx Reverse Proxy - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/page4/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2024/01/20/nginx-reverse-proxy/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -265,7 +265,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -283,108 +283,184 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/05/24/swift-menu-bar-timer/"><h2 itemprop="headline" class="item__header">如何利用Swift製作倒數計時器</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">先前都有在使用Mac app來幫我在電腦上倒計時，但有些功能需要付費才可以解鎖，剛好附近有人有在弄Mac app，想說自己來寫一個倒數計時器，在這邊紀錄一下製作的過程。</div><p><a href="/2021/05/24/swift-menu-bar-timer/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Swift">Swift</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 24, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-05-24T00:00:00+00:00">
-    <meta itemprop="keywords" content="Swift"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/"><h2 itemprop="headline" class="item__header">Deep Interest Evolution Network for Click-Through Rate Prediction</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">簡單記錄一下，看完此篇paper的筆記。</div><p><a href="/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 21, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-03-21T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/02/28/move-blog-to-github-actions/"><h2 itemprop="headline" class="item__header">利用GitHub Actions來部署部落格</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">前陣子發現到GitHub Actions可以用來做CI，試著使用看看。</div><p><a href="/2021/02/28/move-blog-to-github-actions/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>nginx Reverse Proxy</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2024-01-20-nginx-reverse-proxy/2024-01-20-nginx-reverse-proxy.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="nginx Reverse Proxy"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 28, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-02-28T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/02/07/gitalk-introduction/"><h2 itemprop="headline" class="item__header">利用Gitalk在靜態網頁裡面新增留言區</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">先前在設定檔裡面發現這個部落格主題可以開啟留言的功能，這邊簡單介紹一下其背後所使用的Gitalk以及如何設定它。</div><p><a href="/2021/02/07/gitalk-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 07, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-02-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/01/26/security-introduction/"><h2 itemprop="headline" class="item__header">網路安全的基本知識</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">有鑑於有時會接觸到一些網路安全的東西，這邊簡單紀錄一下碰到的一些東西。</div><p><a href="/2021/01/26/security-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Network-Security">Network-Security</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jan 26, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-01-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="Network-Security"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/11/21/circle-ci/"><h2 itemprop="headline" class="item__header">利用Circle CI來更新GitHub Pages</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">有鑒於Travis CI要開始收費了，所以我將部落格的CI轉移到Circle CI上，在這篇文章記錄一下轉移的過程。</div><p><a href="/2020/11/21/circle-ci/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 21, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-21T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/11/15/python-import/"><h2 itemprop="headline" class="item__header">Python Import Introduction</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。</div><p><a href="/2020/11/15/python-import/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Python">Python</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 15, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="Python"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/"><h2 itemprop="headline" class="item__header">Deep Reinforcement Learning for Online Advertising in Recommender Systems</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。</div><p><a href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 04, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Reinforcement-Learning,Recommendation-System"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>47 post articles, 6 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/page3">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-                </li><li>
-              <div class="button button--primary button--circle focus"><span>4</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page5"><span>5</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page6"><span>6</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page5">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jan 20, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2024-01-20T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。</p>
+
+<!--more-->
+
+<p>在機器上因為不同的需求開了兩個不同的服務在不同的port，但想要讓這兩個服務都透過相同的port 80來給使用者來做使用，這時候我們可以使用nginx的反向代理功能來讓使用者使用相同的port 80，搭配不同的path來連到不同的服務。</p>
+
+<h2 id="安裝nginx">安裝nginx</h2>
+
+<p>底下是在CentOS上面安裝時使用的指令，不同的作業系統的安裝方法可以參考<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/">官網</a>上的介紹。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> nginx
+</code></pre></div></div>
+
+<h2 id="設定nginx">設定nginx</h2>
+
+<p>關於nginx的設定都放在<code class="language-plaintext highlighter-rouge">/etc/nginx/nginx.conf</code>裡面，我們可以在http$\rightarrow$server的區塊裡面，新增不同的path來讓nginx來做反向代理。</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># For more information on configuration, see:</span>
+<span class="c1">#   * Official English Documentation: http://nginx.org/en/docs/</span>
+<span class="c1">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span>
+
+<span class="k">user</span> <span class="s">nginx</span><span class="p">;</span>
+<span class="k">worker_processes</span> <span class="s">auto</span><span class="p">;</span>
+<span class="k">error_log</span> <span class="n">/var/log/nginx/error.log</span><span class="p">;</span>
+<span class="k">pid</span> <span class="n">/run/nginx.pid</span><span class="p">;</span>
+
+<span class="c1"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span>
+<span class="k">include</span> <span class="n">/usr/share/nginx/modules/*.conf</span>;
+
+<span class="k">events</span> <span class="p">{</span>
+    <span class="kn">worker_connections</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">http</span> <span class="p">{</span>
+    <span class="kn">log_format</span>  <span class="s">main</span>  <span class="s">'</span><span class="nv">$remote_addr</span> <span class="s">-</span> <span class="nv">$remote_user</span> <span class="s">[</span><span class="nv">$time_local</span><span class="s">]</span> <span class="s">"</span><span class="nv">$request</span><span class="s">"</span> <span class="s">'</span>
+                      <span class="s">'</span><span class="nv">$status</span> <span class="nv">$body_bytes_sent</span> <span class="s">"</span><span class="nv">$http_referer</span><span class="s">"</span> <span class="s">'</span>
+                      <span class="s">'"</span><span class="nv">$http_user_agent</span><span class="s">"</span> <span class="s">"</span><span class="nv">$http_x_forwarded_for</span><span class="s">"'</span><span class="p">;</span>
+
+    <span class="kn">access_log</span>  <span class="n">/var/log/nginx/access.log</span>  <span class="s">main</span><span class="p">;</span>
+
+    <span class="kn">sendfile</span>            <span class="no">on</span><span class="p">;</span>
+    <span class="kn">tcp_nopush</span>          <span class="no">on</span><span class="p">;</span>
+    <span class="kn">tcp_nodelay</span>         <span class="no">on</span><span class="p">;</span>
+    <span class="kn">keepalive_timeout</span>   <span class="mi">65</span><span class="p">;</span>
+    <span class="kn">types_hash_max_size</span> <span class="mi">4096</span><span class="p">;</span>
+
+    <span class="kn">gzip_static</span> <span class="no">off</span><span class="p">;</span>
+
+    <span class="kn">include</span>             <span class="n">/etc/nginx/mime.types</span><span class="p">;</span>
+    <span class="kn">default_type</span>        <span class="nc">application/octet-stream</span><span class="p">;</span>
+
+    <span class="c1"># Load modular configuration files from the /etc/nginx/conf.d directory.</span>
+    <span class="c1"># See http://nginx.org/en/docs/ngx_core_module.html#include</span>
+    <span class="c1"># for more information.</span>
+    <span class="kn">include</span> <span class="n">/etc/nginx/conf.d/*.conf</span><span class="p">;</span>
+
+    <span class="kn">server</span> <span class="p">{</span>
+        <span class="kn">listen</span>       <span class="mi">80</span><span class="p">;</span>
+        <span class="kn">listen</span>       <span class="s">[::]:80</span><span class="p">;</span>
+        <span class="kn">server_name</span>  <span class="s">&lt;YOUR_HOST_NAME&gt;</span><span class="p">;</span>
+
+        <span class="c1"># Load configuration files for the default server block.</span>
+        <span class="kn">include</span> <span class="n">/etc/nginx/default.d/*.conf</span><span class="p">;</span>
+
+        <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:8000</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kn">location</span> <span class="n">/test</span> <span class="p">{</span>
+            <span class="kn">rewrite</span> <span class="s">^/test(/.*)</span>$ <span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:9000</span><span class="p">;</span>
+            <span class="kn">proxy_redirect</span> <span class="n">/</span> <span class="n">/test/</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kn">error_page</span> <span class="mi">404</span> <span class="n">/404.html</span><span class="p">;</span>
+        <span class="kn">location</span> <span class="p">=</span> <span class="n">/404.html</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="kn">error_page</span> <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span> <span class="n">/50x.html</span><span class="p">;</span>
+        <span class="kn">location</span> <span class="p">=</span> <span class="n">/50x.html</span> <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>在上面的例子裡面，我們新增了底下的設定</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="k">location</span> <span class="n">/</span> <span class="p">{</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:8000</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">location</span> <span class="n">/test</span> <span class="p">{</span>
+            <span class="kn">rewrite</span> <span class="s">^/test(/.*)</span>$ <span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:9000</span><span class="p">;</span>
+            <span class="kn">proxy_redirect</span> <span class="n">/</span> <span class="n">/test/</span><span class="p">;</span>
+        <span class="p">}</span>
+</code></pre></div></div>
+
+<p>我們使用<code class="language-plaintext highlighter-rouge">proxy_pass</code>來將不同path的request傳到對應的服務上，假如使用者連到<code class="language-plaintext highlighter-rouge">HOST/</code>，就會導到<code class="language-plaintext highlighter-rouge">localhost:8000</code>，如果連到<code class="language-plaintext highlighter-rouge">HOST/test/</code>就會導到<code class="language-plaintext highlighter-rouge">localhost:9000</code>。</p>
+
+<p>不過如果只有單純的<code class="language-plaintext highlighter-rouge">proxy_pass</code>，被重新導向的路徑會也帶上使用者加上的<code class="language-plaintext highlighter-rouge">/test/</code>，倘若希望在導向的時候將這個path給去除，讓服務收到的request是<code class="language-plaintext highlighter-rouge">/</code>的話，可以使用<code class="language-plaintext highlighter-rouge">rewrite</code>來對request做修改。</p>
+
+<p>同樣地，如果服務收到<code class="language-plaintext highlighter-rouge">/</code>的request以後，想重新導向到服務的<code class="language-plaintext highlighter-rouge">/redirect</code>路徑，這時使用者實際上要request的就會需要是<code class="language-plaintext highlighter-rouge">HOST/test/redirect</code>，我們可以使用<code class="language-plaintext highlighter-rouge">proxy_redirect</code>來幫服務的重新導向加上<code class="language-plaintext highlighter-rouge">/test/</code>的前綴。</p>
+
+<h2 id="啟動nginx">啟動nginx</h2>
+
+<p>在寫好configuration以後，我們可以透過<code class="language-plaintext highlighter-rouge">nginx -t</code>來檢驗設定檔有沒有寫錯的地方，如果順利通過就能將nginx的服務起起來了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> /usr/sbin/nginx <span class="nt">-t</span>
+<span class="nb">sudo </span>service nginx start
+<span class="nb">sudo </span>service nginx reload
+chkconfig nginx on
+</code></pre></div></div>
+
+<p>而nginx本身的log會寫到底下的路徑，每當有使用者連線進來，就會寫到<code class="language-plaintext highlighter-rouge">access.log</code>，如果發生了錯誤會寫到<code class="language-plaintext highlighter-rouge">error.log</code>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/log/nginx/access.log
+/var/log/nginx/error.log
+</code></pre></div></div>
+
+<p>如果之後設定檔有做其他的修改，只需要執行<code class="language-plaintext highlighter-rouge">nginx reload</code>就可以讓新的設定生效。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li><a href="https://blog.containerize.com/zh-hant/how-to-setup-and-configure-nginx-as-reverse-proxy/">如何設置和配置為反向代理</a></li>
+</ol>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-01-20T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2023/09/11/llama-cpp-introduction/">如何使用CPU跑LLM</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -907,10 +983,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>

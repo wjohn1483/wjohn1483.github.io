@@ -1,4 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2023-10-19T14:55:37+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何使用CPU跑LLM</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction/" rel="alternate" type="text/html" title="如何使用CPU跑LLM" /><published>2023-09-11T00:00:00+00:00</published><updated>2023-09-11T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction/"><![CDATA[<p>Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2024-01-20T08:11:59+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">nginx Reverse Proxy</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy/" rel="alternate" type="text/html" title="nginx Reverse Proxy" /><published>2024-01-20T00:00:00+00:00</published><updated>2024-01-20T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy/"><![CDATA[<p>最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。</p>
+
+<!--more-->
+
+<p>在機器上因為不同的需求開了兩個不同的服務在不同的port，但想要讓這兩個服務都透過相同的port 80來給使用者來做使用，這時候我們可以使用nginx的反向代理功能來讓使用者使用相同的port 80，搭配不同的path來連到不同的服務。</p>
+
+<h2 id="安裝nginx">安裝nginx</h2>
+
+<p>底下是在CentOS上面安裝時使用的指令，不同的作業系統的安裝方法可以參考<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/">官網</a>上的介紹。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> nginx
+</code></pre></div></div>
+
+<h2 id="設定nginx">設定nginx</h2>
+
+<p>關於nginx的設定都放在<code class="language-plaintext highlighter-rouge">/etc/nginx/nginx.conf</code>裡面，我們可以在http$\rightarrow$server的區塊裡面，新增不同的path來讓nginx來做反向代理。</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># For more information on configuration, see:</span>
+<span class="c1">#   * Official English Documentation: http://nginx.org/en/docs/</span>
+<span class="c1">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span>
+
+<span class="k">user</span> <span class="s">nginx</span><span class="p">;</span>
+<span class="k">worker_processes</span> <span class="s">auto</span><span class="p">;</span>
+<span class="k">error_log</span> <span class="n">/var/log/nginx/error.log</span><span class="p">;</span>
+<span class="k">pid</span> <span class="n">/run/nginx.pid</span><span class="p">;</span>
+
+<span class="c1"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span>
+<span class="k">include</span> <span class="n">/usr/share/nginx/modules/*.conf</span>;
+
+<span class="k">events</span> <span class="p">{</span>
+    <span class="kn">worker_connections</span> <span class="mi">1024</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">http</span> <span class="p">{</span>
+    <span class="kn">log_format</span>  <span class="s">main</span>  <span class="s">'</span><span class="nv">$remote_addr</span> <span class="s">-</span> <span class="nv">$remote_user</span> <span class="s">[</span><span class="nv">$time_local</span><span class="s">]</span> <span class="s">"</span><span class="nv">$request</span><span class="s">"</span> <span class="s">'</span>
+                      <span class="s">'</span><span class="nv">$status</span> <span class="nv">$body_bytes_sent</span> <span class="s">"</span><span class="nv">$http_referer</span><span class="s">"</span> <span class="s">'</span>
+                      <span class="s">'"</span><span class="nv">$http_user_agent</span><span class="s">"</span> <span class="s">"</span><span class="nv">$http_x_forwarded_for</span><span class="s">"'</span><span class="p">;</span>
+
+    <span class="kn">access_log</span>  <span class="n">/var/log/nginx/access.log</span>  <span class="s">main</span><span class="p">;</span>
+
+    <span class="kn">sendfile</span>            <span class="no">on</span><span class="p">;</span>
+    <span class="kn">tcp_nopush</span>          <span class="no">on</span><span class="p">;</span>
+    <span class="kn">tcp_nodelay</span>         <span class="no">on</span><span class="p">;</span>
+    <span class="kn">keepalive_timeout</span>   <span class="mi">65</span><span class="p">;</span>
+    <span class="kn">types_hash_max_size</span> <span class="mi">4096</span><span class="p">;</span>
+
+    <span class="kn">gzip_static</span> <span class="no">off</span><span class="p">;</span>
+
+    <span class="kn">include</span>             <span class="n">/etc/nginx/mime.types</span><span class="p">;</span>
+    <span class="kn">default_type</span>        <span class="nc">application/octet-stream</span><span class="p">;</span>
+
+    <span class="c1"># Load modular configuration files from the /etc/nginx/conf.d directory.</span>
+    <span class="c1"># See http://nginx.org/en/docs/ngx_core_module.html#include</span>
+    <span class="c1"># for more information.</span>
+    <span class="kn">include</span> <span class="n">/etc/nginx/conf.d/*.conf</span><span class="p">;</span>
+
+    <span class="kn">server</span> <span class="p">{</span>
+        <span class="kn">listen</span>       <span class="mi">80</span><span class="p">;</span>
+        <span class="kn">listen</span>       <span class="s">[::]:80</span><span class="p">;</span>
+        <span class="kn">server_name</span>  <span class="s">&lt;YOUR_HOST_NAME&gt;</span><span class="p">;</span>
+
+        <span class="c1"># Load configuration files for the default server block.</span>
+        <span class="kn">include</span> <span class="n">/etc/nginx/default.d/*.conf</span><span class="p">;</span>
+
+        <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:8000</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kn">location</span> <span class="n">/test</span> <span class="p">{</span>
+            <span class="kn">rewrite</span> <span class="s">^/test(/.*)</span>$ <span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:9000</span><span class="p">;</span>
+            <span class="kn">proxy_redirect</span> <span class="n">/</span> <span class="n">/test/</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kn">error_page</span> <span class="mi">404</span> <span class="n">/404.html</span><span class="p">;</span>
+        <span class="kn">location</span> <span class="p">=</span> <span class="n">/404.html</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="kn">error_page</span> <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span> <span class="n">/50x.html</span><span class="p">;</span>
+        <span class="kn">location</span> <span class="p">=</span> <span class="n">/50x.html</span> <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>在上面的例子裡面，我們新增了底下的設定</p>
+
+<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="k">location</span> <span class="n">/</span> <span class="p">{</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:8000</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">location</span> <span class="n">/test</span> <span class="p">{</span>
+            <span class="kn">rewrite</span> <span class="s">^/test(/.*)</span>$ <span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
+            <span class="kn">proxy_pass</span> <span class="s">http://localhost:9000</span><span class="p">;</span>
+            <span class="kn">proxy_redirect</span> <span class="n">/</span> <span class="n">/test/</span><span class="p">;</span>
+        <span class="p">}</span>
+</code></pre></div></div>
+
+<p>我們使用<code class="language-plaintext highlighter-rouge">proxy_pass</code>來將不同path的request傳到對應的服務上，假如使用者連到<code class="language-plaintext highlighter-rouge">HOST/</code>，就會導到<code class="language-plaintext highlighter-rouge">localhost:8000</code>，如果連到<code class="language-plaintext highlighter-rouge">HOST/test/</code>就會導到<code class="language-plaintext highlighter-rouge">localhost:9000</code>。</p>
+
+<p>不過如果只有單純的<code class="language-plaintext highlighter-rouge">proxy_pass</code>，被重新導向的路徑會也帶上使用者加上的<code class="language-plaintext highlighter-rouge">/test/</code>，倘若希望在導向的時候將這個path給去除，讓服務收到的request是<code class="language-plaintext highlighter-rouge">/</code>的話，可以使用<code class="language-plaintext highlighter-rouge">rewrite</code>來對request做修改。</p>
+
+<p>同樣地，如果服務收到<code class="language-plaintext highlighter-rouge">/</code>的request以後，想重新導向到服務的<code class="language-plaintext highlighter-rouge">/redirect</code>路徑，這時使用者實際上要request的就會需要是<code class="language-plaintext highlighter-rouge">HOST/test/redirect</code>，我們可以使用<code class="language-plaintext highlighter-rouge">proxy_redirect</code>來幫服務的重新導向加上<code class="language-plaintext highlighter-rouge">/test/</code>的前綴。</p>
+
+<h2 id="啟動nginx">啟動nginx</h2>
+
+<p>在寫好configuration以後，我們可以透過<code class="language-plaintext highlighter-rouge">nginx -t</code>來檢驗設定檔有沒有寫錯的地方，如果順利通過就能將nginx的服務起起來了。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> /usr/sbin/nginx <span class="nt">-t</span>
+<span class="nb">sudo </span>service nginx start
+<span class="nb">sudo </span>service nginx reload
+chkconfig nginx on
+</code></pre></div></div>
+
+<p>而nginx本身的log會寫到底下的路徑，每當有使用者連線進來，就會寫到<code class="language-plaintext highlighter-rouge">access.log</code>，如果發生了錯誤會寫到<code class="language-plaintext highlighter-rouge">error.log</code>。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/log/nginx/access.log
+/var/log/nginx/error.log
+</code></pre></div></div>
+
+<p>如果之後設定檔有做其他的修改，只需要執行<code class="language-plaintext highlighter-rouge">nginx reload</code>就可以讓新的設定生效。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li><a href="https://blog.containerize.com/zh-hant/how-to-setup-and-configure-nginx-as-reverse-proxy/">如何設置和配置為反向代理</a></li>
+</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。]]></summary></entry><entry><title type="html">如何使用CPU跑LLM</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction/" rel="alternate" type="text/html" title="如何使用CPU跑LLM" /><published>2023-09-11T00:00:00+00:00</published><updated>2023-09-11T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction/"><![CDATA[<p>Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。</p>
 
 <!--more-->
 
@@ -1412,109 +1538,4 @@ Ukraine                          lesnichevka    Lesnichëvka    23              
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>這篇paper在collaborative filter上又多加了knowledge graph的資訊在裡面，在各個dataset上看獲得了不錯的結果，在paper上面也有附上實作的<a href="https://github.com/xiangwang1223/knowledge_graph_attention_network">程式碼</a>讓大家試試看。</p>]]></content><author><name>Your Name</name></author><category term="Graph-Model" /><category term="Recommendation-System" /><category term="Machine-Learning" /><category term="Paper" /><summary type="html"><![CDATA[這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。]]></summary></entry><entry><title type="html">自己建立Overleaf伺服器</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf/" rel="alternate" type="text/html" title="自己建立Overleaf伺服器" /><published>2022-11-24T00:00:00+00:00</published><updated>2022-11-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2022/11/24/overleaf/"><![CDATA[<p>在過去寫paper的時候通常都是使用<a href="https://www.overleaf.com/">overleaf</a>來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。</p>
-
-<!--more-->
-
-<h2 id="overleaf介紹">Overleaf介紹</h2>
-
-<p>Overleaf是一個線上latex的共同編輯器，提供了一個平台可以讓大家在上面共同編輯latex的文件，與此同時也支援實時編譯和瀏覽結果，適合個人或者團隊在製作paper、投影片或正式文件的時候使用。</p>
-
-<p>在<a href="https://www.overleaf.com/">overleaf</a>裡面除了有上述功能以外，還額外整合了git來做版本控制，也能直接在語句中留言，而開源版本的overleaf只有比較基本的共同編輯和實時編譯的功能。</p>
-
-<h2 id="建置overleaf伺服器">建置Overleaf伺服器</h2>
-
-<p>詳細的說明可以參考<a href="https://github.com/overleaf/overleaf">開源版本overleaf的GitHub</a>。</p>
-
-<h3 id="設置overleaf">設置Overleaf</h3>
-
-<p>在建立伺服器之前，我們需要先對它進行一些設定，像是要使用哪個port和IP，底下的指令會把overleaf相關的程式碼下載下來，並產生一些預設的設定檔。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/overleaf/toolkit.git ./overleaf-toolkit
-<span class="nb">cd</span> ./overleaf-toolkit
-./bin/init
-</code></pre></div></div>
-
-<p>執行完上面的指令以後，會在當前的目錄下建立<code class="language-plaintext highlighter-rouge">./config/</code>的資料夾，其中我們比較需要常去修改的是<strong>./config/overleaf.rc</strong>，在裡面就能去調整伺服器的IP和port了。預設的IP是<code class="language-plaintext highlighter-rouge">127.0.0.1</code>，如果想要讓別人可以存取的話，記得把設定改成<code class="language-plaintext highlighter-rouge">SHARELATEX_LISTEN_IP=0.0.0.0</code>或是其他想要的IP。</p>
-
-<h3 id="透過docker建立伺服器">透過Docker建立伺服器</h3>
-
-<p>在檔案裡面把參數設定好以後，我們就能開始建立伺服器了。overleaf有提供docker image讓大家直接使用，但會需要先安裝docker和docker-compose，docker-compose可以直接透過pip來安裝。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>docker-compose
-</code></pre></div></div>
-
-<p>接著就能執行底下的指令把伺服器起起來了。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/up
-</code></pre></div></div>
-
-<p>如果想要把伺服器停掉，可以直接用<code class="language-plaintext highlighter-rouge">Ctrl+C</code>停掉，而停掉後想要繼續的話可以用start的指令。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/start
-</code></pre></div></div>
-
-<h3 id="建立admin帳號">建立Admin帳號</h3>
-
-<p>伺服器起來以後需要先建立一個admin帳號，方便之後把其他人加進來一同協作，建立admin的方法是使用瀏覽器直接連線到<a href="http://localhost/launchpad">http://localhost/launchpad</a>，照著提示輸入email和密碼就行了，記得要將網址裡面的<code class="language-plaintext highlighter-rouge">localhost</code>改成你設定的IP和port。</p>
-
-<h2 id="開始使用overleaf">開始使用Overleaf</h2>
-
-<p>把伺服器開起來並有了admin帳號以後，就能開始使用overleaf來編寫簡單的latex文件了，但如果要在latex裡使用一些<code class="language-plaintext highlighter-rouge">\usepackage{}</code>的時候會發現這些package沒有被安裝，原因是因為overleaf提供的docker image只包含了最基本的套件而已，目的是不想要docker image太大以減少下載image需要的時間，如果想要用<code class="language-plaintext highlighter-rouge">\usepackage{}</code>的話，我們可以自己更新textlive。</p>
-
-<h3 id="更新textlive">更新textlive</h3>
-
-<p>詳細的說明可以參考<a href="https://github.com/overleaf/toolkit/blob/master/doc/ce-upgrading-texlive.md">這邊的文件</a>。</p>
-
-<p>首先，我們需要先連進overleaf的container中</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bin/shell
-</code></pre></div></div>
-
-<p>接著就能透過<code class="language-plaintext highlighter-rouge">tlmgr</code>來安裝想要的套件了，<code class="language-plaintext highlighter-rouge">tlmgr</code>的使用方式可以下<code class="language-plaintext highlighter-rouge">tlmgr help</code>來看說明文件</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The following command is executed in the container</span>
-<span class="c"># tlmgr install PACKAGE_YOU_WANT_TO_USE</span>
-tlmgr <span class="nb">install </span>tikzlings tikzmarmots tikzducks
-</code></pre></div></div>
-
-<p>如果說不想要一個一個把需要的套件安裝進去，想一次安裝全部的話，可以使用底下的指令</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The following command is executed in the container</span>
-tlmgr <span class="nb">install </span>scheme-full
-</code></pre></div></div>
-
-<p>在安裝完套件以後，理論上就能在伺服器上使用豐富的package了，但這些package在下次重新建立container的時候會消失，如果我們想要保留這個有豐富套件的container，我們可以透過<code class="language-plaintext highlighter-rouge">docker commit</code>的方式來保存。</p>
-
-<p>首先，我們先透過<code class="language-plaintext highlighter-rouge">exit</code>或<code class="language-plaintext highlighter-rouge">Ctrl+D</code>來離開container，接著下底下的指令來儲存一個commit</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker commit sharelatex sharelatex/sharelatex:with-texlive-full
-</code></pre></div></div>
-
-<p>然後在<code class="language-plaintext highlighter-rouge">./config/</code>底下建立一個<strong>docker-compose.override.yml</strong>的檔案，在其中貼上底下的內容</p>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
-<span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2.2'</span>
-<span class="na">services</span><span class="pi">:</span>
-    <span class="na">sharelatex</span><span class="pi">:</span>
-        <span class="na">image</span><span class="pi">:</span> <span class="s">sharelatex/sharelatex:with-texlive-full</span>
-</code></pre></div></div>
-
-<p>最後再執行底下的指令來重新建立container。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bin/stop <span class="o">&amp;&amp;</span> bin/docker-compose <span class="nb">rm</span> <span class="nt">-f</span> sharelatex <span class="o">&amp;&amp;</span> bin/up
-</code></pre></div></div>
-
-<h3 id="開帳號與共享">開帳號與共享</h3>
-
-<p>在開完admin帳號並創立好project以後，我們就可以直接透過瀏覽器去幫其他人開帳號並分享project給他們，開帳號的方式是點畫面右上角<code class="language-plaintext highlighter-rouge">Admin</code>底下的<code class="language-plaintext highlighter-rouge">Manage Users</code></p>
-
-<p><img src="./manage_users.png" alt="Manage users" /></p>
-
-<p>在下一個畫面中打上對方的email按下<code class="language-plaintext highlighter-rouge">Register</code>後，就能產生啟動連結</p>
-
-<p><img src="./register_new_users.png" alt="Register new users" /></p>
-
-<p>記得把啟動連結裡面的<code class="language-plaintext highlighter-rouge">localhost</code>替換成前面設定的IP和port以後傳給對方，對方就能透過連結自行設定密碼來建立帳號。</p>
-
-<p>在project內選擇分享並打上對方的email，對方就能在project列表裡面看到邀請通知，點開就能共同編輯同一個project了。如果是新建立的使用者，會需要先創建一個空白的project以後才能跳轉到project列表中。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在過去寫paper的時候通常都是使用overleaf來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。]]></summary></entry></feed>
+<p>這篇paper在collaborative filter上又多加了knowledge graph的資訊在裡面，在各個dataset上看獲得了不錯的結果，在paper上面也有附上實作的<a href="https://github.com/xiangwang1223/knowledge_graph_attention_network">程式碼</a>讓大家試試看。</p>]]></content><author><name>Your Name</name></author><category term="Graph-Model" /><category term="Recommendation-System" /><category term="Machine-Learning" /><category term="Paper" /><summary type="html"><![CDATA[這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。]]></summary></entry></feed>
