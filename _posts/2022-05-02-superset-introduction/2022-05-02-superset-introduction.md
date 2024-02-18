@@ -156,6 +156,55 @@ pip3 install psycopg2-binary
 
 如果希望讓superset支援CSV上傳的功能，需要在`ADVANCED`的設定中的`Security`裡面勾選`Allow data upload`的選項，上傳的CSV會在PostgreSQL裡面建立一張新的table。
 
+### Oracle
+
+#### 安裝driver
+
+如果是使用docker compose的方式來使用superset的話，會需要在**docker/**的資料夾內新增**requirements-local.txt**，並在裡面將需要的pip package填入
+
+```python
+oracledb==2.0.1
+```
+
+我們也可以使用另外一個driver [cx_Oracle](https://oracle.github.io/python-cx_Oracle/)，但這會需要另外安裝[instant client](https://www.oracle.com/database/technologies/instant-client.html)在container裡面，因此會建議使用比較新的[python-oracledb](https://oracle.github.io/python-oracledb/)。
+
+因為superset使用的sqlalchemy是小於2.0的版本，需要[額外的設定](https://stackoverflow.com/questions/74093231/nosuchmoduleerror-cant-load-plugin-sqlalchemy-dialectsoracle-oracledb)才能讓sqlalchemy順利吃到oracledb，在重新啟動superset服務以後，我們需要連線到`superset_app`這個container
+
+```bash
+docker exec -i -t superset_app bash
+```
+
+接著在container裡面安裝vim
+
+```bash
+apt-get update && apt-get install vim
+```
+
+修改**/app/superset/model/core.py**，在import的部分把底下的內容放進去
+
+```python
+import sys
+import oracledb
+oracledb.version = "8.3.0"
+sys.modules["cx_Oracle"] = oracledb
+```
+
+最後重啟superset就可以了。
+
+#### 引入database
+
+如果在選擇database種類的時候沒有出現Oracle，我們可以選擇用Other的方式來加入oracle的資料庫。
+
+在ur的部分需要按照底下的格式填寫
+
+```bash
+oracle://USER_NAME:PASSWORD@HOST
+```
+
+其中`HOST`的部分可以是一般的cname，也可以接受TNSName。
+
+值得一提的是，可以參考[sqldeveloperpassworddecryptor](https://github.com/maaaaz/sqldeveloperpassworddecryptor)來去從oracle sql developer當中export出來的檔案裡面把密碼嘗試decrypt出來。
+
 ## 建立Dataset
 
 在成功引入database以後，在`Data>Datasets`裡面按下新增Dataset的按鈕，選擇好database就能看到前面引入的database裡面的table們了，點選`ADD`以後就能在chart裡面讀取這些table的資料。
