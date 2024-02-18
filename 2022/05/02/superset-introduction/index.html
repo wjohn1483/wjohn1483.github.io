@@ -445,6 +445,50 @@ alter user USER_NAME password <span class="s1">'PASSWORD'</span><span class="p">
 
 <p>如果希望讓superset支援CSV上傳的功能，需要在<code class="language-plaintext highlighter-rouge">ADVANCED</code>的設定中的<code class="language-plaintext highlighter-rouge">Security</code>裡面勾選<code class="language-plaintext highlighter-rouge">Allow data upload</code>的選項，上傳的CSV會在PostgreSQL裡面建立一張新的table。</p>
 
+<h3 id="oracle">Oracle</h3>
+
+<h4 id="安裝driver-2">安裝driver</h4>
+
+<p>如果是使用docker compose的方式來使用superset的話，會需要在<strong>docker/</strong>的資料夾內新增<strong>requirements-local.txt</strong>，並在裡面將需要的pip package填入</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">oracledb</span><span class="o">==</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">1</span>
+</code></pre></div></div>
+
+<p>我們也可以使用另外一個driver <a href="https://oracle.github.io/python-cx_Oracle/">cx_Oracle</a>，但這會需要另外安裝<a href="https://www.oracle.com/database/technologies/instant-client.html">instant client</a>在container裡面，因此會建議使用比較新的<a href="https://oracle.github.io/python-oracledb/">python-oracledb</a>。</p>
+
+<p>因為superset使用的sqlalchemy是小於2.0的版本，需要<a href="https://stackoverflow.com/questions/74093231/nosuchmoduleerror-cant-load-plugin-sqlalchemy-dialectsoracle-oracledb">額外的設定</a>才能讓sqlalchemy順利吃到oracledb，在重新啟動superset服務以後，我們需要連線到<code class="language-plaintext highlighter-rouge">superset_app</code>這個container</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nb">exec</span> <span class="nt">-i</span> <span class="nt">-t</span> superset_app bash
+</code></pre></div></div>
+
+<p>接著在container裡面安裝vim</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt-get update <span class="o">&amp;&amp;</span> apt-get <span class="nb">install </span>vim
+</code></pre></div></div>
+
+<p>修改<strong>/app/superset/model/core.py</strong>，在import的部分把底下的內容放進去</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">sys</span>
+<span class="kn">import</span> <span class="n">oracledb</span>
+<span class="n">oracledb</span><span class="p">.</span><span class="n">version</span> <span class="o">=</span> <span class="sh">"</span><span class="s">8.3.0</span><span class="sh">"</span>
+<span class="n">sys</span><span class="p">.</span><span class="n">modules</span><span class="p">[</span><span class="sh">"</span><span class="s">cx_Oracle</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="n">oracledb</span>
+</code></pre></div></div>
+
+<p>最後重啟superset就可以了。</p>
+
+<h4 id="引入database-2">引入database</h4>
+
+<p>如果在選擇database種類的時候沒有出現Oracle，我們可以選擇用Other的方式來加入oracle的資料庫。</p>
+
+<p>在ur的部分需要按照底下的格式填寫</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oracle://USER_NAME:PASSWORD@HOST
+</code></pre></div></div>
+
+<p>其中<code class="language-plaintext highlighter-rouge">HOST</code>的部分可以是一般的cname，也可以接受TNSName。</p>
+
+<p>值得一提的是，可以參考<a href="https://github.com/maaaaz/sqldeveloperpassworddecryptor">sqldeveloperpassworddecryptor</a>來去從oracle sql developer當中export出來的檔案裡面把密碼嘗試decrypt出來。</p>
+
 <h2 id="建立dataset">建立Dataset</h2>
 
 <p>在成功引入database以後，在<code class="language-plaintext highlighter-rouge">Data&gt;Datasets</code>裡面按下新增Dataset的按鈕，選擇好database就能看到前面引入的database裡面的table們了，點選<code class="language-plaintext highlighter-rouge">ADD</code>以後就能在chart裡面讀取這些table的資料。</p>
