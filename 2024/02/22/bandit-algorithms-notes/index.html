@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Archive - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Bandit Algorithms Notes - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/archive/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2024/02/22/bandit-algorithms-notes/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -265,7 +265,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -283,308 +283,112 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Archive</h1></header></div><meta itemprop="headline" content="Archive"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--archive js-all"><div class="site-tags js-tags">
-  <ul class="menu">
-    <li>
-      <button type="button" class="button button--secondary button--pill tag-button tag-button--all" data-encode="">
-        Show All<div class="tag-button__count">48</div>
-      </button>
-    </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Auxiliary-Learning">
-          <span>Auxiliary-Learning</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Bandit">
-          <span>Bandit</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Computer-Vision">
-          <span>Computer-Vision</span><div class="tag-button__count">3</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Generative-Adversarial-Network">
-          <span>Generative-Adversarial-Network</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Graph-Model">
-          <span>Graph-Model</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Machine-Learning">
-          <span>Machine-Learning</span><div class="tag-button__count">6</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Meta-Learning">
-          <span>Meta-Learning</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Natural-Language-Processing">
-          <span>Natural-Language-Processing</span><div class="tag-button__count">5</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Network-Security">
-          <span>Network-Security</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Object-Detection">
-          <span>Object-Detection</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-3" data-encode="Paper">
-          <span>Paper</span><div class="tag-button__count">13</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Python">
-          <span>Python</span><div class="tag-button__count">2</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Recommendation-System">
-          <span>Recommendation-System</span><div class="tag-button__count">4</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Reinforcement-Learning">
-          <span>Reinforcement-Learning</span><div class="tag-button__count">4</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Speech-Recognition">
-          <span>Speech-Recognition</span><div class="tag-button__count">3</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="Swift">
-          <span>Swift</span><div class="tag-button__count">1</div>
-        </button>
-      </li><li><button type="button" class="button button--pill tag-button tag-button-4" data-encode="Tool">
-          <span>Tool</span><div class="tag-button__count">24</div>
-        </button>
-      </li></ul>
-</div>
-<div class="js-result layout--archive__result d-none"><div class="article-list items"><section><h2 class="article-list__group-header">2024</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Bandit">
-        <div class="item__content"><span class="item__meta">Feb 22</span><a itemprop="headline" class="item__header" href="/2024/02/22/bandit-algorithms-notes/">Bandit Algorithms Notes</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Jan 20</span><a itemprop="headline" class="item__header" href="/2024/01/20/nginx-reverse-proxy/">nginx Reverse Proxy</a></div>
-      </li></ul></section><section><h2 class="article-list__group-header">2023</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool,Machine-Learning,Natural-Language-Processing">
-        <div class="item__content"><span class="item__meta">Sep 11</span><a itemprop="headline" class="item__header" href="/2023/09/11/llama-cpp-introduction/">如何使用CPU跑LLM</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Machine-Learning">
-        <div class="item__content"><span class="item__meta">Jul 15</span><a itemprop="headline" class="item__header" href="/2023/07/15/parameter-efficient-fine-tuning/">Parameter-Efficient Fine-Tuning</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Machine-Learning,Computer-Vision,Tool">
-        <div class="item__content"><span class="item__meta">Jul 02</span><a itemprop="headline" class="item__header" href="/2023/07/02/stable-diffusion/">在本機使用Stable Diffusion產生圖片</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool,Natural-Language-Processing">
-        <div class="item__content"><span class="item__meta">Apr 30</span><a itemprop="headline" class="item__header" href="/2023/04/30/vicuna/">如何在本機上跑Vicuna模型</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Mar 23</span><a itemprop="headline" class="item__header" href="/2023/03/23/pyspark-executor-log/">將PySpark Executor的Log蒐集到Driver</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Recommendation-System,Paper">
-        <div class="item__content"><span class="item__meta">Mar 18</span><a itemprop="headline" class="item__header" href="/2023/03/18/temporal-collaborative-ranking-via-personalized-transformer/">Temporal Collaborative Ranking Via Personalized Transformer</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 23</span><a itemprop="headline" class="item__header" href="/2023/02/23/google-apps-script/">Google Apps Script介紹</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 15</span><a itemprop="headline" class="item__header" href="/2023/02/15/xsv/">xsv使用介紹</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Graph-Model,Recommendation-System,Machine-Learning,Paper">
-        <div class="item__content"><span class="item__meta">Feb 02</span><a itemprop="headline" class="item__header" href="/2023/02/02/kgat/">KGAT: Knowledge Graph Attention Network for Recommendation</a></div>
-      </li></ul></section><section><h2 class="article-list__group-header">2022</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Nov 24</span><a itemprop="headline" class="item__header" href="/2022/11/24/overleaf/">自己建立Overleaf伺服器</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool,Computer-Vision">
-        <div class="item__content"><span class="item__meta">Nov 19</span><a itemprop="headline" class="item__header" href="/2022/11/19/tensorflow-js-pose-detection/">Tensorflow JS介紹</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool,Python">
-        <div class="item__content"><span class="item__meta">Jun 04</span><a itemprop="headline" class="item__header" href="/2022/06/04/python-logging-introduction/">Python logging介紹</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">May 29</span><a itemprop="headline" class="item__header" href="/2022/05/29/mlflow-introduction/">MLflow介紹</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Graph-Model">
-        <div class="item__content"><span class="item__meta">May 14</span><a itemprop="headline" class="item__header" href="/2022/05/14/Learning-Hierarchy-Aware-Knowledge-Graph-Embeddings-for-Link-Prediction/">Learning Hierarchy-Aware Knowledge Graph Embeddings for Link Prediction</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">May 02</span><a itemprop="headline" class="item__header" href="/2022/05/02/superset-introduction/">Superset介紹</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 26</span><a itemprop="headline" class="item__header" href="/2022/02/26/airflow-introduction/">Airflow介紹</a></div>
-      </li></ul></section><section><h2 class="article-list__group-header">2021</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Dec 23</span><a itemprop="headline" class="item__header" href="/2021/12/23/autokeras-introduction/">AutoKeras介紹</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Speech-Recognition">
-        <div class="item__content"><span class="item__meta">Aug 28</span><a itemprop="headline" class="item__header" href="/2021/08/28/unsupervised-speech-recognition/">Unsupervised Speech Recognition</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Computer-Vision,Object-Detection">
-        <div class="item__content"><span class="item__meta">Jul 25</span><a itemprop="headline" class="item__header" href="/2021/07/25/object-detection/">Object Detection概論</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Jul 25</span><a itemprop="headline" class="item__header" href="/2021/07/25/remote-job-finish-notification/">在遠端的job執行完成時發送通知</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Speech-Recognition">
-        <div class="item__content"><span class="item__meta">Jul 18</span><a itemprop="headline" class="item__header" href="/2021/07/18/speech-recognition-with-deep-learning/">深度學習於語音辨識</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Speech-Recognition">
-        <div class="item__content"><span class="item__meta">Jun 14</span><a itemprop="headline" class="item__header" href="/2021/06/14/introduction-to-speech-recognition/">語音辨識概觀</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Jun 05</span><a itemprop="headline" class="item__header" href="/2021/06/05/display-html-in-google-sheet/">在Google Sheet裡面呈現html</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Swift">
-        <div class="item__content"><span class="item__meta">May 24</span><a itemprop="headline" class="item__header" href="/2021/05/24/swift-menu-bar-timer/">如何利用Swift製作倒數計時器</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper">
-        <div class="item__content"><span class="item__meta">Mar 21</span><a itemprop="headline" class="item__header" href="/2021/03/21/deep-interest-evolution-network-for-click-through-rate-prediction/">Deep Interest Evolution Network for Click-Through Rate Prediction</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 28</span><a itemprop="headline" class="item__header" href="/2021/02/28/move-blog-to-github-actions/">利用GitHub Actions來部署部落格</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 07</span><a itemprop="headline" class="item__header" href="/2021/02/07/gitalk-introduction/">利用Gitalk在靜態網頁裡面新增留言區</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Network-Security">
-        <div class="item__content"><span class="item__meta">Jan 26</span><a itemprop="headline" class="item__header" href="/2021/01/26/security-introduction/">網路安全的基本知識</a></div>
-      </li></ul></section><section><h2 class="article-list__group-header">2020</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Nov 21</span><a itemprop="headline" class="item__header" href="/2020/11/21/circle-ci/">利用Circle CI來更新GitHub Pages</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Python">
-        <div class="item__content"><span class="item__meta">Nov 15</span><a itemprop="headline" class="item__header" href="/2020/11/15/python-import/">Python Import Introduction</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Reinforcement-Learning,Recommendation-System">
-        <div class="item__content"><span class="item__meta">Nov 04</span><a itemprop="headline" class="item__header" href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">Deep Reinforcement Learning for Online Advertising in Recommender Systems</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Reinforcement-Learning">
-        <div class="item__content"><span class="item__meta">Jul 26</span><a itemprop="headline" class="item__header" href="/2020/07/26/reinforce-and-ppo/">REINFORCE和Proximal Policy Optimization</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">May 07</span><a itemprop="headline" class="item__header" href="/2020/05/07/slack-bot/">如何製作Slack機器人</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Apr 25</span><a itemprop="headline" class="item__header" href="/2020/04/25/plot-data-with-r/">用R來作圖</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Generative-Adversarial-Network,Recommendation-System,Reinforcement-Learning">
-        <div class="item__content"><span class="item__meta">Apr 19</span><a itemprop="headline" class="item__header" href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Reinforcement-Learning">
-        <div class="item__content"><span class="item__meta">Apr 19</span><a itemprop="headline" class="item__header" href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/">Playing Atari with Deep Reinforcement Learning</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Machine-Learning">
-        <div class="item__content"><span class="item__meta">Apr 02</span><a itemprop="headline" class="item__header" href="/2020/04/02/tf-idf-introduction/">TF-IDF簡介</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Natural-Language-Processing">
-        <div class="item__content"><span class="item__meta">Mar 29</span><a itemprop="headline" class="item__header" href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Mar 28</span><a itemprop="headline" class="item__header" href="/2020/03/28/terminal-tools/">Terminal小工具</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Natural-Language-Processing">
-        <div class="item__content"><span class="item__meta">Mar 23</span><a itemprop="headline" class="item__header" href="/2020/03/23/deep-contextualized-word-representation/">Deep contextualized word representation</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Natural-Language-Processing">
-        <div class="item__content"><span class="item__meta">Mar 21</span><a itemprop="headline" class="item__header" href="/2020/03/21/attention-is-all-you-need/">Attention Is All You Need</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Mar 09</span><a itemprop="headline" class="item__header" href="/2020/03/09/vim-plugins/">Vim Plugins</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Machine-Learning">
-        <div class="item__content"><span class="item__meta">Mar 07</span><a itemprop="headline" class="item__header" href="/2020/03/07/gradient-descent-and-learning-rate/">Gradient Descent和Learning Rate</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Meta-Learning">
-        <div class="item__content"><span class="item__meta">Mar 06</span><a itemprop="headline" class="item__header" href="/2020/03/06/model-agnostic-meta-learning-for-fast-adaptation-of-deep-networks/">Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Paper,Meta-Learning,Auxiliary-Learning">
-        <div class="item__content"><span class="item__meta">Mar 01</span><a itemprop="headline" class="item__header" href="/2020/03/01/self-supervised-generalisation-with-meta-auxiliary-learning/">Self-Supervised Generalisation with Meta Auxiliary Learning</a></div>
-      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="Tool">
-        <div class="item__content"><span class="item__meta">Feb 28</span><a itemprop="headline" class="item__header" href="/2020/02/28/create-website-by-Jekyll/">如何使用Jekyll建立網站在Github Page上</a></div>
-      </li></div>
-</div>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Bandit Algorithms Notes</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2024-02-22-bandit-algorithms-notes/2024-02-22-bandit-algorithms-notes.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Bandit Algorithms Notes"><div class="article__info clearfix"><ul class="left-col menu"><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/archive/?tag=Bandit">Bandit</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 22, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2024-02-22T00:00:00+00:00">
+    <meta itemprop="keywords" content="Bandit"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。</p>
+
+<!--more-->
+
+<p>Bandit算法一開始被設計出來是為了要解決在有限的資源下要如何創造最大的收益，網路文章中給的例子通常都是在一個滿是吃角子老虎機台的房間當中，如何用手中有限的籌碼獲得最大的報酬，也就是找到獲獎機率比較大的吃角子老虎機台，這時候使用者會面臨繼續玩原本預期收益最大的吃角子老虎機，或是去玩看看新的吃角子老虎機，也就是在exploitation和exploration兩者之間抉擇。</p>
+
+<p>在原本的Multi-Armed Bandit裡面，我們只考慮不同吃角子老虎的機台，並沒有考慮使用者本身的偏好，像是某個使用者可能特別偏好某個有特殊外型的吃角子老虎機，對於該使用者而言那台吃角子老虎機的預期收益會比較大，如果有考慮到使用者本身資訊的bandit通常被稱為contextual bandit，反之被稱為context-free bandit。</p>
+
+<p>在任何的一個bandit algorithm裡面，我們會對每一個arm，也就是每一個吃角子老虎機台打一個分數，並從這些機台裡面選一個分數最高的去使用，而不同的算法會有不同打分數的方式，比較著名的context-free bandit的算法有UCB、Thompson Sampling，比較著名的contextual bandit算法有LinUCB。</p>
+
+<h2 id="epsilon-greedy">Epsilon Greedy</h2>
+
+<p>在進到Bandit的算法之前，我們可以先用一個簡單的方法來平衡exploitation和exploration，我們可以每次在決定要玩哪台吃角子老虎機的時候先擲一個骰子，令其有$\epsilon$的機率會去選擇以前沒有玩過的吃角子老虎機試試看，反之就繼續玩目前玩過的所有吃角子老虎機裡面，預期收益最大的。</p>
+
+<h2 id="upper-confidence-bound-ucb">Upper Confidence Bound (UCB)</h2>
+
+<p>在使用epsilon greedy做exploration的時候，每一個arm被選中的機會是相等的，但實際上每一個arm曾經被看過的次數和互動過的次數都不同，在exploration的時候可以有更聰明一點的方法，而UCB的概念是對於每一個arm給予的分數是基於它有可能所帶來的最高報酬，其分數的公式如下</p>
+
+\[\mu_i+\sqrt{\frac{2\ln (n)}{n_i}}\]
+
+<p>$\mu_i$是每一個$arm_i$前n次嘗試獲得的平均報酬，$n$是總嘗試次數，$n_i$是$arm_i$被嘗試的次數。</p>
+
+<p>左邊這項可以理解成過去這個$arm_i$所能夠帶給我們的平均報酬是多少，展現的是exploitation的部分，而右邊這項會讓比較少曝光的$arm_i$有比較高的分數，令其有機會被展示出來，展現的是exploration的部分。</p>
+
+<h2 id="thompson-sampling">Thompson Sampling</h2>
+
+<p>Thompson sampling的想法是，每次使用同一個arm所獲得的報酬可能會是浮動的，表示每一個arm的報酬可能是某種distribution，每次使用的時候就會從distribution裡面隨機抽樣出來當作是這次使用的報酬，而Thompson sampling覺得這個distribution應該是beta distribution，一個beta distribution會由兩個變數a、b來決定，也就是每個arm自帶的參數，因此在某個時間點選擇要使用哪一個arm的時候，就是每一個arm都從beta distribution裡面抽樣一個數字出來，看誰的數字最大就選擇哪個arm。</p>
+
+<h2 id="linucb">LinUCB</h2>
+
+<p>LinUCB相較於UCB，多了使用者的資訊在裡面，其公式長得大概像這樣</p>
+
+\[LinUCB_a=E(r_a \vert x)+\alpha STD(r_a \vert x)=x^T*\theta_a+\alpha\sqrt{x^TA_a^{-1}x}\]
+
+<p>在上面的$x$表示的是使用者的特徵向量，而$\theta_a$和$A_a$是某一個arm本身自帶的參數，跟UCB一樣，左邊這項表示對過去這個使用者對這個arm的喜好程度，而右邊這項表示使用者願意exploration的分數。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li>
+    <p><a href="https://zhuanlan.zhihu.com/p/35753281">Contextual Bandit算法在推荐系统中的实现及应用</a></p>
+  </li>
+  <li>
+    <p><a href="https://blog.tsingjyujing.com/ml/rl/mab-summary">Re：从零开始的Multi-armed Bandit</a></p>
+  </li>
+  <li>
+    <p><a href="https://yangxudong.github.io/contextual-bandit/">在生产环境的推荐系统中部署Contextual bandit (LinUCB)算法的经验和陷阱</a></p>
+  </li>
+  <li>
+    <p><a href="https://zhuanlan.zhihu.com/p/381585388">MAB系列1：Contextual-free Bandits</a></p>
+  </li>
+  <li>
+    <p><a href="https://zhuanlan.zhihu.com/p/384427160">MAB系列2：Contextual Bandits: LinUCB</a></p>
+  </li>
+</ol>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-02-22T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/01/20/nginx-reverse-proxy/">nginx Reverse Proxy</a></div></div></div>
+
 </div>
 
 <script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
-  function queryString() {
-    // This function is anonymous, is executed immediately and
-    // the return value is assigned to QueryString!
-    var i = 0, queryObj = {}, pair;
-    var queryStr = window.location.search.substring(1);
-    var queryArr = queryStr.split('&');
-    for (i = 0; i < queryArr.length; i++) {
-      pair = queryArr[i].split('=');
-      // If first entry with this name
-      if (typeof queryObj[pair[0]] === 'undefined') {
-        queryObj[pair[0]] = pair[1];
-        // If second entry with this name
-      } else if (typeof queryObj[pair[0]] === 'string') {
-        queryObj[pair[0]] = [queryObj[pair[0]], pair[1]];
-        // If third or later entry with this name
-      } else {
-        queryObj[pair[0]].push(pair[1]);
-      }
-    }
-    return queryObj;
-  }
-
-  var setUrlQuery = (function() {
-    var baseUrl =  window.location.href.split('?')[0];
-    return function(query) {
-      if (typeof query === 'string') {
-        window.history.replaceState(null, '', baseUrl + query);
-      } else {
-        window.history.replaceState(null, '', baseUrl);
-      }
-    };
-  })();
-
   window.Lazyload.js(SOURCES.jquery, function() {
-    var $tags = $('.js-tags');
-    var $articleTags = $tags.find('button');
-    var $tagShowAll = $tags.find('.tag-button--all');
-    var $result = $('.js-result');
-    var $sections = $result.find('section');
-    var sectionArticles = [];
-    var $lastFocusButton = null;
-    var sectionTopArticleIndex = [];
-    var hasInit = false;
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
 
-    $sections.each(function() {
-      sectionArticles.push($(this).find('.item'));
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
     });
-
-    function init() {
-      var i, index = 0;
-      for (i = 0; i < $sections.length; i++) {
-        sectionTopArticleIndex.push(index);
-        index += $sections.eq(i).find('.item').length;
-      }
-      sectionTopArticleIndex.push(index);
-    }
-
-    function searchButtonsByTag(_tag/*raw tag*/) {
-      if (!_tag) {
-        return $tagShowAll;
-      }
-      var _buttons = $articleTags.filter('[data-encode="' + _tag + '"]');
-      if (_buttons.length === 0) {
-        return $tagShowAll;
-      }
-      return _buttons;
-    }
-    function buttonFocus(target) {
-      if (target) {
-        target.addClass('focus');
-        $lastFocusButton && !$lastFocusButton.is(target) && $lastFocusButton.removeClass('focus');
-        $lastFocusButton = target;
-      }
-    }
-
-    function tagSelect (tag/*raw tag*/, target) {
-      var result = {}, $articles;
-      var i, j, k, _tag;
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        $articles = sectionArticles[i];
-        for (j = 0; j < $articles.length; j++) {
-          if (tag === '' || tag === undefined) {
-            result[i] || (result[i] = {});
-            result[i][j] = true;
-          } else {
-            var tags = $articles.eq(j).data('tags').split(',');
-            for (k = 0; k < tags.length; k++) {
-              if (tags[k] === tag) {
-                result[i] || (result[i] = {});
-                result[i][j] = true; break;
-              }
-            }
-          }
-        }
-      }
-
-      for (i = 0; i < sectionArticles.length; i++) {
-        result[i] && $sections.eq(i).removeClass('d-none');
-        result[i] || $sections.eq(i).addClass('d-none');
-        for (j = 0; j < sectionArticles[i].length; j++) {
-          if (result[i] && result[i][j]) {
-            sectionArticles[i].eq(j).removeClass('d-none');
-          } else {
-            sectionArticles[i].eq(j).addClass('d-none');
-          }
-        }
-      }
-
-      hasInit || ($result.removeClass('d-none'), hasInit = true);
-
-
-      if (target) {
-        buttonFocus(target);
-        _tag = target.attr('data-encode');
-        if (_tag === '' || typeof _tag !== 'string') {
-          setUrlQuery();
-        } else {
-          setUrlQuery('?tag=' + _tag);
-        }
-      } else {
-        buttonFocus(searchButtonsByTag(tag));
-      }
-    }
-
-    var query = queryString(), _tag = query.tag;
-    init(); tagSelect(_tag);
-    $tags.on('click', 'button', function() {
-      tagSelect($(this).data('encode'), $(this));
-    });
-
   });
 })();
 </script>
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -1107,6 +911,68 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]

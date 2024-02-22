@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2024-02-18T09:36:56+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">nginx Reverse Proxy</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy/" rel="alternate" type="text/html" title="nginx Reverse Proxy" /><published>2024-01-20T00:00:00+00:00</published><updated>2024-01-20T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy/"><![CDATA[<p>最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2024-02-22T12:54:40+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Bandit Algorithms Notes</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/02/22/bandit-algorithms-notes/" rel="alternate" type="text/html" title="Bandit Algorithms Notes" /><published>2024-02-22T00:00:00+00:00</published><updated>2024-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/02/22/bandit-algorithms-notes</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/02/22/bandit-algorithms-notes/"><![CDATA[<p>最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。</p>
+
+<!--more-->
+
+<p>Bandit算法一開始被設計出來是為了要解決在有限的資源下要如何創造最大的收益，網路文章中給的例子通常都是在一個滿是吃角子老虎機台的房間當中，如何用手中有限的籌碼獲得最大的報酬，也就是找到獲獎機率比較大的吃角子老虎機台，這時候使用者會面臨繼續玩原本預期收益最大的吃角子老虎機，或是去玩看看新的吃角子老虎機，也就是在exploitation和exploration兩者之間抉擇。</p>
+
+<p>在原本的Multi-Armed Bandit裡面，我們只考慮不同吃角子老虎的機台，並沒有考慮使用者本身的偏好，像是某個使用者可能特別偏好某個有特殊外型的吃角子老虎機，對於該使用者而言那台吃角子老虎機的預期收益會比較大，如果有考慮到使用者本身資訊的bandit通常被稱為contextual bandit，反之被稱為context-free bandit。</p>
+
+<p>在任何的一個bandit algorithm裡面，我們會對每一個arm，也就是每一個吃角子老虎機台打一個分數，並從這些機台裡面選一個分數最高的去使用，而不同的算法會有不同打分數的方式，比較著名的context-free bandit的算法有UCB、Thompson Sampling，比較著名的contextual bandit算法有LinUCB。</p>
+
+<h2 id="epsilon-greedy">Epsilon Greedy</h2>
+
+<p>在進到Bandit的算法之前，我們可以先用一個簡單的方法來平衡exploitation和exploration，我們可以每次在決定要玩哪台吃角子老虎機的時候先擲一個骰子，令其有$\epsilon$的機率會去選擇以前沒有玩過的吃角子老虎機試試看，反之就繼續玩目前玩過的所有吃角子老虎機裡面，預期收益最大的。</p>
+
+<h2 id="upper-confidence-bound-ucb">Upper Confidence Bound (UCB)</h2>
+
+<p>在使用epsilon greedy做exploration的時候，每一個arm被選中的機會是相等的，但實際上每一個arm曾經被看過的次數和互動過的次數都不同，在exploration的時候可以有更聰明一點的方法，而UCB的概念是對於每一個arm給予的分數是基於它有可能所帶來的最高報酬，其分數的公式如下</p>
+
+\[\mu_i+\sqrt{\frac{2\ln (n)}{n_i}}\]
+
+<p>$\mu_i$是每一個$arm_i$前n次嘗試獲得的平均報酬，$n$是總嘗試次數，$n_i$是$arm_i$被嘗試的次數。</p>
+
+<p>左邊這項可以理解成過去這個$arm_i$所能夠帶給我們的平均報酬是多少，展現的是exploitation的部分，而右邊這項會讓比較少曝光的$arm_i$有比較高的分數，令其有機會被展示出來，展現的是exploration的部分。</p>
+
+<h2 id="thompson-sampling">Thompson Sampling</h2>
+
+<p>Thompson sampling的想法是，每次使用同一個arm所獲得的報酬可能會是浮動的，表示每一個arm的報酬可能是某種distribution，每次使用的時候就會從distribution裡面隨機抽樣出來當作是這次使用的報酬，而Thompson sampling覺得這個distribution應該是beta distribution，一個beta distribution會由兩個變數a、b來決定，也就是每個arm自帶的參數，因此在某個時間點選擇要使用哪一個arm的時候，就是每一個arm都從beta distribution裡面抽樣一個數字出來，看誰的數字最大就選擇哪個arm。</p>
+
+<h2 id="linucb">LinUCB</h2>
+
+<p>LinUCB相較於UCB，多了使用者的資訊在裡面，其公式長得大概像這樣</p>
+
+\[LinUCB_a=E(r_a \vert x)+\alpha STD(r_a \vert x)=x^T*\theta_a+\alpha\sqrt{x^TA_a^{-1}x}\]
+
+<p>在上面的$x$表示的是使用者的特徵向量，而$\theta_a$和$A_a$是某一個arm本身自帶的參數，跟UCB一樣，左邊這項表示對過去這個使用者對這個arm的喜好程度，而右邊這項表示使用者願意exploration的分數。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ol>
+  <li>
+    <p><a href="https://zhuanlan.zhihu.com/p/35753281">Contextual Bandit算法在推荐系统中的实现及应用</a></p>
+  </li>
+  <li>
+    <p><a href="https://blog.tsingjyujing.com/ml/rl/mab-summary">Re：从零开始的Multi-armed Bandit</a></p>
+  </li>
+  <li>
+    <p><a href="https://yangxudong.github.io/contextual-bandit/">在生产环境的推荐系统中部署Contextual bandit (LinUCB)算法的经验和陷阱</a></p>
+  </li>
+  <li>
+    <p><a href="https://zhuanlan.zhihu.com/p/381585388">MAB系列1：Contextual-free Bandits</a></p>
+  </li>
+  <li>
+    <p><a href="https://zhuanlan.zhihu.com/p/384427160">MAB系列2：Contextual Bandits: LinUCB</a></p>
+  </li>
+</ol>]]></content><author><name>Your Name</name></author><category term="Bandit" /><summary type="html"><![CDATA[最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。]]></summary></entry><entry><title type="html">nginx Reverse Proxy</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy/" rel="alternate" type="text/html" title="nginx Reverse Proxy" /><published>2024-01-20T00:00:00+00:00</published><updated>2024-01-20T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy/"><![CDATA[<p>最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。</p>
 
 <!--more-->
 
@@ -1404,138 +1458,4 @@ Ukraine                          lesnichevka    Lesnichëvka    23              
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % xsv index worldcitiespop.csv
 </code></pre></div></div>
 
-<p>執行完上面的指令以後會產生一個<strong>wordcitiespop.csv.idx</strong>的檔案，接下來在執行其他操作的時候就會自動加速了，不過如果原本的檔案內容有被更動過的話，會需要再重新製作一個index檔。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。]]></summary></entry><entry><title type="html">KGAT: Knowledge Graph Attention Network for Recommendation</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat/" rel="alternate" type="text/html" title="KGAT: Knowledge Graph Attention Network for Recommendation" /><published>2023-02-02T00:00:00+00:00</published><updated>2023-02-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/02/kgat/"><![CDATA[<p>這篇文章紀錄一下看了<a href="https://arxiv.org/pdf/1905.07854.pdf">KGAT: Knowledge Graph Attention Network for Recommendation</a>的筆記。</p>
-
-<!--more-->
-
-<p>在過去的推薦系統當中，蠻常使用collaborative filtering（CF）來產生推薦，藉由觀察使用者和商品的互動行為，來找出目標使用者跟哪些現有的使用者相似，用現有使用者有互動過的商品來推薦給目標使用者。</p>
-
-<p>然而，在collaborative filtering當中，比較少著墨於使用者本身的特性以及商品之間的關聯，主要只使用使用者對商品的行為來當作輸入，而這篇paper嘗試引入了knowledge graph進來，藉此補足collaborative filtering不足的部分。</p>
-
-<h2 id="task-formulation">Task Formulation</h2>
-
-<p>這邊先介紹一下在這篇paper裡面所使用到的graph，主要是由兩個bipartite組成。</p>
-
-<p><img src="./collaborative_knowledge_graph.png" alt="Collaborative knowledge graph" /></p>
-
-<p>上半部的Users、Items是collaborative filtering的部分，由user和item組成，其中兩者的關係$r_1$是指user看過item的意思，舉例來說user $u_1$看過item $i_1$，就會在上圖有個$u_1$的node，並有一個箭頭$r_1$指向item $i_1$的node。</p>
-
-<p>下半部的Items、Entities是knowledge graph的部分，每一個$e_n$表示的是item的特性，而item和entity之間可能有很多的關係像是電影種類、導演、演員等。</p>
-
-<p>作者將這個由兩個bipartite組成的graph稱之為<strong>Collaborative Knowledge Graph</strong>，可以簡單想成是我們把$u_1$看過$i_1$做成$(u_1, r_1, i_1)$這樣的triplet也放進knowledge graph裡面。</p>
-
-<h2 id="method">Method</h2>
-
-<p>上面的部分主要是模型輸入的部分，而下圖是整個模型的架構圖。</p>
-
-<p><img src="./model_overview.png" alt="Model overview" /></p>
-
-<h3 id="embedding-layer">Embedding Layer</h3>
-
-<p>在這邊我們會給每一個user、item、entity和relation一個embedding，不過因為我們已經轉換成了knowledge graph的形式，成為了$(head, relation, tail)$的triplet們，所以在底下便會用$\mathbf{e}_h, \mathbf{e}_t \in \mathbb{R}^d$來代表head和tail的embedding，用$\mathbf{e}_r\in\mathbb{R}^k$來代表relation的embedding。</p>
-
-<p>在knowledge graph裡面我們會需要一個來衡量這個triplet目前學得怎麼樣的分數，而這篇paper的定義如下</p>
-
-\[g(h, r, t)=\left \| \mathbf{W}_r\mathbf{e}_h+\mathbf{e}_r-\mathbf{W}_r\mathbf{e}_t\right \|_2^2\]
-
-<p>在上面的$\mathbf{W}_r\in\mathbb{R}^{k\times d}$是一個transformation matrix，幫忙把head和tail的embedding轉換到relation的空間，並直接用head和relation向量相加的位置跟tail的位置差異來為triplet打分數，一個越小的$g(h, r, t)$是越好的。</p>
-
-<p>而要訓練的loss function便是希望有存在在graph裡面的triplet的$g(h, r, t)$要比隨機抽樣的tail $t’$的$g(h, r, t’)$還要來得小。</p>
-
-\[\mathcal{L}_{KG}=\sum\limits_{(h, r, t, t') \in \tau}-\ln\sigma\left( g(h, r, t')-g(h, r, t) \right)\\ \tau=\{ (h, r, t, t')|(h, r, t)\in\mathcal{G}, (h, r, t')\notin\mathcal{G}\}\]
-
-<p>上面算式中的$\sigma$是sigmoid function。</p>
-
-<h3 id="attentive-embedding-propagation-layers">Attentive Embedding Propagation Layers</h3>
-
-<h4 id="information-propagation">Information Propagation</h4>
-
-<p>在這篇paper裡面，embedding除了被上面knowledge graph的gradient更新以外，這裡還會根據鄰居的embedding來影響本身的embedding。</p>
-
-<p>假如現在有一個entity $h$，它的鄰居就是與$h$相鄰的所有node，而我們把這些鄰居按照重要性weighted sum成一個單一的embedding $\mathbf{e}_{\mathcal{N}_h}$。</p>
-
-\[\mathbf{e}_{\mathcal{N}_h}=\sum\limits_{(h, r, t)\in\mathcal{N}_h}\pi(h,r,t)\mathbf{e}_t\\ \mathcal{N}_h = \{(h, r, t) \vert (h, r, t) \in \mathcal{G} \}\]
-
-<h4 id="knowledge-aware-attention">Knowledge-aware Attention</h4>
-
-<p>在式$(3)$裡面的$\pi(h,r,t)$所定義每個鄰居的重要程度是由底下的式子定義出來的</p>
-
-\[\pi(h,r,t)=(\mathbf{W}_r\mathbf{e}_t)^\top\tanh\left((\mathbf{W}_r\mathbf{e}_h+\mathbf{e}_r)\right)\]
-
-<p>在這邊我們把entity和它的鄰居透過transformation matrix轉換到relation的空間以後，透過dot product來算出跟entity $h$的相關性來表示鄰居的重要程度，接著再做normalize。</p>
-
-\[\pi(h, r, t)=\frac{\exp(\pi(h,r,t))}{\sum_{(h,r',t')\in\mathcal{N}_h}\exp(\pi(h,r',t'))}\]
-
-<h4 id="information-aggregation">Information Aggregation</h4>
-
-<p>在有了鄰居的embedding $\mathbf{e}_{\mathcal{N}_h}$以後，這篇paper提出了三種function來更新原本的entity embedding $\mathbf{e}_h$。</p>
-
-<ul>
-  <li>GCN Aggregator</li>
-</ul>
-
-\[f_{GCN}=\mathrm{LeakyReLU}\left( \mathbf{W}(\mathbf{e}_h+\mathbf{e}_{\mathcal{N}_h}) \right)\]
-
-<ul>
-  <li>GraphSage Aggregator</li>
-</ul>
-
-\[f_{GraphSage}=\mathrm{LeakyReLU}\left( \mathbf{W}(\mathbf{e}_h\|\mathbf{e}_{\mathcal{N}_h})\right)\]
-
-<ul>
-  <li>Bi-Interaction Aggregator</li>
-</ul>
-
-\[f_{Bi-Interaction}=\mathrm{LeakyReLU}\left(\mathbf{W}_1(\mathbf{e}_h+\mathbf{e}_{\mathcal{N}_h})\right)+\mathrm{LeakyReLU}\left(\mathbf{W}_2(\mathbf{e}_h\odot\mathbf{e}_{\mathcal{N}_h})\right)\]
-
-<p>上面的$\mathbf{W}_1,\mathbf{W}_2\in\mathbb{R}^{d’\times d}$是可被訓練的參數，而$\odot$是element-wise product。</p>
-
-<h4 id="high-order-propagation">High-order Propagation</h4>
-
-<p>在上面我們定義了如何把entity $h$的鄰居的資訊整合起來變成一個embedding，也定義了一些function來更新entity $h$的embedding，而這樣的步驟可以重複很多次來得到多個embedding表示距離從近到遠的資訊總和，這邊假設我們重複$l$次，每次entity $h$的embedding為</p>
-
-\[\mathbf{e}^{(l)}_h=f\left(\mathbf{e}^{(l-1)}_h,\mathbf{e}^{(l-1)}_{\mathcal{N}_h}\right)\]
-
-<p>而鄰居的embedding為</p>
-
-\[\mathbf{e}^{(l-1)}_{\mathcal{N}_h}=\sum\limits_{(h,r,t)\in\mathcal{N}_h}\pi(h,r,t)\mathbf{e}^{(l-1)}_t\]
-
-<h3 id="model-prediction">Model Prediction</h3>
-
-<p>在經過了$l$次的擴散，也就是$L$層layer（每個step在information aggregation都可以有不同的weights）以後，每個user $u$會有$L$個embedding ${\mathbf{e}^{(1)}_u,…,\mathbf{e}^{(L)}_u}$，每個item $i$也會有$L$個embedding ${\mathbf{e}^{(1)}_i,…,\mathbf{e}^{(L)}_i}$，我們把這些embedding都concatenate起來當做是最終user和item的embedding。</p>
-
-\[\mathbf{e}^*_u=\mathbf{e}^{(0)}_u\|...\|\mathbf{e}^{(L)}_u,\mathbf{e}^*_i=\mathbf{e}^{(0)}_i\|...\|\mathbf{e}^{(L)}_i\]
-
-<p>而整個推薦系統的推薦便是以user和item embedding內積的結果大小來排序</p>
-
-\[\hat y(u,i)=\mathbf{e}^{*\top}_u\mathbf{e}^*_i\]
-
-<h3 id="optimization">Optimization</h3>
-
-<p>在loss function的部分除了式$(2)$ knowledge graph的loss $\mathcal{L}_{KG}$以外，我們還需要把使用者跟商品互動的部分，也就是collaborative filter的loss放進去</p>
-
-\[\mathcal{L}_{CF}=\sum\limits_{(u,i,j)\in\mathcal{O}}-\ln\sigma\left(\hat y(u,i)-\hat y(u,j)\right)\\ \mathcal{O}=\{(u,i,j)\vert(u,i)\in\mathcal{R}^+,(u,j)\in\mathcal{R}^- \}\]
-
-<p>式$(13)$裡面的$\mathcal{O}$指的是training data，整個式子的意思是有實際互動過的使用者和商品的組合的分數要比沒有實際互動過的組合要來得高。</p>
-
-<p>整個模型的loss function合起來的樣子如下</p>
-
-\[\mathcal{L}_{KGAT}=\mathcal{L}_{KG}+\mathcal{L}_{CF}+\lambda\|\Theta\|^2_2\\ \Theta=\{\mathbf{E},\mathbf{W}_r,\forall l\in\mathcal{R},\mathbf{W}^{(l)}_1,\mathbf{W}^{(l)}_2,\forall l\in\{1,...,L\}\}\]
-
-<p>其中$\Theta$是整個模型的參數，最後一項是一個$L_2$的regularization。</p>
-
-<h2 id="experiments">Experiments</h2>
-
-<p>作者將這個模型套用在三個dataset上，其相關的統計數值如下。</p>
-
-<p><img src="./dataset.png" alt="Dataset statistics" /></p>
-
-<p>模型跑出來的結果如下</p>
-
-<p><img src="./performance.png" alt="Performance" /></p>
-
-<p>可以看到KGAT在各個dataset上面都有不錯的表現。</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>這篇paper在collaborative filter上又多加了knowledge graph的資訊在裡面，在各個dataset上看獲得了不錯的結果，在paper上面也有附上實作的<a href="https://github.com/xiangwang1223/knowledge_graph_attention_network">程式碼</a>讓大家試試看。</p>]]></content><author><name>Your Name</name></author><category term="Graph-Model" /><category term="Recommendation-System" /><category term="Machine-Learning" /><category term="Paper" /><summary type="html"><![CDATA[這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。]]></summary></entry></feed>
+<p>執行完上面的指令以後會產生一個<strong>wordcitiespop.csv.idx</strong>的檔案，接下來在執行其他操作的時候就會自動加速了，不過如果原本的檔案內容有被更動過的話，會需要再重新製作一個index檔。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。]]></summary></entry></feed>
