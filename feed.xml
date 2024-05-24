@@ -1,4 +1,182 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2024-04-17T15:44:45+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">如何安裝Comfy UI</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui/" rel="alternate" type="text/html" title="如何安裝Comfy UI" /><published>2024-04-17T00:00:00+00:00</published><updated>2024-04-17T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui/"><![CDATA[<p>先前介紹了如何<a href="https://wjohn1483.github.io/2023/07/02/stable-diffusion/">在本機上面跑Stable Diffusion</a>，這篇文章來記錄一下如何安裝Comfy UI，來讓產圖變得更容易。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2024-05-24T06:24:20+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">架設Elasticsearch來搜尋log</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/05/24/elasticsearch/" rel="alternate" type="text/html" title="架設Elasticsearch來搜尋log" /><published>2024-05-24T00:00:00+00:00</published><updated>2024-05-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/05/24/elasticsearch</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/05/24/elasticsearch/"><![CDATA[<p>這篇文章記錄一下如何架設一個etlasticsearch的伺服器來儲存log，好方便使用者來做搜尋。</p>
+
+<!--more-->
+
+<p><a href="https://www.elastic.co/">Elasticsearch</a>是一個開源的搜尋系統，使用者可以將檔案或是文字透過RESTful API的方式上傳到elasticsearch上做index，接著一樣透過RESTful API的方式來根據使用者設定的條件來取得對應的文件，這篇文章會介紹一下如何透過docker架設一個elasticsearch伺服器，並搭配Kibana和Filebeat來監控路徑下的檔案並透過UI來操作。</p>
+
+<h2 id="架設elasticsearch">架設Elasticsearch</h2>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html">架設Elasticsearch</a>的方式有很多種，一個比較簡單的方式是直接去抓docker image下來</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network create elastic
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+<span class="nb">sudo </span>sysctl <span class="nt">-w</span> vm.max_map_count<span class="o">=</span>262144
+docker run <span class="nt">--name</span> es01 <span class="nt">--net</span> elastic <span class="nt">-p</span> 9200:9200 <span class="nt">-it</span> <span class="nt">-m</span> 1GB docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+</code></pre></div></div>
+
+<p>上面的指令會創建一個叫<code class="language-plaintext highlighter-rouge">elastic</code>的網路，之後創建的container都會放在這個網路底下，而在執行<code class="language-plaintext highlighter-rouge">docker run</code>以後，最後會停在一個畫面，上會顯示使用者<code class="language-plaintext highlighter-rouge">elastic</code>的密碼，以及Kibana的enrollment token，我們需要將這個密碼存下來，在之後要使用UI或是打API時都會使用到。</p>
+
+<p>如果想要測試elasticsearch有沒有順利地被建立起來，可以透過底下的指令試打看看</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">ELASTIC_PASSWORD</span><span class="o">=</span><span class="s2">"YOUR_PASSWORD_HERE"</span>
+docker <span class="nb">cp </span>es01:/usr/share/elasticsearch/config/certs/http_ca.crt <span class="nb">.</span>
+curl <span class="nt">--cacert</span> http_ca.crt <span class="nt">-u</span> elastic:<span class="k">${</span><span class="nv">ELASTIC_PASSWORD</span><span class="k">}</span> https://localhost:9200
+</code></pre></div></div>
+
+<p>要跟elasticsearch溝通除了需要帳號密碼以外，我們還需要一個http certificate，這邊可以直接從container裡面複製出來。</p>
+
+<h2 id="架設kibana">架設Kibana</h2>
+
+<p>Kibana是用來跟Elasticsearch互動的UI介面，一樣也可以透過docker來建立</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull docker.elastic.co/kibana/kibana:8.13.4
+docker run <span class="nt">--name</span> kib01 <span class="nt">--net</span> elastic <span class="nt">-p</span> 5601:5601 docker.elastic.co/kibana/kibana:8.13.4
+</code></pre></div></div>
+
+<p>這時使用瀏覽器連線到<a href="http://localhost:5601">http://localhost:5601</a>應該就可以看到kibana的介面了，畫面上會顯示要你填入enrollment token，把上方elasticsearch顯示的enrollment token直接填入就可以讓兩者順利連線了。</p>
+
+<h2 id="上傳document">上傳Document</h2>
+
+<p>在建立好elasticsearch和kibana以後，接著就可以把我們想要從中搜尋的文件給上傳上去了，elasticsearch提供了很多方式可以上傳，這邊介紹如何透過python和filebeat來上傳。</p>
+
+<h3 id="使用python上傳document">使用Python上傳Document</h3>
+
+<p>首先我們需要先安裝elasticsearch的套件</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>elasticsearch
+</code></pre></div></div>
+
+<p>接著就可以透過python來連線到elasticsearch了</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">elasticsearch</span> <span class="kn">import</span> <span class="n">Elasticsearch</span>
+
+<span class="n">es</span> <span class="o">=</span> <span class="nc">Elasticsearch</span><span class="p">(</span><span class="sh">"</span><span class="s">https://localhost:9200</span><span class="sh">"</span><span class="p">,</span>
+                   <span class="n">basic_auth</span><span class="o">=</span><span class="p">(</span><span class="sh">"</span><span class="s">elastic</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">YOUR_PASSWORD_HERE</span><span class="sh">"</span><span class="p">),</span>
+                   <span class="n">ca_certs</span><span class="o">=</span><span class="sh">"</span><span class="s">./http_ca.crt</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊需要提供elasticsearch所架設的位置、帳號密碼和http certificate的路徑來建立連線。</p>
+
+<p>下一步便是建立一個elasticsearch的index，好把我們想要搜尋的document放進這個index裡面</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">es</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="sh">"</span><span class="s">YOUR_INDEX_NAME</span><span class="sh">"</span><span class="p">)</span>
+<span class="c1"># es.indices.delete(index="YOUR_INDEX_NAME", ignore=[400, 404])
+</span></code></pre></div></div>
+
+<p>如果想要刪除，重新建立index的話，可以使用上面<code class="language-plaintext highlighter-rouge">delete</code>的function來把整個index刪掉。</p>
+
+<p>最後就是將document上傳上去</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">es</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="sh">"</span><span class="s">YOUR_INDEX_HERE</span><span class="sh">"</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">document_id</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">document</span><span class="o">=</span><span class="p">{</span>
+        <span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">document_name</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊我們上傳了一個document，其id是<code class="language-plaintext highlighter-rouge">f"{document_id}"</code>，底下有一個field是<code class="language-plaintext highlighter-rouge">name</code>，其對應的value是<code class="language-plaintext highlighter-rouge">f"{document_name}"</code>，這裡可以根據你對document的理解和處理來新增多個field，但id只能有一個。</p>
+
+<p>這時，在Kibana上面做仿側邊欄的<strong>Search→Content</strong>裡面應該就能看到你上傳上去的index和document了，如果想透過python來query的話，可以使用下面的方式透過document name來搜尋</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">response</span> <span class="o">=</span> <span class="n">es</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="sh">"</span><span class="s">YOUR_INDEX_HERE</span><span class="sh">"</span><span class="p">,</span>
+                     <span class="n">body</span><span class="o">=</span><span class="p">{</span>
+                         <span class="sh">"</span><span class="s">query</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+                             <span class="sh">"</span><span class="s">match</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+                                 <span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">document_name</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+                             <span class="p">}</span>
+                         <span class="p">}</span>
+                     <span class="p">})</span>
+</code></pre></div></div>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html">Elasticsearch還有提供多種方式</a>來做搜尋，如果需要的話可以再自行研究。</p>
+
+<h3 id="使用filebeat上傳document">使用Filebeat上傳Document</h3>
+
+<p>上面使用python的方式是我們主動將document上傳到elasticsearch上，另一個方式是使用filebeat去監聽特定路徑下的檔案更動，如果有新的更動就將新的資料上傳到elastcissearch上，filebeat是<a href="https://www.elastic.co/logstash">Logstash</a>裡面比較輕量化的檔案監聽套件，如果需求比較複雜的話可以嘗試使用Logstash看看。</p>
+
+<p><a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html">安裝filebeat的方式</a>有很多種方法，底下使用的是rpm的安裝方式</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> <span class="nt">-O</span> https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.13.4-x86_64.rpm
+<span class="nb">sudo </span>rpm <span class="nt">-vi</span> filebeat-8.13.4-x86_64.rpm
+</code></pre></div></div>
+
+<p>安裝好以後，我們可以打開<code class="language-plaintext highlighter-rouge">/etc/filebeat/filebeat.yml</code>來設定filebeat，首先需要設定filebeat連接到elasticsearch，在<code class="language-plaintext highlighter-rouge">output.elasticsearch</code>的區塊改成底下的設定</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">output.elasticsearch</span><span class="pi">:</span>
+  <span class="na">hosts</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">https://localhost:9200"</span><span class="pi">]</span>
+  <span class="na">preset</span><span class="pi">:</span> <span class="s">balanced</span>
+  <span class="na">prototol</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https"</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s2">"</span><span class="s">elastic"</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s2">"</span><span class="s">${ES_PASS}"</span>
+  <span class="na">ssl.certificate_authorities</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">/path/to/your/certificate"</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<p>這邊的<code class="language-plaintext highlighter-rouge">${ES_PASS}</code>是存放在filebeat keystore的變數，如果直接把密碼寫在yml裡面會有洩漏的風險，<a href="https://www.elastic.co/guide/en/beats/filebeat/8.13/keystore.html">filebeat提供了keystore的功能</a>讓你把機密資訊存起來，使用的方式是先建立keystore</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filebeat keystore create
+</code></pre></div></div>
+
+<p>接著就能透過底下的指令來設定變數</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filebeat keystore add ES_PASS
+</code></pre></div></div>
+
+<p>再來我們就可以跳到<code class="language-plaintext highlighter-rouge">filebeat.inputs</code>的地方來設定要監聽的路徑，底下是一個簡單的模板</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">filebeat.inputs</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">filestream</span>
+  <span class="na">id</span><span class="pi">:</span> <span class="s">your_input_id</span>
+  <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">paths</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">/path/to/your/logs</span>
+    <span class="c1"># e.g. - /var/log/*.log</span>
+  <span class="c1"># json.keys_under_root: true</span>
+  <span class="c1"># json.add_error_key: true</span>
+  <span class="na">index</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your_index"</span>
+</code></pre></div></div>
+
+<p>如果想要監聽其他路徑的檔案並放到不同的index裡面，只需要再另外加一個<code class="language-plaintext highlighter-rouge">type</code>的區塊就可以了，這邊我們需要設定這個input的id、要監聽的路徑以及想要放到elasticsearch的哪個index裡面。</p>
+
+<p>設定好以後，執行底下的指令讓filebeat跑起來，就可以在Kibana上面看到filebeat上傳的index了，在左邊側邊欄裡面的<strong>Management→Stack Management→Index Management</strong>也可以看到相關的設定。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filebeat <span class="nt">-e</span>
+</code></pre></div></div>
+
+<p>如果在上傳的時候發現問題，想讓filebeat重新上傳整個index，除了在kibana裡面砍掉index外，我們需要把底下的資料夾也砍掉，讓filebeat忘記過去曾經上傳過的東西以後，重啟filebeat的服務來整個重新上傳。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/lib/filebeat/registry
+</code></pre></div></div>
+
+<h4 id="parse-json-log">Parse json log</h4>
+
+<p>Filebeat預設會是一行一行地讀取路徑底下的檔案，如果這個檔案是紀錄json的log，每一行是一個json object的話，我們可以在<code class="language-plaintext highlighter-rouge">filebeat.inputs</code>多加<code class="language-plaintext highlighter-rouge">json.keys_under_root</code>和<code class="language-plaintext highlighter-rouge">json.add_error_key</code>來讓filebeat幫我們去parse json的log。</p>
+
+<p>這時如果去kibana上面看會發現到filebeat把整個json object放到<code class="language-plaintext highlighter-rouge">message</code>這個field裡面，沒有把json的key、value塞到對應的field</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">processors</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">decode_json_fields</span><span class="pi">:</span>
+    <span class="na">fields</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">message"</span><span class="pi">]</span>
+    <span class="na">process_array</span><span class="pi">:</span> <span class="kc">false</span>
+    <span class="na">max_depth</span><span class="pi">:</span> <span class="m">2</span>
+    <span class="na">target</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">overwrite_keys</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">add_error_key</span><span class="pi">:</span> <span class="kc">false</span>
+</code></pre></div></div>
+
+<p>我們還需要在<code class="language-plaintext highlighter-rouge">/etc/filebeat/filebeat.yml</code>裡面<code class="language-plaintext highlighter-rouge">processors</code>的區塊多加<code class="language-plaintext highlighter-rouge">decode_json_fields</code>來明確地告訴filebeat我們想要解析<code class="language-plaintext highlighter-rouge">message</code>這個field，設定好並重啟filebeat的服務以後就可以在kibana上面看到json object裡面的key、value被塞進elasticsearch index裡document的field了。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li>
+    <p><a href="https://ithelp.ithome.com.tw/users/20130639/ironman/3747">親愛的，我把ElasticSearch上雲了 :: 第 12 屆 iThome 鐵人賽</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.cnblogs.com/zsql/p/13137833.html"> 一篇文章搞懂filebeat（ELK）</a></p>
+  </li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章記錄一下如何架設一個etlasticsearch的伺服器來儲存log，好方便使用者來做搜尋。]]></summary></entry><entry><title type="html">如何安裝Comfy UI</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui/" rel="alternate" type="text/html" title="如何安裝Comfy UI" /><published>2024-04-17T00:00:00+00:00</published><updated>2024-04-17T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui/"><![CDATA[<p>先前介紹了如何<a href="https://wjohn1483.github.io/2023/07/02/stable-diffusion/">在本機上面跑Stable Diffusion</a>，這篇文章來記錄一下如何安裝Comfy UI，來讓產圖變得更容易。</p>
 
 <!--more-->
 
@@ -1157,90 +1335,4 @@ python3 <span class="nt">-m</span> fastchat.model.apply_delta <span class="se">\
   <li><a href="https://zhuanlan.zhihu.com/p/293082914">推荐系统炼丹笔记：RecSys2020-SSE-PT解锁序列数据挖掘新姿势</a></li>
   <li><a href="https://ithelp.ithome.com.tw/articles/10192869">文件檢索的評價 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></li>
   <li><a href="https://blog.csdn.net/anshuai_aw1/article/details/83117012">IR的评价指标-MAP，MRR和NDCG的形象理解_ndcg和mrr_anshuai_aw1的博客-CSDN博客</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Recommendation-System" /><category term="Paper" /><summary type="html"><![CDATA[這篇文章記錄一下看完這篇paper的筆記。]]></summary></entry><entry><title type="html">Google Apps Script介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/23/google-apps-script/" rel="alternate" type="text/html" title="Google Apps Script介紹" /><published>2023-02-23T00:00:00+00:00</published><updated>2023-02-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/23/google-apps-script</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/02/23/google-apps-script/"><![CDATA[<p>在<a href="https://wjohn1483.github.io/2021/06/05/display-html-in-google-sheet/">先前的文章</a>裡面，使用了Google apps script來在Google sheet裡面顯示html，而Google apps script還可以做到更多的事情，這篇文章簡單介紹一下Google apps script是什麼，並如何使用它操作Google calendar。</p>
-
-<!--more-->
-
-<h2 id="google-apps-script">Google Apps Script</h2>
-
-<p><a href="https://www.google.com/script/start/">Google Apps Script（GAS）</a>是一個基於javascript的開發平台，可以在其中方便地跟Google Workspace的服務像是Gmail、Google Calendar、Google Maps等做整合，讓你可以對這些服務做更細緻的操作或是讓多個服務做連動。舉例來說，可以透過Google Sheet整理要一併寄出的收件者和內容，透過GAS來串連Gmail做寄出，又或者可以用GAS來設定今天這個Google Form收到多少回覆後就自動停止等。</p>
-
-<p>除了寫給讓自己的生活更便利以外，GAS還可以部署成web api或者是extension來讓其他人打、使用，是個簡單卻又強大的功能，以下會帶一個<a href="https://developers.google.com/apps-script/samples/automations/vacation-calendar">同步group mail底下個人行事曆到共享行事曆的例子</a>來看看GAS要怎麼寫，如果想看其他更多的應用除了可以看<a href="https://developers.google.com/apps-script/samples">官方文件的範例</a>以外，強烈建議可以看<a href="https://ithelp.ithome.com.tw/articles/10275214">這篇文章</a>，裡面詳述地記載了一些常用到的scenario，並有實際的程式碼來一步一步帶領你建立屬於你的GAS。</p>
-
-<h2 id="同步行事曆">同步行事曆</h2>
-
-<p>在一個團隊裡面有時會有不定人數的人請假，為了能更方便地一眼看到誰請假，避免打擾到休假的人，我們時常會建立一個共享的團隊行事曆，讓大家去填上哪天休假，但這時請假的人就會需要在個人的行事曆上建立請假的事件，並額外在共享的行事曆上也建立相同的事件。</p>
-
-<p>這種類型的事情，就很適合透過GAS來達成，我們可以寫一個GAS去週期性地掃團隊裡面的每個人的行事曆，把有特殊關鍵字的事件引入到共享的行事曆中，就可以節省團隊成員手動建立事件到共享行事曆的時間了。</p>
-
-<p>詳細的程式碼和說明可以參考<a href="https://developers.google.com/apps-script/samples/automations/vacation-calendar">官方文件</a>，底下會稍微解釋一下這件事情是如何被達成的。</p>
-
-<h3 id="程式概覽">程式概覽</h3>
-
-<p>在跟著<a href="https://developers.google.com/apps-script/samples/automations/vacation-calendar">官方文件</a>建立新的行事曆以後，有個按鈕可以打開範例的專案，建立副本以後就能做修改了，理論上照著說明把變數換成你想要的並執行就能達到上述的功能了。</p>
-
-<p>在專案裡面分成兩大塊，在Services裡面可以看到有個<code class="language-plaintext highlighter-rouge">Calendar</code>的service，表示我們在<code class="language-plaintext highlighter-rouge">Code.gs</code>裡面會需要用到calendar的API，而<code class="language-plaintext highlighter-rouge">Code.gs</code>是我們主要實現邏輯的地方。</p>
-
-<p>在<code class="language-plaintext highlighter-rouge">Code.gs</code>裡面有底下幾個function：</p>
-
-<ul>
-  <li>
-    <p>setup：設定trigger來去定期地執行sync</p>
-  </li>
-  <li>
-    <p>sync：程式的進入點，去逐一掃描團隊個人行事曆裡面的事件是不是有包含到定義的關鍵字，如果有，就引入到共享行事曆中</p>
-  </li>
-  <li>
-    <p>importEvent：引入event到共享行事曆中</p>
-  </li>
-  <li>
-    <p>findEvents：尋找哪些event該被引入到共享行事曆中</p>
-  </li>
-  <li>
-    <p>shoudImportEvent：判斷該不該引入event</p>
-  </li>
-  <li>
-    <p>formatDateAsRFC3339：把日期轉成特定格式</p>
-  </li>
-</ul>
-
-<p>其實裡面的邏輯並不複雜，註解也寫得很詳細，可以很快速地看懂每個function想要做的事情，而裡面所使用的物件method可以在<a href="https://developers.google.com/apps-script/reference/calendar">Apps Script的文件</a>當中找到每個method的定義、傳入值和回傳值。</p>
-
-<h3 id="測試程式">測試程式</h3>
-
-<p><img src="./debug.png" alt="Debug" /></p>
-
-<p>在寫好了想要的邏輯以後，可以在畫面上方的menu bar裡面選擇想要測試的function並點擊<code class="language-plaintext highlighter-rouge">Debug</code>的按鈕來測試想要的功能有沒有被實現，如果在上面找不到寫好的function，可能是因為還沒有儲存專案的關係。</p>
-
-<p>如果想要印出debug訊息，除了使用<code class="language-plaintext highlighter-rouge">Debug</code>按鈕提供的sidebar以外，可以使用<code class="language-plaintext highlighter-rouge">console.log()</code>來把訊息寫在console中。</p>
-
-<h3 id="定期執行程式">定期執行程式</h3>
-
-<p>在<code class="language-plaintext highlighter-rouge">setup()</code>裡面會透過API建立一個每30分鐘執行一次的排程作業，我們也可以透過左邊的Triggers手動建立一個trigger來定期執行GAS，而GAS會在GCP的default專案裡面被執行，也就是使用你個人的資源來運行，不過Google有提供<a href="https://developers.google.com/apps-script/guides/services/quotas">免費的quota</a>來做使用，而每次執行的log都可以在左邊Executions的tab裡面找到。</p>
-
-<p>如果想要把專案部署成API、使用Service API的次數超過免費額度，就會需要把這份GAS改放到其他專案裡面，根據用量來付費。</p>
-
-<h2 id="結論">結論</h2>
-
-<p>GAS是個方便統整Google服務的平台，除了<a href="https://ithelp.ithome.com.tw/articles/10275214">上述文章</a>提供的使用情境外，還可以根據自身碰到的情況來做擴充，藉由研讀Google服務們所提供的API來達到你的需求。</p>
-
-<p>像是在上面同步行事曆的GAS裡面，如果有人後來決定不請假的話，在程式碼裡面是不會判斷這件事並把共享行事曆裡面的事件刪除掉的，這時就可以參考Calendar的API來自行撰寫刪除事件的function。</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
- * Delete all events in the calendar with id TEAM_CALENDAR_ID
- */</span>
-<span class="kd">function</span> <span class="nf">deleteAllEvents</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">calendar</span> <span class="o">=</span> <span class="nx">CalendarApp</span><span class="p">.</span><span class="nf">getCalendarById</span><span class="p">(</span><span class="nx">TEAM_CALENDAR_ID</span><span class="p">);</span>
-  <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Delete all events in calendar "</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">calendar</span><span class="p">.</span><span class="nf">getName</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"</span><span class="se">\n</span><span class="s1">from "</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">start</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"</span><span class="se">\n</span><span class="s1">to "</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">end</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">"</span><span class="dl">'</span><span class="p">);</span>
-  <span class="nx">events</span> <span class="o">=</span> <span class="nx">calendar</span><span class="p">.</span><span class="nf">getEvents</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">end</span><span class="p">);</span>
-  <span class="nx">events</span><span class="p">.</span><span class="nf">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Deleting: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nf">getTitle</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="s1">starting from </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nf">getStartTime</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="se">\n</span><span class="s1">end at </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">event</span><span class="p">.</span><span class="nf">getEndTime</span><span class="p">());</span>
-    <span class="nx">event</span><span class="p">.</span><span class="nf">deleteEvent</span><span class="p">();</span>
-    <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
-  <span class="p">});</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Deleted </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">count</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> events</span><span class="dl">"</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>上面的function會把共享行事曆裡面特定日期內的所有事件都刪除，我們就能用這個簡單的方式在import事件之前把事件都清空，再把event引入到行事曆中來達到event同步刪除的功能。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在先前的文章裡面，使用了Google apps script來在Google sheet裡面顯示html，而Google apps script還可以做到更多的事情，這篇文章簡單介紹一下Google apps script是什麼，並如何使用它操作Google calendar。]]></summary></entry></feed>
+</ul>]]></content><author><name>Your Name</name></author><category term="Recommendation-System" /><category term="Paper" /><summary type="html"><![CDATA[這篇文章記錄一下看完這篇paper的筆記。]]></summary></entry></feed>

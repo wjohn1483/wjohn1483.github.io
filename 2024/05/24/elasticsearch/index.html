@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>架設Elasticsearch來搜尋log - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/page2/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇文章記錄一下如何架設一個etlasticsearch的伺服器來儲存log，好方便使用者來做搜尋。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2024/05/24/elasticsearch/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -266,7 +266,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -284,120 +284,236 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/03/23/pyspark-executor-log/"><h2 itemprop="headline" class="item__header">將PySpark Executor的Log蒐集到Driver</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章記錄一下如何用spark內建的accumulator把在executor的資訊帶回driver上。</div><p><a href="/2023/03/23/pyspark-executor-log/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>架設Elasticsearch來搜尋log</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2024-05-24-elasticsearch/2024-05-24-elasticsearch.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="架設Elasticsearch來搜尋log"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 23, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-03-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/03/18/temporal-collaborative-ranking-via-personalized-transformer/"><h2 itemprop="headline" class="item__header">Temporal Collaborative Ranking Via Personalized Transformer</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章記錄一下看完這篇paper的筆記。</div><p><a href="/2023/03/18/temporal-collaborative-ranking-via-personalized-transformer/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 18, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-03-18T00:00:00+00:00">
-    <meta itemprop="keywords" content="Recommendation-System,Paper"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/23/google-apps-script/"><h2 itemprop="headline" class="item__header">Google Apps Script介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在先前的文章裡面，使用了Google apps script來在Google sheet裡面顯示html，而Google apps script還可以做到更多的事情，這篇文章簡單介紹一下Google apps script是什麼，並如何使用它操作Google calendar。</div><p><a href="/2023/02/23/google-apps-script/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 23, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/15/xsv/"><h2 itemprop="headline" class="item__header">xsv使用介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。</div><p><a href="/2023/02/15/xsv/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 15, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/02/kgat/"><h2 itemprop="headline" class="item__header">KGAT: Knowledge Graph Attention Network for Recommendation</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。</div><p><a href="/2023/02/02/kgat/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Graph-Model">Graph-Model</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 02, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Graph-Model,Recommendation-System,Machine-Learning,Paper"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/24/overleaf/"><h2 itemprop="headline" class="item__header">自己建立Overleaf伺服器</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在過去寫paper的時候通常都是使用overleaf來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。</div><p><a href="/2022/11/24/overleaf/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 24, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-11-24T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/19/tensorflow-js-pose-detection/"><h2 itemprop="headline" class="item__header">Tensorflow JS介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">隨著機器學習的模型可以做到越來越多的事情，人們希望可以在更多的場域來使用機器學習的模型，也因此它們也逐漸的被部署到除了電腦以外的裝置上，這篇文章主要是來簡單介紹一下tensorflow.js，把模型部署在瀏覽器上，讓更多人可以輕易地存取。</div><p><a href="/2022/11/19/tensorflow-js-pose-detection/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Computer-Vision">Computer-Vision</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 19, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-11-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool,Computer-Vision"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/06/04/python-logging-introduction/"><h2 itemprop="headline" class="item__header">Python logging介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章簡單介紹一下python logging這個package的使用方法。</div><p><a href="/2022/06/04/python-logging-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Python">Python</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jun 04, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-06-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool,Python"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>50 post articles, 7 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li>
-              <div class="button button--primary button--circle focus"><span>2</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-                </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page7"><span>7</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page3">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 24, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2024-05-24T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>這篇文章記錄一下如何架設一個etlasticsearch的伺服器來儲存log，好方便使用者來做搜尋。</p>
+
+<!--more-->
+
+<p><a href="https://www.elastic.co/">Elasticsearch</a>是一個開源的搜尋系統，使用者可以將檔案或是文字透過RESTful API的方式上傳到elasticsearch上做index，接著一樣透過RESTful API的方式來根據使用者設定的條件來取得對應的文件，這篇文章會介紹一下如何透過docker架設一個elasticsearch伺服器，並搭配Kibana和Filebeat來監控路徑下的檔案並透過UI來操作。</p>
+
+<h2 id="架設elasticsearch">架設Elasticsearch</h2>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html">架設Elasticsearch</a>的方式有很多種，一個比較簡單的方式是直接去抓docker image下來</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker network create elastic
+docker pull docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+<span class="nb">sudo </span>sysctl <span class="nt">-w</span> vm.max_map_count<span class="o">=</span>262144
+docker run <span class="nt">--name</span> es01 <span class="nt">--net</span> elastic <span class="nt">-p</span> 9200:9200 <span class="nt">-it</span> <span class="nt">-m</span> 1GB docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+</code></pre></div></div>
+
+<p>上面的指令會創建一個叫<code class="language-plaintext highlighter-rouge">elastic</code>的網路，之後創建的container都會放在這個網路底下，而在執行<code class="language-plaintext highlighter-rouge">docker run</code>以後，最後會停在一個畫面，上會顯示使用者<code class="language-plaintext highlighter-rouge">elastic</code>的密碼，以及Kibana的enrollment token，我們需要將這個密碼存下來，在之後要使用UI或是打API時都會使用到。</p>
+
+<p>如果想要測試elasticsearch有沒有順利地被建立起來，可以透過底下的指令試打看看</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">ELASTIC_PASSWORD</span><span class="o">=</span><span class="s2">"YOUR_PASSWORD_HERE"</span>
+docker <span class="nb">cp </span>es01:/usr/share/elasticsearch/config/certs/http_ca.crt <span class="nb">.</span>
+curl <span class="nt">--cacert</span> http_ca.crt <span class="nt">-u</span> elastic:<span class="k">${</span><span class="nv">ELASTIC_PASSWORD</span><span class="k">}</span> https://localhost:9200
+</code></pre></div></div>
+
+<p>要跟elasticsearch溝通除了需要帳號密碼以外，我們還需要一個http certificate，這邊可以直接從container裡面複製出來。</p>
+
+<h2 id="架設kibana">架設Kibana</h2>
+
+<p>Kibana是用來跟Elasticsearch互動的UI介面，一樣也可以透過docker來建立</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker pull docker.elastic.co/kibana/kibana:8.13.4
+docker run <span class="nt">--name</span> kib01 <span class="nt">--net</span> elastic <span class="nt">-p</span> 5601:5601 docker.elastic.co/kibana/kibana:8.13.4
+</code></pre></div></div>
+
+<p>這時使用瀏覽器連線到<a href="http://localhost:5601">http://localhost:5601</a>應該就可以看到kibana的介面了，畫面上會顯示要你填入enrollment token，把上方elasticsearch顯示的enrollment token直接填入就可以讓兩者順利連線了。</p>
+
+<h2 id="上傳document">上傳Document</h2>
+
+<p>在建立好elasticsearch和kibana以後，接著就可以把我們想要從中搜尋的文件給上傳上去了，elasticsearch提供了很多方式可以上傳，這邊介紹如何透過python和filebeat來上傳。</p>
+
+<h3 id="使用python上傳document">使用Python上傳Document</h3>
+
+<p>首先我們需要先安裝elasticsearch的套件</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>elasticsearch
+</code></pre></div></div>
+
+<p>接著就可以透過python來連線到elasticsearch了</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">elasticsearch</span> <span class="kn">import</span> <span class="n">Elasticsearch</span>
+
+<span class="n">es</span> <span class="o">=</span> <span class="nc">Elasticsearch</span><span class="p">(</span><span class="sh">"</span><span class="s">https://localhost:9200</span><span class="sh">"</span><span class="p">,</span>
+                   <span class="n">basic_auth</span><span class="o">=</span><span class="p">(</span><span class="sh">"</span><span class="s">elastic</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">YOUR_PASSWORD_HERE</span><span class="sh">"</span><span class="p">),</span>
+                   <span class="n">ca_certs</span><span class="o">=</span><span class="sh">"</span><span class="s">./http_ca.crt</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊需要提供elasticsearch所架設的位置、帳號密碼和http certificate的路徑來建立連線。</p>
+
+<p>下一步便是建立一個elasticsearch的index，好把我們想要搜尋的document放進這個index裡面</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">es</span><span class="p">.</span><span class="n">indices</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="sh">"</span><span class="s">YOUR_INDEX_NAME</span><span class="sh">"</span><span class="p">)</span>
+<span class="c1"># es.indices.delete(index="YOUR_INDEX_NAME", ignore=[400, 404])
+</span></code></pre></div></div>
+
+<p>如果想要刪除，重新建立index的話，可以使用上面<code class="language-plaintext highlighter-rouge">delete</code>的function來把整個index刪掉。</p>
+
+<p>最後就是將document上傳上去</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">es</span><span class="p">.</span><span class="nf">index</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="sh">"</span><span class="s">YOUR_INDEX_HERE</span><span class="sh">"</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">document_id</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">document</span><span class="o">=</span><span class="p">{</span>
+        <span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">document_name</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊我們上傳了一個document，其id是<code class="language-plaintext highlighter-rouge">f"{document_id}"</code>，底下有一個field是<code class="language-plaintext highlighter-rouge">name</code>，其對應的value是<code class="language-plaintext highlighter-rouge">f"{document_name}"</code>，這裡可以根據你對document的理解和處理來新增多個field，但id只能有一個。</p>
+
+<p>這時，在Kibana上面做仿側邊欄的<strong>Search→Content</strong>裡面應該就能看到你上傳上去的index和document了，如果想透過python來query的話，可以使用下面的方式透過document name來搜尋</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">response</span> <span class="o">=</span> <span class="n">es</span><span class="p">.</span><span class="nf">search</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="sh">"</span><span class="s">YOUR_INDEX_HERE</span><span class="sh">"</span><span class="p">,</span>
+                     <span class="n">body</span><span class="o">=</span><span class="p">{</span>
+                         <span class="sh">"</span><span class="s">query</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+                             <span class="sh">"</span><span class="s">match</span><span class="sh">"</span><span class="p">:</span> <span class="p">{</span>
+                                 <span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">document_name</span><span class="si">}</span><span class="sh">"</span><span class="p">,</span>
+                             <span class="p">}</span>
+                         <span class="p">}</span>
+                     <span class="p">})</span>
+</code></pre></div></div>
+
+<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-with-elasticsearch.html">Elasticsearch還有提供多種方式</a>來做搜尋，如果需要的話可以再自行研究。</p>
+
+<h3 id="使用filebeat上傳document">使用Filebeat上傳Document</h3>
+
+<p>上面使用python的方式是我們主動將document上傳到elasticsearch上，另一個方式是使用filebeat去監聽特定路徑下的檔案更動，如果有新的更動就將新的資料上傳到elastcissearch上，filebeat是<a href="https://www.elastic.co/logstash">Logstash</a>裡面比較輕量化的檔案監聽套件，如果需求比較複雜的話可以嘗試使用Logstash看看。</p>
+
+<p><a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-installation-configuration.html">安裝filebeat的方式</a>有很多種方法，底下使用的是rpm的安裝方式</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> <span class="nt">-O</span> https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-8.13.4-x86_64.rpm
+<span class="nb">sudo </span>rpm <span class="nt">-vi</span> filebeat-8.13.4-x86_64.rpm
+</code></pre></div></div>
+
+<p>安裝好以後，我們可以打開<code class="language-plaintext highlighter-rouge">/etc/filebeat/filebeat.yml</code>來設定filebeat，首先需要設定filebeat連接到elasticsearch，在<code class="language-plaintext highlighter-rouge">output.elasticsearch</code>的區塊改成底下的設定</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">output.elasticsearch</span><span class="pi">:</span>
+  <span class="na">hosts</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">https://localhost:9200"</span><span class="pi">]</span>
+  <span class="na">preset</span><span class="pi">:</span> <span class="s">balanced</span>
+  <span class="na">prototol</span><span class="pi">:</span> <span class="s2">"</span><span class="s">https"</span>
+  <span class="na">username</span><span class="pi">:</span> <span class="s2">"</span><span class="s">elastic"</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s2">"</span><span class="s">${ES_PASS}"</span>
+  <span class="na">ssl.certificate_authorities</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">/path/to/your/certificate"</span><span class="pi">]</span>
+</code></pre></div></div>
+
+<p>這邊的<code class="language-plaintext highlighter-rouge">${ES_PASS}</code>是存放在filebeat keystore的變數，如果直接把密碼寫在yml裡面會有洩漏的風險，<a href="https://www.elastic.co/guide/en/beats/filebeat/8.13/keystore.html">filebeat提供了keystore的功能</a>讓你把機密資訊存起來，使用的方式是先建立keystore</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filebeat keystore create
+</code></pre></div></div>
+
+<p>接著就能透過底下的指令來設定變數</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filebeat keystore add ES_PASS
+</code></pre></div></div>
+
+<p>再來我們就可以跳到<code class="language-plaintext highlighter-rouge">filebeat.inputs</code>的地方來設定要監聽的路徑，底下是一個簡單的模板</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">filebeat.inputs</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">filestream</span>
+  <span class="na">id</span><span class="pi">:</span> <span class="s">your_input_id</span>
+  <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">paths</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">/path/to/your/logs</span>
+    <span class="c1"># e.g. - /var/log/*.log</span>
+  <span class="c1"># json.keys_under_root: true</span>
+  <span class="c1"># json.add_error_key: true</span>
+  <span class="na">index</span><span class="pi">:</span> <span class="s2">"</span><span class="s">your_index"</span>
+</code></pre></div></div>
+
+<p>如果想要監聽其他路徑的檔案並放到不同的index裡面，只需要再另外加一個<code class="language-plaintext highlighter-rouge">type</code>的區塊就可以了，這邊我們需要設定這個input的id、要監聽的路徑以及想要放到elasticsearch的哪個index裡面。</p>
+
+<p>設定好以後，執行底下的指令讓filebeat跑起來，就可以在Kibana上面看到filebeat上傳的index了，在左邊側邊欄裡面的<strong>Management→Stack Management→Index Management</strong>也可以看到相關的設定。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>filebeat <span class="nt">-e</span>
+</code></pre></div></div>
+
+<p>如果在上傳的時候發現問題，想讓filebeat重新上傳整個index，除了在kibana裡面砍掉index外，我們需要把底下的資料夾也砍掉，讓filebeat忘記過去曾經上傳過的東西以後，重啟filebeat的服務來整個重新上傳。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/lib/filebeat/registry
+</code></pre></div></div>
+
+<h4 id="parse-json-log">Parse json log</h4>
+
+<p>Filebeat預設會是一行一行地讀取路徑底下的檔案，如果這個檔案是紀錄json的log，每一行是一個json object的話，我們可以在<code class="language-plaintext highlighter-rouge">filebeat.inputs</code>多加<code class="language-plaintext highlighter-rouge">json.keys_under_root</code>和<code class="language-plaintext highlighter-rouge">json.add_error_key</code>來讓filebeat幫我們去parse json的log。</p>
+
+<p>這時如果去kibana上面看會發現到filebeat把整個json object放到<code class="language-plaintext highlighter-rouge">message</code>這個field裡面，沒有把json的key、value塞到對應的field</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">processors</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">decode_json_fields</span><span class="pi">:</span>
+    <span class="na">fields</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">message"</span><span class="pi">]</span>
+    <span class="na">process_array</span><span class="pi">:</span> <span class="kc">false</span>
+    <span class="na">max_depth</span><span class="pi">:</span> <span class="m">2</span>
+    <span class="na">target</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">overwrite_keys</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">add_error_key</span><span class="pi">:</span> <span class="kc">false</span>
+</code></pre></div></div>
+
+<p>我們還需要在<code class="language-plaintext highlighter-rouge">/etc/filebeat/filebeat.yml</code>裡面<code class="language-plaintext highlighter-rouge">processors</code>的區塊多加<code class="language-plaintext highlighter-rouge">decode_json_fields</code>來明確地告訴filebeat我們想要解析<code class="language-plaintext highlighter-rouge">message</code>這個field，設定好並重啟filebeat的服務以後就可以在kibana上面看到json object裡面的key、value被塞進elasticsearch index裡document的field了。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li>
+    <p><a href="https://ithelp.ithome.com.tw/users/20130639/ironman/3747">親愛的，我把ElasticSearch上雲了 :: 第 12 屆 iThome 鐵人賽</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.cnblogs.com/zsql/p/13137833.html"> 一篇文章搞懂filebeat（ELK）</a></p>
+  </li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-05-24T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/04/17/comfy-ui/">如何安裝Comfy UI</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -920,10 +1036,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>
