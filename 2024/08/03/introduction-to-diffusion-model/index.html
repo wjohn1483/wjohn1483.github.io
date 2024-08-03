@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Diffusion Model介紹 - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/page5/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇文章來記錄一下學習diffusion model的筆記。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2024/08/03/introduction-to-diffusion-model/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -266,7 +266,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -284,111 +284,163 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2021/01/26/security-introduction/"><h2 itemprop="headline" class="item__header">網路安全的基本知識</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">有鑑於有時會接觸到一些網路安全的東西，這邊簡單紀錄一下碰到的一些東西。</div><p><a href="/2021/01/26/security-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Diffusion Model介紹</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2024-08-03-introduction-to-diffusion-model/2024-08-03-introduction-to-diffusion-model.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Diffusion Model介紹"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Network-Security">Network-Security</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jan 26, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2021-01-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="Network-Security"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/11/21/circle-ci/"><h2 itemprop="headline" class="item__header">利用Circle CI來更新GitHub Pages</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">有鑒於Travis CI要開始收費了，所以我將部落格的CI轉移到Circle CI上，在這篇文章記錄一下轉移的過程。</div><p><a href="/2020/11/21/circle-ci/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 21, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-21T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/11/15/python-import/"><h2 itemprop="headline" class="item__header">Python Import Introduction</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在寫python時，常搞不懂import路徑的寫法，這邊簡單介紹一下python import的邏輯。</div><p><a href="/2020/11/15/python-import/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Python">Python</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 15, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="Python"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/"><h2 itemprop="headline" class="item__header">Deep Reinforcement Learning for Online Advertising in Recommender Systems</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">用Reinforcement Learning來訓練廣告系統，決定廣告該要怎麼顯現。</div><p><a href="/2020/11/04/deep-reinforcement-learning-for-online-advertising-in-recommender-systems/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 04, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-11-04T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Reinforcement-Learning,Recommendation-System"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/07/26/reinforce-and-ppo/"><h2 itemprop="headline" class="item__header">REINFORCE和Proximal Policy Optimization</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在製作model的時候，有時會參雜一些人工定義分數的部分，這時我們就不能夠單純使用gradient descent來訓練我們的model，因為人工定義的分數是無法被微分的，然而我們還是可以靠一些方式來把這些分數整合到model的objective function中，並利用我們熟悉的gradient descent來訓練。</div><p><a href="/2020/07/26/reinforce-and-ppo/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 26, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-07-26T00:00:00+00:00">
-    <meta itemprop="keywords" content="Reinforcement-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/05/07/slack-bot/"><h2 itemprop="headline" class="item__header">如何製作Slack機器人</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。</div><p><a href="/2020/05/07/slack-bot/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 07, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-05-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/25/plot-data-with-r/"><h2 itemprop="headline" class="item__header">用R來作圖</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</div><p><a href="/2020/04/25/plot-data-with-r/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 25, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-25T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/"><h2 itemprop="headline" class="item__header">Playing Atari with Deep Reinforcement Learning</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</div><p><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Reinforcement-Learning"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>51 post articles, 7 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/page4">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-                </li><li>
-              <div class="button button--primary button--circle focus"><span>5</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page6"><span>6</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page7"><span>7</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page6">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+                href="/archive/?tag=Computer-Vision">Computer-Vision</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Aug 03, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2024-08-03T00:00:00+00:00">
+    <meta itemprop="keywords" content="Computer-Vision"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>這篇文章來記錄一下學習diffusion model的筆記。</p>
+
+<!--more-->
+
+<p>在過去如果要讓機器產生圖片，通常會使用VAE或是GAN的方法來產生，而後來出現了diffusion model，產圖的效果很好，近期幾乎所有產圖的模型都是基於diffusion model來設計的。</p>
+
+<h2 id="diffusion-model的運作原理">Diffusion Model的運作原理</h2>
+
+<p>Diffusion model的想法可以想成是我們去訓練一個noise predictor，輸入一張圖片，去預測圖片當中有哪些部分是雜訊，接下來就是將原始圖片減去noise predictor預測出來的雜訊來獲得新的圖片</p>
+
+<pre><code class="language-mermaid">graph LR;
+    image1(Image)
+    image2(New image)
+    denoise[Noise predictor]
+    noise(Noise)
+    minus(Minus)
+    image1--&gt;denoise
+    denoise--&gt;noise
+    image1--&gt;minus
+    noise--&gt;minus
+    minus--&gt;image2
+</code></pre>
+
+<p>我們可以從一張隨機分佈上面抽樣出來的圖片，反覆上面的動作來獲得一張清晰的圖片，有點類似米開朗基羅雕塑大衛像，雕像已經在石頭裡面了，只是把多餘的部分拿掉。</p>
+
+<pre><code class="language-mermaid">graph LR;
+    image1(Image T)
+    denoise1[Denoise]
+    image2(Image T-1)
+    denoise2[Denoise]
+    image3(Image T-2)
+    denoise3[Denoise]
+    image_final(Image 1)
+    image1--&gt;denoise1
+    denoise1--&gt;image2
+    image2--&gt;denoise2
+    denoise2--&gt;image3
+    image3--&gt;denoise3
+    denoise3--Many steps later--&gt;image_final
+</code></pre>
+
+<p>具體在訓練這個noise predictor的時候，我們會把當下是第幾步也放進noise predictor當中</p>
+
+<pre><code class="language-mermaid">graph LR;
+    image1(Image 1000)
+    step1(1000)
+    denoise1[Denoise]
+    image2(Image 999)
+    step2(999)
+    denoise2[Denoise]
+    image3(Image 998)
+    image1--&gt;denoise1
+    step1--&gt;denoise1
+    denoise1--&gt;image2
+    image2--&gt;denoise2
+    step2--&gt;denoise2
+    denoise2--&gt;image3
+</code></pre>
+
+<p>可以想像在剛開始從都是雜訊的圖片需要去除雜訊的時候，消除雜訊的力道需要比較大一些，而到後面圖片已經成形以後，消除雜訊的力道就可以不用這麼大了，因為需要把當下的步數給noise predictor當作輸入。</p>
+
+<p>而訓練資料的取得方法也相對簡單，從網路上找到各式各樣的圖片以後，往圖片裡面加入noise就取得了一組paired data，被加入noise的圖片是noise predictor的輸入，而加進去的noise便是noise predictor的label。</p>
+
+<h2 id="文字生成圖片">文字生成圖片</h2>
+
+<p>在上面的部分我們是直接從都是雜訊的圖片裡面去產生一張清晰的圖片，如果想要產生出來的圖片能跟我們給予的文字敘述相符合，通常的做法像底下這樣</p>
+
+<pre><code class="language-mermaid">graph LR;
+    text(Text)
+    encoder[Text encoder]
+    diffusion[Text-to-Image diffusion]
+    random(Random noise)
+    decoder[Image decoder]
+    image(Image)
+    text--text representation--&gt;encoder
+    encoder--&gt;diffusion
+    random--&gt;diffusion
+    diffusion--image latent representation--&gt;decoder
+    decoder--&gt;image
+</code></pre>
+
+<p>首先會有一個Text encoder把使用者給予的文字轉換成vector，而這個vector會在text-to-image的diffusion model裡面在產生圖片的時候被使用到，最後是一個image decoder model，專門把diffusion model產生出來的tensor轉換成圖片，在前面diffusion model當中，我們可以直接產生圖片也可以讓後面的decoder產生，在目前的研究中看起來，分成兩步驟，讓decoder產生圖片的效果是比較好的。</p>
+
+<h3 id="text-encoder">Text Encoder</h3>
+
+<p>這邊text encoder的目標是把敘述轉換成vector，我們可以直接使用已經訓練好的語言模型像是BERT、GPT來幫助我們將文字轉換成向量。</p>
+
+<h3 id="image-decoder">Image Decoder</h3>
+
+<p>Image decoder做的事情是將diffusion model產生出來的向量或是小圖片轉換成大圖片，這邊我們可以去網路上搜尋各式各樣的圖片，透過訓練一個VAE來獲得這個image decoder，因為VAE可以不需要文字和圖片成對的資料，所以有機會可以用很多圖片來得到一個比較好的decoder。</p>
+
+<h3 id="diffusion">Diffusion</h3>
+
+<p>在diffusion的部分，大致上的做法跟上面雷同，比較不一樣的是因為我們想要根據使用者輸入的文字來產生圖片，所以在noise predictor的每一步都會把text encoder做出來的文字向量輸入給noise predictor。</p>
+
+<p>如果diffusion model最後的輸出是latent representation，當我們在把成對的圖片和文字拿來訓練diffusion model的時候，我們可以使用VAE的encoder把圖片轉換成tensor，而上方diffusion model的中間產物也會從圖片變成tensor，亦即noise predictor在預測的就不是圖片上的noise，而是圖片的latent representation的noise。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>這篇文章簡單介紹了一下diffusion model的概念以及text to image所會使用到的模組，但如果實際上去看stable diffusion的演算法會發現跟上面的說法有一些出入，詳細的數學可以參考<a href="https://www.youtube.com/watch?v=ifCDXFdeaaM&amp;list=PLJV_el3uVTsNi7PgekEUFsyVllAJXRsP-&amp;index=4">這邊的影片</a>。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://www.youtube.com/playlist?list=PLJV_el3uVTsNi7PgekEUFsyVllAJXRsP-">Diffusion Model - YouTube</a></li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-08-03T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/05/24/elasticsearch/">架設Elasticsearch來搜尋log</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -911,10 +963,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>
