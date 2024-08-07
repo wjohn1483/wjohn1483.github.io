@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Spark Introduction - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/page2/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇文章記錄一下最近學習到對於spark執行上的理解。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2024/08/07/spark-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -266,7 +266,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -284,123 +284,111 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/07/02/stable-diffusion/"><h2 itemprop="headline" class="item__header">在本機使用Stable Diffusion產生圖片</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。</div><p><a href="/2023/07/02/stable-diffusion/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Spark Introduction</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2024-08-07-spark-introduction/2024-08-07-spark-introduction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark Introduction"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Computer-Vision">Computer-Vision</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 02, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-07-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Machine-Learning,Computer-Vision,Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/04/30/vicuna/"><h2 itemprop="headline" class="item__header">如何在本機上跑Vicuna模型</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。</div><p><a href="/2023/04/30/vicuna/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 30, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-04-30T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool,Natural-Language-Processing"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/03/23/pyspark-executor-log/"><h2 itemprop="headline" class="item__header">將PySpark Executor的Log蒐集到Driver</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章記錄一下如何用spark內建的accumulator把在executor的資訊帶回driver上。</div><p><a href="/2023/03/23/pyspark-executor-log/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 23, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-03-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/03/18/temporal-collaborative-ranking-via-personalized-transformer/"><h2 itemprop="headline" class="item__header">Temporal Collaborative Ranking Via Personalized Transformer</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章記錄一下看完這篇paper的筆記。</div><p><a href="/2023/03/18/temporal-collaborative-ranking-via-personalized-transformer/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 18, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-03-18T00:00:00+00:00">
-    <meta itemprop="keywords" content="Recommendation-System,Paper"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/23/google-apps-script/"><h2 itemprop="headline" class="item__header">Google Apps Script介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在先前的文章裡面，使用了Google apps script來在Google sheet裡面顯示html，而Google apps script還可以做到更多的事情，這篇文章簡單介紹一下Google apps script是什麼，並如何使用它操作Google calendar。</div><p><a href="/2023/02/23/google-apps-script/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 23, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/15/xsv/"><h2 itemprop="headline" class="item__header">xsv使用介紹</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章簡單紀錄xsv，一個處理csv檔案的command line工具的使用範例。</div><p><a href="/2023/02/15/xsv/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 15, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-15T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2023/02/02/kgat/"><h2 itemprop="headline" class="item__header">KGAT: Knowledge Graph Attention Network for Recommendation</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下看了KGAT: Knowledge Graph Attention Network for Recommendation的筆記。</div><p><a href="/2023/02/02/kgat/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Graph-Model">Graph-Model</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 02, 2023</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2023-02-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Graph-Model,Recommendation-System,Machine-Learning,Paper"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2022/11/24/overleaf/"><h2 itemprop="headline" class="item__header">自己建立Overleaf伺服器</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在過去寫paper的時候通常都是使用overleaf來跟大家共同協作並把latex編譯成PDF，在偶然的機會發現到原來overleaf是有開源的版本的，底下介紹一下如何自行建立overleaf的伺服器。</div><p><a href="/2022/11/24/overleaf/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 24, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2022-11-24T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>52 post articles, 7 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li>
-              <div class="button button--primary button--circle focus"><span>2</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page3"><span>3</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-                </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page7"><span>7</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page3">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+                href="/archive/?tag=Spark">Spark</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Aug 07, 2024</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2024-08-07T00:00:00+00:00">
+    <meta itemprop="keywords" content="Spark"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>這篇文章記錄一下最近學習到對於spark執行上的理解。</p>
+
+<!--more-->
+
+<h2 id="spark的基本架構">Spark的基本架構</h2>
+
+<p><img src="https://i0.wp.com/sparkbyexamples.com/wp-content/uploads/2023/03/Driver-2.jpg?w=731&amp;ssl=1" alt="Spark architecture" /></p>
+
+<p><em><a href="https://sparkbyexamples.com/spark/what-is-spark-job/">What is Spark Job - Spark By {Examples}</a></em></p>
+
+<p>Spark的基本架構長得如上圖，當我們提交一個spark application給cluster manager像是yarn以後，application首先會先被交由一個driver來執行，driver可以想成是在cluster內某一個instance上的process，而這個process會根據你寫的程式碼去要求cluster manager給予executor來去執行對應的任務。</p>
+
+<p><img src="https://i0.wp.com/sparkbyexamples.com/wp-content/uploads/2023/03/spark-Stage-1.jpg?w=711&amp;ssl=1" alt="Spark stage" /></p>
+
+<p><em><a href="https://sparkbyexamples.com/spark/what-is-spark-stage/">What is Spark Stage? Explained - Spark By {Examples}</a></em></p>
+
+<p>一個application通常會根據你寫的程式碼又被細分成好幾個job和stage，一個job會被產生是當你對dataframe或是rdd採取一些特定的action像是<code class="language-plaintext highlighter-rouge">count()</code>、<code class="language-plaintext highlighter-rouge">collect()</code>、<code class="language-plaintext highlighter-rouge">write()</code>等，而每個job底下又可能有好幾個stage，端看你這個action需不需要shuffle、與其他instance傳輸資料，最後的每一個task就是實際上會丟到executor上執行的資料partition。</p>
+
+<h2 id="如何計算spark-application需要多少資源">如何計算Spark Application需要多少資源</h2>
+
+<p>這邊我們需要先區分一下instance和executor，instance是你這個cluster裡面實際的機器，而executor是spark用來執行task的process，所以在一個instance上面有可能會被分配到一個或多個executor，根據你機器的規格和executor對於core和memory的要求來決定。</p>
+
+<p>而每一個task會交由一個core來執行，所以當一個executor有4個核心的時候，spark會以multi-thread的方式來平行化地執行4個task，如果task裡面有包含到python udf，那麼會在每一個核心上面長一個python執行器，由每個核心的python執行器來執行udf。</p>
+
+<p>值得一提的是，spark好像只會看instance的核心數來分配executor，如果你的executor需要很多memory，需要小心造成OOM，舉例來說假設一個instance上面有16個core、64GB的記憶體，而我們設定<code class="language-plaintext highlighter-rouge">spark.executor.cores=2</code>、<code class="language-plaintext highlighter-rouge">spark.executor.memory=16g</code>，這時spark會覺得這個instance有機會可以放16/2=8個executor，但由於memory的關係其實最多只能放4個，如果8個都放上去就有可能造成問題，需要設定<code class="language-plaintext highlighter-rouge">spark.executor.instances</code>來限制executor的數量。</p>
+
+<h2 id="為什麼python-udf會被執行多次">為什麼python udf會被執行多次</h2>
+
+<p>PySpark執行python udf的方式是會先把拿到的資料partition再切成好幾個batch，把每個batch轉換成PyArrow的格式以後交由python執行器來執行，而現在pandas udf支援透過iterator的方式來存取，spark會把每一個batch的iterator丟進python執行器來跑udf，這時如果udf有一些比較吃重的初始化工作的時候，就可以寫在iterator前，之後就可以透過iterator來吃資料，不用再重新初始化一次。</p>
+
+<p>如果我們透過Spark UI去看每一個task的log的時候，可能還是會發現udf裡面初始化的部分被執行了多次，這邊有幾種可能，一個可能是因為executor有多個核心、使用multi-thread執行，所以同一個executor上不同task的log被混在一起，另一個可能是spark沒有把結果保留下來，後面又重算了一次，原因可能是job和job之間做了其他事情，executor需要釋放記憶體去執行其他的任務，當後面的job又需要前面job計算的結果時導致重算，我們可以透過<code class="language-plaintext highlighter-rouge">cache()</code>、<code class="language-plaintext highlighter-rouge">persist()</code>來讓spark強制把結果儲存下來，避免重算的發生。</p>
+
+<p>在一個<a href="https://stackoverflow.com/questions/58696198/spark-udf-executed-many-times">StackOverflow的討論串</a>上面有提供另一個方式是把udf設定成<code class="language-plaintext highlighter-rouge">Nondeterministic</code>，讓spark只執行一次這個udf，或許也可以試試看，但如果後面需要重算，這個做法還是會讓udf被執行多次。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@pandas_udf</span><span class="p">(...)</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="nf">asNondeterministic</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li>
+    <p><a href="https://sparkbyexamples.com/spark/what-is-spark-job/">What is Spark Job - Spark By {Examples}</a></p>
+  </li>
+  <li>
+    <p><a href="https://sparkbyexamples.com/spark/what-is-spark-stage/">What is Spark Stage? Explained - Spark By {Examples}</a></p>
+  </li>
+  <li>
+    <p><a href="https://sparkbyexamples.com/spark/spark-tune-executor-number-cores-and-memory/">Tune Spark Executor Number, Cores, and Memory - Spark By {Examples}</a></p>
+  </li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-08-07T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/08/03/introduction-to-diffusion-model/">Diffusion Model介紹</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -923,10 +911,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>
