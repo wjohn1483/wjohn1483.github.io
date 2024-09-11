@@ -68,6 +68,13 @@ TAG=2.1.0 docker-compose -f docker-compose-non-dev.yml pull
 TAG=2.1.0 docker-compose -f docker-compose-non-dev.yml up
 ```
 
+如果想對docker起起來的superset做一些額外的設定像是[將dashboard預設query 1分鐘的設定延長](https://superset.apache.org/docs/faq/#why-are-my-queries-timing-out)，可以創建一個文件**docker/pythonpath_dev/superset_config_docker.py**，並將config寫入其中後並重啟superset就可以了。
+
+```python
+# In docker/pythonpath_dev/superset_config_docker.py
+SUPERSET_WEBSERVER_TIMEOUT = 60
+```
+
 ## 製作Dashboard流程
 
 在superset裡面要製作最後的dashboard前有幾個步驟需要先執行：
