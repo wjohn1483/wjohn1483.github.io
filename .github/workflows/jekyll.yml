@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [2.7.5]
+        ruby: [3.4.2]
 
     steps:
       - name: Checkout
