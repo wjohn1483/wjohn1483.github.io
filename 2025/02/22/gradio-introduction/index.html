@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Spark Introduction - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Gradio Introduction - wjohn1483.github.io</title>
 
-<meta name="description" content="這篇文章記錄一下最近學習到對於spark執行上的理解。">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2024/08/07/spark-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2025/02/22/gradio-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -290,77 +290,175 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Spark Introduction</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Gradio Introduction</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2024-08-07-spark-introduction/2024-08-07-spark-introduction.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Spark Introduction"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2025-02-22-gradio-introduction/2025-02-22-gradio-introduction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Gradio Introduction"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Spark">Spark</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Aug 07, 2024</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2024-08-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="Spark"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Tool">Tool</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 22, 2025</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2025-02-22T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>這篇文章記錄一下最近學習到對於spark執行上的理解。</p>
+<div class="article__content" itemprop="articleBody"><p>在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。</p>
 
 <!--more-->
 
-<h2 id="spark的基本架構">Spark的基本架構</h2>
+<h2 id="gradio">Gradio</h2>
 
-<p><img src="https://i0.wp.com/sparkbyexamples.com/wp-content/uploads/2023/03/Driver-2.jpg?w=731&amp;ssl=1" alt="Spark architecture" /></p>
+<p><a href="https://www.gradio.app/">Gradio</a>是一個python的套件，讓使用者可以透過python來快速地創造出一個網頁來展示你所製作的模型或者是其他功能，在huggingface上面有許許多多的模型就是使用Gradio來展示給大家。</p>
 
-<p><em><a href="https://sparkbyexamples.com/spark/what-is-spark-job/">What is Spark Job - Spark By {Examples}</a></em></p>
+<p>安裝的方式很簡單，可以直接透過pip來安裝</p>
 
-<p>Spark的基本架構長得如上圖，當我們提交一個spark application給cluster manager像是yarn以後，application首先會先被交由一個driver來執行，driver可以想成是在cluster內某一個instance上的process，而這個process會根據你寫的程式碼去要求cluster manager給予executor來去執行對應的任務。</p>
-
-<p><img src="https://i0.wp.com/sparkbyexamples.com/wp-content/uploads/2023/03/spark-Stage-1.jpg?w=711&amp;ssl=1" alt="Spark stage" /></p>
-
-<p><em><a href="https://sparkbyexamples.com/spark/what-is-spark-stage/">What is Spark Stage? Explained - Spark By {Examples}</a></em></p>
-
-<p>一個application通常會根據你寫的程式碼又被細分成好幾個job和stage，一個job會被產生是當你對dataframe或是rdd採取一些特定的action像是<code class="language-plaintext highlighter-rouge">count()</code>、<code class="language-plaintext highlighter-rouge">collect()</code>、<code class="language-plaintext highlighter-rouge">write()</code>等，而每個job底下又可能有好幾個stage，端看你這個action需不需要shuffle、與其他instance傳輸資料，最後的每一個task就是實際上會丟到executor上執行的資料partition。</p>
-
-<h2 id="如何計算spark-application需要多少資源">如何計算Spark Application需要多少資源</h2>
-
-<p>這邊我們需要先區分一下instance和executor，instance是你這個cluster裡面實際的機器，而executor是spark用來執行task的process，所以在一個instance上面有可能會被分配到一個或多個executor，根據你機器的規格和executor對於core和memory的要求來決定。</p>
-
-<p>而每一個task會交由一個core來執行，所以當一個executor有4個核心的時候，spark會以multi-thread的方式來平行化地執行4個task，如果task裡面有包含到python udf，那麼會在每一個核心上面長一個python執行器，由每個核心的python執行器來執行udf。</p>
-
-<p>值得一提的是，spark好像只會看instance的核心數來分配executor，如果你的executor需要很多memory，需要小心造成OOM，舉例來說假設一個instance上面有16個core、64GB的記憶體，而我們設定<code class="language-plaintext highlighter-rouge">spark.executor.cores=2</code>、<code class="language-plaintext highlighter-rouge">spark.executor.memory=16g</code>，這時spark會覺得這個instance有機會可以放16/2=8個executor，但由於memory的關係其實最多只能放4個，如果8個都放上去就有可能造成問題，需要設定<code class="language-plaintext highlighter-rouge">spark.executor.instances</code>來限制executor的數量。</p>
-
-<h2 id="為什麼python-udf會被執行多次">為什麼python udf會被執行多次</h2>
-
-<p>PySpark執行python udf的方式是會先把拿到的資料partition再切成好幾個batch，把每個batch轉換成PyArrow的格式以後交由python執行器來執行，而現在pandas udf支援透過iterator的方式來存取，spark會把每一個batch的iterator丟進python執行器來跑udf，這時如果udf有一些比較吃重的初始化工作的時候，就可以寫在iterator前，之後就可以透過iterator來吃資料，不用再重新初始化一次。</p>
-
-<p>如果我們透過Spark UI去看每一個task的log的時候，可能還是會發現udf裡面初始化的部分被執行了多次，這邊有幾種可能，一個可能是因為executor有多個核心、使用multi-thread執行，所以同一個executor上不同task的log被混在一起，另一個可能是spark沒有把結果保留下來，後面又重算了一次，原因可能是job和job之間做了其他事情，executor需要釋放記憶體去執行其他的任務，當後面的job又需要前面job計算的結果時導致重算，我們可以透過<code class="language-plaintext highlighter-rouge">cache()</code>、<code class="language-plaintext highlighter-rouge">persist()</code>來讓spark強制把結果儲存下來，避免重算的發生。</p>
-
-<p>在一個<a href="https://stackoverflow.com/questions/58696198/spark-udf-executed-many-times">StackOverflow的討論串</a>上面有提供另一個方式是把udf設定成<code class="language-plaintext highlighter-rouge">Nondeterministic</code>，讓spark只執行一次這個udf，或許也可以試試看，但如果後面需要重算，這個做法還是會讓udf被執行多次。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@pandas_udf</span><span class="p">(...)</span>
-<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
-    <span class="k">pass</span>
-
-<span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="p">.</span><span class="nf">asNondeterministic</span><span class="p">()</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">--upgrade</span> gradio
 </code></pre></div></div>
+
+<h2 id="簡單的範例">簡單的範例</h2>
+
+<p>在安裝完成以後就可以著手來製作第一個簡單的網頁了，這邊可以來看一下<a href="https://www.gradio.app/guides/quickstart#building-your-first-demo">官方文件</a>裡面的第一個範例程式碼</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app.py
+</span><span class="kn">import</span> <span class="n">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sh">"</span><span class="s">Hello, </span><span class="sh">"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sh">"</span><span class="s">!</span><span class="sh">"</span> <span class="o">*</span> <span class="nf">int</span><span class="p">(</span><span class="n">intensity</span><span class="p">)</span>
+
+<span class="n">demo</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">greet</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">slider</span><span class="sh">"</span><span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">demo</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>透過<code class="language-plaintext highlighter-rouge">python app.py</code>或是<code class="language-plaintext highlighter-rouge">gradio app.py</code>的方式來執行這個程式碼，兩者的差異在於<code class="language-plaintext highlighter-rouge">gradio app.py</code>會反應程式碼的改動，當你在開發的時候可以透過這個方式來開發，但開發完成以後建議使用<code class="language-plaintext highlighter-rouge">python app.py</code>的方式來host會比較好。</p>
+
+<p>跑出來的結果會長得像下面的樣子，如果點上面官方文件的連結，可以直接在網站裡面與它互動看看</p>
+
+<p><img src="first_demo.png" alt="First demo" /></p>
+
+<p>在這邊我們透過字串的方式宣告了一個Interface的輸入和輸出，而且定義了一個python function <code class="language-plaintext highlighter-rouge">greet()</code>來去做邏輯的處理，需要注意<code class="language-plaintext highlighter-rouge">greet()</code>的argument的個數必須與inputs的個數相同，而<code class="language-plaintext highlighter-rouge">greet()</code>回傳的argument個數也必須與outputs的個數相同，在按下submit以後，<code class="language-plaintext highlighter-rouge">greet()</code>這個function會被執行，並將結果回傳到outputs當中，這時修改過後的文字就會出現在上方圖片右手邊的文字框裡面。</p>
+
+<p>如果想要調整server的port，可以在<code class="language-plaintext highlighter-rouge">launch()</code>裡面加入相關的參數來設定。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">demo</span><span class="p">.</span><span class="nf">launch</span><span class="p">(</span><span class="n">server_name</span><span class="o">=</span><span class="sh">"</span><span class="s">0.0.0.0</span><span class="sh">"</span><span class="p">,</span> <span class="n">server_port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="更細緻的操控">更細緻的操控</h3>
+
+<p>在上面的例子裡面，我們使用了<code class="language-plaintext highlighter-rouge">Interface()</code>來幫助我們創建了一個簡單的UI出來，並指定了一個python function來處理對應的邏輯，如果你想要自行決定文字框和按鈕的排版、python function被觸發的條件，我們可以透過<code class="language-plaintext highlighter-rouge">Blocks()</code>來達成</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sh">"</span><span class="s">Hello, </span><span class="sh">"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sh">"</span><span class="s">!</span><span class="sh">"</span> <span class="o">*</span> <span class="nf">int</span><span class="p">(</span><span class="n">intensity</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Blocks</span><span class="p">()</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Row</span><span class="p">():</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Name</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">intensity</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Slider</span><span class="p">(</span><span class="n">minimum</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Intensity</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">submit_button</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Button</span><span class="p">(</span><span class="sh">"</span><span class="s">Submit</span><span class="sh">"</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="sh">"</span><span class="s">primary</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Output</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="n">submit_button</span><span class="p">.</span><span class="nf">click</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">greet</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">output</span><span class="p">])</span>
+    <span class="n">name</span><span class="p">.</span><span class="nf">change</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">greet</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">output</span><span class="p">])</span>
+    <span class="n">intensity</span><span class="p">.</span><span class="nf">change</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">greet</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">output</span><span class="p">])</span>
+
+<span class="n">demo</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="first_demo_modified.png" alt="First demo modified" /></p>
+
+<p>在上面的程式碼裡面，我們將<code class="language-plaintext highlighter-rouge">Interface()</code>替換成了<code class="language-plaintext highlighter-rouge">Blocks()</code>，同時引入了<code class="language-plaintext highlighter-rouge">Row()</code>，把在with clause底下的所有元件放在同一列裡面，而先前用字串指定的輸入輸出我們改成了gradio的物件來做更多的設定，最後對於每一個物件設定其觸發條件，<code class="language-plaintext highlighter-rouge">click()</code>為當按鈕被按下去的時候觸發，而<code class="language-plaintext highlighter-rouge">change()</code>為當元件的內容有被改變的時候就觸發，<code class="language-plaintext highlighter-rouge">Textbox()</code>還有像是<code class="language-plaintext highlighter-rouge">submit()</code>的觸發條件，當在文字框內按下enter就觸發等等，gradio有什麼元件以及各個元件有什麼可以設定及其觸發條件，可以參考<a href="https://www.gradio.app/docs/gradio/introduction">這邊的文件</a>。</p>
+
+<h2 id="api的範例">API的範例</h2>
+
+<p>除了使用網頁上面的UI來使用自己寫好的功能，Gradio還有提供API的方式來開放讓大家使用，我們可以透過<a href="https://www.gradio.app/guides/getting-started-with-the-python-client">python client</a>來呼叫前面寫好的<code class="language-plaintext highlighter-rouge">greet()</code> function</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">gradio_client</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="nc">Client</span><span class="p">(</span><span class="sh">"</span><span class="s">http://localhost:7860/</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">World</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">intensity</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">api_name</span><span class="o">=</span><span class="sh">"</span><span class="s">/greet</span><span class="sh">"</span>
+<span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊我們使用一個URL來初始化<code class="language-plaintext highlighter-rouge">Client()</code>這個物件，接著將function需要的輸入放進去，而API的名字會對應前面在設定觸發條件時，給定的python function，可以透過網頁UI最下方<code class="language-plaintext highlighter-rouge">Use via API</code>的按鈕來查看有哪些API可以被調用。</p>
+
+<p>除了透過python client來使用以外，Gradio還可以<a href="https://www.gradio.app/guides/querying-gradio-apps-with-curl#authentication">使用一般的curl指令</a>來呼叫</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">EVENT_ID</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-X</span> POST http://localhost:7860/gradio_api/call/greet <span class="nt">-s</span> <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-d</span> <span class="s1">'{
+  "data": ["World", 3]
+}'</span> | <span class="nb">awk</span> <span class="nt">-F</span><span class="s1">'"'</span> <span class="s1">'{ print $4}'</span><span class="si">)</span>
+curl <span class="nt">-N</span> http://localhost:7860/gradio_api/call/greet/<span class="k">${</span><span class="nv">EVENT_ID</span><span class="k">}</span>
+</code></pre></div></div>
+
+<p>這邊比較特別的地方是，使用curl並不像python client，直接呼叫就可以得到結果，而是會先用POST把資料餵進去以後拿到一個<code class="language-plaintext highlighter-rouge">event_id</code>，接著再用這個<code class="language-plaintext highlighter-rouge">event_id</code>透過GET的方式去取得跑出來的結果。</p>
+
+<h2 id="動態的範例">動態的範例</h2>
+
+<p>在前面的範例裡面，我們都是設定好固定的UI來讓使用者來使用，如果說想要讓UI隨著使用的的輸入而動態變化的話也是可以做到的，我們可以透過<code class="language-plaintext highlighter-rouge">@gr.render()</code>的方式來達成</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+
+<span class="k">def</span> <span class="nf">add_field</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">fields</span> <span class="o">+</span> <span class="p">[{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">:</span> <span class="n">value</span><span class="p">}],</span> <span class="sh">""</span><span class="p">,</span> <span class="sh">""</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Blocks</span><span class="p">()</span> <span class="k">as</span> <span class="n">web</span><span class="p">:</span>
+        <span class="n">fields_state</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">State</span><span class="p">([])</span>
+        <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Row</span><span class="p">():</span>
+            <span class="n">field_name_text</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">New field name</span><span class="sh">"</span><span class="p">)</span>
+            <span class="n">field_value_text</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">New field value</span><span class="sh">"</span><span class="p">)</span>
+            <span class="n">add_field_btn</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Button</span><span class="p">(</span><span class="sh">"</span><span class="s">Add</span><span class="sh">"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">add_field_btn</span><span class="p">.</span><span class="nf">click</span><span class="p">(</span><span class="n">add_field</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">fields_state</span><span class="p">,</span> <span class="n">field_name_text</span><span class="p">,</span> <span class="n">field_value_text</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">fields_state</span><span class="p">,</span> <span class="n">field_name_text</span><span class="p">,</span> <span class="n">field_value_text</span><span class="p">])</span>
+
+        <span class="nd">@gr.render</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">fields_state</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">render_fields</span><span class="p">(</span><span class="n">fields</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Row</span><span class="p">():</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Name</span><span class="sh">"</span><span class="p">)</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Value</span><span class="sh">"</span><span class="p">)</span>
+                    <span class="n">update_btn</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Button</span><span class="p">(</span><span class="sh">"</span><span class="s">Update</span><span class="sh">"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">delete_btn</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Button</span><span class="p">(</span><span class="sh">"</span><span class="s">Delete</span><span class="sh">"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="sh">"</span><span class="s">stop</span><span class="sh">"</span><span class="p">)</span>
+                    <span class="k">def</span> <span class="nf">delete_field</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="n">field</span><span class="p">):</span>
+                        <span class="n">fields</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+                        <span class="k">return</span> <span class="n">fields</span>
+                    <span class="k">def</span> <span class="nf">update_field</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+                        <span class="n">new_fields</span> <span class="o">=</span> <span class="nf">delete_field</span><span class="p">()</span>
+                        <span class="k">return</span> <span class="n">new_fields</span> <span class="o">+</span> <span class="p">[{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">:</span> <span class="n">value</span><span class="p">}]</span>
+                    <span class="n">update_btn</span><span class="p">.</span><span class="nf">click</span><span class="p">(</span><span class="n">update_field</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">fields_state</span><span class="p">)</span>
+                    <span class="n">delete_btn</span><span class="p">.</span><span class="nf">click</span><span class="p">(</span><span class="n">delete_field</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">fields_state</span><span class="p">)</span>
+
+    <span class="n">web</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="nf">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="dynamic_demo.png" alt="Dynamic demo" /></p>
+
+<p>在<code class="language-plaintext highlighter-rouge">gr.Blocks()</code>的第一段裡面，我們宣告了一個<code class="language-plaintext highlighter-rouge">gr.State()</code>，裡面存放的是一個python list，同時做了兩個<code class="language-plaintext highlighter-rouge">Textbox()</code>，讓使用可以輸入<code class="language-plaintext highlighter-rouge">name</code>、<code class="language-plaintext highlighter-rouge">value</code>，並加入一個按鈕來去將使用者輸入的name、value pair放到state裡面。</p>
+
+<p>接著我們透過<code class="language-plaintext highlighter-rouge">gr.render()</code>，並以前面的state當作輸入，根據state裡面儲存的list的資訊去產生對應的元件出來，於此同時我們也可以對新產生出來的元件去設定其觸發的條件，進而更新state裡面的資訊，如此便可以動態地新增、移除網頁上面的元件了。</p>
 
 <h2 id="參考資料">參考資料</h2>
 
 <ul>
-  <li>
-    <p><a href="https://sparkbyexamples.com/spark/what-is-spark-job/">What is Spark Job - Spark By {Examples}</a></p>
-  </li>
-  <li>
-    <p><a href="https://sparkbyexamples.com/spark/what-is-spark-stage/">What is Spark Stage? Explained - Spark By {Examples}</a></p>
-  </li>
-  <li>
-    <p><a href="https://sparkbyexamples.com/spark/spark-tune-executor-number-cores-and-memory/">Tune Spark Executor Number, Cores, and Memory - Spark By {Examples}</a></p>
-  </li>
+  <li><a href="https://blog.csdn.net/cxyhjl/article/details/139712016">【Gradio】Building With Blocks 块中的状 态 + 动态应用程序与渲染装饰器-CSDN博客</a></li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-08-07T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-02-22T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/08/03/introduction-to-diffusion-model/">Diffusion Model介紹</a></div><div class="next"><span>NEXT</span><a href="/2025/02/22/gradio-introduction/">Gradio Introduction</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2024/08/07/spark-introduction/">Spark Introduction</a></div></div></div>
 
 </div>
 

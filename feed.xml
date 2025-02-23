@@ -1,4 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2024-09-11T11:29:52+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Spark Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction/" rel="alternate" type="text/html" title="Spark Introduction" /><published>2024-08-07T00:00:00+00:00</published><updated>2024-08-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction/"><![CDATA[<p>這篇文章記錄一下最近學習到對於spark執行上的理解。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2025-02-23T09:19:49+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Gradio Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction/" rel="alternate" type="text/html" title="Gradio Introduction" /><published>2025-02-22T00:00:00+00:00</published><updated>2025-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction/"><![CDATA[<p>在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。</p>
+
+<!--more-->
+
+<h2 id="gradio">Gradio</h2>
+
+<p><a href="https://www.gradio.app/">Gradio</a>是一個python的套件，讓使用者可以透過python來快速地創造出一個網頁來展示你所製作的模型或者是其他功能，在huggingface上面有許許多多的模型就是使用Gradio來展示給大家。</p>
+
+<p>安裝的方式很簡單，可以直接透過pip來安裝</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">--upgrade</span> gradio
+</code></pre></div></div>
+
+<h2 id="簡單的範例">簡單的範例</h2>
+
+<p>在安裝完成以後就可以著手來製作第一個簡單的網頁了，這邊可以來看一下<a href="https://www.gradio.app/guides/quickstart#building-your-first-demo">官方文件</a>裡面的第一個範例程式碼</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app.py
+</span><span class="kn">import</span> <span class="n">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sh">"</span><span class="s">Hello, </span><span class="sh">"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sh">"</span><span class="s">!</span><span class="sh">"</span> <span class="o">*</span> <span class="nf">int</span><span class="p">(</span><span class="n">intensity</span><span class="p">)</span>
+
+<span class="n">demo</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">greet</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">slider</span><span class="sh">"</span><span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">text</span><span class="sh">"</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">demo</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>透過<code class="language-plaintext highlighter-rouge">python app.py</code>或是<code class="language-plaintext highlighter-rouge">gradio app.py</code>的方式來執行這個程式碼，兩者的差異在於<code class="language-plaintext highlighter-rouge">gradio app.py</code>會反應程式碼的改動，當你在開發的時候可以透過這個方式來開發，但開發完成以後建議使用<code class="language-plaintext highlighter-rouge">python app.py</code>的方式來host會比較好。</p>
+
+<p>跑出來的結果會長得像下面的樣子，如果點上面官方文件的連結，可以直接在網站裡面與它互動看看</p>
+
+<p><img src="first_demo.png" alt="First demo" /></p>
+
+<p>在這邊我們透過字串的方式宣告了一個Interface的輸入和輸出，而且定義了一個python function <code class="language-plaintext highlighter-rouge">greet()</code>來去做邏輯的處理，需要注意<code class="language-plaintext highlighter-rouge">greet()</code>的argument的個數必須與inputs的個數相同，而<code class="language-plaintext highlighter-rouge">greet()</code>回傳的argument個數也必須與outputs的個數相同，在按下submit以後，<code class="language-plaintext highlighter-rouge">greet()</code>這個function會被執行，並將結果回傳到outputs當中，這時修改過後的文字就會出現在上方圖片右手邊的文字框裡面。</p>
+
+<p>如果想要調整server的port，可以在<code class="language-plaintext highlighter-rouge">launch()</code>裡面加入相關的參數來設定。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">demo</span><span class="p">.</span><span class="nf">launch</span><span class="p">(</span><span class="n">server_name</span><span class="o">=</span><span class="sh">"</span><span class="s">0.0.0.0</span><span class="sh">"</span><span class="p">,</span> <span class="n">server_port</span><span class="o">=</span><span class="mi">8080</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="更細緻的操控">更細緻的操控</h3>
+
+<p>在上面的例子裡面，我們使用了<code class="language-plaintext highlighter-rouge">Interface()</code>來幫助我們創建了一個簡單的UI出來，並指定了一個python function來處理對應的邏輯，如果你想要自行決定文字框和按鈕的排版、python function被觸發的條件，我們可以透過<code class="language-plaintext highlighter-rouge">Blocks()</code>來達成</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sh">"</span><span class="s">Hello, </span><span class="sh">"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="sh">"</span><span class="s">!</span><span class="sh">"</span> <span class="o">*</span> <span class="nf">int</span><span class="p">(</span><span class="n">intensity</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Blocks</span><span class="p">()</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Row</span><span class="p">():</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Name</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">intensity</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Slider</span><span class="p">(</span><span class="n">minimum</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">maximum</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Intensity</span><span class="sh">"</span><span class="p">)</span>
+        <span class="n">submit_button</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Button</span><span class="p">(</span><span class="sh">"</span><span class="s">Submit</span><span class="sh">"</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="sh">"</span><span class="s">primary</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Output</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="n">submit_button</span><span class="p">.</span><span class="nf">click</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">greet</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">output</span><span class="p">])</span>
+    <span class="n">name</span><span class="p">.</span><span class="nf">change</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">greet</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">output</span><span class="p">])</span>
+    <span class="n">intensity</span><span class="p">.</span><span class="nf">change</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">greet</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">intensity</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">output</span><span class="p">])</span>
+
+<span class="n">demo</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="first_demo_modified.png" alt="First demo modified" /></p>
+
+<p>在上面的程式碼裡面，我們將<code class="language-plaintext highlighter-rouge">Interface()</code>替換成了<code class="language-plaintext highlighter-rouge">Blocks()</code>，同時引入了<code class="language-plaintext highlighter-rouge">Row()</code>，把在with clause底下的所有元件放在同一列裡面，而先前用字串指定的輸入輸出我們改成了gradio的物件來做更多的設定，最後對於每一個物件設定其觸發條件，<code class="language-plaintext highlighter-rouge">click()</code>為當按鈕被按下去的時候觸發，而<code class="language-plaintext highlighter-rouge">change()</code>為當元件的內容有被改變的時候就觸發，<code class="language-plaintext highlighter-rouge">Textbox()</code>還有像是<code class="language-plaintext highlighter-rouge">submit()</code>的觸發條件，當在文字框內按下enter就觸發等等，gradio有什麼元件以及各個元件有什麼可以設定及其觸發條件，可以參考<a href="https://www.gradio.app/docs/gradio/introduction">這邊的文件</a>。</p>
+
+<h2 id="api的範例">API的範例</h2>
+
+<p>除了使用網頁上面的UI來使用自己寫好的功能，Gradio還有提供API的方式來開放讓大家使用，我們可以透過<a href="https://www.gradio.app/guides/getting-started-with-the-python-client">python client</a>來呼叫前面寫好的<code class="language-plaintext highlighter-rouge">greet()</code> function</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">gradio_client</span> <span class="kn">import</span> <span class="n">Client</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="nc">Client</span><span class="p">(</span><span class="sh">"</span><span class="s">http://localhost:7860/</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">predict</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">World</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">intensity</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">api_name</span><span class="o">=</span><span class="sh">"</span><span class="s">/greet</span><span class="sh">"</span>
+<span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>這邊我們使用一個URL來初始化<code class="language-plaintext highlighter-rouge">Client()</code>這個物件，接著將function需要的輸入放進去，而API的名字會對應前面在設定觸發條件時，給定的python function，可以透過網頁UI最下方<code class="language-plaintext highlighter-rouge">Use via API</code>的按鈕來查看有哪些API可以被調用。</p>
+
+<p>除了透過python client來使用以外，Gradio還可以<a href="https://www.gradio.app/guides/querying-gradio-apps-with-curl#authentication">使用一般的curl指令</a>來呼叫</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">EVENT_ID</span><span class="o">=</span><span class="si">$(</span>curl <span class="nt">-X</span> POST http://localhost:7860/gradio_api/call/greet <span class="nt">-s</span> <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-d</span> <span class="s1">'{
+  "data": ["World", 3]
+}'</span> | <span class="nb">awk</span> <span class="nt">-F</span><span class="s1">'"'</span> <span class="s1">'{ print $4}'</span><span class="si">)</span>
+curl <span class="nt">-N</span> http://localhost:7860/gradio_api/call/greet/<span class="k">${</span><span class="nv">EVENT_ID</span><span class="k">}</span>
+</code></pre></div></div>
+
+<p>這邊比較特別的地方是，使用curl並不像python client，直接呼叫就可以得到結果，而是會先用POST把資料餵進去以後拿到一個<code class="language-plaintext highlighter-rouge">event_id</code>，接著再用這個<code class="language-plaintext highlighter-rouge">event_id</code>透過GET的方式去取得跑出來的結果。</p>
+
+<h2 id="動態的範例">動態的範例</h2>
+
+<p>在前面的範例裡面，我們都是設定好固定的UI來讓使用者來使用，如果說想要讓UI隨著使用的的輸入而動態變化的話也是可以做到的，我們可以透過<code class="language-plaintext highlighter-rouge">@gr.render()</code>的方式來達成</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+
+<span class="k">def</span> <span class="nf">add_field</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">fields</span> <span class="o">+</span> <span class="p">[{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">:</span> <span class="n">value</span><span class="p">}],</span> <span class="sh">""</span><span class="p">,</span> <span class="sh">""</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Blocks</span><span class="p">()</span> <span class="k">as</span> <span class="n">web</span><span class="p">:</span>
+        <span class="n">fields_state</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">State</span><span class="p">([])</span>
+        <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Row</span><span class="p">():</span>
+            <span class="n">field_name_text</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">New field name</span><span class="sh">"</span><span class="p">)</span>
+            <span class="n">field_value_text</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">New field value</span><span class="sh">"</span><span class="p">)</span>
+            <span class="n">add_field_btn</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Button</span><span class="p">(</span><span class="sh">"</span><span class="s">Add</span><span class="sh">"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">add_field_btn</span><span class="p">.</span><span class="nf">click</span><span class="p">(</span><span class="n">add_field</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">fields_state</span><span class="p">,</span> <span class="n">field_name_text</span><span class="p">,</span> <span class="n">field_value_text</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="n">fields_state</span><span class="p">,</span> <span class="n">field_name_text</span><span class="p">,</span> <span class="n">field_value_text</span><span class="p">])</span>
+
+        <span class="nd">@gr.render</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">fields_state</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">render_fields</span><span class="p">(</span><span class="n">fields</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Row</span><span class="p">():</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Name</span><span class="sh">"</span><span class="p">)</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Textbox</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sh">"</span><span class="s">Value</span><span class="sh">"</span><span class="p">)</span>
+                    <span class="n">update_btn</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Button</span><span class="p">(</span><span class="sh">"</span><span class="s">Update</span><span class="sh">"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">delete_btn</span> <span class="o">=</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Button</span><span class="p">(</span><span class="sh">"</span><span class="s">Delete</span><span class="sh">"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="sh">"</span><span class="s">stop</span><span class="sh">"</span><span class="p">)</span>
+                    <span class="k">def</span> <span class="nf">delete_field</span><span class="p">(</span><span class="n">field</span><span class="o">=</span><span class="n">field</span><span class="p">):</span>
+                        <span class="n">fields</span><span class="p">.</span><span class="nf">remove</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+                        <span class="k">return</span> <span class="n">fields</span>
+                    <span class="k">def</span> <span class="nf">update_field</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+                        <span class="n">new_fields</span> <span class="o">=</span> <span class="nf">delete_field</span><span class="p">()</span>
+                        <span class="k">return</span> <span class="n">new_fields</span> <span class="o">+</span> <span class="p">[{</span><span class="sh">"</span><span class="s">name</span><span class="sh">"</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="sh">"</span><span class="s">value</span><span class="sh">"</span><span class="p">:</span> <span class="n">value</span><span class="p">}]</span>
+                    <span class="n">update_btn</span><span class="p">.</span><span class="nf">click</span><span class="p">(</span><span class="n">update_field</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="n">fields_state</span><span class="p">)</span>
+                    <span class="n">delete_btn</span><span class="p">.</span><span class="nf">click</span><span class="p">(</span><span class="n">delete_field</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">fields_state</span><span class="p">)</span>
+
+    <span class="n">web</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="nf">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="dynamic_demo.png" alt="Dynamic demo" /></p>
+
+<p>在<code class="language-plaintext highlighter-rouge">gr.Blocks()</code>的第一段裡面，我們宣告了一個<code class="language-plaintext highlighter-rouge">gr.State()</code>，裡面存放的是一個python list，同時做了兩個<code class="language-plaintext highlighter-rouge">Textbox()</code>，讓使用可以輸入<code class="language-plaintext highlighter-rouge">name</code>、<code class="language-plaintext highlighter-rouge">value</code>，並加入一個按鈕來去將使用者輸入的name、value pair放到state裡面。</p>
+
+<p>接著我們透過<code class="language-plaintext highlighter-rouge">gr.render()</code>，並以前面的state當作輸入，根據state裡面儲存的list的資訊去產生對應的元件出來，於此同時我們也可以對新產生出來的元件去設定其觸發的條件，進而更新state裡面的資訊，如此便可以動態地新增、移除網頁上面的元件了。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://blog.csdn.net/cxyhjl/article/details/139712016">【Gradio】Building With Blocks 块中的状 态 + 动态应用程序与渲染装饰器-CSDN博客</a></li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。]]></summary></entry><entry><title type="html">Spark Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction/" rel="alternate" type="text/html" title="Spark Introduction" /><published>2024-08-07T00:00:00+00:00</published><updated>2024-08-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction/"><![CDATA[<p>這篇文章記錄一下最近學習到對於spark執行上的理解。</p>
 
 <!--more-->
 
@@ -896,75 +1047,4 @@ wget https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/co
   <li>
     <p><a href="https://ivonblog.com/posts/windows-stable-diffusion-webui/">AI繪圖：Windows安裝Stable Diffusion WebUI教學 | Ivon的部落格</a></p>
   </li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><category term="Computer-Vision" /><category term="Tool" /><summary type="html"><![CDATA[在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。]]></summary></entry><entry><title type="html">如何在本機上跑Vicuna模型</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/" rel="alternate" type="text/html" title="如何在本機上跑Vicuna模型" /><published>2023-04-30T00:00:00+00:00</published><updated>2023-04-30T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/04/30/vicuna/"><![CDATA[<p>隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。</p>
-
-<!--more-->
-
-<h2 id="vicuna">Vicuna</h2>
-
-<p><a href="https://vicuna.lmsys.org/">Vicuna</a>是一個基於<a href="https://github.com/facebookresearch/llama">LLaMA</a>的大型語言模型（LLM），開發團隊使用GPT-4來當作評審去評論Vicuna和ChatGPT的回答哪個比較好，而Vicuna在測試裡面達到了90%的水準，是個表現相當不錯的模型，個人覺得回答的效果比起<a href="https://crfm.stanford.edu/2023/03/13/alpaca.html">Alpaca</a>和單純的LLaMA還要好上不少。</p>
-
-<p>底下會講一下如何在本機上面執行Vicuna，在ChatGPT跑不出你想要的結果時，不妨嘗試將問題問看看Vicuna。</p>
-
-<h2 id="下載llama">下載LLaMA</h2>
-
-<p>由於Vicuna是基於LLaMA的模型，首先我們會需要先拿到LLaMA的參數，正規的方式是去這份<a href="https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform">google表單</a>上面填寫資料，跟Meta申請使用許可，不過網路社群上也提供了很多其他的方式來讓大家下載，像是<a href="https://github.com/juncongmoo/pyllama">pyllama</a>。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>pyllama <span class="nt">-U</span>
-python <span class="nt">-m</span> llama.download <span class="nt">--model_size</span> 13B <span class="nt">--folder</span> /tmp/pyllama_data
-</code></pre></div></div>
-
-<p>只要下上面的指令就能簡單下載到LLaMA 13B的參數了，詳細的說明可以參考pyllama的文件。</p>
-
-<p>在執行的過程中有可能連線會卡住，可以使用<code class="language-plaintext highlighter-rouge">Ctrl+C</code>將連線斷開以後執行第二行的指令，它會從斷掉的地方繼續下載，不用怕會需要從頭下載，下載下來的參數僅限於研究的用途，不應該再被拿去做其他使用。</p>
-
-<h2 id="轉成huggingface的格式">轉成huggingface的格式</h2>
-
-<p>在下載好LLaMA的參數以後，我們需要將下載下來的參數轉成hugging face的格式，為此我們需要安裝<code class="language-plaintext highlighter-rouge">transformers</code>在機器上，而Vicuna要求transformers的版本要在<strong>4.28.0</strong>以上，如果直接用pip安裝的版本不夠高的話，可以直接下下面的指令來安裝最新版。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>https://github.com/huggingface/transformers/archive/refs/heads/main.zip
-</code></pre></div></div>
-
-<p>接著就能將LLaMA轉成hugging face的格式了</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 ./convert_llama_weights_to_hf.py <span class="se">\</span>
-    <span class="nt">--input_dir</span> ./pyllama_data <span class="se">\</span>
-    <span class="nt">--model_size</span> 13B <span class="se">\</span>
-    <span class="nt">--output_dir</span> ./llama_hf
-</code></pre></div></div>
-
-<p>上面指令裡面的<code class="language-plaintext highlighter-rouge">convert_llama_weights_to_hf.py</code>是使用<a href="https://huggingface.co/docs/transformers/main/model_doc/llama">LLaMA在hugging face頁面上</a>所提供的<a href="https://github.com/huggingface/transformers/blob/main/src/transformers/models/llama/convert_llama_weights_to_hf.py">這份</a>，而<code class="language-plaintext highlighter-rouge">./pyllama_data</code>是上面使用pyllama下載下來的資料夾、<code class="language-plaintext highlighter-rouge">./llama_hf</code>是輸出的資料夾。</p>
-
-<h2 id="下載vicuna-delta">下載Vicuna delta</h2>
-
-<p>Vicuna的參數放在他們的<a href="https://huggingface.co/lmsys">hugging face帳戶上</a>，但因為裡面有包含了非常大檔案的參數檔，所以在使用git clone下來之前會需要先安裝<a href="https://git-lfs.com/">Git Large File Storage（LFS）</a>才能將大檔案下載下來，底下是在Cent OS上安裝並下載的指令。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://packagecloud.io/install/repositories/github/git-lfs/script.rpm.sh | <span class="nb">sudo </span>bash
-<span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> git-lfs
-git lfs <span class="nb">install
-</span>git clone https://huggingface.co/lmsys/vicuna-13b-delta-v1.1
-</code></pre></div></div>
-
-<h2 id="apply-vicuna-delta">Apply Vicuna delta</h2>
-
-<p>有了LLaMA的參數和Vicuna的delta後，我們需要將delta套用在LLaMA的參數上來獲得實際的Vicuna，套用的方法是使用pip <code class="language-plaintext highlighter-rouge">fschat</code>的套件。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 <span class="nb">install </span>fschat
-python3 <span class="nt">-m</span> fastchat.model.apply_delta <span class="se">\</span>
-    <span class="nt">--base</span> ./llama_hf <span class="se">\</span>
-    <span class="nt">--target</span> ./vicuna-13b <span class="se">\</span>
-    <span class="nt">--delta</span> ./vicuna-13b-delta-v1.1
-</code></pre></div></div>
-
-<p>使用套件裡面的<code class="language-plaintext highlighter-rouge">apply_delta</code>搭配先前準備好的hugging face格式的LLaMA和Vicuna delta就能獲得實際的Vicuna了，值得一提的是套用7B的模型需要30GB的RAM，而13B的模型需要60GB，如果RAM沒有那麼足夠的話，可以參考<a href="https://github.com/lm-sys/FastChat#low-cpu-memory-conversion">文件當中的方式</a>來降低記憶體的使用。</p>
-
-<h2 id="使用vicuna">使用Vicuna</h2>
-
-<p>準備好Vicuna得參數後，便能使用fastchat提供的function來在terminal上面跟Vicuna對話了，詳細的參數可以參考<a href="https://github.com/lm-sys/FastChat#inference-with-command-line-interface">文件</a>。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> fastchat.serve.cli <span class="nt">--model-path</span> ./vicuna-13b-delta-v1.1
-</code></pre></div></div>
-
-<p>如果想用網頁版的方式來互動，fastchat也有使用<a href="https://gradio.app/">Gradio</a>來包成網頁，詳細的說明請參考<a href="https://github.com/lm-sys/FastChat#serving-with-web-gui">文件</a>。</p>
-
-<p>Vicuna有另外推出了<a href="https://github.com/lm-sys/FastChat#fastchat-t5">FastChat-T5</a>供大家在商業上使用，指令跟上面文章的相同，只需要將模型的路徑指到FastChat-T5就行了。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Natural-Language-Processing" /><summary type="html"><![CDATA[隨著LLaMA的推出，有越來越多人基於該模型做了各式各樣的調校，而Vicuna是其中的一種，這篇文章記錄一下如何在自己的機器上面將Vicuna跑起來。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><category term="Computer-Vision" /><category term="Tool" /><summary type="html"><![CDATA[在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。]]></summary></entry></feed>
