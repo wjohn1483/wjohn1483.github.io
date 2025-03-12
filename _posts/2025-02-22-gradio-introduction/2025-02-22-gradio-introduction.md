@@ -67,7 +67,7 @@ import gradio as gr
 def greet(name, intensity):
     return "Hello, " + name + "!" * int(intensity)
 
-with gr.Blocks() as demo:
+with gr.Blocks(title="Hello Gradio") as demo:
     with gr.Row():
         name = gr.Textbox(label="Name")
         intensity = gr.Slider(minimum=1, maximum=10, label="Intensity")
@@ -83,7 +83,7 @@ demo.launch()
 
 ![First demo modified](first_demo_modified.png)
 
-在上面的程式碼裡面，我們將`Interface()`替換成了`Blocks()`，同時引入了`Row()`，把在with clause底下的所有元件放在同一列裡面，而先前用字串指定的輸入輸出我們改成了gradio的物件來做更多的設定，最後對於每一個物件設定其觸發條件，`click()`為當按鈕被按下去的時候觸發，而`change()`為當元件的內容有被改變的時候就觸發，`Textbox()`還有像是`submit()`的觸發條件，當在文字框內按下enter就觸發等等，gradio有什麼元件以及各個元件有什麼可以設定及其觸發條件，可以參考[這邊的文件](https://www.gradio.app/docs/gradio/introduction)。
+在上面的程式碼裡面，我們將`Interface()`替換成了`Blocks()`，並設定了網頁的名稱是`Hello Gradio`，同時引入了`Row()`，把在with clause底下的所有元件放在同一列裡面，而先前用字串指定的輸入輸出我們改成了gradio的物件來做更多的設定，最後對於每一個物件設定其觸發條件，`click()`為當按鈕被按下去的時候觸發，而`change()`為當元件的內容有被改變的時候就觸發，`Textbox()`還有像是`submit()`的觸發條件，當在文字框內按下enter就觸發等等，gradio有什麼元件以及各個元件有什麼可以設定及其觸發條件，可以參考[這邊的文件](https://www.gradio.app/docs/gradio/introduction)。
 
 ## API的範例
 
