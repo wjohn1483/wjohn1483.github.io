@@ -1,4 +1,144 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2025-03-12T02:30:21+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Gradio Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction/" rel="alternate" type="text/html" title="Gradio Introduction" /><published>2025-02-22T00:00:00+00:00</published><updated>2025-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction/"><![CDATA[<p>在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2025-04-03T09:11:03+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Model Context Protocol簡單實作</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/04/03/mcp-introduction/" rel="alternate" type="text/html" title="Model Context Protocol簡單實作" /><published>2025-04-03T00:00:00+00:00</published><updated>2025-04-03T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/04/03/mcp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/04/03/mcp-introduction/"><![CDATA[<p>最近Model Context Protocol（MCP）蔚為風潮，這篇文章嘗試簡單介紹一下並使用一個範例來實作看看。</p>
+
+<!--more-->
+
+<h2 id="model-context-protocol">Model Context Protocol</h2>
+
+<p>Model Context Protocol（MCP）是一個由Claude背後的公司<a href="https://www.anthropic.com/news/model-context-protocol">Anthropic提出來的概念</a>，我們知道現在要讓LLM產生一個json response已經是一件可行的事情了，而MCP想要做到的事情是讓LLM在產生答案的時候自行決定要不要調用外部的function來取得資料，有點類似Retrieval Augmented Generation（RAG）的概念，只是在RAG的時候，我們需要先把資料放進到資料庫裡面，LLM才可以取得相對應的資料出來，而MCP可以取得更即時的資料。</p>
+
+<p>舉例來說，假設我想要知道台北現在的天氣並詢問LLM，LLM可以透過MCP的server去打API獲得天氣的資訊回來以後再產生回覆給我，如果是RAG的方式，使用者必須先把今天天氣的資訊輸入到資料庫裡面以後，LLM才有機會可以回答出即時的資訊。</p>
+
+<p><img src="./mcp_architecture.png" alt="MCP Architecture" /></p>
+
+<p><em><a href="https://modelcontextprotocol.io/introduction">Introduction - Model Context Protocol</a></em></p>
+
+<p>上圖是一個MCP運作的示意圖，左邊的Host可以想成是LLM的操控介面，可以透過Claude的app或者是其他IDE甚至是自己寫的UI來操作LLM，而這個Host會根據需求去與本機上面的其他MCP server溝通，可能是去得到本機上某一個路徑底下的檔案有哪些、可能是去讀取機器上的某一個檔案或者是去打API拿到相關的資料回來，最後Host會將從MCP server取得的資訊彙整起來再產生回覆給使用者。</p>
+
+<h2 id="創建mcp-server">創建MCP Server</h2>
+
+<p>底下來演示一下一個簡單的MCP server要如何創建，假設我們想要創建一個server，讓LLM可以知道機器上某一個路徑底下的檔案有哪些，我們可以這樣實作。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mcp_file_server.py
+</span><span class="kn">import</span> <span class="n">os</span>
+<span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="n">mcp.server.fastmcp</span> <span class="kn">import</span> <span class="n">FastMCP</span>
+
+
+<span class="n">mcp</span> <span class="o">=</span> <span class="nc">FastMCP</span><span class="p">(</span><span class="sh">"</span><span class="s">File</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nd">@mcp.tool</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">list_path</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s">Lists all files in the given directory.</span><span class="sh">"""</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="nf">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">mcp</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">transport</span><span class="o">=</span><span class="sh">"</span><span class="s">stdio</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>我們可以先透過<code class="language-plaintext highlighter-rouge">pip3 install mcp</code>把相關的dependency安裝起來，接著定義一個function <code class="language-plaintext highlighter-rouge">list_path</code>並用decorator <code class="language-plaintext highlighter-rouge">@mcp.tool()</code>包起來，讓LLM知道底下的function是一個tool，建議這邊把function的註解寫得詳盡一點，這樣LLM會比較清楚這個工具的功能是什麼。</p>
+
+<p>在做好工具以後，我們可以透過底下的指令來測試一下我們做出來的工具</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mcp dev PATH_TO_YOUR_TOOL.py
+<span class="c"># e.g. mcp dev mcp_file_server.py</span>
+</code></pre></div></div>
+
+<p>這時透過瀏覽器連上畫面跑出來的網址，我們可以看到一個UI介面</p>
+
+<p><img src="./mcp_dev_start.png" alt="MCP dev start" /></p>
+
+<p>這時候調整一下左邊的command和argument，分別換成<code class="language-plaintext highlighter-rouge">python</code>和你檔案的名稱像是<code class="language-plaintext highlighter-rouge">mcp_file_server.py</code>，按下Connect以後應該就能順利地連上MCP server了，接著點選上方的Tools、再點選List Tools就可以看到我們自定義的function <code class="language-plaintext highlighter-rouge">list_path</code>。</p>
+
+<p><img src="./mcp_dev_test.png" alt="MCP dev test" /></p>
+
+<p>我們點選<code class="language-plaintext highlighter-rouge">list_path</code>後可以在右邊看到我們寫的註解和需要輸入的參數，這邊可以自己給一些參數進去看看function執行的結果有沒有符合預期。</p>
+
+<h2 id="與llm-agent融合">與LLM Agent融合</h2>
+
+<p>前面我們製作了一個MCP server可以幫忙列出機器上某一個路徑底下的檔案，接下來我們想要讓LLM知道有這個工具並讓它來使用，這邊我們可以透過OpenAI的模型和<a href="https://www.langchain.com/">LangChain</a>來實現。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>gradio langchain langchain-mcp-adapters langchain-openai langgraph
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># llm_server.py
+</span><span class="kn">from</span> <span class="n">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="n">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+<span class="kn">from</span> <span class="n">langchain_mcp_adapters.tools</span> <span class="kn">import</span> <span class="n">load_mcp_tools</span>
+<span class="kn">from</span> <span class="n">langchain_openai</span> <span class="kn">import</span> <span class="n">ChatOpenAI</span>
+<span class="kn">from</span> <span class="n">langgraph.prebuilt</span> <span class="kn">import</span> <span class="n">create_react_agent</span>
+<span class="kn">from</span> <span class="n">mcp</span> <span class="kn">import</span> <span class="n">ClientSession</span><span class="p">,</span> <span class="n">StdioServerParameters</span>
+<span class="kn">from</span> <span class="n">mcp.client.stdio</span> <span class="kn">import</span> <span class="n">stdio_client</span>
+
+<span class="nf">load_dotenv</span><span class="p">()</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="nc">ChatOpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-4o-mini</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="n">server_params</span> <span class="o">=</span> <span class="nc">StdioServerParameters</span><span class="p">(</span>
+    <span class="n">command</span><span class="o">=</span><span class="sh">"</span><span class="s">python</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">mcp_file_server.py</span><span class="sh">"</span><span class="p">],</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_prompt</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">history</span><span class="p">):</span>
+    <span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">chat</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+        <span class="n">role</span> <span class="o">=</span> <span class="n">chat</span><span class="p">[</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">]</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">chat</span><span class="p">[</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">]</span>
+        <span class="n">messages</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="n">role</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">content</span><span class="p">})</span>
+    <span class="n">messages</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">user_input</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">messages</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run_agent</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">history</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="nf">stdio_client</span><span class="p">(</span><span class="n">server_params</span><span class="p">)</span> <span class="nf">as </span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="nc">ClientSession</span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+            <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">load_mcp_tools</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+
+            <span class="n">agent</span> <span class="o">=</span> <span class="nf">create_react_agent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tools</span><span class="p">)</span>
+            <span class="n">messages</span> <span class="o">=</span> <span class="nf">get_prompt</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">history</span><span class="p">)</span>
+            <span class="n">agent_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">agent</span><span class="p">.</span><span class="nf">ainvoke</span><span class="p">({</span><span class="sh">"</span><span class="s">messages</span><span class="sh">"</span><span class="p">:</span> <span class="n">messages</span><span class="p">})</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">agent_response</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">agent_response</span><span class="p">[</span><span class="sh">"</span><span class="s">messages</span><span class="sh">"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">content</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Blocks</span><span class="p">(</span><span class="n">fill_height</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fill_width</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+        <span class="n">gr</span><span class="p">.</span><span class="nc">ChatInterface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">run_agent</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="sh">"</span><span class="s">messages</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">demo</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>這邊我們把OpenAI的key放進<code class="language-plaintext highlighter-rouge">.env</code>的檔案裡面，並在上面的script透過<code class="language-plaintext highlighter-rouge">load_dotenv()</code>放到環境變數裡面</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># .env</span>
+<span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s2">"YOUR_KEY_HERE"</span>
+</code></pre></div></div>
+
+<p>接下來定義<code class="language-plaintext highlighter-rouge">server_params</code>來設定一下我們的MCP server該怎麼被執行，而<code class="language-plaintext highlighter-rouge">get_prompt()</code>這個function會把使用者和LLM過去的對話紀錄整理起來變成下一次要輸入的prompt，最後透過<code class="language-plaintext highlighter-rouge">run_agent()</code>來串起MCP server和LLM，並使用<a href="https://wjohn1483.github.io/2025/02/22/gradio-introduction/">Gradio的UI</a>來讓使用者來操作。</p>
+
+<p>透過<code class="language-plaintext highlighter-rouge">python3 llm_server.py</code>把Gradio的server起起來後，下一個列出文件的prompt就可以成功呼叫到上面創建的MCP server，並回傳機器上面的檔案名稱了。</p>
+
+<p><img src="./llm_server.png" alt="LLM Server" /></p>
+
+<p>如果覺得需要自己弄一個Gradio UI來使用MCP server太麻煩，可以參考<a href="https://www.linkedin.com/pulse/how-use-mcp-server-tools-claude-app-mariusz-misiek-aszxe/">網路上的教學</a>來使用Claude app或是<a href="https://www.youtube.com/watch?v=McNRkd5CxFY">透過Cursor</a>來操作。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>這篇文章實作了一個簡單的MCP server，賦予LLM能力來根據需求自行調用來得知機器上某個路徑底下的檔案有哪些，以這個為基礎，我們可以擴充MCP server的function，讓LLM可以使用更多的工具來減少人類需要自行調用資料再放進prompt裡面的負擔。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://modelcontextprotocol.io/introduction">Introduction - Model Context Protocol</a></li>
+  <li><a href="https://www.linkedin.com/pulse/how-use-mcp-server-tools-claude-app-mariusz-misiek-aszxe/">How to use MCP server tools in the Claude App?</a></li>
+  <li><a href="https://www.youtube.com/watch?v=McNRkd5CxFY">MCP是啥？技术原理是什么？一个视频搞懂MCP的一切。Windows系统配置MCP，Cursor,Cline 使用MCP - YouTube</a></li>
+  <li><a href="https://www.youtube.com/watch?v=x8LQC6ut53Y">How to use MCP servers from a custom AI agent (step by step) - YouTube</a></li>
+  <li><a href="https://tenten.co/learning/claude-desktop-mcp/">Claude Desktop MCP 使用指南：完整設置教學</a></li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近Model Context Protocol（MCP）蔚為風潮，這篇文章嘗試簡單介紹一下並使用一個範例來實作看看。]]></summary></entry><entry><title type="html">Gradio Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction/" rel="alternate" type="text/html" title="Gradio Introduction" /><published>2025-02-22T00:00:00+00:00</published><updated>2025-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction/"><![CDATA[<p>在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。</p>
 
 <!--more-->
 
@@ -915,136 +1055,4 @@ make
 
 <ul>
   <li><a href="https://zhuanlan.zhihu.com/p/618894319">让天下没有难Tuning的大模型-PEFT技术简介</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html"><![CDATA[隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。]]></summary></entry><entry><title type="html">在本機使用Stable Diffusion產生圖片</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion/" rel="alternate" type="text/html" title="在本機使用Stable Diffusion產生圖片" /><published>2023-07-02T00:00:00+00:00</published><updated>2023-07-02T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/02/stable-diffusion/"><![CDATA[<p>在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。</p>
-
-<!--more-->
-
-<h2 id="stable-diffusion介紹">Stable Diffusion介紹</h2>
-
-<p>Stable Diffusion是一種擴散模型（Diffusion model）的衍生，關於擴散模型的介紹可以參考<a href="https://www.youtube.com/watch?v=ifCDXFdeaaM">李宏毅老師的影片</a>，簡單來說就是使用一個類神經網路去不斷地對照片做去除雜訊的動作，於此同時，我們可以在這整個過程裡面加入其他latent variable，來指示圖片生的的樣子，隨著開源的社群把相關的程式碼整理得很好、有簡潔的UI來讓大家使用，造就了一波AI算圖的風潮。</p>
-
-<h2 id="安裝stable-diffusion">安裝Stable Diffusion</h2>
-
-<p>這邊就來介紹一下如何在本機上面安裝Stable Diffusion及其UI，更詳細的說明可以參考<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">官方文件</a>，根據文件裡面的說明，要在Linux上面安裝Stable Diffusion的UI只需要執行底下的指令就可以了。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash &lt;<span class="o">(</span>wget <span class="nt">-qO-</span> https://raw.githubusercontent.com/AUTOMATIC1111/stable-diffusion-webui/master/webui.sh<span class="o">)</span>
-<span class="nb">cd</span> ./stable-diffusion-webui
-bash ./webui.sh
-</code></pre></div></div>
-
-<h3 id="疑難排解">疑難排解</h3>
-
-<p>如果在安裝的過程當中碰到了一些錯誤，可以參考<a href="https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/errors/">網路上整理的疑難排解</a>，這邊放上我在安裝時碰到的問題及解法。</p>
-
-<h4 id="執行webuish時碰上repository-clone不下來">執行webui.sh時碰上repository clone不下來</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RuntimeError: Couldn<span class="s1">'t checkout {name}'</span>s <span class="nb">hash</span>: <span class="o">{</span>commithash<span class="o">}</span><span class="nb">.</span>
-Command: <span class="s2">"git"</span> <span class="nt">-C</span> <span class="s2">"/home/wjohn1483/stable-diffusion-webui/repositories/k-diffusion"</span> checkout c9fe758757e022f05ca5a53fa8fac28889e4f1cf
-Error code: 129
-stderr: Unknown option: <span class="nt">-C</span>
-</code></pre></div></div>
-
-<p>會碰到這個問題是因為git的版本太舊了，還沒有支援<code class="language-plaintext highlighter-rouge">-C</code>的選項，只需要更新git的版本就可以了，在CentOS裡面更新的指令如下。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nt">-y</span> <span class="nb">install </span>https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
-<span class="nb">sudo </span>yum <span class="nb">install </span>git
-</code></pre></div></div>
-
-<h4 id="執行webuish時碰上libgl找不到">執行webui.sh時碰上libGL找不到</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ImportError: libGL.so.1: cannot open shared object file: No such file or directory
-</code></pre></div></div>
-
-<p>網路上是建議將<code class="language-plaintext highlighter-rouge">opencv-python</code>移除掉，改安裝<code class="language-plaintext highlighter-rouge">opencv-python-headless</code>就能解決。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip3 uninstall opencv-python
-pip3 <span class="nb">install </span>opencv-python-headless
-</code></pre></div></div>
-
-<p>不過有些套件的requirements裡面會要求安裝<code class="language-plaintext highlighter-rouge">opencv-python</code>，所以建議的解法會是安裝好相關的套件，如果是CentOS的話可以使用下面的指令。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> mesa-libGL
-</code></pre></div></div>
-
-<h4 id="啟動server時出現not-implemented-for-half">啟動server時，出現not implemented for ‘Half’</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RuntimeError: <span class="s2">"addmm_impl_cpu_"</span> not implemented <span class="k">for</span> <span class="s1">'Half'</span>
-RuntimeError: <span class="s2">"LayerNormKernelImpl"</span> not implemented <span class="k">for</span> <span class="s1">'Half'</span>
-</code></pre></div></div>
-
-<p>這個查起來是浮點數精度的問題，可以在<strong>webui-user.sh</strong>裡面的<code class="language-plaintext highlighter-rouge">COMMANDLINE_ARGS</code>多加底下的參數來解決。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">COMMANDLINE_ARGS</span><span class="o">=</span><span class="s2">"--precision full --no-half"</span>
-</code></pre></div></div>
-
-<h4 id="成功啟動server了但是想讓遠端連進來">成功啟動server了，但是想讓遠端連進來</h4>
-
-<p>預設server會起在<code class="language-plaintext highlighter-rouge">127.0.0.1</code>，如果想改成<code class="language-plaintext highlighter-rouge">0.0.0.0</code>讓其他人可以連線的話，可以在<strong>webui-user.sh</strong>中新增<code class="language-plaintext highlighter-rouge">--listen</code>到<code class="language-plaintext highlighter-rouge">COMMANDLINE_ARGS</code>中。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">COMMANDLINE_ARGS</span><span class="o">=</span><span class="s2">"--precision full --no-half --listen"</span>
-</code></pre></div></div>
-
-<p>如果想讓遠端連進來的人可以隨意安裝擴充套件的話，需要額外再加<code class="language-plaintext highlighter-rouge">--enable-insecure-extension-access</code>到其中。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">COMMANDLINE_ARGS</span><span class="o">=</span><span class="s2">"--precision full --no-half --listen --enable-insecure-extension-access"</span>
-</code></pre></div></div>
-
-<h2 id="使用各種模型擴充套件">使用各種模型、擴充套件</h2>
-
-<p>在安裝好UI以後，它會預設幫你下載好一個模型，我們就可以直接在上面打字讓模型幫我們產生圖片了，但如果你想要使用其他特化的模型，或是使用擴充套件的話，可以直接在UI上面擴充。</p>
-
-<h3 id="civitai">Civitai</h3>
-
-<p>如果想要擴充模型的話，除了在HuggingFace上面搜尋以外，還可以在<a href="https://civitai.com/">Civitai</a>上面下載，另外在<a href="https://ivonblog.com/posts/stable-diffusion-webui-manuals/installation/download-models/">這邊</a>也有人整理了一些有趣的模型們。</p>
-
-<p>安裝的方式很簡單，只需要把下載下來的<code class="language-plaintext highlighter-rouge">.ckpt</code>或者是<code class="language-plaintext highlighter-rouge">.safetensors</code>的檔案放進<strong>stable-diffusion-webui/models/Stable-diffusion</strong>的資料夾下就行了，也可以使用wget來下載。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># https://civitai.com/models/56383/pirsus-epic-realism</span>
-wget https://civitai.com/api/download/models/96535
-<span class="nb">mv </span>96535 ./models/Stable-diffusion/pirsusEpicRealism_v21.safetensors
-</code></pre></div></div>
-
-<p>這邊的模型編號跟網址列上面的不同，需要使用網頁開發工具來看Download按鈕的URL。</p>
-
-<p>下載完以後應該就能在UI最上方checkpoint的地方看到新的模型了。</p>
-
-<p><img src="checkpoint.png" alt="New Checkpoint" /></p>
-
-<h3 id="controlnet">ControlNet</h3>
-
-<p>除了嘗試用各式各樣的模型和prompt來產生想像中的圖片以外，還可以使用<a href="https://github.com/lllyasviel/ControlNet">ControlNet</a>這個擴充套件來給予模型更精細的指示，像是希望產生的圖片動作要跟範例圖片中的相同。</p>
-
-<p>安裝的方式蠻簡單的，在<code class="language-plaintext highlighter-rouge">Extensions</code>的頁面、選擇<code class="language-plaintext highlighter-rouge">Install from URL</code>、貼上下面的網址、按下Install、到<code class="language-plaintext highlighter-rouge">Installed</code>的tab按下重啟就行了。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://github.com/Mikubill/sd-webui-controlnet
-</code></pre></div></div>
-
-<p><img src="install_extension.png" alt="Install Extension" /></p>
-
-<p>接著我們還需要去<a href="https://huggingface.co/webui/ControlNet-modules-safetensors/tree/main">HuggingFace</a>上面下載ControlNet的模型下來到<strong>extensions/sd-webui-controlnet-main/models</strong>的目錄底下。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_openpose-fp16.safetensors <span class="nt">-P</span> ./extensions/sd-webui-controlnet/models
-wget https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_normal-fp16.safetensors <span class="nt">-P</span> ./extensions/sd-webui-controlnet/models
-wget https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_scribble-fp16.safetensors <span class="nt">-P</span> ./extensions/sd-webui-controlnet/models
-</code></pre></div></div>
-
-<p>這邊先下載了三個模型下來，可以根據自己的需求下載不同的模型，這些模型的效果可以參考<a href="https://home.gamer.com.tw/artwork.php?sn=5662905">這篇文章</a>。</p>
-
-<p>安裝擴充套件回到<code class="language-plaintext highlighter-rouge">txt2img</code>的頁面後，應該就能在底下看到ControlNet的區塊了，在這邊我們可以把<code class="language-plaintext highlighter-rouge">Enable</code>打勾、丟上參考圖片、並在Preprocessor的地方選擇你想要的preprocessor，就能使用prompt跟參考圖片來產生更細緻的的圖片了。</p>
-
-<p><img src="controlnet.png" alt="ControlNet Settings" /></p>
-
-<p>這邊我胡亂使用prompt <code class="language-plaintext highlighter-rouge">A strong male</code>和上面的參考圖片，就能產生如底下的圖片了。</p>
-
-<p><img src="generated_image.png" alt="Generated Image" /></p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li>
-    <p><a href="https://home.gamer.com.tw/artwork.php?sn=5662905">Stable diffusion ControlNet使用心得 - tark455365的創作 - 巴哈姆特</a></p>
-  </li>
-  <li>
-    <p><a href="https://ivonblog.com/posts/windows-stable-diffusion-webui/">AI繪圖：Windows安裝Stable Diffusion WebUI教學 | Ivon的部落格</a></p>
-  </li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><category term="Computer-Vision" /><category term="Tool" /><summary type="html"><![CDATA[在ChatGPT出來以前有一波使用機器學習產生圖片的熱潮，這篇文章記錄一下如何在本機上面使用Stable Diffusion來產生圖片。]]></summary></entry></feed>
+</ul>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html"><![CDATA[隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。]]></summary></entry></feed>

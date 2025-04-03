@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Model Context Protocol簡單實作 - wjohn1483.github.io</title>
 
-<meta name="description" content="">
-<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/page6/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="最近Model Context Protocol（MCP）蔚為風潮，這篇文章嘗試簡單介紹一下並使用一個範例來實作看看。">
+<link rel="canonical" href="https://wjohn1483.github.io# the base hostname & protocol for your site e.g. https://www.someone.com/2025/04/03/mcp-introduction/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -266,7 +266,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport hide-footer has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -284,120 +284,198 @@
   </header>
 </div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="Your Name"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/05/07/slack-bot/"><h2 itemprop="headline" class="item__header">如何製作Slack機器人</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇文章紀錄一下如何透過GCP製作一個簡單的slack機器人。</div><p><a href="/2020/05/07/slack-bot/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Model Context Protocol簡單實作</h1></header><span class="split-space">&nbsp;</span>
+          <a class="edit-on-github"
+            title="Edit on Github"
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2025-04-03-mcp-introduction/2025-04-03-mcp-introduction.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Model Context Protocol簡單實作"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 07, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-05-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/25/plot-data-with-r/"><h2 itemprop="headline" class="item__header">用R來作圖</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在以前有聽聞說R語言很適合用來畫圖，方便人們來觀察資料的特性，這篇粗淺的紀錄一下我用過的一些作圖function。</div><p><a href="/2020/04/25/plot-data-with-r/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 25, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-25T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/"><h2 itemprop="headline" class="item__header">Playing Atari with Deep Reinforcement Learning</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">在之前的文章有提到Q-Networks，但卻沒有細講它的運作方式，這篇來介紹一下這曾經上過Nature的paper。</div><p><a href="/2020/04/19/playing-atari-with-deep-reinforcement-learning/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Reinforcement-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/"><h2 itemprop="headline" class="item__header">Generative Adversarial User Model for Reinforcement Learning Based Recommendation System</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Reinforcement Learning很適合用在推薦系統上，然而要訓練RL需要很多跟使用者互動的經驗，這篇paper使用類似GAN的方法來去創造user model，以跟推薦系統互動。</div><p><a href="/2020/04/19/generative-adversarial-user-model-for-reinforcement-learning-based-recommendation-system/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Generative-Adversarial-Network">Generative-Adversarial-Network</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Recommendation-System">Recommendation-System</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Reinforcement-Learning">Reinforcement-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 19, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-19T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Generative-Adversarial-Network,Recommendation-System,Reinforcement-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/04/02/tf-idf-introduction/"><h2 itemprop="headline" class="item__header">TF-IDF簡介</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇介紹一下常被使用的TF-IDF是什麼，以及怎麼用來做一個簡單的分類器。</div><p><a href="/2020/04/02/tf-idf-introduction/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 02, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-04-02T00:00:00+00:00">
-    <meta itemprop="keywords" content="Machine-Learning"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/"><h2 itemprop="headline" class="item__header">BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇介紹一下常常聽到的BERT是怎麼樣運作的。</div><p><a href="/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 29, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-29T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Natural-Language-Processing"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/28/terminal-tools/"><h2 itemprop="headline" class="item__header">Terminal小工具</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇記錄一下我在terminal裡面常使用的一些小工具們。</div><p><a href="/2020/03/28/terminal-tools/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 28, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-28T00:00:00+00:00">
-    <meta itemprop="keywords" content="Tool"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2020/03/23/deep-contextualized-word-representation/"><h2 itemprop="headline" class="item__header">Deep contextualized word representation</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">這篇簡單介紹一下赫赫有名的ELMo，其源自於Deep contextualized word representation這篇paper。</div><p><a href="/2020/03/23/deep-contextualized-word-representation/">Read more</a></p></div><div class="article__info clearfix"><ul class="left-col menu"><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 23, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-23T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Natural-Language-Processing"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>54 post articles, 7 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/page5">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page4"><span>4</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page5"><span>5</span></a>
-                </li><li>
-              <div class="button button--primary button--circle focus"><span>6</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page7"><span>7</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page7">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 03, 2025</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2025-04-03T00:00:00+00:00">
+    <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><p>最近Model Context Protocol（MCP）蔚為風潮，這篇文章嘗試簡單介紹一下並使用一個範例來實作看看。</p>
+
+<!--more-->
+
+<h2 id="model-context-protocol">Model Context Protocol</h2>
+
+<p>Model Context Protocol（MCP）是一個由Claude背後的公司<a href="https://www.anthropic.com/news/model-context-protocol">Anthropic提出來的概念</a>，我們知道現在要讓LLM產生一個json response已經是一件可行的事情了，而MCP想要做到的事情是讓LLM在產生答案的時候自行決定要不要調用外部的function來取得資料，有點類似Retrieval Augmented Generation（RAG）的概念，只是在RAG的時候，我們需要先把資料放進到資料庫裡面，LLM才可以取得相對應的資料出來，而MCP可以取得更即時的資料。</p>
+
+<p>舉例來說，假設我想要知道台北現在的天氣並詢問LLM，LLM可以透過MCP的server去打API獲得天氣的資訊回來以後再產生回覆給我，如果是RAG的方式，使用者必須先把今天天氣的資訊輸入到資料庫裡面以後，LLM才有機會可以回答出即時的資訊。</p>
+
+<p><img src="./mcp_architecture.png" alt="MCP Architecture" /></p>
+
+<p><em><a href="https://modelcontextprotocol.io/introduction">Introduction - Model Context Protocol</a></em></p>
+
+<p>上圖是一個MCP運作的示意圖，左邊的Host可以想成是LLM的操控介面，可以透過Claude的app或者是其他IDE甚至是自己寫的UI來操作LLM，而這個Host會根據需求去與本機上面的其他MCP server溝通，可能是去得到本機上某一個路徑底下的檔案有哪些、可能是去讀取機器上的某一個檔案或者是去打API拿到相關的資料回來，最後Host會將從MCP server取得的資訊彙整起來再產生回覆給使用者。</p>
+
+<h2 id="創建mcp-server">創建MCP Server</h2>
+
+<p>底下來演示一下一個簡單的MCP server要如何創建，假設我們想要創建一個server，讓LLM可以知道機器上某一個路徑底下的檔案有哪些，我們可以這樣實作。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># mcp_file_server.py
+</span><span class="kn">import</span> <span class="n">os</span>
+<span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="n">mcp.server.fastmcp</span> <span class="kn">import</span> <span class="n">FastMCP</span>
+
+
+<span class="n">mcp</span> <span class="o">=</span> <span class="nc">FastMCP</span><span class="p">(</span><span class="sh">"</span><span class="s">File</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nd">@mcp.tool</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">list_path</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s">Lists all files in the given directory.</span><span class="sh">"""</span>
+    <span class="k">return</span> <span class="n">os</span><span class="p">.</span><span class="nf">listdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="n">mcp</span><span class="p">.</span><span class="nf">run</span><span class="p">(</span><span class="n">transport</span><span class="o">=</span><span class="sh">"</span><span class="s">stdio</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>我們可以先透過<code class="language-plaintext highlighter-rouge">pip3 install mcp</code>把相關的dependency安裝起來，接著定義一個function <code class="language-plaintext highlighter-rouge">list_path</code>並用decorator <code class="language-plaintext highlighter-rouge">@mcp.tool()</code>包起來，讓LLM知道底下的function是一個tool，建議這邊把function的註解寫得詳盡一點，這樣LLM會比較清楚這個工具的功能是什麼。</p>
+
+<p>在做好工具以後，我們可以透過底下的指令來測試一下我們做出來的工具</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mcp dev PATH_TO_YOUR_TOOL.py
+<span class="c"># e.g. mcp dev mcp_file_server.py</span>
+</code></pre></div></div>
+
+<p>這時透過瀏覽器連上畫面跑出來的網址，我們可以看到一個UI介面</p>
+
+<p><img src="./mcp_dev_start.png" alt="MCP dev start" /></p>
+
+<p>這時候調整一下左邊的command和argument，分別換成<code class="language-plaintext highlighter-rouge">python</code>和你檔案的名稱像是<code class="language-plaintext highlighter-rouge">mcp_file_server.py</code>，按下Connect以後應該就能順利地連上MCP server了，接著點選上方的Tools、再點選List Tools就可以看到我們自定義的function <code class="language-plaintext highlighter-rouge">list_path</code>。</p>
+
+<p><img src="./mcp_dev_test.png" alt="MCP dev test" /></p>
+
+<p>我們點選<code class="language-plaintext highlighter-rouge">list_path</code>後可以在右邊看到我們寫的註解和需要輸入的參數，這邊可以自己給一些參數進去看看function執行的結果有沒有符合預期。</p>
+
+<h2 id="與llm-agent融合">與LLM Agent融合</h2>
+
+<p>前面我們製作了一個MCP server可以幫忙列出機器上某一個路徑底下的檔案，接下來我們想要讓LLM知道有這個工具並讓它來使用，這邊我們可以透過OpenAI的模型和<a href="https://www.langchain.com/">LangChain</a>來實現。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>gradio langchain langchain-mcp-adapters langchain-openai langgraph
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># llm_server.py
+</span><span class="kn">from</span> <span class="n">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="kn">import</span> <span class="n">gradio</span> <span class="k">as</span> <span class="n">gr</span>
+<span class="kn">from</span> <span class="n">langchain_mcp_adapters.tools</span> <span class="kn">import</span> <span class="n">load_mcp_tools</span>
+<span class="kn">from</span> <span class="n">langchain_openai</span> <span class="kn">import</span> <span class="n">ChatOpenAI</span>
+<span class="kn">from</span> <span class="n">langgraph.prebuilt</span> <span class="kn">import</span> <span class="n">create_react_agent</span>
+<span class="kn">from</span> <span class="n">mcp</span> <span class="kn">import</span> <span class="n">ClientSession</span><span class="p">,</span> <span class="n">StdioServerParameters</span>
+<span class="kn">from</span> <span class="n">mcp.client.stdio</span> <span class="kn">import</span> <span class="n">stdio_client</span>
+
+<span class="nf">load_dotenv</span><span class="p">()</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="nc">ChatOpenAI</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="sh">"</span><span class="s">gpt-4o-mini</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="n">server_params</span> <span class="o">=</span> <span class="nc">StdioServerParameters</span><span class="p">(</span>
+    <span class="n">command</span><span class="o">=</span><span class="sh">"</span><span class="s">python</span><span class="sh">"</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="sh">"</span><span class="s">mcp_file_server.py</span><span class="sh">"</span><span class="p">],</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_prompt</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">history</span><span class="p">):</span>
+    <span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">chat</span> <span class="ow">in</span> <span class="n">history</span><span class="p">:</span>
+        <span class="n">role</span> <span class="o">=</span> <span class="n">chat</span><span class="p">[</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">]</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">chat</span><span class="p">[</span><span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">]</span>
+        <span class="n">messages</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="n">role</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">content</span><span class="p">})</span>
+    <span class="n">messages</span><span class="p">.</span><span class="nf">append</span><span class="p">({</span><span class="sh">"</span><span class="s">role</span><span class="sh">"</span><span class="p">:</span> <span class="sh">"</span><span class="s">user</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">content</span><span class="sh">"</span><span class="p">:</span> <span class="n">user_input</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">messages</span>
+
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run_agent</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">history</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="nf">stdio_client</span><span class="p">(</span><span class="n">server_params</span><span class="p">)</span> <span class="nf">as </span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="nc">ClientSession</span><span class="p">(</span><span class="n">read</span><span class="p">,</span> <span class="n">write</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">session</span><span class="p">.</span><span class="nf">initialize</span><span class="p">()</span>
+            <span class="n">tools</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">load_mcp_tools</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+
+            <span class="n">agent</span> <span class="o">=</span> <span class="nf">create_react_agent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tools</span><span class="p">)</span>
+            <span class="n">messages</span> <span class="o">=</span> <span class="nf">get_prompt</span><span class="p">(</span><span class="n">user_input</span><span class="p">,</span> <span class="n">history</span><span class="p">)</span>
+            <span class="n">agent_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">agent</span><span class="p">.</span><span class="nf">ainvoke</span><span class="p">({</span><span class="sh">"</span><span class="s">messages</span><span class="sh">"</span><span class="p">:</span> <span class="n">messages</span><span class="p">})</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="n">agent_response</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">agent_response</span><span class="p">[</span><span class="sh">"</span><span class="s">messages</span><span class="sh">"</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">].</span><span class="n">content</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">"</span><span class="s">__main__</span><span class="sh">"</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">gr</span><span class="p">.</span><span class="nc">Blocks</span><span class="p">(</span><span class="n">fill_height</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">fill_width</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">demo</span><span class="p">:</span>
+        <span class="n">gr</span><span class="p">.</span><span class="nc">ChatInterface</span><span class="p">(</span><span class="n">fn</span><span class="o">=</span><span class="n">run_agent</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="sh">"</span><span class="s">messages</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">demo</span><span class="p">.</span><span class="nf">launch</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>這邊我們把OpenAI的key放進<code class="language-plaintext highlighter-rouge">.env</code>的檔案裡面，並在上面的script透過<code class="language-plaintext highlighter-rouge">load_dotenv()</code>放到環境變數裡面</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># .env</span>
+<span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s2">"YOUR_KEY_HERE"</span>
+</code></pre></div></div>
+
+<p>接下來定義<code class="language-plaintext highlighter-rouge">server_params</code>來設定一下我們的MCP server該怎麼被執行，而<code class="language-plaintext highlighter-rouge">get_prompt()</code>這個function會把使用者和LLM過去的對話紀錄整理起來變成下一次要輸入的prompt，最後透過<code class="language-plaintext highlighter-rouge">run_agent()</code>來串起MCP server和LLM，並使用<a href="https://wjohn1483.github.io/2025/02/22/gradio-introduction/">Gradio的UI</a>來讓使用者來操作。</p>
+
+<p>透過<code class="language-plaintext highlighter-rouge">python3 llm_server.py</code>把Gradio的server起起來後，下一個列出文件的prompt就可以成功呼叫到上面創建的MCP server，並回傳機器上面的檔案名稱了。</p>
+
+<p><img src="./llm_server.png" alt="LLM Server" /></p>
+
+<p>如果覺得需要自己弄一個Gradio UI來使用MCP server太麻煩，可以參考<a href="https://www.linkedin.com/pulse/how-use-mcp-server-tools-claude-app-mariusz-misiek-aszxe/">網路上的教學</a>來使用Claude app或是<a href="https://www.youtube.com/watch?v=McNRkd5CxFY">透過Cursor</a>來操作。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>這篇文章實作了一個簡單的MCP server，賦予LLM能力來根據需求自行調用來得知機器上某個路徑底下的檔案有哪些，以這個為基礎，我們可以擴充MCP server的function，讓LLM可以使用更多的工具來減少人類需要自行調用資料再放進prompt裡面的負擔。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://modelcontextprotocol.io/introduction">Introduction - Model Context Protocol</a></li>
+  <li><a href="https://www.linkedin.com/pulse/how-use-mcp-server-tools-claude-app-mariusz-misiek-aszxe/">How to use MCP server tools in the Claude App?</a></li>
+  <li><a href="https://www.youtube.com/watch?v=McNRkd5CxFY">MCP是啥？技术原理是什么？一个视频搞懂MCP的一切。Windows系统配置MCP，Cursor,Cline 使用MCP - YouTube</a></li>
+  <li><a href="https://www.youtube.com/watch?v=x8LQC6ut53Y">How to use MCP servers from a custom AI agent (step by step) - YouTube</a></li>
+  <li><a href="https://tenten.co/learning/claude-desktop-mcp/">Claude Desktop MCP 使用指南：完整設置教學</a></li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-04-03T00:00:00+00:00"><!-- start custom article footer snippet -->
+
+<!-- end custom article footer snippet -->
+</footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2025/02/22/gradio-introduction/">Gradio Introduction</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
 </script>
-
-
-
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
@@ -920,10 +998,72 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};MathJax.Hub.Config(_config);
+	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>
