@@ -163,6 +163,8 @@ if __name__ == "__main__":
 
 接著我們透過`gr.render()`，並以前面的state當作輸入，根據state裡面儲存的list的資訊去產生對應的元件出來，於此同時我們也可以對新產生出來的元件去設定其觸發的條件，進而更新state裡面的資訊，如此便可以動態地新增、移除網頁上面的元件了。
 
+這邊的邏輯可以想成是，當我們在根據拿到的field_state並產生Textbox的時候，順便把當下的field當作default argument存到button點擊的function裡面，而這個button被點擊的時候才會執行被放到button的function，如此我們就可以在執行的時候還可以保有前一個時刻的field來做到更多的功能應用。
+
 ## 參考資料
 
 * [【Gradio】Building With Blocks 块中的状 态 + 动态应用程序与渲染装饰器-CSDN博客](https://blog.csdn.net/cxyhjl/article/details/139712016)
