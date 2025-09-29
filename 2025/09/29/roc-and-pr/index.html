@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>ROC和PR曲線 - wjohn1483.github.io</title>
 
-<meta name="description" content="這篇介紹一下常常聽到的BERT是怎麼樣運作的。">
-<link rel="canonical" href="https://wjohn1483.github.io/2020/03/29/BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="最近剛好碰到了個binary classification的問題，來順便複習一下ROC和PR曲線。">
+<link rel="canonical" href="https://wjohn1483.github.io/2025/09/29/roc-and-pr/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -290,79 +290,159 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>ROC和PR曲線</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2020-03-29-BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding/2020-03-29-BERT-pre-training-of-deep-bidirectional-transforers-for-language-understanding.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="BERT&#58; Pre-training of Deep Bidirectional Transformers for Language Understanding"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2025-09-29-roc-and-pr/2025-09-29-roc-and-pr.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="ROC和PR曲線"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Paper">Paper</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/archive/?tag=Natural-Language-Processing">Natural-Language-Processing</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 29, 2020</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2020-03-29T00:00:00+00:00">
-    <meta itemprop="keywords" content="Paper,Natural-Language-Processing"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+                href="/archive/?tag=Machine-Learning">Machine-Learning</a>
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Sep 29, 2025</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2025-09-29T00:00:00+00:00">
+    <meta itemprop="keywords" content="Machine-Learning"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>這篇介紹一下常常聽到的<a href="https://arxiv.org/pdf/1810.04805.pdf">BERT</a>是怎麼樣運作的。</p>
+<div class="article__content" itemprop="articleBody"><p>最近剛好碰到了個binary classification的問題，來順便複習一下ROC和PR曲線。</p>
 
 <!--more-->
 
-<h2 id="簡介">簡介</h2>
+<h2 id="4種可能的結果">4種可能的結果</h2>
 
-<p>在很多NLP的任務上常常可以聽到某個團隊用了BERT以後達到了state-of-the-art，而聽說現在在做NLP的時候都會使用BERT產生出來的embedding，再拿去給後面想要解決的NLP任務使用，得到的效果通常都還不錯，BERT成為了做各種NLP任務的起手式。</p>
+<p>為了要訓練一個binary classification的模型，我們通常會先去蒐集有被標註的資料集，而資料集裡面會包含每一筆資料的特徵以及它是positive還是negative的label。用這個資料集訓練好一個binary classification的模型以後，我們可以將這個模型拿去預測資料集裡面testing set的資料，並設定一個門檻，高於門檻的認定為positive data，低於的認定為negative，比較模型預測的結果和實際資料的標註，我們可以得到下面的confusion matrix。</p>
 
-<h2 id="方法">方法</h2>
+<table>
+  <thead>
+    <tr>
+      <th><strong>模型預測</strong></th>
+      <th><strong>實際資料</strong></th>
+      <th><strong>狀況名稱</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Positive</td>
+      <td>Positive</td>
+      <td>True Positive</td>
+    </tr>
+    <tr>
+      <td>Positive</td>
+      <td>Negative</td>
+      <td>False Positive</td>
+    </tr>
+    <tr>
+      <td>Negative</td>
+      <td>Positive</td>
+      <td>False Negative</td>
+    </tr>
+    <tr>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>True Negative</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>BERT的架構是前一篇<a href="https://wjohn1483.github.io/2020/03/21/attention-is-all-you-need/">Attention Is All You Need</a>當中所提到的Transformer的encoder，只是訓練的方式和參數的設定比較不一樣，在BERT這篇paper裡面使用了兩種參數</p>
+<h2 id="receiver-operating-characteristicroc">Receiver Operating Characteristic（ROC）</h2>
 
-\[\mathrm{BERT}_{BASE}:L=12,H=768,A=12, total\ parameters=110\mathrm{M}\\\mathrm{BERT}_{LARGE}:L=24,H=1024,A=16, total\ parameters=340\mathrm{M}\]
+<p>ROC曲線就是根據上面的confusion matrix展開，ROC曲線將False positive rate當作是橫軸，True positive rate當作是縱軸，每一個點設定不同的門檻值以此來畫出來的曲線，而兩者的定義分別是</p>
 
-<p>其中\(L\)代表層數、\(H\)代表hidden size、\(A\)代表self-attention的head數。</p>
+\[False\ positive\ rate=\frac{False\ positive}{False\ positive + True\ negative}\]
 
-<h3 id="訓練方式">訓練方式</h3>
+\[True\ positive\ rate=\frac{True\ positive}{True\ positive+False\ negative}\]
 
-<h4 id="input-representation">Input Representation</h4>
+<p>可以把False positive rate想成是所有實際資料被標註成negative的情況中，有多少比例模型判斷為是positive，越高表示模型越<strong>不會</strong>判斷negative data；而True positive rate可以想成是所有實際資料被標註成positive的情況中，有多少比例模型判斷為是positive，越高表示模型越會判斷positive data。</p>
 
-<p><img src="input-representation.png" alt="Input Representation" /></p>
+<p>下圖是一個ROC曲線的範例，使用的資料和模型的預測都是隨機產生的</p>
 
-<p>由於BERT後面所接的NLP任務可能會需要sentence embedding，或同時考慮多個sentence，所以BERT在這個地方有設計兩個特別的token，分別是<code class="language-plaintext highlighter-rouge">[CLS]</code>和<code class="language-plaintext highlighter-rouge">[SEP]</code>，<code class="language-plaintext highlighter-rouge">[SEP]</code>是用來分開兩個句子的，而<code class="language-plaintext highlighter-rouge">[CLS]</code>是用來做classification的embedding，因為BERT是用self-attention layer為基礎，所以即便放在第一個，其輸出的embedding仍然包含整個句子的資訊。</p>
+<p><img src="./roc_curve.png" alt="ROC Curve" /></p>
 
-<p>而上圖中的Segment Embeddings是為了能夠更分開兩個句子之間的差異，可以想像成\(\mathrm{E_A}\)是一個純量等於\(0\)，\(\mathrm{E_B}\)也是一個純量等於\(1\)，更詳細的解說可以參考<a href="https://www.cnblogs.com/d0main/p/10447853.html">這裡</a>。</p>
+<p>在這張圖片裡面有3個點比較重要</p>
 
-<h4 id="masked-lm">Masked LM</h4>
+<ul>
+  <li>
+    <p>(0, 1)：這個點表示True positive rate是1，且false positive rate是0，代表模型達到了完美的狀態，可以完全分辨出positive data和negative data</p>
+  </li>
+  <li>
+    <p>(0, 0)：這個點表示兩個rate都是0，也就是把模型的threshold設定成1，把所有的資料都判定成negative data</p>
+  </li>
+  <li>
+    <p>(1, 1)：這個點表示兩個rate都是1，也就是把模型的threshold設定成0，把所有的資料都判定成positive data</p>
+  </li>
+</ul>
 
-<p>BERT在做pre-training的時候，會同時訓練兩種任務，分別是masked LM以及next sentence prediction，而masked LM做的事情有點像是克漏字，在輸入一段文字進來的時候，在每個token會有15%的機率會被替換成<code class="language-plaintext highlighter-rouge">[MASK]</code>這個token，而最終希望透過一個classifier，輸入<code class="language-plaintext highlighter-rouge">[MASK]</code>經過BERT得到的embedding，輸出原本被替換掉的token。</p>
+<p>而在這個曲線下面的面積Area Under Curve（AUC）表示了這個模型整體的表現如何，面積越大通常表示這個模型越能分辨出positive data和negative data，而在45度的斜線是隨機猜positive或negative可以獲得的結果。</p>
 
-<h4 id="next-sentence-prediction-nsp">Next Sentence Prediction (NSP)</h4>
+<h2 id="precision-recall">Precision Recall</h2>
 
-<p>Next sentence prediction做的事情就是去判斷輸入進來的這兩個句子，是不是在順序上是連續的，像是<code class="language-plaintext highlighter-rouge">人之初</code>和<code class="language-plaintext highlighter-rouge">性本善</code>就是連續的句子，但<code class="language-plaintext highlighter-rouge">人之初</code>和<code class="language-plaintext highlighter-rouge">你好嗎</code>就不是連續的句子，而訓練的方式是會拿<code class="language-plaintext highlighter-rouge">[CLS]</code>經過BERT得出來的embedding，來當作classifier的輸入，希望這個classifier輸出\(\mathrm{IsNext}\)或是\(\mathrm{NotNext}\)。</p>
+<p>PR曲線是以Recall為X軸、Precision為Y軸，每個點設定不同的門檻值畫出來的曲線，兩者的定義分別是</p>
 
-<p>底下是整體的架構圖，其實在fine-tuning的時候，會根據不一樣的任務而拿不同位置輸出的結果，細節可以參考<a href="https://arxiv.org/pdf/1810.04805.pdf">原本的paper</a>。</p>
+\[Precision=\frac{True\ positive}{True\ positive+False\ positive}\]
 
-<p><img src="overall-procedure.png" alt="Overall procedure" /></p>
+\[Recall=\frac{True\ positive}{True\ positive+False\ negative}\]
 
-<h2 id="實驗">實驗</h2>
+<p>Precision表示的是，模型認為是positive data的條件下，真的是positive data的比例有多少；Recall表示的是，所有positive data裡面，有多少是有被模型正確分辨出來的，跟True positive rate的定義一樣。</p>
 
-<p><img src="test-results.png" alt="Test Results" /></p>
+<p><img src="./pr_curve.png" alt="PR Curve" /></p>
 
-<p>上圖為BERT部分的實驗結果，可以看到它技壓群雄。</p>
+<p>在PR曲線裡面我們也可以計算AUC，這邊的AUC被稱作是Average Precision（AP），而(1, 1)表示最理想的情況，模型可以完美地分辨positive data和negative data，因此PR曲線越往右上角代表模型整體表現更好，越平表示越差。</p>
 
-<h2 id="結論">結論</h2>
+<h2 id="f1-score">F1 Score</h2>
 
-<p>BERT是一個基於Transformer架構的模型，需要大量的資料來做訓練，好在作者們有提供已經訓練好的模型參數，可以直接下載下來做使用，期望使用BERT以後，能夠讓想要解決的NLP任務結果一飛沖天。</p>
+<p>F1 score的定義是</p>
+
+\[F1=\frac{2*Precision*Recall}{Precision+Recall}\]
+
+<p>表示的是在PR曲線上的一個點，亦即是在固定一個門檻值的時候，模型的表現如何，相較於上面AUC和AP，他們表示的是不論門檻值，模型整體的表現。</p>
+
+<h2 id="兩個曲線的比較">兩個曲線的比較</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>比較項目</strong></th>
+      <th><strong>ROC 曲線</strong></th>
+      <th><strong>PR 曲線</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>側重點</td>
+      <td>整體分類能力</td>
+      <td>正例（Positive Class）的分類能力</td>
+    </tr>
+    <tr>
+      <td>適用場景</td>
+      <td>當正負樣本數量相近時效果較好，如果負樣本很多，ROC曲線會看起來比較樂觀</td>
+      <td>當正負樣本數極度不平衡時更適用</td>
+    </tr>
+    <tr>
+      <td>X 軸變數</td>
+      <td>假正例率（FPR）</td>
+      <td>召回率（Recall）</td>
+    </tr>
+    <tr>
+      <td>Y 軸變數</td>
+      <td>真正例率（TPR）</td>
+      <td>精確率（Precision）</td>
+    </tr>
+    <tr>
+      <td>曲線形狀影響因素</td>
+      <td>負例（Negative Class）的影響較大</td>
+      <td>主要關注正例（Positive Class）的表現</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="參考資料">參考資料</h2>
 
-<ol>
-  <li><a href="https://www.cnblogs.com/d0main/p/10447853.html">【译】为什么BERT有3个嵌入层，它们都是如何实现的</a></li>
-</ol>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2020-03-29T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li><a href="https://tsupei.github.io/nlp/2019/12/30/prcurve.html">Chen Tse-Pei’s Blog</a></li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-09-29T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2020/03/28/terminal-tools/">Terminal小工具</a></div><div class="next"><span>NEXT</span><a href="/2020/04/02/tf-idf-introduction/">TF-IDF簡介</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2025/04/03/mcp-introduction/">Model Context Protocol簡單實作</a></div></div></div>
 
 </div>
 
@@ -978,7 +1058,7 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 </script><script type="text/x-mathjax-config">
 	var _config = { tex2jax: {
 		inlineMath: [['$','$'], ['\\(','\\)']]
-	}};_config.TeX = { equationNumbers: { autoNumber: "all" } };MathJax.Hub.Config(_config);
+	}};MathJax.Hub.Config(_config);
 </script>
 <script type="text/javascript" src="https://unpkg.com/mathjax@2.7.4/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 <script>

@@ -1,4 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/" rel="alternate" type="text/html" /><updated>2025-06-13T08:21:43+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Model Context Protocol簡單實作</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/04/03/mcp-introduction/" rel="alternate" type="text/html" title="Model Context Protocol簡單實作" /><published>2025-04-03T00:00:00+00:00</published><updated>2025-04-03T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/04/03/mcp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/04/03/mcp-introduction/"><![CDATA[<p>最近Model Context Protocol（MCP）蔚為風潮，這篇文章嘗試簡單介紹一下並使用一個範例來實作看看。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/" rel="alternate" type="text/html" /><updated>2025-09-29T05:58:07+00:00</updated><id>https://wjohn1483.github.io/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">ROC和PR曲線</title><link href="https://wjohn1483.github.io/2025/09/29/roc-and-pr/" rel="alternate" type="text/html" title="ROC和PR曲線" /><published>2025-09-29T00:00:00+00:00</published><updated>2025-09-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/09/29/roc-and-pr</id><content type="html" xml:base="https://wjohn1483.github.io/2025/09/29/roc-and-pr/"><![CDATA[<p>最近剛好碰到了個binary classification的問題，來順便複習一下ROC和PR曲線。</p>
+
+<!--more-->
+
+<h2 id="4種可能的結果">4種可能的結果</h2>
+
+<p>為了要訓練一個binary classification的模型，我們通常會先去蒐集有被標註的資料集，而資料集裡面會包含每一筆資料的特徵以及它是positive還是negative的label。用這個資料集訓練好一個binary classification的模型以後，我們可以將這個模型拿去預測資料集裡面testing set的資料，並設定一個門檻，高於門檻的認定為positive data，低於的認定為negative，比較模型預測的結果和實際資料的標註，我們可以得到下面的confusion matrix。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>模型預測</strong></th>
+      <th><strong>實際資料</strong></th>
+      <th><strong>狀況名稱</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Positive</td>
+      <td>Positive</td>
+      <td>True Positive</td>
+    </tr>
+    <tr>
+      <td>Positive</td>
+      <td>Negative</td>
+      <td>False Positive</td>
+    </tr>
+    <tr>
+      <td>Negative</td>
+      <td>Positive</td>
+      <td>False Negative</td>
+    </tr>
+    <tr>
+      <td>Negative</td>
+      <td>Negative</td>
+      <td>True Negative</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="receiver-operating-characteristicroc">Receiver Operating Characteristic（ROC）</h2>
+
+<p>ROC曲線就是根據上面的confusion matrix展開，ROC曲線將False positive rate當作是橫軸，True positive rate當作是縱軸，每一個點設定不同的門檻值以此來畫出來的曲線，而兩者的定義分別是</p>
+
+\[False\ positive\ rate=\frac{False\ positive}{False\ positive + True\ negative}\]
+
+\[True\ positive\ rate=\frac{True\ positive}{True\ positive+False\ negative}\]
+
+<p>可以把False positive rate想成是所有實際資料被標註成negative的情況中，有多少比例模型判斷為是positive，越高表示模型越<strong>不會</strong>判斷negative data；而True positive rate可以想成是所有實際資料被標註成positive的情況中，有多少比例模型判斷為是positive，越高表示模型越會判斷positive data。</p>
+
+<p>下圖是一個ROC曲線的範例，使用的資料和模型的預測都是隨機產生的</p>
+
+<p><img src="./roc_curve.png" alt="ROC Curve" /></p>
+
+<p>在這張圖片裡面有3個點比較重要</p>
+
+<ul>
+  <li>
+    <p>(0, 1)：這個點表示True positive rate是1，且false positive rate是0，代表模型達到了完美的狀態，可以完全分辨出positive data和negative data</p>
+  </li>
+  <li>
+    <p>(0, 0)：這個點表示兩個rate都是0，也就是把模型的threshold設定成1，把所有的資料都判定成negative data</p>
+  </li>
+  <li>
+    <p>(1, 1)：這個點表示兩個rate都是1，也就是把模型的threshold設定成0，把所有的資料都判定成positive data</p>
+  </li>
+</ul>
+
+<p>而在這個曲線下面的面積Area Under Curve（AUC）表示了這個模型整體的表現如何，面積越大通常表示這個模型越能分辨出positive data和negative data，而在45度的斜線是隨機猜positive或negative可以獲得的結果。</p>
+
+<h2 id="precision-recall">Precision Recall</h2>
+
+<p>PR曲線是以Recall為X軸、Precision為Y軸，每個點設定不同的門檻值畫出來的曲線，兩者的定義分別是</p>
+
+\[Precision=\frac{True\ positive}{True\ positive+False\ positive}\]
+
+\[Recall=\frac{True\ positive}{True\ positive+False\ negative}\]
+
+<p>Precision表示的是，模型認為是positive data的條件下，真的是positive data的比例有多少；Recall表示的是，所有positive data裡面，有多少是有被模型正確分辨出來的，跟True positive rate的定義一樣。</p>
+
+<p><img src="./pr_curve.png" alt="PR Curve" /></p>
+
+<p>在PR曲線裡面我們也可以計算AUC，這邊的AUC被稱作是Average Precision（AP），而(1, 1)表示最理想的情況，模型可以完美地分辨positive data和negative data，因此PR曲線越往右上角代表模型整體表現更好，越平表示越差。</p>
+
+<h2 id="f1-score">F1 Score</h2>
+
+<p>F1 score的定義是</p>
+
+\[F1=\frac{2*Precision*Recall}{Precision+Recall}\]
+
+<p>表示的是在PR曲線上的一個點，亦即是在固定一個門檻值的時候，模型的表現如何，相較於上面AUC和AP，他們表示的是不論門檻值，模型整體的表現。</p>
+
+<h2 id="兩個曲線的比較">兩個曲線的比較</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>比較項目</strong></th>
+      <th><strong>ROC 曲線</strong></th>
+      <th><strong>PR 曲線</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>側重點</td>
+      <td>整體分類能力</td>
+      <td>正例（Positive Class）的分類能力</td>
+    </tr>
+    <tr>
+      <td>適用場景</td>
+      <td>當正負樣本數量相近時效果較好，如果負樣本很多，ROC曲線會看起來比較樂觀</td>
+      <td>當正負樣本數極度不平衡時更適用</td>
+    </tr>
+    <tr>
+      <td>X 軸變數</td>
+      <td>假正例率（FPR）</td>
+      <td>召回率（Recall）</td>
+    </tr>
+    <tr>
+      <td>Y 軸變數</td>
+      <td>真正例率（TPR）</td>
+      <td>精確率（Precision）</td>
+    </tr>
+    <tr>
+      <td>曲線形狀影響因素</td>
+      <td>負例（Negative Class）的影響較大</td>
+      <td>主要關注正例（Positive Class）的表現</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://tsupei.github.io/nlp/2019/12/30/prcurve.html">Chen Tse-Pei’s Blog</a></li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html"><![CDATA[最近剛好碰到了個binary classification的問題，來順便複習一下ROC和PR曲線。]]></summary></entry><entry><title type="html">Model Context Protocol簡單實作</title><link href="https://wjohn1483.github.io/2025/04/03/mcp-introduction/" rel="alternate" type="text/html" title="Model Context Protocol簡單實作" /><published>2025-04-03T00:00:00+00:00</published><updated>2025-04-03T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/04/03/mcp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/2025/04/03/mcp-introduction/"><![CDATA[<p>最近Model Context Protocol（MCP）蔚為風潮，這篇文章嘗試簡單介紹一下並使用一個範例來實作看看。</p>
 
 <!--more-->
 
@@ -138,7 +273,7 @@
   <li><a href="https://www.youtube.com/watch?v=McNRkd5CxFY">MCP是啥？技术原理是什么？一个视频搞懂MCP的一切。Windows系统配置MCP，Cursor,Cline 使用MCP - YouTube</a></li>
   <li><a href="https://www.youtube.com/watch?v=x8LQC6ut53Y">How to use MCP servers from a custom AI agent (step by step) - YouTube</a></li>
   <li><a href="https://tenten.co/learning/claude-desktop-mcp/">Claude Desktop MCP 使用指南：完整設置教學</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近Model Context Protocol（MCP）蔚為風潮，這篇文章嘗試簡單介紹一下並使用一個範例來實作看看。]]></summary></entry><entry><title type="html">Gradio Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction/" rel="alternate" type="text/html" title="Gradio Introduction" /><published>2025-02-22T00:00:00+00:00</published><updated>2025-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2025/02/22/gradio-introduction/"><![CDATA[<p>在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。</p>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近Model Context Protocol（MCP）蔚為風潮，這篇文章嘗試簡單介紹一下並使用一個範例來實作看看。]]></summary></entry><entry><title type="html">Gradio Introduction</title><link href="https://wjohn1483.github.io/2025/02/22/gradio-introduction/" rel="alternate" type="text/html" title="Gradio Introduction" /><published>2025-02-22T00:00:00+00:00</published><updated>2025-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/02/22/gradio-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/2025/02/22/gradio-introduction/"><![CDATA[<p>在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。</p>
 
 <!--more-->
 
@@ -291,7 +426,7 @@ curl <span class="nt">-N</span> http://localhost:7860/gradio_api/call/greet/<spa
 
 <ul>
   <li><a href="https://blog.csdn.net/cxyhjl/article/details/139712016">【Gradio】Building With Blocks 块中的状 态 + 动态应用程序与渲染装饰器-CSDN博客</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。]]></summary></entry><entry><title type="html">Spark Introduction</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction/" rel="alternate" type="text/html" title="Spark Introduction" /><published>2024-08-07T00:00:00+00:00</published><updated>2024-08-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/07/spark-introduction/"><![CDATA[<p>這篇文章記錄一下最近學習到對於spark執行上的理解。</p>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[在做出了令人驚艷的模型或是功能以後，為了可以讓更多人使用，需要一個UI的介面來讓大家來操作，這邊簡單介紹一個可以快速透過python做出網頁UI的套件Gradio。]]></summary></entry><entry><title type="html">Spark Introduction</title><link href="https://wjohn1483.github.io/2024/08/07/spark-introduction/" rel="alternate" type="text/html" title="Spark Introduction" /><published>2024-08-07T00:00:00+00:00</published><updated>2024-08-07T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2024/08/07/spark-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/2024/08/07/spark-introduction/"><![CDATA[<p>這篇文章記錄一下最近學習到對於spark執行上的理解。</p>
 
 <!--more-->
 
@@ -344,7 +479,7 @@ curl <span class="nt">-N</span> http://localhost:7860/gradio_api/call/greet/<spa
   <li>
     <p><a href="https://sparkbyexamples.com/spark/spark-tune-executor-number-cores-and-memory/">Tune Spark Executor Number, Cores, and Memory - Spark By {Examples}</a></p>
   </li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Spark" /><summary type="html"><![CDATA[這篇文章記錄一下最近學習到對於spark執行上的理解。]]></summary></entry><entry><title type="html">Diffusion Model介紹</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/03/introduction-to-diffusion-model/" rel="alternate" type="text/html" title="Diffusion Model介紹" /><published>2024-08-03T00:00:00+00:00</published><updated>2024-08-03T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/03/introduction-to-diffusion-model</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/08/03/introduction-to-diffusion-model/"><![CDATA[<p>這篇文章來記錄一下學習diffusion model的筆記。</p>
+</ul>]]></content><author><name>Your Name</name></author><category term="Spark" /><summary type="html"><![CDATA[這篇文章記錄一下最近學習到對於spark執行上的理解。]]></summary></entry><entry><title type="html">Diffusion Model介紹</title><link href="https://wjohn1483.github.io/2024/08/03/introduction-to-diffusion-model/" rel="alternate" type="text/html" title="Diffusion Model介紹" /><published>2024-08-03T00:00:00+00:00</published><updated>2024-08-03T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2024/08/03/introduction-to-diffusion-model</id><content type="html" xml:base="https://wjohn1483.github.io/2024/08/03/introduction-to-diffusion-model/"><![CDATA[<p>這篇文章來記錄一下學習diffusion model的筆記。</p>
 
 <!--more-->
 
@@ -449,7 +584,7 @@ curl <span class="nt">-N</span> http://localhost:7860/gradio_api/call/greet/<spa
 
 <ul>
   <li><a href="https://www.youtube.com/playlist?list=PLJV_el3uVTsNi7PgekEUFsyVllAJXRsP-">Diffusion Model - YouTube</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Computer-Vision" /><summary type="html"><![CDATA[這篇文章來記錄一下學習diffusion model的筆記。]]></summary></entry><entry><title type="html">架設Elasticsearch來搜尋log</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/05/24/elasticsearch/" rel="alternate" type="text/html" title="架設Elasticsearch來搜尋log" /><published>2024-05-24T00:00:00+00:00</published><updated>2024-05-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/05/24/elasticsearch</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/05/24/elasticsearch/"><![CDATA[<p>這篇文章記錄一下如何架設一個etlasticsearch的伺服器來儲存log，好方便使用者來做搜尋。</p>
+</ul>]]></content><author><name>Your Name</name></author><category term="Computer-Vision" /><summary type="html"><![CDATA[這篇文章來記錄一下學習diffusion model的筆記。]]></summary></entry><entry><title type="html">架設Elasticsearch來搜尋log</title><link href="https://wjohn1483.github.io/2024/05/24/elasticsearch/" rel="alternate" type="text/html" title="架設Elasticsearch來搜尋log" /><published>2024-05-24T00:00:00+00:00</published><updated>2024-05-24T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2024/05/24/elasticsearch</id><content type="html" xml:base="https://wjohn1483.github.io/2024/05/24/elasticsearch/"><![CDATA[<p>這篇文章記錄一下如何架設一個etlasticsearch的伺服器來儲存log，好方便使用者來做搜尋。</p>
 
 <!--more-->
 
@@ -627,7 +762,7 @@ docker run <span class="nt">--name</span> kib01 <span class="nt">--net</span> el
   <li>
     <p><a href="https://www.cnblogs.com/zsql/p/13137833.html"> 一篇文章搞懂filebeat（ELK）</a></p>
   </li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章記錄一下如何架設一個etlasticsearch的伺服器來儲存log，好方便使用者來做搜尋。]]></summary></entry><entry><title type="html">如何安裝Comfy UI</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui/" rel="alternate" type="text/html" title="如何安裝Comfy UI" /><published>2024-04-17T00:00:00+00:00</published><updated>2024-04-17T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/04/17/comfy-ui/"><![CDATA[<p>先前介紹了如何<a href="https://wjohn1483.github.io/2023/07/02/stable-diffusion/">在本機上面跑Stable Diffusion</a>，這篇文章來記錄一下如何安裝Comfy UI，來讓產圖變得更容易。</p>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章記錄一下如何架設一個etlasticsearch的伺服器來儲存log，好方便使用者來做搜尋。]]></summary></entry><entry><title type="html">如何安裝Comfy UI</title><link href="https://wjohn1483.github.io/2024/04/17/comfy-ui/" rel="alternate" type="text/html" title="如何安裝Comfy UI" /><published>2024-04-17T00:00:00+00:00</published><updated>2024-04-17T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2024/04/17/comfy-ui</id><content type="html" xml:base="https://wjohn1483.github.io/2024/04/17/comfy-ui/"><![CDATA[<p>先前介紹了如何<a href="https://wjohn1483.github.io/2023/07/02/stable-diffusion/">在本機上面跑Stable Diffusion</a>，這篇文章來記錄一下如何安裝Comfy UI，來讓產圖變得更容易。</p>
 
 <!--more-->
 
@@ -682,7 +817,7 @@ git clone https://github.com/ltdrdata/ComfyUI-Manager.git
 
 <h3 id="comfyspace">Comfyspace</h3>
 
-<p>在眾多的套件裡面，推薦可以先安裝<a href="https://github.com/11cafe/comfyui-workspace-manager">ComfySpace</a>，在Manager裡面搜尋<code class="language-plaintext highlighter-rouge">ComfyUI Workspace Manager</code>，接著重啟Comfy UI就可以了，其功用是幫你記錄和尋找Comfy UI的pipeline，如此就可以不用自己存pipeline的json，增加產圖的效率。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[先前介紹了如何在本機上面跑Stable Diffusion，這篇文章來記錄一下如何安裝Comfy UI，來讓產圖變得更容易。]]></summary></entry><entry><title type="html">Bandit Algorithms Notes</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/02/22/bandit-algorithms-notes/" rel="alternate" type="text/html" title="Bandit Algorithms Notes" /><published>2024-02-22T00:00:00+00:00</published><updated>2024-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/02/22/bandit-algorithms-notes</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/02/22/bandit-algorithms-notes/"><![CDATA[<p>最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。</p>
+<p>在眾多的套件裡面，推薦可以先安裝<a href="https://github.com/11cafe/comfyui-workspace-manager">ComfySpace</a>，在Manager裡面搜尋<code class="language-plaintext highlighter-rouge">ComfyUI Workspace Manager</code>，接著重啟Comfy UI就可以了，其功用是幫你記錄和尋找Comfy UI的pipeline，如此就可以不用自己存pipeline的json，增加產圖的效率。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[先前介紹了如何在本機上面跑Stable Diffusion，這篇文章來記錄一下如何安裝Comfy UI，來讓產圖變得更容易。]]></summary></entry><entry><title type="html">Bandit Algorithms Notes</title><link href="https://wjohn1483.github.io/2024/02/22/bandit-algorithms-notes/" rel="alternate" type="text/html" title="Bandit Algorithms Notes" /><published>2024-02-22T00:00:00+00:00</published><updated>2024-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2024/02/22/bandit-algorithms-notes</id><content type="html" xml:base="https://wjohn1483.github.io/2024/02/22/bandit-algorithms-notes/"><![CDATA[<p>最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。</p>
 
 <!--more-->
 
@@ -736,7 +871,7 @@ git clone https://github.com/ltdrdata/ComfyUI-Manager.git
   <li>
     <p><a href="https://zhuanlan.zhihu.com/p/384427160">MAB系列2：Contextual Bandits: LinUCB</a></p>
   </li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Bandit" /><summary type="html"><![CDATA[最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。]]></summary></entry><entry><title type="html">nginx Reverse Proxy</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy/" rel="alternate" type="text/html" title="nginx Reverse Proxy" /><published>2024-01-20T00:00:00+00:00</published><updated>2024-01-20T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2024/01/20/nginx-reverse-proxy/"><![CDATA[<p>最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。</p>
+</ol>]]></content><author><name>Your Name</name></author><category term="Bandit" /><summary type="html"><![CDATA[最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。]]></summary></entry><entry><title type="html">nginx Reverse Proxy</title><link href="https://wjohn1483.github.io/2024/01/20/nginx-reverse-proxy/" rel="alternate" type="text/html" title="nginx Reverse Proxy" /><published>2024-01-20T00:00:00+00:00</published><updated>2024-01-20T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2024/01/20/nginx-reverse-proxy</id><content type="html" xml:base="https://wjohn1483.github.io/2024/01/20/nginx-reverse-proxy/"><![CDATA[<p>最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。</p>
 
 <!--more-->
 
@@ -862,7 +997,7 @@ chkconfig nginx on
 
 <ol>
   <li><a href="https://blog.containerize.com/zh-hant/how-to-setup-and-configure-nginx-as-reverse-proxy/">如何設置和配置為反向代理</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。]]></summary></entry><entry><title type="html">如何使用CPU跑LLM</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction/" rel="alternate" type="text/html" title="如何使用CPU跑LLM" /><published>2023-09-11T00:00:00+00:00</published><updated>2023-09-11T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/09/11/llama-cpp-introduction/"><![CDATA[<p>Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。</p>
+</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。]]></summary></entry><entry><title type="html">如何使用CPU跑LLM</title><link href="https://wjohn1483.github.io/2023/09/11/llama-cpp-introduction/" rel="alternate" type="text/html" title="如何使用CPU跑LLM" /><published>2023-09-11T00:00:00+00:00</published><updated>2023-09-11T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2023/09/11/llama-cpp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/2023/09/11/llama-cpp-introduction/"><![CDATA[<p>Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。</p>
 
 <!--more-->
 
@@ -993,68 +1128,4 @@ make
 <ul>
   <li><a href="https://zhuanlan.zhihu.com/p/616969812">GPTQ: 模型量化，穷鬼救星</a></li>
   <li><a href="https://zhuanlan.zhihu.com/p/646210009">QLoRA、GPTQ：模型量化概述</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Machine-Learning" /><category term="Natural-Language-Processing" /><summary type="html"><![CDATA[Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。]]></summary></entry><entry><title type="html">Parameter-Efficient Fine-Tuning</title><link href="https://wjohn1483.github.io/#%20the%20base%20hostname%20&%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning/" rel="alternate" type="text/html" title="Parameter-Efficient Fine-Tuning" /><published>2023-07-15T00:00:00+00:00</published><updated>2023-07-15T00:00:00+00:00</updated><id>https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning</id><content type="html" xml:base="https://wjohn1483.github.io/#%20the%20base%20hostname%20&amp;%20protocol%20for%20your%20site%20e.g.%20https://www.someone.com/2023/07/15/parameter-efficient-fine-tuning/"><![CDATA[<p>隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。</p>
-
-<!--more-->
-
-<p>PEFT又或是Parameter-Efficient Fine-Tuning指得便是使用少少的參數來有效率地調整模型，省去調整整個模型的參數來達到fine-tune模型的效果，底下會介紹一些常見的PEFT方法。</p>
-
-<h2 id="adapter-tuning">Adapter Tuning</h2>
-
-<p><img src="adapter_tuning.png" alt="Adapter Tuning" /></p>
-
-<p><a href="https://arxiv.org/pdf/1902.00751.pdf">Adapter Tuning</a>的概念是在原本Transformer的架構當中，插入Adapter，並在接下來的訓練裡面只訓練Adapter。</p>
-
-<p>在上圖的左邊是Transformer的架構，主要由Attention layer和Feed-forward layer組成，而在paper裡面，作者們把Adapter插在Feed-foward layer後面、skip connection之前。Adapter的架構展示在上圖右邊，是一個會先降維再升維的Feed-forward layer們，其中也包含了一個skip connection，讓Adapter最差的效果等同於Identity matrix，維持原本LLM的水準。</p>
-
-<h2 id="prefix-tuning">Prefix Tuning</h2>
-
-<p><img src="prefix_tuning.png" alt="Prefix Tuning" /></p>
-
-<p><a href="https://arxiv.org/pdf/2101.00190.pdf">Prefix Tuning</a>的概念是仿照人類在Prompt Engineering裡面，嘗試使用指示性的文字、給一些範例給LLM的方法，以embedding的方式放進模型裡面，作法上是在Transformer的每一層，多加一些可以被訓練的prefix embedding，當Transformer在做attention的時候，就可以參考訓練出來的prefix們來獲得更好的結果。</p>
-
-<p>在paper裡面有提到，如果直接放進prefix讓模型自己去訓練的話，模型的效果會下降而且訓練的時候會不穩定，所以在原始的paper裡面會另外使用一個MLP來產生prefix embeddings，使用比較低維度的向量經過MLP對應到Transformer token的維度大小，等訓練完成以後就只需要留下prefix embeddings，MLP相關的參數就可以拋棄掉了。</p>
-
-<h2 id="prompt-tuning">Prompt Tuning</h2>
-
-<p><img src="prompt_tuning.png" alt="Prompt Tuning" /></p>
-
-<p><a href="https://aclanthology.org/2021.emnlp-main.243.pdf">Prompt Tuning</a>跟Prefix Tuning的想法類似，不過Prompt Tuning只有在輸入的地方加入task specific的prefix，不像Prefix Tuning會在Transformer的每一層都加入embedding。</p>
-
-<p>在做訓練的時候，Prompt Tuning會把各個Task混在一起訓練來增加訓練的穩定度，避免訓練時特別偏重某個Task而偏掉。</p>
-
-<h2 id="p-tuning">P-Tuning</h2>
-
-<h3 id="v1">v1</h3>
-
-<p><img src="p_tuning_v1.png" alt="P-Tuning" /></p>
-
-<p><a href="https://arxiv.org/pdf/2103.10385.pdf">P-Tuning</a>的作法跟前面的各種tuning不同的地方在於，P-Tuning會重新調整預訓練的文字embedding，在上圖左方表示的是原本人類或是機器搜尋最佳prompt的方式，會由Prompt Generator調整prompt裡面的文字，而這些文字進到模型裡面以後會被對應到word embedding，再往後面的Transformer傳，而右方是P-Tuning提出的方法。</p>
-
-<p>在這邊P-Tuning使用了Bidirectional LSTM加上MLP來去替換掉原本word embedding，不過並不是替換掉所有的embedding，只替換了prompt template裡面的embedding而已，prompt template指的是制式化的問題模板，舉例來說我們想問各個地方的首都是哪裡，所以我們準備了各個地方的名字（e.g. Britain、United States等），這些輸入在paper裡面被定義為context，而問題裡面希望LLM產生、但在訓練時會被遮起來的<code class="language-plaintext highlighter-rouge">MASK</code>是target，剩下的<code class="language-plaintext highlighter-rouge">The capital of ___ is ___</code>便是prompt template。</p>
-
-<h3 id="v2">v2</h3>
-
-<p><img src="p_tuning_v2.png" alt="P-Tuning" /></p>
-
-<p><a href="https://aclanthology.org/2022.acl-short.8.pdf">P-Tuning後來出了改良版</a>，在前一個版本裡面雖然方法有效，但在參數量比較少的模型上面表現並不理想，這邊提出的改良方式是搭配Prefix Tuning的想法，把產生出來的embedding當作是prefix放進Transformer的各個layer裡面。</p>
-
-<h2 id="lora-low-rank-adaptation">LoRA: Low-Rank Adaptation</h2>
-
-<p><img class="image image--xl" src="lora.png" /></p>
-
-<p>在前面的各種Tuning裡面雖然可以達到Fine-tune的效果，但是各自有一些些缺點，像是Adapter Tuning因為增加了模型的深度，所以在inference的時候會需要更多的時間，而Prefix Tuning、Prompt Tuning和P-Tuning因為在Transformer裡面增加了token的數量，使得使用者想要輸入進模型的prompt token數量會被排擠到，而<a href="https://arxiv.org/pdf/2106.09685.pdf">LoRA</a>解決了上述的兩個問題。</p>
-
-<p>在Neural Network裡面，主要的構成是把輸入一個向量，經過矩陣運算以後轉換成另外一個向量，而LoRA做的事情就是在原本預訓練好的Neural Network旁邊多加一個中間維度比較少的另一個Neural Network，把相同的input $x$丟進去，把產生出來的結果加回原本Neural Network的輸出當中</p>
-
-\[h=Wx+BAx\]
-
-<p>在初始化的時候，$A$是從Gaussian隨機生成，而$B$則是零矩陣，好讓Fine-tune的時候不會一下就偏掉了。</p>
-
-<p>如果想在Transformer中使用的話，Transformer裡面有很多Multi-head attention，其中包含了很多矩陣像是$W_q,W_k,W_v,W_o$，以及很多MLP，這些矩陣們都可以使用LoRA的方式來Fine-tune，而作者們在paper裡面固定MLP的部分，只把LoRA套用在attention weights上面。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ul>
-  <li><a href="https://zhuanlan.zhihu.com/p/618894319">让天下没有难Tuning的大模型-PEFT技术简介</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Machine-Learning" /><summary type="html"><![CDATA[隨著大型語言模型（LLM）的蓬勃發展，各式各樣的應用也隨之而來，但如果想要為自己的應用而fine-tune LLM的話，除了更新整個LLM的參數外，還有很多只訓練少量參數的方法，這篇文章簡單介紹一些有效率調整參數的方法。]]></summary></entry></feed>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Machine-Learning" /><category term="Natural-Language-Processing" /><summary type="html"><![CDATA[Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。]]></summary></entry></feed>
