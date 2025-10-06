@@ -1,4 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/" rel="alternate" type="text/html" /><updated>2025-09-29T05:58:07+00:00</updated><id>https://wjohn1483.github.io/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">ROC和PR曲線</title><link href="https://wjohn1483.github.io/2025/09/29/roc-and-pr/" rel="alternate" type="text/html" title="ROC和PR曲線" /><published>2025-09-29T00:00:00+00:00</published><updated>2025-09-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/09/29/roc-and-pr</id><content type="html" xml:base="https://wjohn1483.github.io/2025/09/29/roc-and-pr/"><![CDATA[<p>最近剛好碰到了個binary classification的問題，來順便複習一下ROC和PR曲線。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/" rel="alternate" type="text/html" /><updated>2025-10-06T08:45:30+00:00</updated><id>https://wjohn1483.github.io/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Neural News Recommendation with Multi-Head Self-Attention</title><link href="https://wjohn1483.github.io/2025/10/06/nrms/" rel="alternate" type="text/html" title="Neural News Recommendation with Multi-Head Self-Attention" /><published>2025-10-06T00:00:00+00:00</published><updated>2025-10-06T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/10/06/nrms</id><content type="html" xml:base="https://wjohn1483.github.io/2025/10/06/nrms/"><![CDATA[<p>最近剛好又回頭碰了一下推薦系統，這邊記錄一下看了NRMS這篇paper的筆記。</p>
+
+<!--more-->
+
+<h2 id="簡介">簡介</h2>
+
+<p><a href="https://wuch15.github.io/paper/EMNLP2019-NRMS.pdf">這篇paper</a>是刊登在EMNLP 2019上面的，做新聞推薦的paper。</p>
+
+<p>作者認為，要了解新聞本身，新聞標題裡面字跟字的關聯是很重要的，所以採用self-attention的方式來去得到新聞的embedding，而使用者看過的新聞展示出了使用者的喜好，中間也適合使用attention來找到使用者真正在意的主題是什麼。</p>
+
+<p><img src="user_history.png" alt="User history" /></p>
+
+<p>以上圖為例子，Rockets trade Carter Williams to the Bulls中的Rockets、trade、Bulls就是重要的關鍵字；而使用者看過的文章裡面，可以明顯看出使用者是比較在意NBA相關的新聞，雖然中間穿插了些天氣預報等，但使用者喜歡的東西還是有一個主題在。</p>
+
+<h2 id="模型架構">模型架構</h2>
+
+<p><img src="nrms.png" alt="NRMS" /></p>
+
+<p>上圖是NRMS這篇paper的模型架構，主要分成兩個部分：News Encoder和User Encoder。</p>
+
+<h3 id="news-encoder">News Encoder</h3>
+
+<p>News encoder的架構在整體架構圖的左手邊，主要就是一個self-attention layer。</p>
+
+<p>新聞的標題會先被斷詞以後，透過預先訓練好的word embedding像是Glove轉換成$\textbf{e}_1, \textbf{e}_2, …, \textbf{e}_M$，接著通過self-attention layer以後最終得到新聞的embedding $\textbf{r}$，細節的計算方法如下</p>
+
+\[\alpha^k_{i,j}=\frac{\exp\left( \textbf{e}_i^T\textbf{Q}^w_k\textbf{e}_j \right)}{\sum^m_{m=1}\exp\left( \textbf{e}^T_i\textbf{Q}^w_k\textbf{e}_m \right)}\]
+
+\[\textbf{h}^w_{i,k}=\textbf{V}^w_k\left( \sum\limits^M\limits_{j=1}\alpha^k_{i,j}\textbf{e}j \right)\]
+
+<p>這邊計算的是某一個multi-head當中的$head_k$對於某一個字 $word_i$，其對同一篇新聞的其他字的self-attention，透過$\textbf{Q}^w_k$計算出其他字的attention weight $\alpha^k_{i,j}$，然後透過一個projection parameters$\textbf{V}^w_k$得到這個字的hidden state $\textbf{h}^w_{i,k}$，最後把所有head的結果接在一起變成了$\textbf{h}^w_i$</p>
+
+\[\textbf{h}^w_i=\left[ \textbf{h}^w_{i,1};\textbf{h}^w_{i,2};...;\textbf{h}^w_{i,h} \right]\]
+
+<p>把每個字$w_i$轉成word embedding $\textbf{e}_i$，再經過self-attention得到$\textbf{h}^w_i$以後，最終再經過一個attention layer來得到最後的新聞embedding $\textbf{r}$</p>
+
+\[a^w_i=\textbf{q}^T_w\tanh\left( \textbf{V}_w\times\textbf{h}^w_i+\textbf{v}_w \right)\]
+
+\[\alpha^w_i=\frac{\exp (a^w_i)}{\sum^m_{j=1}\exp(a^w_j)}\]
+
+\[\textbf{r}=\sum\limits^{M}\limits_{i=1}\alpha^w_i\textbf{h}^w_i\]
+
+<p>這邊使用一個fully connected的layer去算出attention weight，然後把先前算出來的$\textbf{h}^w_i$再weighted sum起來，從paper上面看起來，這邊的$\textbf{q}^T_w$好像就是讓模型自己訓練出來的參數。</p>
+
+<h3 id="user-encoder">User Encoder</h3>
+
+<p>User encoder的架構跟上面的news encoder一模一樣，只是這邊輸入的部分從一個新聞標題變成了使用者瀏覽過的新聞的embedding $\textbf{r}_i$，計算的方法如同上面news encoder的算法，最終會得到一個使用者embedding $\textbf{u}$。</p>
+
+<p>在有了使用者embedding $\textbf{u}$以後，我們可以把想要推薦給使用者的候選新聞，通過news encoder得到$\textbf{r}^c$，直接透過dot product來決定這則候選新聞的分數，最後照著分數排序把結果推薦給使用者。</p>
+
+\[\hat{y}=\textbf{u}^T\textbf{r}^c\]
+
+<h3 id="training">Training</h3>
+
+<p>訓練的方式跟siamese network的訓練方式相近，從所有的資料裡面去抽樣出$K$筆negative data出來，希望模型給positive data的分數要大過給negative data的分數。</p>
+
+\[p_i=\frac{\exp(\hat{y}^+_i)}{\exp(\hat{y}^+_i)+\sum^K_{j=1}\exp(\hat{y}^-_{i,j})}\]
+
+\[\mathcal{L}=-\sum\limits_{i\in S}\log(p_i)\]
+
+<h2 id="實驗結果">實驗結果</h2>
+
+<p>從結果當中可以看到，NRMS在各個經典的模型裡面表現不俗。</p>
+
+<p><img src="results.png" alt="Results" /></p>
+
+<h2 id="結論">結論</h2>
+
+<p>NRMS是一個架構沒有很複雜，但效果還不錯的一個模型，在<a href="https://github.com/recommenders-team/recommenders">recommenders</a>裡面也有支援，如果有需要推薦新聞的場景可以試試看。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://haren.medium.com/notes-nrms-neural-news-recommendation-with-multi-head-self-attention-99ad5e9bd320">[Notes](EMNLP2019) NRMS: Neural News Recommendation with Multi-Head Self-Attention</a></li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Recommendation-System" /><category term="Paper" /><summary type="html"><![CDATA[最近剛好又回頭碰了一下推薦系統，這邊記錄一下看了NRMS這篇paper的筆記。]]></summary></entry><entry><title type="html">ROC和PR曲線</title><link href="https://wjohn1483.github.io/2025/09/29/roc-and-pr/" rel="alternate" type="text/html" title="ROC和PR曲線" /><published>2025-09-29T00:00:00+00:00</published><updated>2025-09-29T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/09/29/roc-and-pr</id><content type="html" xml:base="https://wjohn1483.github.io/2025/09/29/roc-and-pr/"><![CDATA[<p>最近剛好碰到了個binary classification的問題，來順便複習一下ROC和PR曲線。</p>
 
 <!--more-->
 
@@ -997,135 +1071,4 @@ chkconfig nginx on
 
 <ol>
   <li><a href="https://blog.containerize.com/zh-hant/how-to-setup-and-configure-nginx-as-reverse-proxy/">如何設置和配置為反向代理</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。]]></summary></entry><entry><title type="html">如何使用CPU跑LLM</title><link href="https://wjohn1483.github.io/2023/09/11/llama-cpp-introduction/" rel="alternate" type="text/html" title="如何使用CPU跑LLM" /><published>2023-09-11T00:00:00+00:00</published><updated>2023-09-11T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2023/09/11/llama-cpp-introduction</id><content type="html" xml:base="https://wjohn1483.github.io/2023/09/11/llama-cpp-introduction/"><![CDATA[<p>Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。</p>
-
-<!--more-->
-
-<h2 id="ggml">GGML</h2>
-
-<p>現在把LLM跑在資源相較匱乏的電腦上的方法主要都是透過quantization來減少模型的計算量，在訓練模型的時候，模型通常都是使用32 bits的浮點數來去儲存參數，倘若我們把浮點數下調一些，用16 bits或是4bits來儲存的話，雖說計算的精準度會下降，但模型在inference的計算量就可以減少很多。</p>
-
-<p>其中quantization最常使用的是<a href="https://github.com/ggerganov/ggml">ggml</a>這個工具，ggml是個用C寫成的套件，它可以幫助你把手上的模型做quantization，而且支援目前大多數的開源LLM模型，支援的模型們可以去它的github上面看。</p>
-
-<h2 id="llamacpp">llama.cpp</h2>
-
-<p><a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>是一個基於ggml的工具，讓你可以很輕易地把你手上建構在llama上的模型做quantization，像是Llama、Alpaca、Vicuna、Llama2等都可以透過llama.cpp來把模型變得更小、計算得更快，底下會講一下如何使用llama.cpp來讓Llama2跑在CPU上。</p>
-
-<h3 id="llama2">Llama2</h3>
-
-<p><a href="https://ai.meta.com/llama/">Llama2</a>是Meta基於Llama訓練出來的有條件可商用模型，如果想要取得Llama2的模型，可以直接去Meta的官網上面填寫資料，之後根據寄來的email上的指示就能將模型的參數們下載回來了。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-&gt; % <span class="nb">ls </span>llama-2-13b-chat
-checklist.chk  consolidated.00.pth  consolidated.01.pth  params.json  tokenizer.model
-</code></pre></div></div>
-
-<h3 id="compile-llamacpp">Compile llama.cpp</h3>
-
-<p>在quantize模型之前，我們需要先編譯一下我們的工具llama.cpp，編譯的方法可以參考github上的<a href="https://github.com/ggerganov/llama.cpp#readme">README.md</a>，如果是Linux的話應該只需要將repository clone下來以後執行make就可以了。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/ggerganov/llama.cpp.git
-<span class="nb">cd </span>llama.cpp
-pip3 <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
-make
-</code></pre></div></div>
-
-<h3 id="quantization">Quantization</h3>
-
-<p>接下來就可以著手來做quantization了，詳細的步驟也可以參考<a href="https://github.com/ggerganov/llama.cpp#prepare-data--run">官方的README.md</a>，首先我們需要將模型的參數做成16 bits的gguf檔，在過去被稱為ggml，也就是套件的名稱，但後來ggml的格式又做了一些修改，變成了gguf，獲得了更好的可擴充性。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 ./convert.py ~/llama-2-13b-chat/
-</code></pre></div></div>
-
-<p>這時在原本模型儲存的路徑下應該會多出一個<strong>ggml-model-f16.gguf</strong>檔，這時其實就可以使用這個比較小的模型檔來在CPU上面做inference了，不過我們還可以進一步的做quantization，來讓執行時間變得更短。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./quantize ~/llama-2-13b-chat/ggml-model-f16.gguf ~/llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin q4_0
-</code></pre></div></div>
-
-<p>在上面的指令裡面，我們給了3個參數，分別是剛剛做好的gguf檔，再來是做完quantization後想輸出的路徑，最後是quantization的方法，quantization的方法在<a href="https://github.com/ggerganov/llama.cpp#quantization">README.md</a>上面有列表來告訴我們有哪些選項，以及其效果如何。</p>
-
-<p>在<a href="https://huggingface.co/TheBloke/Llama-2-7b-Chat-GGUF">Hugging Face上</a>也已經有別人quantized好的模型了，如果想直接拿現成的也可以從上面下載下來。</p>
-
-<h3 id="inference">Inference</h3>
-
-<p>在quantize好自己想要的大小的模型以後，接下來就是使用這個模型來執行看看prompt了。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./main <span class="nt">-m</span> ~/llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin <span class="nt">-n</span> <span class="nt">-1</span> <span class="nt">-e</span> <span class="nt">-t</span> 8 <span class="nt">-p</span> <span class="s2">"YOUR PROMPT HERE"</span>
-</code></pre></div></div>
-
-<p>關於<code class="language-plaintext highlighter-rouge">main</code>更多的參數可以透過<code class="language-plaintext highlighter-rouge">./main -h</code>來查看，這邊列一下上面指令option所代表的意思。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nt">-m</span> FNAME, <span class="nt">--model</span> FNAME
-                        model path <span class="o">(</span>default: models/7B/ggml-model-f16.gguf<span class="o">)</span>
-  <span class="nt">-n</span> N, <span class="nt">--n-predict</span> N   number of tokens to predict <span class="o">(</span>default: <span class="nt">-1</span>, <span class="nt">-1</span> <span class="o">=</span> infinity, <span class="nt">-2</span> <span class="o">=</span> <span class="k">until </span>context filled<span class="o">)</span>
-  <span class="nt">-t</span> N, <span class="nt">--threads</span> N     number of threads to use during computation <span class="o">(</span>default: 4<span class="o">)</span>
-  <span class="nt">-p</span> PROMPT, <span class="nt">--prompt</span> PROMPT
-                        prompt to start generation with <span class="o">(</span>default: empty<span class="o">)</span>
-  <span class="nt">-e</span>, <span class="nt">--escape</span>          process prompt escapes sequences <span class="o">(</span><span class="se">\n</span>, <span class="se">\r</span>, <span class="se">\t</span>, <span class="se">\'</span>, <span class="se">\"</span>, <span class="se">\\</span><span class="o">)</span>
-</code></pre></div></div>
-
-<p>如果我們想要透過python使用這個quantized好的模型，我們可以使用<a href="https://github.com/abetlen/llama-cpp-python">llama-cpp-python</a>，能過直接透過pip來安裝。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>llama-cpp-python
-</code></pre></div></div>
-
-<p>接著就能使用類似下面的程式碼來使用了，更多的使用方法可以參考其github repository。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">llama_cpp</span> <span class="kn">import</span> <span class="n">Llama</span>
-<span class="n">llm</span> <span class="o">=</span> <span class="nc">Llama</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="sh">"</span><span class="s">./llama-2-13b-chat/ggml-model-f16.gguf.q4_0.bin</span><span class="sh">"</span><span class="p">)</span>
-<span class="n">output</span> <span class="o">=</span> <span class="nf">llm</span><span class="p">(</span><span class="sh">"</span><span class="s">YOUR PROMPT HERE</span><span class="sh">"</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>值得一提的是，它所回傳的會是一個類似底下的dict object，需要自己再parse一下。</p>
-
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cmpl-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text_completion"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1679561337</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./models/7B/ggml-model.bin"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"choices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Q: Name the planets in the solar system? A: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune and Pluto."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"logprobs"</span><span class="p">:</span><span class="w"> </span><span class="err">None</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"finish_reason"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stop"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"usage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"prompt_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"completion_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"total_tokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div>
-
-<h2 id="gpu-acceleration">GPU Acceleration</h2>
-
-<p>如果你希望能把已經quantized好的模型，加速跑得更快的話，可以考慮在<code class="language-plaintext highlighter-rouge">pip install llama-cpp-python</code>的時候，多加一些參數，讓它可以使用各種<a href="https://zh.wikipedia.org/zh-tw/BLAS">BLAS</a> backend來加速，如果你安裝的是cuBLAS，還可以使用GPU的資源來加速，詳細的介紹可以參考<a href="https://github.com/abetlen/llama-cpp-python#installation-with-hardware-acceleration">README.md</a>，下面放上使用cuBLAS的安裝指令。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">LLAMA_CUBLAS</span><span class="o">=</span>1
-<span class="nv">CMAKE_ARGS</span><span class="o">=</span><span class="s2">"-DLLAMA_CUBLAS=on"</span> <span class="nv">FORCE_CMAKE</span><span class="o">=</span>1 pip <span class="nb">install</span> <span class="nt">--upgrade</span> <span class="nt">--force-reinstall</span> llama-cpp-python <span class="nt">--no-cache-dir</span>
-</code></pre></div></div>
-
-<p>這時我們在使用llama-cpp-python的時候，就能於讀取模型的地方多加<code class="language-plaintext highlighter-rouge">n_gpu_layers</code>的參數把部分的模型放到GPU上面執行。</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">llama_cpp</span> <span class="kn">import</span> <span class="n">Llama</span>
-<span class="n">llm</span> <span class="o">=</span> <span class="nc">Llama</span><span class="p">(</span><span class="n">model_path</span><span class="o">=</span><span class="sh">"</span><span class="s">./llama-2-13b-chat/ggml-model-f16.gguf</span><span class="sh">"</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">n_gpu_layers</span><span class="o">=</span><span class="mi">43</span><span class="p">)</span>
-<span class="n">output</span> <span class="o">=</span> <span class="nf">llm</span><span class="p">(</span><span class="sh">"</span><span class="s">YOUR PROMPT HERE</span><span class="sh">"</span><span class="p">,</span> <span class="n">max_tokens</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">echo</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>不同的模型、不同quantized的參數產生的模型所需要的GPU記憶體都不同，需要試著跑看看才知道GPU能不能吃的下來，而模型總共有多少layer可以在llama-cpp-python寫出來的log裡面看到，像是llama2總共有43層，<code class="language-plaintext highlighter-rouge">n_gpu_layers</code>設定超過43跟設43是一樣的效果。</p>
-
-<h3 id="gptq">GPTQ</h3>
-
-<p>上面所使用的quantization方法主要是調整模型參數的bit數，來達到減少運算量的目標，但這樣直接減少bit的數目會對精準度有一些影響，所以就有人在研究怎麼在quantize某一個特定的參數時，適時地調整還沒有被quantize的其他參數，讓整體的loss與quantize前的不要差異太大，其中衍生出了很多方法及其演進（OBD→OBS→OBQ→GPTQ），詳細的介紹和背後的原理推薦看<a href="https://zhuanlan.zhihu.com/p/646210009">QLoRA、GPTQ：模型量化概述</a>這篇文章的介紹。</p>
-
-<p>在<a href="https://huggingface.co/TheBloke/Llama-2-7b-Chat-GPTQ">HuggingFace上</a>，有人使用了GPTQ的技術對Llama2做quantization，並將算出來的模型參數放上去了，如果對上面使用llama.cpp做出來的模型不滿意，且有個不錯的GPU，可以試試看用GPTQ quantize的Llama2。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ul>
-  <li><a href="https://zhuanlan.zhihu.com/p/616969812">GPTQ: 模型量化，穷鬼救星</a></li>
-  <li><a href="https://zhuanlan.zhihu.com/p/646210009">QLoRA、GPTQ：模型量化概述</a></li>
-</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><category term="Machine-Learning" /><category term="Natural-Language-Processing" /><summary type="html"><![CDATA[Large Language Model（LLM）的風潮席捲全球，大家都在努力嘗試使用LLM來建造各式各樣的應用，但LLM本身所需要的計算量很大，沒有足夠的資源是跑不起來的，好在網路上有很多大神們在嘗試只使用少量的把LLM給跑起來，這篇文章介紹一下如何使用CPU的資源就將Llama2跑起來。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。]]></summary></entry></feed>
