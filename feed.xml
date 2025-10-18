@@ -1,4 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/" rel="alternate" type="text/html" /><updated>2025-10-06T08:45:30+00:00</updated><id>https://wjohn1483.github.io/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">Neural News Recommendation with Multi-Head Self-Attention</title><link href="https://wjohn1483.github.io/2025/10/06/nrms/" rel="alternate" type="text/html" title="Neural News Recommendation with Multi-Head Self-Attention" /><published>2025-10-06T00:00:00+00:00</published><updated>2025-10-06T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/10/06/nrms</id><content type="html" xml:base="https://wjohn1483.github.io/2025/10/06/nrms/"><![CDATA[<p>最近剛好又回頭碰了一下推薦系統，這邊記錄一下看了NRMS這篇paper的筆記。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/" rel="alternate" type="text/html" /><updated>2025-10-18T14:45:48+00:00</updated><id>https://wjohn1483.github.io/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">n8n介紹</title><link href="https://wjohn1483.github.io/2025/10/18/n8n/" rel="alternate" type="text/html" title="n8n介紹" /><published>2025-10-18T00:00:00+00:00</published><updated>2025-10-18T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/10/18/n8n</id><content type="html" xml:base="https://wjohn1483.github.io/2025/10/18/n8n/"><![CDATA[<p>n8n是一個包含了AI的排程管理系統，可以透過簡單拖曳來建立你的資料流，這邊記錄一下我使用n8n的過程。</p>
+
+<!--more-->
+
+<h2 id="n8n是什麼">n8n是什麼</h2>
+
+<p><a href="https://n8n.io/">n8n</a>是一個開源的工作流程自動化工具，可以讓使用者透過滑鼠的拖拉，在UI上面就能將不同的服務像是Gmail、Chatgpt、Telegram組合起來建立一個資料流。</p>
+
+<h2 id="如何安裝n8n">如何安裝n8n</h2>
+
+<p>n8n本身有提供雲端服務可以免費試用，如果想要自己host的話，可以參考他們的<a href="https://docs.n8n.io/hosting/">文件</a>。</p>
+
+<p>我自己使用的方式是用<a href="https://docs.n8n.io/hosting/installation/docker/">docker的方式</a>來host，只要執行下面的指令，就可以建立起一個n8n的server，並聽本機的port 8000。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker volume create n8n_data
+
+<span class="nv">TIMEZONE</span><span class="o">=</span><span class="s2">"Asia/Taipei"</span>
+
+docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="se">\</span>
+    <span class="nt">--name</span> n8n <span class="se">\</span>
+    <span class="nt">-p</span> 8000:5678 <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">GENERIC_TIMEZONE</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">TIMEZONE</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">TIMEZONE</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">N8N_RUNNERS_ENABLED</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">N8N_SECURE_COOKIE</span><span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
+    <span class="nt">-v</span> n8n_data:/home/node/.n8n <span class="se">\</span>
+    docker.n8n.io/n8nio/n8n
+</code></pre></div></div>
+
+<p>透過瀏覽器連上server以後，可以創建一個n8n的帳號來登入，接下來就可以創建自己的資料流了。</p>
+
+<h2 id="實作範例">實作範例</h2>
+
+<p>這邊先胡亂每天幫忙檢查車票開賣了沒的簡單資料流，整體的架構長得像下面這樣</p>
+
+<p><img src="dataflow.png" alt="Dataflow" /></p>
+
+<p>這邊會定期觸發這個資料流，發http request到售票網站上面，透過一個html的parser去抓特定位置的文字，如果顯示可以訂票就發可以訂票的訊息到telegram上，如果還不行也一樣發個訊息說目前還不能訂票到telegram上。</p>
+
+<p>在一開始開發這個資料流的時候，可以在觸發的地方選擇Trigger manually，這樣手動點一下就可以驗證資料流是不是如你預期般的執行，而後面的處理可以點擊+號來搜尋你想要做的事情，其中你也可以把輸入的結果丟給AI模型，下prompt讓模型去幫你處理輸入再輸出你想要的結果到後面的節點</p>
+
+<p><img src="start_building.png" alt="Start building" /></p>
+
+<p>每一個方框都可以點擊兩下來編輯設定，下面是html parser的設定，我們在發完http request以後拿到了html，這邊透過寫CSS selector來拿到特定的文字出來，除了一般的寫法外，我們還可以用比較特別的<code class="language-plaintext highlighter-rouge">a.contains("string")</code>的方式來抓。</p>
+
+<p><img src="html_parser.png" alt="HTML parser" /></p>
+
+<p>最後就是透過telegram的bot將結果傳送到手機上，如何設定telegram bot可以參考下面的文章。</p>
+
+<h3 id="telegram-bot">Telegram Bot</h3>
+
+<p>要創建一個telegram bot，我們首先要先在telegram上面去找<code class="language-plaintext highlighter-rouge">@BotFather</code>跟他下<code class="language-plaintext highlighter-rouge">/newbot</code>的指令，接著按照指示設定顯示的名稱和實際的username，設定好以後可以得到一個API token，有了這個token就可以透過n8n內建的節點來收取或是發送訊息給使用者了。</p>
+
+<p>值得一提的是，在發送訊息的部分我們除了API token外，還需要設定一個chat id，也就是聊天室的id，我們可以先傳個訊息到你創建的bot的聊天室，再透過下面的網址去拿到最近有互動的chat id，用這個來設定在n8n的節點上。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.telegram.org/bot{BOT_TOKEN}/getUpdates
+</code></pre></div></div>
+
+<p>中間的<code class="language-plaintext highlighter-rouge">{BOT_TOKEN}</code>要替換成上一個步驟裡面拿到的API token。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>n8n是個很方便、可以快速驗證想法的工具，我們可以透過串連更多的服務來做到更多的應用，上面的例子只是一個牛刀小試，網路上有更多例子透過大型語言模型來做到更智慧的結果，而且不用寫程式碼就可以做到過去可能要寫很多才能做到的功能，如果有什麼好想法不妨先用n8n兜看看。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li>
+    <p><a href="https://www.youtube.com/watch?v=sRU6Y7DXkLI">學會 n8n 為你省下 80% 時間！(EP.2) 這個 AI 助理只認你這個主人，不但使命必達且全天候待命！ - YouTube</a></p>
+  </li>
+  <li>
+    <p><a href="https://z3388638.medium.com/telegram-bot-1-%E6%87%B6%E5%BE%97%E8%87%AA%E5%B7%B1%E5%81%9A%E7%9A%84%E4%BA%8B%E5%B0%B1%E4%BA%A4%E7%B5%A6%E6%A9%9F%E5%99%A8%E4%BA%BA%E5%90%A7-c59004dc6c7b">Telegram Bot (1) 懶得自己做的事就交給機器人吧</a></p>
+  </li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[n8n是一個包含了AI的排程管理系統，可以透過簡單拖曳來建立你的資料流，這邊記錄一下我使用n8n的過程。]]></summary></entry><entry><title type="html">Neural News Recommendation with Multi-Head Self-Attention</title><link href="https://wjohn1483.github.io/2025/10/06/nrms/" rel="alternate" type="text/html" title="Neural News Recommendation with Multi-Head Self-Attention" /><published>2025-10-06T00:00:00+00:00</published><updated>2025-10-06T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/10/06/nrms</id><content type="html" xml:base="https://wjohn1483.github.io/2025/10/06/nrms/"><![CDATA[<p>最近剛好又回頭碰了一下推薦系統，這邊記錄一下看了NRMS這篇paper的筆記。</p>
 
 <!--more-->
 
@@ -945,130 +1019,4 @@ git clone https://github.com/ltdrdata/ComfyUI-Manager.git
   <li>
     <p><a href="https://zhuanlan.zhihu.com/p/384427160">MAB系列2：Contextual Bandits: LinUCB</a></p>
   </li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Bandit" /><summary type="html"><![CDATA[最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。]]></summary></entry><entry><title type="html">nginx Reverse Proxy</title><link href="https://wjohn1483.github.io/2024/01/20/nginx-reverse-proxy/" rel="alternate" type="text/html" title="nginx Reverse Proxy" /><published>2024-01-20T00:00:00+00:00</published><updated>2024-01-20T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2024/01/20/nginx-reverse-proxy</id><content type="html" xml:base="https://wjohn1483.github.io/2024/01/20/nginx-reverse-proxy/"><![CDATA[<p>最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。</p>
-
-<!--more-->
-
-<p>在機器上因為不同的需求開了兩個不同的服務在不同的port，但想要讓這兩個服務都透過相同的port 80來給使用者來做使用，這時候我們可以使用nginx的反向代理功能來讓使用者使用相同的port 80，搭配不同的path來連到不同的服務。</p>
-
-<h2 id="安裝nginx">安裝nginx</h2>
-
-<p>底下是在CentOS上面安裝時使用的指令，不同的作業系統的安裝方法可以參考<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/">官網</a>上的介紹。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>yum <span class="nb">install</span> <span class="nt">-y</span> nginx
-</code></pre></div></div>
-
-<h2 id="設定nginx">設定nginx</h2>
-
-<p>關於nginx的設定都放在<code class="language-plaintext highlighter-rouge">/etc/nginx/nginx.conf</code>裡面，我們可以在http$\rightarrow$server的區塊裡面，新增不同的path來讓nginx來做反向代理。</p>
-
-<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># For more information on configuration, see:</span>
-<span class="c1">#   * Official English Documentation: http://nginx.org/en/docs/</span>
-<span class="c1">#   * Official Russian Documentation: http://nginx.org/ru/docs/</span>
-
-<span class="k">user</span> <span class="s">nginx</span><span class="p">;</span>
-<span class="k">worker_processes</span> <span class="s">auto</span><span class="p">;</span>
-<span class="k">error_log</span> <span class="n">/var/log/nginx/error.log</span><span class="p">;</span>
-<span class="k">pid</span> <span class="n">/run/nginx.pid</span><span class="p">;</span>
-
-<span class="c1"># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.</span>
-<span class="k">include</span> <span class="n">/usr/share/nginx/modules/*.conf</span>;
-
-<span class="k">events</span> <span class="p">{</span>
-    <span class="kn">worker_connections</span> <span class="mi">1024</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">http</span> <span class="p">{</span>
-    <span class="kn">log_format</span>  <span class="s">main</span>  <span class="s">'</span><span class="nv">$remote_addr</span> <span class="s">-</span> <span class="nv">$remote_user</span> <span class="s">[</span><span class="nv">$time_local</span><span class="s">]</span> <span class="s">"</span><span class="nv">$request</span><span class="s">"</span> <span class="s">'</span>
-                      <span class="s">'</span><span class="nv">$status</span> <span class="nv">$body_bytes_sent</span> <span class="s">"</span><span class="nv">$http_referer</span><span class="s">"</span> <span class="s">'</span>
-                      <span class="s">'"</span><span class="nv">$http_user_agent</span><span class="s">"</span> <span class="s">"</span><span class="nv">$http_x_forwarded_for</span><span class="s">"'</span><span class="p">;</span>
-
-    <span class="kn">access_log</span>  <span class="n">/var/log/nginx/access.log</span>  <span class="s">main</span><span class="p">;</span>
-
-    <span class="kn">sendfile</span>            <span class="no">on</span><span class="p">;</span>
-    <span class="kn">tcp_nopush</span>          <span class="no">on</span><span class="p">;</span>
-    <span class="kn">tcp_nodelay</span>         <span class="no">on</span><span class="p">;</span>
-    <span class="kn">keepalive_timeout</span>   <span class="mi">65</span><span class="p">;</span>
-    <span class="kn">types_hash_max_size</span> <span class="mi">4096</span><span class="p">;</span>
-
-    <span class="kn">gzip_static</span> <span class="no">off</span><span class="p">;</span>
-
-    <span class="kn">include</span>             <span class="n">/etc/nginx/mime.types</span><span class="p">;</span>
-    <span class="kn">default_type</span>        <span class="nc">application/octet-stream</span><span class="p">;</span>
-
-    <span class="c1"># Load modular configuration files from the /etc/nginx/conf.d directory.</span>
-    <span class="c1"># See http://nginx.org/en/docs/ngx_core_module.html#include</span>
-    <span class="c1"># for more information.</span>
-    <span class="kn">include</span> <span class="n">/etc/nginx/conf.d/*.conf</span><span class="p">;</span>
-
-    <span class="kn">server</span> <span class="p">{</span>
-        <span class="kn">listen</span>       <span class="mi">80</span><span class="p">;</span>
-        <span class="kn">listen</span>       <span class="s">[::]:80</span><span class="p">;</span>
-        <span class="kn">server_name</span>  <span class="s">&lt;YOUR_HOST_NAME&gt;</span><span class="p">;</span>
-
-        <span class="c1"># Load configuration files for the default server block.</span>
-        <span class="kn">include</span> <span class="n">/etc/nginx/default.d/*.conf</span><span class="p">;</span>
-
-        <span class="kn">location</span> <span class="n">/</span> <span class="p">{</span>
-            <span class="kn">proxy_pass</span> <span class="s">http://localhost:8000</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="kn">location</span> <span class="n">/test</span> <span class="p">{</span>
-            <span class="kn">rewrite</span> <span class="s">^/test(/.*)</span>$ <span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
-            <span class="kn">proxy_pass</span> <span class="s">http://localhost:9000</span><span class="p">;</span>
-            <span class="kn">proxy_redirect</span> <span class="n">/</span> <span class="n">/test/</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="kn">error_page</span> <span class="mi">404</span> <span class="n">/404.html</span><span class="p">;</span>
-        <span class="kn">location</span> <span class="p">=</span> <span class="n">/404.html</span> <span class="p">{</span>
-        <span class="p">}</span>
-
-        <span class="kn">error_page</span> <span class="mi">500</span> <span class="mi">502</span> <span class="mi">503</span> <span class="mi">504</span> <span class="n">/50x.html</span><span class="p">;</span>
-        <span class="kn">location</span> <span class="p">=</span> <span class="n">/50x.html</span> <span class="p">{</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>在上面的例子裡面，我們新增了底下的設定</p>
-
-<div class="language-nginx highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        <span class="k">location</span> <span class="n">/</span> <span class="p">{</span>
-            <span class="kn">proxy_pass</span> <span class="s">http://localhost:8000</span><span class="p">;</span>
-        <span class="p">}</span>
-
-        <span class="k">location</span> <span class="n">/test</span> <span class="p">{</span>
-            <span class="kn">rewrite</span> <span class="s">^/test(/.*)</span>$ <span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
-            <span class="kn">proxy_pass</span> <span class="s">http://localhost:9000</span><span class="p">;</span>
-            <span class="kn">proxy_redirect</span> <span class="n">/</span> <span class="n">/test/</span><span class="p">;</span>
-        <span class="p">}</span>
-</code></pre></div></div>
-
-<p>我們使用<code class="language-plaintext highlighter-rouge">proxy_pass</code>來將不同path的request傳到對應的服務上，假如使用者連到<code class="language-plaintext highlighter-rouge">HOST/</code>，就會導到<code class="language-plaintext highlighter-rouge">localhost:8000</code>，如果連到<code class="language-plaintext highlighter-rouge">HOST/test/</code>就會導到<code class="language-plaintext highlighter-rouge">localhost:9000</code>。</p>
-
-<p>不過如果只有單純的<code class="language-plaintext highlighter-rouge">proxy_pass</code>，被重新導向的路徑會也帶上使用者加上的<code class="language-plaintext highlighter-rouge">/test/</code>，倘若希望在導向的時候將這個path給去除，讓服務收到的request是<code class="language-plaintext highlighter-rouge">/</code>的話，可以使用<code class="language-plaintext highlighter-rouge">rewrite</code>來對request做修改。</p>
-
-<p>同樣地，如果服務收到<code class="language-plaintext highlighter-rouge">/</code>的request以後，想重新導向到服務的<code class="language-plaintext highlighter-rouge">/redirect</code>路徑，這時使用者實際上要request的就會需要是<code class="language-plaintext highlighter-rouge">HOST/test/redirect</code>，我們可以使用<code class="language-plaintext highlighter-rouge">proxy_redirect</code>來幫服務的重新導向加上<code class="language-plaintext highlighter-rouge">/test/</code>的前綴。</p>
-
-<h2 id="啟動nginx">啟動nginx</h2>
-
-<p>在寫好configuration以後，我們可以透過<code class="language-plaintext highlighter-rouge">nginx -t</code>來檢驗設定檔有沒有寫錯的地方，如果順利通過就能將nginx的服務起起來了。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> /usr/sbin/nginx <span class="nt">-t</span>
-<span class="nb">sudo </span>service nginx start
-<span class="nb">sudo </span>service nginx reload
-chkconfig nginx on
-</code></pre></div></div>
-
-<p>而nginx本身的log會寫到底下的路徑，每當有使用者連線進來，就會寫到<code class="language-plaintext highlighter-rouge">access.log</code>，如果發生了錯誤會寫到<code class="language-plaintext highlighter-rouge">error.log</code>。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/var/log/nginx/access.log
-/var/log/nginx/error.log
-</code></pre></div></div>
-
-<p>如果之後設定檔有做其他的修改，只需要執行<code class="language-plaintext highlighter-rouge">nginx reload</code>就可以讓新的設定生效。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li><a href="https://blog.containerize.com/zh-hant/how-to-setup-and-configure-nginx-as-reverse-proxy/">如何設置和配置為反向代理</a></li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[最近想要把在同一台機器上面的不同服務都使用同一個port來去做serving，這邊記錄一下嘗試使用nginx來做reverse proxy的過程。]]></summary></entry></feed>
+</ol>]]></content><author><name>Your Name</name></author><category term="Bandit" /><summary type="html"><![CDATA[最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。]]></summary></entry></feed>
