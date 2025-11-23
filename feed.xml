@@ -1,4 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/" rel="alternate" type="text/html" /><updated>2025-10-18T14:45:48+00:00</updated><id>https://wjohn1483.github.io/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">n8n介紹</title><link href="https://wjohn1483.github.io/2025/10/18/n8n/" rel="alternate" type="text/html" title="n8n介紹" /><published>2025-10-18T00:00:00+00:00</published><updated>2025-10-18T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/10/18/n8n</id><content type="html" xml:base="https://wjohn1483.github.io/2025/10/18/n8n/"><![CDATA[<p>n8n是一個包含了AI的排程管理系統，可以透過簡單拖曳來建立你的資料流，這邊記錄一下我使用n8n的過程。</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://wjohn1483.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://wjohn1483.github.io/" rel="alternate" type="text/html" /><updated>2025-11-23T12:20:41+00:00</updated><id>https://wjohn1483.github.io/feed.xml</id><title type="html">wjohn1483.github.io</title><subtitle></subtitle><author><name>Your Name</name></author><entry><title type="html">使用Cloudflare Tunnel實現遠端訪問</title><link href="https://wjohn1483.github.io/2025/11/23/cloudflare-tunnel/" rel="alternate" type="text/html" title="使用Cloudflare Tunnel實現遠端訪問" /><published>2025-11-23T00:00:00+00:00</published><updated>2025-11-23T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/11/23/cloudflare-tunnel</id><content type="html" xml:base="https://wjohn1483.github.io/2025/11/23/cloudflare-tunnel/"><![CDATA[<p>這篇文章介紹一下如何透過Cloudflare tunnel來把在內網的服務讓外面的人可以存取。</p>
+
+<!--more-->
+
+<h2 id="介紹">介紹</h2>
+
+<p><a href="https://www.cloudflare.com/">Cloudflare</a>是一個提供CDN、DNS、DDoS防護等服務的雲端平台，而<a href="https://www.cloudflare.com/products/tunnel/">Cloudflare Tunnel</a>是Cloudflare提供的一項服務，可以讓你在不需要開放任何port到公網的情況下，將內網的服務暴露到網際網路上。</p>
+
+<p>傳統上，如果我們想要讓外部使用者存取內網的服務，通常需要：</p>
+
+<ol>
+  <li>確保有固定的公網IP</li>
+  <li>處理防火牆設定</li>
+  <li>面對直接暴露在公網上的安全風險</li>
+</ol>
+
+<p>Cloudflare Tunnel解決了這些問題，它透過在本地端建立一個輕量級的daemon（cloudflared），這個daemon會主動與Cloudflare的邊緣伺服器建立一個加密的連線，所有的流量都會透過這個加密通道傳輸，因此不需要在防火牆上開放任何port，也不需要公網IP。</p>
+
+<h2 id="網域">網域</h2>
+
+<p>在使用Cloudflare Tunnel之前，你需要有一個網域，並且將這個網域的DNS管理權交給Cloudflare。如果你還沒有網域，可以在Cloudflare上購買，或者使用你現有的網域並將DNS轉移到Cloudflare。</p>
+
+<p>在Cloudflare上面創建一個帳號以後，在左邊側邊欄裡面可以找到Register Domain的選項，在這邊可以打上你想要的關鍵字，Cloudflare會推薦對應的網域給你並附上價格，可以選擇<code class="language-plaintext highlighter-rouge">.xyz</code>、<code class="language-plaintext highlighter-rouge">.me</code>、<code class="language-plaintext highlighter-rouge">.org</code>、<code class="language-plaintext highlighter-rouge">.uk</code>等網域，價格相對比較低一點點。</p>
+
+<p><img src="register_domains.png" alt="Register domains" /></p>
+
+<p>在擁有網域以後，就可以開始建立tunnel連結內網的機器和這個網域了。</p>
+
+<h2 id="cloudflare-tunnel">Cloudflare Tunnel</h2>
+
+<pre><code class="language-mermaid">graph LR
+    User[使用者] --&gt;|1. 請求 https://service.yourdomain.com| DNS[DNS 解析]
+    DNS --&gt;|2. 解析到 Cloudflare| CF[Cloudflare 邊緣伺服器]
+    CF --&gt;|3. 透過加密 Tunnel| Tunnel[cloudflared&lt;br/&gt;本地端 daemon]
+    Tunnel --&gt;|4. 轉發請求| Service[本地服務&lt;br/&gt;localhost:8000]
+    Service --&gt;|5. 回應| Tunnel
+    Tunnel --&gt;|6. 透過加密 Tunnel| CF
+    CF --&gt;|7. 回傳回應| User
+
+    style User fill:#e1f5ff
+    style DNS fill:#fff4e1
+    style CF fill:#ff6b6b,color:#fff
+    style Tunnel fill:#51cf66,color:#fff
+    style Service fill:#339af0,color:#fff
+</code></pre>
+
+<p>要從內網的機器建立tunnel可以在Cloudflare側邊欄中的Zero Trust裡面的Networks下面的Connectors裡面找到，點擊建立tunnel以後照著流程走就可以了。</p>
+
+<p><img src="configure_tunnel.png" alt="Configure tunnel" /></p>
+
+<ol>
+  <li>
+    <p><strong>安裝cloudflared</strong></p>
+
+    <p>首先需要在本地端安裝cloudflared，這是Cloudflare提供的命令列工具。可以到<a href="https://github.com/cloudflare/cloudflared/releases">Cloudflare的GitHub</a>下載對應作業系統的版本，或是使用套件管理器安裝</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Add cloudflared.repo to /etc/yum.repos.d/</span>
+curl <span class="nt">-fsSl</span> https://pkg.cloudflare.com/cloudflared.repo | <span class="nb">sudo tee</span> /etc/yum.repos.d/cloudflared.repo
+   
+<span class="c">#update repo</span>
+<span class="nb">sudo </span>yum update
+   
+<span class="c"># install cloudflared</span>
+<span class="nb">sudo </span>yum <span class="nb">install </span>cloudflared
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>連接Tunnel</strong></p>
+
+    <p>在Dashboard的Tunnel頁面中，會顯示一個連接命令，類似</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cloudflared tunnel run &lt;tunnel-id&gt;
+</code></pre></div>    </div>
+
+    <p>在本地端執行這個命令，Tunnel就會開始運作。你也可以使用service或其他服務管理器來讓Tunnel在背景持續運行。</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>cloudflared service <span class="nb">install</span> &lt;tunnel-id&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>完成以上步驟後，你的機器理論上就連上了Cloudflare的伺服器了，接下來在Published application routes裡面可以設定別人連上你的網域該怎麼導向你的內網服務</p>
+
+<p><img src="tunnel_route.png" alt="Tunnel route" /></p>
+
+<p>假如你的內網服務架在<code class="language-plaintext highlighter-rouge">localhost:8001</code>上面，在Service的地方就可以選擇用HTTP與URL來連線，而Hostname的地方可以選擇使用Subdomain或是Path來區分不同的service。</p>
+
+<p>經過了這些設定以後，現在連線到你所設定的Hostname應該就可以碰到你放在內網機器上的服務。</p>
+
+<h2 id="登入驗證機制">登入驗證機制</h2>
+
+<p>現在你的服務可以被全世界的人連線了，但有些時候你會想要讓某些服務只讓有權限的人可以存取，Cloudflare有提供一些登入驗證的機制來幫你做到這件事情。</p>
+
+<p>在Zero Trust當中的Access controls裡面，可以找到Applications的選項，點擊Add an application以後，選擇Self-hosted，接著就可以開始設定你的應用程式了。</p>
+
+<p><img src="application_settings.png" alt="Application settings" /></p>
+
+<p>在Application name的地方可以設定這個應用程式的名稱，Session duration可以設定登入後多久需要重新驗證，而Add public hostname的地方需要選擇你剛才在Tunnel route裡面設定的Hostname。</p>
+
+<p>接下來在Policies的地方可以設定誰可以存取這個應用程式，點擊Add a policy以後，可以設定包含（Include）和排除（Exclude）的條件。</p>
+
+<p><img src="policy_settings.png" alt="Policy settings" /></p>
+
+<p>在Include的部分，可以設定允許存取的條件，例如：</p>
+
+<ul>
+  <li><strong>Email</strong>：特定Email地址（例如：user@example.com）</li>
+  <li><strong>Emails ending in</strong>：Email網域（例如：@company.com，代表該網域下的所有Email都可以存取）</li>
+  <li><strong>IP ranges</strong>：特定的IP地址</li>
+  <li><strong>Country</strong>：特定國家/地區</li>
+</ul>
+
+<p>在Exclude的部分，可以設定拒絕存取的條件，例如某些特定的IP地址或Email。</p>
+
+<p>選擇email的話，Cloudflare會在使用者來到網站的時候，輸入有權限的email以後，寄送一個一次性密碼到信箱裡面，透過這些設定，你可以確保只有經過驗證的使用者才能存取你的服務，大大提升了服務的安全性。</p>
+
+<p>如果你想要讓使用者可以透過不同的方式登入，在Zero Trust側邊欄的Integrations的Identity providers裡面可以選擇像是Facebook、Google、GitHub等方式，照著上面的指示就可以新增一個登入的方法，並在application的設定裡面允許這個方法就可以了。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>Cloudflare Tunnel提供了一個簡單且安全的方式來將內網服務暴露到網際網路上，不需要處理複雜的網路設定，也不需要擔心直接暴露在公網上的安全風險。配合Zero Trust的登入驗證機制，可以進一步保護你的服務，只讓授權的使用者存取。對於需要遠端存取內網服務的使用者來說，這是一個非常實用的解決方案。</p>
+
+<h2 id="參考資料">參考資料</h2>
+
+<ul>
+  <li><a href="https://www.sakamoto.blog/cloudflare-tunnel/">免費 Cloudflare Tunnel 取代伺服器對外服務裸奔</a></li>
+</ul>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[這篇文章介紹一下如何透過Cloudflare tunnel來把在內網的服務讓外面的人可以存取。]]></summary></entry><entry><title type="html">n8n介紹</title><link href="https://wjohn1483.github.io/2025/10/18/n8n/" rel="alternate" type="text/html" title="n8n介紹" /><published>2025-10-18T00:00:00+00:00</published><updated>2025-10-18T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2025/10/18/n8n</id><content type="html" xml:base="https://wjohn1483.github.io/2025/10/18/n8n/"><![CDATA[<p>n8n是一個包含了AI的排程管理系統，可以透過簡單拖曳來建立你的資料流，這邊記錄一下我使用n8n的過程。</p>
 
 <!--more-->
 
@@ -965,58 +1091,4 @@ git clone https://github.com/ltdrdata/ComfyUI-Manager.git
 
 <h3 id="comfyspace">Comfyspace</h3>
 
-<p>在眾多的套件裡面，推薦可以先安裝<a href="https://github.com/11cafe/comfyui-workspace-manager">ComfySpace</a>，在Manager裡面搜尋<code class="language-plaintext highlighter-rouge">ComfyUI Workspace Manager</code>，接著重啟Comfy UI就可以了，其功用是幫你記錄和尋找Comfy UI的pipeline，如此就可以不用自己存pipeline的json，增加產圖的效率。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[先前介紹了如何在本機上面跑Stable Diffusion，這篇文章來記錄一下如何安裝Comfy UI，來讓產圖變得更容易。]]></summary></entry><entry><title type="html">Bandit Algorithms Notes</title><link href="https://wjohn1483.github.io/2024/02/22/bandit-algorithms-notes/" rel="alternate" type="text/html" title="Bandit Algorithms Notes" /><published>2024-02-22T00:00:00+00:00</published><updated>2024-02-22T00:00:00+00:00</updated><id>https://wjohn1483.github.io/2024/02/22/bandit-algorithms-notes</id><content type="html" xml:base="https://wjohn1483.github.io/2024/02/22/bandit-algorithms-notes/"><![CDATA[<p>最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。</p>
-
-<!--more-->
-
-<p>Bandit算法一開始被設計出來是為了要解決在有限的資源下要如何創造最大的收益，網路文章中給的例子通常都是在一個滿是吃角子老虎機台的房間當中，如何用手中有限的籌碼獲得最大的報酬，也就是找到獲獎機率比較大的吃角子老虎機台，這時候使用者會面臨繼續玩原本預期收益最大的吃角子老虎機，或是去玩看看新的吃角子老虎機，也就是在exploitation和exploration兩者之間抉擇。</p>
-
-<p>在原本的Multi-Armed Bandit裡面，我們只考慮不同吃角子老虎的機台，並沒有考慮使用者本身的偏好，像是某個使用者可能特別偏好某個有特殊外型的吃角子老虎機，對於該使用者而言那台吃角子老虎機的預期收益會比較大，如果有考慮到使用者本身資訊的bandit通常被稱為contextual bandit，反之被稱為context-free bandit。</p>
-
-<p>在任何的一個bandit algorithm裡面，我們會對每一個arm，也就是每一個吃角子老虎機台打一個分數，並從這些機台裡面選一個分數最高的去使用，而不同的算法會有不同打分數的方式，比較著名的context-free bandit的算法有UCB、Thompson Sampling，比較著名的contextual bandit算法有LinUCB。</p>
-
-<h2 id="epsilon-greedy">Epsilon Greedy</h2>
-
-<p>在進到Bandit的算法之前，我們可以先用一個簡單的方法來平衡exploitation和exploration，我們可以每次在決定要玩哪台吃角子老虎機的時候先擲一個骰子，令其有$\epsilon$的機率會去選擇以前沒有玩過的吃角子老虎機試試看，反之就繼續玩目前玩過的所有吃角子老虎機裡面，預期收益最大的。</p>
-
-<h2 id="upper-confidence-bound-ucb">Upper Confidence Bound (UCB)</h2>
-
-<p>在使用epsilon greedy做exploration的時候，每一個arm被選中的機會是相等的，但實際上每一個arm曾經被看過的次數和互動過的次數都不同，在exploration的時候可以有更聰明一點的方法，而UCB的概念是對於每一個arm給予的分數是基於它有可能所帶來的最高報酬，其分數的公式如下</p>
-
-\[\mu_i+\sqrt{\frac{2\ln (n)}{n_i}}\]
-
-<p>$\mu_i$是每一個$arm_i$前n次嘗試獲得的平均報酬，$n$是總嘗試次數，$n_i$是$arm_i$被嘗試的次數。</p>
-
-<p>左邊這項可以理解成過去這個$arm_i$所能夠帶給我們的平均報酬是多少，展現的是exploitation的部分，而右邊這項會讓比較少曝光的$arm_i$有比較高的分數，令其有機會被展示出來，展現的是exploration的部分。</p>
-
-<h2 id="thompson-sampling">Thompson Sampling</h2>
-
-<p>Thompson sampling的想法是，每次使用同一個arm所獲得的報酬可能會是浮動的，表示每一個arm的報酬可能是某種distribution，每次使用的時候就會從distribution裡面隨機抽樣出來當作是這次使用的報酬，而Thompson sampling覺得這個distribution應該是beta distribution，一個beta distribution會由兩個變數a、b來決定，也就是每個arm自帶的參數，因此在某個時間點選擇要使用哪一個arm的時候，就是每一個arm都從beta distribution裡面抽樣一個數字出來，看誰的數字最大就選擇哪個arm。</p>
-
-<h2 id="linucb">LinUCB</h2>
-
-<p>LinUCB相較於UCB，多了使用者的資訊在裡面，其公式長得大概像這樣</p>
-
-\[LinUCB_a=E(r_a \vert x)+\alpha STD(r_a \vert x)=x^T*\theta_a+\alpha\sqrt{x^TA_a^{-1}x}\]
-
-<p>在上面的$x$表示的是使用者的特徵向量，而$\theta_a$和$A_a$是某一個arm本身自帶的參數，跟UCB一樣，左邊這項表示對過去這個使用者對這個arm的喜好程度，而右邊這項表示使用者願意exploration的分數。</p>
-
-<h2 id="參考資料">參考資料</h2>
-
-<ol>
-  <li>
-    <p><a href="https://zhuanlan.zhihu.com/p/35753281">Contextual Bandit算法在推荐系统中的实现及应用</a></p>
-  </li>
-  <li>
-    <p><a href="https://blog.tsingjyujing.com/ml/rl/mab-summary">Re：从零开始的Multi-armed Bandit</a></p>
-  </li>
-  <li>
-    <p><a href="https://yangxudong.github.io/contextual-bandit/">在生产环境的推荐系统中部署Contextual bandit (LinUCB)算法的经验和陷阱</a></p>
-  </li>
-  <li>
-    <p><a href="https://zhuanlan.zhihu.com/p/381585388">MAB系列1：Contextual-free Bandits</a></p>
-  </li>
-  <li>
-    <p><a href="https://zhuanlan.zhihu.com/p/384427160">MAB系列2：Contextual Bandits: LinUCB</a></p>
-  </li>
-</ol>]]></content><author><name>Your Name</name></author><category term="Bandit" /><summary type="html"><![CDATA[最近剛好有機會碰了一下一直聽過但都沒有實際碰過的Bandit Algorithms，這邊紀錄一下從網路上學習到的知識。]]></summary></entry></feed>
+<p>在眾多的套件裡面，推薦可以先安裝<a href="https://github.com/11cafe/comfyui-workspace-manager">ComfySpace</a>，在Manager裡面搜尋<code class="language-plaintext highlighter-rouge">ComfyUI Workspace Manager</code>，接著重啟Comfy UI就可以了，其功用是幫你記錄和尋找Comfy UI的pipeline，如此就可以不用自己存pipeline的json，增加產圖的效率。</p>]]></content><author><name>Your Name</name></author><category term="Tool" /><summary type="html"><![CDATA[先前介紹了如何在本機上面跑Stable Diffusion，這篇文章來記錄一下如何安裝Comfy UI，來讓產圖變得更容易。]]></summary></entry></feed>

@@ -12,10 +12,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>n8n介紹 - wjohn1483.github.io</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>使用Cloudflare Tunnel實現遠端訪問 - wjohn1483.github.io</title>
 
-<meta name="description" content="n8n是一個包含了AI的排程管理系統，可以透過簡單拖曳來建立你的資料流，這邊記錄一下我使用n8n的過程。">
-<link rel="canonical" href="https://wjohn1483.github.io/2025/10/18/n8n/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<meta name="description" content="這篇文章介紹一下如何透過Cloudflare tunnel來把在內網的服務讓外面的人可以存取。">
+<link rel="canonical" href="https://wjohn1483.github.io/2025/11/23/cloudflare-tunnel/"><link rel="alternate" type="application/rss+xml" title="wjohn1483.github.io" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/svg+xml" href="/assets/images/logo/logo.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -290,98 +290,150 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>n8n介紹</h1></header><span class="split-space">&nbsp;</span>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>使用Cloudflare Tunnel實現遠端訪問</h1></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2025-10-18-n8n/2025-10-18-n8n.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="n8n介紹"><div class="article__info clearfix"><ul class="left-col menu"><li>
+            href="https://github.com/wjohn1483/wjohn1483.github.io/tree/source/_posts/2025-11-23-cloudflare-tunnel/2025-11-23-cloudflare-tunnel.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="使用Cloudflare Tunnel實現遠端訪問"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive/?tag=Tool">Tool</a>
-            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Oct 18, 2025</span>
-            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2025-10-18T00:00:00+00:00">
+            </li></ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 23, 2025</span>
+            </li></ul></div><meta itemprop="author" content="Your Name"/><meta itemprop="datePublished" content="2025-11-23T00:00:00+00:00">
     <meta itemprop="keywords" content="Tool"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>n8n是一個包含了AI的排程管理系統，可以透過簡單拖曳來建立你的資料流，這邊記錄一下我使用n8n的過程。</p>
+<div class="article__content" itemprop="articleBody"><p>這篇文章介紹一下如何透過Cloudflare tunnel來把在內網的服務讓外面的人可以存取。</p>
 
 <!--more-->
 
-<h2 id="n8n是什麼">n8n是什麼</h2>
+<h2 id="介紹">介紹</h2>
 
-<p><a href="https://n8n.io/">n8n</a>是一個開源的工作流程自動化工具，可以讓使用者透過滑鼠的拖拉，在UI上面就能將不同的服務像是Gmail、Chatgpt、Telegram組合起來建立一個資料流。</p>
+<p><a href="https://www.cloudflare.com/">Cloudflare</a>是一個提供CDN、DNS、DDoS防護等服務的雲端平台，而<a href="https://www.cloudflare.com/products/tunnel/">Cloudflare Tunnel</a>是Cloudflare提供的一項服務，可以讓你在不需要開放任何port到公網的情況下，將內網的服務暴露到網際網路上。</p>
 
-<h2 id="如何安裝n8n">如何安裝n8n</h2>
+<p>傳統上，如果我們想要讓外部使用者存取內網的服務，通常需要：</p>
 
-<p>n8n本身有提供雲端服務可以免費試用，如果想要自己host的話，可以參考他們的<a href="https://docs.n8n.io/hosting/">文件</a>。</p>
+<ol>
+  <li>確保有固定的公網IP</li>
+  <li>處理防火牆設定</li>
+  <li>面對直接暴露在公網上的安全風險</li>
+</ol>
 
-<p>我自己使用的方式是用<a href="https://docs.n8n.io/hosting/installation/docker/">docker的方式</a>來host，只要執行下面的指令，就可以建立起一個n8n的server，並聽本機的port 8000。</p>
+<p>Cloudflare Tunnel解決了這些問題，它透過在本地端建立一個輕量級的daemon（cloudflared），這個daemon會主動與Cloudflare的邊緣伺服器建立一個加密的連線，所有的流量都會透過這個加密通道傳輸，因此不需要在防火牆上開放任何port，也不需要公網IP。</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker volume create n8n_data
+<h2 id="網域">網域</h2>
 
-<span class="nv">TIMEZONE</span><span class="o">=</span><span class="s2">"Asia/Taipei"</span>
+<p>在使用Cloudflare Tunnel之前，你需要有一個網域，並且將這個網域的DNS管理權交給Cloudflare。如果你還沒有網域，可以在Cloudflare上購買，或者使用你現有的網域並將DNS轉移到Cloudflare。</p>
 
-docker run <span class="nt">-it</span> <span class="nt">--rm</span> <span class="se">\</span>
-    <span class="nt">--name</span> n8n <span class="se">\</span>
-    <span class="nt">-p</span> 8000:5678 <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">GENERIC_TIMEZONE</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">TIMEZONE</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">TZ</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">TIMEZONE</span><span class="k">}</span><span class="s2">"</span> <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">N8N_RUNNERS_ENABLED</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
-    <span class="nt">-e</span> <span class="nv">N8N_SECURE_COOKIE</span><span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
-    <span class="nt">-v</span> n8n_data:/home/node/.n8n <span class="se">\</span>
-    docker.n8n.io/n8nio/n8n
-</code></pre></div></div>
+<p>在Cloudflare上面創建一個帳號以後，在左邊側邊欄裡面可以找到Register Domain的選項，在這邊可以打上你想要的關鍵字，Cloudflare會推薦對應的網域給你並附上價格，可以選擇<code class="language-plaintext highlighter-rouge">.xyz</code>、<code class="language-plaintext highlighter-rouge">.me</code>、<code class="language-plaintext highlighter-rouge">.org</code>、<code class="language-plaintext highlighter-rouge">.uk</code>等網域，價格相對比較低一點點。</p>
 
-<p>透過瀏覽器連上server以後，可以創建一個n8n的帳號來登入，接下來就可以創建自己的資料流了。</p>
+<p><img src="register_domains.png" alt="Register domains" /></p>
 
-<h2 id="實作範例">實作範例</h2>
+<p>在擁有網域以後，就可以開始建立tunnel連結內網的機器和這個網域了。</p>
 
-<p>這邊先胡亂每天幫忙檢查車票開賣了沒的簡單資料流，整體的架構長得像下面這樣</p>
+<h2 id="cloudflare-tunnel">Cloudflare Tunnel</h2>
 
-<p><img src="dataflow.png" alt="Dataflow" /></p>
+<pre><code class="language-mermaid">graph LR
+    User[使用者] --&gt;|1. 請求 https://service.yourdomain.com| DNS[DNS 解析]
+    DNS --&gt;|2. 解析到 Cloudflare| CF[Cloudflare 邊緣伺服器]
+    CF --&gt;|3. 透過加密 Tunnel| Tunnel[cloudflared&lt;br/&gt;本地端 daemon]
+    Tunnel --&gt;|4. 轉發請求| Service[本地服務&lt;br/&gt;localhost:8000]
+    Service --&gt;|5. 回應| Tunnel
+    Tunnel --&gt;|6. 透過加密 Tunnel| CF
+    CF --&gt;|7. 回傳回應| User
 
-<p>這邊會定期觸發這個資料流，發http request到售票網站上面，透過一個html的parser去抓特定位置的文字，如果顯示可以訂票就發可以訂票的訊息到telegram上，如果還不行也一樣發個訊息說目前還不能訂票到telegram上。</p>
+    style User fill:#e1f5ff
+    style DNS fill:#fff4e1
+    style CF fill:#ff6b6b,color:#fff
+    style Tunnel fill:#51cf66,color:#fff
+    style Service fill:#339af0,color:#fff
+</code></pre>
 
-<p>在一開始開發這個資料流的時候，可以在觸發的地方選擇Trigger manually，這樣手動點一下就可以驗證資料流是不是如你預期般的執行，而後面的處理可以點擊+號來搜尋你想要做的事情，其中你也可以把輸入的結果丟給AI模型，下prompt讓模型去幫你處理輸入再輸出你想要的結果到後面的節點</p>
+<p>要從內網的機器建立tunnel可以在Cloudflare側邊欄中的Zero Trust裡面的Networks下面的Connectors裡面找到，點擊建立tunnel以後照著流程走就可以了。</p>
 
-<p><img src="start_building.png" alt="Start building" /></p>
+<p><img src="configure_tunnel.png" alt="Configure tunnel" /></p>
 
-<p>每一個方框都可以點擊兩下來編輯設定，下面是html parser的設定，我們在發完http request以後拿到了html，這邊透過寫CSS selector來拿到特定的文字出來，除了一般的寫法外，我們還可以用比較特別的<code class="language-plaintext highlighter-rouge">a.contains("string")</code>的方式來抓。</p>
+<ol>
+  <li>
+    <p><strong>安裝cloudflared</strong></p>
 
-<p><img src="html_parser.png" alt="HTML parser" /></p>
+    <p>首先需要在本地端安裝cloudflared，這是Cloudflare提供的命令列工具。可以到<a href="https://github.com/cloudflare/cloudflared/releases">Cloudflare的GitHub</a>下載對應作業系統的版本，或是使用套件管理器安裝</p>
 
-<p>最後就是透過telegram的bot將結果傳送到手機上，如何設定telegram bot可以參考下面的文章。</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Add cloudflared.repo to /etc/yum.repos.d/</span>
+curl <span class="nt">-fsSl</span> https://pkg.cloudflare.com/cloudflared.repo | <span class="nb">sudo tee</span> /etc/yum.repos.d/cloudflared.repo
+   
+<span class="c">#update repo</span>
+<span class="nb">sudo </span>yum update
+   
+<span class="c"># install cloudflared</span>
+<span class="nb">sudo </span>yum <span class="nb">install </span>cloudflared
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>連接Tunnel</strong></p>
 
-<h3 id="telegram-bot">Telegram Bot</h3>
+    <p>在Dashboard的Tunnel頁面中，會顯示一個連接命令，類似</p>
 
-<p>要創建一個telegram bot，我們首先要先在telegram上面去找<code class="language-plaintext highlighter-rouge">@BotFather</code>跟他下<code class="language-plaintext highlighter-rouge">/newbot</code>的指令，接著按照指示設定顯示的名稱和實際的username，設定好以後可以得到一個API token，有了這個token就可以透過n8n內建的節點來收取或是發送訊息給使用者了。</p>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cloudflared tunnel run &lt;tunnel-id&gt;
+</code></pre></div>    </div>
 
-<p>值得一提的是，在發送訊息的部分我們除了API token外，還需要設定一個chat id，也就是聊天室的id，我們可以先傳個訊息到你創建的bot的聊天室，再透過下面的網址去拿到最近有互動的chat id，用這個來設定在n8n的節點上。</p>
+    <p>在本地端執行這個命令，Tunnel就會開始運作。你也可以使用service或其他服務管理器來讓Tunnel在背景持續運行。</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://api.telegram.org/bot{BOT_TOKEN}/getUpdates
-</code></pre></div></div>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>cloudflared service <span class="nb">install</span> &lt;tunnel-id&gt;
+</code></pre></div>    </div>
+  </li>
+</ol>
 
-<p>中間的<code class="language-plaintext highlighter-rouge">{BOT_TOKEN}</code>要替換成上一個步驟裡面拿到的API token。</p>
+<p>完成以上步驟後，你的機器理論上就連上了Cloudflare的伺服器了，接下來在Published application routes裡面可以設定別人連上你的網域該怎麼導向你的內網服務</p>
+
+<p><img src="tunnel_route.png" alt="Tunnel route" /></p>
+
+<p>假如你的內網服務架在<code class="language-plaintext highlighter-rouge">localhost:8001</code>上面，在Service的地方就可以選擇用HTTP與URL來連線，而Hostname的地方可以選擇使用Subdomain或是Path來區分不同的service。</p>
+
+<p>經過了這些設定以後，現在連線到你所設定的Hostname應該就可以碰到你放在內網機器上的服務。</p>
+
+<h2 id="登入驗證機制">登入驗證機制</h2>
+
+<p>現在你的服務可以被全世界的人連線了，但有些時候你會想要讓某些服務只讓有權限的人可以存取，Cloudflare有提供一些登入驗證的機制來幫你做到這件事情。</p>
+
+<p>在Zero Trust當中的Access controls裡面，可以找到Applications的選項，點擊Add an application以後，選擇Self-hosted，接著就可以開始設定你的應用程式了。</p>
+
+<p><img src="application_settings.png" alt="Application settings" /></p>
+
+<p>在Application name的地方可以設定這個應用程式的名稱，Session duration可以設定登入後多久需要重新驗證，而Add public hostname的地方需要選擇你剛才在Tunnel route裡面設定的Hostname。</p>
+
+<p>接下來在Policies的地方可以設定誰可以存取這個應用程式，點擊Add a policy以後，可以設定包含（Include）和排除（Exclude）的條件。</p>
+
+<p><img src="policy_settings.png" alt="Policy settings" /></p>
+
+<p>在Include的部分，可以設定允許存取的條件，例如：</p>
+
+<ul>
+  <li><strong>Email</strong>：特定Email地址（例如：user@example.com）</li>
+  <li><strong>Emails ending in</strong>：Email網域（例如：@company.com，代表該網域下的所有Email都可以存取）</li>
+  <li><strong>IP ranges</strong>：特定的IP地址</li>
+  <li><strong>Country</strong>：特定國家/地區</li>
+</ul>
+
+<p>在Exclude的部分，可以設定拒絕存取的條件，例如某些特定的IP地址或Email。</p>
+
+<p>選擇email的話，Cloudflare會在使用者來到網站的時候，輸入有權限的email以後，寄送一個一次性密碼到信箱裡面，透過這些設定，你可以確保只有經過驗證的使用者才能存取你的服務，大大提升了服務的安全性。</p>
+
+<p>如果你想要讓使用者可以透過不同的方式登入，在Zero Trust側邊欄的Integrations的Identity providers裡面可以選擇像是Facebook、Google、GitHub等方式，照著上面的指示就可以新增一個登入的方法，並在application的設定裡面允許這個方法就可以了。</p>
 
 <h2 id="結論">結論</h2>
 
-<p>n8n是個很方便、可以快速驗證想法的工具，我們可以透過串連更多的服務來做到更多的應用，上面的例子只是一個牛刀小試，網路上有更多例子透過大型語言模型來做到更智慧的結果，而且不用寫程式碼就可以做到過去可能要寫很多才能做到的功能，如果有什麼好想法不妨先用n8n兜看看。</p>
+<p>Cloudflare Tunnel提供了一個簡單且安全的方式來將內網服務暴露到網際網路上，不需要處理複雜的網路設定，也不需要擔心直接暴露在公網上的安全風險。配合Zero Trust的登入驗證機制，可以進一步保護你的服務，只讓授權的使用者存取。對於需要遠端存取內網服務的使用者來說，這是一個非常實用的解決方案。</p>
 
 <h2 id="參考資料">參考資料</h2>
 
 <ul>
-  <li>
-    <p><a href="https://www.youtube.com/watch?v=sRU6Y7DXkLI">學會 n8n 為你省下 80% 時間！(EP.2) 這個 AI 助理只認你這個主人，不但使命必達且全天候待命！ - YouTube</a></p>
-  </li>
-  <li>
-    <p><a href="https://z3388638.medium.com/telegram-bot-1-%E6%87%B6%E5%BE%97%E8%87%AA%E5%B7%B1%E5%81%9A%E7%9A%84%E4%BA%8B%E5%B0%B1%E4%BA%A4%E7%B5%A6%E6%A9%9F%E5%99%A8%E4%BA%BA%E5%90%A7-c59004dc6c7b">Telegram Bot (1) 懶得自己做的事就交給機器人吧</a></p>
-  </li>
+  <li><a href="https://www.sakamoto.blog/cloudflare-tunnel/">免費 Cloudflare Tunnel 取代伺服器對外服務裸奔</a></li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-10-18T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2025-11-23T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 </footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2025/10/06/nrms/">Neural News Recommendation with Multi-Head Self-Attention</a></div><div class="next"><span>NEXT</span><a href="/2025/11/23/cloudflare-tunnel/">使用Cloudflare Tunnel實現遠端訪問</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2025/10/18/n8n/">n8n介紹</a></div></div></div>
 
 </div>
 
